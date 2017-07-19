@@ -1,0 +1,72 @@
+usage: onap sample-test
+
+Onap sample command to test the command features
+
+Onap service: sample v1
+
+Options:
+[-u | --onap-username] [-p | --onap-password] [-m | --msb-url]
+[-h | --help] [-v | --version] [-d | --debug]
+[-f | --format] [-s | --long] [-t | --no-title]
+[-a | --no-auth] [-b | --bool] [-x | --secure]
+[-c | --string-param] [-y | --yaml-param] [-j | --json-param]
+[-l | --long-opt] [-r | --url] [-z | --env]
+<positional-args>
+where,
+-u | --onap-username   Onap user name. It is of type STRING. By
+                        default, it is read from environment variable
+                        ONAP_USERNAME.
+-p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        ONAP_PASSWORD. Secured.
+-m | --msb-url          Onap MSB url. It is of type URL. By default, it
+                        is read from environment variable ONAP_MSB_URL.
+-h | --help             Onap command help message. It is of type STRING.
+                        By default, it is false.
+-v | --version          Onap command service version. It is of type
+                        STRING. By default, it is false.
+-d | --debug            Enable debug output. It is of type BOOL. By
+                        default, it is false.
+-f | --format           Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By default,
+                        it is table.
+-s | --long             whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+-t | --no-title         whether to print title or not. It is of type BOOL.
+                        By default, it is false.
+-a | --no-auth          whether to authenticate user or not. It is of type
+                        BOOL. By default, it is false.
+-b | --bool             Onap boolean param, by default its always false.
+                        It is of type BOOL. It is optional. By default, it
+                        is false.
+-x | --secure           Onap secure param such as password. It is of
+                        type STRING. Secured.
+-c | --string-param     Onap string param. It is of type STRING.
+-y | --yaml-param       Onap yaml file location param. It is of type
+                        JSON. It's recommended to input the complete path
+                        of the file, which is having the value for it.
+-j | --json-param       Onap json file location param. It is of type
+                        JSON. It's recommended to input the complete path
+                        of the file, which is having the value for it.
+-l | --long-opt         Onap long param. It is of type LONG. By default,
+                        it is 10.
+-r | --url              Onap url param. It is of type URL. By default,
+                        it is http://localhost:8082/file.txt.
+-z | --env              Onap env param. It is of type STRING. By
+                        default, it is read from environment variable
+                        ENV_VAR.
+positional-args         Onap positional args, if no short option and no
+                        long option given for it. It is of type STRING. By
+                        default, it is http://localhost:8082/file.txt.
+
+
+Results:
+output-1  Onap output attribute marked in short and is of
+          type STRING. It is secured.
+output-2  Onap output attribute marked in long and is of
+          type STRING.
+
+
+Error:
+On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>

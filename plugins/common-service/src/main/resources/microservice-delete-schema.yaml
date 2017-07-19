@@ -1,0 +1,31 @@
+onap_cmd_schema_version: 1.0
+name: microservice-delete
+description: Deletes the micro service from Onap
+service:
+  name: msb
+  version: v1
+
+parameters:
+  - name: service-name
+    description: Onap service name
+    type: string
+    short_option: x
+    long_option: service-name
+    is_optional: false
+  - name: service-version
+    description: Onap service version
+    type: string
+    short_option: y
+    long_option: service-version
+    is_optional: false
+http:
+  request:
+    uri: /services/${service-name}/version/${service-version}
+    method: DELETE
+  success_codes:
+    - 201
+    - 200
+    - 204
+
+
+

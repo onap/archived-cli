@@ -1,0 +1,6 @@
+onap_cmd_schema_version: 1.0
+description: Register microservice into Onap
+name: schema-validate
+service:dasd
+  name: msbdsa
+  - name: service-name1

@@ -1,0 +1,59 @@
+onap_cmd_schema_version: 1.0
+name: service-list
+description: Onap Service list
+service:
+  name: msb
+  version: v1
+results:
+  direction: landscape
+  attributes:
+    - name: name
+      description: Onap service name
+      scope: short
+      type: string
+    - name: version
+      description: Onap service version
+      scope: short
+      type: string
+    - name: url
+      description: Onap service base url
+      scope: short
+      type: url
+    - name: status
+      description: Onap service status
+      scope: short
+      type: long
+    - name: nodes
+      description: Onap service running nodes
+      scope: long
+      type: json
+    - name: server
+      description: test
+      scope: long
+      type: string
+exec:
+  api: org.onap.common_services.microservice_bus.apiroute_service.client.api.MSBServiceResourceApi
+  client: org.onap.common_services.microservice_bus.apiroute_service.client.invoker.ApiClient
+  entity: org.onap.common_services.microservice_bus.apiroute_service.client.model.MicroServiceFullInfo
+  method: getMicroService
+  exception: org.onap.common_services.microservice_bus.apiroute_service.client.invoker.ApiException
+http:
+  request:
+    uri: /services
+    method: GET
+  success_codes:
+    - 201
+    - 200
+  result_map:
+    name: $b{$.[*].serviceName}
+    version: $b{$.[*].version}
+    url: $b{$.[*].url}
+    status: $b{$.[*].status}
+    nodes: $b{$.[*].nodes[*].nodeId}
+    server: $h{Server}-$b{$.[*].nodes[*].nodeId}
+  sample_response:
+    body: [{"serviceName":"test","version":"v1","url":"/api/test/v1","protocol":"REST","visualRange":"1","lb_policy":"hash","nodes":[{"ip":"127.0.0.1","port":"8012","ttl":0,"nodeId":"test_127.0.0.1_8012","expiration":"2017-02-10T05:33:25Z","created_at":"2017-02-10T05:33:25Z","updated_at":"2017-02-10T05:33:25Z"}],"status":"1"}]
+
+
+
+
