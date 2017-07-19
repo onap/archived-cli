@@ -1,0 +1,2 @@
+org.onap.cli.fw.cmd.OnapSchemaValidateCommand
+org.onap.cli.fw.cmd.OnapSchemaRefreshCommand

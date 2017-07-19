@@ -1,0 +1,91 @@
+onap_cmd_schema_version: 1.0
+name: sample-test1
+description: Onap sample command to test the command features
+service:
+  name: sample
+  version: v1
+parameters:
+  - name: bool-param
+    type: bool
+    description: Onap boolean param, by default its always false.
+    short_option: b
+    long_option: bool
+    is_optional: true
+    default_value: false
+  - name: secure-param
+    type: string
+    description: Onap secure param such as password
+    short_option: x
+    long_option: secure
+    is_secured: true
+    is_optional: false
+    default_Value: pass123#
+  - name: string-param
+    type: string
+    description: Onap string param
+    long_option: string-param
+    short_option: c
+    is_optional: false
+    default_Value: test
+  - name: yaml-param
+    type: json
+    description: Onap yaml file location param
+    long_option: yaml-param
+    short_option: y
+    is_optional: false
+  - name: json-param
+    type: json
+    description: Onap json file location param
+    long_option: json-param
+    short_option: j
+    is_optional: false
+  - name: long-param
+    type: long
+    description: Onap long param
+    short_option: l
+    long_option: long-opt
+    is_optional: false
+    default_value: 10
+  - name: url-param
+    type: url
+    description: Onap url param
+    short_option: r
+    long_option: url
+    is_optional: false
+    default_value: http://localhost:8082/file.txt
+  - name: env-param
+    type: string
+    description: Onap env param.
+    short_option: z
+    long_option: env
+    is_optional: false
+    default_value: ${ENV_VAR}
+  - name: positional-args
+    type: string
+    description: Onap positional args, if no short option and no long option given for it
+    is_optional: false
+    default_value: http://localhost:8082/file.txt
+http:
+  request:
+    uri: /vims
+    method: POST
+    body: '{"name":"${name}","vendor":"${vendor}","version":"${vim-version}","description":"${description}","type":"${type}","url":"${url}","userName":"${username}","password":"${password}","domain":"${domain}","tenant":"${tenant}"}'
+    headers:
+  success_codes:
+    - 201
+    - 200
+  result_map:
+    id: $b{$.vimId}
+    name: $b{$.name}
+    vendor: $b{$.vendor}
+    type: $b{$.type}
+    version: $b{$.version}
+    url: $b{$.url}
+    description: $b{$.description}
+    username: $b{$.userName}
+    password: $b{$.password}
+    domain: $b{$.domain}
+    tenant: $b{$.tenant}
+    create-time: $b{$.createTime}
+  sample_response:
+    body:'{"id":"string","name":"string","vendor":"string","version":"string","description":"string","type":"string","createTime":"string","url":"string","userName":"string","password":"string","domain":"string","tenant":"string"}'

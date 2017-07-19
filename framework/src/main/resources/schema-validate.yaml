@@ -1,0 +1,31 @@
+onap_cmd_schema_version: 1.0
+name: schema-validate
+description: Onap command to validate schema
+service:
+  no-auth: true
+  name: onap-cli
+  version: 1.0.0
+parameters:
+  - name: schema-location
+    type: url
+    description: Schema file location
+    short_option: l
+    long_option: schema-location
+    is_optional: false
+  - name: internal-schema
+    type: bool
+    description: Validate existing schema file
+    short_option: i
+    long_option: internal-schema
+    is_optional: false
+results:
+  direction: landscape
+  attributes:
+    - name: sl-no
+      description: Serial Number of error
+      scope: short
+      type: string
+    - name: error
+      description: Schema validation error
+      scope: short
+      type: string
