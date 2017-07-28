@@ -19,7 +19,7 @@
 	
     <parent>
       <groupId>org.onap.oparent</groupId>
-      <artifactId>version</artifactId>
+      <artifactId>oparent</artifactId>
       <version>1.0.0-SNAPSHOT</version>    
     </parent>
   
