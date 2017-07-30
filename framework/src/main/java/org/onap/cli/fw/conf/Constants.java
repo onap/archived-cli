@@ -26,13 +26,14 @@ public class Constants {
     public static final String APPLICATION_JSON = "application/json";
     public static final String X_AUTH_TOKEN = "X-Auth-Token";
 
-    public static final String AUTH_SERVICE = "auth";
+    public static final String AUTH_SERVICE = "cli.auth_service";
     public static final String AUTH_SERVICE_VERSION = "v1";
     public static final String TOKEN = "{\"userName\": \"%s\",\"password\": \"%s\"}";
     public static final String MSB_URI = "/api/microservices/v1";
     public static final String MSB_SERVICE_URI = MSB_URI + "/services/%s/version/%s";
 
-    public static final String MSB = "msb";
+    public static final String API_GATEWAY = "cli.api_gateway";
+    public static final String SERVICE_NAME = "cli.service_name";
 
     //http
     public static final String URI = "uri";
@@ -63,6 +64,10 @@ public class Constants {
     public static final String DESCRIPTION = "description";
     public static final String SERVICE = "service";
     public static final String PARAMETERS = "parameters";
+    public static final String DEFAULT_PARAMETERS = "default_parameters";
+    public static final String DEFAULT_PARAMETERS_INCLUDE = "include";
+    public static final String DEFAULT_PARAMETERS_EXCLUDE = "exclude";
+
     public static final String RESULTS = "results";
 
     public static final String ONAP_CMD_SCHEMA_VERSION = "onap_cmd_schema_version";
@@ -143,6 +148,7 @@ public class Constants {
     public static final String DEFAULT_SCHEMA_FILE_NAME = "default_input_parameters.yaml";
 
     // Error message
+    public static final String SCHEMA_INVALID_DEFAULT_PARAMS_SECTION = "Invalid default parameter section";
     public static final String SCHEMA_FILE_EMPTY = "The schema file cann't be null or empty";
     public static final String SCHEMA_FILE_WRONG_EXTN = "Schema file should be '.yaml' extension";
     public static final String SCHEMA_FILE_NOT_EXIST = "Schema file doesn't exist";

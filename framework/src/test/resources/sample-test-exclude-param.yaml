@@ -1,0 +1,5 @@
+onap_cmd_schema_version: 1.0
+default_parameters:
+  exclude:
+    - onap-username
+    - msb-url

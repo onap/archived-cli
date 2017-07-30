@@ -20,6 +20,7 @@ import org.onap.cli.fw.ad.OnapAuthClient;
 import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterType;
@@ -88,6 +89,11 @@ public abstract class OnapCommand {
 
     public void setName(String name) {
         this.cmdName = name;
+    }
+
+    public boolean isCommandInternal() {
+        return onapService.getName() != null
+                && onapService.getName().equalsIgnoreCase(OnapCommandConfg.getInternalCmd());
     }
 
     /*
@@ -171,7 +177,6 @@ public abstract class OnapCommand {
      * Any additional profile based such as http/swagger schema could be initialized.
      */
     protected void initializeProfileSchema() throws OnapCommandException {
-
     }
 
     /*
@@ -235,10 +240,14 @@ public abstract class OnapCommand {
         try {
             // login
             OnapCredentials creds = OnapCommandUtils.fromParameters(this.getParameters());
-            this.authClient = new OnapAuthClient(creds, this.getResult().isDebug());
+            boolean isAuthRequired = !this.onapService.isNoAuth()
+                    && "true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue());
 
-            if (!this.onapService.isNoAuth()
-                    && !"true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue())) {
+            if (!isCommandInternal()) {
+                this.authClient = new OnapAuthClient(creds, this.getResult().isDebug());
+            }
+
+            if (isAuthRequired) {
                 this.authClient.login();
             }
 
@@ -246,16 +255,15 @@ public abstract class OnapCommand {
             this.run();
 
             // logout
-            if (!this.onapService.isNoAuth()
-                    && !"true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue())) {
+            if (isAuthRequired) {
                 this.authClient.logout();
             }
 
-            if (this.cmdResult.isDebug()) {
+            if (this.cmdResult.isDebug() && authClient != null) {
                 this.cmdResult.setDebugInfo(this.authClient.getDebugInfo());
             }
         } catch (OnapCommandException e) {
-            if (this.cmdResult.isDebug()) {
+            if (this.cmdResult.isDebug() && authClient != null) {
                 this.cmdResult.setDebugInfo(this.authClient.getDebugInfo());
             }
             throw e;
