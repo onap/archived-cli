@@ -63,6 +63,10 @@ public class Constants {
     public static final String DESCRIPTION = "description";
     public static final String SERVICE = "service";
     public static final String PARAMETERS = "parameters";
+    public static final String DEFAULT_PARAMETERS = "default_parameters";
+    public static final String DEFAULT_PARAMETERS_INCLUDE = "include";
+    public static final String DEFAULT_PARAMETERS_EXCLUDE = "exclude";
+
     public static final String RESULTS = "results";
 
     public static final String ONAP_CMD_SCHEMA_VERSION = "onap_cmd_schema_version";

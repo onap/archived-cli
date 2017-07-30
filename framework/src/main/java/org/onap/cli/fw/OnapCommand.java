@@ -235,10 +235,11 @@ public abstract class OnapCommand {
         try {
             // login
             OnapCredentials creds = OnapCommandUtils.fromParameters(this.getParameters());
-            this.authClient = new OnapAuthClient(creds, this.getResult().isDebug());
+            this.authClient = null;
 
             if (!this.onapService.isNoAuth()
                     && !"true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue())) {
+                this.authClient = new OnapAuthClient(creds, this.getResult().isDebug());
                 this.authClient.login();
             }
 
