@@ -168,15 +168,40 @@ public class OnapCommandUtils {
         List<String> names = new ArrayList<>();
 
         if (includeDefault) {
-            loadSchema(cmd, Constants.DEFAULT_PARAMETER_FILE_NAME, shortOptions, longOptions, names);
+
+            // identify the include and exclude parameter from
+            // default_parameter section.
+            Map<String, ?> values = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+            List<String> includeDefParams = new ArrayList<>();
+            List<String> excludeDefParams = new ArrayList<>();
+
+
+            Map<String, ?> defaultParameters = (Map)values.get(Constants.DEFAULT_PARAMETERS);
+
+            if(defaultParameters!=null) {
+                if (defaultParameters.get(Constants.DEFAULT_PARAMETERS_INCLUDE) != null) {
+                    includeDefParams.addAll((List) defaultParameters.get(Constants.DEFAULT_PARAMETERS_INCLUDE));
+                }
+
+                if (defaultParameters.get(Constants.DEFAULT_PARAMETERS_EXCLUDE) != null) {
+                    excludeDefParams.addAll((List) defaultParameters.get(Constants.DEFAULT_PARAMETERS_EXCLUDE));
+                }
+            }
+
+            loadSchema(cmd, Constants.DEFAULT_PARAMETER_FILE_NAME, shortOptions,
+                    longOptions, names, includeDefParams, excludeDefParams);
         }
 
-        loadSchema(cmd, schemaName, shortOptions, longOptions, names);
+        loadSchema(cmd, schemaName, shortOptions, longOptions, names, new ArrayList<>(), new ArrayList<>());
 
     }
 
-    private static void loadSchema(OnapCommand cmd, String schemaName, List<String> shortOptions,
-            List<String> longOptions, List<String> names) throws OnapCommandException {
+    private static void loadSchema(OnapCommand cmd, String schemaName,
+                                   List<String> shortOptions,
+                                   List<String> longOptions,
+                                   List<String> names,
+                                   List<String> includeDefParams,
+                                   List<String> excludeDefParams) throws OnapCommandException {
         try {
             Map<String, ?> values = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
@@ -208,55 +233,72 @@ public class OnapCommandUtils {
 
                     cmd.setService(srv);
                 } else if (Constants.PARAMETERS.equals(key)) {
-                    List<Map<String, String>> list = (ArrayList) values.get(key);
 
-                    for (Map<String, String> map : list) {
-                        OnapCommandParameter param = new OnapCommandParameter();
+                    List<Map<String, String>> parameters = (List) values.get(key);
 
-                        for (Map.Entry<String, String> entry1 : map.entrySet()) {
-                            String key2 = entry1.getKey();
+                    if(parameters != null) {
+                        for (Map<String, String> map : parameters) {
+                            OnapCommandParameter param = new OnapCommandParameter();
 
-                            if (Constants.NAME.equals(key2)) {
-                                if (names.contains(map.get(key2))) {
-                                    throw new OnapCommandParameterNameConflict(map.get(key2));
-                                }
-                                names.add(map.get(key2));
-                                param.setName(map.get(key2));
-                            } else if (Constants.DESCRIPTION.equals(key2)) {
-                                param.setDescription(map.get(key2));
-                            } else if (Constants.SHORT_OPTION.equals(key2)) {
-                                if (shortOptions.contains(map.get(key2))) {
-                                    throw new OnapCommandParameterOptionConflict(map.get(key2));
-                                }
-                                shortOptions.add(map.get(key2));
-                                param.setShortOption(map.get(key2));
-                            } else if (Constants.LONG_OPTION.equals(key2)) {
-                                if (longOptions.contains(map.get(key2))) {
-                                    throw new OnapCommandParameterOptionConflict(map.get(key2));
-                                }
-                                longOptions.add(map.get(key2));
-                                param.setLongOption(map.get(key2));
-                            } else if (Constants.DEFAULT_VALUE.equals(key2)) {
-                                Object obj = map.get(key2);
-                                param.setDefaultValue(obj.toString());
-                            } else if (Constants.TYPE.equals(key2)) {
-                                param.setParameterType(ParameterType.get(map.get(key2)));
-                            } else if (Constants.IS_OPTIONAL.equals(key2)) {
-                                if ("true".equalsIgnoreCase(String.valueOf(map.get(key2)))) {
-                                    param.setOptional(true);
-                                } else {
-                                    param.setOptional(false);
-                                }
-                            } else if (Constants.IS_SECURED.equals(key2)) {
-                                if ("true".equalsIgnoreCase(String.valueOf(map.get(key2)))) {
-                                    param.setSecured(true);
-                                } else {
-                                    param.setSecured(false);
+                            for (Map.Entry<String, String> entry1 : map.entrySet()) {
+                                String key2 = entry1.getKey();
+
+                                if (Constants.NAME.equals(key2)) {
+                                    if (names.contains(map.get(key2))) {
+                                        throw new OnapCommandParameterNameConflict(map.get(key2));
+                                    }
+                                    names.add(map.get(key2));
+                                    param.setName(map.get(key2));
+                                } else if (Constants.DESCRIPTION.equals(key2)) {
+                                    param.setDescription(map.get(key2));
+                                } else if (Constants.SHORT_OPTION.equals(key2)) {
+                                    if (shortOptions.contains(map.get(key2))) {
+                                        throw new OnapCommandParameterOptionConflict(map.get(key2));
+                                    }
+                                    shortOptions.add(map.get(key2));
+                                    param.setShortOption(map.get(key2));
+                                } else if (Constants.LONG_OPTION.equals(key2)) {
+                                    if (longOptions.contains(map.get(key2))) {
+                                        throw new OnapCommandParameterOptionConflict(map.get(key2));
+                                    }
+                                    longOptions.add(map.get(key2));
+                                    param.setLongOption(map.get(key2));
+                                } else if (Constants.DEFAULT_VALUE.equals(key2)) {
+                                    Object obj = map.get(key2);
+                                    param.setDefaultValue(obj.toString());
+                                } else if (Constants.TYPE.equals(key2)) {
+                                    param.setParameterType(ParameterType.get(map.get(key2)));
+                                } else if (Constants.IS_OPTIONAL.equals(key2)) {
+                                    if ("true".equalsIgnoreCase(String.valueOf(map.get(key2)))) {
+                                        param.setOptional(true);
+                                    } else {
+                                        param.setOptional(false);
+                                    }
+                                } else if (Constants.IS_SECURED.equals(key2)) {
+                                    if ("true".equalsIgnoreCase(String.valueOf(map.get(key2)))) {
+                                        param.setSecured(true);
+                                    } else {
+                                        param.setSecured(false);
+                                    }
                                 }
                             }
-                        }
-                        cmd.getParameters().add(param);
 
+                            // If include and execlude parameter is null then include
+                            // all the parameters. Otherwise, pick all the parameters
+                            // mentioned in the include parameters and exclude the
+                            // parameters from exclude list, giving priority to include
+                            // list.
+                            List<OnapCommandParameter> cmdParameters = cmd.getParameters();
+                            if(includeDefParams.isEmpty() && excludeDefParams.isEmpty()) {
+                                cmdParameters.add(param);
+                            } else if(!includeDefParams.isEmpty()
+                                    && includeDefParams.contains(param.getName())) {
+                                cmdParameters.add(param);
+                            } else if(!excludeDefParams.isEmpty()
+                                    && (!excludeDefParams.contains(param.getName()) && includeDefParams.isEmpty())) {
+                                cmdParameters.add(param);
+                            }
+                        }
                     }
                 } else if (Constants.RESULTS.equals(key)) {
                     Map<String, ?> valueMap = (Map<String, ?>) values.get(key);
