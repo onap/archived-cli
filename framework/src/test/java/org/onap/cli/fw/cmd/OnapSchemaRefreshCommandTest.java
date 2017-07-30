@@ -27,11 +27,7 @@ public class OnapSchemaRefreshCommandTest {
         OnapSchemaRefreshCommand cmd = new OnapSchemaRefreshCommand();
         cmd.initializeSchema("schema-refresh.yaml");
         for (OnapCommandParameter param : cmd.getParameters()) {
-            if ("onap-username".equals(param.getName())) {
-                param.setValue("test");
-            } else if ("onap-password".equals(param.getName())) {
-                param.setValue("test");
-            } else if ("msb-url".equals(param.getName())) {
+            if ("msb-url".equals(param.getName())) {
                 param.setValue("test-url");
             }
         }
@@ -43,11 +39,7 @@ public class OnapSchemaRefreshCommandTest {
         OnapSchemaRefreshCommand cmd = new OnapSchemaRefreshCommand();
         cmd.initializeSchema("schema-refresh.yaml");
         for (OnapCommandParameter param : cmd.getParameters()) {
-            if ("onap-username".equals(param.getName())) {
-                param.setValue("test");
-            } else if ("onap-password".equals(param.getName())) {
-                param.setValue("test");
-            } else if ("msb-url".equals(param.getName())) {
+            if ("msb-url".equals(param.getName())) {
                 param.setValue("test-url");
             }
         }
