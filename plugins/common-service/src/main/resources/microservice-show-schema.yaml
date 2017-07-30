@@ -6,18 +6,19 @@ service:
   version: v1
   no-auth: true
 parameters:
-  - name: service-name
-    description: Onap service name
-    type: string
-    short_option: x
-    long_option: service-name
-    is_optional: false
-  - name: service-version
-    description: Onap service version
-    type: string
-    short_option: y
-    long_option: service-version
-    is_optional: false
+  params:
+    - name: service-name
+      description: Onap service name
+      type: string
+      short_option: x
+      long_option: service-name
+      is_optional: false
+    - name: service-version
+      description: Onap service version
+      type: string
+      short_option: y
+      long_option: service-version
+      is_optional: false
 results:
   direction: landscape
   attributes:

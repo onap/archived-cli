@@ -6,34 +6,35 @@ service:
   version: v1
 
 parameters:
-  - name: service-name
-    description: Onap service name
-    type: string
-    short_option: x
-    long_option: service-name
-    is_optional: false
-  - name: service-version
-    description: Onap service version
-    type: string
-    short_option: y
-    long_option: service-version
-    is_optional: false
-  - name: service-url
-    description: Onap service base url
-    type: url
-    short_option: r
-    long_option: service-url
-    is_optional: false
-  - name: node-ip
-    description: Onap service running node IP
-    type: string
-  - name: node-port
-    description: Onap service running node port
-    type: string
-  - name: create-or-update
-    description: Onap service create or update
-    type: bool
-    default_value: true
+  params:
+    - name: service-name
+      description: Onap service name
+      type: string
+      short_option: x
+      long_option: service-name
+      is_optional: false
+    - name: service-version
+      description: Onap service version
+      type: string
+      short_option: y
+      long_option: service-version
+      is_optional: false
+    - name: service-url
+      description: Onap service base url
+      type: url
+      short_option: r
+      long_option: service-url
+      is_optional: false
+    - name: node-ip
+      description: Onap service running node IP
+      type: string
+    - name: node-port
+      description: Onap service running node port
+      type: string
+    - name: create-or-update
+      description: Onap service create or update
+      type: bool
+      default_value: true
 results:
   direction: portrait
   attributes:

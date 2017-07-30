@@ -6,18 +6,23 @@ service:
   name: onap-cli
   version: 1.0.0
 parameters:
-  - name: schema-location
-    type: url
-    description: Schema file location
-    short_option: l
-    long_option: schema-location
-    is_optional: false
-  - name: internal-schema
-    type: bool
-    description: Validate existing schema file
-    short_option: i
-    long_option: internal-schema
-    is_optional: false
+  default_parameters:
+      exclude:
+        - onap-username
+        - onap-password
+  params:
+    - name: schema-location
+      type: url
+      description: Schema file location
+      short_option: l
+      long_option: schema-location
+      is_optional: false
+    - name: internal-schema
+      type: bool
+      description: Validate existing schema file
+      short_option: i
+      long_option: internal-schema
+      is_optional: false
 results:
   direction: landscape
   attributes:

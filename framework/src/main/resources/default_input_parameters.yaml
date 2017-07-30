@@ -1,64 +1,65 @@
 onap_cmd_schema_version: 1.0
 parameters:
-  - name: onap-username
-    type: string
-    description: Onap user name
-    short_option: u
-    long_option: onap-username
-    default_value: ${ONAP_USERNAME}
-    is_optional: false
-  - name: onap-password
-    type: string
-    description: Onap user password
-    short_option: p
-    long_option: onap-password
-    default_value: ${ONAP_PASSWORD}
-    is_secured: true
-  - name: msb-url
-    type: url
-    description: Onap MSB url
-    short_option: m
-    long_option: msb-url
-    default_value: ${ONAP_MSB_URL}
-  - name: help
-    type: string
-    description: Onap command help message
-    short_option: h
-    long_option: help
-    default_value: false
-  - name: version
-    type: string
-    description: Onap command service version
-    short_option: v
-    long_option: version
-    default_value: false
-  - name: debug
-    type: bool
-    description: Enable debug output
-    short_option: d
-    long_option: debug
-    default_value: false
-  - name: format
-    type: string
-    description: Output formats, supported formats such as table, csv, json, yaml
-    short_option: f
-    long_option: format
-    default_value: table
-  - name: long
-    type: bool
-    description: whether to print all attributes or only short attributes
-    short_option: s
-    long_option: long
-    default_value: false
-  - name: no-title
-    type: bool
-    description: whether to print title or not
-    short_option: t
-    long_option: no-title
-    default_value: true
-  - name: no-auth
-    type: bool
-    description: whether to authenticate user or not
-    short_option: a
-    long_option: no-auth
-    default_value: false
+  params:
+    - name: onap-username
+      type: string
+      description: Onap user name
+      short_option: u
+      long_option: onap-username
+      default_value: ${ONAP_USERNAME}
+      is_optional: false
+    - name: onap-password
+      type: string
+      description: Onap user password
+      short_option: p
+      long_option: onap-password
+      default_value: ${ONAP_PASSWORD}
+      is_secured: true
+    - name: msb-url
+      type: url
+      description: Onap MSB url
+      short_option: m
+      long_option: msb-url
+      default_value: ${ONAP_MSB_URL}
+    - name: help
+      type: string
+      description: Onap command help message
+      short_option: h
+      long_option: help
+      default_value: false
+    - name: version
+      type: string
+      description: Onap command service version
+      short_option: v
+      long_option: version
+      default_value: false
+    - name: debug
+      type: bool
+      description: Enable debug output
+      short_option: d
+      long_option: debug
+      default_value: false
+    - name: format
+      type: string
+      description: Output formats, supported formats such as table, csv, json, yaml
+      short_option: f
+      long_option: format
+      default_value: table
+    - name: long
+      type: bool
+      description: whether to print all attributes or only short attributes
+      short_option: s
+      long_option: long
+      default_value: false
+    - name: no-title
+      type: bool
+      description: whether to print title or not
+      short_option: t
+      long_option: no-title
+      default_value: true
+    - name: no-auth
+      type: bool
+      description: whether to authenticate user or not
+      short_option: a
+      long_option: no-auth
+      default_value: false
