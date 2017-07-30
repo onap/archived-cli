@@ -18,7 +18,11 @@ package org.onap.cli.fw.cmd;
 
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.output.OnapCommandResultAttribute;
+
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 public class OnapSchemaRefreshCommandTest {
 
@@ -26,31 +30,20 @@ public class OnapSchemaRefreshCommandTest {
     public void validateSchemaCommandTest1() throws OnapCommandException {
         OnapSchemaRefreshCommand cmd = new OnapSchemaRefreshCommand();
         cmd.initializeSchema("schema-refresh.yaml");
-        for (OnapCommandParameter param : cmd.getParameters()) {
-            if ("onap-username".equals(param.getName())) {
-                param.setValue("test");
-            } else if ("onap-password".equals(param.getName())) {
-                param.setValue("test");
-            } else if ("msb-url".equals(param.getName())) {
-                param.setValue("test-url");
-            }
-        }
         cmd.execute();
-    }
 
-    @Test
-    public void validateSchemaCommandTest2() throws OnapCommandException {
-        OnapSchemaRefreshCommand cmd = new OnapSchemaRefreshCommand();
-        cmd.initializeSchema("schema-refresh.yaml");
-        for (OnapCommandParameter param : cmd.getParameters()) {
-            if ("onap-username".equals(param.getName())) {
-                param.setValue("test");
-            } else if ("onap-password".equals(param.getName())) {
-                param.setValue("test");
-            } else if ("msb-url".equals(param.getName())) {
-                param.setValue("test-url");
-            }
-        }
-        cmd.execute();
+        List<OnapCommandResultAttribute> onapCommandResultAttribute = cmd.getResult()
+                .getRecords();
+
+        String s1Number = onapCommandResultAttribute.get(0).getValues().get(0);
+        String cmdName = onapCommandResultAttribute.get(1).getValues().get(0);
+        String cmdFile = onapCommandResultAttribute.get(2).getValues().get(0);
+        String version = onapCommandResultAttribute.get(3).getValues().get(0);
+
+        assertTrue(s1Number.equalsIgnoreCase("1"));
+        assertTrue(cmdName.equalsIgnoreCase("sample-test1"));
+        assertTrue(cmdFile.equalsIgnoreCase("sample-test1-schema-http.yaml"));
+        assertTrue(version.equalsIgnoreCase("1.0"));
+
     }
 }
