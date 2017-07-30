@@ -1,0 +1,7 @@
+onap_cmd_schema_version: 1.0
+name: test-default-param
+description: test-default-param
+default_parameters:
+  exclude:
+    - onap-username
+    - msb-url

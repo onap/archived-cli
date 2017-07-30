@@ -195,6 +195,13 @@ public class OnapCliMainTest {
     }
 
     @Test
+    public void testSchemaRefresh() {
+
+        this.handle(new String[] { "", "-p", "root123", "--msb-url", "http://192.168.99.100", "-u", "root1",
+                "-d" });
+    }
+
+    @Test
     @Ignore
     public void testSdnclist() {
 
@@ -268,8 +275,7 @@ public class OnapCliMainTest {
         for (String cmdName : cmdSchemaMap.keySet()) {
             System.out.println(
                     "************************* '" + cmdSchemaMap.get(cmdName) + "' *******************************");
-            this.handle(new String[] { "schema-validate", "-l", cmdSchemaMap.get(cmdName), "-i", "true", "-m",
-                    "http://192.168.4.47:80", "-u", "root1", "-p", "root123" });
+            this.handle(new String[] { "schema-validate", "-l", cmdSchemaMap.get(cmdName), "-i"});
         }
     }
 

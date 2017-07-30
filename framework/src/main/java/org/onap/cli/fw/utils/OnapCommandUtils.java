@@ -168,15 +168,38 @@ public class OnapCommandUtils {
         List<String> names = new ArrayList<>();
 
         if (includeDefault) {
-            loadSchema(cmd, Constants.DEFAULT_PARAMETER_FILE_NAME, shortOptions, longOptions, names);
+
+            // identify the include and exclude parameter from
+            // default_parameter section.
+            Map<String, ?> values = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+            List<String> includeDefParams = new ArrayList<>();
+            List<String> excludeDefParams = new ArrayList<>();
+
+            Map<String, ?> defaultParameters = (Map)values.get(Constants.DEFAULT_PARAMETERS);
+
+            if(defaultParameters != null) {
+                if (defaultParameters.get(Constants.DEFAULT_PARAMETERS_INCLUDE) != null) {
+                    includeDefParams.addAll((List) defaultParameters.get(Constants.DEFAULT_PARAMETERS_INCLUDE));
+                }
+
+                if (defaultParameters.get(Constants.DEFAULT_PARAMETERS_EXCLUDE) != null) {
+                    excludeDefParams.addAll((List) defaultParameters.get(Constants.DEFAULT_PARAMETERS_EXCLUDE));
+                }
+            }
+
+            loadSchema(cmd, Constants.DEFAULT_PARAMETER_FILE_NAME, shortOptions,
+                    longOptions, names, includeDefParams, excludeDefParams);
         }
 
-        loadSchema(cmd, schemaName, shortOptions, longOptions, names);
-
+        loadSchema(cmd, schemaName, shortOptions, longOptions, names, new ArrayList<>(), new ArrayList<>());
     }
 
-    private static void loadSchema(OnapCommand cmd, String schemaName, List<String> shortOptions,
-            List<String> longOptions, List<String> names) throws OnapCommandException {
+    private static void loadSchema(OnapCommand cmd, String schemaName,
+                                   List<String> shortOptions,
+                                   List<String> longOptions,
+                                   List<String> names,
+                                   List<String> includeDefParams,
+                                   List<String> excludeDefParams) throws OnapCommandException {
         try {
             Map<String, ?> values = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
@@ -208,9 +231,10 @@ public class OnapCommandUtils {
 
                     cmd.setService(srv);
                 } else if (Constants.PARAMETERS.equals(key)) {
-                    List<Map<String, String>> list = (ArrayList) values.get(key);
 
-                    for (Map<String, String> map : list) {
+                    List<Map<String, String>> parameters = (List) values.get(key);
+
+                    for (Map<String, String> map : parameters) {
                         OnapCommandParameter param = new OnapCommandParameter();
 
                         for (Map.Entry<String, String> entry1 : map.entrySet()) {
@@ -255,8 +279,15 @@ public class OnapCommandUtils {
                                 }
                             }
                         }
-                        cmd.getParameters().add(param);
 
+                        List<OnapCommandParameter> cmdParameters = cmd.getParameters();
+                        if(includeDefParams.isEmpty() && excludeDefParams.isEmpty()) {
+                            cmdParameters.add(param);
+                        } else if(includeDefParams.contains(param.getName())) {
+                            cmdParameters.add(param);
+                        } else if(!excludeDefParams.contains(param.getName()) && includeDefParams.isEmpty()) {
+                            cmdParameters.add(param);
+                        }
                     }
                 } else if (Constants.RESULTS.equals(key)) {
                     Map<String, ?> valueMap = (Map<String, ?>) values.get(key);
