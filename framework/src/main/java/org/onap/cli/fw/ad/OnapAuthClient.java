@@ -135,7 +135,7 @@ public class OnapAuthClient {
      *             http request failed
      */
     public String getServiceBasePath(OnapService srv) throws OnapCommandException {
-        if (srv.getName().equals(Constants.MSB)) {
+        if (srv.getName().equals(OnapCommandConfg.getApiGateway())) {
             return this.getMsbUrl();
         }
 

@@ -1,0 +1,18 @@
+onap_cmd_schema_version: 1.0
+name: sample-test
+description: Onap sample command to test the command features
+service:
+  name: sample
+  version: v1
+  no-auth: true
+default_parameters:
+  exclude:
+    - long
+parameters:
+  - name: param1
+    type: bool
+    description: Onap boolean param, by default its always false.
+    short_option: b
+    long_option: bool
+    is_optional: true
+    default_value: false

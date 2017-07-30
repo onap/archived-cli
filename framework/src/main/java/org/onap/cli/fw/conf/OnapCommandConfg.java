@@ -76,4 +76,16 @@ public final class OnapCommandConfg {
         return prps.getProperty(Constants.HTTP_X_AUTH_TOKEN, "X-Auth-Token");
     }
 
+    public static String getInternalCmd() {
+        return prps.getProperty(Constants.INTERNAL_CMD);
+    }
+
+    public static String getApiGateway() {
+        return prps.getProperty(Constants.API_GATEWAY);
+    }
+
+    public static String getAuthService() {
+        return prps.getProperty(Constants.AUTH_SERVICE);
+    }
+
 }
