@@ -27,7 +27,15 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cli-plugin-common-service</artifactId>
-    <name>cli/plugins/common-service</name>
+    <artifactId>cli-plugins-msb</artifactId>
+    <name>cli/plugins/msb</name>
     <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
