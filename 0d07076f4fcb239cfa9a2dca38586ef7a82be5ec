@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_3609162d",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T07:25:05Z",
+      "side": 1,
+      "message": "this might not required now, as we could understand from logic of the code itself",
+      "range": {
+        "startLine": 285,
+        "startChar": 27,
+        "endLine": 289,
+        "endChar": 32
+      },
+      "revId": "0d07076f4fcb239cfa9a2dca38586ef7a82be5ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_76ff8e02",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T07:25:05Z",
+      "side": 1,
+      "message": "i think this check is not required here and below condition.",
+      "range": {
+        "startLine": 293,
+        "startChar": 35,
+        "endLine": 293,
+        "endChar": 61
+      },
+      "revId": "0d07076f4fcb239cfa9a2dca38586ef7a82be5ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_56049214",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T07:25:05Z",
+      "side": 1,
+      "message": "this too",
+      "range": {
+        "startLine": 296,
+        "startChar": 34,
+        "endLine": 296,
+        "endChar": 61
+      },
+      "revId": "0d07076f4fcb239cfa9a2dca38586ef7a82be5ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_96190a7c",
+        "filename": "framework/src/main/resources/schema-refresh.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T07:25:05Z",
+      "side": 1,
+      "message": "include msb-url as well",
+      "revId": "0d07076f4fcb239cfa9a2dca38586ef7a82be5ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_b61c066c",
+        "filename": "framework/src/main/resources/schema-validate.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T07:25:05Z",
+      "side": 1,
+      "message": "include msb-url as well",
+      "revId": "0d07076f4fcb239cfa9a2dca38586ef7a82be5ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_d60f822d",
+        "filename": "plugins/common-service/src/main/resources/microservice-show-schema.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T07:25:05Z",
+      "side": 1,
+      "message": "pls remove it",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "0d07076f4fcb239cfa9a2dca38586ef7a82be5ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}

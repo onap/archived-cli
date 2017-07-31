@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_160e1a35",
+        "filename": "framework/src/test/java/org/onap/cli/fw/cmd/OnapSchemaRefreshCommandTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T07:25:05Z",
+      "side": 0,
+      "message": "pls add this also into exclude list in the yaml, as its not required",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "be28eae2c74d34e43ca2b36b3762c4ad6bad8b4e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_f6127e57",
+        "filename": "framework/src/test/java/org/onap/cli/fw/cmd/OnapSchemaRefreshCommandTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T07:25:05Z",
+      "side": 0,
+      "message": "here too",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "be28eae2c74d34e43ca2b36b3762c4ad6bad8b4e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
