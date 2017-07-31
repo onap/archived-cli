@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_b3a9b826",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T04:26:42Z",
+      "side": 1,
+      "message": "pls keep JIRA id at the footer of the commit message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_93a6bc52",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/Constants.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T04:26:42Z",
+      "side": 1,
+      "message": "would you mind to change DEFAULT_PARAMETERS_INCLUDE, and below one as well.",
+      "range": {
+        "startLine": 68,
+        "startChar": 31,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_336da805",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T04:26:42Z",
+      "side": 1,
+      "message": "better to keep empty assignment for list rather than null, imo it helps to avoid null pointer exception at least where the corner cases left.",
+      "range": {
+        "startLine": 175,
+        "startChar": 11,
+        "endLine": 176,
+        "endChar": 49
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_7363201b",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T04:26:42Z",
+      "side": 1,
+      "message": "we need to handle the cases, when parameters section does not exist as well. because default_parameters always considered",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 179,
+        "endChar": 34
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_536824f5",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T04:26:42Z",
+      "side": 1,
+      "message": "pls follow sonar cases, otherwise it will create SONAR issues !",
+      "range": {
+        "startLine": 182,
+        "startChar": 36,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_1372ace5",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T04:26:42Z",
+      "side": 1,
+      "message": "here too for null, and sonar.",
+      "range": {
+        "startLine": 292,
+        "startChar": 47,
+        "endLine": 292,
+        "endChar": 53
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_f37610d8",
+        "filename": "framework/src/main/resources/schema-refresh.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T04:26:42Z",
+      "side": 1,
+      "message": "pls make it first level section, instead.",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
