@@ -79,6 +79,8 @@
                                 "${project.build.directory}/../../main/target/cli-main-${project.version}.jar")
                                 fileset(dir:
                                 "${project.build.directory}/../../main/target/lib/")
+                                fileset(dir:
+                                "${project.build.directory}/../../plugins/target/lib/")
                                 }
 
                                 ant.zip(destfile:
@@ -94,7 +96,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <id>attach-artifacts</id>

@@ -40,10 +40,41 @@
         <dependency>
             <groupId>org.onap.cli</groupId>
             <artifactId>cli-framework</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
     <modules>
-        <module>common-service</module>
+        <module>msb</module>
     </modules>
+     <build>
+         <pluginManagement>
+            <plugins>
+                <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-dependency-plugin</artifactId>
+                  <executions>
+                    <execution>
+                      <id>copy-artifact</id>
+                      <phase>package</phase>
+                      <goals>
+                        <goal>copy</goal>
+                      </goals>
+                      <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                              <groupId>${project.groupId}</groupId>
+                              <artifactId>${project.artifactId}</artifactId>
+                              <version>${project.version}</version>
+                              <type>${project.packaging}</type>
+                            </artifactItem>
+                        </artifactItems>
+                        <!-- copy to plugin dependencies -->
+                        <outputDirectory>../../plugins/target/lib</outputDirectory>
+                      </configuration>
+                    </execution>
+                  </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
