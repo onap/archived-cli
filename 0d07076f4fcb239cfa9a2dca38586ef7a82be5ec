@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_56525214",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-07-31T07:34:51Z",
+      "side": 1,
+      "message": "when include is given, should we make sure that *only* those included parameters from default_input_parameters.yaml are added to the cmdParameters?\n\nAlso add a UT for the same.",
+      "revId": "0d07076f4fcb239cfa9a2dca38586ef7a82be5ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_56049214",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 4
