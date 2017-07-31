@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_7331e00a",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/Constants.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-07-31T07:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_93a6bc52",
+      "range": {
+        "startLine": 68,
+        "startChar": 31,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_336da805",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2017-07-31T04:26:42Z",
       "side": 1,
       "message": "better to keep empty assignment for list rather than null, imo it helps to avoid null pointer exception at least where the corner cases left.",
+      "range": {
+        "startLine": 175,
+        "startChar": 11,
+        "endLine": 176,
+        "endChar": 49
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_5336e404",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-07-31T07:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_336da805",
       "range": {
         "startLine": 175,
         "startChar": 11,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_333b68ed",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-07-31T07:05:12Z",
+      "side": 1,
+      "message": "Now, default_parameter is available in level 1, so this check I am avoiding.",
+      "parentUuid": "1a1a2d67_7363201b",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 179,
+        "endChar": 34
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_536824f5",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 1
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_13406c55",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-07-31T07:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_536824f5",
+      "range": {
+        "startLine": 182,
+        "startChar": 36,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_1372ace5",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 1
@@ -128,6 +224,30 @@
       "writtenOn": "2017-07-31T04:26:42Z",
       "side": 1,
       "message": "here too for null, and sonar.",
+      "range": {
+        "startLine": 292,
+        "startChar": 47,
+        "endLine": 292,
+        "endChar": 53
+      },
+      "revId": "dc72bec73f1dee77b16ef698cfe7ee6e21ed95b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_f324d0c7",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-07-31T07:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_1372ace5",
       "range": {
         "startLine": 292,
         "startChar": 47,
