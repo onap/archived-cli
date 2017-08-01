@@ -106,6 +106,10 @@ public class Constants {
     public static final String ONAP_CLI_VERSION = "cli.version";
     public static final String HTTP_API_KEY_USE_COOKIES = "http.api_key_use_cookies";
     public static final String HTTP_X_AUTH_TOKEN = "http.x_auth_token";
+    public static final String REQ_Exclude_PARAMS_INTERNAL_CMD = "cli.exclude_params_internal_cmd";
+    public static final String REQ_AUTH_PARAMS_EXT_CMD = "cli.req_auth_params_ext_cmd";
+    public static final String REQ_PARAMS_AUTH_DISABLED_EXT_CMD = "cli.req_params_auth_disabled_ext_cmd";
+    public static final String EXCLUDE_PARAMS_AUTH_DISABLED_EXT_CMD = "cli.exclude_params_auth_disabled_ext_cmd";
 
     // Used while printing the column name during PORTRAIT mode print
     public static final String PORTRAINT_COLUMN_NAME_PROPERTY = "property";
@@ -148,7 +152,7 @@ public class Constants {
     public static final String DEFAULT_SCHEMA_FILE_NAME = "default_input_parameters.yaml";
 
     // Error message
-    public static final String SCHEMA_INVALID_DEFAULT_PARAMS_SECTION = "Invalid default parameter section";
+    public static final String SCHEMA_INVALID_DEFAULT_PARAMS_SECTION = "Invalid default_parameter section";
     public static final String SCHEMA_FILE_EMPTY = "The schema file cann't be null or empty";
     public static final String SCHEMA_FILE_WRONG_EXTN = "Schema file should be '.yaml' extension";
     public static final String SCHEMA_FILE_NOT_EXIST = "Schema file doesn't exist";

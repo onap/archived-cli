@@ -21,6 +21,7 @@ import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidDefaultParameter;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 import java.util.List;
@@ -54,9 +55,12 @@ public class TestDefaultParameterSection {
 
         OnapCommandUtils.loadSchema(cmd, "sample-test-exclude-param.yaml", true);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
-        assertFalse(parameters.contains("onap-username"));
+        assertTrue(parameters.contains("onap-username"));
         assertTrue(parameters.contains("onap-password"));
-        assertFalse(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("msb-url"));
+        assertFalse(parameters.contains("long"));
+        assertFalse(parameters.contains("format"));
+        assertTrue(parameters.contains("debug"));
     }
 
     @Test
@@ -70,8 +74,8 @@ public class TestDefaultParameterSection {
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
 
         assertTrue(parameters.contains("onap-username"));
-        assertFalse(parameters.contains("onap-password"));
-        assertFalse(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("onap-password"));
+        assertTrue(parameters.contains("msb-url"));
     }
 
     @Test
@@ -84,9 +88,12 @@ public class TestDefaultParameterSection {
         OnapCommandUtils.loadSchema(cmd, "onap-test-schema.yaml", true);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
 
-        assertTrue(parameters.contains("onap-username"));
-        assertTrue(parameters.contains("onap-password"));
+        assertFalse(parameters.contains("onap-username"));
+        assertFalse(parameters.contains("onap-password"));
         assertTrue(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("debug"));
+        assertTrue(parameters.contains("long"));
+        assertTrue(parameters.contains("format"));
     }
 
     @Test(expected = OnapCommandInvalidDefaultParameter.class)
@@ -117,5 +124,25 @@ public class TestDefaultParameterSection {
         };
 
         OnapCommandUtils.loadSchema(cmd, "sample-test-import-def-param-false.yaml", true);
+    }
+
+    @Test(expected = OnapCommandInvalidDefaultParameter.class)
+    public void checkInvalidIncludeNoAuth() throws OnapCommandException {
+        OnapCommand cmd = new OnapCommand() {
+            @Override
+            protected void run() throws OnapCommandException {}
+        };
+
+        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-include-noauth.yaml", true);
+    }
+
+    @Test(expected = OnapCommandInvalidDefaultParameter.class)
+    public void checkInvalidExcludeNoAuth() throws OnapCommandException {
+        OnapCommand cmd = new OnapCommand() {
+            @Override
+            protected void run() throws OnapCommandException {}
+        };
+
+        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-exclude-noauth.yaml", true);
     }
 }

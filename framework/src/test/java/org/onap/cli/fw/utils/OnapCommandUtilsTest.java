@@ -179,7 +179,17 @@ public class OnapCommandUtilsTest {
         OnapCredentials cre = OnapCommandUtils.fromParameters(cmd.getParameters());
         assertTrue(cre != null);
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 19);
+        assertTrue(map.size() == 16);
+    }
+
+    @Test
+    public void loadOnapCommandSchemaAuthRequiredTest() throws OnapCommandException {
+        OnapCommand cmd = new OnapCommandSample();
+        OnapCommandUtils.loadSchema(cmd, "sample-test-schema-auth-required.yaml", true);
+        assertTrue("sample-test".equals(cmd.getName()));
+
+        Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
+        assertTrue(map.size() == 11);
     }
 
     @Test

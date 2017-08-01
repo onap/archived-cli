@@ -29,6 +29,7 @@ import org.onap.cli.fw.error.OnapCommandInvalidResultAttributeScope;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.error.OnapCommandInvalidSchemaVersion;
 import org.onap.cli.fw.error.OnapCommandNotInitialized;
+import org.onap.cli.fw.error.OnapCommandParameterMissing;
 import org.onap.cli.fw.error.OnapCommandParameterNameConflict;
 import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
 import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
@@ -184,7 +185,23 @@ public abstract class OnapCommand {
      */
     protected void validate() throws OnapCommandException {
         for (OnapCommandParameter param : this.getParameters()) {
-            param.validate();
+            try {
+                param.validate();
+            } catch (OnapCommandParameterMissing e) {
+                if (param.getName().equalsIgnoreCase(Constants.DEAFULT_PARAMETER_USERNAME)
+                        || param.getName().equalsIgnoreCase(Constants.DEAFULT_PARAMETER_PASS_WORD)) {
+                    OnapCommandParameter noAuthParam = this.getParameters().stream().filter(p -> p.getName()
+                            .equalsIgnoreCase(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH)).findFirst().get();
+
+                    if ("true".equalsIgnoreCase(noAuthParam.getValue().toString())) {
+                        continue;
+                    }
+                }
+                throw e;
+            } catch (OnapCommandException e) {
+                throw e;
+            }
+
         }
     }
 
