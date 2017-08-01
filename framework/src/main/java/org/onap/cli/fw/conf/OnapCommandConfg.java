@@ -17,7 +17,10 @@
 package org.onap.cli.fw.conf;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Properties;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Onap command constants.
@@ -88,4 +91,23 @@ public final class OnapCommandConfg {
         return prps.getProperty(Constants.AUTH_SERVICE);
     }
 
+    public static Set<String> getExcludeParamsForInternalCmd() {
+        return Arrays.stream(prps.getProperty(Constants.REQ_Exclude_PARAMS_INTERNAL_CMD)
+                .split(",")).map(String::trim).collect(Collectors.toSet());
+    }
+
+    public static Set<String> getRequiredAuthParamsForExternalCmd() {
+        return Arrays.stream(prps.getProperty(Constants.REQ_AUTH_PARAMS_EXT_CMD)
+                .split(",")).map(String::trim).collect(Collectors.toSet());
+    }
+
+    public static Set<String> getRequiredAuthParamsForAuthDisabledExternalCmd() {
+        return Arrays.stream(prps.getProperty(Constants.REQ_PARAMS_AUTH_DISABLED_EXT_CMD)
+                .split(",")).map(String::trim).collect(Collectors.toSet());
+    }
+
+    public static Set<String> getExcludeAuthParamsForAuthDisabledExternalCmd() {
+        return Arrays.stream(prps.getProperty(Constants.EXCLUDE_PARAMS_AUTH_DISABLED_EXT_CMD)
+                .split(",")).map(String::trim).collect(Collectors.toSet());
+    }
 }
