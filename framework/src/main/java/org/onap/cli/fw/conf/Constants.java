@@ -101,11 +101,15 @@ public class Constants {
     public static final String DEFAULT_PARAMETER_OUTPUT_NO_AUTH = "no-auth";
 
     // Configuration properties
+    public static final String ONAP_CLI = "onap-cli";
     public static final String CONF = "onap.properties";
     public static final String ONAP_IGNORE_AUTH = "cli.ignore_auth";
     public static final String ONAP_CLI_VERSION = "cli.version";
     public static final String HTTP_API_KEY_USE_COOKIES = "http.api_key_use_cookies";
     public static final String HTTP_X_AUTH_TOKEN = "http.x_auth_token";
+    public static final String DEFAULT_REQUIRED_AUTH_PARAMS = "cli.default_required_auth_params";
+    public static final String DEFAULT_REQUIRED_NO_AUTH_PARAMS_MSB = "cli.default_required_no_auth_params_msb";
+    public static final String DEFAULT_NOT_REQUIRED_NO_AUTH_PARAMS_MSB = "cli.default_not_required_no_auth_params_msb";
 
     // Used while printing the column name during PORTRAIT mode print
     public static final String PORTRAINT_COLUMN_NAME_PROPERTY = "property";

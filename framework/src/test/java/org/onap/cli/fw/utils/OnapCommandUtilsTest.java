@@ -179,7 +179,7 @@ public class OnapCommandUtilsTest {
         OnapCredentials cre = OnapCommandUtils.fromParameters(cmd.getParameters());
         assertTrue(cre != null);
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 19);
+        assertTrue(map.size() == 16);
     }
 
     @Test

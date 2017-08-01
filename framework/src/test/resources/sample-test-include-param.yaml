@@ -6,3 +6,4 @@ default_parameters:
     - onap-username
     - onap-password
     - msb-url
+    - no-auth
