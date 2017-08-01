@@ -54,9 +54,12 @@ public class TestDefaultParameter {
 
         OnapCommandUtils.loadSchema(cmd, "sample-test-exclude-param.yaml", true);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
-        assertFalse(parameters.contains("onap-username"));
+        assertTrue(parameters.contains("onap-username"));
         assertTrue(parameters.contains("onap-password"));
-        assertFalse(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("msb-url"));
+        assertFalse(parameters.contains("long"));
+        assertFalse(parameters.contains("format"));
+        assertTrue(parameters.contains("debug"));
     }
 
     @Test
@@ -70,8 +73,8 @@ public class TestDefaultParameter {
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
 
         assertTrue(parameters.contains("onap-username"));
-        assertFalse(parameters.contains("onap-password"));
-        assertFalse(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("onap-password"));
+        assertTrue(parameters.contains("msb-url"));
     }
 
     @Test
@@ -84,8 +87,11 @@ public class TestDefaultParameter {
         OnapCommandUtils.loadSchema(cmd, "onap-test-schema.yaml", true);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
 
-        assertTrue(parameters.contains("onap-username"));
-        assertTrue(parameters.contains("onap-password"));
+        assertFalse(parameters.contains("onap-username"));
+        assertFalse(parameters.contains("onap-password"));
         assertTrue(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("debug"));
+        assertTrue(parameters.contains("long"));
+        assertTrue(parameters.contains("format"));
     }
 }
