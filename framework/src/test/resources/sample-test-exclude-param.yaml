@@ -3,5 +3,5 @@ name: test-default-param
 description: test-default-param
 default_parameters:
   exclude:
-    - onap-username
-    - msb-url
+    - long
+    - format
