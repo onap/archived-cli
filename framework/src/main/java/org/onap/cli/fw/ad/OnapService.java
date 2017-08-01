@@ -66,6 +66,10 @@ public class OnapService {
         this.basePath = basePath;
     }
 
+    public boolean getNoAuth() {
+        return this.noAuth;
+    }
+
     @Override
     public String toString() {
         return this.getName() + " " + this.getVersion();

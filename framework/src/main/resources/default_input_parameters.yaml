@@ -19,6 +19,7 @@ parameters:
     description: Onap MSB url
     short_option: m
     long_option: msb-url
+    is_optional: false
     default_value: ${ONAP_MSB_URL}
   - name: help
     type: string
