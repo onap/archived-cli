@@ -102,8 +102,7 @@ public class OnapCliMainTest {
         }
         this.handle(new String[] { "sample-create", "--help" });
         OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("sample-create");
-        List<String> args = new ArrayList<>(Arrays.asList(new String[] { "sample-create", "-u", "admin", "-p",
-                "Changeme_123", "-m", "http://192.168.99.100:80", "--service-name", "test-service", "-i", "ip1", "-i",
+        List<String> args = new ArrayList<>(Arrays.asList(new String[] { "sample-create", "--service-name", "test-service", "-i", "ip1", "-i",
                 "ip2", "-o", "port1=value1", "-o", "port2=value2" }));
         OnapCliUtils.populateParams(cmd.getParameters(), args);
     }
@@ -197,7 +196,7 @@ public class OnapCliMainTest {
     @Test
     public void testSchemaRefresh() {
 
-        this.handle(new String[] { "", "-p", "root123", "--msb-url", "http://192.168.99.100", "-u", "root1",
+        this.handle(new String[] { "schema-refresh", "-p", "root123", "--msb-url", "http://192.168.99.100", "-u", "root1",
                 "-d" });
     }
 
