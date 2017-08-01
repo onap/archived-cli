@@ -17,7 +17,11 @@
 package org.onap.cli.fw.conf;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Onap command constants.
@@ -76,4 +80,18 @@ public final class OnapCommandConfg {
         return prps.getProperty(Constants.HTTP_X_AUTH_TOKEN, "X-Auth-Token");
     }
 
+    public static Set<String> getRequiredAuthDefaultParameters() {
+        return Arrays.stream(prps.getProperty(Constants.DEFAULT_REQUIRED_AUTH_PARAMS)
+                .split(",")).collect(Collectors.toSet());
+    }
+
+    public static Set<String> getRequiredNoAuthDefaultParametersMSB() {
+        return Arrays.stream(prps.getProperty(Constants.DEFAULT_REQUIRED_NO_AUTH_PARAMS_MSB)
+                .split(",")).collect(Collectors.toSet());
+    }
+
+    public static Set<String> getNotRequiredNoAuthDefaultParametersMSB() {
+        return Arrays.stream(prps.getProperty(Constants.DEFAULT_NOT_REQUIRED_NO_AUTH_PARAMS_MSB)
+                .split(",")).collect(Collectors.toSet());
+    }
 }

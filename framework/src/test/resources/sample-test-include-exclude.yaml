@@ -4,5 +4,8 @@ description: test-default-param
 default_parameters:
   include:
     - onap-username
-  exclude:
+    - onap-password
     - msb-url
+    - no-auth
+  exclude:
+    - long

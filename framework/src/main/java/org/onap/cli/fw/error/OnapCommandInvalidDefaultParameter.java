@@ -22,12 +22,10 @@ package org.onap.cli.fw.error;
  */
 public class OnapCommandInvalidDefaultParameter extends OnapCommandException {
     private static final long serialVersionUID = -1833571383961748514L;
-
     /**
-     * Help failed exception.
+     * Default parameter exception.
      *
-     * @param error
-     *            message
+     * @param error message
      */
     public OnapCommandInvalidDefaultParameter(String error) {
         super("0x0024", "Invalid default parameter, " + error);

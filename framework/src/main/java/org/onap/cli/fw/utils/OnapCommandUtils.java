@@ -19,13 +19,13 @@ package org.onap.cli.fw.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
-
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.cmd.OnapSwaggerCommand;
 import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
@@ -169,18 +169,19 @@ public class OnapCommandUtils {
         List<String> shortOptions = new ArrayList<>();
         List<String> longOptions = new ArrayList<>();
         List<String> names = new ArrayList<>();
+        Set<String> includeDefParams = new HashSet<>();
+        Set<String> excludeDefParams = new HashSet<>();
+
 
         if (includeDefault) {
 
             // identify the include and exclude parameter from
             // default_parameter section.
             Map<String, ?> values = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
-            Set<String> includeDefParams = new HashSet<>();
-            Set<String> excludeDefParams = new HashSet<>();
 
-            Map<String, ?> defaultParameters = (Map)values.get(Constants.DEFAULT_PARAMETERS);
+            Map<String, ?> defaultParameters = (Map) values.get(Constants.DEFAULT_PARAMETERS);
 
-            if(defaultParameters != null) {
+            if (defaultParameters != null) {
                 if (defaultParameters.get(Constants.DEFAULT_PARAMETERS_INCLUDE) != null) {
                     includeDefParams.addAll((List) defaultParameters.get(Constants.DEFAULT_PARAMETERS_INCLUDE));
                 }
@@ -197,6 +198,52 @@ public class OnapCommandUtils {
         }
 
         loadSchema(cmd, schemaName, shortOptions, longOptions, names, new HashSet<>(), new HashSet<>());
+
+        String serviceName = cmd.getService().getName();
+        Boolean noAuthValue = cmd.getService().getNoAuth();
+        // for internal commands there is no need for the authentication
+        if (Constants.ONAP_CLI.equals(serviceName)) {
+            if (noAuthValue) {
+                if (hasCommonParameter(OnapCommandConfg.getRequiredAuthDefaultParameters(), includeDefParams)) {
+                    throw new OnapCommandInvalidDefaultParameter("invalid include parameter");
+                }
+                excludeDefParams.addAll(OnapCommandConfg.getRequiredAuthDefaultParameters());
+            } else {
+                throw new OnapCommandInvalidDefaultParameter("no-auth false is not supported for internal command.");
+            }
+
+        } else {
+            if (noAuthValue) {
+                if (hasCommonParameter(OnapCommandConfg.getNotRequiredNoAuthDefaultParametersMSB(), includeDefParams)
+                        || hasCommonParameter(OnapCommandConfg.getRequiredNoAuthDefaultParametersMSB(), excludeDefParams)) {
+                    throw new OnapCommandInvalidDefaultParameter("invalid parameter");
+                }
+                excludeDefParams.addAll(OnapCommandConfg.getNotRequiredNoAuthDefaultParametersMSB());
+            } else {
+                if (hasCommonParameter(OnapCommandConfg.getRequiredAuthDefaultParameters(), excludeDefParams)
+                        || !hasCompleteCommonParameter(OnapCommandConfg.getRequiredAuthDefaultParameters(),
+                        cmd.getParameters().stream().map(p->p.getName()).collect(Collectors.toSet()))) {
+                    throw new OnapCommandInvalidDefaultParameter("invalid parameter.");
+                }
+            }
+        }
+        processCmdForProperties(cmd, includeDefParams, excludeDefParams);
+    }
+
+    private static boolean hasCommonParameter(Set list1, Set list2) {
+        return list1.stream().anyMatch(list2::contains);
+    }
+
+    private static boolean hasCompleteCommonParameter(Set list1, Set list2) {
+        return list1.stream().allMatch(list2::contains);
+    }
+
+    private static void processCmdForProperties(OnapCommand cmd, Set<String> include, Set<String> exclude) {
+        List<OnapCommandParameter> paramToRemove = cmd.getParameters().stream()
+                .filter(p -> exclude.contains(p.getName()))
+                .collect(Collectors.toList());
+
+        paramToRemove.forEach(p->cmd.getParameters().remove(p));
     }
 
     private static void loadSchema(OnapCommand cmd, String schemaName,
