@@ -5,12 +5,6 @@ service:
   no-auth: true
   name: onap-cli
   version: 1.0.0
-default_parameters:
-    exclude:
-      - onap-username
-      - onap-password
-      - msb-url
-      - no-auth
 results:
   direction: landscape
   attributes:

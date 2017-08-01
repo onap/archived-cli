@@ -197,7 +197,7 @@ public class OnapCliMainTest {
     @Test
     public void testSchemaRefresh() {
 
-        this.handle(new String[] { "", "-p", "root123", "--msb-url", "http://192.168.99.100", "-u", "root1",
+        this.handle(new String[] { "schema-refresh", "-p", "root123", "--msb-url", "http://192.168.99.100", "-u", "root1",
                 "-d" });
     }
 
