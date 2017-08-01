@@ -18,6 +18,7 @@ package org.onap.cli.fw.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.internal.function.Parameter;
 import net.minidev.json.JSONArray;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.ad.OnapCredentials;
@@ -25,6 +26,7 @@ import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.cmd.OnapSwaggerCommand;
 import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
@@ -69,6 +71,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -175,6 +178,42 @@ public class OnapCommandUtils {
         }
     }
 
+    private static void processNoAuth(Set<String> filteredDefaultParams, final OnapCommand cmd, final List<String> includeParams,
+                                      final List<String> excludeParams) throws OnapCommandInvalidDefaultParameter {
+        // processing for no-auth type
+        if (cmd.getService() != null) {
+            List<String> include = new ArrayList();
+            List<String> exclude = new ArrayList<>();
+            boolean noAuth = cmd.getService().getNoAuth();
+
+            if (noAuth) {
+                if (cmd.isCommandInternal()) {
+                    exclude.addAll(OnapCommandConfg.getRequiredAuthDefaultParameters());
+                } else {
+                    include.addAll(OnapCommandConfg.getReqNoAuthDefParamsExtCmd());
+                    exclude.addAll(OnapCommandConfg.getNotReqNoAuthDefParamsExtCmd());
+                }
+            } else if (!cmd.isCommandInternal()) {
+                include.addAll(OnapCommandConfg.getRequiredAuthDefaultParameters());
+            }
+
+            List<String> invExc = exclude.stream().filter(includeParams::contains)
+                    .collect(Collectors.toList());
+
+            List<String> invInc = include.stream().filter(excludeParams::contains)
+                    .filter(p->!includeParams.contains(p)).collect(Collectors.toList());
+
+            if (!invExc.isEmpty() || !invInc.isEmpty()) {
+                throw new OnapCommandInvalidDefaultParameter(Stream.concat(invExc.stream(), invInc.stream())
+                        .collect(Collectors.toList()));
+            }
+
+
+            filteredDefaultParams.addAll(include);
+            filteredDefaultParams.removeAll(exclude);
+        }
+    }
+
     private static void parseSchema(OnapCommand cmd,
                                     final Map<String, ?> values,
                                     final List<String> defaultParamNames) throws OnapCommandException {
@@ -222,6 +261,8 @@ public class OnapCommandUtils {
             } else if (Constants.DEFAULT_PARAMETERS.equals(key)) {
 
                 Map<String, List<String>> defParameters = (Map) values.get(Constants.DEFAULT_PARAMETERS);
+                List<String> includeParams = new ArrayList<>();
+                List<String> excludeParams = new ArrayList<>();
 
                 if (values.containsKey(Constants.DEFAULT_PARAMETERS) && defParameters == null) {
                     // if default parameter section is available then it must have either include
@@ -229,21 +270,24 @@ public class OnapCommandUtils {
                     throw new OnapCommandInvalidSchema(Constants.SCHEMA_INVALID_DEFAULT_PARAMS_SECTION);
                 }
 
+
                 if (defParameters != null) {
                     // validate default parameters
-                    List<String> includeParams = defParameters.containsKey(Constants.DEFAULT_PARAMETERS_INCLUDE) ?
-                            defParameters.get(Constants.DEFAULT_PARAMETERS_INCLUDE) : new ArrayList<>();
+                    if (defParameters.containsKey(Constants.DEFAULT_PARAMETERS_INCLUDE)) {
+                        includeParams = defParameters.get(Constants.DEFAULT_PARAMETERS_INCLUDE);
+                    }
 
                     List<String> invInclude = includeParams.stream()
                             .filter(p -> !defaultParamNames.contains(p))
                             .collect(Collectors.toList());
 
-                    List<String> excludeParams = defParameters.containsKey(Constants.DEFAULT_PARAMETERS_EXCLUDE) ?
-                            defParameters.get(Constants.DEFAULT_PARAMETERS_EXCLUDE) : new ArrayList<>();
+                    if (defParameters.containsKey(Constants.DEFAULT_PARAMETERS_EXCLUDE)) {
+                        excludeParams = defParameters.get(Constants.DEFAULT_PARAMETERS_EXCLUDE);
+                    }
 
-                    List<String> invExclude = excludeParams.stream()
-                            .filter(p -> !defaultParamNames.contains(p))
+                    List<String> invExclude = excludeParams.stream().filter(p -> !defaultParamNames.contains(p))
                             .collect(Collectors.toList());
+
 
                     if (!invExclude.isEmpty() || !invInclude.isEmpty()) {
                         throw new OnapCommandInvalidDefaultParameter(Stream.concat(invInclude.stream(), invExclude.stream())
@@ -253,14 +297,14 @@ public class OnapCommandUtils {
                     if (!includeParams.isEmpty()) {
                         filteredDefaultParams.addAll(includeParams);
                     } else if (!excludeParams.isEmpty()) {
-                        defaultParamNames.stream().filter(p -> !excludeParams.contains(p))
+                        List<String> finalExcludeParams = excludeParams;
+                        defaultParamNames.stream().filter(p -> !finalExcludeParams.contains(p))
                                 .forEach(filteredDefaultParams::add);
                     }
                 } else {
                     filteredDefaultParams.addAll(defaultParamNames);
-
                 }
-
+                processNoAuth(filteredDefaultParams, cmd, includeParams, excludeParams);
             } else if (Constants.PARAMETERS.equals(key)) {
 
                 List<Map<String, String>> parameters = (List) values.get(key);
