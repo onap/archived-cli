@@ -16,11 +16,6 @@
 
 package org.onap.cli.fw;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -30,6 +25,11 @@ import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
 
 import java.io.File;
 import java.net.URL;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class OnapCommandRegistrarTest {
 
