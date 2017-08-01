@@ -29,6 +29,7 @@ import org.onap.cli.fw.error.OnapCommandInvalidResultAttributeScope;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.error.OnapCommandInvalidSchemaVersion;
 import org.onap.cli.fw.error.OnapCommandNotInitialized;
+import org.onap.cli.fw.error.OnapCommandParameterMissing;
 import org.onap.cli.fw.error.OnapCommandParameterNameConflict;
 import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
 import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
@@ -42,6 +43,7 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Onap Command.
@@ -184,7 +186,26 @@ public abstract class OnapCommand {
      */
     protected void validate() throws OnapCommandException {
         for (OnapCommandParameter param : this.getParameters()) {
-            param.validate();
+            try {
+                param.validate();
+            } catch (OnapCommandParameterMissing e) {
+
+                // this handling is done to relax checking on username and password
+                // in case no-auth is enabled, as username and password is not optional.
+                Set<String> includeParamsForNoAuthEnableExternalCmd = OnapCommandConfg.getExcludeParamsForNoAuthEnableExternalCmd();
+                if (OnapCommandConfg.getExcludeParamsForNoAuthEnableExternalCmd().contains(param.getName())) {
+                    OnapCommandParameter noAuthParam = this.getParameters().stream().filter(p -> p.getName()
+                            .equalsIgnoreCase(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH)).findFirst().get();
+
+                    if ("true".equalsIgnoreCase(noAuthParam.getValue().toString())) {
+                        continue;
+                    }
+                }
+                throw e;
+            } catch (OnapCommandException e) {
+                throw e;
+            }
+
         }
     }
 
