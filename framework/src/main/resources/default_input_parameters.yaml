@@ -14,11 +14,13 @@ parameters:
     long_option: onap-password
     default_value: ${ONAP_PASSWORD}
     is_secured: true
+    is_optional: false
   - name: msb-url
     type: url
     description: Onap MSB url
     short_option: m
     long_option: msb-url
+    is_optional: false
     default_value: ${ONAP_MSB_URL}
   - name: help
     type: string
