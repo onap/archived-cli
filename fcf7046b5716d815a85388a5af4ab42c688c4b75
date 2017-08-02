@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_9ca6c952",
+        "filename": "framework/src/main/java/org/onap/cli/fw/OnapCommand.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-02T13:57:48Z",
+      "side": 1,
+      "message": "Yes, It will break the functionality. So, authclient only create in case of external command and login/logout executed only in case of authentication is required.",
+      "parentUuid": "1a1a2d67_7c12cdb5",
+      "range": {
+        "startLine": 238,
+        "startChar": 12,
+        "endLine": 238,
+        "endChar": 35
+      },
+      "revId": "fcf7046b5716d815a85388a5af4ab42c688c4b75",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_bc4865cd",
         "filename": "framework/src/main/java/org/onap/cli/fw/OnapCommand.java",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-02T04:19:50Z",
       "side": 1,
       "message": "can you please make this condition check once and store in local bool and use it here and line 250.",
+      "range": {
+        "startLine": 240,
+        "startChar": 16,
+        "endLine": 241,
+        "endChar": 106
+      },
+      "revId": "fcf7046b5716d815a85388a5af4ab42c688c4b75",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_7c63ed1a",
+        "filename": "framework/src/main/java/org/onap/cli/fw/OnapCommand.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-02T13:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_bc4865cd",
       "range": {
         "startLine": 240,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_5c6831f5",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-02T13:57:48Z",
+      "side": 1,
+      "message": "instead of using \"cmd.getParameters()\" repetitively, I created local variable and used in further statements.",
+      "parentUuid": "1a1a2d67_5c1711a4",
+      "range": {
+        "startLine": 283,
+        "startChar": 67,
+        "endLine": 283,
+        "endChar": 87
+      },
+      "revId": "fcf7046b5716d815a85388a5af4ab42c688c4b75",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_3c0c5594",
         "filename": "framework/src/test/java/org/onap/cli/fw/cmd/OnapSchemaRefreshCommandTest.java",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-02T04:19:50Z",
       "side": 1,
       "message": "this too not applicable now",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "fcf7046b5716d815a85388a5af4ab42c688c4b75",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_3c6d7505",
+        "filename": "framework/src/test/java/org/onap/cli/fw/cmd/OnapSchemaRefreshCommandTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-02T13:57:48Z",
+      "side": 1,
+      "message": "Removed the duplicate test case and modified the test case to validate the result.",
+      "parentUuid": "1a1a2d67_3c0c5594",
       "range": {
         "startLine": 30,
         "startChar": 16,
