@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_078946ca",
+        "filename": "framework/src/main/java/org/onap/cli/fw/OnapCommand.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "pls remove it",
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_e7852aae",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/Constants.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "kindly refer from onap.properties,",
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_c7922ef6",
+        "filename": "framework/src/main/java/org/onap/cli/fw/error/OnapCommandInvalidDefaultParameter.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "pls introduce %s string substitution to mention the invalid parameters",
+      "range": {
+        "startLine": 33,
+        "startChar": 33,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_a78f32cc",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "kindly make it List\u003cstring, List\u003cstring\u003e\u003e)",
+      "range": {
+        "startLine": 181,
+        "startChar": 24,
+        "endLine": 181,
+        "endChar": 25
+      },
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_67c11ae4",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "you could remove this now after above changes",
+      "range": {
+        "startLine": 185,
+        "startChar": 44,
+        "endLine": 185,
+        "endChar": 50
+      },
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_47b61e8c",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 189,
+        "startChar": 45,
+        "endLine": 189,
+        "endChar": 49
+      },
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_27bb2274",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "why do you need this?\n\nbetter move this logic to same place above.",
+      "range": {
+        "startLine": 1125,
+        "startChar": 7,
+        "endLine": 1125,
+        "endChar": 108
+      },
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_07b0268a",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "this one too",
+      "range": {
+        "startLine": 1130,
+        "startChar": 24,
+        "endLine": 1131,
+        "endChar": 43
+      },
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_c7a90e26",
+        "filename": "framework/src/test/resources/sample-test-invalid-default-parameter.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "add one more invalid param and verify in exception",
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_077706d6",
+        "filename": "main/src/test/java/org/onap/cli/main/OnapCliMainTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-03T05:23:19Z",
+      "side": 1,
+      "message": "pls check this once.",
+      "revId": "c7478cd5744c96afbed64549239cc6dbe9a063b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
