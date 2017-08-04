@@ -1,0 +1,12 @@
+onap_cmd_schema_version: 1.0
+default_parameters:
+  exclude:
+    - invalid-param
+parameters:
+  - name: invalid-param
+    type: bool
+    description: Onap boolean param, by default its always false.
+    short_option: b
+    long_option: bool
+    is_optional: true
+    default_value: false

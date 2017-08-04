@@ -16,24 +16,20 @@
 
 package org.onap.cli.fw.error;
 
+import java.util.List;
+
 /**
- * Command schema is invalid.
- *
+ * Invalid default parameter exception.
  */
-public class OnapCommandInvalidSchema extends OnapCommandException {
+public class OnapCommandInvalidDefaultParameter extends OnapCommandException {
+    private static final long serialVersionUID = -1833571383961748514L;
 
-    private static final long serialVersionUID = -3387652326582792833L;
-
-    public OnapCommandInvalidSchema(String error) {
-        this("", error);
+    /**
+     * Invalid default argument exception.
+     *
+     * @param invalidParamsList message
+     */
+    public OnapCommandInvalidDefaultParameter(List<String> invalidParamsList) {
+        super("0x0024", "Invalid default parameter: " + invalidParamsList.toString());
     }
-
-    public OnapCommandInvalidSchema(String schema, String error) {
-        super("0x0007", "Command schema " + schema + " is invalid, " + error);
-    }
-
-    public OnapCommandInvalidSchema(String schema, Throwable throwable) {
-        this(schema, throwable.getMessage());
-    }
-
 }

@@ -119,8 +119,7 @@ public class OnapCliMainTest {
         for (String cmdName : cmdSchemaMap.keySet()) {
             System.out.println(
                     "************************* '" + cmdSchemaMap.get(cmdName) + "' *******************************");
-            this.handle(new String[] { "schema-validate", "-l", cmdSchemaMap.get(cmdName), "-i", "true", "-m",
-                    "http://192.168.4.47:80", "-u", "root1", "-p", "root123" });
+            this.handle(new String[] { "schema-validate", "-l", cmdSchemaMap.get(cmdName), "-i"});
         }
     }
 

@@ -19,7 +19,6 @@ package org.onap.cli.fw.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
-
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
@@ -31,6 +30,7 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandHttpHeaderNotFound;
 import org.onap.cli.fw.error.OnapCommandHttpInvalidResponseBody;
+import org.onap.cli.fw.error.OnapCommandInvalidDefaultParameter;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterType;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandInvalidPrintDirection;
@@ -65,11 +65,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.ServiceLoader;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Provides helper method to parse Yaml files and produce required objects.
@@ -87,17 +90,12 @@ public class OnapCommandUtils {
     /**
      * Validates schema version.
      *
-     * @param schemaName
-     *            schema name
-     * @param version
-     *            schema version
+     * @param schemaName schema name
+     * @param version    schema version
      * @return map
-     * @throws OnapCommandInvalidSchemaVersion
-     *             invalid schema version exception
-     * @throws OnapCommandInvalidSchema
-     *             invalid schema
-     * @throws OnapCommandSchemaNotFound
-     *             schema not found
+     * @throws OnapCommandInvalidSchemaVersion invalid schema version exception
+     * @throws OnapCommandInvalidSchema        invalid schema
+     * @throws OnapCommandSchemaNotFound       schema not found
      */
     public static Map<String, ?> validateSchemaVersion(String schemaName, String version) throws OnapCommandException {
         InputStream inputStream = OnapCommandUtils.class.getClassLoader().getResourceAsStream(schemaName);
@@ -138,59 +136,72 @@ public class OnapCommandUtils {
     /**
      * Retrieve OnapCommand from schema.
      *
-     * @param cmd
-     *            OnapCommand
-     * @param schemaName
-     *            schema name
-     * @param includeDefault
-     *            include if default
-     * @throws OnapCommandParameterNameConflict
-     *             param name conflict exception
-     * @throws OnapCommandParameterOptionConflict
-     *             param option conflict exception
-     * @throws OnapCommandInvalidParameterType
-     *             invalid param type exception
-     * @throws OnapCommandInvalidPrintDirection
-     *             invalid print direction exception
-     * @throws OnapCommandInvalidResultAttributeScope
-     *             invalid scope exception
-     * @throws OnapCommandSchemaNotFound
-     *             schema not found
-     * @throws OnapCommandInvalidSchema
-     *             invalid schema
-     * @throws OnapCommandInvalidSchemaVersion
-     *             invalid schema version
+     * @param cmd            OnapCommand
+     * @param schemaName     schema name
+     * @param includeDefault include if default
+     * @throws OnapCommandParameterNameConflict       param name conflict exception
+     * @throws OnapCommandParameterOptionConflict     param option conflict exception
+     * @throws OnapCommandInvalidParameterType        invalid param type exception
+     * @throws OnapCommandInvalidPrintDirection       invalid print direction exception
+     * @throws OnapCommandInvalidResultAttributeScope invalid scope exception
+     * @throws OnapCommandSchemaNotFound              schema not found
+     * @throws OnapCommandInvalidSchema               invalid schema
+     * @throws OnapCommandInvalidSchemaVersion        invalid schema version
      */
     public static void loadSchema(OnapCommand cmd, String schemaName, boolean includeDefault)
             throws OnapCommandException {
+        try {
+            Map<String, ?> defaultParameterMap = includeDefault ?
+                    validateSchemaVersion(Constants.DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+            Map<String, List<Map<String, String>>> commandYamlMap = (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+
+            List<String> defParams = new ArrayList<>();
+
+            if (includeDefault) {
+                if (commandYamlMap.get(Constants.PARAMETERS) == null) {
+                    commandYamlMap.put(Constants.PARAMETERS, (List<Map<String, String>>) defaultParameterMap.get(Constants.PARAMETERS));
+                } else {
+                    commandYamlMap.get(Constants.PARAMETERS).addAll((List<Map<String, String>>) defaultParameterMap.get(Constants.PARAMETERS));
+                }
+                defParams = ((List<Map<String, String>>) defaultParameterMap.get(Constants.PARAMETERS)).stream()
+                        .map(p -> p.get(Constants.NAME)).collect(Collectors.toList());
+            }
+
+            parseSchema(cmd, commandYamlMap, defParams);
+        } catch (OnapCommandException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new OnapCommandInvalidSchema(schemaName, e);
+        }
+    }
+
+    private static void parseSchema(OnapCommand cmd,
+                                    final Map<String, ?> values,
+                                    final List<String> defaultParamNames) throws OnapCommandException {
+
         List<String> shortOptions = new ArrayList<>();
         List<String> longOptions = new ArrayList<>();
         List<String> names = new ArrayList<>();
+        Set<String> filteredDefaultParams = new HashSet<>();
 
-        if (includeDefault) {
-            loadSchema(cmd, Constants.DEFAULT_PARAMETER_FILE_NAME, shortOptions, longOptions, names);
-        }
+        List<String> sections = Arrays.asList(Constants.NAME, Constants.DESCRIPTION, Constants.SERVICE,
+                Constants.DEFAULT_PARAMETERS, Constants.PARAMETERS, Constants.RESULTS);
 
-        loadSchema(cmd, schemaName, shortOptions, longOptions, names);
+        for (String key : sections) {
 
-    }
-
-    private static void loadSchema(OnapCommand cmd, String schemaName, List<String> shortOptions,
-            List<String> longOptions, List<String> names) throws OnapCommandException {
-        try {
-            Map<String, ?> values = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
-
-            for (Map.Entry<String, ?> entry : values.entrySet()) {
-                String key = entry.getKey();
-
-                if (Constants.NAME.equals(key)) {
-                    Object val = values.get(key);
+            if (Constants.NAME.equals(key)) {
+                Object val = values.get(key);
+                if (val != null) {
                     cmd.setName(val.toString());
-                } else if (Constants.DESCRIPTION.equals(key)) {
-                    Object val = values.get(key);
+                }
+            } else if (Constants.DESCRIPTION.equals(key)) {
+                Object val = values.get(key);
+                if (val != null) {
                     cmd.setDescription(val.toString());
-                } else if (Constants.SERVICE.equals(key)) {
-                    Map<String, String> map = (Map<String, String>) values.get(key);
+                }
+            } else if (Constants.SERVICE.equals(key)) {
+                Map<String, String> map = (Map<String, String>) values.get(key);
+                if (map != null) {
                     OnapService srv = new OnapService();
 
                     for (Map.Entry<String, String> entry1 : map.entrySet()) {
@@ -207,10 +218,55 @@ public class OnapCommandUtils {
                     }
 
                     cmd.setService(srv);
-                } else if (Constants.PARAMETERS.equals(key)) {
-                    List<Map<String, String>> list = (ArrayList) values.get(key);
+                }
+            } else if (Constants.DEFAULT_PARAMETERS.equals(key)) {
 
-                    for (Map<String, String> map : list) {
+                Map<String, List<String>> defParameters = (Map) values.get(Constants.DEFAULT_PARAMETERS);
+
+                if (values.containsKey(Constants.DEFAULT_PARAMETERS) && defParameters == null) {
+                    // if default parameter section is available then it must have either include
+                    // or exclude sub-section.
+                    throw new OnapCommandInvalidSchema(Constants.SCHEMA_INVALID_DEFAULT_PARAMS_SECTION);
+                }
+
+                if (defParameters != null) {
+                    // validate default parameters
+                    List<String> includeParams = defParameters.containsKey(Constants.DEFAULT_PARAMETERS_INCLUDE) ?
+                            defParameters.get(Constants.DEFAULT_PARAMETERS_INCLUDE) : new ArrayList<>();
+
+                    List<String> invInclude = includeParams.stream()
+                            .filter(p -> !defaultParamNames.contains(p))
+                            .collect(Collectors.toList());
+
+                    List<String> excludeParams = defParameters.containsKey(Constants.DEFAULT_PARAMETERS_EXCLUDE) ?
+                            defParameters.get(Constants.DEFAULT_PARAMETERS_EXCLUDE) : new ArrayList<>();
+
+                    List<String> invExclude = excludeParams.stream()
+                            .filter(p -> !defaultParamNames.contains(p))
+                            .collect(Collectors.toList());
+
+                    if (!invExclude.isEmpty() || !invInclude.isEmpty()) {
+                        throw new OnapCommandInvalidDefaultParameter(Stream.concat(invInclude.stream(), invExclude.stream())
+                                .collect(Collectors.toList()));
+                    }
+
+                    if (!includeParams.isEmpty()) {
+                        filteredDefaultParams.addAll(includeParams);
+                    } else if (!excludeParams.isEmpty()) {
+                        defaultParamNames.stream().filter(p -> !excludeParams.contains(p))
+                                .forEach(filteredDefaultParams::add);
+                    }
+                } else {
+                    filteredDefaultParams.addAll(defaultParamNames);
+
+                }
+
+            } else if (Constants.PARAMETERS.equals(key)) {
+
+                List<Map<String, String>> parameters = (List) values.get(key);
+
+                if (parameters != null) {
+                    for (Map<String, String> map : parameters) {
                         OnapCommandParameter param = new OnapCommandParameter();
 
                         for (Map.Entry<String, String> entry1 : map.entrySet()) {
@@ -255,11 +311,18 @@ public class OnapCommandUtils {
                                 }
                             }
                         }
-                        cmd.getParameters().add(param);
 
+                        // Add the element to command :
+                        // 1. if parameter is available in filtered parameter list.
+                        // 2. otherwise, parameter p is available in command yaml file.
+                        if (filteredDefaultParams.contains(param.getName()) || !defaultParamNames.contains(param.getName())) {
+                            cmd.getParameters().add(param);
+                        }
                     }
-                } else if (Constants.RESULTS.equals(key)) {
-                    Map<String, ?> valueMap = (Map<String, ?>) values.get(key);
+                }
+            } else if (Constants.RESULTS.equals(key)) {
+                Map<String, ?> valueMap = (Map<String, ?>) values.get(key);
+                if (valueMap != null) {
                     OnapCommandResult result = new OnapCommandResult();
                     for (Map.Entry<String, ?> entry1 : valueMap.entrySet()) {
                         String key3 = entry1.getKey();
@@ -298,10 +361,6 @@ public class OnapCommandUtils {
                     cmd.setResult(result);
                 }
             }
-        } catch (OnapCommandException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new OnapCommandInvalidSchema(schemaName, e);
         }
     }
 

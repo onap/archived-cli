@@ -1,0 +1,6 @@
+onap_cmd_schema_version: 1.0
+default_parameters:
+  include:
+    - onap-username
+    - onap-password
+    - msb-url
