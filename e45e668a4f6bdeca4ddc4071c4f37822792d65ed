@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_adf8314a",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/Constants.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-04T10:32:50Z",
+      "side": 1,
+      "message": "_",
+      "range": {
+        "startLine": 151,
+        "startChar": 87,
+        "endLine": 151,
+        "endChar": 88
+      },
+      "revId": "e45e668a4f6bdeca4ddc4071c4f37822792d65ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
