@@ -189,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_edfe2938",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-04T10:25:15Z",
+      "side": 1,
+      "message": "this is required, as default: (without include and exclude ) is valid. Added new condition for this check.",
+      "parentUuid": "1a1a2d67_4d999d6d",
+      "range": {
+        "startLine": 226,
+        "startChar": 14,
+        "endLine": 228,
+        "endChar": 17
+      },
+      "revId": "ee6e2e05e910f359caf45463357d790364f661bb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_ad727147",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 10
