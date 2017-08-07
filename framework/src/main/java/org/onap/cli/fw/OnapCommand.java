@@ -268,7 +268,7 @@ public abstract class OnapCommand {
             }
 
             if (isAuthRequired) {
-                this.authClient.login();
+                this.authClient.login(this.getService().getName());
             }
 
             this.run();

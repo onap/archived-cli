@@ -127,6 +127,7 @@ import static org.onap.cli.fw.conf.Constants.NAME;
 import static org.onap.cli.fw.conf.Constants.ONAP_CMD_SCHEMA_VERSION;
 import static org.onap.cli.fw.conf.Constants.PARAMETERS;
 import static org.onap.cli.fw.conf.Constants.QUERIES;
+import static org.onap.cli.fw.conf.Constants.FILENAME;
 import static org.onap.cli.fw.conf.Constants.REQUEST;
 import static org.onap.cli.fw.conf.Constants.RESULTS;
 import static org.onap.cli.fw.conf.Constants.RESULT_MAP;
@@ -859,6 +860,10 @@ public class OnapCommandUtils {
                                     Map<String, String> query = (Map<String, String>) map.get(key2);
 
                                     cmd.getInput().setReqQueries(query);
+                                }
+                                else if (FILENAME.equals(key2)) {
+                                    Object obj = map.get(key2);
+                                    cmd.getInput().setFileName(obj.toString());
                                 }
                             }catch (Exception ex) {
                                 throwOrCollect(new OnapCommandInvalidSchema(schemaName, ex), errorList, validate);

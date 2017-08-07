@@ -115,6 +115,30 @@ public final class OnapCommandConfg {
         return mapHeaders;
     }
 
+    public static void getServiceHeaders(Map<String, String> mapHeaders, String serviceName) {
+
+        String serviceHeader = Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS+ "." + serviceName;
+        System.out.println(serviceHeader);
+        Arrays.stream(prps.getProperty(serviceHeader)
+                .split(",")).map(String::trim).forEach(header -> {
+            String headerName = prps.getProperty(serviceHeader + "." + header);
+            String headerValue = prps.getProperty(serviceHeader + "." + header + ".value", null);
+            if (headerValue != null) {
+                headerValue = headerValue.replaceAll("uuid", UUID.randomUUID().toString());
+                if(isDefaultValueAnEnv(headerValue)){
+                    String headerEnv = headerValue.trim().substring(2, headerValue.length() - 1);
+                    headerValue = System.getenv(headerEnv);
+                }
+            }
+            mapHeaders.put(headerName, headerValue);
+        });
+
+    }
+
+    public static boolean isDefaultValueAnEnv(String value) {
+        return value.trim().startsWith("${") && value.trim().endsWith("}");
+    }
+
     public static Set<String> getExcludeParamsForInternalCmd() {
         return Arrays.stream(prps.getProperty(Constants.EXCLUDE_PARAMS_INTERNAL_CMD)
                 .split(",")).map(String::trim).collect(Collectors.toSet());

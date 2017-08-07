@@ -71,7 +71,7 @@ public class OnapAuthClient {
      * @throws OnapCommandServiceNotFound
      *             service not found
      */
-    public void login() throws OnapCommandException {
+    public void login(String... service) throws OnapCommandException {
 
         // For development purpose, its introduced and is not supported for production
         if (OnapCommandConfg.isAuthIgnored()) {
@@ -83,6 +83,10 @@ public class OnapAuthClient {
                     creds.getUsername(), creds.getPassword()), "UTF-8", false).getValue();
 
             Map<String, String> mapHeaders = OnapCommandConfg.getBasicCommonHeaders();
+            String serviceName =  service.length > 0 ? service[0]: null;
+            if(serviceName != null){
+                OnapCommandConfg.getServiceHeaders(mapHeaders, serviceName);
+            }
             mapHeaders.put(OnapCommandConfg.getXAuthTokenName(), authToken);
             this.http.setCommonHeaders(mapHeaders);
             return;

@@ -75,6 +75,7 @@ public class Constants {
     public static final String CLIENT = "client";
     public static final String ENTITY = "entity";
     public static final String METHOD = "method";
+    public static final String FILENAME = "file_name";
     public static final String EXCEPTION = "exception";
 
     public static final String SCOPE = "scope";
