@@ -46,6 +46,7 @@
     <modules>
         <module>msb</module>
         <module>aai</module>
+        <module>sdc</module>
     </modules>
      <build>
          <pluginManagement>

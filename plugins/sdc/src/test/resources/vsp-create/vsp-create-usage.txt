@@ -1,0 +1,72 @@
+usage: onap vsp-create
+
+Create Vendor Software Product
+
+Onap service: sdc v1.0
+
+Options:
+[-x | --vsp-name] [-y | --vsp-description] [-null | --vsp-category]
+[-null | --vsp-subcategory] [-null | --vsp-license-version] [-null | --vsp-vendor-name]
+[-null | --vsp-vendor-id] [-null | --license-agreement-id] [-null | --feature-group-id]
+[-u | --onap-username] [-p | --onap-password] [-m | --host-url]
+[-h | --help] [-v | --version] [-d | --debug]
+[-f | --format] [-s | --long] [-t | --no-title]
+[-a | --no-auth]
+where,
+-x | --vsp-name                 Onap VSP Name. It is of type STRING.
+-y | --vsp-description          Description for VSP. It is of type STRING. It is
+                                optional.
+-null | --vsp-category          Category of the VSP. It is of type STRING. It is
+                                optional. By default, it is
+                                resourceNewCategory.generic.
+-null | --vsp-subcategory       Sub Category of VSP. It is of type STRING. It is
+                                optional. By default, it is
+                                resourceNewCategory.generic.abstract.
+-null | --vsp-license-version   License version. It is of type STRING. It is
+                                optional. By default, it is 1.0.
+-null | --vsp-vendor-name       License Model Name. It is of type STRING.
+-null | --vsp-vendor-id         License Model ID. It is of type STRING.
+-null | --license-agreement-id  License Agreement ID. It is of type STRING.
+-null | --feature-group-id      Feature Group ID. It is of type STRING.
+-u | --onap-username            Onap user name. It is of type STRING. By default,
+                                it is read from environment variable
+                                ONAP_USERNAME.
+-p | --onap-password            Onap user password. It is of type STRING. By
+                                default, it is read from environment variable
+                                ONAP_PASSWORD. Secured.
+-m | --host-url                 Onap host url. It is of type URL. By default, it
+                                is read from environment variable ONAP_HOST_URL.
+-h | --help                     Onap command help message. It is of type STRING.
+                                By default, it is false.
+-v | --version                  Onap command service version. It is of type
+                                STRING. By default, it is false.
+-d | --debug                    Enable debug output. It is of type BOOL. By
+                                default, it is false.
+-f | --format                   Output formats, supported formats such as table,
+                                csv, json, yaml. It is of type STRING. By
+                                default, it is table.
+-s | --long                     whether to print all attributes or only short
+                                attributes. It is of type BOOL. By default, it is
+                                false.
+-t | --no-title                 whether to print title or not. It is of type
+                                BOOL. By default, it is false.
+-a | --no-auth                  whether to authenticate user or not. It is of
+                                type BOOL. By default, it is false.
+
+
+Results:
+ID  VSP ID and is of type STRING.
+
+
+Error:
+On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+Example Command:
+onap vsp-create --debug --host-url http://localhost:8080 --vsp-name demo-vsp2 --vsp-vendor-name 5aa8a88c --vsp-vendor-id DBB202617952486691C1E35C9621CD4E --license-agreement-id E19DBDDB137B494385F9535325BFD585 --feature-group-id 94835F096DAF4ED78781A394A4F22AD1
+
+Output:
++----------+----------------------------------+
+|property  |value                             |
++----------+----------------------------------+
+|ID        |6897DFFF8E864F84AD17A34B7FB936A3  |
++----------+----------------------------------+
