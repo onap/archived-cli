@@ -126,6 +126,7 @@ import static org.onap.cli.fw.conf.Constants.NAME;
 import static org.onap.cli.fw.conf.Constants.ONAP_CMD_SCHEMA_VERSION;
 import static org.onap.cli.fw.conf.Constants.PARAMETERS;
 import static org.onap.cli.fw.conf.Constants.QUERIES;
+import static org.onap.cli.fw.conf.Constants.MULTIPART_ENTITY_NAME;
 import static org.onap.cli.fw.conf.Constants.REQUEST;
 import static org.onap.cli.fw.conf.Constants.RESULTS;
 import static org.onap.cli.fw.conf.Constants.RESULT_MAP;
@@ -914,6 +915,10 @@ public class OnapCommandUtils {
                                             Map<String, String> query = (Map<String, String>) map.get(key2);
 
                                             cmd.getInput().setReqQueries(query);
+                                            break;
+                                        case MULTIPART_ENTITY_NAME:
+                                            Object multipartEntityName = map.get(key2);
+                                            cmd.getInput().setMultipartEntityName(multipartEntityName.toString());
                                             break;
                                     }
                                 }catch (Exception ex) {

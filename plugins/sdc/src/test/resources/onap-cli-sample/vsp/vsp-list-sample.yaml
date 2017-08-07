@@ -1,0 +1,18 @@
+onap_cli_sample_version: 1.0
+
+name: vsp-list
+
+samples:
+    sample1:
+        name: List Vendor Software Products
+        input: --onap-username cs0008 --onap-password demo123456!  --host-url http://localhost:8080
+        output: |
+           +----------------------------------+------------+
+           |ID                                |name        |
+           +----------------------------------+------------+
+           |E563CB23A6BE49AF9A84CF579DAFB929  |demo-vsp2   |
+           +----------------------------------+------------+
+           |79E62AA736C34E359B869E757D3DDBBE  |demo-vsp1   |
+           +----------------------------------+------------+
+           |928B828EE3CC46B99B92D7B9A2AB2118  |demo-vsp    |
+           +----------------------------------+------------+
