@@ -16,6 +16,8 @@
 
 package org.onap.cli.fw.conf;
 
+import org.onap.cli.fw.input.OnapCommandParameter;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -99,20 +101,31 @@ public final class OnapCommandConfg {
         return prps.getProperty(Constants.SERVICE_AUTH, Constants.AUTH_BASIC);
     }
 
-    public static Map<String, String> getBasicCommonHeaders() {
+    private static Map<String, String> getHeaderValues(String headerKey, Map<String, String> paramMap) {
         Map<String, String> mapHeaders = new HashMap<String, String> ();
-
-        Arrays.stream(prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS)  // NOSONAR
+        Arrays.stream(prps.getProperty(headerKey)  // NOSONAR
                 .split(",")).map(String::trim).forEach(header -> {
-                    String headerName = prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS + "." + header);
-                    String headerValue = prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS + "." + header + ".value", null);
+                    String headerName = prps.getProperty(headerKey+ "." + header);
+                    String headerValue = prps.getProperty(headerKey + "." + header + ".value", null);
                     if (headerValue != null) {
                         headerValue = headerValue.replaceAll("uuid", UUID.randomUUID().toString());
+                        if (headerValue.contains("${")) {
+                            String param = headerValue.substring(headerValue.indexOf("${")+2 ,headerValue.indexOf("}"));
+                            String pattern = "${"+param+"}";
+                            headerValue = headerValue.replace(pattern, paramMap.getOrDefault(param, param));
+                        }
                     }
                     mapHeaders.put(headerName, headerValue);
                 });
-
         return mapHeaders;
+    }
+    public static Map<String, String> getBasicCommonHeaders(Map<String, String> paramMap) {
+        return getHeaderValues(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS, paramMap);
+    }
+
+    public static Map<String, String> getServiceHeaders(String serviceName, Map<String, String> paramMap) {
+        String serviceHeader = Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS+ "." + serviceName;
+        return getHeaderValues(serviceHeader, paramMap);
     }
 
     public static Set<String> getExcludeParamsForInternalCmd() {
