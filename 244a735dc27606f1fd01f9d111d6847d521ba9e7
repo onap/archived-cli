@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_9c04847f",
+        "filename": "plugins/asdc/src/test/resources/vsp-list-schema.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-07T12:09:50Z",
+      "side": 1,
+      "message": "not required",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 99
+      },
+      "revId": "244a735dc27606f1fd01f9d111d6847d521ba9e7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
