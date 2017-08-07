@@ -264,6 +264,8 @@ public abstract class OnapCommand {
                 this.authClient = new OnapAuthClient(
                         creds,
                         this.getResult().isDebug(),
+                        this.getService(),
+                        this.getParameters(),
                         this.getService().getAuthType());
             }
 

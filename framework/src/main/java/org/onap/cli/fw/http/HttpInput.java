@@ -30,6 +30,8 @@ public class HttpInput {
 
     private String reqMethod = "";
 
+    private String multipartEntityName = "";
+
     private Map<String, String> reqHeaders = new HashMap<>();
 
     private Map<String, String> reqQueries = new HashMap<>();
@@ -80,6 +82,15 @@ public class HttpInput {
 
     public HttpInput setMethod(String method) {
         this.reqMethod = method;
+        return this;
+    }
+
+    public String getMultipartEntityName() {
+        return this.multipartEntityName;
+    }
+
+    public HttpInput setMultipartEntityName(String multipartEntityName) {
+        this.multipartEntityName = multipartEntityName;
         return this;
     }
 

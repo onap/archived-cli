@@ -16,6 +16,9 @@
 
 package org.onap.cli.fw.ad;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.AfterClass;
@@ -30,6 +33,7 @@ import org.onap.cli.fw.error.OnapCommandServiceNotFound;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.http.OnapHttpConnection;
+import org.onap.cli.fw.input.OnapCommandParameter;
 
 import mockit.Invocation;
 import mockit.Mock;
@@ -40,15 +44,19 @@ public class OnapAuthClientTest {
     OnapAuthClient client;
 
     @Before
-    public void setUp() throws OnapCommandHttpFailure {
+    public void setUp() throws OnapCommandHttpFailure, OnapCommandException {
         OnapCredentials creds = new OnapCredentials("test", "test123", "http://192.168.99.10:80");
-        client = new OnapAuthClient(creds, true);
+        OnapService service = new OnapService();
+        List<OnapCommandParameter> params = new ArrayList<>();
+        client = new OnapAuthClient(creds, true, service, params);
     }
 
     @Test
     public void loginFailedAuthIgnoredTest() throws OnapCommandException {
         OnapCredentials creds = new OnapCredentials("test", "test123", "http://192.168.99.10:80");
-        OnapAuthClient client = new OnapAuthClient(creds, true);
+        OnapService service = new OnapService();
+        List<OnapCommandParameter> params = new ArrayList<>();
+        OnapAuthClient client = new OnapAuthClient(creds, true, service, params);
         if (OnapCommandConfg.isAuthIgnored()) {
             client.getDebugInfo();
             client.login();
@@ -58,7 +66,9 @@ public class OnapAuthClientTest {
     @Test
     public void logoutFailedAuthIgnoredTest() throws OnapCommandException {
         OnapCredentials creds = new OnapCredentials("test", "test123", "http://192.168.99.10:80");
-        OnapAuthClient client = new OnapAuthClient(creds, true);
+        OnapService service = new OnapService();
+        List<OnapCommandParameter> params = new ArrayList<>();
+        OnapAuthClient client = new OnapAuthClient(creds, true, service, params);
         if (OnapCommandConfg.isAuthIgnored()) {
             client.logout();
         }
@@ -67,7 +77,9 @@ public class OnapAuthClientTest {
     @Test
     public void getMsbUrlTest() throws OnapCommandException {
         OnapCredentials creds = new OnapCredentials("test", "test123", "http://192.168.99.10:80");
-        OnapAuthClient client = new OnapAuthClient(creds, true);
+        OnapService service = new OnapService();
+        List<OnapCommandParameter> params = new ArrayList<>();
+        OnapAuthClient client = new OnapAuthClient(creds, true, service, params);
         OnapService srv = new OnapService();
         srv.setName("msb");
         String msb = client.getServiceBasePath(srv);

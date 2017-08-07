@@ -16,6 +16,8 @@
 
 package org.onap.cli.fw.ad;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpStatus;
@@ -26,6 +28,7 @@ import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
 import org.onap.cli.fw.error.OnapCommandHttpFailure;
+import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandLoginFailed;
 import org.onap.cli.fw.error.OnapCommandLogoutFailed;
 import org.onap.cli.fw.error.OnapCommandServiceNotFound;
@@ -34,6 +37,7 @@ import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.http.OnapHttpConnection;
 
 import com.jayway.jsonpath.JsonPath;
+import org.onap.cli.fw.input.OnapCommandParameter;
 
 /**
  * Onap Auth client helps to do login and logout.
@@ -48,10 +52,18 @@ public class OnapAuthClient {
 
     private OnapCredentials creds = null;
 
+    private String service = null;
+
     private String authType = OnapCommandConfg.getAuthType();
 
-    public OnapAuthClient(OnapCredentials creds, boolean debug, String... authType) throws OnapCommandHttpFailure {
+    private Map<String, String> paramMap = new HashMap<>();
+
+    public OnapAuthClient(OnapCredentials creds, boolean debug, OnapService service, List<OnapCommandParameter> params, String... authType) throws OnapCommandHttpFailure, OnapCommandInvalidParameterValue {
         this.creds = creds;
+        this.service = service.getName();
+        for (OnapCommandParameter param : params) {
+            paramMap.put(param.getName(), param.getValue().toString());
+        }
         if (authType.length > 0) {
             this.authType = authType[0];
         }
@@ -82,7 +94,10 @@ public class OnapAuthClient {
             String authToken = BasicScheme.authenticate(new UsernamePasswordCredentials(
                     creds.getUsername(), creds.getPassword()), "UTF-8", false).getValue();
 
-            Map<String, String> mapHeaders = OnapCommandConfg.getBasicCommonHeaders();
+            Map<String, String> mapHeaders = OnapCommandConfg.getBasicCommonHeaders(this.paramMap);
+            if(this.service != null){
+                mapHeaders.putAll(OnapCommandConfg.getServiceHeaders(this.service, this.paramMap));
+            }
             mapHeaders.put(OnapCommandConfg.getXAuthTokenName(), authToken);
             this.http.setCommonHeaders(mapHeaders);
             return;
