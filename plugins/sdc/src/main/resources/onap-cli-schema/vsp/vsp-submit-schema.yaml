@@ -1,0 +1,27 @@
+onap_cmd_schema_version: 1.0
+name: vsp-submit
+description: Create Vendor Software Product
+
+service:
+  name: sdc
+  version: v1.0
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: vsp-id
+    description: Onap VSP ID
+    type: string
+    short_option: x
+    long_option: vsp-id
+    is_optional: false
+http:
+  request:
+    uri: /onboarding-api/v1.0/vendor-software-products/${vsp-id}/actions
+    method: PUT
+    body: '{"action": "Submit"}'
+  success_codes:
+    - 201
+    - 200
+  sample_response:
+    body: ''
