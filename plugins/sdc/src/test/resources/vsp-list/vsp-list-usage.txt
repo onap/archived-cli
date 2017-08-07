@@ -1,0 +1,59 @@
+usage: onap vsp-list
+
+List of the Vendor Software Products
+
+Onap service: sdc v1.0
+
+Options:
+[-u | --onap-username] [-p | --onap-password] [-m | --host-url] 
+[-h | --help] [-v | --version] [-d | --debug] 
+[-f | --format] [-s | --long] [-t | --no-title] 
+[-a | --no-auth] 
+where,
+-u | --onap-username  Onap user name. It is of type STRING. By default,   
+                      it is read from environment variable                
+                      ONAP_USERNAME.                                      
+-p | --onap-password  Onap user password. It is of type STRING. By        
+                      default, it is read from environment variable       
+                      ONAP_PASSWORD. Secured.                             
+-m | --host-url       Onap host url. It is of type URL. By default, it    
+                      is read from environment variable ONAP_HOST_URL.    
+-h | --help           Onap command help message. It is of type STRING.    
+                      By default, it is false.                            
+-v | --version        Onap command service version. It is of type         
+                      STRING. By default, it is false.                    
+-d | --debug          Enable debug output. It is of type BOOL. By         
+                      default, it is false.                               
+-f | --format         Output formats, supported formats such as table,    
+                      csv, json, yaml. It is of type STRING. By           
+                      default, it is table.                               
+-s | --long           whether to print all attributes or only short       
+                      attributes. It is of type BOOL. By default, it is   
+                      false.                                              
+-t | --no-title       whether to print title or not. It is of type        
+                      BOOL. By default, it is false.                      
+-a | --no-auth        whether to authenticate user or not. It is of       
+                      type BOOL. By default, it is false.                 
+
+
+Results:
+ID    VSP ID and is of type STRING.     
+name  VSP Name and is of type STRING.   
+
+
+Error:
+On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+Example Command:
+onap.sh vsp-list --onap-username cs0008 --onap-password demo123456!  --host-url http://localhost:8080
+
+Output:
++----------------------------------+------------+
+|ID                                |name        |
++----------------------------------+------------+
+|E563CB23A6BE49AF9A84CF579DAFB929  |demo-vsp2   |
++----------------------------------+------------+
+|79E62AA736C34E359B869E757D3DDBBE  |demo-vsp1   |
++----------------------------------+------------+
+|928B828EE3CC46B99B92D7B9A2AB2118  |demo-vsp    |
++----------------------------------+------------+

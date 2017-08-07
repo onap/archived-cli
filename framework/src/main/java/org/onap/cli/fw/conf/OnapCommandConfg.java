@@ -16,6 +16,8 @@
 
 package org.onap.cli.fw.conf;
 
+import org.onap.cli.fw.input.OnapCommandParameter;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -113,6 +115,29 @@ public final class OnapCommandConfg {
                 });
 
         return mapHeaders;
+    }
+
+    public static void getServiceHeaders(Map<String, String> mapHeaders, String serviceName, Map<String, String> paramMap) {
+
+        String serviceHeader = Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS+ "." + serviceName;
+        Arrays.stream(prps.getProperty(serviceHeader)
+                .split(",")).map(String::trim).forEach(header -> {
+            String headerName = prps.getProperty(serviceHeader + "." + header);
+            String headerValue = prps.getProperty(serviceHeader + "." + header + ".value", null);
+            if (headerValue != null) {
+                headerValue = headerValue.replaceAll("uuid", UUID.randomUUID().toString());
+                if(isDefaultValueAnEnv(headerValue)){
+                    String headerEnv = headerValue.trim().substring(2, headerValue.length() - 1);
+                    headerValue = paramMap.get(headerEnv);
+                }
+            }
+            mapHeaders.put(headerName, headerValue);
+        });
+
+    }
+
+    public static boolean isDefaultValueAnEnv(String value) {
+        return value.trim().startsWith("${") && value.trim().endsWith("}");
     }
 
     public static Set<String> getExcludeParamsForInternalCmd() {

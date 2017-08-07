@@ -338,7 +338,8 @@ public class OnapHttpConnection {
     private HttpEntity getMultipartEntity(HttpInput input) {
         FileBody fileBody = new FileBody(new File(input.getBody().trim()));
         MultipartEntity multipartEntity = new MultipartEntity();
-        multipartEntity.addPart("file", fileBody);
+        String fileName = input.getFileName() != "" ? input.getFileName() : "upload";
+        multipartEntity.addPart(fileName, fileBody);
         return multipartEntity;
     }
 }
