@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_fc47f81b",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/Constants.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-07T06:50:49Z",
+      "side": 1,
+      "message": "is it okay to have _msb here ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 100,
+        "endLine": 110,
+        "endChar": 104
+      },
+      "revId": "877eec079a76bea4583698754bd37043792b0777",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
