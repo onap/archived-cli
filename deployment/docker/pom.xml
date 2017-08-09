@@ -31,7 +31,8 @@
     <packaging>pom</packaging>
 
   <properties>
-        <docker.image.version>1.0.0</docker.image.version>
+        <docker.image.name>onap-cli</docker.image.name>
+        <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
   </properties>
 
     <build>
@@ -42,8 +43,7 @@
                 <version>0.4.11</version>
                 <configuration>
                     <verbose>true</verbose>
-                    <serverId>docker-hub</serverId>
-                    <imageName>onap-cli</imageName>
+                    <imageName>${docker.image.name}</imageName>
                     <dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
@@ -55,6 +55,39 @@
                         </resource>
                     </resources>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>tag-image-timestamped-version</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>tag</goal>
+                        </goals>
+                        <configuration>
+                            <image>${docker.image.name}</image>
+                            <newName>${docker.push.registry}/onap/${docker.image.name}:${project.version}-${maven.build.timestamp}</newName>
+                            <pushImage>false</pushImage>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>tag-image-latest-version</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>tag</goal>
+                        </goals>
+                        <configuration>
+                            <image>${docker.image.name}</image>
+                            <newName>${docker.push.registry}/onap/${docker.image.name}:latest</newName>
+                            <pushImage>false</pushImage>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
