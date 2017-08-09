@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_a6ff2b01",
+        "filename": "framework/src/main/java/org/onap/cli/fw/OnapCommand.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-09T11:51:27Z",
+      "side": 1,
+      "message": "Here we are relaxing the validation for username and password.\n\nWould it be okay if we introduce one new property, as there is no property which has exactly these two parameter.",
+      "parentUuid": "1a1a2d67_cb68f089",
+      "range": {
+        "startLine": 191,
+        "startChar": 20,
+        "endLine": 192,
+        "endChar": 98
+      },
+      "revId": "e38538c94aea3cd23d7f13499a78c498cb4031fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_ab05b4c3",
         "filename": "framework/src/main/java/org/onap/cli/fw/conf/Constants.java",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-09T07:16:23Z",
       "side": 1,
       "message": "explicitly no-auth instead",
+      "range": {
+        "startLine": 111,
+        "startChar": 81,
+        "endLine": 111,
+        "endChar": 95
+      },
+      "revId": "e38538c94aea3cd23d7f13499a78c498cb4031fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_8b367802",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/Constants.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-09T11:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_ab05b4c3",
       "range": {
         "startLine": 111,
         "startChar": 81,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_8b1d5876",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/OnapCommandConfg.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-09T11:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_ab04947e",
+      "range": {
+        "startLine": 104,
+        "startChar": 53,
+        "endLine": 104,
+        "endChar": 63
+      },
+      "revId": "e38538c94aea3cd23d7f13499a78c498cb4031fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_cbeeb0b4",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 11
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-09T07:16:23Z",
       "side": 1,
       "message": "pls check this logic to make 1st level",
+      "range": {
+        "startLine": 188,
+        "startChar": 16,
+        "endLine": 189,
+        "endChar": 18
+      },
+      "revId": "e38538c94aea3cd23d7f13499a78c498cb4031fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_eb05ec14",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-09T11:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_cbeeb0b4",
       "range": {
         "startLine": 188,
         "startChar": 16,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_4b174052",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-09T11:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_ab2b74ea",
+      "range": {
+        "startLine": 191,
+        "startChar": 61,
+        "endLine": 191,
+        "endChar": 77
+      },
+      "revId": "e38538c94aea3cd23d7f13499a78c498cb4031fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_8b30b857",
         "filename": "framework/src/main/resources/onap.properties",
         "patchSetId": 11
@@ -128,6 +248,30 @@
       "writtenOn": "2017-08-09T07:16:23Z",
       "side": 1,
       "message": "# service section\ncli.exclude_params_internal_cmd\ncli.no_auth_disable_include_params_external_cmd\u003donap-username,onap-password,msb-url,no-auth\ncli.no_auth_enable_exclude_params_external_cmd\u003donap-username,onap-password,no-auth\ncli.no_auth_enable_include_params_external_cmd\u003dmsb-url",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "e38538c94aea3cd23d7f13499a78c498cb4031fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_ab31340d",
+        "filename": "framework/src/main/resources/onap.properties",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-09T11:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_8b30b857",
       "range": {
         "startLine": 10,
         "startChar": 0,
