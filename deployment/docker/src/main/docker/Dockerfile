@@ -16,4 +16,4 @@ RUN ln ./bin/onap.sh /usr/sbin/onap
 
 ENTRYPOINT /bin/bash
 
-RUN echo ONAP CLI successfully installed !!
+RUN echo ONAP CLI docker successfully created !!
