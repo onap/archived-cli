@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_0179292f",
+        "filename": "framework/src/main/java/org/onap/cli/fw/OnapCommand.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-10T04:26:31Z",
+      "side": 1,
+      "message": "this is explicit now from the code, so not required",
+      "range": {
+        "startLine": 193,
+        "startChar": 16,
+        "endLine": 194,
+        "endChar": 88
+      },
+      "revId": "02c33ea37526ee3c0af632768506b9439ea1679f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_e1750d33",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-10T04:26:31Z",
+      "side": 1,
+      "message": "pls move this to with in else {} logic",
+      "range": {
+        "startLine": 189,
+        "startChar": 19,
+        "endLine": 194,
+        "endChar": 13
+      },
+      "revId": "02c33ea37526ee3c0af632768506b9439ea1679f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
