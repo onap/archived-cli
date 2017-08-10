@@ -75,6 +75,9 @@ public class Constants {
     public static final String VERSION = "version";
     public static final String BASE_PATH = "base_path";
     public static final String NO_AUTH = "no-auth";
+    public static final String MODE = "mode";
+    public static final String MODE_DIRECT = "direct";
+    public static final String MODE_CATALOG = "catalog";
 
     public static final String SHORT_OPTION = "short_option";
     public static final String LONG_OPTION = "long_option";

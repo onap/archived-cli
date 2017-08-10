@@ -137,7 +137,10 @@ public class OnapAuthClient {
     public String getServiceBasePath(OnapService srv) throws OnapCommandException {
         if (srv.getName().equals(OnapCommandConfg.getApiGateway())) {
             return this.getMsbUrl();
+        } else if (srv.isModeDirect()){
+            return this.creds.getMsbUrl();
         }
+
 
         HttpInput input = new HttpInput().setUri(this.creds.getMsbUrl()
                 + String.format(Constants.MSB_SERVICE_URI, srv.getName(), srv.getVersion()));

@@ -16,8 +16,10 @@
 
 package org.onap.cli.fw.ad;
 
+import org.onap.cli.fw.conf.Constants;
+
 /**
- * Onap Service as reported in Onap MSB like msb v1 or /api/microservice/v1.
+ * Onap Service as reported in api catalog.
  */
 public class OnapService {
     /*
@@ -32,7 +34,28 @@ public class OnapService {
 
     private String basePath;
 
+    /**
+     * Mode of service consideration. By default, it goes with
+     * 'catalog' mode, where basePath will be discovered by
+     * the framework using serviceName and serviceVersion
+     * Another mode is 'direct', in which bastPath will be
+     * same as OnapCredentails.ServiceUrl.
+     */
+    private String mode = Constants.MODE_CATALOG;
+
     private boolean noAuth = false;
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    public boolean isModeDirect() {
+        return this.getMode().equals(Constants.MODE_DIRECT);
+    }
 
     public boolean isNoAuth() {
         return noAuth;

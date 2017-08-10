@@ -251,6 +251,10 @@ public class OnapCommandUtils {
                         } else if (Constants.NO_AUTH.equals(key1)) {
                             Object obj = map.get(key1);
                             srv.setNoAuth("true".equalsIgnoreCase(obj.toString()));
+                        } else if (Constants.MODE.equals(key1)) {
+                            Object obj = map.get(key1);
+                            //TODO mrkanag Validate and raise exception for invalid case
+                            srv.setMode(obj.toString());
                         }
                     }
 
