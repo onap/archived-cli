@@ -39,8 +39,8 @@ public class OnapHttpCommandTest {
         param2.setName("onap-password");
         param2.setParameterType(ParameterType.STRING);
         OnapCommandParameter param3 = new OnapCommandParameter();
-        param3.setLongOption("msb-url");
-        param3.setName("msb-url");
+        param3.setLongOption("host-url");
+        param3.setName("host-url");
         param3.setParameterType(ParameterType.STRING);
         OnapCommandParameter param4 = new OnapCommandParameter();
         param4.setLongOption("string-param");

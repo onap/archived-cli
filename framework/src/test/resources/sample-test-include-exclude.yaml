@@ -3,7 +3,7 @@ default_parameters:
   include:
     - onap-username
     - onap-password
-    - msb-url
+    - host-url
     - no-auth
   exclude:
     - long

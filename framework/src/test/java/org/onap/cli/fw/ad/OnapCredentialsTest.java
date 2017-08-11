@@ -26,7 +26,7 @@ public class OnapCredentialsTest {
     public void credentialsTest() {
         OnapCredentials cre = new OnapCredentials("test", "test123", "url");
         assertTrue(cre.getUsername().equals("test") && cre.getPassword().equals("test123")
-                && cre.getMsbUrl().equals("url"));
+                && cre.getHostUrl().equals("url"));
     }
 
 }

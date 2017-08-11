@@ -682,7 +682,7 @@ public class OnapCommandUtils {
 
         return new OnapCredentials(paramMap.get(Constants.DEAFULT_PARAMETER_USERNAME),
                 paramMap.get(Constants.DEAFULT_PARAMETER_PASS_WORD),
-                paramMap.get(Constants.DEAFULT_PARAMETER_MSB_URL));
+                paramMap.get(Constants.DEAFULT_PARAMETER_HOST_URL));
     }
 
     /**

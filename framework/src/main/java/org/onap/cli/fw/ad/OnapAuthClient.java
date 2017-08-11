@@ -45,7 +45,7 @@ public class OnapAuthClient {
 
     public OnapAuthClient(OnapCredentials creds, boolean debug) throws OnapCommandHttpFailure {
         this.creds = creds;
-        this.http = new OnapHttpConnection(creds.getMsbUrl().startsWith("https"), debug);
+        this.http = new OnapHttpConnection(creds.getHostUrl().startsWith("https"), debug);
     }
 
     /**
@@ -136,13 +136,13 @@ public class OnapAuthClient {
      */
     public String getServiceBasePath(OnapService srv) throws OnapCommandException {
         if (srv.getName().equals(OnapCommandConfg.getApiGateway())) {
-            return this.getMsbUrl();
+            return this.getApiGatewayUrl();
         } else if (srv.isModeDirect()){
-            return this.creds.getMsbUrl();
+            return this.creds.getHostUrl();
         }
 
 
-        HttpInput input = new HttpInput().setUri(this.creds.getMsbUrl()
+        HttpInput input = new HttpInput().setUri(this.creds.getHostUrl()
                 + String.format(Constants.MSB_SERVICE_URI, srv.getName(), srv.getVersion()));
         HttpResult result = this.http.get(input);
 
@@ -154,7 +154,7 @@ public class OnapAuthClient {
         }
 
         try {
-            return this.creds.getMsbUrl() + JsonPath.read(result.getBody(), "url");
+            return this.creds.getHostUrl() + JsonPath.read(result.getBody(), "url");
         } catch (Exception e) {
             throw new OnapCommandExecutionFailed(e, srv.toString());
         }
@@ -167,8 +167,8 @@ public class OnapAuthClient {
         return this.getServiceBasePath(srv);
     }
 
-    private String getMsbUrl() {
-        return this.creds.getMsbUrl() + Constants.MSB_URI;
+    private String getApiGatewayUrl() {
+        return this.creds.getHostUrl() + Constants.MSB_URI;
     }
 
     public String getAuthToken() {

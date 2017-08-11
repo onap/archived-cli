@@ -42,7 +42,7 @@ public class TestCommandValidate {
 
         OnapCommandParameter noAuthParam = cmd.getParameters().stream().filter(p -> p.getName().equalsIgnoreCase("no-auth")).findFirst().get();
         noAuthParam.setValue(true);
-        OnapCommandParameter msbParam = cmd.getParameters().stream().filter(p -> p.getName().equalsIgnoreCase("msb-url")).findFirst().get();
+        OnapCommandParameter msbParam = cmd.getParameters().stream().filter(p -> p.getName().equalsIgnoreCase("host-url")).findFirst().get();
         msbParam.setValue("localhost://msbip:msb:port");
         cmd.validate();
     }

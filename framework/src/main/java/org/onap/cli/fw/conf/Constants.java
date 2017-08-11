@@ -94,7 +94,7 @@ public class Constants {
     // Common parameters used across all commands.
     public static final String DEAFULT_PARAMETER_USERNAME = "onap-username";
     public static final String DEAFULT_PARAMETER_PASS_WORD = "onap-password";
-    public static final String DEAFULT_PARAMETER_MSB_URL = "msb-url";
+    public static final String DEAFULT_PARAMETER_HOST_URL = "host-url";
     public static final String DEFAULT_PARAMETER_HELP = "help";
     public static final String DEFAULT_PARAMETER_VERSION = "version";
     public static final String DEFAULT_PARAMETER_DEBUG = "debug";

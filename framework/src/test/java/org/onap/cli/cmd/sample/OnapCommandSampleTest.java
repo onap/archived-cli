@@ -98,7 +98,7 @@ public class OnapCommandSampleTest {
             d.setValue("true");
             parameters.add(d);
             OnapCommandParameter m = new OnapCommandParameter();
-            m.setName(Constants.DEAFULT_PARAMETER_MSB_URL);
+            m.setName(Constants.DEAFULT_PARAMETER_HOST_URL);
             m.setValue("http://localhost");
             parameters.add(m);
             sample.setParameters(parameters);
@@ -142,7 +142,7 @@ public class OnapCommandSampleTest {
         d.setValue("true");
         parameters.add(d);
         OnapCommandParameter m = new OnapCommandParameter();
-        m.setName(Constants.DEAFULT_PARAMETER_MSB_URL);
+        m.setName(Constants.DEAFULT_PARAMETER_HOST_URL);
         m.setValue("http://localhost");
         parameters.add(m);
         sample.setParameters(parameters);

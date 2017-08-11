@@ -32,7 +32,7 @@ public class OnapSchemaValidateCommandTest {
                 param.setValue("test");
             } else if ("onap-password".equals(param.getName())) {
                 param.setValue("test");
-            } else if ("msb-url".equals(param.getName())) {
+            } else if ("host-url".equals(param.getName())) {
                 param.setValue("test-url");
             } else if ("schema-location".equals(param.getName())) {
                 param.setValue("schema-validate-pass.yaml");
@@ -52,7 +52,7 @@ public class OnapSchemaValidateCommandTest {
                 param.setValue("test");
             } else if ("onap-password".equals(param.getName())) {
                 param.setValue("test");
-            } else if ("msb-url".equals(param.getName())) {
+            } else if ("host-url".equals(param.getName())) {
                 param.setValue("test-url");
             } else if ("schema-location".equals(param.getName())) {
                 param.setValue(

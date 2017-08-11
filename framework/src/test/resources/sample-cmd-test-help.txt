@@ -5,7 +5,7 @@ Onap sample command to test the command features
 Onap service: sample v1
 
 Options:
-[-u | --onap-username] [-p | --onap-password] [-m | --msb-url]
+[-u | --onap-username] [-p | --onap-password] [-m | --host-url]
 [-h | --help] [-v | --version] [-d | --debug]
 [-f | --format] [-s | --long] [-t | --no-title]
 [-a | --no-auth] [-b | --bool] [-x | --secure]
@@ -19,7 +19,7 @@ where,
 -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
                         ONAP_PASSWORD. Secured.
--m | --msb-url          Onap MSB url. It is of type URL. By default, it
+-m | --host-url          Onap MSB url. It is of type URL. By default, it
                         is read from environment variable ONAP_MSB_URL.
 -h | --help             Onap command help message. It is of type STRING.
                         By default, it is false.

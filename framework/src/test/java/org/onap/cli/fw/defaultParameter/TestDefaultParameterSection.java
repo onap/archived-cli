@@ -43,7 +43,7 @@ public class TestDefaultParameterSection {
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
         assertTrue(parameters.contains("onap-username"));
         assertTrue(parameters.contains("onap-password"));
-        assertTrue(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("host-url"));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class TestDefaultParameterSection {
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
         assertTrue(parameters.contains("onap-username"));
         assertTrue(parameters.contains("onap-password"));
-        assertTrue(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("host-url"));
         assertFalse(parameters.contains("long"));
         assertFalse(parameters.contains("format"));
         assertTrue(parameters.contains("debug"));
@@ -75,7 +75,7 @@ public class TestDefaultParameterSection {
 
         assertTrue(parameters.contains("onap-username"));
         assertTrue(parameters.contains("onap-password"));
-        assertTrue(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("host-url"));
     }
 
     @Test
@@ -90,7 +90,7 @@ public class TestDefaultParameterSection {
 
         assertFalse(parameters.contains("onap-username"));
         assertFalse(parameters.contains("onap-password"));
-        assertTrue(parameters.contains("msb-url"));
+        assertTrue(parameters.contains("host-url"));
         assertTrue(parameters.contains("debug"));
         assertTrue(parameters.contains("long"));
         assertTrue(parameters.contains("format"));

@@ -32,9 +32,9 @@ public class OnapCredentials {
     private String password;
 
     /*
-     * Onap Service msb-url
+     * Onap Service host-url
      */
-    private String msbUrl;
+    private String hostUrl;
 
     /**
      * Onap credentials with username and password.
@@ -43,14 +43,14 @@ public class OnapCredentials {
      *            user name
      * @param password
      *            password
-     * @param msbUrl
-     *            msb url
+     * @param hostUrl
+     *            host url
      */
-    public OnapCredentials(String username, String password, String msbUrl) {
+    public OnapCredentials(String username, String password, String hostUrl) {
         super();
         this.username = username;
         this.password = password;
-        this.msbUrl = msbUrl;
+        this.hostUrl = hostUrl;
     }
 
     public String getUsername() {
@@ -61,7 +61,7 @@ public class OnapCredentials {
         return password;
     }
 
-    public String getMsbUrl() {
-        return msbUrl;
+    public String getHostUrl() {
+        return hostUrl;
     }
 }
