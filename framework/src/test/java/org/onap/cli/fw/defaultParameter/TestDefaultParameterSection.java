@@ -18,10 +18,12 @@ package org.onap.cli.fw.defaultParameter;
 
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.cmd.OnapSchemaValidateCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidDefaultParameter;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.schema.SchemaValidator;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 import java.util.List;
@@ -144,5 +146,13 @@ public class TestDefaultParameterSection {
         };
 
         OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-exclude-noauth.yaml", true);
+    }
+
+    @Test
+    public void checkValidate() throws OnapCommandException {
+
+        SchemaValidator schemaValidator = new SchemaValidator("test.yaml");
+        schemaValidator.validate();
+
     }
 }

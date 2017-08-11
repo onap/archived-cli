@@ -168,7 +168,34 @@ public class OnapCommandUtils {
                         .map(p -> p.get(Constants.NAME)).collect(Collectors.toList());
             }
 
-            parseSchema(cmd, commandYamlMap, defParams);
+            parseSchema(cmd, commandYamlMap, defParams, false);
+        } catch (OnapCommandException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new OnapCommandInvalidSchema(schemaName, e);
+        }
+    }
+
+    public static List<OnapCommandException> loadSchema1(OnapCommand cmd, String schemaName, boolean includeDefault,
+                                                        boolean shouldValidate) throws OnapCommandException {
+        try {
+            Map<String, ?> defaultParameterMap = includeDefault ?
+                    validateSchemaVersion(Constants.DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+            Map<String, List<Map<String, String>>> commandYamlMap = (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+
+            List<String> defParams = new ArrayList<>();
+
+            if (includeDefault) {
+                if (commandYamlMap.get(Constants.PARAMETERS) == null) {
+                    commandYamlMap.put(Constants.PARAMETERS, (List<Map<String, String>>) defaultParameterMap.get(Constants.PARAMETERS));
+                } else {
+                    commandYamlMap.get(Constants.PARAMETERS).addAll((List<Map<String, String>>) defaultParameterMap.get(Constants.PARAMETERS));
+                }
+                defParams = ((List<Map<String, String>>) defaultParameterMap.get(Constants.PARAMETERS)).stream()
+                        .map(p -> p.get(Constants.NAME)).collect(Collectors.toList());
+            }
+
+            return parseSchema(cmd, commandYamlMap, defParams, shouldValidate);
         } catch (OnapCommandException e) {
             throw e;
         } catch (Exception e) {
@@ -212,10 +239,20 @@ public class OnapCommandUtils {
         }
     }
 
-    private static void parseSchema(OnapCommand cmd,
-                                    final Map<String, ?> values,
-                                    final List<String> defaultParamNames) throws OnapCommandException {
+    private static void throwOrCollect(OnapCommandException ex, List<OnapCommandException> list,
+                                       boolean shouldCollectException) throws OnapCommandException {
+        if (shouldCollectException) {
+            list.add(ex);
+        } else {
+            throw ex;
+        }
+    }
 
+    private static List<OnapCommandException> parseSchema(OnapCommand cmd, final Map<String, ?> values,
+                                    final List<String> defaultParamNames,
+                                    final boolean validationEnabled) throws OnapCommandException {
+
+        List<OnapCommandException> exceptionList = new ArrayList<>();
         List<String> shortOptions = new ArrayList<>();
         List<String> longOptions = new ArrayList<>();
         List<String> names = new ArrayList<>();
@@ -265,7 +302,8 @@ public class OnapCommandUtils {
                 if (values.containsKey(Constants.DEFAULT_PARAMETERS) && defParameters == null) {
                     // if default parameter section is available then it must have either include
                     // or exclude sub-section.
-                    throw new OnapCommandInvalidSchema(Constants.SCHEMA_INVALID_DEFAULT_PARAMS_SECTION);
+                    throwOrCollect(new OnapCommandInvalidSchema(Constants.SCHEMA_INVALID_DEFAULT_PARAMS_SECTION),
+                            exceptionList, validationEnabled);
                 }
 
 
@@ -288,8 +326,9 @@ public class OnapCommandUtils {
 
 
                     if (!invExclude.isEmpty() || !invInclude.isEmpty()) {
-                        throw new OnapCommandInvalidDefaultParameter(Stream.concat(invInclude.stream(), invExclude.stream())
-                                .collect(Collectors.toList()));
+                        throwOrCollect(new OnapCommandInvalidDefaultParameter(Stream.concat(invInclude.stream(),
+                                        invExclude.stream()).collect(Collectors.toList())),
+                                exceptionList, validationEnabled);
                     }
 
                     if (!includeParams.isEmpty()) {
@@ -404,6 +443,7 @@ public class OnapCommandUtils {
                 }
             }
         }
+        return exceptionList;
     }
 
     /**
@@ -1089,13 +1129,13 @@ public class OnapCommandUtils {
     public static void persist(List<ExternalSchema> schemas) throws OnapCommandDiscoveryFailed {
         if (schemas != null) {
             try {
-                Resource[] resources = getExternalResources(Constants.EXTERNAL_DISCOVERY_DIRECTORY);
-                if (resources != null && resources.length == 1) {
-                    String path = resources[0].getURI().getPath();
-                    File file = new File(path + File.separator + Constants.EXTERNAL_DISCOVERY_FILE);
+//                Resource[] resources = getExternalResources(Constants.EXTERNAL_DISCOVERY_DIRECTORY);
+//                if (resources != null && resources.length == 1) {
+//                    String path = resources[0].getURI().getPath();
+//                    File file = new File(path + File.separator + Constants.EXTERNAL_DISCOVERY_FILE);
                     ObjectMapper mapper = new ObjectMapper();
-                    mapper.writerWithDefaultPrettyPrinter().writeValue(file, schemas);
-                }
+                    mapper.writerWithDefaultPrettyPrinter().writeValue(System.out, schemas);
+//                }
             } catch (IOException e1) {
                 throw new OnapCommandDiscoveryFailed(Constants.EXTERNAL_DISCOVERY_DIRECTORY,
                         Constants.EXTERNAL_DISCOVERY_FILE, e1);

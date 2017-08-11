@@ -22,11 +22,13 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.schema.SchemaValidate;
 import org.onap.cli.fw.schema.SchemaValidator;
+import org.onap.cli.fw.utils.OnapCommandUtils;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Validate schema command.
@@ -36,21 +38,30 @@ import java.util.Map;
 public class OnapSchemaValidateCommand extends OnapCommand {
 
     @Override
-    protected void run() throws OnapCommandException {
+    public void run() throws OnapCommandException {
         Map<String, OnapCommandParameter> paramMap = getParametersMap();
         OnapCommandParameter locationParam = paramMap.get("schema-location");
         String location = String.valueOf(locationParam.getValue());
         OnapCommandParameter interSchemaParam = paramMap.get("internal-schema");
         boolean isInternalSchema = Boolean.valueOf(String.valueOf(interSchemaParam.getValue()));
-        SchemaValidate schema;
-        if (isInternalSchema) {
-            location = location.substring(1);
-            schema = new SchemaValidator(location);
-        } else {
-            schema = new SchemaValidator(new File(location));
-        }
+//        SchemaValidate schema;
+//        if (isInternalSchema) {
+//            location = location.substring(1);
+//            schema = new SchemaValidator(location);
+//        } else {
+//            schema = new SchemaValidator(new File(location));
+//        }
 
-        List<String> error = schema.validate();
+
+        OnapCommand cmd = new OnapCommand() {
+            @Override
+            protected void run() throws OnapCommandException {
+
+            }
+        };
+
+
+        List<String> error = OnapCommandUtils.loadSchema1(cmd, location.substring(1), true, true).stream().map(e->e.toString()).collect(Collectors.toList());//schema.validate();
         List<String> slNumber = new ArrayList<>();
         for (int i = 1; i <= error.size(); i++) {
             slNumber.add(String.valueOf(i));

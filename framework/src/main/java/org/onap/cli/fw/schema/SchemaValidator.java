@@ -71,7 +71,7 @@ public class SchemaValidator extends AbstractSchemaValidate {
             return;
         }
 
-        validateMandatoryParams(httpMap, HTTP_SECTIONS, HTTP_MANDATORY_SECTIONS, PARAMETERS);
+//        validateMandatoryParams(httpMap, HTTP_SECTIONS, HTTP_MANDATORY_SECTIONS, PARAMETERS);
 
         Map<String, Object> requestMap = (Map<String, Object>) httpMap.get(REQUEST);
 
@@ -110,7 +110,7 @@ public class SchemaValidator extends AbstractSchemaValidate {
             return;
         }
         // validate mandatory parameters
-        validateMandatoryParams(requestMap, HTTP_REQUEST_PARAMS, HTTP_REQUEST_MANDATORY_PARAMS, REQUEST);
+//        validateMandatoryParams(requestMap, HTTP_REQUEST_PARAMS, HTTP_REQUEST_MANDATORY_PARAMS, REQUEST);
 
         // Validate method types
         String method = (String) requestMap.get(METHOD);
@@ -252,21 +252,21 @@ public class SchemaValidator extends AbstractSchemaValidate {
     }
 
     private void validateHttpResultMapping(Map<String, Object> resultMap) {
-        Set<String> resultAttributes = getResultAttributes();
-
-        // Validate if all result attributes are used in the result mapping
-        for (String attribute : resultAttributes) {
-            if (!resultMap.containsKey(attribute)) {
-                schemaErrors.add(SchemaValidate.missingInResultMap(attribute));
-            }
-        }
-
-        // Validate if all result mapping keys are defined in the result attributes
-        for (Entry<String, Object> entry : resultMap.entrySet()) {
-            if (!resultAttributes.contains(entry.getKey())) {
-                schemaErrors.add(SchemaValidate.missingInResultAttribute(entry.getKey()));
-            }
-        }
+//        Set<String> resultAttributes = getResultAttributes();
+//
+//        // Validate if all result attributes are used in the result mapping
+//        for (String attribute : resultAttributes) {
+//            if (!resultMap.containsKey(attribute)) {
+//                schemaErrors.add(SchemaValidate.missingInResultMap(attribute));
+//            }
+//        }
+//
+//        // Validate if all result mapping keys are defined in the result attributes
+//        for (Entry<String, Object> entry : resultMap.entrySet()) {
+//            if (!resultAttributes.contains(entry.getKey())) {
+//                schemaErrors.add(SchemaValidate.missingInResultAttribute(entry.getKey()));
+//            }
+//        }
     }
 
     private void validateSampleResponse(Map<String, Object> sampleResponseBodyMap) {
