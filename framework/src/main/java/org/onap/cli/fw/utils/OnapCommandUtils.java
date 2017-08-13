@@ -19,6 +19,7 @@ package org.onap.cli.fw.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
@@ -60,6 +61,8 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -75,11 +78,67 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.onap.cli.fw.conf.Constants.ATTRIBUTES;
+import static org.onap.cli.fw.conf.Constants.BODY;
+import static org.onap.cli.fw.conf.Constants.BOOLEAN_FALSE;
+import static org.onap.cli.fw.conf.Constants.BOOLEAN_TRUE;
+import static org.onap.cli.fw.conf.Constants.DEFAULT_VALUE;
+import static org.onap.cli.fw.conf.Constants.DELETE;
+import static org.onap.cli.fw.conf.Constants.DESCRIPTION;
+import static org.onap.cli.fw.conf.Constants.GET;
+import static org.onap.cli.fw.conf.Constants.HEAD;
+import static org.onap.cli.fw.conf.Constants.HEADERS;
+import static org.onap.cli.fw.conf.Constants.HTTP_BODY_FAILED_PARSING;
+import static org.onap.cli.fw.conf.Constants.HTTP_BODY_JSON_EMPTY;
+import static org.onap.cli.fw.conf.Constants.IS_OPTIONAL;
+import static org.onap.cli.fw.conf.Constants.IS_SECURED;
+import static org.onap.cli.fw.conf.Constants.LONG_OPTION;
+import static org.onap.cli.fw.conf.Constants.METHOD;
+import static org.onap.cli.fw.conf.Constants.NAME;
+import static org.onap.cli.fw.conf.Constants.NO_AUTH;
+import static org.onap.cli.fw.conf.Constants.ONAP_CMD_SCHEMA_VERSION;
+import static org.onap.cli.fw.conf.Constants.PARAMETERS;
+import static org.onap.cli.fw.conf.Constants.POST;
+import static org.onap.cli.fw.conf.Constants.PUT;
+import static org.onap.cli.fw.conf.Constants.QUERIES;
+import static org.onap.cli.fw.conf.Constants.REQUEST;
+import static org.onap.cli.fw.conf.Constants.RESULT_MAP;
+import static org.onap.cli.fw.conf.Constants.SAMPLE_RESPONSE;
+import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_NOT_EXIST;
+import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_WRONG_EXTN;
+import static org.onap.cli.fw.conf.Constants.SERVICE;
+import static org.onap.cli.fw.conf.Constants.SHORT_OPTION;
+import static org.onap.cli.fw.conf.Constants.SUCCESS_CODES;
+import static org.onap.cli.fw.conf.Constants.TYPE;
+import static org.onap.cli.fw.conf.Constants.URI;
+import static org.onap.cli.fw.conf.Constants.VERSION;
+
 /**
  * Provides helper method to parse Yaml files and produce required objects.
  *
  */
 public class OnapCommandUtils {
+
+    private static final List<String> HTTP_REQUEST_PARAMS = Arrays.asList(URI, METHOD, BODY, HEADERS, QUERIES);
+    private static final List<String> HTTP_REQUEST_MANDATORY_PARAMS = Arrays.asList(URI, METHOD);
+    private static final List<String> HTTP_METHODS = Arrays.asList(POST, GET, DELETE, PUT, HEAD);
+    private static final List<String> HTTP_SECTIONS = Arrays.asList(REQUEST, SUCCESS_CODES, RESULT_MAP,
+            SAMPLE_RESPONSE);
+    private static final List<String> HTTP_MANDATORY_SECTIONS = Arrays.asList(REQUEST, SUCCESS_CODES);
+    private static final List<String> RESULT_PARAMS_LIST = Arrays.asList(NAME, DESCRIPTION, TYPE, SHORT_OPTION,
+            LONG_OPTION, IS_OPTIONAL, DEFAULT_VALUE, IS_SECURED);
+    private static final List<String> RESULT_PARAMS_MANDATORY_LIST = Arrays.asList(NAME, DESCRIPTION, TYPE);
+    private static final List<String> TOP_LEVEL_PARAMS_LIST = Arrays.asList(ONAP_CMD_SCHEMA_VERSION, NAME,
+            DESCRIPTION);
+    private static final List<String> TOP_LEVEL_MANDATORY_LIST = Arrays.asList(ONAP_CMD_SCHEMA_VERSION, NAME,
+            DESCRIPTION);
+    private static final List<String> SERVICE_PARAMS_LIST = Arrays.asList(NAME, VERSION, NO_AUTH);
+    private static final List<String> SERVICE_PARAMS_MANDATORY_LIST = Arrays.asList(NAME, VERSION);
+
+    private static final List<String> INPUT_PARAMS_LIST = Arrays.asList(NAME, DESCRIPTION, TYPE, SHORT_OPTION,
+            LONG_OPTION, IS_OPTIONAL, DEFAULT_VALUE, IS_SECURED);
+    private static final List<String> INPUT_PARAMS_MANDATORY_LIST = Arrays.asList(NAME, DESCRIPTION, TYPE);
+
 
     /**
      * Private constructor.
@@ -112,7 +171,7 @@ public class OnapCommandUtils {
             throw new OnapCommandSchemaNotFound(schemaName, e);
         }
         if (inputStream == null) {
-            throw new OnapCommandSchemaNotFound(schemaName);
+            inputStream = loadSchemaFromFile(schemaName);
         }
 
         Map<String, ?> values = null;
@@ -134,6 +193,24 @@ public class OnapCommandUtils {
         return values;
     }
 
+    private static InputStream loadSchemaFromFile(String schemaLocation) throws OnapCommandInvalidSchema {
+        File schemaFile = new File(schemaLocation);
+        if (!schemaFile.isFile()) {
+            throw new OnapCommandInvalidSchema(schemaFile.getName(), SCHEMA_FILE_NOT_EXIST);
+        }
+        String fileName = schemaFile.getName();
+
+        if (!fileName.endsWith(".yaml")) {
+            throw new OnapCommandInvalidSchema(fileName, SCHEMA_FILE_WRONG_EXTN);
+        }
+
+        try {
+            return new FileInputStream(schemaFile);
+        } catch (FileNotFoundException e) {
+            throw new OnapCommandInvalidSchema(fileName, e);
+        }
+    }
+
     /**
      * Retrieve OnapCommand from schema.
      *
@@ -149,8 +226,8 @@ public class OnapCommandUtils {
      * @throws OnapCommandInvalidSchema               invalid schema
      * @throws OnapCommandInvalidSchemaVersion        invalid schema version
      */
-    public static void loadSchema(OnapCommand cmd, String schemaName, boolean includeDefault)
-            throws OnapCommandException {
+    public static List<String> loadSchema(OnapCommand cmd, String schemaName, boolean includeDefault,
+                                          boolean validateSchema) throws OnapCommandException {
         try {
             Map<String, ?> defaultParameterMap = includeDefault ?
                     validateSchemaVersion(Constants.DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
@@ -168,7 +245,7 @@ public class OnapCommandUtils {
                         .map(p -> p.get(Constants.NAME)).collect(Collectors.toList());
             }
 
-            parseSchema(cmd, commandYamlMap, defParams);
+            return parseSchema(cmd, commandYamlMap, defParams, validateSchema);
         } catch (OnapCommandException e) {
             throw e;
         } catch (Exception e) {
@@ -212,32 +289,98 @@ public class OnapCommandUtils {
         }
     }
 
-    private static void parseSchema(OnapCommand cmd,
-                                    final Map<String, ?> values,
-                                    final List<String> defaultParamNames) throws OnapCommandException {
+    private static void throwOrCollect(OnapCommandException ex, List<String> list,
+                                       boolean shouldCollectException) throws OnapCommandException {
+        if (shouldCollectException) {
+            list.add(ex.toString());
+        } else {
+            throw ex;
+        }
+    }
 
+    private static void validateTags(List<String> schemaErrors, Map<String, ?> yamlMap,
+                                             List<String> totalParams, List<String> mandatoryParams,
+                                             String section) {
+        for (String param : totalParams) {
+            boolean isMandatory = mandatoryParams.contains(param);
+            boolean isYamlContains = yamlMap.containsKey(param);
+            if (isMandatory) {
+                if (!isYamlContains) {
+                    schemaErrors.add(mandatoryAttrMissing(param, section));
+                } else {
+                    String value = String.valueOf(yamlMap.get(param));
+                    if (value == null || "".equals(value) || "null".equals(value)) {
+                        schemaErrors.add(mandatoryAttrEmpty(param, section));
+                    }
+                }
+            }
+        }
+
+    }
+
+    protected static final List<String> BOOLEAN_VALUES = Arrays.asList(BOOLEAN_TRUE, BOOLEAN_FALSE);
+
+
+    /**
+     * Validate Boolean.
+     *
+     * @param toValidate
+     *            string
+     * @return boolean
+     */
+    protected static boolean validateBoolean(String toValidate) {
+        return BOOLEAN_VALUES.contains(toValidate.toLowerCase());
+    }
+
+    private static List<String> parseSchema(OnapCommand cmd,
+                                            final Map<String, ?> values,
+                                            final List<String> defaultParamNames,
+                                            boolean shouldCollectException) throws OnapCommandException {
+
+        List<String> exceptionList = new ArrayList<>();
         List<String> shortOptions = new ArrayList<>();
         List<String> longOptions = new ArrayList<>();
-        List<String> names = new ArrayList<>();
         Set<String> filteredDefaultParams = new HashSet<>();
 
+        if (shouldCollectException) {
+            validateTags(exceptionList, (Map<String, Object>) values, TOP_LEVEL_PARAMS_LIST, TOP_LEVEL_MANDATORY_LIST, "root level");
+        }
+
+
         List<String> sections = Arrays.asList(Constants.NAME, Constants.DESCRIPTION, Constants.SERVICE,
-                Constants.DEFAULT_PARAMETERS, Constants.PARAMETERS, Constants.RESULTS);
+                Constants.DEFAULT_PARAMETERS, Constants.PARAMETERS, Constants.RESULTS, Constants.HTTP);
 
         for (String key : sections) {
 
-            if (Constants.NAME.equals(key)) {
+            if (Constants.NAME.equals(key) && values.containsKey(key)) {
                 Object val = values.get(key);
                 if (val != null) {
                     cmd.setName(val.toString());
                 }
-            } else if (Constants.DESCRIPTION.equals(key)) {
+            } else if (Constants.DESCRIPTION.equals(key) && values.containsKey(key)) {
                 Object val = values.get(key);
                 if (val != null) {
                     cmd.setDescription(val.toString());
                 }
-            } else if (Constants.SERVICE.equals(key)) {
+            } else if (Constants.SERVICE.equals(key) && values.containsKey(key)) {
                 Map<String, String> map = (Map<String, String>) values.get(key);
+
+                if (shouldCollectException) {
+                    // is it required to check wether schema contains Service sec
+                    validateTags(exceptionList, (Map<String, Object>)values.get(key), SERVICE_PARAMS_LIST, SERVICE_PARAMS_MANDATORY_LIST, SERVICE);
+                    if (map.containsKey(NO_AUTH)) {
+                        Object obj = map.get(NO_AUTH);
+                        if (obj == null) {
+                            exceptionList.add(emptyValue(SERVICE, NO_AUTH));
+                        } else {
+                            String value = String.valueOf(obj);
+                            if (!validateBoolean(value)) {
+                                exceptionList.add(invalidBooleanValueMessage(SERVICE, NO_AUTH, value));
+                            }
+                        }
+                    }
+                }
+
                 if (map != null) {
                     OnapService srv = new OnapService();
 
@@ -265,7 +408,8 @@ public class OnapCommandUtils {
                 if (values.containsKey(Constants.DEFAULT_PARAMETERS) && defParameters == null) {
                     // if default parameter section is available then it must have either include
                     // or exclude sub-section.
-                    throw new OnapCommandInvalidSchema(Constants.SCHEMA_INVALID_DEFAULT_PARAMS_SECTION);
+                    throwOrCollect(new OnapCommandInvalidSchema(Constants.SCHEMA_INVALID_DEFAULT_PARAMS_SECTION),
+                            exceptionList, shouldCollectException);
                 }
 
 
@@ -288,8 +432,10 @@ public class OnapCommandUtils {
 
 
                     if (!invExclude.isEmpty() || !invInclude.isEmpty()) {
-                        throw new OnapCommandInvalidDefaultParameter(Stream.concat(invInclude.stream(), invExclude.stream())
-                                .collect(Collectors.toList()));
+
+                        throwOrCollect(new OnapCommandInvalidDefaultParameter(Stream.concat(invInclude.stream(),
+                                invExclude.stream()).collect(Collectors.toList())),
+                                exceptionList, shouldCollectException);
                     }
 
                     if (!includeParams.isEmpty()) {
@@ -302,21 +448,34 @@ public class OnapCommandUtils {
                 } else {
                     filteredDefaultParams.addAll(defaultParamNames);
                 }
-                processNoAuth(filteredDefaultParams, cmd, includeParams, excludeParams);
-            } else if (Constants.PARAMETERS.equals(key)) {
+                try {
+                    processNoAuth(filteredDefaultParams, cmd, includeParams, excludeParams);
+                } catch (OnapCommandException e) {
+                    throwOrCollect(e, exceptionList, shouldCollectException);
+                }
+            } else if (Constants.PARAMETERS.equals(key) && values.containsKey(key)) {
 
                 List<Map<String, String>> parameters = (List) values.get(key);
 
                 if (parameters != null) {
+                    Set<String> names = new HashSet<>();
+                    Set<String> inputShortOptions = new HashSet<>();
+                    Set<String> inputLongOptions = new HashSet<>();
+
                     for (Map<String, String> map : parameters) {
                         OnapCommandParameter param = new OnapCommandParameter();
+
+                        if (shouldCollectException) {
+                            validateTags(exceptionList, map, INPUT_PARAMS_LIST, INPUT_PARAMS_MANDATORY_LIST, PARAMETERS);
+                        }
+
 
                         for (Map.Entry<String, String> entry1 : map.entrySet()) {
                             String key2 = entry1.getKey();
 
                             if (Constants.NAME.equals(key2)) {
                                 if (names.contains(map.get(key2))) {
-                                    throw new OnapCommandParameterNameConflict(map.get(key2));
+                                        throwOrCollect(new OnapCommandParameterNameConflict(map.get(key2)), exceptionList, shouldCollectException);
                                 }
                                 names.add(map.get(key2));
                                 param.setName(map.get(key2));
@@ -324,13 +483,13 @@ public class OnapCommandUtils {
                                 param.setDescription(map.get(key2));
                             } else if (Constants.SHORT_OPTION.equals(key2)) {
                                 if (shortOptions.contains(map.get(key2))) {
-                                    throw new OnapCommandParameterOptionConflict(map.get(key2));
+                                        throwOrCollect(new OnapCommandParameterOptionConflict(map.get(key2)), exceptionList, shouldCollectException);
                                 }
                                 shortOptions.add(map.get(key2));
                                 param.setShortOption(map.get(key2));
                             } else if (Constants.LONG_OPTION.equals(key2)) {
                                 if (longOptions.contains(map.get(key2))) {
-                                    throw new OnapCommandParameterOptionConflict(map.get(key2));
+                                        throwOrCollect(new OnapCommandParameterOptionConflict(map.get(key2)), exceptionList, shouldCollectException);
                                 }
                                 longOptions.add(map.get(key2));
                                 param.setLongOption(map.get(key2));
@@ -338,14 +497,31 @@ public class OnapCommandUtils {
                                 Object obj = map.get(key2);
                                 param.setDefaultValue(obj.toString());
                             } else if (Constants.TYPE.equals(key2)) {
-                                param.setParameterType(ParameterType.get(map.get(key2)));
+                                try {
+                                    param.setParameterType(ParameterType.get(map.get(key2)));
+                                } catch (OnapCommandException ex) {
+                                    throwOrCollect(ex, exceptionList, shouldCollectException);
+                                }
                             } else if (Constants.IS_OPTIONAL.equals(key2)) {
+                                if (shouldCollectException) {
+                                    if (!validateBoolean(String.valueOf(map.get(key2)))) {
+                                        exceptionList.add(invalidBooleanValueMessage(map.get(Constants.NAME),
+                                                IS_SECURED, map.get(key2)));
+                                    }
+                                }
                                 if ("true".equalsIgnoreCase(String.valueOf(map.get(key2)))) {
                                     param.setOptional(true);
                                 } else {
                                     param.setOptional(false);
                                 }
                             } else if (Constants.IS_SECURED.equals(key2)) {
+                                if (shouldCollectException) {
+                                    if (!validateBoolean(String.valueOf(map.get(key2)))) {
+                                        exceptionList.add(invalidBooleanValueMessage(map.get(Constants.NAME),
+                                                IS_SECURED, map.get(key2)));
+                                    }
+                                }
+
                                 if ("true".equalsIgnoreCase(String.valueOf(map.get(key2)))) {
                                     param.setSecured(true);
                                 } else {
@@ -362,7 +538,7 @@ public class OnapCommandUtils {
                         }
                     }
                 }
-            } else if (Constants.RESULTS.equals(key)) {
+            } else if (Constants.RESULTS.equals(key) && values.containsKey(key)) {
                 Map<String, ?> valueMap = (Map<String, ?>) values.get(key);
                 if (valueMap != null) {
                     OnapCommandResult result = new OnapCommandResult();
@@ -370,24 +546,53 @@ public class OnapCommandUtils {
                         String key3 = entry1.getKey();
 
                         if (Constants.DIRECTION.equals(key3)) {
-                            result.setPrintDirection(PrintDirection.get((String) valueMap.get(key3)));
+                            try {
+                                result.setPrintDirection(PrintDirection.get((String) valueMap.get(key3)));
+                            } catch (OnapCommandException ex) {
+                                throwOrCollect(ex, exceptionList, shouldCollectException);
+                            }
                         } else if (Constants.ATTRIBUTES.equals(key3)) {
                             List<Map<String, String>> attrs = (ArrayList) valueMap.get(key3);
 
                             for (Map<String, String> map : attrs) {
                                 OnapCommandResultAttribute attr = new OnapCommandResultAttribute();
+                                if (shouldCollectException) {
+                                    validateTags(exceptionList, map, RESULT_PARAMS_LIST, RESULT_PARAMS_MANDATORY_LIST, ATTRIBUTES);
+                                }
+
+                                Set<String> resultParamNames = new HashSet<>();
+
                                 for (Map.Entry<String, String> entry4 : map.entrySet()) {
                                     String key4 = entry4.getKey();
 
                                     if (Constants.NAME.equals(key4)) {
-                                        attr.setName(map.get(key4));
+                                        if (resultParamNames.contains(map.get(key4))) {
+                                            exceptionList.add(attributeNameExist(map.get(key4), ATTRIBUTES));
+                                        } else {
+                                            attr.setName(map.get(key4));
+                                            resultParamNames.add(map.get(key4));
+                                        }
                                     } else if (Constants.DESCRIPTION.equals(key4)) {
                                         attr.setDescription(map.get(key4));
                                     } else if (Constants.SCOPE.equals(key4)) {
-                                        attr.setScope(OnapCommandResultAttributeScope.get(map.get(key4)));
+                                        try {
+                                            attr.setScope(OnapCommandResultAttributeScope.get(map.get(key4)));
+                                        } catch (OnapCommandException ex) {
+                                            throwOrCollect(ex, exceptionList, shouldCollectException);
+                                        }
                                     } else if (Constants.TYPE.equals(key4)) {
-                                        attr.setType(ParameterType.get(map.get(key4)));
+                                        try {
+                                            attr.setType(ParameterType.get(map.get(key4)));
+                                        } catch (OnapCommandException ex) {
+                                            throwOrCollect(ex, exceptionList, shouldCollectException);
+                                        }
                                     } else if (Constants.IS_SECURED.equals(key4)) {
+                                        if (shouldCollectException) {
+                                            if (!validateBoolean(String.valueOf(map.get(key4)))) {
+                                                exceptionList.add(invalidBooleanValueMessage(ATTRIBUTES,
+                                                        IS_SECURED, map.get(key4)));
+                                            }
+                                        }
                                         if ("true".equals(String.valueOf(map.get(key4)))) {
                                             attr.setSecured(true);
                                         } else {
@@ -404,6 +609,145 @@ public class OnapCommandUtils {
                 }
             }
         }
+        return exceptionList;
+    }
+
+    private static String attributeNameExist(String name, String section) {
+        return "Attribute name='" + name + "' under '" + section + ":' is already used, Take different one.";
+    }
+
+    private static String parameterNotMapped(String declaredParam) {
+        return "The parameter '" + declaredParam
+                + "' declared under 'parameters:' section is not mapped into request section.";
+    }
+
+    private static String mandatoryAttrEmpty(String param, String section) {
+
+        return "Mandatory attribute '" + param + "' under '" + section + "' shouldn't be null or empty";
+    }
+
+    private static String mandatoryAttrMissing(String param, String section) {
+
+        return "Mandatory attribute '" + param + "' is missing under '" + section + "'";
+    }
+
+    public static String emptySection(String section) {
+        return "The section '" + section + ":' cann't be null or empty";
+    }
+
+    private static String emptyValue(String section, String attribute) {
+        return "Attribute '" + attribute + "' under '" + section + "' is null or empty";
+    }
+
+    private static String invalidType(String section, String attribute, List<String> types) {
+        return "Attribute '" + attribute + "' under '" + section + "' is invalid, correct types are "
+                + types.toString();
+    }
+
+    private static String invalidRequestParam(String subSection, String attribute) {
+        return "The http request '" + subSection + "' parameter '" + attribute
+                + "' is not declared under 'parameters:' section";
+    }
+
+    private static String invalidBooleanValueMessage(String section, String attribute, String value) {
+        return "The value '" + value + "' of '" + attribute + "' present under '" + section + "' should be boolean";
+    }
+
+    private static Set<String> validateHttpQueries(Map<String, Object> requestMap) {
+        Map<String, Object> queries = (Map<String, Object>) requestMap.get(QUERIES);
+        Set<String> queryParamNames = new HashSet<>();
+        if (queries != null) {
+            for (Entry<String, Object> entry : queries.entrySet()) {
+                parseParameters(String.valueOf(entry.getValue()), queryParamNames);
+            }
+        }
+        return queryParamNames;
+    }
+
+
+    private static Set<String> validateHttpHeaders(Map<String, Object> requestMap) {
+
+        Map<String, Object> headers = (Map<String, Object>) requestMap.get(HEADERS);
+        Set<String> headerParamNames = new HashSet<>();
+        if (headers != null) {
+            for (Entry<String, Object> entry : headers.entrySet()) {
+                parseParameters(String.valueOf(entry.getValue()), headerParamNames);
+            }
+        }
+        return headerParamNames;
+    }
+
+    private static Set<String> validateHttpBody(List<String> errorList, Map<String, Object> requestMap) {
+        Set<String> bodyParamNames = new HashSet<>();
+        Object bodyString = requestMap.get(BODY);
+        if (bodyString == null) {
+            return bodyParamNames;
+        }
+
+        String body = String.valueOf(bodyString);
+        JSONObject obj = null;
+        try {
+            obj = new ObjectMapper().readValue(body, JSONObject.class);
+        } catch (IOException e1) { // NOSONAR
+            errorList.add(HTTP_BODY_FAILED_PARSING);
+        }
+        if (obj == null || "".equals(obj.toString())) {
+            errorList.add(HTTP_BODY_JSON_EMPTY);
+        }
+        parseParameters(body, bodyParamNames);
+
+        return bodyParamNames;
+    }
+
+    private static Set<String> validateHttpUri(List<String> errorList, Map<String, Object> requestMap) {
+        Set<String> uriParamNames = new HashSet<>();
+        String uri = (String) requestMap.get(URI);
+        if (uri == null || uri.isEmpty()) {
+            errorList.add(emptySection(URI));
+            return uriParamNames;
+        }
+        parseParameters(uri, uriParamNames);
+        return uriParamNames;
+    }
+
+    private static void parseParameters(String line, Set<String> paramNames) {
+
+        int currentIdx = 0;
+        while (currentIdx < line.length()) {
+            int idxS = line.indexOf("${", currentIdx);
+            if (idxS == -1) {
+                break;
+            }
+            int idxE = line.indexOf("}", idxS);
+            String paramName = line.substring(idxS + 2, idxE);
+            paramNames.add(paramName.trim());
+
+            currentIdx = idxE + 1;
+        }
+
+    }
+
+    private static Set<String> getRequestParams(Map<String, ?> yamlMap) {
+
+        Set<String> set = new HashSet<>();
+
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> inputParams = (List<Map<String, Object>>) yamlMap.get(Constants.PARAMETERS);
+
+        if (inputParams != null) {
+            for (Map<String, Object> map : inputParams) {
+                for (Entry<String, Object> entry : map.entrySet()) {
+                    Object key = entry.getKey();
+
+                    if (NAME.equals(key)) {
+                        set.add(String.valueOf(entry.getValue()));
+                        break;
+                    }
+                }
+            }
+        }
+
+        return set;
     }
 
     /**
@@ -484,52 +828,107 @@ public class OnapCommandUtils {
      * @throws OnapCommandInvalidSchemaVersion
      *             invalid schema version
      */
-    public static void loadSchema(OnapHttpCommand cmd, String schemaName) throws OnapCommandException {
+    public static ArrayList<String> loadHTTPSchemaSection(OnapHttpCommand cmd, String schemaName,
+                                                          boolean validate) throws OnapCommandException {
+        ArrayList<String> errorList = new ArrayList<>();
         try {
             Map<String, ?> values = (Map<String, ?>) validateSchemaVersion(schemaName, cmd.getSchemaVersion());
             Map<String, ?> valMap = (Map<String, ?>) values.get(Constants.HTTP);
 
-            for (Map.Entry<String, ?> entry1 : valMap.entrySet()) {
-                String key1 = entry1.getKey();
-                if (Constants.REQUEST.equals(key1)) {
-                    Map<String, ?> map = (Map<String, ?>) valMap.get(key1);
+            if (valMap != null) {
+                if (validate) {
+                    validateTags(errorList, valMap, HTTP_SECTIONS, HTTP_MANDATORY_SECTIONS, PARAMETERS);
+                    errorList.addAll(validateHttpSchemaSection(values));
+                }
+                for (Map.Entry<String, ?> entry1 : valMap.entrySet()) {
+                    String key1 = entry1.getKey();
+                    if (Constants.REQUEST.equals(key1)) {
+                        Map<String, ?> map = (Map<String, ?>) valMap.get(key1);
 
-                    for (Map.Entry<String, ?> entry2 : map.entrySet()) {
-                        String key2 = entry2.getKey();
+                        for (Map.Entry<String, ?> entry2 : map.entrySet()) {
+                            try {
+                                String key2 = entry2.getKey();
+                                if (Constants.URI.equals(key2)) {
+                                    Object obj = map.get(key2);
+                                    cmd.getInput().setUri(obj.toString());
+                                } else if (Constants.MERHOD.equals(key2)) {
+                                    Object obj = map.get(key2);
+                                    cmd.getInput().setMethod(obj.toString());
+                                } else if (Constants.BODY.equals(key2)) {
+                                    Object obj = map.get(key2);
+                                    cmd.getInput().setBody(obj.toString());
+                                } else if (Constants.HEADERS.equals(key2)) {
+                                    Map<String, String> head = (Map<String, String>) map.get(key2);
+                                    cmd.getInput().setReqHeaders(head);
+                                } else if (Constants.QUERIES.equals(key2)) {
+                                    Map<String, String> query = (Map<String, String>) map.get(key2);
 
-                        if (Constants.URI.equals(key2)) {
-                            Object obj = map.get(key2);
-                            cmd.getInput().setUri(obj.toString());
-                        } else if (Constants.MERHOD.equals(key2)) {
-                            Object obj = map.get(key2);
-                            cmd.getInput().setMethod(obj.toString());
-                        } else if (Constants.BODY.equals(key2)) {
-                            Object obj = map.get(key2);
-                            cmd.getInput().setBody(obj.toString());
-                        } else if (Constants.HEADERS.equals(key2)) {
-                            Map<String, String> head = (Map<String, String>) map.get(key2);
-                            cmd.getInput().setReqHeaders(head);
-                        } else if (Constants.QUERIES.equals(key2)) {
-                            Map<String, String> query = (Map<String, String>) map.get(key2);
-
-                            cmd.getInput().setReqQueries(query);
+                                    cmd.getInput().setReqQueries(query);
+                                }
+                            }catch (Exception ex) {
+                                throwOrCollect(new OnapCommandInvalidSchema(schemaName, ex), errorList, validate);
+                            }
                         }
+                    } else if (Constants.SUCCESS_CODES.equals(key1)) {
+                        // TODO: is success code is mandatory
+                        cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
+                    } else if (Constants.RESULT_MAP.equals(key1)) {
+                        // TODO: is resultmap is mandatory
+                        cmd.setResultMap((Map<String, String>) valMap.get(key1));
+                    } else if (Constants.SAMPLE_RESPONSE.equals(key1)) {
+                        // (mrkanag) implement sample response handling
                     }
-                } else if (Constants.SUCCESS_CODES.equals(key1)) {
-                    cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
-                } else if (Constants.RESULT_MAP.equals(key1)) {
-                    cmd.setResultMap((Map<String, String>) valMap.get(key1));
-                } else if (Constants.SAMPLE_RESPONSE.equals(key1)) {
-                    // (mrkanag) implement sample response handling
                 }
             }
-
-        } catch (OnapCommandException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new OnapCommandInvalidSchema(schemaName, e);
+        }catch (OnapCommandException e) {
+            throwOrCollect(e, errorList, validate);
         }
+        return errorList;
     }
+
+
+    private static ArrayList<String> validateHttpSchemaSection(Map<String, ?> values) {
+
+        ArrayList<String> errorList = new ArrayList<>();
+        Map<String, ?> map = (Map<String, ?>) values.get(Constants.HTTP);
+        Map<String, Object> requestMap = (Map<String, Object>) map.get(REQUEST);
+
+        if (requestMap != null && !requestMap.isEmpty()) {
+            validateTags(errorList, requestMap, HTTP_REQUEST_PARAMS, HTTP_REQUEST_MANDATORY_PARAMS, REQUEST);
+            String method = (String) requestMap.get(METHOD);
+            if (method != null && !method.isEmpty()) {
+                if (!HTTP_METHODS.contains(method.toLowerCase())) {
+                    errorList.add(invalidType(REQUEST, METHOD, HTTP_METHODS));
+                }
+            } else {
+                errorList.add("Http request method cann't be null or empty");
+            }
+
+            Set<String> requestParams = getRequestParams(values);
+
+            Set<String> uriParams = validateHttpUri(errorList, requestMap);
+
+            Set<String> bodyParams = validateHttpBody(errorList, requestMap);
+
+            Set<String> headerParams = validateHttpHeaders(requestMap);
+
+            Set<String> queryParams = validateHttpQueries(requestMap);
+
+            HashSet<String> totoalParams = new HashSet<>(uriParams);
+            totoalParams.addAll(bodyParams);
+            totoalParams.addAll(headerParams);
+            totoalParams.addAll(queryParams);
+
+            List<String> nonDeclaredParams = totoalParams.stream().filter(param -> !requestParams.contains(param))
+                    .collect(Collectors.toList());
+
+            nonDeclaredParams.stream().forEach(p -> errorList.add(parameterNotMapped(p)));
+        } else {
+            errorList.add(emptySection(REQUEST));
+        }
+        return errorList;
+    }
+
 
     /**
      * Returns Help.
