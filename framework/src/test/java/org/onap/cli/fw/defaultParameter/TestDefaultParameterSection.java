@@ -39,7 +39,7 @@ public class TestDefaultParameterSection {
             protected void run() throws OnapCommandException {}
         };
 
-        OnapCommandUtils.loadSchema(cmd, "sample-test-include-param.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-include-param.yaml", true, false);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
         assertTrue(parameters.contains("onap-username"));
         assertTrue(parameters.contains("onap-password"));
@@ -53,7 +53,7 @@ public class TestDefaultParameterSection {
             protected void run() throws OnapCommandException {}
         };
 
-        OnapCommandUtils.loadSchema(cmd, "sample-test-exclude-param.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-exclude-param.yaml", true, false);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
         assertTrue(parameters.contains("onap-username"));
         assertTrue(parameters.contains("onap-password"));
@@ -70,7 +70,7 @@ public class TestDefaultParameterSection {
             protected void run() throws OnapCommandException {}
         };
 
-        OnapCommandUtils.loadSchema(cmd, "sample-test-include-exclude.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-include-exclude.yaml", true, false);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
 
         assertTrue(parameters.contains("onap-username"));
@@ -85,7 +85,7 @@ public class TestDefaultParameterSection {
             protected void run() throws OnapCommandException {}
         };
 
-        OnapCommandUtils.loadSchema(cmd, "onap-test-schema.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "onap-test-schema.yaml", true, false);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
 
         assertFalse(parameters.contains("onap-username"));
@@ -103,7 +103,7 @@ public class TestDefaultParameterSection {
             protected void run() throws OnapCommandException {}
         };
 
-        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-default-parameter.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-default-parameter.yaml", true, false);
     }
 
     @Test(expected = OnapCommandInvalidDefaultParameter.class)
@@ -113,7 +113,7 @@ public class TestDefaultParameterSection {
             protected void run() throws OnapCommandException {}
         };
 
-        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-default-params-not-exist.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-default-params-not-exist.yaml", true, false);
     }
 
     @Test(expected = OnapCommandInvalidSchema.class)
@@ -123,7 +123,7 @@ public class TestDefaultParameterSection {
             protected void run() throws OnapCommandException {}
         };
 
-        OnapCommandUtils.loadSchema(cmd, "sample-test-import-def-param-false.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-import-def-param-false.yaml", true, false);
     }
 
     @Test(expected = OnapCommandInvalidDefaultParameter.class)
@@ -133,7 +133,7 @@ public class TestDefaultParameterSection {
             protected void run() throws OnapCommandException {}
         };
 
-        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-include-noauth.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-include-noauth.yaml", true, false);
     }
 
     @Test(expected = OnapCommandInvalidDefaultParameter.class)
@@ -143,6 +143,6 @@ public class TestDefaultParameterSection {
             protected void run() throws OnapCommandException {}
         };
 
-        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-exclude-noauth.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-exclude-noauth.yaml", true, false);
     }
 }
