@@ -170,7 +170,7 @@ public abstract class OnapCommand {
      */
     public void initializeSchema(String schema) throws OnapCommandException {
         this.setSchemaName(schema);
-        OnapCommandUtils.loadSchema(this, schema, true);
+        OnapCommandUtils.loadSchema(this, schema, true, false);
         this.initializeProfileSchema();
         this.isInitialzied = true;
     }
