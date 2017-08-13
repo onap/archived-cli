@@ -71,7 +71,7 @@ public class SchemaValidator extends AbstractSchemaValidate {
             return;
         }
 
-        validateMandatoryParams(httpMap, HTTP_SECTIONS, HTTP_MANDATORY_SECTIONS, PARAMETERS);
+//        validateMandatoryParams(httpMap, HTTP_SECTIONS, HTTP_MANDATORY_SECTIONS, PARAMETERS);
 
         Map<String, Object> requestMap = (Map<String, Object>) httpMap.get(REQUEST);
 
@@ -110,7 +110,7 @@ public class SchemaValidator extends AbstractSchemaValidate {
             return;
         }
         // validate mandatory parameters
-        validateMandatoryParams(requestMap, HTTP_REQUEST_PARAMS, HTTP_REQUEST_MANDATORY_PARAMS, REQUEST);
+//        validateMandatoryParams(requestMap, HTTP_REQUEST_PARAMS, HTTP_REQUEST_MANDATORY_PARAMS, REQUEST);
 
         // Validate method types
         String method = (String) requestMap.get(METHOD);

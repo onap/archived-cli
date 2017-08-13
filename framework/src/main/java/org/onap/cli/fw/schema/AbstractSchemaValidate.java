@@ -231,77 +231,75 @@ public abstract class AbstractSchemaValidate implements SchemaValidate {
         }
 
         if (type.equals(SchemaType.BASIC)) {
-            validateTopLevelAttributes();
-            validateInputParameters();
-            validateResultParameters();
+//            validateInputParameters();
+//            validateResultParameters();
         } else {
-            validateTopLevelAttributes();
-            validateServiceAttributes();
-            validateInputParameters();
-            validateResultParameters();
-            validateSpecificSchema(SchemaType.HTTP);
+//            validateServiceAttributes();
+//            validateInputParameters();
+//            validateResultParameters();
+//            validateSpecifihcSchema(SchemaType.HTTP);
         }
         return schemaErrors;
     }
 
-    private void validateResultAttributes(List<Map<String, Object>> resultAttributes) {
-        Set<String> resultParamNames = new HashSet<>();
-        for (Map<String, Object> attribute : resultAttributes) {
+//    private void validateResultAttributes(List<Map<String, Object>> resultAttributes) {
+//        Set<String> resultParamNames = new HashSet<>();
+//        for (Map<String, Object> attribute : resultAttributes) {
+//
+//            // Validate mandatory parameters
+//            validateMandatoryParams(attribute, RESULT_PARAMS_LIST, RESULT_PARAMS_MANDATORY_LIST, ATTRIBUTES);
+//
+//            String name = String.valueOf(attribute.get(NAME));
+//
+//            if (resultParamNames.contains(name)) {
+//                schemaErrors.add(SchemaValidate.attributeNameExist(name, ATTRIBUTES));
+//            } else {
+//                resultParamNames.add(name);
+//            }
+//
+//            // Validate specific parameters
+//            Object type = attribute.get(TYPE);
+//            String value = String.valueOf(type);
+//            if (!PARAMETER_TYPES.contains(value.toLowerCase())) {
+//                schemaErrors.add(SchemaValidate.invalidType(ATTRIBUTES, name, PARAMETER_TYPES));
+//            }
+//
+//            Object scope = attribute.get(SCOPE);
+//            if (scope == null) {
+//                schemaErrors.add(SchemaValidate.attributeScopeEmpty(name));
+//            } else if (!RESULT_SCOPES.contains(scope)) {
+//                schemaErrors.add(SchemaValidate.invalidAttributeScope(name, RESULT_SCOPES));
+//            }
+//
+//            Object isSecured = attribute.get(IS_SECURED);
+//            if (isSecured != null) {
+//                String value2 = String.valueOf(isSecured);
+//                if (!validateBoolean(value2)) {
+//                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(ATTRIBUTES, IS_SECURED, value2));
+//                }
+//            }
+//        }
+//
+//    }
 
-            // Validate mandatory parameters
-            validateMandatoryParams(attribute, RESULT_PARAMS_LIST, RESULT_PARAMS_MANDATORY_LIST, ATTRIBUTES);
-
-            String name = String.valueOf(attribute.get(NAME));
-
-            if (resultParamNames.contains(name)) {
-                schemaErrors.add(SchemaValidate.attributeNameExist(name, ATTRIBUTES));
-            } else {
-                resultParamNames.add(name);
-            }
-
-            // Validate specific parameters
-            Object type = attribute.get(TYPE);
-            String value = String.valueOf(type);
-            if (!PARAMETER_TYPES.contains(value.toLowerCase())) {
-                schemaErrors.add(SchemaValidate.invalidType(ATTRIBUTES, name, PARAMETER_TYPES));
-            }
-
-            Object scope = attribute.get(SCOPE);
-            if (scope == null) {
-                schemaErrors.add(SchemaValidate.attributeScopeEmpty(name));
-            } else if (!RESULT_SCOPES.contains(scope)) {
-                schemaErrors.add(SchemaValidate.invalidAttributeScope(name, RESULT_SCOPES));
-            }
-
-            Object isSecured = attribute.get(IS_SECURED);
-            if (isSecured != null) {
-                String value2 = String.valueOf(isSecured);
-                if (!validateBoolean(value2)) {
-                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(ATTRIBUTES, IS_SECURED, value2));
-                }
-            }
-        }
-
-    }
-
-    private void validateResultParameters() {
-        @SuppressWarnings("unchecked")
-        Map<String, Object> resultParams = (Map<String, Object>) yamlMap.get(RESULTS);
-
-        if (resultParams == null || resultParams.isEmpty()) {
-            return;
-        }
-
-        Object direction = resultParams.get(DIRECTION);
-
-        if (direction != null && !DIRECTIONS.contains(direction)) {
-            schemaErrors.add(SchemaValidate.invalidType(PARAMETERS, DIRECTION, DIRECTIONS));
-        }
-
-        @SuppressWarnings("unchecked")
-        List<Map<String, Object>> resultAttributes = (List<Map<String, Object>>) resultParams.get(ATTRIBUTES);
-        validateResultAttributes(resultAttributes);
-    }
+//    private void validateResultParameters() {
+//        @SuppressWarnings("unchecked")
+//        Map<String, Object> resultParams = (Map<String, Object>) yamlMap.get(RESULTS);
+//
+//        if (resultParams == null || resultParams.isEmpty()) {
+//            return;
+//        }
+//
+//        Object direction = resultParams.get(DIRECTION);
+//
+//        if (direction != null && !DIRECTIONS.contains(direction)) {
+//            schemaErrors.add(SchemaValidate.invalidType(PARAMETERS, DIRECTION, DIRECTIONS));
+//        }
+//
+//        @SuppressWarnings("unchecked")
+//        List<Map<String, Object>> resultAttributes = (List<Map<String, Object>>) resultParams.get(ATTRIBUTES);
+//        validateResultAttributes(resultAttributes);
+//    }
 
     /**
      * Get all default short options.
@@ -345,152 +343,117 @@ public abstract class AbstractSchemaValidate implements SchemaValidate {
         return set;
     }
 
-    private void validateTopLevelAttributes() {
-        validateMandatoryParams(yamlMap, TOP_LEVEL_PARAMS_LIST, TOP_LEVEL_MANDATORY_LIST, "root level");
-    }
 
-    private void validateServiceAttributes() {
+//    private void validateServiceAttributes() {
+//
+//        @SuppressWarnings("unchecked")
+//        Map<String, Object> serviceMap = (Map<String, Object>) yamlMap.get(SERVICE);
+//
+//        if (serviceMap == null) {
+//            schemaErrors.add(SchemaValidate.emptySection(SERVICE));
+//            return;
+//        }
+//
+//        validateMandatoryParams(serviceMap, SERVICE_PARAMS_LIST, SERVICE_PARAMS_MANDATORY_LIST, SERVICE);
+//
+//        // Validate specific parameters
+//
+//        if (serviceMap.containsKey(NO_AUTH)) {
+//            Object obj = serviceMap.get(NO_AUTH);
+//            if (obj == null) {
+//                schemaErrors.add(SchemaValidate.emptyValue(SERVICE, NO_AUTH));
+//            } else {
+//                String value = String.valueOf(obj);
+//                if (!validateBoolean(value)) {
+//                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(SERVICE, NO_AUTH, value));
+//                }
+//            }
+//        }
+//
+//    }
 
-        @SuppressWarnings("unchecked")
-        Map<String, Object> serviceMap = (Map<String, Object>) yamlMap.get(SERVICE);
-
-        if (serviceMap == null) {
-            schemaErrors.add(SchemaValidate.emptySection(SERVICE));
-            return;
-        }
-
-        validateMandatoryParams(serviceMap, SERVICE_PARAMS_LIST, SERVICE_PARAMS_MANDATORY_LIST, SERVICE);
-
-        // Validate specific parameters
-
-        if (serviceMap.containsKey(NO_AUTH)) {
-            Object obj = serviceMap.get(NO_AUTH);
-            if (obj == null) {
-                schemaErrors.add(SchemaValidate.emptyValue(SERVICE, NO_AUTH));
-            } else {
-                String value = String.valueOf(obj);
-                if (!validateBoolean(value)) {
-                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(SERVICE, NO_AUTH, value));
-                }
-            }
-        }
-
-    }
-
-    private void validateInputParameters() {
-
-        @SuppressWarnings("unchecked")
-        List<Map<String, Object>> inputParams = (List<Map<String, Object>>) yamlMap.get(PARAMETERS);
-        if (inputParams == null) {
-            return;
-        }
-        validateInputAttributes(inputParams);
-    }
+//    private void validateInputParameters() {
+//
+//        @SuppressWarnings("unchecked")
+//        List<Map<String, Object>> inputParams = (List<Map<String, Object>>) yamlMap.get(PARAMETERS);
+//        if (inputParams == null) {
+//            return;
+//        }
+//        validateInputAttributes(inputParams);
+//    }
 
     protected abstract void validateSpecificSchema(SchemaType type) throws OnapCommandInvalidSchema;
 
-    private void validateInputAttributes(List<Map<String, Object>> inputParams) {
-        Set<String> inputParamNames = new HashSet<>();
-        Set<String> inputShortOptions = new HashSet<>();
-        Set<String> inputLongOptions = new HashSet<>();
-
-        Set<String> defaultShortOptions = getDefaultShortOptions();
-        Set<String> defaultLongOptions = getDefaultLongOptions();
-
-        for (Map<String, Object> parameter : inputParams) {
-
-            // Validate mandatory parameters
-            validateMandatoryParams(parameter, INPUT_PARAMS_LIST, INPUT_PARAMS_MANDATORY_LIST, PARAMETERS);
-
-            // Validate specific parameters
-
-            String name = String.valueOf(parameter.get(NAME));
-
-            if (inputParamNames.contains(name)) {
-                schemaErrors.add(SchemaValidate.nameExist(name, PARAMETERS));
-            } else {
-                inputParamNames.add(name);
-            }
-
-            String value = String.valueOf(parameter.get(TYPE));
-
-            if (!PARAMETER_TYPES.contains(value.toLowerCase())) {
-                schemaErrors.add(SchemaValidate.invalidAttrType(name, PARAMETERS, PARAMETER_TYPES));
-            }
-
-            Object isOptional = parameter.get(IS_OPTIONAL);
-            if (isOptional != null) {
-                String value1 = String.valueOf(isOptional);
-                if (!validateBoolean(value1)) {
-                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(name, IS_OPTIONAL, value1));
-                }
-            }
-
-            Object isSecured = parameter.get(IS_SECURED);
-            if (isSecured != null) {
-                String value2 = String.valueOf(isSecured);
-                if (!validateBoolean(value2)) {
-                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(name, IS_SECURED, value2));
-                }
-            }
-
-            String shortOption = String.valueOf(parameter.get(SHORT_OPTION));
-            String longOption = String.valueOf(parameter.get(LONG_OPTION));
-
-            if (inputShortOptions.contains(shortOption)) {
-                schemaErrors.add(SchemaValidate.optionExist(SHORT_OPTION, shortOption, name));
-            } else if (defaultShortOptions.contains(shortOption)) {
-
-                schemaErrors
-                        .add(SchemaValidate.optionDefaultExist(SHORT_OPTION, shortOption, name, defaultShortOptions));
-
-            } else if (shortOption != null && !shortOption.isEmpty() && !"null".equals(shortOption)) {
-                inputShortOptions.add(shortOption);
-            }
-
-            if (inputLongOptions.contains(longOption)) {
-                schemaErrors.add(SchemaValidate.optionExist(LONG_OPTION, longOption, name));
-            } else if (defaultLongOptions.contains(longOption)) {
-
-                schemaErrors.add(SchemaValidate.optionDefaultExist(LONG_OPTION, longOption, name, defaultLongOptions));
-            } else if (longOption != null && !longOption.isEmpty() && !"null".equals(shortOption)) {
-                inputLongOptions.add(longOption);
-            }
-
-        }
-
-    }
-
-    /**
-     * Validate mandatory parameters.
-     *
-     * @param yamlMap
-     *            yaml map
-     * @param totalParams
-     *            list
-     * @param mandatoryParams
-     *            list
-     * @param section
-     *            section
-     */
-    protected void validateMandatoryParams(Map<String, Object> yamlMap, List<String> totalParams,
-            List<String> mandatoryParams, String section) {
-
-        for (String param : totalParams) {
-            boolean isMandatory = mandatoryParams.contains(param);
-            boolean isYamlContains = yamlMap.containsKey(param);
-            if (isMandatory) {
-                if (!isYamlContains) {
-                    schemaErrors.add(SchemaValidate.mandatoryAttrMissing(param, section));
-                } else {
-                    String value = String.valueOf(yamlMap.get(param));
-                    if (value == null || "".equals(value) || "null".equals(value)) {
-                        schemaErrors.add(SchemaValidate.mandatoryAttrEmpty(param, section));
-                    }
-                }
-            }
-        }
-    }
+//    private void validateInputAttributes(List<Map<String, Object>> inputParams) {
+//        Set<String> inputParamNames = new HashSet<>();
+//        Set<String> inputShortOptions = new HashSet<>();
+//        Set<String> inputLongOptions = new HashSet<>();
+//
+//        Set<String> defaultShortOptions = getDefaultShortOptions();
+//        Set<String> defaultLongOptions = getDefaultLongOptions();
+//
+//        for (Map<String, Object> parameter : inputParams) {
+//
+//            // Validate mandatory parameters
+//            validateMandatoryParams(parameter, INPUT_PARAMS_LIST, INPUT_PARAMS_MANDATORY_LIST, PARAMETERS);
+//
+//            // Validate specific parameters
+//
+//            String name = String.valueOf(parameter.get(NAME));
+//
+//            if (inputParamNames.contains(name)) {
+//                schemaErrors.add(SchemaValidate.nameExist(name, PARAMETERS));
+//            } else {
+//                inputParamNames.add(name);
+//            }
+//
+//            String value = String.valueOf(parameter.get(TYPE));
+//
+//            if (!PARAMETER_TYPES.contains(value.toLowerCase())) {
+//                schemaErrors.add(SchemaValidate.invalidAttrType(name, PARAMETERS, PARAMETER_TYPES));
+//            }
+//
+//            Object isOptional = parameter.get(IS_OPTIONAL);
+//            if (isOptional != null) {
+//                String value1 = String.valueOf(isOptional);
+//                if (!validateBoolean(value1)) {
+//                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(name, IS_OPTIONAL, value1));
+//                }
+//            }
+//
+//            Object isSecured = parameter.get(IS_SECURED);
+//            if (isSecured != null) {
+//                String value2 = String.valueOf(isSecured);
+//                if (!validateBoolean(value2)) {
+//                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(name, IS_SECURED, value2));
+//                }
+//            }
+//
+//            String shortOption = String.valueOf(parameter.get(SHORT_OPTION));
+//            String longOption = String.valueOf(parameter.get(LONG_OPTION));
+//
+//            if (inputShortOptions.contains(shortOption)) {
+//                schemaErrors.add(SchemaValidate.optionExist(SHORT_OPTION, shortOption, name));
+//            } else if (defaultShortOptions.contains(shortOption)) {
+//
+//                schemaErrors.add(SchemaValidate.optionDefaultExist(SHORT_OPTION, shortOption, name, defaultShortOptions));
+//
+//            } else if (shortOption != null && !shortOption.isEmpty() && !"null".equals(shortOption)) {
+//                inputShortOptions.add(shortOption);
+//            }
+//
+//            if (inputLongOptions.contains(longOption)) {
+//                schemaErrors.add(SchemaValidate.optionExist(LONG_OPTION, longOption, name));
+//            } else if (defaultLongOptions.contains(longOption)) {
+//
+//                schemaErrors.add(SchemaValidate.optionDefaultExist(LONG_OPTION, longOption, name, defaultLongOptions));
+//            } else if (longOption != null && !longOption.isEmpty() && !"null".equals(shortOption)) {
+//                inputLongOptions.add(longOption);
+//            }
+//
+//        }
+//
+//    }
 
     /**
      * Load result attributes.

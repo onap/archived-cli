@@ -69,7 +69,7 @@ import java.util.Set;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnapCommandUtilsTest {
 
-    @Test(expected = OnapCommandSchemaNotFound.class)
+    @Test(expected = OnapCommandInvalidSchema.class)
     public void onapCommandUtilsInputStreamNullTest() throws OnapCommandException {
         OnapCommandUtils.validateSchemaVersion("sample-test1-schema-http1.yaml", "1.0");
     }
@@ -144,32 +144,32 @@ public class OnapCommandUtilsTest {
     @Test
     public void loadOnapCommandSchemaWithOutDefaultTest() throws OnapCommandException {
         OnapCommand cmd = new OnapCommandSample();
-        OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml", false);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml", false, false);
         assertTrue("sample-test".equals(cmd.getName()) && cmd.getParameters().size() == 9);
     }
 
     @Test(expected = OnapCommandParameterNameConflict.class)
     public void loadOnapCommandSchemaWithDuplicateNameTest() throws OnapCommandException {
         OnapCommand cmd = new OnapCommandSample();
-        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-schema-duplicate-name.yaml", false);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-schema-duplicate-name.yaml", false, false);
     }
 
     @Test(expected = OnapCommandParameterOptionConflict.class)
     public void loadOnapCommandSchemaWithDuplicateShortOptionTest() throws OnapCommandException {
         OnapCommand cmd = new OnapCommandSample();
-        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-schema-duplicate-shortoption.yaml", false);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-schema-duplicate-shortoption.yaml", false, false);
     }
 
     @Test(expected = OnapCommandParameterOptionConflict.class)
     public void loadOnapCommandSchemaWithDuplicateLongOptionTest() throws OnapCommandException {
         OnapCommand cmd = new OnapCommandSample();
-        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-schema-duplicate-longoption.yaml", false);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-invalid-schema-duplicate-longoption.yaml", false, false);
     }
 
     @Test
     public void loadOnapCommandSchemaWithDefaultTest() throws OnapCommandException {
         OnapCommand cmd = new OnapCommandSample();
-        OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml", true, false);
         assertTrue("sample-test".equals(cmd.getName()) && cmd.getParameters().size() > 9);
 
         for (OnapCommandParameter com : cmd.getParameters()) {
@@ -185,7 +185,7 @@ public class OnapCommandUtilsTest {
     @Test
     public void loadOnapCommandSchemaAuthRequiredTest() throws OnapCommandException {
         OnapCommand cmd = new OnapCommandSample();
-        OnapCommandUtils.loadSchema(cmd, "sample-test-schema-auth-required.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-schema-auth-required.yaml", true, false);
         assertTrue("sample-test".equals(cmd.getName()));
 
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
@@ -246,7 +246,7 @@ public class OnapCommandUtilsTest {
     @Test
     public void helpCommandTest() throws IOException, OnapCommandException {
         OnapCommand cmd = new OnapCommandSample();
-        OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml", true, false);
 
         String actualResult = OnapCommandUtils.help(cmd);
 
@@ -392,7 +392,7 @@ public class OnapCommandUtilsTest {
     public void zendExceptionTest2() throws OnapCommandException {
 
         mockExternalResources();
-        OnapCommandUtils.loadSchema(new OnapHttpCommandSample(), "schemaName", false);
+        OnapCommandUtils.loadSchema(new OnapHttpCommandSample(), "schemaName", false, false);
     }
 
     @Test(expected = OnapCommandException.class)
@@ -428,7 +428,7 @@ public class OnapCommandUtilsTest {
 
         mockPrintMethodException();
         OnapCommand cmd = new OnapCommandSample();
-        OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml", true, false);
 
         OnapCommandUtils.help(cmd);
 
