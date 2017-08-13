@@ -20,17 +20,14 @@ import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameter;
-import org.onap.cli.fw.schema.SchemaValidate;
-import org.onap.cli.fw.schema.SchemaValidator;
+import org.onap.cli.fw.utils.OnapCommandUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Validate schema command.
- *
  */
 @OnapCommandSchema(name = "schema-validate", schema = "schema-validate.yaml")
 public class OnapSchemaValidateCommand extends OnapCommand {
@@ -42,15 +39,20 @@ public class OnapSchemaValidateCommand extends OnapCommand {
         String location = String.valueOf(locationParam.getValue());
         OnapCommandParameter interSchemaParam = paramMap.get("internal-schema");
         boolean isInternalSchema = Boolean.valueOf(String.valueOf(interSchemaParam.getValue()));
-        SchemaValidate schema;
         if (isInternalSchema) {
             location = location.substring(1);
-            schema = new SchemaValidator(location);
-        } else {
-            schema = new SchemaValidator(new File(location));
         }
 
-        List<String> error = schema.validate();
+        List<String> error = OnapCommandUtils.loadSchema(new OnapCommand() {
+            @Override
+            protected void run() throws OnapCommandException {
+            }
+        }, location, true, true);
+
+
+         error.addAll(OnapCommandUtils.loadHTTPSchemaSection(new OnapHttpCommand(),
+                location, true));
+
         List<String> slNumber = new ArrayList<>();
         for (int i = 1; i <= error.size(); i++) {
             slNumber.add(String.valueOf(i));

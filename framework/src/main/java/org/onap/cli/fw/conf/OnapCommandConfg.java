@@ -19,6 +19,7 @@ package org.onap.cli.fw.conf;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -133,4 +134,9 @@ public final class OnapCommandConfg {
         return Arrays.stream(prps.getProperty(Constants.NO_AUTH_ENABLE_INCLUDE_PARAMS_EXTERNAL_CMD)
                 .split(",")).map(String::trim).collect(Collectors.toSet());
     }
+
+    public static List<String> getParameterList(String key) {
+        return Arrays.stream(prps.getProperty(key).split(",")).map(String::trim).collect(Collectors.toList());
+    }
+
 }
