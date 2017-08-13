@@ -38,7 +38,7 @@ public class TestCommandValidate {
     @Test
     public void testNoAuthArgumentTrue() throws OnapCommandException {
 
-        OnapCommandUtils.loadSchema(cmd, "sample-test-include-param.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-include-param.yaml", true, false);
 
         OnapCommandParameter noAuthParam = cmd.getParameters().stream().filter(p -> p.getName().equalsIgnoreCase("no-auth")).findFirst().get();
         noAuthParam.setValue(true);
@@ -49,7 +49,7 @@ public class TestCommandValidate {
 
     @Test(expected = OnapCommandParameterMissing.class)
     public void testNoAuthArgFalse() throws OnapCommandException {
-        OnapCommandUtils.loadSchema(cmd, "sample-test-include-param.yaml", true);
+        OnapCommandUtils.loadSchema(cmd, "sample-test-include-param.yaml", true, false);
         cmd.validate();
     }
 }
