@@ -255,7 +255,6 @@ public abstract class OnapCommand {
         }
 
         try {
-            // login
             OnapCredentials creds = OnapCommandUtils.fromParameters(this.getParameters());
             boolean isAuthRequired = !this.onapService.isNoAuth()
                     && "true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue());
@@ -268,10 +267,8 @@ public abstract class OnapCommand {
                 this.authClient.login();
             }
 
-            // execute
             this.run();
 
-            // logout
             if (isAuthRequired) {
                 this.authClient.logout();
             }

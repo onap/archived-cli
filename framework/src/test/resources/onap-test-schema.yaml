@@ -4,7 +4,7 @@ description: Onap sample command to test the command features
 service:
   name: sample
   version: v1
-  no-auth: true
+  auth: none
 parameters:
   - name: bool-param
     type: bool

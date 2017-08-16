@@ -43,7 +43,7 @@ public class OnapService {
      */
     private String mode = Constants.MODE_CATALOG;
 
-    private boolean noAuth = false;
+    private String authType = Constants.AUTH_BASIC;
 
     public String getMode() {
         return mode;
@@ -57,12 +57,16 @@ public class OnapService {
         return this.getMode().equals(Constants.MODE_DIRECT);
     }
 
-    public boolean isNoAuth() {
-        return noAuth;
+    public String getAuthType() {
+        return this.authType;
     }
 
-    public void setNoAuth(boolean noAuth) {
-        this.noAuth = noAuth;
+    public void setAuthType(String auth) {
+        this.authType = auth;
+    }
+
+    public boolean isNoAuth() {
+        return this.authType.equalsIgnoreCase(Constants.AUTH_NONE);
     }
 
     public String getName() {

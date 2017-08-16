@@ -4,7 +4,7 @@ description: Details the registered microservice in Onap
 service:
   name: msb
   version: v1
-  no-auth: true
+  auth: none
 parameters:
   - name: service-name
     description: Onap service name

@@ -74,7 +74,7 @@ public abstract class AbstractSchemaValidate implements SchemaValidate {
     protected static final List<String> TOP_LEVEL_MANDATORY_LIST = Arrays.asList(ONAP_CMD_SCHEMA_VERSION, NAME,
             DESCRIPTION);
 
-    protected static final List<String> SERVICE_PARAMS_LIST = Arrays.asList(NAME, VERSION, NO_AUTH);
+    protected static final List<String> SERVICE_PARAMS_LIST = Arrays.asList(NAME, VERSION, AUTH);
 
     protected static final List<String> SERVICE_PARAMS_MANDATORY_LIST = Arrays.asList(NAME, VERSION);
 
@@ -363,14 +363,14 @@ public abstract class AbstractSchemaValidate implements SchemaValidate {
 
         // Validate specific parameters
 
-        if (serviceMap.containsKey(NO_AUTH)) {
-            Object obj = serviceMap.get(NO_AUTH);
+        if (serviceMap.containsKey(AUTH)) {
+            Object obj = serviceMap.get(AUTH);
             if (obj == null) {
-                schemaErrors.add(SchemaValidate.emptyValue(SERVICE, NO_AUTH));
+                schemaErrors.add(SchemaValidate.emptyValue(SERVICE, AUTH));
             } else {
                 String value = String.valueOf(obj);
-                if (!validateBoolean(value)) {
-                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(SERVICE, NO_AUTH, value));
+                if (validateBoolean(value)) {
+                    schemaErrors.add(SchemaValidate.invalidBooleanValueMessage(SERVICE, AUTH, value));
                 }
             }
         }

@@ -4,7 +4,7 @@ description: Sample create into Onap
 service:
   name: sample
   version: v1
-  no-auth: true
+  auth: none
 parameters:
   - name: service-name
     description: Onap service name
