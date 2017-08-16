@@ -248,9 +248,10 @@ public class OnapCommandUtils {
                             srv.setName(map.get(key1));
                         } else if (Constants.VERSION.equals(key1)) {
                             srv.setVersion(map.get(key1));
-                        } else if (Constants.NO_AUTH.equals(key1)) {
+                        } else if (Constants.AUTH.equals(key1)) {
                             Object obj = map.get(key1);
-                            srv.setNoAuth("true".equalsIgnoreCase(obj.toString()));
+                            //TODO mrkanag Validate and raise exception for invalid case
+                            srv.setAuthType(obj.toString());
                         } else if (Constants.MODE.equals(key1)) {
                             Object obj = map.get(key1);
                             //TODO mrkanag Validate and raise exception for invalid case

@@ -19,6 +19,7 @@ package org.onap.cli.fw.ad;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.onap.cli.fw.conf.Constants;
 
 public class OnapServiceTest {
 
@@ -28,7 +29,7 @@ public class OnapServiceTest {
         ser.setName("name");
         ser.setVersion("1.0");
         ser.setBasePath("basePath");
-        ser.setNoAuth(true);
+        ser.setAuthType(Constants.AUTH_NONE);
         assertTrue(ser.getName().equals("name") && ser.getVersion().equals("1.0")
                 && ser.getBasePath().equals("basePath") && ser.isNoAuth());
 

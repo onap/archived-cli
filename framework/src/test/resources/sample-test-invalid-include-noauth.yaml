@@ -1,6 +1,6 @@
 onap_cmd_schema_version: 1.0
 service:
-  no-auth: true
+  auth: none
 default_parameters:
   include:
     - onap-username
