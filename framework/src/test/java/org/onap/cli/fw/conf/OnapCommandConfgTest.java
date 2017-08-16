@@ -38,7 +38,6 @@ public class OnapCommandConfgTest {
         Assert.assertTrue(auth == Boolean.valueOf(prps.getProperty("cli.ignore_auth")));
         Assert.assertTrue(OnapCommandConfg.isCookiesBasedAuth() == Boolean
                 .valueOf(prps.getProperty("http.api_key_use_cookies")));
-        Assert.assertTrue("X-Auth-Token".equals(OnapCommandConfg.getXAuthTokenName()));
     }
 
 }

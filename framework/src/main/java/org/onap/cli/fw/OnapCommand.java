@@ -257,7 +257,7 @@ public abstract class OnapCommand {
         try {
             OnapCredentials creds = OnapCommandUtils.fromParameters(this.getParameters());
             boolean isAuthRequired = !this.onapService.isNoAuth()
-                    && "true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue());
+                    && "false".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue());
 
             if (!isCommandInternal()) {
                 this.authClient = new OnapAuthClient(creds, this.getResult().isDebug());
@@ -297,10 +297,6 @@ public abstract class OnapCommand {
      */
     protected String getBasePath() throws OnapCommandException {
         return this.authClient.getServiceBasePath(this.getService());
-    }
-
-    protected String getAuthToken() {
-        return this.authClient.getAuthToken();
     }
 
     /**

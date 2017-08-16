@@ -24,7 +24,7 @@ public class Constants {
 
     public static final String SSLCONTEST_TLS = "TLSV1.2";
     public static final String APPLICATION_JSON = "application/json";
-    public static final String X_AUTH_TOKEN = "X-Auth-Token";
+    public static final String X_AUTH_TOKEN = "x-auth-token";
 
     public static final String AUTH_SERVICE = "cli.auth_service";
     public static final String AUTH_SERVICE_VERSION = "v1";
@@ -109,12 +109,13 @@ public class Constants {
     public static final String CONF = "onap.properties";
     public static final String ONAP_IGNORE_AUTH = "cli.ignore_auth";
     public static final String ONAP_CLI_VERSION = "cli.version";
-    public static final String HTTP_API_KEY_USE_COOKIES = "http.api_key_use_cookies";
-    public static final String HTTP_X_AUTH_TOKEN = "http.x_auth_token";
+    public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
     public static final String EXCLUDE_PARAMS_INTERNAL_CMD = "cli.exclude_params_internal_cmd";
     public static final String NO_AUTH_DISABLE_INCLUDE_PARAMS_EXTERNAL_CMD = "cli.no_auth_disable_include_params_external_cmd";
     public static final String NO_AUTH_ENABLE_EXCLUDE_PARAMS_EXTERNAL_CMD = "cli.no_auth_enable_exclude_params_external_cmd";
     public static final String NO_AUTH_ENABLE_INCLUDE_PARAMS_EXTERNAL_CMD = "cli.no_auth_enable_include_params_external_cmd";
+    public static final String SERVICE_AUTH = "cli.service.auth";
+    public static final String SERVICE_AUTH_BASIC_HTTP_HEADERS = "cli.http.basic.common_headers";
 
     // Used while printing the column name during PORTRAIT mode print
     public static final String PORTRAINT_COLUMN_NAME_PROPERTY = "property";

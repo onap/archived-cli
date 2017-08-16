@@ -16,8 +16,11 @@
 
 package org.onap.cli.fw.ad;
 
-import com.jayway.jsonpath.JsonPath;
+import java.util.Map;
+
 import org.apache.http.HttpStatus;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.impl.auth.BasicScheme;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -29,6 +32,8 @@ import org.onap.cli.fw.error.OnapCommandServiceNotFound;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.http.OnapHttpConnection;
+
+import com.jayway.jsonpath.JsonPath;
 
 /**
  * Onap Auth client helps to do login and logout.
@@ -67,25 +72,17 @@ public class OnapAuthClient {
             return;
         }
 
-        HttpInput input = new HttpInput().setUri(this.getAuthUrl() + "/tokens")
-                .setBody(String.format(Constants.TOKEN, creds.getUsername(), creds.getPassword()))
-                .setMethod("post");
+        if (OnapCommandConfg.getAuthType().equalsIgnoreCase(Constants.AUTH_BASIC)) {
+            String authToken = BasicScheme.authenticate(new UsernamePasswordCredentials(
+                    creds.getUsername(), creds.getPassword()), "UTF-8", false).getValue();
 
-        HttpResult result;
-        try {
-            result = this.run(input);
-        } catch (OnapCommandHttpFailure e) {
-            throw new OnapCommandLoginFailed(e);
-        }
-        if (result.getStatus() != HttpStatus.SC_OK && result.getStatus() != HttpStatus.SC_CREATED) {
-            throw new OnapCommandLoginFailed(result.getBody(), result.getStatus());
+            Map<String, String> mapHeaders = OnapCommandConfg.getBasicCommonHeaders();
+            mapHeaders.put(OnapCommandConfg.getXAuthTokenName(), authToken);
+            this.http.setCommonHeaders(mapHeaders);
+            return;
         }
 
-        if (OnapCommandConfg.isCookiesBasedAuth()) {
-            this.http.setAuthToken(result.getRespCookies().get(Constants.X_AUTH_TOKEN));
-        } else {
-            this.http.setAuthToken(result.getRespHeaders().get(Constants.X_AUTH_TOKEN));
-        }
+        //TODO mrkanag add support for aaf here
     }
 
     /**
@@ -104,18 +101,6 @@ public class OnapAuthClient {
         // For development purpose, its introduced and is not supported for production
         if (OnapCommandConfg.isAuthIgnored()) {
             return;
-        }
-
-        HttpInput input = new HttpInput().setUri(this.getAuthUrl() + "/tokens").setMethod("delete");
-
-        HttpResult result;
-        try {
-            result = this.run(input);
-        } catch (OnapCommandHttpFailure e) {
-            throw new OnapCommandLogoutFailed(e);
-        }
-        if (result.getStatus() != HttpStatus.SC_NO_CONTENT) {
-            throw new OnapCommandLogoutFailed(result.getStatus());
         }
 
         this.http.close();
@@ -171,10 +156,6 @@ public class OnapAuthClient {
         return this.creds.getHostUrl() + Constants.MSB_URI;
     }
 
-    public String getAuthToken() {
-        return this.http.getAuthToken();
-    }
-
     public String getDebugInfo() {
         return this.http.getDebugInfo();
     }
@@ -189,9 +170,6 @@ public class OnapAuthClient {
      *             exception
      */
     public HttpResult run(HttpInput input) throws OnapCommandHttpFailure {
-        if (OnapCommandConfg.isCookiesBasedAuth()) {
-            input.getReqCookies().put(Constants.X_AUTH_TOKEN, http.getAuthToken());
-        }
         return this.http.request(input);
     }
 }
