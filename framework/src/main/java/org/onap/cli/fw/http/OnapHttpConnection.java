@@ -16,6 +16,22 @@
 
 package org.onap.cli.fw.http;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.cert.X509Certificate;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -37,7 +53,6 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.BasicCookieStore;
@@ -51,22 +66,6 @@ import org.apache.http.util.EntityUtils;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.error.OnapCommandHttpFailure;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.security.cert.X509Certificate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
 /**
  * Helps to make http connection.<br>
  */
@@ -74,7 +73,7 @@ public class OnapHttpConnection {
 
     private HttpClient httpClient = null;
 
-    private String xauthToken = null;
+    Map<String, String> mapCommonHeaders = new HashMap<String, String> ();
 
     protected boolean debug = false;
 
@@ -134,14 +133,6 @@ public class OnapHttpConnection {
 
     public String getDebugInfo() {
         return this.debugDetails;
-    }
-
-    public void setAuthToken(String token) {
-        this.xauthToken = token;
-    }
-
-    public String getAuthToken() {
-        return this.xauthToken;
     }
 
     private Map<String, String> getHttpHeaders(HttpResponse resp) {
@@ -228,19 +219,26 @@ public class OnapHttpConnection {
         return this.request(input);
     }
 
+    public void setCommonHeaders(Map<String, String> headers) {
+        this.mapCommonHeaders = headers;
+    }
+
     private void addCommonHeaders(HttpInput input) {
         if (!input.isBinaryData()) {
-        input.getReqHeaders().put("Content-Type", Constants.APPLICATION_JSON);
+            input.getReqHeaders().put("Content-Type", Constants.APPLICATION_JSON);
         }
         input.getReqHeaders().put("Accept", Constants.APPLICATION_JSON);
-        if (this.xauthToken != null) {
-            input.getReqHeaders().put(Constants.X_AUTH_TOKEN, this.xauthToken);
+
+        for (String headerName : this.mapCommonHeaders.keySet()) {
+            input.getReqHeaders().put(headerName, this.mapCommonHeaders.get(headerName));
         }
     }
 
     private void addCommonCookies(CookieStore cookieStore) {
-        Cookie cookie = new BasicClientCookie(Constants.X_AUTH_TOKEN, this.xauthToken);
-        cookieStore.addCookie(cookie);
+        for (String headerName : this.mapCommonHeaders.keySet()) {
+            Cookie cookie = new BasicClientCookie(headerName, this.mapCommonHeaders.get(headerName));
+            cookieStore.addCookie(cookie);
+        }
     }
 
     private void updateResultFromCookies(HttpResult result, List<Cookie> cookies) {
@@ -334,7 +332,7 @@ public class OnapHttpConnection {
     }
 
     public void close() {
-        this.setAuthToken(null);
+        this.mapCommonHeaders.clear();
     }
 
     private HttpEntity getMultipartEntity(HttpInput input) {

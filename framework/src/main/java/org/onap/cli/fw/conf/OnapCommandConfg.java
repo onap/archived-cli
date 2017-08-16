@@ -18,8 +18,11 @@ package org.onap.cli.fw.conf;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -76,7 +79,7 @@ public final class OnapCommandConfg {
     }
 
     public static String getXAuthTokenName() {
-        return prps.getProperty(Constants.HTTP_X_AUTH_TOKEN, "X-Auth-Token");
+        return prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS + "." + Constants.X_AUTH_TOKEN);
     }
 
     public static String getInternalCmd() {
@@ -89,6 +92,26 @@ public final class OnapCommandConfg {
 
     public static String getAuthService() {
         return prps.getProperty(Constants.AUTH_SERVICE);
+    }
+
+    public static String getAuthType() {
+        return prps.getProperty(Constants.SERVICE_AUTH, Constants.AUTH_BASIC);
+    }
+
+    public static Map<String, String> getBasicCommonHeaders() {
+        Map<String, String> mapHeaders = new HashMap<String, String> ();
+
+        for (String header : Arrays.stream(prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS)
+                .split(",")).map(String::trim).collect(Collectors.toSet())) {
+            String headerName = prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS + "." + header);
+            String headerValue = prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS + "." + header + ".value", null);
+            if (headerValue != null) {
+                headerValue = headerValue.replaceAll("uuid", UUID.randomUUID().toString());
+            }
+            mapHeaders.put(headerName, headerValue);
+        }
+
+        return mapHeaders;
     }
 
     public static Set<String> getExcludeParamsForInternalCmd() {

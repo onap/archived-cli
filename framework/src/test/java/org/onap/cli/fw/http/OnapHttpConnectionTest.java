@@ -70,8 +70,6 @@ public class OnapHttpConnectionTest {
         inp.setMethod("get");
         con = new OnapHttpConnection(false, true);
         con.getDebugInfo();
-        con.setAuthToken("fdsfdsfs");
-        assertTrue("fdsfdsfs".equals(con.getAuthToken()));
         con.get(inp);
 
     }
