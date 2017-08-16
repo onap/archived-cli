@@ -17,6 +17,7 @@
 package org.onap.cli.fw.ad;
 
 import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConfg;
 
 /**
  * Onap Service as reported in api catalog.
@@ -43,7 +44,7 @@ public class OnapService {
      */
     private String mode = Constants.MODE_CATALOG;
 
-    private String authType = Constants.AUTH_BASIC;
+    private String authType =  OnapCommandConfg.getAuthType();;
 
     public String getMode() {
         return mode;
