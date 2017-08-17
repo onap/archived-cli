@@ -317,7 +317,7 @@ public class OnapCommandUtils {
             boolean isYamlContains = yamlMap.containsKey(param);
             if (isMandatory) {
                 if (!isYamlContains) {
-                    schemaErrors.add(mandatoryAttrMissing(param, section));
+                    schemaErrors.add("Mandatory attribute '" + param + "' is missing under '" + section + "'");
                 } else {
                     String value = String.valueOf(yamlMap.get(param));
                     if (value == null || value.isEmpty()) {
@@ -327,7 +327,6 @@ public class OnapCommandUtils {
                 }
             }
         }
-
     }
 
     /**
@@ -383,7 +382,8 @@ public class OnapCommandUtils {
                     if (map.containsKey(AUTH)) {
                         Object obj = map.get(AUTH);
                         if (obj == null) {
-                            exceptionList.add(emptyValue(SERVICE, AUTH));
+                            exceptionList.add("Attribute '" + AUTH + "' under '" + SERVICE + "' is null or empty");
+
                         } else {
                             String value = String.valueOf(obj);
                             if (!validateBoolean(value)) {
@@ -585,7 +585,9 @@ public class OnapCommandUtils {
 
                                     if (NAME.equals(key4)) {
                                         if (resultParamNames.contains(map.get(key4))) {
-                                            exceptionList.add(attributeNameExist(map.get(key4), ATTRIBUTES));
+                                            exceptionList.add("Attribute name='" + map.get(key4) + "' under '"
+                                                    + ATTRIBUTES + ":' is already used, Take different one.");
+
                                         } else {
                                             attr.setName(map.get(key4));
                                             resultParamNames.add(map.get(key4));
@@ -630,31 +632,8 @@ public class OnapCommandUtils {
         return exceptionList;
     }
 
-    private static String attributeNameExist(String name, String section) {
-        return "Attribute name='" + name + "' under '" + section + ":' is already used, Take different one.";
-    }
-
-    private static String parameterNotMapped(String declaredParam) {
-        return "The parameter '" + declaredParam
-                + "' declared under 'parameters:' section is not mapped into request section.";
-    }
-
-    private static String mandatoryAttrMissing(String param, String section) {
-
-        return "Mandatory attribute '" + param + "' is missing under '" + section + "'";
-    }
-
-    public static String emptySection(String section) {
+    private static String emptySection(String section) {
         return "The section '" + section + ":' cann't be null or empty";
-    }
-
-    private static String emptyValue(String section, String attribute) {
-        return "Attribute '" + attribute + "' under '" + section + "' is null or empty";
-    }
-
-    private static String invalidType(String section, String attribute, List<String> types) {
-        return "Attribute '" + attribute + "' under '" + section + "' is invalid, correct types are "
-                + types.toString();
     }
 
     private static String invalidBooleanValueMessage(String section, String attribute, String value) {
@@ -944,7 +923,8 @@ public class OnapCommandUtils {
             String method = (String) requestMap.get(METHOD);
             if (method != null && !method.isEmpty()) {
                 if (!OnapCommandConfg.getParameterList(HTTP_METHODS).contains(method.toLowerCase())) {
-                    errorList.add(invalidType(REQUEST, METHOD, OnapCommandConfg.getParameterList(HTTP_METHODS)));
+                    errorList.add("Attribute '" + METHOD + "' under '" + REQUEST + "' is invalid, correct types are "
+                            + OnapCommandConfg.getParameterList(HTTP_METHODS).toString());
                 }
             } else {
                 errorList.add("Http request method cann't be null or empty");
@@ -968,7 +948,8 @@ public class OnapCommandUtils {
             List<String> nonDeclaredParams = totoalParams.stream().filter(param -> !requestParams.contains(param))
                     .collect(Collectors.toList());
 
-            nonDeclaredParams.stream().forEach(p -> errorList.add(parameterNotMapped(p)));
+            nonDeclaredParams.stream().forEach(p -> errorList.add("The parameter '" + p
+                    + "' declared under 'parameters:' section is not mapped into request section."));
         } else {
             errorList.add(emptySection(REQUEST));
         }
