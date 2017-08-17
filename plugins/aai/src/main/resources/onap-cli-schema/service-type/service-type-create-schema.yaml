@@ -1,0 +1,32 @@
+onap_cmd_schema_version: 1.0
+name: service-type-create
+description: Add a service type in Onap
+service:
+  name: aai
+  version: v8
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: service-type
+    description: Onap service type
+    type: string
+    short_option: x
+    long_option: service-type
+    is_optional: false
+  - name: service-type-id
+    description: Onap service type uuid
+    type: uuid
+    short_option: y
+    long_option: service-type-id
+    is_optional: true
+
+http:
+  request:
+    uri: /aai/v8/service-design-and-creation/services/service/${service-type-id}
+    method: PUT
+    body: '{"service-description": "${service-type}", "service-id": "${service-type-id}"}'
+  success_codes:
+    - 201
+  sample_response:
+    body: ''

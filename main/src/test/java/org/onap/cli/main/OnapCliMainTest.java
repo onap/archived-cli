@@ -93,6 +93,12 @@ public class OnapCliMainTest {
         this.handle(new String[] { "customer-list", "-u", "AAI", "-p", "AAI", "-m", "https://192.168.17.12:8443" });
     }
 
+    @Ignore
+    @Test
+    public void testAAICloudList() {
+        this.handle(new String[] { "cloud-list", "-u", "AAI", "-p", "AAI", "-m", "https://192.168.17.12:8443" });
+    }
+
     @Test
     public void testHelpSampleCreateCommand() throws OnapCommandException {
         ClassLoader cl = ClassLoader.getSystemClassLoader();
