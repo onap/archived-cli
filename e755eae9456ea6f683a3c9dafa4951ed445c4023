@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_fbca5a6d",
+        "filename": "framework/src/main/java/org/onap/cli/fw/error/OnapCommandHttpInvalidResultMap.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-17T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_988fd423",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "e755eae9456ea6f683a3c9dafa4951ed445c4023",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_f89f004f",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 6
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_b8a61852",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-17T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_58b04cdd",
+      "range": {
+        "startLine": 154,
+        "startChar": 37,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "e755eae9456ea6f683a3c9dafa4951ed445c4023",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_9863541a",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-17T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_f89f004f",
+      "range": {
+        "startLine": 153,
+        "startChar": 98,
+        "endLine": 154,
+        "endChar": 23
+      },
+      "revId": "e755eae9456ea6f683a3c9dafa4951ed445c4023",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_d8ac3c8f",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-17T11:30:03Z",
       "side": 1,
       "message": "PARAMETERS, RESUTLS",
+      "range": {
+        "startLine": 157,
+        "startChar": 23,
+        "endLine": 157,
+        "endChar": 24
+      },
+      "revId": "e755eae9456ea6f683a3c9dafa4951ed445c4023",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_586dec03",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-17T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_d8ac3c8f",
       "range": {
         "startLine": 157,
         "startChar": 23,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_7868b0f5",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-17T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_78bb10c5",
+      "range": {
+        "startLine": 159,
+        "startChar": 93,
+        "endLine": 159,
+        "endChar": 94
+      },
+      "revId": "e755eae9456ea6f683a3c9dafa4951ed445c4023",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_78943037",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 6
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_387228e6",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-17T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_78943037",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 100
+      },
+      "revId": "e755eae9456ea6f683a3c9dafa4951ed445c4023",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_58996c6d",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
         "patchSetId": 6
@@ -151,6 +295,30 @@
       "writtenOn": "2017-08-17T11:30:03Z",
       "side": 1,
       "message": "make it as first check",
+      "range": {
+        "startLine": 233,
+        "startChar": 6,
+        "endLine": 237,
+        "endChar": 9
+      },
+      "revId": "e755eae9456ea6f683a3c9dafa4951ed445c4023",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_1bce3e84",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-17T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_58996c6d",
       "range": {
         "startLine": 233,
         "startChar": 6,
@@ -197,6 +365,30 @@
       "writtenOn": "2017-08-17T11:30:03Z",
       "side": 1,
       "message": "isEmpty()",
+      "range": {
+        "startLine": 339,
+        "startChar": 24,
+        "endLine": 339,
+        "endChar": 80
+      },
+      "revId": "e755eae9456ea6f683a3c9dafa4951ed445c4023",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_9818f485",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-17T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_b8c0582b",
       "range": {
         "startLine": 339,
         "startChar": 24,
