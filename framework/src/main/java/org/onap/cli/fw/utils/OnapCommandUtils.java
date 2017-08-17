@@ -82,6 +82,7 @@ import java.util.stream.Stream;
 import static org.onap.cli.fw.conf.Constants.API;
 import static org.onap.cli.fw.conf.Constants.ATTRIBUTES;
 import static org.onap.cli.fw.conf.Constants.AUTH;
+import static org.onap.cli.fw.conf.Constants.AUTH_VALUES;
 import static org.onap.cli.fw.conf.Constants.BODY;
 import static org.onap.cli.fw.conf.Constants.BOOLEAN_VALUE;
 import static org.onap.cli.fw.conf.Constants.CLIENT;
@@ -120,6 +121,8 @@ import static org.onap.cli.fw.conf.Constants.IS_SECURED;
 import static org.onap.cli.fw.conf.Constants.LONG_OPTION;
 import static org.onap.cli.fw.conf.Constants.MERHOD;
 import static org.onap.cli.fw.conf.Constants.METHOD;
+import static org.onap.cli.fw.conf.Constants.MODE;
+import static org.onap.cli.fw.conf.Constants.MODE_VALUES;
 import static org.onap.cli.fw.conf.Constants.NAME;
 import static org.onap.cli.fw.conf.Constants.ONAP_CMD_SCHEMA_VERSION;
 import static org.onap.cli.fw.conf.Constants.PARAMETERS;
@@ -317,7 +320,7 @@ public class OnapCommandUtils {
             boolean isYamlContains = yamlMap.containsKey(param);
             if (isMandatory) {
                 if (!isYamlContains) {
-                    schemaErrors.add(mandatoryAttrMissing(param, section));
+                    schemaErrors.add("Mandatory attribute '" + param + "' is missing under '" + section + "'");
                 } else {
                     String value = String.valueOf(yamlMap.get(param));
                     if (value == null || value.isEmpty()) {
@@ -327,7 +330,6 @@ public class OnapCommandUtils {
                 }
             }
         }
-
     }
 
     /**
@@ -338,7 +340,7 @@ public class OnapCommandUtils {
      * @return boolean
      */
     protected static boolean validateBoolean(String toValidate) {
-        return OnapCommandConfg.getParameterList(BOOLEAN_VALUE).contains(toValidate.toLowerCase());
+        return OnapCommandConfg.getSchemaAttrInfo(BOOLEAN_VALUE).contains(toValidate.toLowerCase());
     }
 
     private static List<String> parseSchema(OnapCommand cmd,
@@ -352,8 +354,8 @@ public class OnapCommandUtils {
         Set<String> filteredDefaultParams = new HashSet<>();
 
         if (validate) {
-            validateTags(exceptionList, (Map<String, Object>) values, OnapCommandConfg.getParameterList(TOP_LEVEL_PARAMS_LIST),
-                    OnapCommandConfg.getParameterList(TOP_LEVEL_MANDATORY_LIST), "root level");
+            validateTags(exceptionList, (Map<String, Object>) values, OnapCommandConfg.getSchemaAttrInfo(TOP_LEVEL_PARAMS_LIST),
+                    OnapCommandConfg.getSchemaAttrInfo(TOP_LEVEL_MANDATORY_LIST), "root level");
         }
 
 
@@ -376,18 +378,25 @@ public class OnapCommandUtils {
                 Map<String, String> map = (Map<String, String>) values.get(key);
 
                 if (validate) {
-                    // is it required to check wether schema contains Service sec
                     validateTags(exceptionList, (Map<String, Object>)values.get(key),
-                            OnapCommandConfg.getParameterList(SERVICE_PARAMS_LIST),
-                            OnapCommandConfg.getParameterList(SERVICE_PARAMS_MANDATORY_LIST), SERVICE);
-                    if (map.containsKey(AUTH)) {
-                        Object obj = map.get(AUTH);
-                        if (obj == null) {
-                            exceptionList.add(emptyValue(SERVICE, AUTH));
-                        } else {
-                            String value = String.valueOf(obj);
-                            if (!validateBoolean(value)) {
-                                exceptionList.add(invalidBooleanValueMessage(SERVICE, AUTH, value));
+                            OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_LIST),
+                            OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_MANDATORY_LIST), SERVICE);
+
+                    HashMap<String, String> validationMap = new HashMap<>();
+                    validationMap.put(AUTH, AUTH_VALUES);
+                    validationMap.put(MODE, MODE_VALUES);
+
+                    for (String secKey : validationMap.keySet()) {
+                        if (map.containsKey(secKey)) {
+                            Object obj = map.get(secKey);
+                            if (obj == null) {
+                                exceptionList.add("Attribute '" + secKey + "' under '" + SERVICE + "' is empty");
+                            } else {
+                                String value = String.valueOf(obj);
+                                if (!OnapCommandConfg.getSchemaAttrInfo(validationMap.get(secKey)).contains(value)) {
+                                    exceptionList.add("Attribute '" + secKey + "' contains invalid value. Valide values are "
+                                            + OnapCommandConfg.getSchemaAttrInfo(validationMap.get(key))); //
+                                }
                             }
                         }
                     }
@@ -483,8 +492,8 @@ public class OnapCommandUtils {
                         OnapCommandParameter param = new OnapCommandParameter();
 
                         if (validate) {
-                            validateTags(exceptionList, map, OnapCommandConfg.getParameterList(INPUT_PARAMS_LIST),
-                                    OnapCommandConfg.getParameterList(INPUT_PARAMS_MANDATORY_LIST), PARAMETERS);
+                            validateTags(exceptionList, map, OnapCommandConfg.getSchemaAttrInfo(INPUT_PARAMS_LIST),
+                                    OnapCommandConfg.getSchemaAttrInfo(INPUT_PARAMS_MANDATORY_LIST), PARAMETERS);
                         }
 
                         for (Map.Entry<String, String> entry1 : map.entrySet()) {
@@ -574,8 +583,8 @@ public class OnapCommandUtils {
                             for (Map<String, String> map : attrs) {
                                 OnapCommandResultAttribute attr = new OnapCommandResultAttribute();
                                 if (validate) {
-                                    validateTags(exceptionList, map, OnapCommandConfg.getParameterList(RESULT_PARAMS_LIST),
-                                            OnapCommandConfg.getParameterList(RESULT_PARAMS_MANDATORY_LIST), ATTRIBUTES);
+                                    validateTags(exceptionList, map, OnapCommandConfg.getSchemaAttrInfo(RESULT_PARAMS_LIST),
+                                            OnapCommandConfg.getSchemaAttrInfo(RESULT_PARAMS_MANDATORY_LIST), ATTRIBUTES);
                                 }
 
                                 Set<String> resultParamNames = new HashSet<>();
@@ -585,7 +594,9 @@ public class OnapCommandUtils {
 
                                     if (NAME.equals(key4)) {
                                         if (resultParamNames.contains(map.get(key4))) {
-                                            exceptionList.add(attributeNameExist(map.get(key4), ATTRIBUTES));
+                                            exceptionList.add("Attribute name='" + map.get(key4) + "' under '"
+                                                    + ATTRIBUTES + ":' is already used, Take different one.");
+
                                         } else {
                                             attr.setName(map.get(key4));
                                             resultParamNames.add(map.get(key4));
@@ -630,31 +641,8 @@ public class OnapCommandUtils {
         return exceptionList;
     }
 
-    private static String attributeNameExist(String name, String section) {
-        return "Attribute name='" + name + "' under '" + section + ":' is already used, Take different one.";
-    }
-
-    private static String parameterNotMapped(String declaredParam) {
-        return "The parameter '" + declaredParam
-                + "' declared under 'parameters:' section is not mapped into request section.";
-    }
-
-    private static String mandatoryAttrMissing(String param, String section) {
-
-        return "Mandatory attribute '" + param + "' is missing under '" + section + "'";
-    }
-
-    public static String emptySection(String section) {
+    private static String emptySection(String section) {
         return "The section '" + section + ":' cann't be null or empty";
-    }
-
-    private static String emptyValue(String section, String attribute) {
-        return "Attribute '" + attribute + "' under '" + section + "' is null or empty";
-    }
-
-    private static String invalidType(String section, String attribute, List<String> types) {
-        return "Attribute '" + attribute + "' under '" + section + "' is invalid, correct types are "
-                + types.toString();
     }
 
     private static String invalidBooleanValueMessage(String section, String attribute, String value) {
@@ -845,8 +833,8 @@ public class OnapCommandUtils {
 
             if (valMap != null) {
                 if (validate) {
-                    validateTags(errorList, valMap, OnapCommandConfg.getParameterList(HTTP_SECTIONS),
-                            OnapCommandConfg.getParameterList(HTTP_MANDATORY_SECTIONS), PARAMETERS);
+                    validateTags(errorList, valMap, OnapCommandConfg.getSchemaAttrInfo(HTTP_SECTIONS),
+                            OnapCommandConfg.getSchemaAttrInfo(HTTP_MANDATORY_SECTIONS), PARAMETERS);
                     errorList.addAll(validateHttpSchemaSection(values));
                 }
                 for (Map.Entry<String, ?> entry1 : valMap.entrySet()) {
@@ -939,12 +927,13 @@ public class OnapCommandUtils {
         Map<String, Object> requestMap = (Map<String, Object>) map.get(REQUEST);
 
         if (requestMap != null && !requestMap.isEmpty()) {
-            validateTags(errorList, requestMap, OnapCommandConfg.getParameterList(HTTP_REQUEST_PARAMS),
-                    OnapCommandConfg.getParameterList(HTTP_REQUEST_MANDATORY_PARAMS), REQUEST);
+            validateTags(errorList, requestMap, OnapCommandConfg.getSchemaAttrInfo(HTTP_REQUEST_PARAMS),
+                    OnapCommandConfg.getSchemaAttrInfo(HTTP_REQUEST_MANDATORY_PARAMS), REQUEST);
             String method = (String) requestMap.get(METHOD);
             if (method != null && !method.isEmpty()) {
-                if (!OnapCommandConfg.getParameterList(HTTP_METHODS).contains(method.toLowerCase())) {
-                    errorList.add(invalidType(REQUEST, METHOD, OnapCommandConfg.getParameterList(HTTP_METHODS)));
+                if (!OnapCommandConfg.getSchemaAttrInfo(HTTP_METHODS).contains(method.toLowerCase())) {
+                    errorList.add("Attribute '" + METHOD + "' under '" + REQUEST + "' is invalid, correct types are "
+                            + OnapCommandConfg.getSchemaAttrInfo(HTTP_METHODS).toString());
                 }
             } else {
                 errorList.add("Http request method cann't be null or empty");
@@ -968,7 +957,8 @@ public class OnapCommandUtils {
             List<String> nonDeclaredParams = totoalParams.stream().filter(param -> !requestParams.contains(param))
                     .collect(Collectors.toList());
 
-            nonDeclaredParams.stream().forEach(p -> errorList.add(parameterNotMapped(p)));
+            nonDeclaredParams.stream().forEach(p -> errorList.add("The parameter '" + p
+                    + "' declared under 'parameters:' section is not mapped into request section."));
         } else {
             errorList.add(emptySection(REQUEST));
         }

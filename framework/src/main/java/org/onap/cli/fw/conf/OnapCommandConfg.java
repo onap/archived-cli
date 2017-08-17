@@ -135,7 +135,7 @@ public final class OnapCommandConfg {
                 .split(",")).map(String::trim).collect(Collectors.toSet());
     }
 
-    public static List<String> getParameterList(String key) {
+    public static List<String> getSchemaAttrInfo(String key) {
         return Arrays.stream(prps.getProperty(key).split(",")).map(String::trim).collect(Collectors.toList());
     }
 

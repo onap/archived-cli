@@ -37,6 +37,8 @@ public class Constants {
     public static final String HTTP_REQUEST_MANDATORY_PARAMS ="cli.schema.http_request_mandatory_params";
     public static final String HTTP_METHODS ="cli.schema.http_methods";
     public static final String BOOLEAN_VALUE ="cli.schema.boolean_values";
+    public static final String AUTH_VALUES="cli.schema.auth_values";
+    public static final String MODE_VALUES="cli.schema.mode_values";
 
 
     public static final String SSLCONTEST_TLS = "TLSV1.2";
