@@ -45,6 +45,7 @@
     </dependencies>
     <modules>
         <module>msb</module>
+        <module>aai</module>
     </modules>
      <build>
          <pluginManagement>
