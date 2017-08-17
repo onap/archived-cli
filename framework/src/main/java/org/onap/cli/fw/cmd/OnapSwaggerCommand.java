@@ -54,10 +54,10 @@ public abstract class OnapSwaggerCommand extends OnapCommand {
             Method basePath = client.getClass().getMethod("setBasePath", String.class);
             basePath.invoke(client, this.getBasePath());
 
-            if (this.getAuthToken() != null) {
-                Method apiKey = client.getClass().getMethod("setApiKey", String.class);
-                apiKey.invoke(client, this.getAuthToken());
-            }
+//            if (this.getAuthToken() != null) {
+//                Method apiKey = client.getClass().getMethod("setApiKey", String.class);
+//                apiKey.invoke(client, this.getAuthToken());
+//            }
             return client;
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException | OnapCommandException e) {
