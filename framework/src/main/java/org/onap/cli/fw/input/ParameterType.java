@@ -34,7 +34,7 @@ public enum ParameterType {
     /**
      * URL location.
      */
-    URL, BOOL, ARRAY, MAP, BINARY;
+    URL, BOOL, ARRAY, MAP, BINARY, UUID;
 
     /**
      * Get parameter type.
@@ -64,6 +64,8 @@ public enum ParameterType {
             return MAP;
         } else if (BINARY.name().equalsIgnoreCase(name)) {
             return BINARY;
+        } else if (UUID.name().equalsIgnoreCase(name)) {
+            return UUID;
         } else {
             throw new OnapCommandInvalidParameterType(name);
         }

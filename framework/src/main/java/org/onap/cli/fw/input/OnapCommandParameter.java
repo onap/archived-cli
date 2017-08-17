@@ -26,6 +26,7 @@ import org.onap.cli.fw.error.OnapCommandParameterMissing;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Onap Command's input parameter.
@@ -130,6 +131,8 @@ public class OnapCommandParameter {
         } else if (this.getParameterType().equals(ParameterType.BOOL)) {
             // For bool type always the default param is false
             this.defaultValue = "false";
+        } else if (this.defaultValue.isEmpty() && this.getParameterType().equals(ParameterType.UUID)) {
+            this.defaultValue = UUID.randomUUID().toString();
         }
 
         return defaultValue;
