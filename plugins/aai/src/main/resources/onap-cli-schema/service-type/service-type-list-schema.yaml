@@ -18,6 +18,10 @@ results:
       description: Onap cloud service
       scope: short
       type: string
+    - name: resource-version
+      description: Onap cloud service resource version
+      scope: short
+      type: string
 http:
   request:
     uri: /aai/v8/service-design-and-creation/services
@@ -27,5 +31,6 @@ http:
   result_map:
     service-type: $b{service.[*].service-description}
     service-type-id: $b{service.[*].service-id}
+    resource-version: $b{service.[*].resource-version}
   sample_response:
     body: '{"service":[{"service-id":"db3403eb-5c94-4295-bb00-a9dba8964ab3","service-description":"vFW","resource-version":"1500729865"},{"service-id":"33737156-ff09-4b3d-884a-fe9a372afa4e","service-description":"vLB","resource-version":"1500729866"}]}'
