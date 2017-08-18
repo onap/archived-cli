@@ -1,0 +1,33 @@
+onap_cmd_schema_version: 1.0
+name: service-type-delete
+description: Delete a service type from Onap
+service:
+  name: aai
+  version: v8
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: service-type-id
+    description: Onap service type uuid
+    type: uuid
+    short_option: x
+    long_option: service-type-id
+    is_optional: true
+  - name: resource-version
+    description: Onap service resource version
+    type: uuid
+    short_option: y
+    long_option: resource-version
+    is_optional: true
+http:
+  request:
+    uri: /aai/v8/service-design-and-creation/services/service/${service-type-id}?resource-version=${resource-version}
+    queries:
+      resource-version: ${resource-version}
+    method: DELETE
+  success_codes:
+    - 204
+    - 404
+  sample_response:
+    body: ''
