@@ -73,7 +73,7 @@ public class OnapHttpCommand extends OnapCommand {
 
     @Override
     protected void initializeProfileSchema() throws OnapCommandException {
-        OnapCommandUtils.loadSchema(this, this.getSchemaName());
+        OnapCommandUtils.loadHTTPSchemaSection(this, this.getSchemaName(), false);
     }
 
     @Override
