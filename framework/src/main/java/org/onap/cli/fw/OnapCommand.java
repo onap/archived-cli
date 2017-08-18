@@ -43,6 +43,7 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -170,7 +171,7 @@ public abstract class OnapCommand {
      */
     public void initializeSchema(String schema) throws OnapCommandException {
         this.setSchemaName(schema);
-        OnapCommandUtils.loadSchema(this, schema, true);
+        OnapCommandUtils.loadSchema(this, schema, true, false);
         this.initializeProfileSchema();
         this.isInitialzied = true;
     }
@@ -190,10 +191,10 @@ public abstract class OnapCommand {
                 param.validate();
             } catch (OnapCommandParameterMissing e) {
                 if (OnapCommandConfg.getExcludeParamsForNoAuthEnableExternalCmd().contains(param.getName())) {
-                    OnapCommandParameter noAuthParam = this.getParameters().stream().filter(p -> p.getName()
-                            .equalsIgnoreCase(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH)).findFirst().get();
+                    Optional<OnapCommandParameter> noAuthParamOpt = this.getParameters().stream().filter(p -> p.getName()
+                            .equalsIgnoreCase(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH)).findFirst();
 
-                    if ("true".equalsIgnoreCase(noAuthParam.getValue().toString())) {
+                    if (noAuthParamOpt.isPresent() && "true".equalsIgnoreCase(noAuthParamOpt.get().getValue().toString())) {
                         continue;
                     }
                 }
