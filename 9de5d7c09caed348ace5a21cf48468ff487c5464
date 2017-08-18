@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_31aa43d5",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-18T04:11:12Z",
+      "side": 1,
+      "message": "pls make it user friendly",
+      "range": {
+        "startLine": 385,
+        "startChar": 98,
+        "endLine": 385,
+        "endChar": 112
+      },
+      "revId": "9de5d7c09caed348ace5a21cf48468ff487c5464",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
