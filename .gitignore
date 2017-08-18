@@ -6,3 +6,6 @@ coverage-report/
 .classpath
 .class
 .checkstyle
+*.iml
+*.log
+.idea
