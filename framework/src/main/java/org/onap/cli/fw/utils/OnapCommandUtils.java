@@ -364,276 +364,324 @@ public class OnapCommandUtils {
 
         for (String key : sections) {
 
-            if (NAME.equals(key) && values.containsKey(key)) {
-                Object val = values.get(key);
-                if (val != null) {
-                    cmd.setName(val.toString());
-                }
-            } else if (DESCRIPTION.equals(key) && values.containsKey(key)) {
-                Object val = values.get(key);
-                if (val != null) {
-                    cmd.setDescription(val.toString());
-                }
-            } else if (SERVICE.equals(key) && values.containsKey(key)) {
-                Map<String, String> map = (Map<String, String>) values.get(key);
+            switch (key) {
+                case NAME:
+                    Object val = values.get(key);
+                    if (val != null) {
+                        cmd.setName(val.toString());
+                    }
+                    break;
 
-                if (validate) {
-                    validateTags(exceptionList, (Map<String, Object>)values.get(key),
-                            OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_LIST),
-                            OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_MANDATORY_LIST), SERVICE);
+                case DESCRIPTION:
+                    Object description = values.get(key);
+                    if (description != null) {
+                        cmd.setDescription(description.toString());
+                    }
+                    break;
 
-                    HashMap<String, String> validationMap = new HashMap<>();
-                    validationMap.put(AUTH, AUTH_VALUES);
-                    validationMap.put(MODE, MODE_VALUES);
+                case SERVICE:
+                    Map<String, String> serviceMap = (Map<String, String>) values.get(key);
 
-                    for (String secKey : validationMap.keySet()) {
-                        if (map.containsKey(secKey)) {
-                            Object obj = map.get(secKey);
-                            if (obj == null) {
-                                exceptionList.add("Attribute '" + secKey + "' under '" + SERVICE + "' is empty");
-                            } else {
-                                String value = String.valueOf(obj);
-                                if (!OnapCommandConfg.getSchemaAttrInfo(validationMap.get(secKey)).contains(value)) {
-                                    exceptionList.add("Attribute '" + secKey + "' contains invalid value. Valide values are "
-                                            + OnapCommandConfg.getSchemaAttrInfo(validationMap.get(key))); //
+                    if (serviceMap != null) {
+                        if (validate) {
+                            validateTags(exceptionList, (Map<String, Object>) values.get(key),
+                                    OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_LIST),
+                                    OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_MANDATORY_LIST), SERVICE);
+
+                            HashMap<String, String> validationMap = new HashMap<>();
+                            validationMap.put(AUTH, AUTH_VALUES);
+                            validationMap.put(MODE, MODE_VALUES);
+
+                            for (String secKey : validationMap.keySet()) {
+                                if (serviceMap.containsKey(secKey)) {
+                                    Object obj = serviceMap.get(secKey);
+                                    if (obj == null) {
+                                        exceptionList.add("Attribute '" + secKey + "' under '" + SERVICE + "' is empty");
+                                    } else {
+                                        String value = String.valueOf(obj);
+                                        if (!OnapCommandConfg.getSchemaAttrInfo(validationMap.get(secKey)).contains(value)) {
+                                            exceptionList.add("Attribute '" + secKey + "' contains invalid value. Valide values are "
+                                                    + OnapCommandConfg.getSchemaAttrInfo(validationMap.get(key))); //
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
-                }
 
-                if (map != null) {
-                    OnapService srv = new OnapService();
+                        OnapService srv = new OnapService();
 
-                    for (Map.Entry<String, String> entry1 : map.entrySet()) {
-                        String key1 = entry1.getKey();
+                        for (Map.Entry<String, String> entry1 : serviceMap.entrySet()) {
+                            String key1 = entry1.getKey();
 
-                        if (NAME.equals(key1)) {
-                            srv.setName(map.get(key1));
-                        } else if (VERSION.equals(key1)) {
-                            srv.setVersion(map.get(key1));
-                        } else if (AUTH.equals(key1)) {
-                            Object obj = map.get(key1);
-                            srv.setAuthType(obj.toString());
-                        } else if (Constants.MODE.equals(key1)) {
-                            Object obj = map.get(key1);
-                            srv.setMode(obj.toString());
+                            switch (key1) {
+                                case NAME:
+                                    srv.setName(serviceMap.get(key1));
+                                    break;
+
+                                case VERSION:
+                                    srv.setVersion(serviceMap.get(key1));
+                                    break;
+
+                                case AUTH:
+                                    Object obj = serviceMap.get(key1);
+                                    srv.setAuthType(obj.toString());
+                                    break;
+
+                                case MODE:
+                                    Object mode = serviceMap.get(key1);
+                                    srv.setMode(mode.toString());
+                                    break;
+                            }
                         }
+                        cmd.setService(srv);
                     }
+                    break;
 
-                    cmd.setService(srv);
-                }
-            } else if (DEFAULT_PARAMETERS.equals(key)) {
+                case DEFAULT_PARAMETERS:
+                    Map<String, List<String>> defParameters = (Map) values.get(DEFAULT_PARAMETERS);
+                    List<String> includeParams = new ArrayList<>();
+                    List<String> excludeParams = new ArrayList<>();
 
-                Map<String, List<String>> defParameters = (Map) values.get(DEFAULT_PARAMETERS);
-                List<String> includeParams = new ArrayList<>();
-                List<String> excludeParams = new ArrayList<>();
-
-                if (values.containsKey(DEFAULT_PARAMETERS) && defParameters == null) {
-                    // if default parameter section is available then it must have either include
-                    // or exclude sub-section.
-                    throwOrCollect(new OnapCommandInvalidSchema(SCHEMA_INVALID_DEFAULT_PARAMS_SECTION),
-                            exceptionList, validate);
-                }
-
-
-                if (defParameters != null) {
-                    // validate default parameters
-                    if (defParameters.containsKey(DEFAULT_PARAMETERS_INCLUDE)) {
-                        includeParams = defParameters.get(DEFAULT_PARAMETERS_INCLUDE);
-                    }
-
-                    List<String> invInclude = includeParams.stream()
-                            .filter(p -> !defaultParamNames.contains(p))
-                            .collect(Collectors.toList());
-
-                    if (defParameters.containsKey(DEFAULT_PARAMETERS_EXCLUDE)) {
-                        excludeParams = defParameters.get(DEFAULT_PARAMETERS_EXCLUDE);
-                    }
-
-                    List<String> invExclude = excludeParams.stream().filter(p -> !defaultParamNames.contains(p))
-                            .collect(Collectors.toList());
-
-
-                    if (!invExclude.isEmpty() || !invInclude.isEmpty()) {
-
-                        throwOrCollect(new OnapCommandInvalidDefaultParameter(Stream.concat(invInclude.stream(),
-                                invExclude.stream()).collect(Collectors.toList())),
+                    if (values.containsKey(DEFAULT_PARAMETERS) && defParameters == null) {
+                        // if default parameter section is available then it must have either include
+                        // or exclude sub-section.
+                        throwOrCollect(new OnapCommandInvalidSchema(SCHEMA_INVALID_DEFAULT_PARAMS_SECTION),
                                 exceptionList, validate);
                     }
 
-                    if (!includeParams.isEmpty()) {
-                        filteredDefaultParams.addAll(includeParams);
-                    } else if (!excludeParams.isEmpty()) {
-                        List<String> finalExcludeParams = excludeParams;
-                        defaultParamNames.stream().filter(p -> !finalExcludeParams.contains(p))
-                                .forEach(filteredDefaultParams::add);
+
+                    if (defParameters != null) {
+                        // validate default parameters
+                        if (defParameters.containsKey(DEFAULT_PARAMETERS_INCLUDE)) {
+                            includeParams = defParameters.get(DEFAULT_PARAMETERS_INCLUDE);
+                        }
+
+                        List<String> invInclude = includeParams.stream()
+                                .filter(p -> !defaultParamNames.contains(p))
+                                .collect(Collectors.toList());
+
+                        if (defParameters.containsKey(DEFAULT_PARAMETERS_EXCLUDE)) {
+                            excludeParams = defParameters.get(DEFAULT_PARAMETERS_EXCLUDE);
+                        }
+
+                        List<String> invExclude = excludeParams.stream().filter(p -> !defaultParamNames.contains(p))
+                                .collect(Collectors.toList());
+
+
+                        if (!invExclude.isEmpty() || !invInclude.isEmpty()) {
+
+                            throwOrCollect(new OnapCommandInvalidDefaultParameter(Stream.concat(invInclude.stream(),
+                                    invExclude.stream()).collect(Collectors.toList())),
+                                    exceptionList, validate);
+                        }
+
+                        if (!includeParams.isEmpty()) {
+                            filteredDefaultParams.addAll(includeParams);
+                        } else if (!excludeParams.isEmpty()) {
+                            List<String> finalExcludeParams = excludeParams;
+                            defaultParamNames.stream().filter(p -> !finalExcludeParams.contains(p))
+                                    .forEach(filteredDefaultParams::add);
+                        }
+                    } else {
+                        filteredDefaultParams.addAll(defaultParamNames);
                     }
-                } else {
-                    filteredDefaultParams.addAll(defaultParamNames);
-                }
-                try {
-                    processNoAuth(filteredDefaultParams, cmd, includeParams, excludeParams);
-                } catch (OnapCommandException e) {
-                    throwOrCollect(e, exceptionList, validate);
-                }
-            } else if (PARAMETERS.equals(key) && values.containsKey(key)) {
-
-                List<Map<String, String>> parameters = (List) values.get(key);
-
-                if (parameters != null) {
-                    Set<String> names = new HashSet<>();
-                    Set<String> inputShortOptions = new HashSet<>();
-                    Set<String> inputLongOptions = new HashSet<>();
-
-                    for (Map<String, String> map : parameters) {
-                        OnapCommandParameter param = new OnapCommandParameter();
-
-                        if (validate) {
-                            validateTags(exceptionList, map, OnapCommandConfg.getSchemaAttrInfo(INPUT_PARAMS_LIST),
-                                    OnapCommandConfg.getSchemaAttrInfo(INPUT_PARAMS_MANDATORY_LIST), PARAMETERS);
-                        }
-
-                        for (Map.Entry<String, String> entry1 : map.entrySet()) {
-                            String key2 = entry1.getKey();
-
-                            if (NAME.equals(key2)) {
-                                if (names.contains(map.get(key2))) {
-                                        throwOrCollect(new OnapCommandParameterNameConflict(map.get(key2)), exceptionList, validate);
-                                }
-                                names.add(map.get(key2));
-                                param.setName(map.get(key2));
-                            } else if (DESCRIPTION.equals(key2)) {
-                                param.setDescription(map.get(key2));
-                            } else if (SHORT_OPTION.equals(key2)) {
-                                if (shortOptions.contains(map.get(key2))) {
-                                        throwOrCollect(new OnapCommandParameterOptionConflict(map.get(key2)), exceptionList, validate);
-                                }
-                                shortOptions.add(map.get(key2));
-                                param.setShortOption(map.get(key2));
-                            } else if (LONG_OPTION.equals(key2)) {
-                                if (longOptions.contains(map.get(key2))) {
-                                        throwOrCollect(new OnapCommandParameterOptionConflict(map.get(key2)), exceptionList, validate);
-                                }
-                                longOptions.add(map.get(key2));
-                                param.setLongOption(map.get(key2));
-                            } else if (DEFAULT_VALUE.equals(key2)) {
-                                Object obj = map.get(key2);
-                                param.setDefaultValue(obj.toString());
-                            } else if (TYPE.equals(key2)) {
-                                try {
-                                    param.setParameterType(ParameterType.get(map.get(key2)));
-                                } catch (OnapCommandException ex) {
-                                    throwOrCollect(ex, exceptionList, validate);
-                                }
-                            } else if (IS_OPTIONAL.equals(key2)) {
-                                if (validate) {
-                                    if (!validateBoolean(String.valueOf(map.get(key2)))) {
-                                        exceptionList.add(invalidBooleanValueMessage(map.get(NAME),
-                                                IS_SECURED, map.get(key2)));
-                                    }
-                                }
-                                if ("true".equalsIgnoreCase(String.valueOf(map.get(key2)))) {
-                                    param.setOptional(true);
-                                } else {
-                                    param.setOptional(false);
-                                }
-                            } else if (IS_SECURED.equals(key2)) {
-                                if (validate) {
-                                    if (!validateBoolean(String.valueOf(map.get(key2)))) {
-                                        exceptionList.add(invalidBooleanValueMessage(map.get(NAME),
-                                                IS_SECURED, map.get(key2)));
-                                    }
-                                }
-
-                                if ("true".equalsIgnoreCase(String.valueOf(map.get(key2)))) {
-                                    param.setSecured(true);
-                                } else {
-                                    param.setSecured(false);
-                                }
-                            }
-                        }
-
-                        // Add the element to command :
-                        // 1. if parameter is available in filtered parameter list.
-                        // 2. otherwise, parameter p is available in command yaml file.
-                        if (filteredDefaultParams.contains(param.getName()) || !defaultParamNames.contains(param.getName())) {
-                            cmd.getParameters().add(param);
-                        }
+                    try {
+                        processNoAuth(filteredDefaultParams, cmd, includeParams, excludeParams);
+                    } catch (OnapCommandException e) {
+                        throwOrCollect(e, exceptionList, validate);
                     }
-                }
-            } else if (RESULTS.equals(key) && values.containsKey(key)) {
-                Map<String, ?> valueMap = (Map<String, ?>) values.get(key);
-                if (valueMap != null) {
-                    OnapCommandResult result = new OnapCommandResult();
-                    for (Map.Entry<String, ?> entry1 : valueMap.entrySet()) {
-                        String key3 = entry1.getKey();
+                    break;
 
-                        if (DIRECTION.equals(key3)) {
-                            try {
-                                result.setPrintDirection(PrintDirection.get((String) valueMap.get(key3)));
-                            } catch (OnapCommandException ex) {
-                                throwOrCollect(ex, exceptionList, validate);
+                case PARAMETERS:
+
+                    List<Map<String, String>> parameters = (List) values.get(key);
+
+                    if (parameters != null) {
+                        Set<String> names = new HashSet<>();
+                        Set<String> inputShortOptions = new HashSet<>();
+                        Set<String> inputLongOptions = new HashSet<>();
+
+                        for (Map<String, String> parameter : parameters) {
+                            OnapCommandParameter param = new OnapCommandParameter();
+
+                            if (validate) {
+                                validateTags(exceptionList, parameter, OnapCommandConfg.getSchemaAttrInfo(INPUT_PARAMS_LIST),
+                                        OnapCommandConfg.getSchemaAttrInfo(INPUT_PARAMS_MANDATORY_LIST), PARAMETERS);
                             }
-                        } else if (ATTRIBUTES.equals(key3)) {
-                            List<Map<String, String>> attrs = (ArrayList) valueMap.get(key3);
 
-                            for (Map<String, String> map : attrs) {
-                                OnapCommandResultAttribute attr = new OnapCommandResultAttribute();
-                                if (validate) {
-                                    validateTags(exceptionList, map, OnapCommandConfg.getSchemaAttrInfo(RESULT_PARAMS_LIST),
-                                            OnapCommandConfg.getSchemaAttrInfo(RESULT_PARAMS_MANDATORY_LIST), ATTRIBUTES);
-                                }
+                            for (Map.Entry<String, String> entry1 : parameter.entrySet()) {
+                                String key2 = entry1.getKey();
 
-                                Set<String> resultParamNames = new HashSet<>();
-
-                                for (Map.Entry<String, String> entry4 : map.entrySet()) {
-                                    String key4 = entry4.getKey();
-
-                                    if (NAME.equals(key4)) {
-                                        if (resultParamNames.contains(map.get(key4))) {
-                                            exceptionList.add("Attribute name='" + map.get(key4) + "' under '"
-                                                    + ATTRIBUTES + ":' is already used, Take different one.");
-
-                                        } else {
-                                            attr.setName(map.get(key4));
-                                            resultParamNames.add(map.get(key4));
+                                switch (key2) {
+                                    case NAME:
+                                        if (names.contains(parameter.get(key2))) {
+                                            throwOrCollect(new OnapCommandParameterNameConflict(parameter.get(key2)), exceptionList, validate);
                                         }
-                                    } else if (DESCRIPTION.equals(key4)) {
-                                        attr.setDescription(map.get(key4));
-                                    } else if (SCOPE.equals(key4)) {
+                                        names.add(parameter.get(key2));
+                                        param.setName(parameter.get(key2));
+                                        break;
+
+                                    case DESCRIPTION:
+                                        param.setDescription(parameter.get(key2));
+                                        break;
+
+                                    case SHORT_OPTION:
+                                        if (shortOptions.contains(parameter.get(key2))) {
+                                            throwOrCollect(new OnapCommandParameterOptionConflict(parameter.get(key2)), exceptionList, validate);
+                                        }
+                                        shortOptions.add(parameter.get(key2));
+                                        param.setShortOption(parameter.get(key2));
+                                        break;
+
+                                    case LONG_OPTION:
+                                        if (longOptions.contains(parameter.get(key2))) {
+                                            throwOrCollect(new OnapCommandParameterOptionConflict(parameter.get(key2)), exceptionList, validate);
+                                        }
+                                        longOptions.add(parameter.get(key2));
+                                        param.setLongOption(parameter.get(key2));
+                                        break;
+
+                                    case DEFAULT_VALUE:
+                                        Object obj = parameter.get(key2);
+                                        param.setDefaultValue(obj.toString());
+                                        break;
+
+                                    case TYPE:
                                         try {
-                                            attr.setScope(OnapCommandResultAttributeScope.get(map.get(key4)));
+                                            param.setParameterType(ParameterType.get(parameter.get(key2)));
                                         } catch (OnapCommandException ex) {
                                             throwOrCollect(ex, exceptionList, validate);
                                         }
-                                    } else if (TYPE.equals(key4)) {
-                                        try {
-                                            attr.setType(ParameterType.get(map.get(key4)));
-                                        } catch (OnapCommandException ex) {
-                                            throwOrCollect(ex, exceptionList, validate);
-                                        }
-                                    } else if (IS_SECURED.equals(key4)) {
+                                        break;
+
+                                    case IS_OPTIONAL:
                                         if (validate) {
-                                            if (!validateBoolean(String.valueOf(map.get(key4)))) {
-                                                exceptionList.add(invalidBooleanValueMessage(ATTRIBUTES,
-                                                        IS_SECURED, map.get(key4)));
+                                            if (!validateBoolean(String.valueOf(parameter.get(key2)))) {
+                                                exceptionList.add(invalidBooleanValueMessage(parameter.get(NAME),
+                                                        IS_SECURED, parameter.get(key2)));
                                             }
                                         }
-                                        if ("true".equals(String.valueOf(map.get(key4)))) {
-                                            attr.setSecured(true);
+                                        if ("true".equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
+                                            param.setOptional(true);
                                         } else {
-                                            attr.setSecured(false);
+                                            param.setOptional(false);
                                         }
-                                    }
+                                        break;
 
+                                    case IS_SECURED:
+                                        if (validate) {
+                                            if (!validateBoolean(String.valueOf(parameter.get(key2)))) {
+                                                exceptionList.add(invalidBooleanValueMessage(parameter.get(NAME),
+                                                        IS_SECURED, parameter.get(key2)));
+                                            }
+                                        }
+
+                                        if ("true".equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
+                                            param.setSecured(true);
+                                        } else {
+                                            param.setSecured(false);
+                                        }
+                                        break;
                                 }
-                                result.getRecords().add(attr);
+                            }
+
+                            // Add the element to command :
+                            // 1. if parameter is available in filtered parameter list.
+                            // 2. otherwise, parameter p is available in command yaml file.
+                            if (filteredDefaultParams.contains(param.getName()) || !defaultParamNames.contains(param.getName())) {
+                                cmd.getParameters().add(param);
                             }
                         }
                     }
-                    cmd.setResult(result);
-                }
+                    break;
+
+                case RESULTS:
+                    Map<String, ?> valueMap = (Map<String, ?>) values.get(key);
+                    if (valueMap != null) {
+                        OnapCommandResult result = new OnapCommandResult();
+                        for (Map.Entry<String, ?> entry1 : valueMap.entrySet()) {
+                            String key3 = entry1.getKey();
+
+                            switch (key3) {
+                                case DIRECTION:
+                                    try {
+                                        result.setPrintDirection(PrintDirection.get((String) valueMap.get(key3)));
+                                    } catch (OnapCommandException ex) {
+                                        throwOrCollect(ex, exceptionList, validate);
+                                    }
+                                    break;
+
+                                case ATTRIBUTES:
+                                    List<Map<String, String>> attrs = (ArrayList) valueMap.get(key3);
+
+                                    for (Map<String, String> map : attrs) {
+                                        OnapCommandResultAttribute attr = new OnapCommandResultAttribute();
+                                        if (validate) {
+                                            validateTags(exceptionList, map, OnapCommandConfg.getSchemaAttrInfo(RESULT_PARAMS_LIST),
+                                                    OnapCommandConfg.getSchemaAttrInfo(RESULT_PARAMS_MANDATORY_LIST), ATTRIBUTES);
+                                        }
+
+                                        Set<String> resultParamNames = new HashSet<>();
+
+                                        for (Map.Entry<String, String> entry4 : map.entrySet()) {
+                                            String key4 = entry4.getKey();
+
+                                            switch (key4) {
+                                                case NAME:
+                                                    if (resultParamNames.contains(map.get(key4))) {
+                                                        exceptionList.add("Attribute name='" + map.get(key4) + "' under '"
+                                                                + ATTRIBUTES + ":' is already used, Take different one.");
+
+                                                    } else {
+                                                        attr.setName(map.get(key4));
+                                                        resultParamNames.add(map.get(key4));
+                                                    }
+                                                    break;
+
+                                                case DESCRIPTION:
+                                                    attr.setDescription(map.get(key4));
+                                                    break;
+
+                                                case SCOPE:
+                                                    try {
+                                                        attr.setScope(OnapCommandResultAttributeScope.get(map.get(key4)));
+                                                    } catch (OnapCommandException ex) {
+                                                        throwOrCollect(ex, exceptionList, validate);
+                                                    }
+                                                    break;
+
+                                                case TYPE:
+                                                    try {
+                                                        attr.setType(ParameterType.get(map.get(key4)));
+                                                    } catch (OnapCommandException ex) {
+                                                        throwOrCollect(ex, exceptionList, validate);
+                                                    }
+                                                    break;
+
+                                                case IS_SECURED:
+                                                    if (validate) {
+                                                        if (!validateBoolean(String.valueOf(map.get(key4)))) {
+                                                            exceptionList.add(invalidBooleanValueMessage(ATTRIBUTES,
+                                                                    IS_SECURED, map.get(key4)));
+                                                        }
+                                                    }
+                                                    if ("true".equals(String.valueOf(map.get(key4)))) {
+                                                        attr.setSecured(true);
+                                                    } else {
+                                                        attr.setSecured(false);
+                                                    }
+                                                    break;
+                                            }
+
+                                        }
+                                        result.getRecords().add(attr);
+                                    }
+                                    break;
+                            }
+                        }
+                        cmd.setResult(result);
+                    }
+                    break;
             }
         }
         return exceptionList;
