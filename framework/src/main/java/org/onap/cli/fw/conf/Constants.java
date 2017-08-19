@@ -57,7 +57,7 @@ public class Constants {
     //http
     public static final String URI = "uri";
     public static final String BODY = "body";
-    public static final String MERHOD = "method";
+    public static final String METHOD_TYPE = "method";
     public static final String HEADERS = "headers";
     public static final String QUERIES = "queries";
     public static final String COOKIES = "cookies";
