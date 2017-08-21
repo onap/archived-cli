@@ -58,6 +58,20 @@
                                 <include>**/*</include>
                             </includes>
                         </resource>
+                        <resource>
+                            <targetPath>/STAGE/http</targetPath>
+                            <directory>${basedir}/../http/</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <targetPath>/STAGE/installer</targetPath>
+                            <directory>${basedir}/../zip/target/deployoutput</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </resource>
                     </resources>
                 </configuration>
                 <executions>
