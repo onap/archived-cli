@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_a2d38337",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-create-schema.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-21T04:01:17Z",
+      "side": 1,
+      "message": "portrait is used for all actions exception list kind of",
+      "range": {
+        "startLine": 63,
+        "startChar": 13,
+        "endLine": 63,
+        "endChar": 22
+      },
+      "revId": "510f15d7eb862f33d0440ab2f34d5fe511bc8b2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_62dd9b42",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-list-schema.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-21T04:01:17Z",
+      "side": 1,
+      "message": "pls make ID as first attr",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "510f15d7eb862f33d0440ab2f34d5fe511bc8b2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_42e29704",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-show-schema.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-21T04:01:17Z",
+      "side": 1,
+      "message": "is any other details available part of show?",
+      "revId": "510f15d7eb862f33d0440ab2f34d5fe511bc8b2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_2220b348",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-submit-schema.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-21T04:01:17Z",
+      "side": 1,
+      "message": "pls correct it",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 20
+      },
+      "revId": "510f15d7eb862f33d0440ab2f34d5fe511bc8b2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_02e48f0b",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-upload-schema.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-21T04:01:17Z",
+      "side": 1,
+      "message": "is this type helps to push the file object with out any issue?",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "510f15d7eb862f33d0440ab2f34d5fe511bc8b2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
