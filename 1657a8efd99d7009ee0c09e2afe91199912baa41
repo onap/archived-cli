@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_24ff9e36",
+        "filename": "framework/src/main/resources/onap.properties",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-22T13:52:53Z",
+      "side": 1,
+      "message": "these are the common headers. if sdc  specifically looking for this header, please add service context into it as below\n\ncli.http.basic.common_headers.sdc\u003duser-id\ncli.http.basic.common_headers.sdc.user-id\u003dUSER_ID\ncli.http.basic.common_headers.sdc.user-id.value\u003d${onap-username}\n\nHere you need to update the logic in the config class to retrieve these values and replace ${onap-username} with onap-username value.",
+      "parentUuid": "9a437d4f_21231007",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "1657a8efd99d7009ee0c09e2afe91199912baa41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_01200cf6",
         "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-create-schema.yaml",
         "patchSetId": 6
