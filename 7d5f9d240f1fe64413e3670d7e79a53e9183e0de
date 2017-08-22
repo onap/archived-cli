@@ -16,6 +16,24 @@
       "revId": "7d5f9d240f1fe64413e3670d7e79a53e9183e0de",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_27232007",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-22T18:49:07Z",
+      "side": 1,
+      "message": "Thanks for identifying it, I will update in next patch.",
+      "parentUuid": "9a437d4f_62b47bf2",
+      "revId": "7d5f9d240f1fe64413e3670d7e79a53e9183e0de",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
