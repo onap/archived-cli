@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_21231007",
+        "filename": "framework/src/main/resources/onap.properties",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-22T05:11:45Z",
+      "side": 1,
+      "message": "kindly remove these two lines",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "1657a8efd99d7009ee0c09e2afe91199912baa41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_01200cf6",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-create-schema.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-22T05:11:45Z",
+      "side": 1,
+      "message": "change to portrait",
+      "revId": "1657a8efd99d7009ee0c09e2afe91199912baa41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_e11ce8c3",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-submit-schema.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-22T05:11:45Z",
+      "side": 1,
+      "message": "it would be nice if you could add the report with copy of all commands execution from console. please use the folder name plugins/sdc/src/test/resources/vsp-checkin/[xxx.txt]+\n\nfor all commands",
+      "revId": "1657a8efd99d7009ee0c09e2afe91199912baa41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
