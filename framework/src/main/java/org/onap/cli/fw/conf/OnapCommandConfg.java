@@ -102,7 +102,7 @@ public final class OnapCommandConfg {
     public static Map<String, String> getBasicCommonHeaders() {
         Map<String, String> mapHeaders = new HashMap<String, String> ();
 
-        Arrays.stream(prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS)
+        Arrays.stream(prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS)  // NOSONAR
                 .split(",")).map(String::trim).forEach(header -> {
                     String headerName = prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS + "." + header);
                     String headerValue = prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS + "." + header + ".value", null);
@@ -116,27 +116,27 @@ public final class OnapCommandConfg {
     }
 
     public static Set<String> getExcludeParamsForInternalCmd() {
-        return Arrays.stream(prps.getProperty(Constants.EXCLUDE_PARAMS_INTERNAL_CMD)
+        return Arrays.stream(prps.getProperty(Constants.EXCLUDE_PARAMS_INTERNAL_CMD)  // NOSONAR
                 .split(",")).map(String::trim).collect(Collectors.toSet());
     }
 
     public static Set<String> getIncludeParamsForNoAuthDisableExternalCmd() {
-        return Arrays.stream(prps.getProperty(Constants.NO_AUTH_DISABLE_INCLUDE_PARAMS_EXTERNAL_CMD)
+        return Arrays.stream(prps.getProperty(Constants.NO_AUTH_DISABLE_INCLUDE_PARAMS_EXTERNAL_CMD)  // NOSONAR
                 .split(",")).map(String::trim).collect(Collectors.toSet());
     }
 
     public static Set<String> getExcludeParamsForNoAuthEnableExternalCmd() {
-        return Arrays.stream(prps.getProperty(Constants.NO_AUTH_ENABLE_EXCLUDE_PARAMS_EXTERNAL_CMD)
+        return Arrays.stream(prps.getProperty(Constants.NO_AUTH_ENABLE_EXCLUDE_PARAMS_EXTERNAL_CMD)  // NOSONAR
                 .split(",")).map(String::trim).collect(Collectors.toSet());
     }
 
     public static Set<String> getIncludeParamsForNoAuthEnableExternalCmd() {
-        return Arrays.stream(prps.getProperty(Constants.NO_AUTH_ENABLE_INCLUDE_PARAMS_EXTERNAL_CMD)
+        return Arrays.stream(prps.getProperty(Constants.NO_AUTH_ENABLE_INCLUDE_PARAMS_EXTERNAL_CMD)  // NOSONAR
                 .split(",")).map(String::trim).collect(Collectors.toSet());
     }
 
     public static List<String> getSchemaAttrInfo(String key) {
-        return Arrays.stream(prps.getProperty(key).split(",")).map(String::trim).collect(Collectors.toList());
+        return Arrays.stream(prps.getProperty(key).split(",")).map(String::trim).collect(Collectors.toList());  // NOSONAR
     }
 
 }
