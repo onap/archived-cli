@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_2a8645ba",
+        "filename": "framework/src/main/java/org/onap/cli/fw/ad/OnapAuthClient.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-23T06:30:23Z",
+      "side": 1,
+      "message": "I would suggest to modify OnapAuthClient to hold service object. In that case we need not to add extra parameter for login ().\n\ne.g.\npublic OnapAuthClient(OnapCredentials creds, boolean debug, OnapService onapService)",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "0facc07dab8d3eee58012b4aa522120c08f52d00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_2a51a562",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/OnapCommandConfg.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-23T06:30:23Z",
+      "side": 1,
+      "message": "please avoid use of System.out",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 42
+      },
+      "revId": "0facc07dab8d3eee58012b4aa522120c08f52d00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_0a4ee1c1",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/OnapCommandConfg.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-23T06:30:23Z",
+      "side": 1,
+      "message": "I think this method should not be part of OnapCommandConfg.",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 5
+      },
+      "revId": "0facc07dab8d3eee58012b4aa522120c08f52d00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_8ad1b1cf",
+        "filename": "framework/src/main/java/org/onap/cli/fw/http/HttpInput.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-23T06:30:23Z",
+      "side": 1,
+      "message": "please avoid use of System.out",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 37
+      },
+      "revId": "0facc07dab8d3eee58012b4aa522120c08f52d00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_aac115e6",
+        "filename": "framework/src/main/resources/onap.properties",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-23T06:30:23Z",
+      "side": 1,
+      "message": "should also be copied to framework/src/test/resources/onap.properties.",
+      "range": {
+        "startLine": 48,
+        "startChar": 61,
+        "endLine": 48,
+        "endChar": 72
+      },
+      "revId": "0facc07dab8d3eee58012b4aa522120c08f52d00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
