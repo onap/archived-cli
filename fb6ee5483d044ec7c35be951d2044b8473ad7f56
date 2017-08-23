@@ -22,6 +22,30 @@
       "revId": "fb6ee5483d044ec7c35be951d2044b8473ad7f56",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_5b039973",
+        "filename": "pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 35
+      },
+      "writtenOn": "2017-08-23T21:44:20Z",
+      "side": 1,
+      "message": "Yes, they\u0027re defined in oparent.",
+      "parentUuid": "9a437d4f_3bd1f5fb",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 51
+      },
+      "revId": "fb6ee5483d044ec7c35be951d2044b8473ad7f56",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
