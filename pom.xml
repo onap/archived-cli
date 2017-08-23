@@ -41,6 +41,14 @@
         <module>main</module>
         <module>deployment</module>
     </modules>
+
+    <distributionManagement>
+      <site>
+	<id>ecomp-site</id>
+	<url>dav:${onap.nexus.url}${sitePath}</url>
+      </site>
+    </distributionManagement>
+
     <build>
         <pluginManagement>
         <plugins>
