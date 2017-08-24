@@ -28,4 +28,10 @@ do
   CLASSPATH=$CLASSPATH:$entry
 done
 
-java -classpath $CLASSPATH org.onap.cli.main.OnapCli "$@"
+if [ "$ONAP_CLI_DEBUG" = "true" ]
+then
+    ${ONAP_CLI_DEBUG_PORT:=5005}
+    java -Xdebug -Xrunjdwp:transport=dt_socket,address=$ONAP_CLI_DEBUG_PORT,server=y -classpath $CLASSPATH org.onap.cli.main.OnapCli "$@"
+else
+    java -classpath $CLASSPATH org.onap.cli.main.OnapCli "$@"
+fi
