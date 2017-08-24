@@ -77,6 +77,14 @@ public class OnapCli {
         return this.exitCode;
     }
 
+    public String readBanner() {
+        try {
+            return IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("onap-readme.txt"));
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
     /**
      * Handles help. --help or -h
      */
@@ -86,7 +94,7 @@ public class OnapCli {
             if ((args.isEmpty())
                     || ((args.size() == 1) && (this.getLongOption(OnapCliConstants.PARAM_HELP_LOGN).equals(args.get(0))
                             || this.getShortOption(OnapCliConstants.PARAM_HELP_SHORT).equals(args.get(0))))) {
-                this.print(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("onap-readme.txt")));
+                this.print(readBanner());
                 String help = OnapCommandRegistrar.getRegistrar().getHelp();
                 this.print(help);
                 this.exitSuccessfully();
@@ -123,6 +131,7 @@ public class OnapCli {
             try {
                 console = createConsoleReader();
                 String line = null;
+                console.println(readBanner());
                 while ((line = console.readLine()) != null) {
                     if (OnapCliConstants.PARAM_INTERACTIVE_EXIT.equalsIgnoreCase(line)
                             || OnapCliConstants.PARAM_INTERACTIVE_BYE.equalsIgnoreCase(line)) {
