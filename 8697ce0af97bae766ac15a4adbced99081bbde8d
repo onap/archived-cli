@@ -1,0 +1,262 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_9630b857",
+        "filename": "framework/src/main/java/org/onap/cli/fw/ad/OnapAuthClient.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "pls revert it as it will introuduce sonar issues",
+      "range": {
+        "startLine": 28,
+        "startChar": 29,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_363fcc27",
+        "filename": "framework/src/main/java/org/onap/cli/fw/ad/OnapAuthClient.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "please make this as OnapService object and use authType and service name from this object.",
+      "range": {
+        "startLine": 55,
+        "startChar": 63,
+        "endLine": 55,
+        "endChar": 78
+      },
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_760c3495",
+        "filename": "framework/src/main/java/org/onap/cli/fw/ad/OnapAuthClient.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "get to local map variable and merge with mapHeaders. so pls remove the first argument",
+      "range": {
+        "startLine": 93,
+        "startChar": 16,
+        "endLine": 93,
+        "endChar": 92
+      },
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_561130ab",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/Constants.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "change to multipart_entity_name instead.",
+      "range": {
+        "startLine": 78,
+        "startChar": 43,
+        "endLine": 78,
+        "endChar": 52
+      },
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_3626ac17",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/OnapCommandConfg.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "pls move this to private fn and use it both here and below method \n\ngetValues(Map\u003c\u003e map) {}\n\nhere map is the key value pair set at the line 120",
+      "range": {
+        "startLine": 107,
+        "startChar": 7,
+        "endLine": 115,
+        "endChar": 19
+      },
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_1623a806",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/OnapCommandConfg.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "leave a space",
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_768314cd",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/OnapCommandConfg.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "it should not consider the env and update this complete method with above new private function\n\nwhile processing the input parameter, it should be processed like how uuid is processed. i.e, some time .value\u003dxxx-${i/p param name} could be provided and after replacement, value should contain xxx-abc, if i/p param is abc.",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 132,
+        "endChar": 17
+      },
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_f676e405",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/OnapCommandConfg.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "you may safely remove this i think",
+      "range": {
+        "startLine": 139,
+        "startChar": 26,
+        "endLine": 139,
+        "endChar": 45
+      },
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_b6605c36",
+        "filename": "framework/src/main/java/org/onap/cli/fw/http/HttpInput.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "pls be align with comments given for this naming",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_96655847",
+        "filename": "framework/src/test/resources/onap.properties",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "pls remove while spaces from all change set.",
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_765af484",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-checkin-schema.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "pls fix it",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 19
+      },
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_565ff072",
+        "filename": "plugins/sdc/src/test/resources/vsp-checkin/vsp-checkin-usage.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T05:10:00Z",
+      "side": 1,
+      "message": "pls remove all usage files added here. and refer to commit https://gerrit.onap.org/r/8353  for adding samples",
+      "revId": "8697ce0af97bae766ac15a4adbced99081bbde8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
