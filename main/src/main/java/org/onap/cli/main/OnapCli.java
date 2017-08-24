@@ -123,6 +123,7 @@ public class OnapCli {
             try {
                 console = createConsoleReader();
                 String line = null;
+                console.println(OnapCliConstants.CLI_BANNER);
                 while ((line = console.readLine()) != null) {
                     if (OnapCliConstants.PARAM_INTERACTIVE_EXIT.equalsIgnoreCase(line)
                             || OnapCliConstants.PARAM_INTERACTIVE_BYE.equalsIgnoreCase(line)) {

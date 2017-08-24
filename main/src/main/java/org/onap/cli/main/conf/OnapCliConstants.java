@@ -35,5 +35,14 @@ public final class OnapCliConstants {
     public static final String PARAM_INTERACTIVE_CLEAR = "clear";
     public static final String PARAM_INTERACTIVE_ARG_SPLIT_PATTERN = "\\s+";
 
+    public static final String CLI_BANNER = "" +
+            "\n" +
+            "                              _________ .____    .___  \n" +
+            "  ____   ____ _____  ______   \\_   ___ \\|    |   |   | \n" +
+            " /  _ \\ /    \\\\__  \\ \\____ \\  /    \\  \\/|    |   |   | \n" +
+            "(  <_> )   |  \\/ __ \\|  |_> > \\     \\___|    |___|   | \n" +
+            " \\____/|___|  (____  /   __/   \\______  /_______ \\___| \n" +
+            "            \\/     \\/|__|             \\/        \\/     \n";
+
     private OnapCliConstants(){}
 }
