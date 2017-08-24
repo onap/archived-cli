@@ -16,6 +16,24 @@
       "revId": "bf4050ca3427d5b2bb1936916a36df67f43bcf7c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_4ddabe79",
+        "filename": "main/src/main/java/org/onap/cli/main/conf/OnapCliConstants.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1911
+      },
+      "writtenOn": "2017-08-24T15:12:22Z",
+      "side": 1,
+      "message": "Sure. I wil abandon this changeset and apply your comment of font styles in changeset 8611.",
+      "parentUuid": "9a437d4f_8aa40c58",
+      "revId": "bf4050ca3427d5b2bb1936916a36df67f43bcf7c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
