@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_8aa40c58",
+        "filename": "main/src/main/java/org/onap/cli/main/conf/OnapCliConstants.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T12:36:06Z",
+      "side": 1,
+      "message": "pls make it available from resource files\n\nAlso choose different font style so that its easily readable. thanks",
+      "revId": "bf4050ca3427d5b2bb1936916a36df67f43bcf7c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
