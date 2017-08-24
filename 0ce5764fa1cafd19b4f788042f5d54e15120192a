@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_2a93e0fb",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T12:37:44Z",
+      "side": 1,
+      "message": "in main project we have utils classes pls move it there.\nalso merge this change with previous one. thanks",
+      "revId": "0ce5764fa1cafd19b4f788042f5d54e15120192a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_0a901ceb",
+        "filename": "main/src/main/resources/onap-cli-banner.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-24T12:37:44Z",
+      "side": 1,
+      "message": "in file, keep only this banner and remove following contents.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "0ce5764fa1cafd19b4f788042f5d54e15120192a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
