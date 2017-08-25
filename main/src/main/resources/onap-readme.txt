@@ -1,3 +1,13 @@
+
+                           _____  _     _____
+                          /  __ \| |   |_   _|
+  ___  _ __   __ _ _ __   | /  \/| |     | |
+ / _ \| '_ \ / _` | '_ \  | |    | |     | |
+| (_) | | | | (_| | |_) | | \__/\| |_____| |_
+ \___/|_| |_|\__,_| .__/   \____/\_____/\___/
+                  | |
+                  |_|
+
 Onap Command-line interface (CLI).
 
 One Command to command whole Onap !! It provides the unified commands
@@ -13,3 +23,6 @@ To know the CLI usage, type onap [-h|--help]
 To know the usage of sub commands, type onap <command> [-h|--help]
 
 To know more, please refer the Onap wiki https://wiki.onap.org
+
+Note: During interactive shell mode, you can omit "onap" keyword.
+
