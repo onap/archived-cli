@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_40f5e581",
+        "filename": "framework/src/main/java/org/onap/cli/fw/ad/OnapAuthClient.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-25T02:26:46Z",
+      "side": 1,
+      "message": "would you like to remove this param now and make use of service object to get the authType. thanks",
+      "range": {
+        "startLine": 61,
+        "startChar": 120,
+        "endLine": 61,
+        "endChar": 138
+      },
+      "revId": "12768efee70810bf04c185c68e19e0d41b79c38c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_40ce055c",
+        "filename": "framework/src/main/java/org/onap/cli/fw/conf/OnapCommandConfg.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-25T02:26:46Z",
+      "side": 1,
+      "message": "pls handle the case if input param values not present in the paraMap",
+      "range": {
+        "startLine": 115,
+        "startChar": 27,
+        "endLine": 115,
+        "endChar": 92
+      },
+      "revId": "12768efee70810bf04c185c68e19e0d41b79c38c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
