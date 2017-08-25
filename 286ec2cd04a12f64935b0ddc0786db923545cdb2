@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a437d4f_03eec7ec",
+        "filename": "framework/src/main/java/org/onap/cli/fw/ad/OnapAuthClient.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-25T07:40:03Z",
+      "side": 1,
+      "message": "I would suggest this to be \"OnapService\" instead \"String\", so that service info (eg. servicename, serviceinfo) should be available to OnapAuthClient instance.",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "286ec2cd04a12f64935b0ddc0786db923545cdb2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_63e7d313",
         "filename": "framework/src/main/resources/onap.properties",
         "patchSetId": 12
