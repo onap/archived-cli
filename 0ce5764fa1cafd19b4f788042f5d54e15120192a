@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_80b50dcf",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-25T02:12:23Z",
+      "side": 1,
+      "message": "i think help also should be been part of the until class.\nlet us go with this code now, we can revisit latter. thanks.",
+      "parentUuid": "9a437d4f_2d909a94",
+      "revId": "0ce5764fa1cafd19b4f788042f5d54e15120192a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_0a901ceb",
         "filename": "main/src/main/resources/onap-cli-banner.txt",
         "patchSetId": 1
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "Providing base info about the project or help text is common in most CLI shells. If you look at onos cli, or mysql cli etc, you will have a banner and introduction about the product and some basic help text to get started.\n\nThis improves usability of the cli for the user.\n\nPls advise!",
       "parentUuid": "9a437d4f_0a901ceb",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "0ce5764fa1cafd19b4f788042f5d54e15120192a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_e0b619dc",
+        "filename": "main/src/main/resources/onap-cli-banner.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-25T02:12:23Z",
+      "side": 1,
+      "message": "when you run the cli in interactive mode, now we are getting these information i guess except banner. so i suggested to keep only the banner.\n\nPlease make use of the READ ME. or you could just update the read me file with banner and use the same code to read it as help function. thanks",
+      "parentUuid": "9a437d4f_8df8a6e6",
       "range": {
         "startLine": 1,
         "startChar": 0,
