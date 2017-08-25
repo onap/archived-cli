@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_63e7d313",
+        "filename": "framework/src/main/resources/onap.properties",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-25T07:15:24Z",
+      "side": 1,
+      "message": "pls don\u0027t mind to remove one blank line",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "286ec2cd04a12f64935b0ddc0786db923545cdb2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_43e4cf0c",
+        "filename": "framework/src/main/resources/onap.properties",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-25T07:15:24Z",
+      "side": 1,
+      "message": "here to change the naming",
+      "range": {
+        "startLine": 48,
+        "startChar": 63,
+        "endLine": 48,
+        "endChar": 72
+      },
+      "revId": "286ec2cd04a12f64935b0ddc0786db923545cdb2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_c3d8bf55",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/vsp/vsp-upload-schema.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-25T07:15:24Z",
+      "side": 1,
+      "message": "pls change this value to recent changes.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "286ec2cd04a12f64935b0ddc0786db923545cdb2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_a3ddbb44",
+        "filename": "plugins/sdc/src/test/resources/onap-cli-sample/vsp/vsp-list-sample.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-25T07:15:24Z",
+      "side": 1,
+      "message": "pls give an space char, otherwise it will become an invalid yaml",
+      "revId": "286ec2cd04a12f64935b0ddc0786db923545cdb2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
