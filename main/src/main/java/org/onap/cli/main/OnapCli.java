@@ -20,6 +20,7 @@ import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandWarning;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResult;
@@ -123,19 +124,49 @@ public class OnapCli {
             try {
                 console = createConsoleReader();
                 String line = null;
-                while ((line = console.readLine()) != null) {
-                    if (OnapCliConstants.PARAM_INTERACTIVE_EXIT.equalsIgnoreCase(line)
-                            || OnapCliConstants.PARAM_INTERACTIVE_BYE.equalsIgnoreCase(line)) {
-                        break;
-                    } else if (OnapCliConstants.PARAM_INTERACTIVE_CLEAR.equalsIgnoreCase(line)) {
-                        console.clearScreen();
-                        continue;
+                console: while ((line = console.readLine()) != null) {
+                    switch(line.toLowerCase()) {
+                        case OnapCliConstants.PARAM_INTERACTIVE_EXIT:
+                        case OnapCliConstants.PARAM_INTERACTIVE_BYE:
+                        case OnapCliConstants.PARAM_INTERACTIVE_QUIT:
+                        {
+                            break console;
+                        }
+                        case OnapCliConstants.PARAM_INTERACTIVE_CLEAR:
+                        {
+                            console.clearScreen();
+                            continue;
+                        }
+                        case OnapCliConstants.PARAM_HELP_LOGN:
+                        case OnapCliConstants.PARAM_HELP_SHORT:
+                        case OnapCliConstants.PARAM_INTERACTIVE_Q:
+                        {
+                            String help = OnapCommandRegistrar.getRegistrar().getHelp();
+                            console.println(help);
+                            break;
+                        }
+                        case OnapCliConstants.PARAM_VERSION_LONG:
+                        case OnapCliConstants.PARAM_VERSION_SHORT:
+                        {
+                            String version = OnapCommandRegistrar.getRegistrar().getVersion();
+                            console.println(version);
+                            break;
+                        }
+                        case OnapCliConstants.PARAM_INTERACTIVE_RET:
+                        {
+                            continue;
+                        }
+                        default:
+                            this.args = Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN));
+                            handleCommand();
                     }
-                    this.args = Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN));
-                    handleCommand();
                 }
             } catch (IOException e) { // NOSONAR
                 this.print("Failed to read console, " + e.getMessage());
+            } catch (OnapCommandHelpFailed onapCommandHelpFailed) {
+                onapCommandHelpFailed.printStackTrace();
+            } catch (OnapCommandException e) {
+                e.printStackTrace();
             } finally {
                 try {
                     TerminalFactory.get().restore();
