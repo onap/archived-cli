@@ -178,6 +178,15 @@ public class OnapCliMainTest {
         mockConsoleReader();
         cli.handleInteractive();
 
+        mockConsole("quit");
+        cli.handleInteractive();
+
+        mockConsole("?");
+        cli.handleInteractive();
+
+        mockConsole("help");
+        cli.handleInteractive();
+
     }
 
     private static void mockConsoleReader() {
