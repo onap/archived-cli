@@ -22,7 +22,7 @@ then
     exit 1
 fi
 
-CLASSPATH=$ONAP_CLI_HOME
+CLASSPATH=$ONAP_CLI_HOME:$ONAP_CLI_HOME/conf:$ONAP_CLI_HOME/docs
 for entry in "$ONAP_CLI_HOME/lib"/*
 do
   CLASSPATH=$CLASSPATH:$entry
@@ -30,8 +30,7 @@ done
 
 if [ "$ONAP_CLI_DEBUG" = "true" ]
 then
-    ${ONAP_CLI_DEBUG_PORT:=5005}
-    java -Xdebug -Xrunjdwp:transport=dt_socket,address=$ONAP_CLI_DEBUG_PORT,server=y -classpath $CLASSPATH org.onap.cli.main.OnapCli "$@"
+    java -Xdebug -Xrunjdwp:transport=dt_socket,address=${ONAP_CLI_DEBUG_PORT:-5005},server=y -classpath $CLASSPATH org.onap.cli.main.OnapCli "$@"
 else
     java -classpath $CLASSPATH org.onap.cli.main.OnapCli "$@"
 fi
