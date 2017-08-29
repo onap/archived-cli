@@ -17,15 +17,14 @@
 package org.onap.cli.fw.error;
 
 /**
- * Command not registered in CLI registrar.
+ * Command Not registered in Onap Command Registrar as version missing.
  *
  */
-public class OnapCommandNotFound extends OnapCommandException {
+public class OnapCommandRegistrationVersionMissing extends OnapCommandException {
 
-    private static final long serialVersionUID = 6676137916079057963L;
+    private static final long serialVersionUID = 5513297861129088463L;
 
-    public OnapCommandNotFound(String cmdName, String version) {
-        super("0x0011", "Command " + cmdName + " is not available for product version " + version +
-                ". so please check command name or product version set in env variable ONAP_VERION or cli.product.version in onap.properties");
+    public OnapCommandRegistrationVersionMissing(String cmdName) {
+        super("0x0031", "Command " + cmdName + " version is missing");
     }
 }

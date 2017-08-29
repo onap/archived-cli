@@ -190,9 +190,11 @@ public class OnapCommandErrorTest {
 
     @Test
     public void onapCommandNotFoundTest() {
-        OnapCommandNotFound failed = new OnapCommandNotFound("Test");
+        OnapCommandNotFound failed = new OnapCommandNotFound("Test", "1.0");
 
-        assertEquals("0x0011::Command Test is not registered", failed.getMessage());
+        assertEquals("0x0011::Command Test is not available for product version 1.0."
+                + " so please check command name or product version set in env variable ONAP_VERION or"
+                + " cli.product.version in onap.properties", failed.getMessage());
     }
 
     @Test

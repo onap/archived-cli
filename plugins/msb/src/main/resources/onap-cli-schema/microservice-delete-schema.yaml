@@ -1,6 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: microservice-delete
 description: Deletes the micro service from Onap
+version: 1.0
 service:
   name: msb
   version: v1

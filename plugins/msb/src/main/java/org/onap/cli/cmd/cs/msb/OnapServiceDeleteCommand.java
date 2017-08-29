@@ -19,6 +19,6 @@ package org.onap.cli.cmd.cs.msb;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 
-@OnapCommandSchema(name = "microservice-delete", schema = "microservice-delete-schema.yaml")
+@OnapCommandSchema(name = "microservice-delete", version = "1.0", schema = "microservice-delete-schema.yaml")
 public class OnapServiceDeleteCommand extends OnapHttpCommand {
 }

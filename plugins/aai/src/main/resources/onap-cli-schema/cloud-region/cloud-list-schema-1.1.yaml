@@ -1,7 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: cloud-list
 description: List the configured clouds and Onap service subscriptions
-version: 1.0
+version: 1.1
 service:
   name: aai
   version: v8
@@ -21,11 +21,11 @@ results:
       type: string
     - name: tenant
       description: Onap cloud tenat
-      scope: short
+      scope: long
       type: string
     - name: tenant-id
       description: Onap cloud tenat id
-      scope: short
+      scope: long
       type: string
     - name: customer
       description: Onap cloud customer
@@ -37,7 +37,7 @@ results:
       type: string
 http:
   request:
-    uri: /aai/v8/cloud-infrastructure/cloud-regions
+    uri: /aai/v11/cloud-infrastructure/cloud-regions
     method: GET
   success_codes:
     - 200
