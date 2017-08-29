@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_4e550fc5",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1911
+      },
+      "writtenOn": "2017-08-29T09:00:56Z",
+      "side": 1,
+      "message": "Ah.. now I get what you say... All the while I was think you are referring to the goto label. now I understand why you were referring to \"finally\" initially. Yes, return would be perfect fit here and I shall change it.",
+      "parentUuid": "9a437d4f_8f0c1696",
+      "range": {
+        "startLine": 133,
+        "startChar": 28,
+        "endLine": 133,
+        "endChar": 42
+      },
+      "revId": "f58f77be0daa5f9eb2c6e38e1d4a581e9556a1dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_d9b66cdc",
         "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
         "patchSetId": 1
