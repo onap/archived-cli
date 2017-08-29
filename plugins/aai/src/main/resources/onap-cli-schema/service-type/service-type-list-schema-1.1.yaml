@@ -1,7 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: service-type-list
 description: List the service types configured in Onap
-version: onap-1.0
+version: onap-1.1
 service:
   name: aai
   version: v8
@@ -25,7 +25,7 @@ results:
       type: string
 http:
   request:
-    uri: /aai/v8/service-design-and-creation/services
+    uri: /aai/v11/service-design-and-creation/services
     method: GET
   success_codes:
     - 200

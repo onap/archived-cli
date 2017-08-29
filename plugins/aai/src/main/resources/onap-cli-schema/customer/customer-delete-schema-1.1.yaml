@@ -1,7 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: customer-delete
 description: Delete a customer from Onap
-version: onap-1.0
+version: onap-1.1
 service:
   name: aai
   version: v8
@@ -23,7 +23,7 @@ parameters:
     is_optional: true
 http:
   request:
-    uri: /aai/v8/business/customers/customer/${customer-name}?resource-version=${resource-version}
+    uri: /aai/v11/business/customers/customer/${customer-name}?resource-version=${resource-version}
     method: DELETE
   success_codes:
     - 204

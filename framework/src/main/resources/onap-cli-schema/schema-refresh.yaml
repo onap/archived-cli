@@ -1,6 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: schema-refresh
 description: Onap command to refresh schemas stored in onap_cli_schema folders.
+version: 0.0
 service:
   auth: none
   name: onap-cli
