@@ -1,6 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: service-list
 description: Onap Service list
+version: 1.0
 service:
   name: msb
   version: v1

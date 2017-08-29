@@ -129,6 +129,8 @@ public class Constants {
     public static final String CONF = "onap.properties";
     public static final String ONAP_IGNORE_AUTH = "cli.ignore_auth";
     public static final String ONAP_CLI_VERSION = "cli.version";
+    public static final String ONAP_CLI_PRODUCT_VERSION = "cli.product.version";
+    public static final String ONAP_CLI_PRODUCT_VERSION_ENV_NAME = "ONAP_VERSION";
     public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
     public static final String EXCLUDE_PARAMS_INTERNAL_CMD = "cli.exclude_params_internal_cmd";
     public static final String NO_AUTH_DISABLE_INCLUDE_PARAMS_EXTERNAL_CMD = "cli.no_auth_disable_include_params_external_cmd";
@@ -146,7 +148,7 @@ public class Constants {
     public static final String EXTERNAL_JSON_PATTERN = "/**/*.json";
     public static final String EXTERNAL_SCHEMA_PATH_PATERN = EXTERNAL_SCHEMA_DIRECTORY + EXTERNAL_YAML_PATTERN;
     public static final String EXTERNAL_DISCOVERY_DIRECTORY = "data";
-    public static final String EXTERNAL_DISCOVERY_FILE = "external-schema.json";
+    public static final String EXTERNAL_DISCOVERY_FILE = "cli-schema.json";
     public static final String EXTERNAL_DISCOVERY_DIRECTORY_PATTERN = EXTERNAL_DISCOVERY_DIRECTORY
             + EXTERNAL_JSON_PATTERN;
 
@@ -177,6 +179,7 @@ public class Constants {
 
     public static final String DEFAULT_SCHEMA_FILE_NAME = "default_input_parameters.yaml";
 
+    public static final String PRODUCT_VERSION = "product version";
     // Error message
     public static final String SCHEMA_INVALID_DEFAULT_PARAMS_SECTION = "Invalid default_parameter section";
     public static final String SCHEMA_FILE_EMPTY = "The schema file cann't be null or empty";

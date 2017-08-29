@@ -40,6 +40,13 @@ public @interface OnapCommandSchema {
     String name();
 
     /**
+     * Command version
+     *
+     * @return
+     */
+    String version();
+
+    /**
      * Schema file name placed under class path
      *
      * @return

@@ -1,6 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: service-type-list
 description: List the service types configured in Onap
+version: 1.0
 service:
   name: aai
   version: v8

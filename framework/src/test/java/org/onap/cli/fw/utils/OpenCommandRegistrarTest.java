@@ -34,9 +34,9 @@ public class OpenCommandRegistrarTest {
     public void test() throws OnapCommandException {
         OnapCommandRegistrar registrar = OnapCommandRegistrar.getRegistrar();
         OnapCommand cmd = registrar.get("sample-test");
-        registrar.listCommands();
-        registrar.getAllCommandToSchemaMap();
         cmd.printVersion();
+        registrar.listCommands();
+
     }
 
 }

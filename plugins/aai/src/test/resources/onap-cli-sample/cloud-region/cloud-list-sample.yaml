@@ -1,7 +1,7 @@
 onap_cli_sample_version: 1.0
 
 name: cloud-list
-
+version: 1.0
 samples:
     sample1:
         name: List the configured clouds in onap
