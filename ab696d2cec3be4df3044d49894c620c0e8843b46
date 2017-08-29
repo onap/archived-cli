@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_0eb707da",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-29T12:11:50Z",
+      "side": 1,
+      "message": "I would suggest to print some user friendly message instead of \"printStackTrace()\".",
+      "range": {
+        "startLine": 157,
+        "startChar": 15,
+        "endLine": 157,
+        "endChar": 56
+      },
+      "revId": "ab696d2cec3be4df3044d49894c620c0e8843b46",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_ceb0dfdf",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-08-29T12:11:50Z",
+      "side": 1,
+      "message": "I would suggest to print some user friendly message instead of \"printStackTrace()\".",
+      "range": {
+        "startLine": 159,
+        "startChar": 15,
+        "endLine": 159,
+        "endChar": 36
+      },
+      "revId": "ab696d2cec3be4df3044d49894c620c0e8843b46",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
