@@ -83,6 +83,17 @@
                                 "${project.build.directory}/../../../plugins/target/lib/")
                                 }
 
+                                ant.copy(todir:
+                                "${deployUnzip}/conf") {
+                                fileset(file:
+                                "${project.build.directory}/../../../framework/src/main/resources/onap.properties")
+                                }
+
+                                ant.copy(todir:
+                                "${deployUnzip}/docs") {
+                                fileset(file:
+                                "${project.build.directory}/../../../README.md")
+                                }
                                 ant.zip(destfile:
                                 "${deployFolder}/${outfileName}") {
                                 fileset(dir: "${deployUnzip}")
