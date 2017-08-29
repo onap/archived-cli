@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_4b93c1fa",
+        "filename": "main/src/main/resources/onap-readme.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-08-29T05:37:17Z",
+      "side": 1,
+      "message": "pls add this into README.md file under root dir of cli proejct as this file will get deprecated in thsi release",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "9f66d4dadab03bb96c8ce5e891c8149af0e83d4b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
