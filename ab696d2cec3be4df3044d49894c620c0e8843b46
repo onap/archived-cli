@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_6ece935c",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1911
+      },
+      "writtenOn": "2017-08-29T12:31:18Z",
+      "side": 1,
+      "message": "I don\u0027t understand why a stackTrace wouldn\u0027t be apt especially for an exception clause as it would only aid debugging, especially when i see a case where-in catch clause doesn\u0027t do anything else.\n\nNonetheless I had addressed the petty comments in my incoming patchset.",
+      "parentUuid": "9a437d4f_0eb707da",
+      "range": {
+        "startLine": 157,
+        "startChar": 15,
+        "endLine": 157,
+        "endChar": 56
+      },
+      "revId": "ab696d2cec3be4df3044d49894c620c0e8843b46",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_ceb0dfdf",
         "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
         "patchSetId": 3
