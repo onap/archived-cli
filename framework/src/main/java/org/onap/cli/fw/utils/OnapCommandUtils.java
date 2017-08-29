@@ -25,6 +25,7 @@ import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.cmd.OnapSwaggerCommand;
+import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -372,6 +373,13 @@ public class OnapCommandUtils {
                     }
                     break;
 
+                case VERSION:
+                    Object version = values.get(key);
+                    if (version != null) {
+                        cmd.setVersion(version.toString());
+                    }
+                    break;
+                    
                 case DESCRIPTION:
                     Object description = values.get(key);
                     if (description != null) {
@@ -1482,7 +1490,11 @@ public class OnapCommandUtils {
 
         for (Entry<String, String> entry : resultMap.entrySet()) {
             String key = entry.getKey();
-            resultsProcessed.put(key, replaceLineFromOutputResults(resultMap.get(key), resultHttp));
+            try {
+            	resultsProcessed.put(key, replaceLineFromOutputResults(resultMap.get(key), resultHttp));
+            } catch(OnapCommandResultEmpty e) {
+            	// pass // NOSONAR
+            }
         }
 
         return resultsProcessed;
@@ -1508,9 +1520,14 @@ public class OnapCommandUtils {
                     if (resourceMap != null && resourceMap.size() > 0) {
                         ExternalSchema schema = new ExternalSchema();
                         schema.setSchemaName(resource.getFilename());
+                        schema.setSchemaURI(resource.getURI().toString());
                         schema.setCmdName((String) resourceMap.get(NAME));
                         Object obj = resourceMap.get(ONAP_CMD_SCHEMA_VERSION);
                         schema.setVersion(obj.toString());
+                        schema.setCmdVersion(resourceMap.get(Constants.VERSION).toString());
+                        if (resourceMap.get(Constants.HTTP) != null) {
+                        	schema.setHttp("true");
+                        }
                         extSchemas.add(schema);
                     }
                 }
@@ -1672,12 +1689,12 @@ public class OnapCommandUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static ExternalSchema loadExternalSchemaFromJson(String cmd) throws OnapCommandException {
+    public static ExternalSchema loadExternalSchemaFromJson(String cmd, String version) throws OnapCommandException {
         List<ExternalSchema> list = loadExternalSchemasFromJson();
         ExternalSchema schemaStr = null;
         if (list != null) {
             for (ExternalSchema schema : list) {
-                if (cmd.equals(schema.getCmdName())) {
+                if (cmd.equals(schema.getCmdName()) && version.equals(schema.getCmdVersion())) {
                     schemaStr = schema;
                     break;
                 }

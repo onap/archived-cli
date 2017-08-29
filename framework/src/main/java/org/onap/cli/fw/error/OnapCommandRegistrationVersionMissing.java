@@ -14,11 +14,17 @@
  * limitations under the License.
  */
 
-package org.onap.cli.cmd.cs.msb;
+package org.onap.cli.fw.error;
 
-import org.onap.cli.fw.OnapCommandSchema;
-import org.onap.cli.fw.cmd.OnapHttpCommand;
+/**
+ * Command Not registered in Onap Command Registrar as version missing.
+ *
+ */
+public class OnapCommandRegistrationVersionMissing extends OnapCommandException {
 
-@OnapCommandSchema(name = "microservice-create", version = "1.0", schema = "microservice-create-schema.yaml")
-public class OnapServiceCreateCommand extends OnapHttpCommand {
+    private static final long serialVersionUID = 5513297861129088463L;
+
+    public OnapCommandRegistrationVersionMissing(String cmdName) {
+        super("0x0031", "Command " + cmdName + " version is missing");
+    }
 }

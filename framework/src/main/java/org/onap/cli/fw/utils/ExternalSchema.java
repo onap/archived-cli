@@ -19,8 +19,11 @@ package org.onap.cli.fw.utils;
 public class ExternalSchema {
 
     private String schemaName;
+    private String schemaURI;
     private String cmdName;
+    private String cmdVersion;
     private String version;
+    private String http = "false";
 
     public String getSchemaName() {
         return schemaName;
@@ -45,5 +48,33 @@ public class ExternalSchema {
     public void setVersion(String version) {
         this.version = version;
     }
+
+    public String getCmdVersion() {
+        return cmdVersion;
+    }
+
+    public void setCmdVersion(String cmdVersion) {
+        this.cmdVersion = cmdVersion;
+    }
+
+	public String getSchemaURI() {
+		return schemaURI;
+	}
+
+	public void setSchemaURI(String schemaURI) {
+		this.schemaURI = schemaURI;
+	}
+
+	public String getHttp() {
+		return http;
+	}
+
+	public void setHttp(String internal) {
+		this.http = internal;
+	}
+	
+	public boolean isHttp() {
+		return this.getHttp().equals("true");
+	}
 
 }

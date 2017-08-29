@@ -58,6 +58,8 @@ public abstract class OnapCommand {
 
     private String cmdSchemaName;
 
+    private String cmdVersion;
+    
     private OnapService onapService = new OnapService();
 
     private List<OnapCommandParameter> cmdParameters = new ArrayList<>();
@@ -324,4 +326,12 @@ public abstract class OnapCommand {
         return OnapCommandUtils.help(this);
     }
     // (mrkanag) Add toString for all command, parameter, result, etc objects in JSON format
+
+	public void setVersion(String version) {
+		this.cmdVersion = version;		
+	}
+	
+	public String getVersion() {
+		return this.cmdVersion;
+	}
 }

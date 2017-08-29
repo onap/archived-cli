@@ -24,7 +24,8 @@ public class OnapCommandNotFound extends OnapCommandException {
 
     private static final long serialVersionUID = 6676137916079057963L;
 
-    public OnapCommandNotFound(String cmdName) {
-        super("0x0011", "Command " + cmdName + " is not registered");
+    public OnapCommandNotFound(String cmdName, String version) {
+        super("0x0011", "Command " + cmdName + " is not available for product version " + version + 
+        		". so please check command name or product version set in env variable ONAP_VERION or cli.product.version in onap.properties");
     }
 }

@@ -50,7 +50,7 @@ public class OnapCommandRegistrarTest {
             if (!file.exists()) {
                 file.mkdir();
             } else {
-                File f1 = new File(path + "/external-schema.json");
+                File f1 = new File(path + "/cli-schema.json");
                 f1.delete();
             }
         }
@@ -60,7 +60,7 @@ public class OnapCommandRegistrarTest {
     public void registerTest() throws OnapCommandException {
         OnapCommand test = new OnapCommandTest();
         Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
-        registerar.register("Test", cmd);
+        registerar.register("Test", "1.0", cmd);
         OnapCommand cc = registerar.get("Test");
         assertTrue(cmd == cc.getClass());
 
@@ -71,7 +71,7 @@ public class OnapCommandRegistrarTest {
     public void cmdTestSchema() throws OnapCommandException {
         OnapCommand test = new OnapCommandTest();
         Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
-        registerar.register("Test", cmd);
+        registerar.register("Test", "1.0", cmd);
         OnapCommand cc = registerar.get("Test");
     }
 
@@ -82,14 +82,16 @@ public class OnapCommandRegistrarTest {
             registerar.get("Test1");
             fail("This should have thrown an exception");
         } catch (OnapCommandNotFound e) {
-            assertEquals(e.getMessage(), "0x0011::Command Test1 is not registered");
+            //pass  // NOSONAR
+        } catch (Exception e) {
+        	fail("This should have thrown an OnapCommandNotFound exception");
         }
     }
 
     @Test
     public void onapCommandRegistrationFailedTest() throws OnapCommandException {
 
-        @OnapCommandSchema(name = "Test2", schema = "sample-test-schema.yaml")
+        @OnapCommandSchema(name = "Test2", version= "1.0", schema = "sample-test-schema.yaml")
         class Test extends OnapCommand {
 
             @Override
@@ -102,7 +104,7 @@ public class OnapCommandRegistrarTest {
         OnapCommand com = new Test();
         Class<OnapCommand> cmd = (Class<OnapCommand>) com.getClass();
         try {
-            registerar.register("Test2", cmd);
+            registerar.register("Test2", "1.0", cmd);
             registerar.get("Test2");
             fail("This should have thrown an exception");
         } catch (OnapCommandRegistrationFailed e) {
@@ -116,7 +118,7 @@ public class OnapCommandRegistrarTest {
         OnapCommand test = new OnapCommandTest1();
         Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
         registerar = new OnapCommandRegistrar();
-        registerar.register("test1", cmd);
+        registerar.register("test1", "1.0", cmd);
         String help = registerar.getHelp();
         assertNotNull(help);
     }
@@ -139,7 +141,7 @@ public class OnapCommandRegistrarTest {
     }
 }
 
-@OnapCommandSchema(name = OnapCommandTest.CMD_NAME, schema = "sample-test-schema.yaml")
+@OnapCommandSchema(name = OnapCommandTest.CMD_NAME, version = "1.0", schema = "sample-test-schema.yaml")
 class OnapCommandTest extends OnapCommand {
 
     public OnapCommandTest() {
@@ -154,7 +156,7 @@ class OnapCommandTest extends OnapCommand {
 
 }
 
-@OnapCommandSchema(name = OnapCommandTest1.CMD_NAME, schema = "test-schema.yaml")
+@OnapCommandSchema(name = OnapCommandTest1.CMD_NAME, version = "1.0", schema = "test-schema.yaml")
 class OnapCommandTest1 extends OnapCommand {
 
     public OnapCommandTest1() {
