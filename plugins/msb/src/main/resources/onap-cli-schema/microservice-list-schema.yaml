@@ -1,6 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: microservice-list
 description: Lists the registetred micro services in Onap
+version: onap-1.0
 service:
   name: msb
   version: v1

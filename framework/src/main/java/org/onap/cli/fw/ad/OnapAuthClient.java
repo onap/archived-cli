@@ -54,8 +54,6 @@ public class OnapAuthClient {
 
     private OnapService service = new OnapService();
 
-    private String authType = OnapCommandConfg.getAuthType();
-
     private Map<String, String> paramMap = new HashMap<>();
 
     public OnapAuthClient(OnapCredentials creds, boolean debug, OnapService service, List<OnapCommandParameter> params) throws OnapCommandHttpFailure, OnapCommandInvalidParameterValue {
@@ -64,7 +62,6 @@ public class OnapAuthClient {
         for (OnapCommandParameter param : params) {
             paramMap.put(param.getName(), param.getValue().toString());
         }
-        this.authType = service.getAuthType();
 
         this.http = new OnapHttpConnection(creds.getHostUrl().startsWith("https"), debug);
     }
@@ -88,15 +85,14 @@ public class OnapAuthClient {
             return;
         }
 
-        if (this.authType.equalsIgnoreCase(Constants.AUTH_BASIC)) {
+        if (this.service.getAuthType().equalsIgnoreCase(Constants.AUTH_BASIC)) {
             String authToken = BasicScheme.authenticate(new UsernamePasswordCredentials(
                     creds.getUsername(), creds.getPassword()), "UTF-8", false).getValue();
 
             Map<String, String> mapHeaders = OnapCommandConfg.getBasicCommonHeaders(this.paramMap);
-            if(this.service.getName() != null){
-                mapHeaders.putAll(OnapCommandConfg.getServiceHeaders(this.service.getName(), this.paramMap));
-            }
+            mapHeaders.putAll(OnapCommandConfg.getServiceHeaders(this.service.getName(), this.paramMap));
             mapHeaders.put(OnapCommandConfg.getXAuthTokenName(), authToken);
+
             this.http.setCommonHeaders(mapHeaders);
             return;
         }

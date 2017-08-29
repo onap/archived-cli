@@ -1,7 +1,7 @@
 onap_cli_sample_version: 1.0
 
 name: vsp-show
-
+version: onap-1.0
 samples:
     sample1:
         name: Show the details of Vendor Software Products

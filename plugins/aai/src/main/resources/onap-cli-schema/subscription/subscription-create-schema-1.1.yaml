@@ -1,7 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: subscription-create
 description: Create a subscription for a customer in Onap
-version: onap-1.0
+version: onap-1.1
 service:
   name: aai
   version: v8
@@ -53,7 +53,7 @@ parameters:
     is_optional: true
 http:
   request:
-    uri: /aai/v8/business/customers/customer/${customer-name}
+    uri: /aai/v11/business/customers/customer/${customer-name}
     method: PUT
     body: '{"global-customer-id": "${customer-name}", "subscriber-name": "${subscriber-name}", "subscriber-type": "INFRA", "resource-version":"${resource-version}", "service-subscriptions":{"service-subscription":[{"relationship-list":{"relationship":[{"related-to":"tenant","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"${cloud-type}"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"${cloud-region}"},{"relationship-key":"tenant.tenant-id","relationship-value":"${cloud-tenant-id}"}]}]},"service-type":"${service-type}"}]}}}'
   success_codes:

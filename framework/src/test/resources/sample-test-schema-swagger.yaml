@@ -1,6 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: sample-test-swagger
 description: Sample swagger command test.
+version: cli-1.0
 service:
   name: sample
   version: v1

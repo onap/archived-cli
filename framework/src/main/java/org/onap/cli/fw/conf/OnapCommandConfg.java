@@ -68,6 +68,14 @@ public final class OnapCommandConfg {
         return prps.getProperty(Constants.ONAP_CLI_VERSION);
     }
 
+    public static String getEnabledProductVersion() {
+        String version = System.getenv(Constants.ONAP_CLI_PRODUCT_VERSION_ENV_NAME);
+        if (version == null) {
+            version = prps.getProperty(Constants.ONAP_CLI_PRODUCT_VERSION);
+        }
+        return version;
+    }
+
     /**
      * checks if cookies based auth.
      *
@@ -103,22 +111,25 @@ public final class OnapCommandConfg {
 
     private static Map<String, String> getHeaderValues(String headerKey, Map<String, String> paramMap) {
         Map<String, String> mapHeaders = new HashMap<String, String> ();
-        Arrays.stream(prps.getProperty(headerKey)  // NOSONAR
-                .split(",")).map(String::trim).forEach(header -> {
-                    String headerName = prps.getProperty(headerKey+ "." + header);
-                    String headerValue = prps.getProperty(headerKey + "." + header + ".value", null);
-                    if (headerValue != null) {
-                        headerValue = headerValue.replaceAll("uuid", UUID.randomUUID().toString());
-                        if (headerValue.contains("${")) {
-                            String param = headerValue.substring(headerValue.indexOf("${")+2 ,headerValue.indexOf("}"));
-                            String pattern = "${"+param+"}";
-                            headerValue = headerValue.replace(pattern, paramMap.getOrDefault(param, param));
+        if (prps.containsKey(headerKey)) {
+            Arrays.stream(prps.getProperty(headerKey)  // NOSONAR
+                    .split(",")).map(String::trim).forEach(header -> {
+                        String headerName = prps.getProperty(headerKey+ "." + header);
+                        String headerValue = prps.getProperty(headerKey + "." + header + ".value", null);
+                        if (headerValue != null) {
+                            headerValue = headerValue.replaceAll("uuid", UUID.randomUUID().toString());
+                            if (headerValue.contains("${")) {
+                                String param = headerValue.substring(headerValue.indexOf("${")+2 ,headerValue.indexOf("}"));
+                                String pattern = "${"+param+"}";
+                                headerValue = headerValue.replace(pattern, paramMap.getOrDefault(param, param));
+                            }
                         }
-                    }
-                    mapHeaders.put(headerName, headerValue);
-                });
+                        mapHeaders.put(headerName, headerValue);
+                    });
+        }
         return mapHeaders;
     }
+
     public static Map<String, String> getBasicCommonHeaders(Map<String, String> paramMap) {
         return getHeaderValues(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS, paramMap);
     }

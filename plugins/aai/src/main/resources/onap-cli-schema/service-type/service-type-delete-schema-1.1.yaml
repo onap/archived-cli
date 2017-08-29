@@ -1,7 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: service-type-delete
 description: Delete a service type from Onap
-version: onap-1.0
+version: onap-1.1
 service:
   name: aai
   version: v8
@@ -23,7 +23,7 @@ parameters:
     is_optional: true
 http:
   request:
-    uri: /aai/v8/service-design-and-creation/services/service/${service-type-id}?resource-version=${resource-version}
+    uri: /aai/v11/service-design-and-creation/services/service/${service-type-id}?resource-version=${resource-version}
     queries:
       resource-version: ${resource-version}
     method: DELETE

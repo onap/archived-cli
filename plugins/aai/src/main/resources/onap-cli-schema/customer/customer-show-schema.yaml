@@ -1,6 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: customer-show
 description: Lists the registetred customers in Onap
+version: onap-1.0
 service:
   name: aai
   version: v8
