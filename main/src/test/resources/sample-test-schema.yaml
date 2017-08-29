@@ -1,6 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: sample-test
 description: Onap sample command to test the command features
+version: cli-1.0
 service:
   name: sample
   version: v1

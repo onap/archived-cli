@@ -434,14 +434,14 @@ public class OnapCommandUtilsTest {
 
     }
 
-    @OnapCommandSchema(name = "sample-test", schema = "sample-test-schema.yaml")
+    @OnapCommandSchema(name = "sample-test", version = "cli-1.0", schema = "sample-test-schema.yaml")
     class OnapCommandSample extends OnapCommand {
         @Override
         protected void run() throws OnapCommandException {
         }
     }
 
-    @OnapCommandSchema(name = "sample-swagger-test", schema = "sample-test-schema-swagger.yaml")
+    @OnapCommandSchema(name = "sample-swagger-test", version = "cli-1.0", schema = "sample-test-schema-swagger.yaml")
     class OnapSwaggerBasedCommandSample extends OnapSwaggerCommand {
 
         @Override
@@ -449,7 +449,7 @@ public class OnapCommandUtilsTest {
         }
     }
 
-    @OnapCommandSchema(name = "sample-http-test", schema = "sample-test-schema-http.yaml")
+    @OnapCommandSchema(name = "sample-http-test", version = "cli-1.0", schema = "sample-test-schema-http.yaml")
     class OnapHttpCommandSample extends OnapHttpCommand {
 
         @Override

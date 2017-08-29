@@ -1,7 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: customer-create
 description: Create a customer in Onap
-version: onap-1.0
+version: onap-1.1
 service:
   name: aai
   version: v8
@@ -24,7 +24,7 @@ parameters:
 
 http:
   request:
-    uri: /aai/v8/business/customers/customer/${customer-name}
+    uri: /aai/v11/business/customers/customer/${customer-name}
     method: PUT
     body: '{"global-customer-id": "${customer-name}", "subscriber-name": "${subscriber-name}", "subscriber-type": "INFRA"}'
   success_codes:

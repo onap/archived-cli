@@ -1,6 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: user-create
 description: Onap user create command.
+version: onap-1.0
 service:
   name: auth
   version: v1

@@ -1,7 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: service-type-create
 description: Add a service type in Onap
-version: onap-1.0
+version: onap-1.1
 service:
   name: aai
   version: v8
@@ -24,7 +24,7 @@ parameters:
 
 http:
   request:
-    uri: /aai/v8/service-design-and-creation/services/service/${service-type-id}
+    uri: /aai/v11/service-design-and-creation/services/service/${service-type-id}
     method: PUT
     body: '{"service-description": "${service-type}", "service-id": "${service-type-id}"}'
   success_codes:

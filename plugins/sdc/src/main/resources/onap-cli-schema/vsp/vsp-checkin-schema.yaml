@@ -1,7 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: vsp-checkin
 description: Checkin Vendor Software Product
-
+version: onap-1.0
 service:
   name: sdc
   version: v1.0
