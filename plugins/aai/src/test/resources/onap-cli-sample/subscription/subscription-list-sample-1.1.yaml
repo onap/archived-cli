@@ -1,0 +1,15 @@
+onap_cli_sample_version: 1.0
+
+name: subscription-list
+version: onap-1.1
+samples:
+    sample1:
+        name: List the configured subscription in onap for a given customer
+        input: -h https://locahost:8443 -u AAI -p AAI -x customer-2
+        output: |
+            +--------------+
+            |service-type  |
+            +--------------+
+            |vTest         |
+            +--------------+
+
