@@ -1,0 +1,16 @@
+onap_cli_sample_version: 1.0
+
+name: tenant-list
+version: onap-1.1
+samples:
+    sample1:
+        name: List the tenant under given cloud region in onap
+        input: -h https://locahost:8443 -u AAI -p AAI -x att-aic -y AAIAIC25
+        output: |
+            +--------------------------------------+--------------+------------------+
+            |tenant-id                             |tenant-name   |resource-version  |
+            +--------------------------------------+--------------+------------------+
+            |26ab7af6-96cc-4c4e-814a-e533af4ef9f6  |test          |1504091074807     |
+            +--------------------------------------+--------------+------------------+
+            |8bcf4466-b092-473f-889b-7f40efb5a322  |tenant-2      |1504093061465     |
+            +--------------------------------------+--------------+------------------+

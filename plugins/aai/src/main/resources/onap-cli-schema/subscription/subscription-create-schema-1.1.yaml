@@ -1,10 +1,10 @@
 onap_cmd_schema_version: 1.0
 name: subscription-create
-description: Create a subscription for a customer in Onap
+description: Create a subscription of a customer for given service in specific cloud region in Onap
 version: onap-1.1
 service:
   name: aai
-  version: v8
+  version: v11
   auth: basic
   mode: direct
 

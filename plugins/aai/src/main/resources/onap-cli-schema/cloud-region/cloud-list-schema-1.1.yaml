@@ -4,7 +4,7 @@ description: List the configured clouds and Onap service subscriptions
 version: onap-1.1
 service:
   name: aai
-  version: v8
+  version: v11
   auth: basic
   mode: direct
 
@@ -35,6 +35,10 @@ results:
       description: Onap cloud service
       scope: long
       type: string
+    - name: resource-version
+      description: Onap cloud resource version
+      scope: short
+      type: string
 http:
   request:
     uri: /aai/v11/cloud-infrastructure/cloud-regions
@@ -44,6 +48,7 @@ http:
   result_map:
     cloud: $b{cloud-region.[*].cloud-owner}
     region: $b{cloud-region.[*].cloud-region-id}
+    resource-version: $b{cloud-region.[*].resource-version}
     tenant: $b{cloud-region.[*].tenants.tenant.[*].tenant-name}
     tenant-id: $b{cloud-region.[*].tenants.tenant.[*].tenant-id}
     customer: $b{cloud-region.[*].tenants.tenant.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'customer.global-customer-id')].relationship-value}

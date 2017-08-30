@@ -4,7 +4,7 @@ description: Lists the registetred customers in Onap
 version: onap-1.1
 service:
   name: aai
-  version: v8
+  version: v11
   auth: basic
   mode: direct
 results:
