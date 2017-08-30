@@ -1,0 +1,13 @@
+onap_cmd_schema_version: 1.0
+name: use
+description: Choose the product version to use while running commands in interactive mode.
+version: cli-1.0
+service:
+  auth: none
+  name: onap-cli
+  version: 1.0.0
+parameters:
+  - name: product-version
+    type: string
+    description: Product version to use, run onap -v to know list of available product versions
+    is_optional: false
