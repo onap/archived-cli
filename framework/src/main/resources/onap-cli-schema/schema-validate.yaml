@@ -1,7 +1,7 @@
 onap_cmd_schema_version: 1.0
 name: schema-validate
 description: Onap command to validate schema
-version: 0.0
+version: cli-1.0
 service:
   auth: none
   name: onap-cli

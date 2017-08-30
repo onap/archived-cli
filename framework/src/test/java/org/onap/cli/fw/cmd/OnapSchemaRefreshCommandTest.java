@@ -37,6 +37,7 @@ public class OnapSchemaRefreshCommandTest {
 
         String s1Number = onapCommandResultAttribute.get(0).getValues().get(0);
         String cmdName = onapCommandResultAttribute.get(1).getValues().get(0);
+        String cmdVer = onapCommandResultAttribute.get(2).getValues().get(0);
         String cmdFile = onapCommandResultAttribute.get(3).getValues().get(0);
         String version = onapCommandResultAttribute.get(4).getValues().get(0);
 
@@ -44,6 +45,7 @@ public class OnapSchemaRefreshCommandTest {
         assertTrue(cmdName.equalsIgnoreCase("sample-test1"));
         assertTrue(cmdFile.equalsIgnoreCase("sample-test1-schema-http.yaml"));
         assertTrue(version.equalsIgnoreCase("1.0"));
+        assertTrue(cmdVer.equalsIgnoreCase("cli-1.0"));
 
     }
 }
