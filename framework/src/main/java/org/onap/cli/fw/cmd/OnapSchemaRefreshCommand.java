@@ -30,7 +30,7 @@ import java.util.List;
  * Refresh external schema.
  *
  */
-@OnapCommandSchema(name = "schema-refresh", version="0.0", schema = "schema-refresh.yaml")
+@OnapCommandSchema(name = "schema-refresh", version="cli-1.0", schema = "schema-refresh.yaml")
 public class OnapSchemaRefreshCommand extends OnapCommand {
 
     @Override
@@ -44,6 +44,7 @@ public class OnapSchemaRefreshCommand extends OnapCommand {
         List<String> cmdNames = new ArrayList<>();
         List<String> cmdFiles = new ArrayList<>();
         List<String> versions = new ArrayList<>();
+        List<String> cmdVersions = new ArrayList<>();
 
         for (int i = 0; i < schemas.size(); i++) {
             ExternalSchema schema = schemas.get(i);
@@ -51,12 +52,15 @@ public class OnapSchemaRefreshCommand extends OnapCommand {
             cmdNames.add(schema.getCmdName());
             cmdFiles.add(schema.getSchemaName());
             versions.add(schema.getVersion());
+            cmdVersions.add(schema.getCmdVersion());
         }
         for (OnapCommandResultAttribute attribute : this.getResult().getRecords()) {
             if ("sl-no".equals(attribute.getName())) {
                 attribute.setValues(slNumbers);
             } else if ("command".equals(attribute.getName())) {
                 attribute.setValues(cmdNames);
+            } else if ("product-version".equals(attribute.getName())) {
+                attribute.setValues(cmdVersions);
             } else if ("schema".equals(attribute.getName())) {
                 attribute.setValues(cmdFiles);
             } else if ("version".equals(attribute.getName())) {
