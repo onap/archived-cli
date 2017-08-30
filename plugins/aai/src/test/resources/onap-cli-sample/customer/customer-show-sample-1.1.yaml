@@ -1,0 +1,23 @@
+onap_cli_sample_version: 1.0
+
+name: customer-show
+version: onap-1.1
+samples:
+    sample1:
+        name: Show complete details of a customer
+        input: -h https://locahost:8443 -u AAI -p AAI -x example-global-customer-id-val-8741 --long
+        output: |
+            +--------------------------------------+----------------------------------+------------------+------------------------------------+
+            |name                                  |subscriber-name                   |resource-version  |subscriber-type                     |
+            +--------------------------------------+----------------------------------+------------------+------------------------------------+
+            |example-global-customer-id-val-8741   |example-subscriber-name-val-2447  |1504017436899     |example-subscriber-type-val-24368   |
+            +--------------------------------------+----------------------------------+------------------+------------------------------------+
+    sample2:
+        name: Show basic details of a customer
+        input: -h https://locahost:8443 -u AAI -p AAI -x example-global-customer-id-val-8741
+        output: |
+            +--------------------------------------+----------------------------------+
+            |name                                  |subscriber-name                   |
+            +--------------------------------------+----------------------------------+
+            |example-global-customer-id-val-8741   |example-subscriber-name-val-2447  |
+            +--------------------------------------+----------------------------------+
