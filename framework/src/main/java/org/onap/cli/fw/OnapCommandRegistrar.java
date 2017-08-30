@@ -31,6 +31,7 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidRegistration;
 import org.onap.cli.fw.error.OnapCommandNotFound;
+import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
 import org.onap.cli.fw.error.OnapCommandRegistrationVersionMissing;
 import org.onap.cli.fw.output.OnapCommandResult;
@@ -53,8 +54,18 @@ public class OnapCommandRegistrar {
     private Set<String> availableProductVersions = new HashSet<>();
 
     private String enabledProductVersion = OnapCommandConfg.getEnabledProductVersion();
+    
+    private boolean isInteractiveMode = false;
 
-    private static OnapCommandRegistrar registrar = null;
+    public boolean isInteractiveMode() {
+		return isInteractiveMode;
+	}
+
+	public void setInteractiveMode(boolean isInteractiveMode) {
+		this.isInteractiveMode = isInteractiveMode;
+	}
+
+	private static OnapCommandRegistrar registrar = null;
 
     /**
      * Register the command into registrar and throws OnapInvalidCommandRegistration for invalid command.
@@ -126,7 +137,11 @@ public class OnapCommandRegistrar {
         return this.availableProductVersions;
     }
 
-    public void setEnabledProductVersion(String version) {
+    public void setEnabledProductVersion(String version) throws OnapCommandProductVersionInvalid {
+        if (!this.availableProductVersions.contains(version)) {
+            throw new OnapCommandProductVersionInvalid(version, availableProductVersions);
+        }
+
         this.enabledProductVersion = version;
     }
 
@@ -225,7 +240,8 @@ public class OnapCommandRegistrar {
         String errorNote = "";
         if (!this.availableProductVersions.contains(configuredProductVersion)) {
             errorNote = "** CUATION: Please configure the enabled product version to use one of " + this.availableProductVersions.toString() +
-                        ".\nTo enable a product version, set env variable CLI_PRODUCT_VERSION or cli.product.version in onap.properties";
+                        ".\nTo enable a product version, use one of following methods:\n\t 1. set env variable CLI_PRODUCT_VERSION"
+                        + "\n\t 2. set cli.product.version in onap.properties \n\t 3. in interactive mode, use the directive 'use <product version>'";
         }
         return "CLI version               : " + version + "\n"
                 + "Available product versions: " + this.availableProductVersions.toString() + "\n"
