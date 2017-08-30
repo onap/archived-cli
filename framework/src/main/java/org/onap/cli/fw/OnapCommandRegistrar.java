@@ -52,6 +52,8 @@ public class OnapCommandRegistrar {
 
     private Set<String> availableProductVersions = new HashSet<>();
 
+    private String enabledProductVersion = OnapCommandConfg.getEnabledProductVersion();
+
     private static OnapCommandRegistrar registrar = null;
 
     /**
@@ -105,7 +107,7 @@ public class OnapCommandRegistrar {
      * @return set
      */
     public Set<String> listCommandsForEnabledProductVersion() {
-        String version = OnapCommandConfg.getEnabledProductVersion();
+        String version = this.getEnabledProductVersion();
 
         Set<String> cmds = new HashSet<>();
         if (!this.availableProductVersions.contains(version)) {
@@ -120,30 +122,27 @@ public class OnapCommandRegistrar {
         return cmds;
     }
 
+    public Set<String> getAvailableProductVersions() {
+        return this.availableProductVersions;
+    }
+
+    public void setEnabledProductVersion(String version) {
+        this.enabledProductVersion = version;
+    }
+
+    public String getEnabledProductVersion() {
+        return this.enabledProductVersion;
+    }
+
     /**
-     * Returns map of command to schema.
+     * Returns command details.
      *
      * @return map
      * @throws OnapCommandException
      *             exception
      */
-    public Map<String, String> getAllCommandToSchemaMap() throws OnapCommandException {
-        Map<String, String> map = new HashMap<>();
-        List<ExternalSchema> schemas = OnapCommandUtils.findAllExternalSchemas();
-        if (schemas != null) {
-            for (ExternalSchema schema : schemas) {
-                map.put(schema.getCmdName() + ":" + schema.getCmdVersion(), schema.getSchemaName());
-            }
-        }
-        if (this.registry != null) {
-            for (String cmd : this.registry.keySet()) {
-                if (!map.containsKey(cmd) && registry.get(cmd) != null) {
-                    map.put(cmd, this.getSchemaFileName(registry.get(cmd)));
-                }
-            }
-        }
-
-        return map;
+    public List<ExternalSchema> listCommandInfo() throws OnapCommandException {
+        return OnapCommandUtils.findAllExternalSchemas();
     }
 
     /**
@@ -156,7 +155,7 @@ public class OnapCommandRegistrar {
      *             Exception
      */
     public OnapCommand get(String cmdName) throws OnapCommandException {
-        return this.get(cmdName, OnapCommandConfg.getEnabledProductVersion());
+        return this.get(cmdName, this.getEnabledProductVersion());
     }
 
     private OnapCommand get(String cmdName, String version) throws OnapCommandException {

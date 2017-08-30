@@ -125,27 +125,6 @@ public class OnapCliMainTest {
     }
 
     @Test
-    public void validateCommands() throws IOException, OnapCommandException {
-        Map<String, String> cmdSchemaMap = OnapCommandRegistrar.getRegistrar().getAllCommandToSchemaMap();
-        for (String cmdName : cmdSchemaMap.keySet()) {
-            System.out.println(
-                    "************************* '" + cmdSchemaMap.get(cmdName) + "' *******************************");
-            this.handle(new String[] { "schema-validate", "-l", cmdSchemaMap.get(cmdName), "-i"});
-        }
-    }
-
-    @Test
-    public void commandHelpTest() throws OnapCommandException {
-        Set<String> cmds = OnapCommandRegistrar.getRegistrar().listCommands();
-
-        for (String cmdName : cmds) {
-            System.out.println("************************* '" + cmdName + "' *******************************");
-            this.handle(new String[] { cmdName, "-h" });
-        }
-
-    }
-
-    @Test
     public void interactiveTest() {
         cli = new OnapCli(new String[] { "-i" });
         boolean isInter = cli.isInteractive();

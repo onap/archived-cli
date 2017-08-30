@@ -30,7 +30,7 @@ import java.util.List;
  * Refresh external schema.
  *
  */
-@OnapCommandSchema(name = "schema-refresh", version="cli-1.0", schema = "schema-refresh.yaml")
+@OnapCommandSchema(name = "schema-refresh", version = "cli-1.0", schema = "schema-refresh.yaml")
 public class OnapSchemaRefreshCommand extends OnapCommand {
 
     @Override
