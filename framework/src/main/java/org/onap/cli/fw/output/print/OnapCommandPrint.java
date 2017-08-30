@@ -123,7 +123,7 @@ public class OnapCommandPrint {
         for (int i = 0; i < this.findMaxRows(); i++) {
             List<Object> row = new ArrayList<>();
             for (List<String> cols : this.data.values()) {
-                if (cols.size() > i) {
+                if (cols != null && cols.size() > i) {
                     String value = cols.get(i);
                     // split the cell into multiple sub rows
                     if (isNormalize && value != null && value.length() > MAX_COLUMN_LENGTH) {
@@ -133,7 +133,7 @@ public class OnapCommandPrint {
                         row.add(value);
                     }
                 } else {
-                    // now value exist for this column
+                    // no value exist for this column
                     row.add(null);
                 }
             }
