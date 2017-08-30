@@ -192,6 +192,7 @@ public class Constants {
     public static final String HTTP_SUCCESS_CODE_INVALID = "Invalid http success code.";
     public static final String HTTP_SAMPLE_RESPONSE_EMPTY = "Sample response cann't be null or empty";
     public static final String HTTP_SAMPLE_RESPONSE_FAILED_PARSING = "The http Sample response json is failed to parse.";
+	public static final String USE_DIRECTIVE = "use";
 
     private Constants() {
     }

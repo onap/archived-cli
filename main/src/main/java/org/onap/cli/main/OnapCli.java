@@ -119,8 +119,10 @@ public class OnapCli {
      */
     public void handleInteractive() { // NOSONAR
         if (isInteractive()) {
+
             ConsoleReader console = null;
             try {
+            	OnapCommandRegistrar.getRegistrar().setInteractiveMode(true);
                 console = createConsoleReader();
                 String line = null;
                 while ((line = console.readLine()) != null) {
@@ -132,11 +134,31 @@ public class OnapCli {
                         continue;
                     }
                     this.args = Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN));
+                    
+                    if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
+                    	if (args.size() == 1) {
+                    		this.print("Please input the product version to use, supported versions: " +
+                    	OnapCommandRegistrar.getRegistrar().getAvailableProductVersions());                    		
+                    	} else {
+                    		try {
+                    			OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(args.get(1));
+                    			console.close();
+                    			console = createConsoleReader();
+                    		} catch (OnapCommandException e) {
+                            	this.print(e);
+                			}
+                    	}
+                    	
+                    	continue;
+                    }
                     handleCommand();
                 }
             } catch (IOException e) { // NOSONAR
                 this.print("Failed to read console, " + e.getMessage());
-            } finally {
+            } catch (OnapCommandException e) {
+            	this.print(e);
+            	this.exitFailure();
+			} finally {
                 try {
                     TerminalFactory.get().restore();
                 } catch (Exception e) { // NOSONAR
@@ -175,7 +197,8 @@ public class OnapCli {
         try {
             StringCompleter strCompleter = new StringCompleter(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion());
             strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
-                    OnapCliConstants.PARAM_INTERACTIVE_CLEAR);
+                    OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
+                    OnapCliConstants.PARAM_INTERACTIVE_USE);
             console.addCompleter(strCompleter);
             console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT);
         } catch (OnapCommandException e) { // NOSONAR
