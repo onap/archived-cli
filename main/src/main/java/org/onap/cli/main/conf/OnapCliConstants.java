@@ -27,13 +27,12 @@ public final class OnapCliConstants {
     public static final int EXIT_SUCCESS = 0;
     public static final int EXIT_FAILURE = 1;
 
-    public static final String PARAM_INTERACTIVE_SHORT = "i";
-    public static final String PARAM_INTERACTIVE_LONG = "interactive";
     public static final String PARAM_INTERACTIVE_PROMPT = "onap>";
     public static final String PARAM_INTERACTIVE_EXIT = "exit";
     public static final String PARAM_INTERACTIVE_BYE = "bye";
     public static final String PARAM_INTERACTIVE_CLEAR = "clear";
     public static final String PARAM_INTERACTIVE_USE = "use";
+    public static final String PARAM_INTERACTIVE_HELP = "help";
     public static final String PARAM_INTERACTIVE_ARG_SPLIT_PATTERN = "\\s+";
 
     private OnapCliConstants(){}

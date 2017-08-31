@@ -82,11 +82,9 @@ public class OnapCli {
      */
     public void handleHelp() {
         try {
-            // By default, it prints help
-            if ((args.isEmpty())
-                    || ((args.size() == 1) && (this.getLongOption(OnapCliConstants.PARAM_HELP_LOGN).equals(args.get(0))
-                            || this.getShortOption(OnapCliConstants.PARAM_HELP_SHORT).equals(args.get(0))))) {
-                this.print(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("README.md")));
+            if ((args.size() == 1) && (this.getLongOption(OnapCliConstants.PARAM_HELP_LOGN).equals(args.get(0))
+                        || this.getShortOption(OnapCliConstants.PARAM_HELP_SHORT).equals(args.get(0)))) {
+                this.print(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("onap-readme.txt")));
                 String help = OnapCommandRegistrar.getRegistrar().getHelp();
                 this.print(help);
                 this.exitSuccessfully();
@@ -115,11 +113,10 @@ public class OnapCli {
     }
 
     /**
-     * Handles Interactive Mode. --interactive or -i
+     * Handles Interactive Mode.
      */
     public void handleInteractive() { // NOSONAR
-        if (isInteractive()) {
-
+        if (args.isEmpty()) {
             ConsoleReader console = null;
             try {
                 OnapCommandRegistrar.getRegistrar().setInteractiveMode(true);
@@ -148,10 +145,15 @@ public class OnapCli {
                                 this.print(e);
                             }
                         }
-
-                        continue;
+                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
+                        try {
+                            this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
+                        } catch (OnapCommandException e) {
+                            this.print(e);
+                        }
+                    } else {
+                        handleCommand();
                     }
-                    handleCommand();
                 }
             } catch (IOException e) { // NOSONAR
                 this.print("Failed to read console, " + e.getMessage());
@@ -172,20 +174,6 @@ public class OnapCli {
     }
 
     /**
-     * Checks if the command is interactive.
-     *
-     * @return boolean
-     */
-    public boolean isInteractive() {
-        if ((args.size() == 1) && (this.getLongOption(OnapCliConstants.PARAM_INTERACTIVE_LONG).equals(args.get(0))
-                || this.getShortOption(OnapCliConstants.PARAM_INTERACTIVE_SHORT).equals(args.get(0)))) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
      * Creates console reader object.
      *
      * @return ConsoleReader
@@ -198,7 +186,8 @@ public class OnapCli {
             StringCompleter strCompleter = new StringCompleter(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion());
             strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
                     OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
-                    OnapCliConstants.PARAM_INTERACTIVE_USE);
+                    OnapCliConstants.PARAM_INTERACTIVE_USE,
+                    OnapCliConstants.PARAM_INTERACTIVE_HELP);
             console.addCompleter(strCompleter);
             console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT);
         } catch (OnapCommandException e) { // NOSONAR
