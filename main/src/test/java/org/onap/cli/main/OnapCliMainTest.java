@@ -126,14 +126,7 @@ public class OnapCliMainTest {
 
     @Test
     public void interactiveTest() {
-        cli = new OnapCli(new String[] { "-i" });
-        boolean isInter = cli.isInteractive();
-
-        assertTrue(isInter);
-        cli = new OnapCli(new String[] { "--interactive" });
-        isInter = cli.isInteractive();
-        assertTrue(isInter);
-        cli.getExitCode();
+        cli = new OnapCli(new String[] {});
 
         mockConsole("exit");
         cli.handleInteractive();

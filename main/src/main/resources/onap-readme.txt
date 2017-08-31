@@ -13,6 +13,3 @@ To know the CLI usage, type onap [-h|--help]
 To know the usage of sub commands, type onap <command> [-h|--help]
 
 To know more, please refer the Onap wiki https://wiki.onap.org
-
-NOTE: This file has been deprecated in amesterdam release and is
-replaced by README.md file

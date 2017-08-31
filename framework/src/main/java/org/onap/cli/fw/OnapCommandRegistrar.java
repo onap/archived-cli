@@ -238,15 +238,19 @@ public class OnapCommandRegistrar {
         String configuredProductVersion = OnapCommandConfg.getEnabledProductVersion();
 
         String errorNote = "";
+        String usageNote = "\n\nTo enable a product version, use one of following methods:"
+                + "\n 1. set env variable CLI_PRODUCT_VERSION"
+                + "\n 2. set cli.product.version in onap.properties"
+                + "\n 3. in interactive mode, use the directive 'use <product version>'\n";
+
         if (!this.availableProductVersions.contains(configuredProductVersion)) {
-            errorNote = "** CUATION: Please configure the enabled product version to use one of " + this.availableProductVersions.toString() +
-                        ".\nTo enable a product version, use one of following methods:\n\t 1. set env variable CLI_PRODUCT_VERSION"
-                        + "\n\t 2. set cli.product.version in onap.properties \n\t 3. in interactive mode, use the directive 'use <product version>'";
+            errorNote = "** CUATION: Please configure the enabled product version to use one of " + this.availableProductVersions.toString() + ".";
+
         }
         return "CLI version               : " + version + "\n"
                 + "Available product versions: " + this.availableProductVersions.toString() + "\n"
                 + "Enabled product version   : " + configuredProductVersion + "\n" +
-                errorNote;
+                errorNote + usageNote;
     }
 
     /**
@@ -257,6 +261,14 @@ public class OnapCommandRegistrar {
      *             Help cmd failed
      */
     public String getHelp() throws OnapCommandHelpFailed {
+        return this.getHelp(false);
+    }
+
+    public String getHelpForEnabledProductVersion() throws OnapCommandHelpFailed {
+        return this.getHelp(true);
+    }
+
+    private String getHelp(boolean isEnabledProductVersionOnly) throws OnapCommandHelpFailed {
         OnapCommandResult help = new OnapCommandResult();
         help.setType(ResultType.TABLE);
         help.setPrintDirection(PrintDirection.LANDSCAPE);
@@ -268,10 +280,12 @@ public class OnapCommandRegistrar {
         help.getRecords().add(attr);
 
         OnapCommandResultAttribute attrVer = new OnapCommandResultAttribute();
-        attrVer.setName(Constants.PRODUCT_VERSION.toUpperCase());
-        attrVer.setDescription(Constants.DESCRIPTION);
-        attrVer.setScope(OnapCommandResultAttributeScope.SHORT);
-        help.getRecords().add(attrVer);
+        if (!isEnabledProductVersionOnly) {
+            attrVer.setName(Constants.PRODUCT_VERSION.toUpperCase());
+            attrVer.setDescription(Constants.DESCRIPTION);
+            attrVer.setScope(OnapCommandResultAttributeScope.SHORT);
+            help.getRecords().add(attrVer);
+        }
 
         OnapCommandResultAttribute attrSrv = new OnapCommandResultAttribute();
         attrSrv.setName(Constants.SERVICE.toUpperCase());
@@ -285,13 +299,19 @@ public class OnapCommandRegistrar {
         attrDesc.setScope(OnapCommandResultAttributeScope.SHORT);
         help.getRecords().add(attrDesc);
 
-        for (String cmdName : OnapCommandUtils.sort(this.listCommands())) {
+        for (String cmdName : isEnabledProductVersionOnly ? OnapCommandUtils.sort(this.listCommandsForEnabledProductVersion()) : OnapCommandUtils.sort(this.listCommands())) {
             OnapCommand cmd;
             try {
-                String []cmdVer = cmdName.split(":");
-                cmd = this.get(cmdVer[0], cmdVer[1]);
-                attr.getValues().add(cmdVer[0]);
-                attrVer.getValues().add(cmdVer[1]);
+                if (!isEnabledProductVersionOnly) {
+                    String []cmdVer = cmdName.split(":");
+                    cmd = this.get(cmdVer[0], cmdVer[1]);
+                    attr.getValues().add(cmdVer[0]);
+                    attrVer.getValues().add(cmdVer[1]);
+                } else {
+                    cmd = this.get(cmdName);
+                    attr.getValues().add(cmdName);
+                }
+
                 attrSrv.getValues().add(cmd.printVersion());
                 attrDesc.getValues().add(cmd.getDescription());
             } catch (OnapCommandException e) {
@@ -300,7 +320,7 @@ public class OnapCommandRegistrar {
         }
 
         try {
-            return "\n\nOnap sub-commands:\n" + help.print() + "\n" + this.getVersion();
+            return "\n\nOnap sub-commands:\n" + help.print() + (isEnabledProductVersionOnly ? "" : "\n" + this.getVersion());
         } catch (OnapCommandException e) {
             throw new OnapCommandHelpFailed(e);
         }
