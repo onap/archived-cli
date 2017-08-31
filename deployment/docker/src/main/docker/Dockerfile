@@ -25,11 +25,11 @@ ENV ONAP_USERNAME guest
 ENV ONAP_PASSWORD guest
 ENV ONAP_CLI_DEBUG false
 ENV ONAP_CLI_DEBUG_PORT 5005
-ENV MODE console
+ENV CLI_MODE console
 ENV CLI_PRODUCT_VERSION cli-1.0
 
 ENTRYPOINT cp /etc/lighttpd/conf-available/10-accesslog.conf /etc/lighttpd/conf-enabled/ && \
            service lighttpd start && \
-           if [ "$MODE" = "deamon" ]; then tailf /var/log/lighttpd/access.log;else /bin/bash; fi
+           if [ "$CLI_MODE" = "daemon" ]; then tailf /var/log/lighttpd/access.log;else /bin/bash; fi
 
 RUN echo ONAP CLI docker successfully created !!
