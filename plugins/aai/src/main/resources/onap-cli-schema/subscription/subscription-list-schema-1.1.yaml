@@ -29,7 +29,7 @@ results:
       type: string
 http:
   request:
-    uri: /aai/v11//business/customers/customer/${customer-name}/service-subscriptions
+    uri: /aai/v11/business/customers/customer/${customer-name}/service-subscriptions
     method: GET
   success_codes:
     - 200

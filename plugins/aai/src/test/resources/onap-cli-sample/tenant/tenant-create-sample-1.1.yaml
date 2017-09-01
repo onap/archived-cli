@@ -5,4 +5,4 @@ version: onap-1.1
 samples:
     sample1:
         name: Create a tenant under given cloud region
-        input: -h https://locahost:8443 -u AAI -p AAI -x att-aic -y AAIAIC25 -z 8bcf4466-b092-473f-889b-7f40efb5a322 -r tenant-2
+        input: -h https://locahost:8443 -u AAI -p AAI -x abc-xyz -y ABCXYZ25 -z 8bcf4466-b092-473f-889b-7f40efb5a323 -r tenant-3

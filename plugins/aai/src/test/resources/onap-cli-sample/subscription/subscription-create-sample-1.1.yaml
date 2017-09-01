@@ -5,4 +5,4 @@ version: onap-1.1
 samples:
     sample1:
         name: Create a subscription
-        input: -h https://locahost:8443 -u AAI -p AAI  -x customer-2 -y subscriber-2 -z att-aic -r AAIAIC25 -c 26ab7af6-96cc-4c4e-814a-e533af4ef9f6 -e vTest
+        input: -h https://locahost:8443 -u AAI -p AAI  -x customer-4 -y subscriber-4 -z abc-xyz -r ABCXYZ25 -c 8bcf4466-b092-473f-889b-7f40efb5a323 -e vTest

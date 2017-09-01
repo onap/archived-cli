@@ -5,11 +5,12 @@ version: onap-1.1
 samples:
     sample1:
         name: List the configured subscription in onap for a given customer
-        input: -h https://locahost:8443 -u AAI -p AAI -x customer-2
+        input: -h https://locahost:8443 -u AAI -p AAI -x customer-4
         output: |
-            +--------------+
-            |service-type  |
-            +--------------+
-            |vTest         |
-            +--------------+
+            +--------------+------------------+
+            |service-type  |resource-version  |
+            +--------------+------------------+
+            |vTest         |1504258356743     |
+            +--------------+------------------+
+
 

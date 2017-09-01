@@ -1,0 +1,36 @@
+onap_cmd_schema_version: 1.0
+name: cloud-delete
+description: Delete a cloud region from Onap
+version: onap-1.1
+service:
+  name: aai
+  version: v11
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: cloud-name
+    description: Onap cloud name
+    type: string
+    short_option: x
+    long_option: cloud-name
+    is_optional: false
+  - name: region-name
+    description: Onap cloud region name
+    type: string
+    short_option: y
+    long_option: region-name
+    is_optional: false
+  - name: resource-version
+    description: Onap cloud region version
+    type: uuid
+    short_option: z
+    long_option: resource-version
+    is_optional: true
+http:
+  request:
+    uri: /aai/v11/cloud-infrastructure/cloud-regions/cloud-region/${cloud-name}/${region-name}?resource-version=${resource-version}
+    method: DELETE
+  success_codes:
+    - 204
+    - 404

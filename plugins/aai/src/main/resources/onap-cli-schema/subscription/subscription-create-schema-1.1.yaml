@@ -15,17 +15,11 @@ parameters:
     short_option: x
     long_option: customer-name
     is_optional: false
-  - name: subscriber-name
-    description: Onap subscriber name
-    type: string
-    short_option: y
-    long_option: subscriber-name
-    is_optional: false
-  - name: cloud-type
-    description: Onap cloud type (openstack, rackspace)
+  - name: cloud-name
+    description: Onap cloud name
     type: string
     short_option: z
-    long_option: cloud-type
+    long_option: cloud-name
     is_optional: false
   - name: cloud-region
     description: Onap cloud region
@@ -45,17 +39,12 @@ parameters:
     short_option: e
     long_option: service-type
     is_optional: false
-  - name: resource-version
-    description: Onap subscription resource version. It is mandatory for existing customer to create a new subscription
-    type: string
-    short_option: g
-    long_option: resource-version
-    is_optional: true
+
 http:
   request:
-    uri: /aai/v11/business/customers/customer/${customer-name}
+    uri: /aai/v11/business/customers/customer/${customer-name}/service-subscriptions/service-subscription/${service-type}
     method: PUT
-    body: '{"global-customer-id": "${customer-name}", "subscriber-name": "${subscriber-name}", "subscriber-type": "INFRA", "resource-version":"${resource-version}", "service-subscriptions":{"service-subscription":[{"relationship-list":{"relationship":[{"related-to":"tenant","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"${cloud-type}"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"${cloud-region}"},{"relationship-key":"tenant.tenant-id","relationship-value":"${cloud-tenant-id}"}]}]},"service-type":"${service-type}"}]}}}'
+    body: '{"service-subscription":[{"relationship-list":{"relationship":[{"related-to":"tenant","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"${cloud-name}"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"${cloud-region}"},{"relationship-key":"tenant.tenant-id","relationship-value":"${cloud-tenant-id}"}]}]},"service-type":"${service-type}"}]}'
   success_codes:
     - 200
     - 201
