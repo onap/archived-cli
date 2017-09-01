@@ -151,7 +151,14 @@ public class OnapCli {
                         } catch (OnapCommandException e) {
                             this.print(e);
                         }
+                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
+                        this.args = Arrays.asList(new String [] {this.getLongOption(OnapCliConstants.PARAM_VERSION_LONG)});
+                        handleVersion();
                     } else {
+                        if (args.size() == 1 && args.get(0).trim().isEmpty()) {
+                            //Ignore blanks // NOSONAR
+                            continue;
+                        }
                         handleCommand();
                     }
                 }
@@ -187,7 +194,8 @@ public class OnapCli {
             strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
                     OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
                     OnapCliConstants.PARAM_INTERACTIVE_USE,
-                    OnapCliConstants.PARAM_INTERACTIVE_HELP);
+                    OnapCliConstants.PARAM_INTERACTIVE_HELP,
+                    OnapCliConstants.PARAM_INTERACTIVE_VERSION);
             console.addCompleter(strCompleter);
             console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT);
         } catch (OnapCommandException e) { // NOSONAR

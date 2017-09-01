@@ -33,6 +33,7 @@ public final class OnapCliConstants {
     public static final String PARAM_INTERACTIVE_CLEAR = "clear";
     public static final String PARAM_INTERACTIVE_USE = "use";
     public static final String PARAM_INTERACTIVE_HELP = "help";
+    public static final String PARAM_INTERACTIVE_VERSION = "version";
     public static final String PARAM_INTERACTIVE_ARG_SPLIT_PATTERN = "\\s+";
 
     private OnapCliConstants(){}
