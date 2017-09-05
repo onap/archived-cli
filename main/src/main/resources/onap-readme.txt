@@ -1,5 +1,13 @@
 Onap Command-line interface (CLI).
 
+                            ____ __    ___
+  ___  _ __   __ _ _ __    / ___| |   |_ _|
+ / _ \| '_ \ / _` | '_ \  | |   | |    | |
+| (_) | | | | (_| | |_) | | |___| |___ | |
+ \___/|_| |_|\__,_| .__/   \____|_____|___|
+                  |_|
+
+
 One Command to command whole Onap !! It provides the unified commands
 to access and operate Onap functionalities. To use this CLI, please
 configure the following environment variables:

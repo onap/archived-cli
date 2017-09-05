@@ -320,7 +320,7 @@ public class OnapCommandRegistrar {
         }
 
         try {
-            return "\n\nOnap sub-commands:\n" + help.print() + (isEnabledProductVersionOnly ? "" : "\n" + this.getVersion());
+            return "\n\nCommands:\n" + help.print() + (isEnabledProductVersionOnly ? "" : "\n" + this.getVersion());
         } catch (OnapCommandException e) {
             throw new OnapCommandHelpFailed(e);
         }

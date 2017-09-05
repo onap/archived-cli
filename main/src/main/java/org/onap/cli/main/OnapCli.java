@@ -16,24 +16,32 @@
 
 package org.onap.cli.main;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
+import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandWarning;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResult;
+import org.onap.cli.fw.output.OnapCommandResultAttribute;
+import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
+import org.onap.cli.fw.output.PrintDirection;
+import org.onap.cli.fw.output.ResultType;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliUtils;
 
 import jline.TerminalFactory;
 import jline.console.ConsoleReader;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Onap Command Line Interface (CLI).
@@ -42,6 +50,7 @@ import java.util.List;
 public class OnapCli {
 
     private List<String> args = new ArrayList<>();
+    Map<String, String> paramCache = new HashMap<>();
 
     private int exitCode = -1;
 
@@ -112,6 +121,50 @@ public class OnapCli {
         }
     }
 
+    private String getDirectiveHelp() throws OnapCommandHelpFailed {
+        OnapCommandResult help = new OnapCommandResult();
+        help.setType(ResultType.TABLE);
+        help.setPrintDirection(PrintDirection.LANDSCAPE);
+
+        OnapCommandResultAttribute attr = new OnapCommandResultAttribute();
+        attr.setName(Constants.NAME.toUpperCase());
+        attr.setDescription(Constants.DESCRIPTION);
+        attr.setScope(OnapCommandResultAttributeScope.SHORT);
+        help.getRecords().add(attr);
+
+        OnapCommandResultAttribute attrDesc = new OnapCommandResultAttribute();
+        attrDesc.setName(Constants.DESCRIPTION.toUpperCase());
+        attrDesc.setDescription(Constants.DESCRIPTION);
+        attrDesc.setScope(OnapCommandResultAttributeScope.SHORT);
+        help.getRecords().add(attrDesc);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_CLEAR);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_CLEAR_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_EXIT);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_EXIT_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_VERSION);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_VERSION_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_USE);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_USE_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_SET);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_SET_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_UNSET);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_UNSET_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_HELP);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_HELP_MSG);
+
+        try {
+            return "\n\nDirectives:\n" + help.print();
+        } catch (OnapCommandException e) {
+            throw new OnapCommandHelpFailed(e);
+        }
+    }
     /**
      * Handles Interactive Mode.
      */
@@ -122,9 +175,9 @@ public class OnapCli {
                 OnapCommandRegistrar.getRegistrar().setInteractiveMode(true);
                 console = createConsoleReader();
                 String line = null;
+
                 while ((line = console.readLine()) != null) {
-                    if (OnapCliConstants.PARAM_INTERACTIVE_EXIT.equalsIgnoreCase(line)
-                            || OnapCliConstants.PARAM_INTERACTIVE_BYE.equalsIgnoreCase(line)) {
+                    if (OnapCliConstants.PARAM_INTERACTIVE_EXIT.equalsIgnoreCase(line)) {
                         break;
                     } else if (OnapCliConstants.PARAM_INTERACTIVE_CLEAR.equalsIgnoreCase(line)) {
                         console.clearScreen();
@@ -148,17 +201,38 @@ public class OnapCli {
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
                         try {
                             this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
+                            this.print(this.getDirectiveHelp());
                         } catch (OnapCommandException e) {
                             this.print(e);
                         }
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
                         this.args = Arrays.asList(new String [] {this.getLongOption(OnapCliConstants.PARAM_VERSION_LONG)});
                         handleVersion();
+                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_SET)) {
+                        if (args.size() > 1) {
+                            String [] paramEntry = args.get(1).trim().split("=");
+                            if (paramEntry.length >= 2) {
+                                this.paramCache.put(paramEntry[0].trim(), paramEntry[1].trim());
+                            } else {
+                                this.print("Please use it in the form of 'set param-name=param-value'");
+                            }
+                        } else {
+                            this.print(this.paramCache.toString());
+                        }
+                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_UNSET)) {
+                        if (args.size() > 1) {
+                            for (int i = 1; i <args.size(); i++) {
+                                if (this.paramCache.containsKey(args.get(i))) {
+                                    this.paramCache.remove(args.get(i));
+                                }
+                            }
+                        }
                     } else {
                         if (args.size() == 1 && args.get(0).trim().isEmpty()) {
                             //Ignore blanks // NOSONAR
                             continue;
                         }
+
                         handleCommand();
                     }
                 }
@@ -195,7 +269,9 @@ public class OnapCli {
                     OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
                     OnapCliConstants.PARAM_INTERACTIVE_USE,
                     OnapCliConstants.PARAM_INTERACTIVE_HELP,
-                    OnapCliConstants.PARAM_INTERACTIVE_VERSION);
+                    OnapCliConstants.PARAM_INTERACTIVE_VERSION,
+                    OnapCliConstants.PARAM_INTERACTIVE_SET,
+                    OnapCliConstants.PARAM_INTERACTIVE_UNSET);
             console.addCompleter(strCompleter);
             console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT);
         } catch (OnapCommandException e) { // NOSONAR
@@ -233,6 +309,12 @@ public class OnapCli {
                         this.print(version);
                         this.exitSuccessfully();
                         return;
+                    }
+                }
+
+                for (OnapCommandParameter param: cmd.getParameters()) {
+                    if (this.paramCache.containsKey(param.getLongOption())) {
+                        param.setValue(this.paramCache.get(param.getLongOption()));
                     }
                 }
 
