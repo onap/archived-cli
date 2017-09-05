@@ -131,9 +131,6 @@ public class OnapCliMainTest {
         mockConsole("exit");
         cli.handleInteractive();
 
-        mockConsole("bye");
-        cli.handleInteractive();
-
         mockConsole("clear");
         try {
             cli.handleInteractive();

@@ -16,7 +16,13 @@ Type **onap <command>** from linux console.
 
 To Run in Interactive mode
 --------------------------
-Type **onap** from linux console
+Type **onap** from linux console.
+
+And use the directive set to set the values for following parameters:
+
+1. **onap-host-url** - Onap Micro service bus(MSB) URL or a service URL
+2. **onap-username** - Onap user name
+3. **onap-password** - Onap user password
 
 Set the product version
 ------------------------
@@ -28,6 +34,10 @@ NOTE: In interactive mode, product version can be selected using
 typing **use <product-version>**
 
 Run *onap [-v|--version]* to see the CLI and available product version details
+
+Set the parameter values
+------------------------
+Use the directive 'set' for setting the values for parameters and 'unset' for un-seting the values.
 
 Help
 ----

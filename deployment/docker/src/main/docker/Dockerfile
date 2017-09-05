@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 #installation
 RUN apt-get update
 RUN apt-get update && apt-get install -y software-properties-common
-RUN sudo -E add-apt-repository ppa:openjdk-r/ppa && apt-get update && apt-get install -y openjdk-8-jdk && apt-get install -y lighttpd && apt-get install -y git curl
+RUN sudo -E add-apt-repository ppa:openjdk-r/ppa && apt-get update && apt-get install -y openjdk-8-jdk && apt-get install -y lighttpd && apt-get install -y git curl && apt-get install -y pandoc
 RUN cd /tmp && curl -O https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz && tar -xvf go1.9.linux-amd64.tar.gz
 RUN mkdir -p /tmp/gotty && \
   GOPATH=/tmp/gotty /tmp/go/bin/go get github.com/yudai/gotty && \
@@ -28,9 +28,13 @@ RUN ln ./bin/onap.sh /usr/sbin/onap
 RUN if [ ! -d ./data ]; then mkdir ./data; fi
 RUN if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi
 
+RUN pandoc -t plain $ONAP_CLI_HOME/docs/README.md > $ONAP_CLI_HOME/docs/onap-readme.txt
+
 COPY ./STAGE/http/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY ./STAGE/http/web /var/www-data/servers/onap-cli/
-COPY ./STAGE/installer/*.zip /var/www-data/servers/onap-cli/
+
+COPY ./STAGE/installer/cli-*.zip /var/www-data/servers/onap-cli/onap-cli.zip
+
 RUN if [ ! -f /var/log/lighttpd/access.log ]; then touch /var/log/lighttpd/access.log; fi
 COPY ./STAGE/http/lighttpd/10-proxy.conf /etc/lighttpd/conf-enabled/
 RUN cp /etc/lighttpd/conf-available/10-accesslog.conf /etc/lighttpd/conf-enabled/
