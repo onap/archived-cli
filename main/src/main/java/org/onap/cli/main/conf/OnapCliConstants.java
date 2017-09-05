@@ -29,11 +29,19 @@ public final class OnapCliConstants {
 
     public static final String PARAM_INTERACTIVE_PROMPT = "onap>";
     public static final String PARAM_INTERACTIVE_EXIT = "exit";
-    public static final String PARAM_INTERACTIVE_BYE = "bye";
+    public static final String PARAM_INTERACTIVE_EXIT_MSG = "To exit from the session.";
     public static final String PARAM_INTERACTIVE_CLEAR = "clear";
+    public static final String PARAM_INTERACTIVE_CLEAR_MSG = "To clear the screen";
     public static final String PARAM_INTERACTIVE_USE = "use";
+    public static final String PARAM_INTERACTIVE_USE_MSG = "To set the current product version, more details please check version";
     public static final String PARAM_INTERACTIVE_HELP = "help";
+    public static final String PARAM_INTERACTIVE_HELP_MSG = "To get the help details of supported commands";
     public static final String PARAM_INTERACTIVE_VERSION = "version";
+    public static final String PARAM_INTERACTIVE_VERSION_MSG = "To see the version details";
+    public static final String PARAM_INTERACTIVE_SET = "set";
+    public static final String PARAM_INTERACTIVE_SET_MSG = "To set the parameter values. Once its set, will be available for all commands in current session.";
+    public static final String PARAM_INTERACTIVE_UNSET = "unset";
+    public static final String PARAM_INTERACTIVE_UNSET_MSG = "To unset the parameter value in current session.";
     public static final String PARAM_INTERACTIVE_ARG_SPLIT_PATTERN = "\\s+";
 
     private OnapCliConstants(){}
