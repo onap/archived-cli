@@ -27,6 +27,18 @@ results:
       description: Onap subscription resource version
       scope: short
       type: string
+    - name: tenant
+      description: Onap tenant name
+      scope: long
+      type: string
+    - name: region
+      description: Onap region name
+      scope: long
+      type: string
+    - name: cloud
+      description: Onap cloud name
+      scope: long
+      type: string
 http:
   request:
     uri: /aai/v11/business/customers/customer/${customer-name}/service-subscriptions
@@ -36,6 +48,10 @@ http:
   result_map:
     service-type: $b{$.service-subscription.[*].service-type}
     resource-version: $b{$.service-subscription.[*].resource-version}
+    tenant: $b{service-subscription.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'tenant.tenant-id')].relationship-value}
+    region: $b{service-subscription.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'cloud-region.cloud-region-id')].relationship-value}
+    cloud: $b{service-subscription.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'cloud-region.cloud-owner')].relationship-value}
+    
   sample_response:
     body: '{"service-subscription":[{"service-type":"vTest","resource-version":"1504091375183","relationship-list":{"relationship":[{"related-to":"tenant","related-link":"/aai/v11/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/26ab7af6-96cc-4c4e-814a-e533af4ef9f6","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"att-aic"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"AAIAIC25"},{"relationship-key":"tenant.tenant-id","relationship-value":"26ab7af6-96cc-4c4e-814a-e533af4ef9f6"}],"related-to-property":[{"property-key":"tenant.tenant-name","property-value":"test"}]}]}}]}'
 
