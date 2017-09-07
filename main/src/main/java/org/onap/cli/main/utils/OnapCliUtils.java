@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.minidev.json.JSONObject;
 
+import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.input.OnapCommandParameter;
@@ -110,6 +111,11 @@ public class OnapCliUtils {
                             paramMap.get(shortOptionMap.get(args.get(i))).getName()));
                     i++;
                     continue;
+                } if (paramMap.get(shortOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.TEXT)) {
+                    paramMap.get(shortOptionMap.get(args.get(i))).setValue(readTextStringFromUrl(args.get(i + 1),
+                            paramMap.get(shortOptionMap.get(args.get(i))).getName()));
+                    i++;
+                    continue;
                 } else if (paramMap.get(shortOptionMap.get(args.get(i))).getParameterType()
                         .equals(ParameterType.ARRAY)) {
                     Object value = paramMap.get(shortOptionMap.get(args.get(i))).getValue();
@@ -168,6 +174,11 @@ public class OnapCliUtils {
 
                 if (paramMap.get(longOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.JSON)) {
                     paramMap.get(longOptionMap.get(args.get(i))).setValue(readJsonStringFromUrl(args.get(i + 1),
+                            paramMap.get(longOptionMap.get(args.get(i))).getName()));
+                    i++;
+                    continue;
+                } else if (paramMap.get(longOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.TEXT)) {
+                    paramMap.get(longOptionMap.get(args.get(i))).setValue(readTextStringFromUrl(args.get(i + 1),
                             paramMap.get(longOptionMap.get(args.get(i))).getName()));
                     i++;
                     continue;
@@ -243,6 +254,14 @@ public class OnapCliUtils {
             } else {
                 return mapper.readValue(input, JSONObject.class).toJSONString();
             }
+        } catch (IOException e) {
+            throw new OnapCliInvalidArgument(argName, e);
+        }
+    }
+
+    private static String readTextStringFromUrl(String input, String argName) throws OnapCliInvalidArgument {
+        try {
+            return FileUtils.readFileToString(new File(input));
         } catch (IOException e) {
             throw new OnapCliInvalidArgument(argName, e);
         }
