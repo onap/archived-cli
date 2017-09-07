@@ -50,7 +50,6 @@ import jline.console.ConsoleReader;
 public class OnapCli {
 
     private List<String> args = new ArrayList<>();
-    Map<String, String> paramCache = new HashMap<>();
 
     private int exitCode = -1;
 
@@ -212,19 +211,17 @@ public class OnapCli {
                         if (args.size() > 1) {
                             String [] paramEntry = args.get(1).trim().split("=");
                             if (paramEntry.length >= 2) {
-                                this.paramCache.put(paramEntry[0].trim(), paramEntry[1].trim());
+                                OnapCommandRegistrar.getRegistrar().addParamCache(paramEntry[0].trim(), paramEntry[1].trim());
                             } else {
                                 this.print("Please use it in the form of 'set param-name=param-value'");
                             }
                         } else {
-                            this.print(this.paramCache.toString());
+                            this.print(OnapCommandRegistrar.getRegistrar().getParamCache().toString());
                         }
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_UNSET)) {
                         if (args.size() > 1) {
                             for (int i = 1; i <args.size(); i++) {
-                                if (this.paramCache.containsKey(args.get(i))) {
-                                    this.paramCache.remove(args.get(i));
-                                }
+                                OnapCommandRegistrar.getRegistrar().removeParamCache(args.get(i));
                             }
                         }
                     } else {
@@ -313,8 +310,8 @@ public class OnapCli {
                 }
 
                 for (OnapCommandParameter param: cmd.getParameters()) {
-                    if (this.paramCache.containsKey(param.getLongOption())) {
-                        param.setValue(this.paramCache.get(param.getLongOption()));
+                    if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(param.getLongOption())) {
+                        param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(param.getLongOption()));
                     }
                 }
 

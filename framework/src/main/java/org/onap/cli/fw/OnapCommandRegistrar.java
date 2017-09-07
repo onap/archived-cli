@@ -34,6 +34,7 @@ import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
 import org.onap.cli.fw.error.OnapCommandRegistrationVersionMissing;
+import org.onap.cli.fw.input.cache.OnapCommandParameterCache;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
@@ -57,12 +58,26 @@ public class OnapCommandRegistrar {
 
     private boolean isInteractiveMode = false;
 
+    private OnapCommandParameterCache paramCache = new OnapCommandParameterCache();
+
     public boolean isInteractiveMode() {
         return isInteractiveMode;
     }
 
     public void setInteractiveMode(boolean isInteractiveMode) {
         this.isInteractiveMode = isInteractiveMode;
+    }
+
+    public Map<String, String> getParamCache() {
+        return paramCache.getParams(this.getEnabledProductVersion());
+    }
+
+    public void addParamCache(String paramName, String paramValue) {
+        paramCache.add(this.getEnabledProductVersion(), paramName, paramValue);
+    }
+
+    public void removeParamCache(String paramName) {
+        paramCache.remove(this.getEnabledProductVersion(), paramName);
     }
 
     private static OnapCommandRegistrar registrar = null;

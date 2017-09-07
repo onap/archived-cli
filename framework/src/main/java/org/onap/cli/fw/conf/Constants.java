@@ -194,6 +194,7 @@ public class Constants {
     public static final String HTTP_SAMPLE_RESPONSE_FAILED_PARSING = "The http Sample response json is failed to parse.";
     public static final String USE_DIRECTIVE = "use";
 
+    public static final String PARAM_CACHE_FILE_NAME = "cli.parameter.cache.file";
     private Constants() {
     }
 

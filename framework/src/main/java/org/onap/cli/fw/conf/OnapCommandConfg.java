@@ -16,8 +16,6 @@
 
 package org.onap.cli.fw.conf;
 
-import org.onap.cli.fw.input.OnapCommandParameter;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -163,4 +161,7 @@ public final class OnapCommandConfg {
         return Arrays.stream(prps.getProperty(key).split(",")).map(String::trim).collect(Collectors.toList());  // NOSONAR
     }
 
+    public static String getParamCacheFileName() {
+        return prps.getProperty(Constants.PARAM_CACHE_FILE_NAME);
+    }
 }
