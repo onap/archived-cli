@@ -21,6 +21,7 @@ import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
@@ -1654,7 +1655,7 @@ public class OnapCommandUtils {
      */
     public static List<ExternalSchema> loadExternalSchemasFromJson() throws OnapCommandException {
         List<ExternalSchema> schemas = new ArrayList<>();
-        if (!isJsonFileDiscovered()) {
+        if (OnapCommandRegistrar.getRegistrar().isDevMode() || !isJsonFileDiscovered()) {
             schemas = findAllExternalSchemas();
             if (!schemas.isEmpty()) {
                 persist(schemas);

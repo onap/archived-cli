@@ -195,8 +195,12 @@ public class Constants {
     public static final String USE_DIRECTIVE = "use";
 
     public static final String PARAM_CACHE_FILE_NAME = "cli.parameter.cache.file";
+
+    public static final String CLI_DEV_MODE = "CLI_DEV";
+
     private Constants() {
     }
 
 }
+
 

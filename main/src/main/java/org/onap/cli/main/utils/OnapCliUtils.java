@@ -261,7 +261,13 @@ public class OnapCliUtils {
 
     private static String readTextStringFromUrl(String input, String argName) throws OnapCliInvalidArgument {
         try {
-            return FileUtils.readFileToString(new File(input));
+            File file = new File(input);
+            if (file.isFile()) {
+                return FileUtils.readFileToString(file);
+            } else {
+                return input;
+            }
+
         } catch (IOException e) {
             throw new OnapCliInvalidArgument(argName, e);
         }

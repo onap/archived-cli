@@ -1,7 +1,6 @@
 version: '2.0'
 
 services:
-
   occ:
     image: onap/cli
     environment:
@@ -19,3 +18,13 @@ services:
     image: onap/cli
     environment:
       CLI_MODE: 'console'
+
+  dev:
+    stdin_open: true
+    tty: true
+    image: onap/cli
+    environment:
+      CLI_DEV: "true"
+      CLI_MODE: 'console'
+    ports:
+      - 5005:5005
