@@ -16,12 +16,35 @@
 
 package org.onap.cli.fw.input.cache;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.utils.OnapCommandUtils;
 
 public class OnapCommandParameterCache {
 
     public Map<String, Map<String, String>> paramCache = new HashMap<>();
+
+    private static OnapCommandParameterCache single = null;
+
+    private String profileName = Constants.PARAM_CACHE_FILE_NAME;
+
+    private OnapCommandParameterCache() {
+
+    }
+
+    public static OnapCommandParameterCache getInstance() {
+        if (single == null) {
+            single = new OnapCommandParameterCache();
+        }
+
+        single.load();
+        return single;
+    }
+
 
     public void add(String productVersion, String paramName, String paramValue) {
 
@@ -30,6 +53,8 @@ public class OnapCommandParameterCache {
         }
 
         paramCache.get(productVersion).put(paramName, paramValue);
+
+        this.persist();
     }
 
     public void remove(String productVersion, String paramName) {
@@ -38,6 +63,8 @@ public class OnapCommandParameterCache {
                 paramCache.get(productVersion).remove(paramName);
             }
         }
+
+        this.persist();
     }
 
     public Map<String, String> getParams(String productVersion) {
@@ -48,11 +75,33 @@ public class OnapCommandParameterCache {
         }
     }
 
-    public void persist() {
-        // mrkana add persistence logic
+    private void persist() {
+        List<Param> params = new ArrayList<>();
+        for (String p: this.paramCache.keySet()) {
+            for (String name: this.paramCache.get(p).keySet()) {
+
+                Param param = new Param();
+                param.setProduct(p);
+                param.setName(name);
+                param.setValue(this.paramCache.get(p).get(name));
+
+                params.add(param);
+             }
+        }
+
+        OnapCommandUtils.persistParams(params, this.profileName);
     }
 
-    public void load() {
-        // mrkanag add loading cache from persistence
+    private void load() {
+        List<Param> params = OnapCommandUtils.loadParamFromCache(this.profileName);
+
+        for (Param p : params) {
+            this.add(p.getProduct(), p.getName(), p.getValue());
+        }
+    }
+
+    public void setProfile(String profileName) {
+        this.profileName = profileName;
+        this.load();
     }
 }

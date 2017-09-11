@@ -118,6 +118,25 @@ public class OnapCli {
         }
     }
 
+
+    /**
+     * Handles profile. --profile or -c
+     */
+    public void handleProfile() {
+        try {
+            if ((args.size() == 2) && (this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG).equals(args.get(0))
+                        || this.getShortOption(OnapCliConstants.PARAM_PROFILE_SHORT).equals(args.get(0)))) {
+
+                OnapCommandRegistrar.getRegistrar().setProfile(args.get(1));
+                //Make space of interactive mode
+                this.args = new ArrayList<>();
+            }
+        } catch (Exception e) {
+            this.print(e);
+            this.exitFailure();
+        }
+    }
+
     private String getDirectiveHelp() throws OnapCommandHelpFailed {
         OnapCommandResult help = new OnapCommandResult();
         help.setType(ResultType.TABLE);
@@ -345,13 +364,17 @@ public class OnapCli {
         }
 
         if (this.exitCode == -1) {
+            this.handleProfile();
+        }
+
+        if (this.exitCode == -1) {
             this.handleInteractive();
         }
 
-            if (this.exitCode == -1) {
-                this.handleCommand();
-            }
+        if (this.exitCode == -1) {
+            this.handleCommand();
         }
+    }
 
     /**
      * Main method.

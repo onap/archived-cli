@@ -161,7 +161,4 @@ public final class OnapCommandConfg {
         return Arrays.stream(prps.getProperty(key).split(",")).map(String::trim).collect(Collectors.toList());  // NOSONAR
     }
 
-    public static String getParamCacheFileName() {
-        return prps.getProperty(Constants.PARAM_CACHE_FILE_NAME);
-    }
 }

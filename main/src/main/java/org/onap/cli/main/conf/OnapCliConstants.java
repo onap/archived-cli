@@ -24,6 +24,9 @@ public final class OnapCliConstants {
     public static final String PARAM_VERSION_SHORT = "v";
     public static final String PARAM_VERSION_LONG = "version";
 
+    public static final String PARAM_PROFILE_SHORT = "c";
+    public static final String PARAM_PROFILE_LONG = "profile";
+
     public static final int EXIT_SUCCESS = 0;
     public static final int EXIT_FAILURE = 1;
 

@@ -147,9 +147,9 @@ public class Constants {
     public static final String EXTERNAL_YAML_PATTERN = "/**/*.yaml";
     public static final String EXTERNAL_JSON_PATTERN = "/**/*.json";
     public static final String EXTERNAL_SCHEMA_PATH_PATERN = EXTERNAL_SCHEMA_DIRECTORY + EXTERNAL_YAML_PATTERN;
-    public static final String EXTERNAL_DISCOVERY_DIRECTORY = "data";
+    public static final String DATA_DIRECTORY = "data";
     public static final String EXTERNAL_DISCOVERY_FILE = "cli-schema.json";
-    public static final String EXTERNAL_DISCOVERY_DIRECTORY_PATTERN = EXTERNAL_DISCOVERY_DIRECTORY
+    public static final String DATA_DIRECTORY_JSON_PATTERN = DATA_DIRECTORY
             + EXTERNAL_JSON_PATTERN;
 
     public static final String PARAMETER_TYPE_JSON = "json";
@@ -194,7 +194,7 @@ public class Constants {
     public static final String HTTP_SAMPLE_RESPONSE_FAILED_PARSING = "The http Sample response json is failed to parse.";
     public static final String USE_DIRECTIVE = "use";
 
-    public static final String PARAM_CACHE_FILE_NAME = "cli.parameter.cache.file";
+    public static final String PARAM_CACHE_FILE_NAME = "global-profile";
 
     public static final String CLI_DEV_MODE = "CLI_DEV";
 

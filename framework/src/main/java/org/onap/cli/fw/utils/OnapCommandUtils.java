@@ -16,10 +16,94 @@
 
 package org.onap.cli.fw.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.jsonpath.JsonPath;
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
+import static org.onap.cli.fw.conf.Constants.API;
+import static org.onap.cli.fw.conf.Constants.ATTRIBUTES;
+import static org.onap.cli.fw.conf.Constants.AUTH;
+import static org.onap.cli.fw.conf.Constants.AUTH_VALUES;
+import static org.onap.cli.fw.conf.Constants.BODY;
+import static org.onap.cli.fw.conf.Constants.BOOLEAN_VALUE;
+import static org.onap.cli.fw.conf.Constants.CLIENT;
+import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_HOST_URL;
+import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_PASS_WORD;
+import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_USERNAME;
+import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETERS;
+import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETERS_EXCLUDE;
+import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETERS_INCLUDE;
+import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETER_FILE_NAME;
+import static org.onap.cli.fw.conf.Constants.DEFAULT_VALUE;
+import static org.onap.cli.fw.conf.Constants.DESCRIPTION;
+import static org.onap.cli.fw.conf.Constants.DIRECTION;
+import static org.onap.cli.fw.conf.Constants.ENTITY;
+import static org.onap.cli.fw.conf.Constants.EXCEPTION;
+import static org.onap.cli.fw.conf.Constants.EXECUTOR;
+import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY;
+import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY_JSON_PATTERN;
+import static org.onap.cli.fw.conf.Constants.EXTERNAL_DISCOVERY_FILE;
+import static org.onap.cli.fw.conf.Constants.EXTERNAL_SCHEMA_DIRECTORY;
+import static org.onap.cli.fw.conf.Constants.EXTERNAL_SCHEMA_PATH_PATERN;
+import static org.onap.cli.fw.conf.Constants.HEADERS;
+import static org.onap.cli.fw.conf.Constants.HTTP;
+import static org.onap.cli.fw.conf.Constants.HTTP_BODY_FAILED_PARSING;
+import static org.onap.cli.fw.conf.Constants.HTTP_BODY_JSON_EMPTY;
+import static org.onap.cli.fw.conf.Constants.HTTP_MANDATORY_SECTIONS;
+import static org.onap.cli.fw.conf.Constants.HTTP_METHODS;
+import static org.onap.cli.fw.conf.Constants.HTTP_REQUEST_MANDATORY_PARAMS;
+import static org.onap.cli.fw.conf.Constants.HTTP_REQUEST_PARAMS;
+import static org.onap.cli.fw.conf.Constants.HTTP_SECTIONS;
+import static org.onap.cli.fw.conf.Constants.HTTP_SUCCESS_CODE_INVALID;
+import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_LIST;
+import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_MANDATORY_LIST;
+import static org.onap.cli.fw.conf.Constants.IS_OPTIONAL;
+import static org.onap.cli.fw.conf.Constants.IS_SECURED;
+import static org.onap.cli.fw.conf.Constants.LONG_OPTION;
+import static org.onap.cli.fw.conf.Constants.METHOD;
+import static org.onap.cli.fw.conf.Constants.METHOD_TYPE;
+import static org.onap.cli.fw.conf.Constants.MODE;
+import static org.onap.cli.fw.conf.Constants.MODE_VALUES;
+import static org.onap.cli.fw.conf.Constants.MULTIPART_ENTITY_NAME;
+import static org.onap.cli.fw.conf.Constants.NAME;
+import static org.onap.cli.fw.conf.Constants.ONAP_CMD_SCHEMA_VERSION;
+import static org.onap.cli.fw.conf.Constants.PARAMETERS;
+import static org.onap.cli.fw.conf.Constants.QUERIES;
+import static org.onap.cli.fw.conf.Constants.REQUEST;
+import static org.onap.cli.fw.conf.Constants.RESULTS;
+import static org.onap.cli.fw.conf.Constants.RESULT_MAP;
+import static org.onap.cli.fw.conf.Constants.RESULT_PARAMS_LIST;
+import static org.onap.cli.fw.conf.Constants.RESULT_PARAMS_MANDATORY_LIST;
+import static org.onap.cli.fw.conf.Constants.SAMPLE_RESPONSE;
+import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_NOT_EXIST;
+import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_WRONG_EXTN;
+import static org.onap.cli.fw.conf.Constants.SCHEMA_INVALID_DEFAULT_PARAMS_SECTION;
+import static org.onap.cli.fw.conf.Constants.SCOPE;
+import static org.onap.cli.fw.conf.Constants.SERVICE;
+import static org.onap.cli.fw.conf.Constants.SERVICE_PARAMS_LIST;
+import static org.onap.cli.fw.conf.Constants.SERVICE_PARAMS_MANDATORY_LIST;
+import static org.onap.cli.fw.conf.Constants.SHORT_OPTION;
+import static org.onap.cli.fw.conf.Constants.SUCCESS_CODES;
+import static org.onap.cli.fw.conf.Constants.TOP_LEVEL_MANDATORY_LIST;
+import static org.onap.cli.fw.conf.Constants.TOP_LEVEL_PARAMS_LIST;
+import static org.onap.cli.fw.conf.Constants.TYPE;
+import static org.onap.cli.fw.conf.Constants.URI;
+import static org.onap.cli.fw.conf.Constants.VERSION;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.ServiceLoader;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.ad.OnapCredentials;
@@ -51,6 +135,7 @@ import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.ParameterType;
+import org.onap.cli.fw.input.cache.Param;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
@@ -62,93 +147,11 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.ServiceLoader;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
 
-import static org.onap.cli.fw.conf.Constants.API;
-import static org.onap.cli.fw.conf.Constants.ATTRIBUTES;
-import static org.onap.cli.fw.conf.Constants.AUTH;
-import static org.onap.cli.fw.conf.Constants.AUTH_VALUES;
-import static org.onap.cli.fw.conf.Constants.BODY;
-import static org.onap.cli.fw.conf.Constants.BOOLEAN_VALUE;
-import static org.onap.cli.fw.conf.Constants.CLIENT;
-import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_HOST_URL;
-import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_PASS_WORD;
-import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_USERNAME;
-import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETERS;
-import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETERS_EXCLUDE;
-import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETERS_INCLUDE;
-import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETER_FILE_NAME;
-import static org.onap.cli.fw.conf.Constants.DEFAULT_VALUE;
-import static org.onap.cli.fw.conf.Constants.DESCRIPTION;
-import static org.onap.cli.fw.conf.Constants.DIRECTION;
-import static org.onap.cli.fw.conf.Constants.ENTITY;
-import static org.onap.cli.fw.conf.Constants.EXCEPTION;
-import static org.onap.cli.fw.conf.Constants.EXECUTOR;
-import static org.onap.cli.fw.conf.Constants.EXTERNAL_DISCOVERY_DIRECTORY;
-import static org.onap.cli.fw.conf.Constants.EXTERNAL_DISCOVERY_DIRECTORY_PATTERN;
-import static org.onap.cli.fw.conf.Constants.EXTERNAL_DISCOVERY_FILE;
-import static org.onap.cli.fw.conf.Constants.EXTERNAL_SCHEMA_DIRECTORY;
-import static org.onap.cli.fw.conf.Constants.EXTERNAL_SCHEMA_PATH_PATERN;
-import static org.onap.cli.fw.conf.Constants.HEADERS;
-import static org.onap.cli.fw.conf.Constants.HTTP;
-import static org.onap.cli.fw.conf.Constants.HTTP_BODY_FAILED_PARSING;
-import static org.onap.cli.fw.conf.Constants.HTTP_BODY_JSON_EMPTY;
-import static org.onap.cli.fw.conf.Constants.HTTP_MANDATORY_SECTIONS;
-import static org.onap.cli.fw.conf.Constants.HTTP_METHODS;
-import static org.onap.cli.fw.conf.Constants.HTTP_REQUEST_MANDATORY_PARAMS;
-import static org.onap.cli.fw.conf.Constants.HTTP_REQUEST_PARAMS;
-import static org.onap.cli.fw.conf.Constants.HTTP_SECTIONS;
-import static org.onap.cli.fw.conf.Constants.HTTP_SUCCESS_CODE_INVALID;
-import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_LIST;
-import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_MANDATORY_LIST;
-import static org.onap.cli.fw.conf.Constants.IS_OPTIONAL;
-import static org.onap.cli.fw.conf.Constants.IS_SECURED;
-import static org.onap.cli.fw.conf.Constants.LONG_OPTION;
-import static org.onap.cli.fw.conf.Constants.METHOD_TYPE;
-import static org.onap.cli.fw.conf.Constants.METHOD;
-import static org.onap.cli.fw.conf.Constants.MODE;
-import static org.onap.cli.fw.conf.Constants.MODE_VALUES;
-import static org.onap.cli.fw.conf.Constants.NAME;
-import static org.onap.cli.fw.conf.Constants.ONAP_CMD_SCHEMA_VERSION;
-import static org.onap.cli.fw.conf.Constants.PARAMETERS;
-import static org.onap.cli.fw.conf.Constants.QUERIES;
-import static org.onap.cli.fw.conf.Constants.MULTIPART_ENTITY_NAME;
-import static org.onap.cli.fw.conf.Constants.REQUEST;
-import static org.onap.cli.fw.conf.Constants.RESULTS;
-import static org.onap.cli.fw.conf.Constants.RESULT_MAP;
-import static org.onap.cli.fw.conf.Constants.RESULT_PARAMS_LIST;
-import static org.onap.cli.fw.conf.Constants.RESULT_PARAMS_MANDATORY_LIST;
-import static org.onap.cli.fw.conf.Constants.SAMPLE_RESPONSE;
-import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_NOT_EXIST;
-import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_WRONG_EXTN;
-import static org.onap.cli.fw.conf.Constants.SCHEMA_INVALID_DEFAULT_PARAMS_SECTION;
-import static org.onap.cli.fw.conf.Constants.SCOPE;
-import static org.onap.cli.fw.conf.Constants.SERVICE;
-import static org.onap.cli.fw.conf.Constants.SERVICE_PARAMS_LIST;
-import static org.onap.cli.fw.conf.Constants.SERVICE_PARAMS_MANDATORY_LIST;
-import static org.onap.cli.fw.conf.Constants.SHORT_OPTION;
-import static org.onap.cli.fw.conf.Constants.SUCCESS_CODES;
-import static org.onap.cli.fw.conf.Constants.TOP_LEVEL_MANDATORY_LIST;
-import static org.onap.cli.fw.conf.Constants.TOP_LEVEL_PARAMS_LIST;
-import static org.onap.cli.fw.conf.Constants.TYPE;
-import static org.onap.cli.fw.conf.Constants.URI;
-import static org.onap.cli.fw.conf.Constants.VERSION;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 
 /**
  * Provides helper method to parse Yaml files and produce required objects.
@@ -1609,7 +1612,7 @@ public class OnapCommandUtils {
     public static void persist(List<ExternalSchema> schemas) throws OnapCommandDiscoveryFailed {
         if (schemas != null) {
             try {
-                Resource[] resources = getExternalResources(EXTERNAL_DISCOVERY_DIRECTORY);
+                Resource[] resources = getExternalResources(DATA_DIRECTORY);
                 if (resources != null && resources.length == 1) {
                     String path = resources[0].getURI().getPath();
                     File file = new File(path + File.separator + EXTERNAL_DISCOVERY_FILE);
@@ -1617,8 +1620,24 @@ public class OnapCommandUtils {
                     mapper.writerWithDefaultPrettyPrinter().writeValue(file, schemas);
                 }
             } catch (IOException e1) {
-                throw new OnapCommandDiscoveryFailed(EXTERNAL_DISCOVERY_DIRECTORY,
+                throw new OnapCommandDiscoveryFailed(DATA_DIRECTORY,
                         EXTERNAL_DISCOVERY_FILE, e1);
+            }
+        }
+    }
+
+    public static void persistParams(List<Param> params, String profileName) {
+        if (params != null) {
+            try {
+                Resource[] resources = getExternalResources(DATA_DIRECTORY);
+                if (resources != null && resources.length == 1) {
+                    String path = resources[0].getURI().getPath();
+                    File file = new File(path + File.separator + profileName + ".json");
+                    ObjectMapper mapper = new ObjectMapper();
+                    mapper.writerWithDefaultPrettyPrinter().writeValue(file, params);
+                }
+            } catch (IOException e1) {
+                // Never occur  //  NOSONAR
             }
         }
     }
@@ -1634,12 +1653,12 @@ public class OnapCommandUtils {
         Resource resource = null;
         try {
             resource = getExternalResource(EXTERNAL_DISCOVERY_FILE,
-                    EXTERNAL_DISCOVERY_DIRECTORY_PATTERN);
+                    DATA_DIRECTORY_JSON_PATTERN);
             if (resource != null) {
                 return true;
             }
         } catch (IOException e) {
-            throw new OnapCommandDiscoveryFailed(EXTERNAL_DISCOVERY_DIRECTORY,
+            throw new OnapCommandDiscoveryFailed(DATA_DIRECTORY,
                     EXTERNAL_DISCOVERY_FILE, e);
         }
 
@@ -1665,7 +1684,7 @@ public class OnapCommandUtils {
         } else {
             try {
                 Resource resource = getExternalResource(EXTERNAL_DISCOVERY_FILE,
-                        EXTERNAL_DISCOVERY_DIRECTORY_PATTERN);
+                        DATA_DIRECTORY_JSON_PATTERN);
                 if (resource != null) {
                     File file = new File(resource.getURI().getPath());
                     ObjectMapper mapper = new ObjectMapper();
@@ -1673,12 +1692,31 @@ public class OnapCommandUtils {
                     schemas.addAll(Arrays.asList(list));
                 }
             } catch (IOException e) {
-                throw new OnapCommandDiscoveryFailed(EXTERNAL_DISCOVERY_DIRECTORY,
+                throw new OnapCommandDiscoveryFailed(DATA_DIRECTORY,
                         EXTERNAL_DISCOVERY_FILE, e);
             }
         }
 
         return schemas;
+    }
+
+    public static List<Param> loadParamFromCache(String profileName) {
+        List<Param> params = new ArrayList<>();
+
+        try {
+            Resource resource = getExternalResource(profileName + ".json",
+                    DATA_DIRECTORY_JSON_PATTERN);
+            if (resource != null) {
+                File file = new File(resource.getURI().getPath());
+                ObjectMapper mapper = new ObjectMapper();
+                Param[] list = mapper.readValue(file, Param[].class);
+                params.addAll(Arrays.asList(list));
+            }
+        } catch (IOException e) {
+            // Never occur  //  NOSONAR
+        }
+
+        return params;
     }
 
     /**
