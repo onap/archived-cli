@@ -175,6 +175,8 @@ public class OnapCli {
         attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_HELP);
         attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_HELP_MSG);
 
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_PROFILE_MSG);
         try {
             return "\n\nDirectives:\n" + help.print();
         } catch (OnapCommandException e) {
@@ -224,6 +226,15 @@ public class OnapCli {
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
                         this.args = Arrays.asList(new String [] {this.getLongOption(OnapCliConstants.PARAM_VERSION_LONG)});
                         handleVersion();
+                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
+                        if (args.size() == 1) {
+                            this.print("Please use it in the form of 'profile <profile-name>'");
+                        } else {
+                            this.args = Arrays.asList(new String [] {
+                                    this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG),
+                                    this.args.get(1)});
+                            handleProfile();
+                        }
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_SET)) {
                         if (args.size() > 1) {
                             String [] paramEntry = args.get(1).trim().split("=");
@@ -285,7 +296,8 @@ public class OnapCli {
                     OnapCliConstants.PARAM_INTERACTIVE_HELP,
                     OnapCliConstants.PARAM_INTERACTIVE_VERSION,
                     OnapCliConstants.PARAM_INTERACTIVE_SET,
-                    OnapCliConstants.PARAM_INTERACTIVE_UNSET);
+                    OnapCliConstants.PARAM_INTERACTIVE_UNSET,
+                    OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
             console.addCompleter(strCompleter);
             console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT);
         } catch (OnapCommandException e) { // NOSONAR

@@ -45,6 +45,9 @@ public final class OnapCliConstants {
     public static final String PARAM_INTERACTIVE_SET_MSG = "To set the parameter values. Once its set, will be available for all commands in current session.";
     public static final String PARAM_INTERACTIVE_UNSET = "unset";
     public static final String PARAM_INTERACTIVE_UNSET_MSG = "To unset the parameter value in current session.";
+    public static final String PARAM_INTERACTIVE_PROFILE = "profile";
+    public static final String PARAM_INTERACTIVE_PROFILE_MSG = "Start profiling current settings made of use, set.";
+
     public static final String PARAM_INTERACTIVE_ARG_SPLIT_PATTERN = "\\s+";
 
     private OnapCliConstants(){}
