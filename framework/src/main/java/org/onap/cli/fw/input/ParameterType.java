@@ -30,7 +30,7 @@ public enum ParameterType {
     /**
      * YAML file.
      */
-    YAML, STRING, LONG,
+    YAML, STRING, TEXT, LONG,
     /**
      * URL location.
      */
@@ -66,6 +66,8 @@ public enum ParameterType {
             return BINARY;
         } else if (UUID.name().equalsIgnoreCase(name)) {
             return UUID;
+        } else if (TEXT.name().equalsIgnoreCase(name)) {
+            return TEXT;
         } else {
             throw new OnapCommandInvalidParameterType(name);
         }
