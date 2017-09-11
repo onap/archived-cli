@@ -308,7 +308,11 @@ public class OnapCli {
                 }
 
                 for (OnapCommandParameter param: cmd.getParameters()) {
-                    if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(param.getLongOption())) {
+                    if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(
+                            cmd.getService().getName() + ":" + param.getLongOption())) {
+                        param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
+                                cmd.getService().getName() + ":" + param.getLongOption()));
+                    } else if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(param.getLongOption())) {
                         param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(param.getLongOption()));
                     }
                 }

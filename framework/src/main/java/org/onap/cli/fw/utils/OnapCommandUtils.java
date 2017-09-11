@@ -988,7 +988,9 @@ public class OnapCommandUtils {
         for (Object successCode : requestSuccessCodes) {
             Integer code = (Integer) successCode;
             if (code < 200 || code >= 300) {
-                errorList.add(HTTP_SUCCESS_CODE_INVALID);
+                if ( code != 404) {
+                    errorList.add(HTTP_SUCCESS_CODE_INVALID);
+                }
             }
         }
 

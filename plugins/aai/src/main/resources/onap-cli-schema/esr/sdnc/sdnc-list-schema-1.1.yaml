@@ -1,0 +1,90 @@
+onap_cmd_schema_version: 1.0
+
+name: sdnc-list
+
+description: List the configured sdnc
+
+version: onap-1.1
+
+service:
+  name: aai
+  version: v11
+  auth: basic
+  mode: direct
+
+results:
+  direction: landscape
+  attributes:
+    - name: sdnc-id
+      description: Onap sdnc id
+      scope: short
+      type: string
+    - name: location
+      description: Onap sdnc id
+      scope: short
+      type: string
+    - name: name
+      description: Onap sdnc name
+      scope: short
+      type: string
+    - name: type
+      description: Onap sdnc type
+      scope: short
+      type: string
+    - name: vendor
+      description: Onap sdnc vendor
+      scope: short
+      type: string
+    - name: version
+      description: Onap sdnc version
+      scope: short
+      type: string
+    - name: ip-address
+      description: Onap sdnc ip-address
+      scope: short
+      type: string
+    - name: port
+      description: Onap sdnc port
+      scope: short
+      type: string
+    - name: protocal
+      description: Onap sdnc protocal
+      scope: short
+      type: string
+    - name: username
+      description: Onap sdnc username
+      scope: long
+      type: string
+    - name: product-name
+      description: Onap sdnc product-name
+      scope: short
+      type: string
+    - name: resource-version
+      description: Onap sdnc resource version
+      scope: short
+      type: string
+
+http:
+  request:
+    uri: /aai/v11/external-system/esr-sdnc-list
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    sdnc-id: $b{$.esr-sdnc.[*].sdnc-id
+    location: $b{$.esr-sdnc.[*].location
+    name: $b{$.esr-sdnc.[*].esr-system-info-list.esr-system-info.[0].system-name
+    type: $b{$.esr-sdnc.[*].esr-system-info-list.esr-system-info.[0].type
+    vendor: $b{$.esr-sdnc.[*].esr-system-info-list.esr-system-info.[0].vendor
+    version: $b{$.esr-sdnc.[*].esr-system-info-list.esr-system-info.[0].version
+    ip-address: $b{$.esr-sdnc.[*].esr-system-info-list.esr-system-info.[0].ip-address
+    port: $b{$.esr-sdnc.[*].esr-system-info-list.esr-system-info.[0].port
+    protocal: $b{$.esr-sdnc.[*].esr-system-info-list.esr-system-info.[0].protocal
+    username: $b{$.esr-sdnc.[*].esr-system-info-list.esr-system-info.[0].user-name
+    product-name: $b{$.esr-sdnc.[*].product-name
+    resource-version: $b{$.esr-sdnc.[*].resource-version
+
+  sample_response:
+    body: '{"esr-sdnc":[{"sdnc-id":"example-sdnc-id-val-36878","location":"location","product-name":"example-remotepath-val-80493","esr-system-info-list":{"esr-system-info":[{"esr-system-info-id":"example-esr-system-info-id-val-44791","system-name":"example-system-name-val-48687","type":"example-type-val-95885","vendor":"example-vendor-val-41061","version":"example-version-val-38559","service-url":"example-service-url-val-2663","user-name":"example-user-name-val-26126","password":"example-password-val-33838","system-type":"sdnc","protocal":"","ssl-cacert":"","ssl-insecure":false,"ip-address":"","port":"","cloud-domain":"","default-tenant":""}]}}]}'
+
+

@@ -19,6 +19,6 @@ package org.onap.cli.cmd.cs.msb;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 
-@OnapCommandSchema(name = "microservice-show", version = "onap-1.0", schema = "microservice-show-schema.yaml")
+@OnapCommandSchema(name = "microservice-show", version = "onap-1.1", schema = "microservice-show-schema.yaml")
 public class OnapServiceShowCommand extends OnapHttpCommand {
 }
