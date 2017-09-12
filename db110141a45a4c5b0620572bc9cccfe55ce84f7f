@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_b8e2462d",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-09-12T14:23:21Z",
+      "side": 1,
+      "message": "is it different from the subscriber name",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "db110141a45a4c5b0620572bc9cccfe55ce84f7f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_d8e74a3f",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-09-12T14:23:21Z",
+      "side": 1,
+      "message": "is this not an parameter ?",
+      "range": {
+        "startLine": 50,
+        "startChar": 70,
+        "endLine": 50,
+        "endChar": 86
+      },
+      "revId": "db110141a45a4c5b0620572bc9cccfe55ce84f7f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_98d1c259",
+        "filename": "plugins/so/src/test/resources/onap-cli-sample/services/service-create-sample-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-09-12T14:23:21Z",
+      "side": 1,
+      "message": "pls add output as well",
+      "revId": "db110141a45a4c5b0620572bc9cccfe55ce84f7f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
