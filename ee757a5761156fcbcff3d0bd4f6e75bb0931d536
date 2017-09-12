@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_ce6309dc",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1719,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-09-12T05:17:25Z",
+      "side": 1,
+      "message": "this may contain inside try",
+      "range": {
+        "startLine": 1719,
+        "startChar": 7,
+        "endLine": 1719,
+        "endChar": 22
+      },
+      "revId": "ee757a5761156fcbcff3d0bd4f6e75bb0931d536",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
