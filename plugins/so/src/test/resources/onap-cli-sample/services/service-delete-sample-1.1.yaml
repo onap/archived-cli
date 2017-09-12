@@ -1,0 +1,8 @@
+onap_cli_sample_version: 1.0
+
+name: service-delete
+version: onap-1.1
+samples:
+    sample1:
+        name: delete a service instance
+        input: -h https://locahost:8080 -u InfraPortalClient -p password1$  -s 56AA445
