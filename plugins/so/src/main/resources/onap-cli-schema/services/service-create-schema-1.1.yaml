@@ -1,0 +1,57 @@
+open_cli_schema_version: 1.0
+name: service-create
+description: Create a service instance using MSO
+version: onap-1.1
+service:
+  name: mso
+  version: v2
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: global-subscriber-id
+    description: unique id for customer
+    type: string
+    short_option: c
+    long_option: global-subscriber-id
+    is_optional: false
+  - name: subscriber-name
+    description: subscriber name
+    type: string
+    short_option: b
+    long_option: subscriber-name
+    is_optional: true
+  - name: instance-name
+    description: service instance name
+    type: string
+    short_option: i
+    long_option: instance-name
+    is_optional: false
+  - name: supress-rollback
+    description: rollback changes if instantiation fails.
+    type: bool
+    short_option: r
+    long_option: supress-rollback
+    is_optional: true
+
+results:
+  direction: portrait
+  attribute:
+    - name: instance-id
+      description: instance id for the created service.
+      type: string
+      scope: short
+
+
+http:
+  request:
+    uri: ecomp/mso/infra/serviceInstances/v2
+    method: PUT
+    body: '{"requestDetails": {"modelInfo": {"modelType": "service","modelInvariantId": "ff3514e3-5a33-55df-13ab-12abad84e7ff","modelNameVersionId": "fe6985cd-ea33-3346-ac12-ab121484a3fe","modelName": "Test","modelVersion": "1.0"},"subscriberInfo": {"globalSubscriberId": "${global-subscriber-id}","subscriberName": "${subscriber-name}"},"requestInfo": {"instanceName": "${instance-name}","source": "VID","suppressRollback": "${supress-rollback}"},"requestParameters": {"subscriptionServiceType": "MOG"}}}'
+
+  success_codes:
+    - 202
+  result_mpa:
+    instance-id: $b{$.instance-id}
+  sample_response:
+    body: '{"instance-id":"234567AB"}'
