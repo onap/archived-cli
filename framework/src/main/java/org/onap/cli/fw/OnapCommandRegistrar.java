@@ -58,7 +58,7 @@ public class OnapCommandRegistrar {
 
     private boolean isInteractiveMode = false;
 
-    private boolean isDevMode = Boolean.getBoolean(System.getenv(Constants.CLI_DEV_MODE));
+    private boolean isDevMode = Boolean.parseBoolean(System.getenv(Constants.CLI_DEV_MODE));
 
     private OnapCommandParameterCache paramCache = OnapCommandParameterCache.getInstance();
 

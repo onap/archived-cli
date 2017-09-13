@@ -19,12 +19,15 @@ services:
     environment:
       CLI_MODE: 'console'
 
-  dev:
+  debug:
     stdin_open: true
     tty: true
     image: onap/cli
     environment:
       CLI_DEV: "true"
       CLI_MODE: 'console'
+      ONAP_CLI_DEBUG: "true"
+    expose:
+      - 5005
     ports:
       - 5005:5005

@@ -69,6 +69,13 @@ public class OnapCli {
 
     private void print(Throwable throwable) {
         System.out.println(throwable.getMessage());
+        try {
+            if (OnapCommandRegistrar.getRegistrar().isDevMode()) {
+                throwable.printStackTrace();
+            }
+        } catch (OnapCommandException e) {
+            //  NOSONAR
+        }
     }
 
     private String getShortOption(String opt) {
