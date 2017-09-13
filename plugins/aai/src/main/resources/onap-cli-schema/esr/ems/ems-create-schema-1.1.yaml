@@ -70,7 +70,7 @@ parameters:
 
 http:
   request:
-    uri: /aai/v11/external-system/esr-ems-list/esr-ems/{ems-id}
+    uri: /aai/v11/external-system/esr-ems-list/esr-ems/${ems-id}
     method: PUT
     body: '{"ems-id":"${ems-id}","passive":true,"remote-path":"${remote-path}","esr-system-info-list":{"esr-system-info":[{"esr-system-info-id":"${ems-id}","system-name":"${name}","type":"${type}","vendor":"${vendor}","version":"${ems-version}","service-url":"${url}","user-name":"${username}","password":"${password}","system-type":"ems","protocal":"","ssl-cacert":"","ssl-insecure":"","ip-address":"","port":"","cloud-domain":"","default-tenant":""}]}}'
   success_codes:

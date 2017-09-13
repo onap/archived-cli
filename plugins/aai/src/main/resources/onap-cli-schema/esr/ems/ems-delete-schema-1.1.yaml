@@ -19,14 +19,19 @@ parameters:
     short_option: x
     long_option:  ems-id
     is_optional: false
-
+  - name: resource-version
+    description: Onap vim resource version
+    type: uuid
+    short_option: y
+    long_option: resource-version
+    is_optional: true
 http:
   request:
-    uri: /aai/v11/external-system/esr-ems-list/esr-ems/{ems-id}
+    uri: /aai/v11/external-system/esr-ems-list/esr-ems/${ems-id}?resource-version=${resource-version}
     method: DELETE
 
   success_codes:
-    - 201
+    - 204
     - 404
 
   sample_response:
