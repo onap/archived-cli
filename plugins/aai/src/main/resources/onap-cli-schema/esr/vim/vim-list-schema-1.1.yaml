@@ -39,7 +39,7 @@ results:
       type: string
     - name: type
       description: Onap vim type
-      scope: short
+      scope: long
       type: string
     - name: vendor
       description: Onap vim vendor
@@ -47,11 +47,11 @@ results:
       type: string
     - name: version
       description: Onap vim version
-      scope: short
+      scope: long
       type: string
     - name: url
       description: Onap vim url
-      scope: short
+      scope: long
       type: string
     - name: username
       description: Onap vim username
@@ -77,18 +77,16 @@ http:
   success_codes:
     - 200
   result_map:
-    vim-id: $b{$.esr-system-info.[*].esr-system-info-id
-    name: $b{$.esr-system-info.[*].system-name
-    type: $b{$.esr-system-info.[*].type
-    vendor: $b{$.esr-system-info.[*].vendor
-    version: $b{$.esr-system-info.[*].version
-    url: $b{$.esr-system-info.[*].service-url
-    username: $b{$.esr-system-info.[*].user-name
-    cloud-domain: $b{$.esr-system-info.[*].cloud-domain
-    default-tenant: $b{$.esr-system-info.[*].default-tenant
-    resource-version: $b{$.esr-system-info.[*].resource-version
+    vim-id: $b{$.esr-system-info.[*].esr-system-info-id}
+    name: $b{$.esr-system-info.[*].system-name}
+    type: $b{$.esr-system-info.[*].type}
+    vendor: $b{$.esr-system-info.[*].vendor}
+    version: $b{$.esr-system-info.[*].version}
+    url: $b{$.esr-system-info.[*].service-url}
+    username: $b{$.esr-system-info.[*].user-name}
+    cloud-domain: $b{$.esr-system-info.[*].cloud-domain}
+    default-tenant: $b{$.esr-system-info.[*].default-tenant}
+    resource-version: $b{$.esr-system-info.[*].resource-version}
 
   sample_response:
     body: '{esr-system-info":[{"esr-system-info-id":"example-esr-system-info-id-val-62966","system-name":"example-system-name-val-76894","type":"example-type-val-32301","vendor":"example-vendor-val-38139","version":"example-version-val-42345","service-url":"example-service-url-val-33729","user-name":"example-user-name-val-32122","password":"example-password-val-56539","system-type":"example-system-type-val-80707","protocal":"example-protocal-val-30105","ssl-cacert":"example-ssl-cacert-val-52110","ssl-insecure":true,"ip-address":"example-ip-address-val-10140","port":"example-port-val-26369","cloud-domain":"example-cloud-domain-val-22303","default-tenant":"example-default-tenant-val-26326"}]}'
-
-
