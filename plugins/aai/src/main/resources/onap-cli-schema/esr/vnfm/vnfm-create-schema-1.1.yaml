@@ -72,11 +72,11 @@ parameters:
     type: string
     short_option: z
     long_option: certificate-url
-    is_optional: false
+    is_optional: true
 
 http:
   request:
-    uri: /aai/v11/external-system/esr-vnfm-list/esr-vnfm/{vnfm-id}
+    uri: /aai/v11/external-system/esr-vnfm-list/esr-vnfm/${vnfm-id}
     method: PUT
     body: '{"vnfm-id":"${vnfm-id}","vim-id":"${vim-id}","certificate-url":"${certificate-url}","esr-system-info-list":{"esr-system-info":[{"esr-system-info-id":"${vnfm-id}","system-name":"${name}","type":"${type}","vendor":"${vendor}","version":"${vnfm-version}","service-url":"${url}","user-name":"${username}","password":"${password}","system-type":"vnfm","protocal":"","ssl-cacert":"","ssl-insecure":"","ip-address":"","port":"","cloud-domain":"","default-tenant":""}]}}'
   success_codes:
