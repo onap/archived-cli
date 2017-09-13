@@ -1,0 +1,50 @@
+onap_cmd_schema_version: 1.0
+name: vf-module-delete
+description: delete a VF module
+version: onap-1.1
+service:
+  name: mso
+  version: v2
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: vnf-instance-id
+    description: id for vnf
+    type: string
+    short_option: v
+    long_option: vnf-instace-id
+    is_optional: false
+  - name: service-instance-id
+    description: unique id for service instance
+    type: string
+    short_option: s
+    long_option: service-instace-id
+    is_optional: false
+  - name: vf-module-id
+    description: vf module id
+    type: string
+    short_option: m
+    long_option: vf-module-id
+    is_optional: false
+  - name: lcp-cloudregion-id
+    description: AIC LCP node location identifier
+    type: string
+    short_option: l
+    long_option: lcp-cloudregion-id
+    is_optional: false
+  - name: tenant-id
+    description: openstack tenant id (uuid)
+    type: string
+    short_option: t
+    long_option: tenant-id
+    is_optional: false
+
+http:
+  request:
+    uri: ecomp/mso/infra/serviceInstances/v2/${service-instance-id}/vnfs/${vnf-instance-id}/vfModules/${vf-module-id}
+    method: DELETE
+    body: '{"requestDetails":{"modelInfo":{"modelType":"vfModule","modelInvariantId":"ff5256d2-5a33-55df-13ab-12abad84e7ff","modelName":"vSAMP12..base..module-0","modelVersion":"1"},"cloudConfiguration":{"lcpCloudRegionId":"${lcp-cloudregion-id}","tenantId":"${tenant-id}"},"requestInfo":{"source":"VID"}}}'
+
+  success_codes:
+    - 202
