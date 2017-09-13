@@ -48,7 +48,7 @@ public class OnapHttpCommand extends OnapCommand {
 
     @Override
     public String getSchemaVersion() {
-        return Constants.ONAP_CMD_SCHEMA_VERSION_VALUE;
+        return Constants.OPEN_CLI_SCHEMA_VERSION_VALUE;
     }
 
     public void setSuccessStatusCodes(List<Integer> successStatusCodes) {

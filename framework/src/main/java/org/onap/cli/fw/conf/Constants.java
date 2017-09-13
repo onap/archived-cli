@@ -80,7 +80,7 @@ public class Constants {
 
     public static final String SCOPE = "scope";
 
-    public static final String ONAP_CMD_SCHEMA_VERSION_VALUE = "1.0";
+    public static final String OPEN_CLI_SCHEMA_VERSION_VALUE = "1.0";
     public static final String DESCRIPTION = "description";
     public static final String SERVICE = "service";
     public static final String PARAMETERS = "parameters";
@@ -90,7 +90,7 @@ public class Constants {
 
     public static final String RESULTS = "results";
 
-    public static final String ONAP_CMD_SCHEMA_VERSION = "onap_cmd_schema_version";
+    public static final String OPEN_CLI_SCHEMA_VERSION = "open_cli_schema_version";
     public static final String NAME = "name";
     public static final String VERSION = "version";
     public static final String BASE_PATH = "base_path";

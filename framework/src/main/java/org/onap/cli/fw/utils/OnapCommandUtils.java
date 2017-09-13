@@ -62,7 +62,7 @@ import static org.onap.cli.fw.conf.Constants.MODE;
 import static org.onap.cli.fw.conf.Constants.MODE_VALUES;
 import static org.onap.cli.fw.conf.Constants.MULTIPART_ENTITY_NAME;
 import static org.onap.cli.fw.conf.Constants.NAME;
-import static org.onap.cli.fw.conf.Constants.ONAP_CMD_SCHEMA_VERSION;
+import static org.onap.cli.fw.conf.Constants.OPEN_CLI_SCHEMA_VERSION;
 import static org.onap.cli.fw.conf.Constants.PARAMETERS;
 import static org.onap.cli.fw.conf.Constants.QUERIES;
 import static org.onap.cli.fw.conf.Constants.REQUEST;
@@ -200,8 +200,8 @@ public class OnapCommandUtils {
             throw new OnapCommandInvalidSchema(schemaName, e);
         }
         String schemaVersion = "";
-        if (values.keySet().contains(ONAP_CMD_SCHEMA_VERSION)) {
-            Object obj = values.get(ONAP_CMD_SCHEMA_VERSION);
+        if (values.keySet().contains(OPEN_CLI_SCHEMA_VERSION)) {
+            Object obj = values.get(OPEN_CLI_SCHEMA_VERSION);
             schemaVersion = obj.toString();
         }
 
@@ -1528,7 +1528,7 @@ public class OnapCommandUtils {
                         schema.setSchemaName(resource.getFilename());
                         schema.setSchemaURI(resource.getURI().toString());
                         schema.setCmdName((String) resourceMap.get(NAME));
-                        Object obj = resourceMap.get(ONAP_CMD_SCHEMA_VERSION);
+                        Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         schema.setVersion(obj.toString());
                         schema.setCmdVersion(resourceMap.get(Constants.VERSION).toString());
                         if (resourceMap.get(Constants.HTTP) != null) {

@@ -1,4 +1,4 @@
-onap_cmd_schema_version: 1.0
+open_cli_schema_version: 1.0
 name: subscription-list
 description: Lists the subscription for a given customer in Onap
 version: onap-1.1

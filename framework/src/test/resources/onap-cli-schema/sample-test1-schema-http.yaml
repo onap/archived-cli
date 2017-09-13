@@ -1,4 +1,4 @@
-onap_cmd_schema_version: 1.0
+open_cli_schema_version: 1.0
 name: sample-test1
 description: Onap sample command to test the command features
 version: cli-1.0

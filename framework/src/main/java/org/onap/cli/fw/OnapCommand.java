@@ -71,7 +71,7 @@ public abstract class OnapCommand {
     protected boolean isInitialzied = false;
 
     public String getSchemaVersion() {
-        return Constants.ONAP_CMD_SCHEMA_VERSION_VALUE;
+        return Constants.OPEN_CLI_SCHEMA_VERSION_VALUE;
     }
 
     /**

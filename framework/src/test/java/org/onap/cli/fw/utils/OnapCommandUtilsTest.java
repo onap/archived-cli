@@ -133,7 +133,7 @@ public class OnapCommandUtilsTest {
         try {
             map = OnapCommandUtils.validateSchemaVersion("sample-test-schema.yaml", "1.1");
         } catch (OnapCommandInvalidSchemaVersion e) {
-            assertEquals("0x0008::Command schema onap_cmd_schema_version 1.0 is invalid or missing", e.getMessage());
+            assertEquals("0x0008::Command schema open_cli_schema_version 1.0 is invalid or missing", e.getMessage());
         } catch (OnapCommandInvalidSchema e) {
             fail("Test should not have thrown this exception : " + e.getMessage());
         } catch (OnapCommandSchemaNotFound e) {
