@@ -1,4 +1,4 @@
-onap_cmd_schema_version: 1.0
+open_cli_schema_version: 1.0
 name: tenant-list
 description: Lists the tenants under given cloud region in Onap
 version: onap-1.1

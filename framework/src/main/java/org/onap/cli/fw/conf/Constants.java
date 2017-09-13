@@ -90,7 +90,7 @@ public class Constants {
 
     public static final String RESULTS = "results";
 
-    public static final String ONAP_CMD_SCHEMA_VERSION = "onap_cmd_schema_version";
+    public static final String ONAP_CMD_SCHEMA_VERSION = "open_cli_schema_version";
     public static final String NAME = "name";
     public static final String VERSION = "version";
     public static final String BASE_PATH = "base_path";

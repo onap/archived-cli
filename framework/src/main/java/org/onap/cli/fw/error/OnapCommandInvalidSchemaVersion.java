@@ -25,7 +25,7 @@ public class OnapCommandInvalidSchemaVersion extends OnapCommandException {
     private static final long serialVersionUID = 4459731110721370387L;
 
     public OnapCommandInvalidSchemaVersion(String schemaVersion) {
-        super("0x0008", "Command schema onap_cmd_schema_version " + schemaVersion + " is invalid or missing");
+        super("0x0008", "Command schema open_cli_schema_version " + schemaVersion + " is invalid or missing");
     }
 
 }

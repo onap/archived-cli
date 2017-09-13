@@ -162,7 +162,7 @@ public class OnapCommandErrorTest {
     public void onapCommandInvalidSchemaVersionTest() {
         OnapCommandInvalidSchemaVersion failed = new OnapCommandInvalidSchemaVersion("1.0");
 
-        assertEquals("0x0008::Command schema onap_cmd_schema_version 1.0 is invalid or missing", failed.getMessage());
+        assertEquals("0x0008::Command schema open_cli_schema_version 1.0 is invalid or missing", failed.getMessage());
     }
 
     @Test
