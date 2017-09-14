@@ -30,7 +30,7 @@ public class ParameterTypeTest {
             assertTrue(ParameterType.JSON.equals(ParameterType.get("json"))
                     && ParameterType.YAML.equals(ParameterType.get("yaml"))
                     && ParameterType.STRING.equals(ParameterType.get("string"))
-                    && ParameterType.LONG.equals(ParameterType.get("long"))
+                    && ParameterType.DIGIT.equals(ParameterType.get("digit"))
                     && ParameterType.URL.equals(ParameterType.get("url"))
                     && ParameterType.BOOL.equals(ParameterType.get("bool"))
                     && ParameterType.MAP.equals(ParameterType.get("map"))

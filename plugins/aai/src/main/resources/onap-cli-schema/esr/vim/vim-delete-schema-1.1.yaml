@@ -33,7 +33,7 @@ parameters:
     is_optional: false
   - name: resource-version
     description: Onap vim resource version
-    type: uuid
+    type: string
     short_option: b
     long_option: resource-version
     is_optional: true

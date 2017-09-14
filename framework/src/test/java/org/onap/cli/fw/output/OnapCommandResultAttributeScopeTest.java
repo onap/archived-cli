@@ -31,11 +31,11 @@ public class OnapCommandResultAttributeScopeTest {
         att.setName("name");
         att.setScope(OnapCommandResultAttributeScope.LONG);
         att.setSecured(true);
-        att.setType(ParameterType.LONG);
+        att.setType(ParameterType.DIGIT);
         att.setValues(Collections.emptyList());
         assertTrue("description".equals(att.getDescription()) && "name".equals(att.getName())
                 && OnapCommandResultAttributeScope.LONG.equals(att.getScope())
-                && ParameterType.LONG.equals(att.getType()) && att.getValues().isEmpty());
+                && ParameterType.DIGIT.equals(att.getType()) && att.getValues().isEmpty());
     }
 
 }
