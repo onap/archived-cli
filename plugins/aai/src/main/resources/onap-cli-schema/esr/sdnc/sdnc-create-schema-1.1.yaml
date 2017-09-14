@@ -88,7 +88,7 @@ parameters:
 
 http:
   request:
-    uri: /aai/v11/external-system/esr-thirdparty-sdnc-list/esr-thirdparty-sdnc/{sdnc-id}
+    uri: /aai/v11/external-system/esr-thirdparty-sdnc-list/esr-thirdparty-sdnc/${sdnc-id}
     method: PUT
     body: '{"thirdparty-sdnc-id":"${sdnc-id}","location":"${location}","product-name":"${product-name}","esr-system-info-list":{"esr-system-info":[{"esr-system-info-id":"${sdnc-id}","system-name":"${name}","type":"${type}","vendor":"${vendor}","version":"${sdnc-version}","service-url":"","user-name":"${username}","password":"${password}","system-type":"sdnc","protocal":"${protocal}","ssl-cacert":"","ssl-insecure":"","ip-address":"${ip-address}","port":"${port}","cloud-domain":"","default-tenant":""}]}}'
   success_codes:

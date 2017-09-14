@@ -42,7 +42,7 @@ parameters:
     short_option: j
     is_optional: false
   - name: long-param
-    type: long
+    type: digit
     description: Onap long param
     short_option: l
     long_option: long-opt

@@ -30,7 +30,7 @@ public enum ParameterType {
     /**
      * YAML file.
      */
-    YAML, STRING, TEXT, LONG,
+    YAML, STRING, TEXT, DIGIT,
     /**
      * URL location.
      */
@@ -52,8 +52,8 @@ public enum ParameterType {
             return YAML;
         } else if (STRING.name().equalsIgnoreCase(name)) {
             return STRING;
-        } else if (LONG.name().equalsIgnoreCase(name)) {
-            return LONG;
+        } else if (DIGIT.name().equalsIgnoreCase(name)) {
+            return DIGIT;
         } else if (URL.name().equalsIgnoreCase(name)) {
             return URL;
         } else if (BOOL.name().equalsIgnoreCase(name)) {

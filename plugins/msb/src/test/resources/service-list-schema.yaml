@@ -23,7 +23,7 @@ results:
     - name: status
       description: Onap service status
       scope: short
-      type: long
+      type: digit
     - name: nodes
       description: Onap service running nodes
       scope: long

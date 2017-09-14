@@ -22,7 +22,7 @@ parameters:
     is_optional: false1
   - name: status
     description: Onap service status
-    type: long
+    type: digit
     short_option: z
     long_option: service-version
     is_optional: true
@@ -55,7 +55,7 @@ results:
     - name: status
       description: Onap service status
       scope: short1
-      type: long
+      type: digit
     - name: nodes
       description: Onap service running nodes
       scope: long
