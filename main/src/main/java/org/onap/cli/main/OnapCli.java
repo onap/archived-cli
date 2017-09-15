@@ -71,10 +71,10 @@ public class OnapCli {
         System.out.println(throwable.getMessage());
         try {
             if (OnapCommandRegistrar.getRegistrar().isDevMode()) {
-                throwable.printStackTrace();
+                throwable.printStackTrace();  // NOSONAR
             }
         } catch (OnapCommandException e) {
-            //  NOSONAR
+            // pass // NOSONAR
         }
     }
 
@@ -144,7 +144,7 @@ public class OnapCli {
         }
     }
 
-    private String getDirectiveHelp() throws OnapCommandHelpFailed {
+    public static String getDirectiveHelp() throws OnapCommandHelpFailed {
         OnapCommandResult help = new OnapCommandResult();
         help.setType(ResultType.TABLE);
         help.setPrintDirection(PrintDirection.LANDSCAPE);
@@ -213,7 +213,7 @@ public class OnapCli {
                     if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
                         if (args.size() == 1) {
                             this.print("Please input the product version to use, supported versions: " +
-                        OnapCommandRegistrar.getRegistrar().getAvailableProductVersions());
+                                    OnapCommandRegistrar.getRegistrar().getAvailableProductVersions());
                         } else {
                             try {
                                 OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(args.get(1));

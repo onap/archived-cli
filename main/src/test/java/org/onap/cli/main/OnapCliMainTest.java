@@ -16,21 +16,6 @@
 
 package org.onap.cli.main;
 
-import static org.junit.Assert.assertTrue;
-
-import jline.console.ConsoleReader;
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
-
-import org.aspectj.lang.annotation.After;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandRegistrar;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.main.utils.OnapCliUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -38,8 +23,21 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
+import org.aspectj.lang.annotation.After;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.OnapCommandRegistrar;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandHelpFailed;
+import org.onap.cli.main.utils.OnapCliUtils;
+
+import jline.console.ConsoleReader;
+import mockit.Invocation;
+import mockit.Mock;
+import mockit.MockUp;
+import static org.junit.Assert.fail;
 
 public class OnapCliMainTest {
 
@@ -85,6 +83,12 @@ public class OnapCliMainTest {
     @Test
     public void testHelpSampleCommand() {
         this.handle(new String[] { "sample-test", "--help" });
+    }
+
+    @Ignore
+    @Test
+    public void testHandleProfile() {
+        this.handle(new String[] { "-c", "test" });
     }
 
     @Ignore
@@ -144,6 +148,36 @@ public class OnapCliMainTest {
         } catch (Exception e) {
         }
 
+        mockConsole("set a=b");
+        try {
+            cli.handleInteractive();
+        } catch (Exception e) {
+        }
+
+        mockConsole("unset a");
+        try {
+            cli.handleInteractive();
+        } catch (Exception e) {
+        }
+
+        mockConsole("profile test");
+        try {
+            cli.handleInteractive();
+        } catch (Exception e) {
+        }
+
+        mockConsole("version");
+        try {
+            cli.handleInteractive();
+        } catch (Exception e) {
+        }
+
+        mockConsole("help");
+        try {
+            cli.handleInteractive();
+        } catch (Exception e) {
+        }
+
         mockConsoleReader();
         cli.handleInteractive();
 
@@ -166,7 +200,7 @@ public class OnapCliMainTest {
             public String readLine(Invocation inv) throws IOException {
                 if (isMock) {
                     isMock = false;
-                return input;
+                    return input;
                 } else {
                     return inv.proceed(input);
                 }
@@ -174,4 +208,12 @@ public class OnapCliMainTest {
         };
     }
 
+    @Test
+    public void testDirectiveHelp() {
+        try {
+            OnapCli.getDirectiveHelp();
+        } catch (OnapCommandHelpFailed e) {
+             fail("Directive help failed to run");
+        }
+    }
 }

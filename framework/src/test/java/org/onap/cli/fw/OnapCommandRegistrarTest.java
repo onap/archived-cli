@@ -139,6 +139,19 @@ public class OnapCommandRegistrarTest {
     public void listTest() {
         registerar.listCommands();
     }
+
+    @Test
+    public void testParamCache() throws OnapCommandException {
+        OnapCommandRegistrar.getRegistrar().addParamCache("a", "b");
+        OnapCommandRegistrar.getRegistrar().getParamCache();
+        OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
+        OnapCommandRegistrar.getRegistrar().setDevMode(true);
+        OnapCommandRegistrar.getRegistrar().isDevMode();
+        OnapCommandRegistrar.getRegistrar().isInteractiveMode();
+        OnapCommandRegistrar.getRegistrar().getEnabledProductVersion();
+        OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("cli-1.0");
+
+    }
 }
 
 @OnapCommandSchema(name = OnapCommandTest.CMD_NAME, version = "cli-1.0", schema = "sample-test-schema.yaml")

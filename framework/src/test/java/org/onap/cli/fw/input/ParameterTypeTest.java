@@ -35,6 +35,7 @@ public class ParameterTypeTest {
                     && ParameterType.BOOL.equals(ParameterType.get("bool"))
                     && ParameterType.MAP.equals(ParameterType.get("map"))
                     && ParameterType.BINARY.equals(ParameterType.get("binary"))
+                    && ParameterType.TEXT.equals(ParameterType.get("text"))
                     && ParameterType.ARRAY.equals(ParameterType.get("array")));
         } catch (OnapCommandInvalidParameterType e) {
             fail("Shouldn't have thrown this exception : " + e.getMessage());

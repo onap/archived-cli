@@ -1637,7 +1637,7 @@ public class OnapCommandUtils {
                     mapper.writerWithDefaultPrettyPrinter().writeValue(file, params);
                 }
             } catch (IOException e1) {
-                // Never occur  //  NOSONAR
+                // pass // NOSONAR
             }
         }
     }
@@ -1713,7 +1713,7 @@ public class OnapCommandUtils {
                 params.addAll(Arrays.asList(list));
             }
         } catch (IOException e) {
-            // Never occur  //  NOSONAR
+            // pass // NOSONAR
         }
 
         return params;
