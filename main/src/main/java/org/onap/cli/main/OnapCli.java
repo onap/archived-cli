@@ -74,7 +74,7 @@ public class OnapCli {
                 throwable.printStackTrace();  // NOSONAR
             }
         } catch (OnapCommandException e) {
-            // pass // NOSONAR
+            this.print(e.getCause());
         }
     }
 

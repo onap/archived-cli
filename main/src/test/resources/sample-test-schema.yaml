@@ -67,6 +67,12 @@ parameters:
     description: Onap positional args, if no short option and no long option given for it
     is_optional: false
     default_value: http://localhost:8082/file.txt
+  - name: text-param
+    type: text
+    description: Onap text file location param
+    long_option: text-param
+    short_option: e
+    is_optional: false
 results:
   direction: portrait
   attributes:

@@ -141,15 +141,24 @@ public class OnapCommandRegistrarTest {
     }
 
     @Test
-    public void testParamCache() throws OnapCommandException {
+    public void testCoverageScope() throws OnapCommandException {
+        OnapCommandRegistrar.getRegistrar().setProfile("test");
         OnapCommandRegistrar.getRegistrar().addParamCache("a", "b");
         OnapCommandRegistrar.getRegistrar().getParamCache();
-        OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
+        OnapCommandRegistrar.getRegistrar().removeParamCache("a");
+
         OnapCommandRegistrar.getRegistrar().setDevMode(true);
         OnapCommandRegistrar.getRegistrar().isDevMode();
+
         OnapCommandRegistrar.getRegistrar().isInteractiveMode();
-        OnapCommandRegistrar.getRegistrar().getEnabledProductVersion();
+        OnapCommandRegistrar.getRegistrar().setInteractiveMode(false);
+
         OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("cli-1.0");
+        OnapCommandRegistrar.getRegistrar().getEnabledProductVersion();
+        OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
+        OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion();
+
+        OnapCommandRegistrar.getRegistrar().listCommandInfo();
 
     }
 }

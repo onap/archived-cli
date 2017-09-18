@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.error.OnapCommandLoadProfileFailed;
+import org.onap.cli.fw.error.OnapCommandPersistProfileFailed;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 public class OnapCommandParameterCache {
@@ -31,6 +33,8 @@ public class OnapCommandParameterCache {
     private static OnapCommandParameterCache single = null;
 
     private String profileName = Constants.PARAM_CACHE_FILE_NAME;
+
+    private boolean isLastPersistFailed = false;
 
     private OnapCommandParameterCache() {
 
@@ -77,6 +81,7 @@ public class OnapCommandParameterCache {
 
     private void persist() {
         List<Param> params = new ArrayList<>();
+
         for (String p: this.paramCache.keySet()) {
             for (String name: this.paramCache.get(p).keySet()) {
 
@@ -89,11 +94,20 @@ public class OnapCommandParameterCache {
              }
         }
 
-        OnapCommandUtils.persistParams(params, this.profileName);
+        try {
+            OnapCommandUtils.persistParams(params, this.profileName);
+        } catch (OnapCommandPersistProfileFailed e) {
+            isLastPersistFailed = true;
+        }
     }
 
     private void load() {
-        List<Param> params = OnapCommandUtils.loadParamFromCache(this.profileName);
+        List<Param> params;
+        try {
+            params = OnapCommandUtils.loadParamFromCache(this.profileName);
+        } catch (OnapCommandLoadProfileFailed e) {
+            params = new ArrayList<>();
+        }
 
         for (Param p : params) {
             this.add(p.getProduct(), p.getName(), p.getValue());

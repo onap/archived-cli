@@ -119,6 +119,37 @@ public class OnapCliUtilsTest {
     }
 
     @Test
+    public void testTextparamslong() throws OnapCommandException {
+        OnapCommandParameter boolparam = new OnapCommandParameter();
+        boolparam.setLongOption("text-param");
+        boolparam.setName("text-param");
+        List<OnapCommandParameter> paramslist = new ArrayList<>();
+        paramslist.add(boolparam);
+        String[] args = new String[] { "sample-create", "--text-param" , "text"};
+
+        boolparam.setParameterType(ParameterType.TEXT);
+        OnapCliUtils.populateParams(paramslist, Arrays.asList(args));
+        List<String> expectedList = Arrays.asList(args);
+        Assert.assertNotNull(expectedList.get(1), paramslist.get(0).getValue());
+
+    }
+
+    @Test
+    public void testTextparamsshort() throws OnapCommandException {
+        OnapCommandParameter boolparam = new OnapCommandParameter();
+        boolparam.setShortOption("e");
+        boolparam.setName("text-param");
+        List<OnapCommandParameter> paramslist = new ArrayList<>();
+        paramslist.add(boolparam);
+        String[] args = new String[] { "sample-create", "-e" , "text"};
+
+        boolparam.setParameterType(ParameterType.TEXT);
+        OnapCliUtils.populateParams(paramslist, Arrays.asList(args));
+        List<String> expectedList = Arrays.asList(args);
+        Assert.assertNotNull(expectedList.get(1), paramslist.get(0).getValue());
+    }
+
+    @Test
     public void testjsonparamsshort() throws OnapCommandException {
         OnapCommandParameter jsonparam = new OnapCommandParameter();
         jsonparam.setShortOption("j");

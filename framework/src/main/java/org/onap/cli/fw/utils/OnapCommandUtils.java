@@ -23,6 +23,8 @@ import static org.onap.cli.fw.conf.Constants.AUTH_VALUES;
 import static org.onap.cli.fw.conf.Constants.BODY;
 import static org.onap.cli.fw.conf.Constants.BOOLEAN_VALUE;
 import static org.onap.cli.fw.conf.Constants.CLIENT;
+import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY;
+import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY_JSON_PATTERN;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_HOST_URL;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_PASS_WORD;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_USERNAME;
@@ -36,8 +38,6 @@ import static org.onap.cli.fw.conf.Constants.DIRECTION;
 import static org.onap.cli.fw.conf.Constants.ENTITY;
 import static org.onap.cli.fw.conf.Constants.EXCEPTION;
 import static org.onap.cli.fw.conf.Constants.EXECUTOR;
-import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY;
-import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY_JSON_PATTERN;
 import static org.onap.cli.fw.conf.Constants.EXTERNAL_DISCOVERY_FILE;
 import static org.onap.cli.fw.conf.Constants.EXTERNAL_SCHEMA_DIRECTORY;
 import static org.onap.cli.fw.conf.Constants.EXTERNAL_SCHEMA_PATH_PATERN;
@@ -125,9 +125,11 @@ import org.onap.cli.fw.error.OnapCommandInvalidPrintDirection;
 import org.onap.cli.fw.error.OnapCommandInvalidResultAttributeScope;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.error.OnapCommandInvalidSchemaVersion;
+import org.onap.cli.fw.error.OnapCommandLoadProfileFailed;
 import org.onap.cli.fw.error.OnapCommandParameterNameConflict;
 import org.onap.cli.fw.error.OnapCommandParameterNotFound;
 import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
+import org.onap.cli.fw.error.OnapCommandPersistProfileFailed;
 import org.onap.cli.fw.error.OnapCommandResultEmpty;
 import org.onap.cli.fw.error.OnapCommandResultMapProcessingFailed;
 import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
@@ -1626,7 +1628,7 @@ public class OnapCommandUtils {
         }
     }
 
-    public static void persistParams(List<Param> params, String profileName) {
+    public static void persistParams(List<Param> params, String profileName) throws OnapCommandPersistProfileFailed {
         if (params != null) {
             try {
                 Resource[] resources = getExternalResources(DATA_DIRECTORY);
@@ -1637,7 +1639,7 @@ public class OnapCommandUtils {
                     mapper.writerWithDefaultPrettyPrinter().writeValue(file, params);
                 }
             } catch (IOException e1) {
-                // pass // NOSONAR
+                throw new OnapCommandPersistProfileFailed(e1.getMessage());
             }
         }
     }
@@ -1700,7 +1702,7 @@ public class OnapCommandUtils {
         return schemas;
     }
 
-    public static List<Param> loadParamFromCache(String profileName) {
+    public static List<Param> loadParamFromCache(String profileName) throws OnapCommandLoadProfileFailed {
         List<Param> params = new ArrayList<>();
 
         try {
@@ -1713,7 +1715,7 @@ public class OnapCommandUtils {
                 params.addAll(Arrays.asList(list));
             }
         } catch (IOException e) {
-            // pass // NOSONAR
+            throw new OnapCommandLoadProfileFailed(e.getMessage());
         }
 
         return params;

@@ -269,4 +269,19 @@ public class OnapCommandErrorTest {
         assertEquals("0x0013::Command  does not support the output format Format", failed.getMessage());
     }
 
+
+    @Test
+    public void onapProfilePersistTest() {
+        OnapCommandPersistProfileFailed failed = new OnapCommandPersistProfileFailed("error");
+
+        assertEquals("0x1302::Failed to persist profile details, error", failed.getMessage());
+    }
+
+
+    @Test
+    public void onapProfileLoadTest() {
+        OnapCommandLoadProfileFailed failed = new OnapCommandLoadProfileFailed("error");
+
+        assertEquals("0x1301::Failed to load profile details, error", failed.getMessage());
+    }
 }
