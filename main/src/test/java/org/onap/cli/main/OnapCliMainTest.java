@@ -129,6 +129,25 @@ public class OnapCliMainTest {
     }
 
     @Test
+    public void testVersionSampleCommandShort() {
+        this.handle(new String[] { "sample-test", "-v" });
+    }
+
+    @Test
+    public void testHandleSampleCommandSet() throws OnapCommandException {
+        OnapCommandRegistrar.getRegistrar().addParamCache("sample:string-param", "paramValue");
+        OnapCommandRegistrar.getRegistrar().addParamCache("onap-username", "paramValue");
+        OnapCommandRegistrar.getRegistrar().addParamCache("onap-password", "paramValue");
+        OnapCommandRegistrar.getRegistrar().addParamCache("host-url", "paramValue");
+        this.handle(new String[] { "sample-test", "--string-param", "test"});
+    }
+
+    @Test
+    public void testHandleSampleCommandFailure() throws OnapCommandException {
+        this.handle(new String[] { "sample-test", "--string-param"});
+    }
+
+    @Test
     public void interactiveTest() {
         cli = new OnapCli(new String[] {});
 

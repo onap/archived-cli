@@ -19,60 +19,60 @@ parameters:
     short_option: x
     long_option: secure
     is_secured: true
-    is_optional: false
+    is_optional: true
     default_Value: pass123#
   - name: string-param
     type: string
     description: Onap string param
     long_option: string-param
     short_option: c
-    is_optional: false
+    is_optional: true
     default_Value: test
   - name: yaml-param
     type: json
     description: Onap yaml file location param
     long_option: yaml-param
     short_option: y
-    is_optional: false
+    is_optional: true
   - name: json-param
     type: json
     description: Onap json file location param
     long_option: json-param
     short_option: j
-    is_optional: false
+    is_optional: true
   - name: long-param
     type: digit
     description: Onap long param
     short_option: l
     long_option: long-opt
-    is_optional: false
+    is_optional: true
     default_value: 10
   - name: url-param
     type: url
     description: Onap url param
     short_option: r
     long_option: url
-    is_optional: false
+    is_optional: true
     default_value: http://localhost:8082/file.txt
   - name: env-param
     type: string
     description: Onap env param.
     short_option: z
     long_option: env
-    is_optional: false
+    is_optional: true
     default_value: ${ENV_VAR}
     default_value: http://localhost:8082/file.txt
   - name: positional-args
     type: string
     description: Onap positional args, if no short option and no long option given for it
-    is_optional: false
+    is_optional: true
     default_value: http://localhost:8082/file.txt
   - name: text-param
     type: text
     description: Onap text file location param
     long_option: text-param
     short_option: e
-    is_optional: false
+    is_optional: true
 results:
   direction: portrait
   attributes:

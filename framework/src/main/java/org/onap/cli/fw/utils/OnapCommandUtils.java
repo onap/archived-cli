@@ -138,6 +138,7 @@ import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.ParameterType;
 import org.onap.cli.fw.input.cache.Param;
+import org.onap.cli.fw.log.OnapCommandLogger;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
@@ -1639,7 +1640,7 @@ public class OnapCommandUtils {
                     mapper.writerWithDefaultPrettyPrinter().writeValue(file, params);
                 }
             } catch (IOException e1) {
-                throw new OnapCommandPersistProfileFailed(e1.getMessage());
+                throw new OnapCommandPersistProfileFailed(e1);
             }
         }
     }
@@ -1715,7 +1716,7 @@ public class OnapCommandUtils {
                 params.addAll(Arrays.asList(list));
             }
         } catch (IOException e) {
-            throw new OnapCommandLoadProfileFailed(e.getMessage());
+            throw new OnapCommandLoadProfileFailed(e);
         }
 
         return params;

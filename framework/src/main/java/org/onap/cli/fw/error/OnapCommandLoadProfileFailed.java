@@ -30,4 +30,9 @@ public class OnapCommandLoadProfileFailed extends OnapCommandException {
     public OnapCommandLoadProfileFailed(String error) {
         super("0x1301", "Failed to load profile details, " + error);
     }
+
+    public OnapCommandLoadProfileFailed(Throwable error) {
+        this(error.getMessage());
+    }
+
 }

@@ -34,8 +34,6 @@ public class OnapCommandParameterCache {
 
     private String profileName = Constants.PARAM_CACHE_FILE_NAME;
 
-    private boolean isLastPersistFailed = false;
-
     private OnapCommandParameterCache() {
 
     }
@@ -97,16 +95,16 @@ public class OnapCommandParameterCache {
         try {
             OnapCommandUtils.persistParams(params, this.profileName);
         } catch (OnapCommandPersistProfileFailed e) {
-            isLastPersistFailed = true;
+            throw new RuntimeException(e);
         }
     }
 
     private void load() {
-        List<Param> params;
+        List<Param> params= new ArrayList<>();
         try {
             params = OnapCommandUtils.loadParamFromCache(this.profileName);
         } catch (OnapCommandLoadProfileFailed e) {
-            params = new ArrayList<>();
+            throw new RuntimeException(e);
         }
 
         for (Param p : params) {
