@@ -95,7 +95,7 @@ public class OnapCommandParameterCache {
         try {
             OnapCommandUtils.persistParams(params, this.profileName);
         } catch (OnapCommandPersistProfileFailed e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e);   // NOSONAR
         }
     }
 
@@ -104,7 +104,7 @@ public class OnapCommandParameterCache {
         try {
             params = OnapCommandUtils.loadParamFromCache(this.profileName);
         } catch (OnapCommandLoadProfileFailed e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e);   // NOSONAR
         }
 
         for (Param p : params) {

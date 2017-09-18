@@ -275,12 +275,20 @@ public class OnapCommandErrorTest {
         OnapCommandPersistProfileFailed failed = new OnapCommandPersistProfileFailed("error");
 
         assertEquals("0x1302::Failed to persist profile details, error", failed.getMessage());
+
+        failed = new OnapCommandPersistProfileFailed(new Exception("error"));
+
+        assertEquals("0x1302::Failed to persist profile details, error", failed.getMessage());
     }
 
 
     @Test
     public void onapProfileLoadTest() {
         OnapCommandLoadProfileFailed failed = new OnapCommandLoadProfileFailed("error");
+
+        assertEquals("0x1301::Failed to load profile details, error", failed.getMessage());
+
+        failed = new OnapCommandLoadProfileFailed(new Exception("error"));
 
         assertEquals("0x1301::Failed to load profile details, error", failed.getMessage());
     }

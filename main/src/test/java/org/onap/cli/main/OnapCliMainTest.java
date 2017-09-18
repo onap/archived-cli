@@ -160,43 +160,71 @@ public class OnapCliMainTest {
         } catch (Exception e) {
         }
 
-        mockConsole("microservice-create -h");
+        cli = new OnapCli(new String[] {});
+        mockConsole("sample-test -h");
 
         try {
             cli.handleInteractive();
         } catch (Exception e) {
         }
 
+        cli = new OnapCli(new String[] {});
+        mockConsole("use cli-1.0");
+        try {
+            cli.handleInteractive();
+        } catch (Exception e) {
+        }
+
+        cli = new OnapCli(new String[] {});
         mockConsole("set a=b");
         try {
             cli.handleInteractive();
         } catch (Exception e) {
         }
 
+        cli = new OnapCli(new String[] {});
+        mockConsole("set");
+        try {
+            cli.handleInteractive();
+        } catch (Exception e) {
+        }
+
+        cli = new OnapCli(new String[] {});
+        mockConsole("set a=");
+        try {
+            cli.handleInteractive();
+        } catch (Exception e) {
+        }
+
+        cli = new OnapCli(new String[] {});
         mockConsole("unset a");
         try {
             cli.handleInteractive();
         } catch (Exception e) {
         }
 
+        cli = new OnapCli(new String[] {});
         mockConsole("profile test");
         try {
             cli.handleInteractive();
         } catch (Exception e) {
         }
 
+        cli = new OnapCli(new String[] {});
         mockConsole("version");
         try {
             cli.handleInteractive();
         } catch (Exception e) {
         }
 
+        cli = new OnapCli(new String[] {});
         mockConsole("help");
         try {
             cli.handleInteractive();
         } catch (Exception e) {
         }
 
+        cli = new OnapCli(new String[] {});
         mockConsoleReader();
         cli.handleInteractive();
 
