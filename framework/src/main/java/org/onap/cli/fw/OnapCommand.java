@@ -24,6 +24,7 @@ import java.util.Optional;
 import org.onap.cli.fw.ad.OnapAuthClient;
 import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
+import org.onap.cli.fw.cmd.CommandType;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -68,6 +69,8 @@ public abstract class OnapCommand {
     protected OnapAuthClient authClient;
 
     protected boolean isInitialzied = false;
+
+    protected CommandType type = CommandType.CMD;
 
     public String getSchemaVersion() {
         return Constants.OPEN_CLI_SCHEMA_VERSION_VALUE;
@@ -146,6 +149,14 @@ public abstract class OnapCommand {
 
     protected void setSchemaName(String schemaName) {
         this.cmdSchemaName = schemaName;
+    }
+
+    public CommandType getType() {
+        return this.type;
+    }
+
+    public void setType(CommandType type) {
+        this.type = type;
     }
 
     /**
@@ -258,8 +269,11 @@ public abstract class OnapCommand {
 
         try {
             OnapCredentials creds = OnapCommandUtils.fromParameters(this.getParameters());
+
+            // For auth type commands, login and logout logic is not required
             boolean isAuthRequired = !this.onapService.isNoAuth()
-                    && "false".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue());
+                    && "false".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue())
+                    && !this.getType().equals(CommandType.AUTH);
 
             if (!isCommandInternal()) {
                 this.authClient = new OnapAuthClient(

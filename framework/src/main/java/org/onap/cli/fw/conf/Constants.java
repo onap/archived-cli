@@ -82,6 +82,7 @@ public class Constants {
 
     public static final String OPEN_CLI_SCHEMA_VERSION_VALUE = "1.0";
     public static final String DESCRIPTION = "description";
+    public static final String COMMAND_TYPE = "type";
     public static final String SERVICE = "service";
     public static final String PARAMETERS = "parameters";
     public static final String DEFAULT_PARAMETERS = "default_parameters";

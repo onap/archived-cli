@@ -303,4 +303,11 @@ public class OnapCommandErrorTest {
 
         assertEquals("0xc001::Failed to load profile details, error", failed.getMessage());
     }
+
+    @Test
+    public void onapCommandTypeInvalidTest() {
+        OnapCommandInvalidCommandType failed = new OnapCommandInvalidCommandType("test");
+
+        assertEquals("0x3003::Command type test is invalid", failed.getMessage());
+    }    
 }

@@ -23,6 +23,7 @@ import static org.onap.cli.fw.conf.Constants.AUTH_VALUES;
 import static org.onap.cli.fw.conf.Constants.BODY;
 import static org.onap.cli.fw.conf.Constants.BOOLEAN_VALUE;
 import static org.onap.cli.fw.conf.Constants.CLIENT;
+import static org.onap.cli.fw.conf.Constants.COMMAND_TYPE;
 import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY;
 import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY_JSON_PATTERN;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_HOST_URL;
@@ -108,6 +109,7 @@ import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
+import org.onap.cli.fw.cmd.CommandType;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.cmd.OnapSwaggerCommand;
 import org.onap.cli.fw.conf.Constants;
@@ -138,7 +140,6 @@ import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.ParameterType;
 import org.onap.cli.fw.input.cache.Param;
-import org.onap.cli.fw.log.OnapCommandLogger;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
@@ -391,6 +392,14 @@ public class OnapCommandUtils {
                     Object description = values.get(key);
                     if (description != null) {
                         cmd.setDescription(description.toString());
+                    }
+                    break;
+
+
+                case COMMAND_TYPE:
+                    Object type = values.get(key);
+                    if (type != null) {
+                        cmd.setType(CommandType.get(type.toString()));
                     }
                     break;
 
@@ -1537,6 +1546,11 @@ public class OnapCommandUtils {
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         schema.setVersion(obj.toString());
                         schema.setCmdVersion(resourceMap.get(Constants.VERSION).toString());
+
+                        if (resourceMap.get(Constants.COMMAND_TYPE) != null) {
+                            schema.setType(resourceMap.get(Constants.COMMAND_TYPE).toString());
+                        }
+
                         if (resourceMap.get(Constants.HTTP) != null) {
                             schema.setHttp("true");
                         }

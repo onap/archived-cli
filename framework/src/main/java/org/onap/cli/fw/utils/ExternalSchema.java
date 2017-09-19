@@ -16,6 +16,8 @@
 
 package org.onap.cli.fw.utils;
 
+import org.onap.cli.fw.cmd.CommandType;
+
 public class ExternalSchema {
 
     private String schemaName;
@@ -23,6 +25,7 @@ public class ExternalSchema {
     private String cmdName;
     private String cmdVersion;
     private String version;
+    private String type = CommandType.CMD.name();
     private String http = "false";
 
     public String getSchemaName() {
@@ -76,5 +79,15 @@ public class ExternalSchema {
     public boolean isHttp() {
         return this.getHttp().equals("true");
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
 
 }
