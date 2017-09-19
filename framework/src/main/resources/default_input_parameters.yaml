@@ -17,20 +17,20 @@ parameters:
     is_optional: false
   - name: host-url
     type: url
-    description: Onap host url
+    description: host url in http(s)
     short_option: m
     long_option: host-url
     is_optional: false
-    default_value: ${ONAP_HOST_URL}
+    default_value: ${HOST_URL}
   - name: help
     type: string
-    description: Onap command help message
+    description: print help message
     short_option: h
     long_option: help
     default_value: false
   - name: version
     type: string
-    description: Onap command service version
+    description: print service version
     short_option: v
     long_option: version
     default_value: false

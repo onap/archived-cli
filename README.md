@@ -6,7 +6,7 @@ ONAP Command-line interface (CLI)
 Provides unified commands to operate ONAP from Linux console.
 Configure the following environment variables, before using it:
 
-1. **ONAP_HOST_URL** - Onap Micro service bus(MSB) URL or a service URL
+1. **HOST_URL** - Onap Micro service bus(MSB) URL or a service URL
 2. **ONAP_USERNAME** - Onap user name
 3. **ONAP_PASSWORD** - Onap user password
 

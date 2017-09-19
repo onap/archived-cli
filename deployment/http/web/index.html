@@ -4,52 +4,7 @@
 function redirectToConsole(){
    window.location.href="http://"+  window.location.hostname + ":9090";
 }
-
-var slideIndex = 0;
-
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}
-    slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
-
 </script>
-<style>
-
-body {
-    margin: 0 1% 0;
-    background-color: black
-}
-
-.readme {
-    display: inline-block;
-    float: left;
-    margin: 3% 3% 0;
-
-}
-
-* {box-sizing:border-box}
-
-.slideshow-container {
- display: inline-block;
- float: right;
- max-width: 700px;
- position: relative;
- margin: 6% 3% 0;
-}
-
-.mySlides {
-    display: none;
-}
-
-</style>
-
 </head>
 
 <body onload="showSlides()" style="background-color: white;color: black">
@@ -79,33 +34,5 @@ body {
 <a href="http://onap.readthedocs.io/en/latest/submodules/cli.git/docs/OCLIP.html" style="color: blue;">1.0</a>
 </i></p>
 </div>
-
-<div class="slideshow-container">
-  <div class="mySlides">
-    <img src="images/onap-cli-ad-1.png" style="width:80%">
-  </div>
-
-  <div class="mySlides">
-    <img src="images/onap-cli-ad-2.png" style="width:80%">
-  </div>
-
-  <div class="mySlides">
-    <img src="images/onap-cli-ad-3.png" style="width:80%">
-  </div>
-
-  <div class="mySlides">
-    <img src="images/onap-cli-ad-4.png" style="width:80%">
-  </div>
-
-  <div class="mySlides">
-    <img src="images/onap-cli-ad-5.png" style="width:80%">
-  </div>
-
-  <div class="mySlides">
-    <img src="images/onap-cli-ad-6.png" style="width:80%">
-  </div>
-
-</div>
-
 
 </body></html>

@@ -518,7 +518,7 @@ name: host-url
 
     is_optional: false
 
-    default_value: ${ONAP_HOST_URL}
+    default_value: ${HOST_URL}
 
 name: help
 ~~~~~~~~~~
