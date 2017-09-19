@@ -6,7 +6,7 @@
 Open Command Line Interface (CLI) Schema Version 1.0
 ====================================================
 
-Open CLI Platfrom (OCLIP) provides model based framework to implement
+Open CLI Platform (OCLIP) provides model based framework to implement
 Linux Commands for any given software products, by using YAML template
 based on the schematics defined in this document. In version 1.0,
 following aspects of commands are modeled as YAML schematics:
@@ -70,7 +70,7 @@ a line or a paragraph as given example here.
 version
 -------
 *version* entry allows to tag the command template with the software product
-name and version, for which command is implemented and is recommanded to use
+name and version, for which command is implemented and is recommended to use
 the following format:
 
     <product>-<version>
@@ -104,7 +104,7 @@ service component 'aai' in onap-1.1 product,
     service:
         name: aai
 
-*CAUTION*: This entry is very signification to disover this service from the
+*CAUTION*: This entry is very signification to discover this service from the
 service catalog and name should be matching with the service name registered
 in the catalog.
 
@@ -117,13 +117,13 @@ command is implemented. For example, the service 'aai' in the product
     service:
         version: v11
 
-*CAUTION*: This entry is very signification to disover this service from the
+*CAUTION*: This entry is very signification to discover this service from the
 service catalog and version should be matching with the service version
 registered in the catalog.
 
 mode
 ~~~~
-Some oftware product provides catalog service , where all service of that
+Some software product provides catalog service , where all service of that
 product could be discovered. While other product does not. OCLIP provides
 support for both kind of these products to implement commands and *mode*
 entry allows to configure this mode of operation.
@@ -153,17 +153,17 @@ the given *host-url* as the direct service url. In this case:
 --------------------
 
 auth
-----
-There are different kind of authedication and authorization approach exist and
+~~~~
+There are different kind of authentication and authorization approach exist and
 for OCLIP provides support for following approaches. Based on the approach
-configufed in the template, OCLIP will login before executing the command and
+configured in the template, OCLIP will login before executing the command and
 logout afterwards.
 
 none
-~~~~
+^^^^^
 In this approach, no login and logout will be performed. This is useful during
 the development cycle, as well as some services are available in public
-without authedication of user. In this approach, OCLIP ignores the given
+without authentication of user. In this approach, OCLIP ignores the given
 *host-username* and *host-password*. So the none auth is defined by:
 
     service:
@@ -174,9 +174,9 @@ section default_parameters
 
 
 basic
-~~~~~
-This is HTTP basic authedication approach and given *host-username* and
-*host-password* values are used to find the hash and use it as Authendication
+^^^^^
+This is HTTP basic authentication approach and given *host-username* and
+*host-password* values are used to find the hash and use it as Authentication
 value. So the none auth is defined by:
 
     service:
@@ -196,7 +196,7 @@ etc as list of entries.
 name
 ~~~~
 *name* entry uniquely identifies the given argument. It can be of any
-alphanumerical characters and dash(-). For example to provide the http port of
+alpha-numerical characters and dash(-). For example to provide the http port of
 an service, the parameter could be:
 
     parameters:
@@ -230,7 +230,7 @@ is_secured
 *is_secured* entry allows to set the parameter is secured or not. By default,
 this entry is false. This is very useful for password kind of parameters.
 
-For example service-port could be made as insecured:
+For example service-port could be made as in-secured:
 
     parameters:
       \- name: service-port
@@ -277,7 +277,7 @@ For example to provide the http port of an service, the parameter could be:
 
 
 type
-----
+~~~~
 *type* entry allows to set the type of parameter such as boolean, integer, etc.
 For example to provide the http port of an service, the parameter type could be:
 
@@ -297,18 +297,18 @@ For example to provide the http port of an service, the parameter type could be:
 Platform supports following types of parameter:
 
 string
-~~~~~~
+^^^^^^
 Any parameter value having a work or a line, string type is appropriate one. By
 default it is set to blank.
 
 digit
-~~~~~~
+^^^^^^
 Any parameter value having digit such as integers or floating values. For this
 type of parameter, platform does not set any default value. so while writing
 the parameter schematics, author should set the *default_value* if needed.
 
 json
-~~~~~~
+^^^^
 To set the value of parameter as JSON. Platform allows to input the JSON values
 either as direct one line string for simple json or complete file path for
 providing the complex json value. While user execute the command, based on the
@@ -317,7 +317,7 @@ value of the JSON parameter, it could given as string or file path.
 File path could start in the form of file://, http://, ftp://.
 
 text
-~~~~~~
+^^^^
 To set the value of parameter as text. Platform allows to input the text values
 either as direct one line string for simple text or complete file path for
 providing the complex text value. While user execute the command, based on the
@@ -326,7 +326,7 @@ value of the text parameter, it could given as string or file path.
 File path could start in the form of file://, http://, ftp://.
 
 yaml
-~~~~~~
+^^^^
 To set the value of parameter as yaml content. Platform allows to input the
 yaml values as complete file path. While user execute the command, YAML file
 needs to be created and provided that file's complete path as input value.
@@ -334,10 +334,10 @@ needs to be created and provided that file's complete path as input value.
 File path could start in the form of file://, http://, ftp://.
 
 bool
-~~~~~~
+^^^^
 This type allows to set the parameter value to either true or false. By
 default, its value is false, So, when user wants to input the boolean parameter
-its sufficient to mention the parameter option with out mentoinging 'true'.
+its sufficient to mention the parameter option with out mentioning 'true'.
 For example, assume that command named 'login' defines the boolean input
 parameter 'is_secure_connection' to set the service connection is secured or
 not. For this command, while user input the value for parameter
@@ -360,19 +360,19 @@ provide any default value for this type. so Author should provide the
 *default_value*, if needed during the template is created.
 
 binary
-~~~~~~
+^^^^^^
 *binary* type is very useful to pass the parameter as binary file and user
 should pass the complete path of the file.
 
 array
-~~~~~~
-To provide the same parameter mutiple times array type helps. For example, when
-the command 'rm' is used, mutiple file paths could be provided to remove all of
+^^^^^^
+To provide the same parameter multiple times array type helps. For example, when
+the command 'rm' is used, multiple file paths could be provided to remove all of
 them. In this kind of scenarios, array type supports and each parameter type
 is *string*
 
 map
-~~~~~~
+^^^^
 This is similar to *array* type and only differs the way the values are passed.
 In this type, values should be in the form of
 '<parameter-name>=<parameter-value>'
@@ -421,7 +421,7 @@ When user inputs the service port, it could either of following formats
 For postional arguments, author should not define both *short_option* and
 *long_option* and when OCLIP process this template, it will consider as
 positional arguments. There could be more than one positional arguments could
-be defined for a command, and OCLIP treats the sequence of the postional
+be defined for a command, and OCLIP treats the sequence of the positional
 parameters defined under *parameters* section is consider as it's position. For
 example, consider the below example:
 
@@ -449,7 +449,7 @@ example, consider the below example:
         long_option: param5
 
 In this case, param2 and param4 are positional arguments as they are defined
-with out short and long options. so postion of param2 is 1, for param4, it's 2.
+with out short and long options. so position of param2 is 1, for param4, it's 2.
 When user inputs the value as :
 
     --param1 v1 -p3 v3 v2 -p5 v5 v4
@@ -459,7 +459,7 @@ will be assigned and for param4, value v4 will be assigned.
 
 *NOTE*: User should only concern on the sequence of positional arguments while
 giving the values and no need to worry about the position at which value should
-be provided. so all of below sequence will yeild the same result.
+be provided. so all of below sequence will yield the same result.
 
     --param1 v1 -p3 v3 **v2** -p5 v5 **v4**
 
@@ -470,7 +470,7 @@ be provided. so all of below sequence will yeild the same result.
 default_parameters
 ------------------
 OCLIP platform provides following default parameters for every command and
-author is allowed to customize the inclution or exclution of these input
+author is allowed to customize the inclusion or exclusion of these input
 parameters for a given command.
 
 name: onap-username
@@ -604,8 +604,12 @@ name: no-auth
 
     default_value: false
 
-For example, OCLIP platfrom provides a command called 'schema-validate' to
-validate schematics of template against the specificatio defined in this
+*NOTE*: no-auth parameter is very helpful to by-pass the login and logout phase
+of each commands. Please refere *service* section to find more details on login
+and logout.
+
+For example, OCLIP platform provides a command called 'schema-validate' to
+validate schematics of template against the specification defined in this
 document. For this command, host-url, onap-username, onap-password, no-auth
 parameters are required. so author could exclude these parameters by defining
 as :
@@ -620,9 +624,7 @@ as :
 
         \- no-auth
 
-*NOTE*: no-auth parameter is very helpful to by-pass the login and logout phase
-of each commands. Please refere *service* section to find more details on login
-and logout.
+
 
 results
 -------
@@ -643,18 +645,18 @@ while command does operations like creation of resource, viewing of resources.
 useful while command does operations like listing of resource.
 
 attributes
-----------
+~~~~~~~~~~
 name
-~~~~
+^^^^
 *name* entry uniquely identifies the given attribute. It can be of any
-alphanumerical characters and dash(-). For example to print the status of an
+alpha-numerical characters and dash(-). For example to print the status of an
 service, the attribute could be:
 
     attributes:
       \- **name: service-status**
 
 description
-~~~~~~~~~~~
+^^^^^^^^^^^
 *description* entry allows to provide the details of the attribute. It's
 supported in similar approach with command *description* defined in above
 section. For example service-status could be described as:
@@ -665,7 +667,7 @@ section. For example service-status could be described as:
         **description: Service current status.**
 
 type
-~~~~
+^^^^
 *type* entry allows to set the type of attribute such as string, digit, etc.
 Similar to the parameter's type. currently it supports only string type.
 
@@ -680,7 +682,7 @@ For example, service-status could be:
  **type: string**
 
 scope
-~~~~~
+^^^^^
 When a given command produces many results, most of the time no need to print
 all the attributes. SO OCLIP platform provides this *scope* entry to configure
 the attribute is printed by default or user should request to print it. So
@@ -688,7 +690,7 @@ there are two scopes:
 
 * *short* : attribute configured with this option will always printed by default
 
-* *long* : attriuted configured with this option will get printed only when 
+* *long* : attriuted configured with this option will get printed only when
 user inputs the default parameter *long*, defined in *default_parameters*
 section. So to print all attributes of a command, user will input parameter:
 
@@ -712,11 +714,11 @@ provided to capture all required details for performing http operation for the
 given command.
 
 request
--------
+~~~~~~~
 *request* section captures all HTTP request information as:
 
 uri
-~~~
+^^^
 *uri* entry allows to mention the REST API URI. Based on the *service mode*,
 this entry will vary. * when the mode is 'direct', it should be configured with
 out *host-url* portion in it. For example, if the REST API is
@@ -738,7 +740,7 @@ as:
         uri: /resource1
 
 method
-~~~~~~
+^^^^^^
 *method* entry allows to configure the HTTP methods GET, PUT, POST, DELETE,
 etc. For example, to get the resource1:
 
@@ -748,7 +750,7 @@ etc. For example, to get the resource1:
         method: GET
 
 body
-~~~~
+^^^^
 *body* entry allows to mention the request body in json format, by default.
 And OCLIP adds 'application/json' header in the HTTP request. Otherwise, body
 could have complete path to binary file, in case request body is binary and
@@ -756,10 +758,10 @@ could have complete path to binary file, in case request body is binary and
 API.
 
 headers
-~~~~~~~~
+^^^^^^^
 *headers* entry allows to add REST API specific headers. By default OCLIP adds
-'application/json' as content-type and accept, also it will adds authedication
-headers such as 'Authendication' in case *auth* is of type 'basic'.
+'application/json' as content-type and accept, also it will adds authentication
+headers such as 'Authentication' in case *auth* is of type 'basic'.
 
 For example, to add the sample header :
 
@@ -774,7 +776,7 @@ For example, to add the sample header :
             header2: value2
 
 queries
-~~~~~~~~
+^^^^^^^
 *queries* entry allows to add REST API specific queries. For example, to add
 the sample queries :
 
@@ -789,7 +791,7 @@ the sample queries :
             q2: value2
 
 success_codes
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 Every REST API has set of success codes and OCLIP will treat the HTTP request
 made based on the value configured in these http sections, only if
 *success_codes* contains the HTTP response status code.
@@ -812,11 +814,11 @@ Here, $b is detailed in section 'macros' of this document. and
 
 sample_response
 ~~~~~~~~~~~~~~~
-This entry allows to keep the sample HTTP resonse as refrence to understand
+This entry allows to keep the sample HTTP response as reference to understand
 the result_map jpath expressions. OCLIP does not use this entry and is optional.
 
 macros
-~~~~~~
+-------
 OCLIP platform provides various marcos to fill *http* entries with the value
 of *parameters*, *headers* , etc Every macro is in the form of <macro name>
 followed by {<macro details>}Followings are the supported macros:

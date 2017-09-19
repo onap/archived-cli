@@ -3,8 +3,8 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright 2017 Huawei Technologies Co., Ltd.
 
-Open CLI Platform
-=================
+Open CLI Platform (oclip)
+=========================
 
 .. toctree::
    :maxdepth: 1
