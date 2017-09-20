@@ -5,6 +5,7 @@ version: onap-1.1
 service:
   name: msb
   version: v1
+  auth: none
 
 parameters:
   - name: service-name
@@ -19,14 +20,27 @@ parameters:
     short_option: y
     long_option: service-version
     is_optional: false
+  - name: node-ip
+    description: Onap service running node IP
+    type: string
+    short_option: i
+    long_option: node-ip
+    is_optional: false
+  - name: node-port
+    description: Onap service running node port
+    type: string
+    short_option: r
+    long_option: node-port
+    is_optional: false
 http:
   request:
-    uri: /services/${service-name}/version/${service-version}
+    uri: /services/${service-name}/version/${service-version}/nodes/${node-ip}/${node-port}
     method: DELETE
   success_codes:
     - 201
     - 200
     - 204
+    - 500
 
 
 
