@@ -5,6 +5,7 @@ version: onap-1.1
 service:
   name: msb
   version: v1
+  auth: none
 
 parameters:
   - name: service-name
@@ -58,15 +59,11 @@ results:
       description: Onap service running nodes
       scope: long
       type: string
-    - name: location
-      description: Onap service location
-      scope: long
-      type: url
 http:
   request:
     uri: /services
     method: POST
-    body: '{"serviceName":"${service-name}","version":"${service-version}","url":"${service-url}","protocol":"REST","visualRange":"1","lb_policy":"hash","nodes":[{"ip":"${node-ip}","port":"${node-port}","ttl":0}]}'
+    body: '{"serviceName":"${service-name}","version":"${service-version}","url":"${service-url}","protocol":"REST","visualRange":"1","lb_policy":"ip_hash","nodes":[{"ip":"${node-ip}","port":"${node-port}","ttl":0}]}'
     headers:
     queries:
       createOrUpdate: ${create-or-update}
@@ -79,7 +76,6 @@ http:
     url: $b{$.url}
     status: $b{$.status}
     nodes: $b{$.nodes[*].ip}:$b{$.nodes[*].port}
-    location: $h{Location}
 
   sample_response:
     body: '{"serviceName":"test","version":"v1","url":"/api/test/v1","protocol":"REST","visualRange":"1","lb_policy":"hash","nodes":[{"ip":"127.0.0.1","port":"8012","ttl":0,"nodeId":"test_127.0.0.1_8012","expiration":"2017-02-10T05:33:25Z","created_at":"2017-02-10T05:33:25Z","updated_at":"2017-02-10T05:33:25Z"}],"status":"1"}'
