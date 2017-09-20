@@ -50,6 +50,8 @@ public class TestCommandValidate {
     @Test(expected = OnapCommandParameterMissing.class)
     public void testNoAuthArgFalse() throws OnapCommandException {
         OnapCommandUtils.loadSchema(cmd, "sample-test-include-param.yaml", true, false);
+        OnapCommandParameter msbParam = cmd.getParameters().stream().filter(p -> p.getName().equalsIgnoreCase("host-url")).findFirst().get();
+        msbParam.setValue("");
         cmd.validate();
     }
 }

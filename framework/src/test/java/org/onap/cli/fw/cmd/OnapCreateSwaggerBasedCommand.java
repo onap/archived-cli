@@ -16,17 +16,16 @@
 
 package org.onap.cli.fw.cmd;
 
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandExecutionFailed;
-import org.onap.cli.fw.error.OnapCommandExecutorInfoMissing;
-import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
-import org.onap.cli.fw.error.OnapCommandResultInitialzationFailed;
-import org.onap.cli.fw.utils.OnapCommandUtils;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
+
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandExecutionFailed;
+import org.onap.cli.fw.error.OnapCommandExecutorInfoMissing;
+import org.onap.cli.fw.error.OnapCommandResultInitialzationFailed;
+import org.onap.cli.fw.utils.OnapCommandUtils;
 
 public class OnapCreateSwaggerBasedCommand extends OnapSwaggerCommand {
 
@@ -45,7 +44,7 @@ public class OnapCreateSwaggerBasedCommand extends OnapSwaggerCommand {
                 Method set = obj.getClass().getMethod(methodName, String.class);
                 set.invoke(obj, this.getParametersMap().get(paramName).getValue());
             } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
-                    | InvocationTargetException | OnapCommandInvalidParameterValue e) {
+                    | InvocationTargetException e) {
                 throw new OnapCommandResultInitialzationFailed(this.getName(), e);
             }
         }

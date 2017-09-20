@@ -19,6 +19,7 @@ package org.onap.cli.fw.output;
 import org.onap.cli.fw.input.ParameterType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -41,6 +42,11 @@ public class OnapCommandResultAttribute {
      * Output values, in case list out, it holds values for all rows for show output, it will have one value
      */
     private List<String> values = new ArrayList<>();
+
+    /*
+     * default value, useful to set when a command want to set the default value for a output attributes.
+     */
+    private String defaultValue = "";
 
     /*
      * Output scope
@@ -72,6 +78,9 @@ public class OnapCommandResultAttribute {
     }
 
     public List<String> getValues() {
+        if (this.values.isEmpty() && !this.defaultValue.isEmpty()) {
+            return Arrays.asList(new String [] {this.defaultValue});
+        }
         return values;
     }
 
@@ -97,6 +106,14 @@ public class OnapCommandResultAttribute {
 
     public void setSecured(boolean isSecured) {
         this.isSecured = isSecured;
+    }
+
+    public String getDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
     }
 
 }

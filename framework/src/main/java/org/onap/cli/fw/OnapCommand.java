@@ -42,6 +42,7 @@ import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
 import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResult;
+import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.ResultType;
 import org.onap.cli.fw.utils.OnapCommandUtils;
@@ -265,6 +266,15 @@ public abstract class OnapCommand {
         // --debug
         if ("true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_DEBUG).getValue())) {
             this.cmdResult.setDebug(true);
+        }
+
+        //pre-process result attributes for spl entries and input parameters
+        for (OnapCommandResultAttribute attr: this.cmdResult.getRecords()) {
+            if (!attr.getDefaultValue().isEmpty()) {
+                attr.setDefaultValue(OnapCommandUtils.replaceLineForSpecialValues(attr.getDefaultValue()));
+                attr.setDefaultValue(OnapCommandUtils.replaceLineFromInputParameters(
+                        attr.getDefaultValue(), this.getParametersMap()));
+            }
         }
 
         try {

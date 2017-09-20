@@ -76,8 +76,10 @@ results:
       scope: short
       type: string
       is_secured: true
+      default_value: req-$s{uuid}
     - name: output-2
       description: Onap output attribute marked in long
       scope: short
       is_secured: false
       type: string
+      default_value: Hello ${string-param} !

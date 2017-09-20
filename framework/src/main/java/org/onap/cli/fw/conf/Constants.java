@@ -202,6 +202,9 @@ public class Constants {
     public static final String SAMPLE_GEN_ENABLED = "cli.sample.gen.enable";
     public static final String SAMPLE_GEN_TARGET_FOLDER = "cli.sample.gen.target";
 
+    public static final String SPL_ENTRY_UUID = "uuid";
+    public static final String SPL_ENTRY_ENV = "env:";
+
     private Constants() {
     }
 

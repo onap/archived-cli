@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandParameterMissing;
+import org.onap.cli.fw.utils.OnapCommandUtils;
 
 import java.io.File;
 import java.util.List;
@@ -65,6 +66,11 @@ public class OnapCommandParameter {
     private String defaultValue = "";
 
     /*
+     * raw default value, stored with out processing it.
+     */
+    private String rawDefaultValue = "";
+
+    /*
      * Is optional
      */
     private boolean isOptional = false;
@@ -77,7 +83,12 @@ public class OnapCommandParameter {
     /*
      * Parameter Value
      */
-    private Object value;
+    private Object value = null;
+
+    /*
+     * raw value, get stored as its without processing it.
+     */
+    private Object rawValue = null;
 
     public String getName() {
         return cmdName;
@@ -117,6 +128,15 @@ public class OnapCommandParameter {
 
     public void setParameterType(ParameterType parameterType) {
         this.parameterType = parameterType;
+
+        if (this.defaultValue.isEmpty()) {
+            if (this.getParameterType().equals(ParameterType.BOOL)) {
+                // For bool type always the default param is false
+                this.defaultValue = "false";
+            } else if (this.getParameterType().equals(ParameterType.UUID)) {
+                this.defaultValue = UUID.randomUUID().toString();
+            }
+        }
     }
 
     /**
@@ -125,16 +145,6 @@ public class OnapCommandParameter {
      * @return string
      */
     public String getDefaultValue() {
-        if (this.isDefaultValueAnEnv()) {
-            String envVar = this.getEnvVarNameFromDefaultValue();
-            this.defaultValue = System.getenv(envVar);
-        } else if (this.getParameterType().equals(ParameterType.BOOL)) {
-            // For bool type always the default param is false
-            this.defaultValue = "false";
-        } else if (this.defaultValue.isEmpty() && this.getParameterType().equals(ParameterType.UUID)) {
-            this.defaultValue = UUID.randomUUID().toString();
-        }
-
         return defaultValue;
     }
 
@@ -143,21 +153,22 @@ public class OnapCommandParameter {
      *
      * @return boolean
      */
-    public boolean isDefaultValueAnEnv() {
-        return this.defaultValue.trim().startsWith("${") && this.defaultValue.trim().endsWith("}");
+    public boolean isRawDefaultValueAnEnv() {
+        return this.rawDefaultValue.trim().startsWith("$s{env:") && this.rawDefaultValue.trim().endsWith("}");
     }
 
     /**
-     * check if the default value is ${ENV_VAR_NAME} and return the ENV_VAR_NAME.
+     * check if the default value is $s{env:ENV_VAR_NAME} and return the ENV_VAR_NAME.
      *
      * @return ENV_VAR_NAME
      */
-    public String getEnvVarNameFromDefaultValue() {
-        return this.defaultValue.trim().substring(2, this.defaultValue.length() - 1);
+    public String getEnvVarNameFromrRawDefaultValue() {
+        return this.rawDefaultValue.trim().substring(7, this.rawDefaultValue.length() - 1);
     }
 
     public void setDefaultValue(String defaultValue) {
-        this.defaultValue = defaultValue;
+        this.rawDefaultValue = defaultValue;
+        this.defaultValue = OnapCommandUtils.replaceLineForSpecialValues(this.rawDefaultValue);
     }
 
     /**
@@ -167,44 +178,46 @@ public class OnapCommandParameter {
      * @throws OnapCommandInvalidParameterValue
      *             exception
      */
-    public Object getValue() throws OnapCommandInvalidParameterValue {
+    public Object getValue()  {
         if (value != null) {
-            if (ParameterType.URL.equals(parameterType) && !value.toString().startsWith("http")
-                    && !value.toString().startsWith("/")) {
-                value = "/" + value;
-            } else if (ParameterType.ARRAY.equals(parameterType)) {
-                if (!(value instanceof List)) {
-                    throw new OnapCommandInvalidParameterValue(this.getName());
-                }
-
-                List<String> list = (List<String>) value;
-                ObjectMapper mapper = new ObjectMapper();
-                try {
-                    return mapper.writeValueAsString(list);
-                } catch (JsonProcessingException e) {
-                    throw new OnapCommandInvalidParameterValue(this.getName(), e);
-                }
-            } else if (ParameterType.MAP.equals(parameterType)) {
-                if (!(value instanceof Map)) {
-                    throw new OnapCommandInvalidParameterValue(this.getName());
-                }
-
-                Map<String, String> map = (Map<String, String>) value;
-                ObjectMapper mapper = new ObjectMapper();
-                try {
-                    return mapper.writeValueAsString(map);
-                } catch (JsonProcessingException e) {
-                    throw new OnapCommandInvalidParameterValue(this.getName(), e);
-                }
-            }
-
             return value;
         }
         return getDefaultValue();
     }
 
-    public void setValue(Object value) {
-        this.value = value;
+    public void setValue(Object value) throws OnapCommandInvalidParameterValue {
+        this.rawValue = value;
+
+        if (ParameterType.URL.equals(parameterType) && !value.toString().isEmpty() && !value.toString().startsWith("http")
+                && !value.toString().startsWith("/")) {
+            this.value = "/" + value;
+        } else if (ParameterType.ARRAY.equals(parameterType)) {
+            if (!(value instanceof List)) {
+                throw new OnapCommandInvalidParameterValue(this.getName());
+            }
+
+            List<String> list = (List<String>) value;
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                this.value = mapper.writeValueAsString(list);
+            } catch (JsonProcessingException e) {
+                throw new OnapCommandInvalidParameterValue(this.getName(), e);
+            }
+        } else if (ParameterType.MAP.equals(parameterType)) {
+            if (!(value instanceof Map)) {
+                throw new OnapCommandInvalidParameterValue(this.getName());
+            }
+
+            Map<String, String> map = (Map<String, String>) value;
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                this.value = mapper.writeValueAsString(map);
+            } catch (JsonProcessingException e) {
+                throw new OnapCommandInvalidParameterValue(this.getName(), e);
+            }
+        } else {
+            this.value = value;
+        }
     }
 
     public boolean isOptional() {

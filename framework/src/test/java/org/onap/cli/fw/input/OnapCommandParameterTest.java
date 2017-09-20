@@ -60,24 +60,24 @@ public class OnapCommandParameterTest {
         param.setValue(map);
         assertTrue("{\"One\":\"1\",\"Two\":\"2\",\"Three\":\"3\"}".equals(param.getValue()));
 
-        param.setDefaultValue("${defaultValue}");
-        assertTrue(null == param.getDefaultValue());
+        param.setDefaultValue("$s{env:defaultValue}");
+        assertTrue("env:defaultValue".equals(param.getDefaultValue()));
     }
 
     @Test
     public void parameterEnvDefaultValueObjTest() {
         OnapCommandParameter param = new OnapCommandParameter();
-        param.setDefaultValue("${DAFAULT_VALUE}");
-        boolean isDefaultValueAnEnv = param.isDefaultValueAnEnv();
+        param.setDefaultValue("$s{env:DAFAULT_VALUE}");
+        boolean isDefaultValueAnEnv = param.isRawDefaultValueAnEnv();
         assertTrue(isDefaultValueAnEnv);
 
-        String envValue = param.getEnvVarNameFromDefaultValue();
+        String envValue = param.getEnvVarNameFromrRawDefaultValue();
 
         assertTrue("DAFAULT_VALUE".equals(envValue));
     }
 
     @Test
-    public void parameterValidateTest() {
+    public void parameterValidateTest() throws OnapCommandInvalidParameterValue {
         OnapCommandParameter param = new OnapCommandParameter();
         param.setOptional(false);
         param.setValue("");

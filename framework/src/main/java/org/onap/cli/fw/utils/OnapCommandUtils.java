@@ -102,6 +102,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.ServiceLoader;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -682,6 +683,11 @@ public class OnapCommandUtils {
                                                     }
                                                     break;
 
+                                                case DEFAULT_VALUE:
+                                                    Object obj = map.get(key4);
+                                                    attr.setDefaultValue(obj.toString());
+                                                    break;
+
                                                 case IS_SECURED:
                                                     if (validate) {
                                                         if (!validateBoolean(String.valueOf(map.get(key4)))) {
@@ -1136,8 +1142,8 @@ public class OnapCommandUtils {
             }
 
             String defaultMsg = " By default, it is ";
-            if (param.isDefaultValueAnEnv()) {
-                optSecondCol += defaultMsg + "read from environment variable " + param.getEnvVarNameFromDefaultValue()
+            if (param.isRawDefaultValueAnEnv()) {
+                optSecondCol += defaultMsg + "read from environment variable " + param.getEnvVarNameFromrRawDefaultValue()
                         + ".";
             } else if (param.getDefaultValue() != null && !((String)param.getDefaultValue()).isEmpty()) {
                 optSecondCol += defaultMsg + param.getDefaultValue() + ".";
@@ -1296,7 +1302,63 @@ public class OnapCommandUtils {
         return methodName;
     }
 
-    private static String replaceLineFromInputParameters(String line, Map<String, OnapCommandParameter> params)
+    /**
+     * There are unique values like uuid is supported, so when input, output (default) values has
+     * these special entries, then it will get replaced with it's value
+     *
+     * @param line
+     * @return
+     */
+    public static String replaceLineForSpecialValues(String line) {
+        String result = "";
+
+        if (!line.contains("$s{")) {
+            return line;
+        }
+
+        int currentIdx = 0;
+        while (currentIdx < line.length()) {
+            int idxS = line.indexOf("$s{", currentIdx);
+            if (idxS == -1) {
+                result += line.substring(currentIdx);
+                break;
+            }
+            int idxE = line.indexOf("}", idxS);
+            String splEntry = line.substring(idxS + 3, idxE);
+            splEntry = splEntry.trim();
+
+            String value = "";
+
+            switch (splEntry) {
+                case Constants.SPL_ENTRY_UUID:
+                    value = UUID.randomUUID().toString();
+                    break;
+
+                default:
+
+                    if (splEntry.startsWith(Constants.SPL_ENTRY_ENV)) {
+                        //start to read after env:ENV_VAR_NAME
+                        String envVarName = splEntry.substring(4);
+                        value = System.getenv(envVarName);
+                        if (value == null) {
+                            //when env is not defined, assign the same env:ENV_VAR_NAME
+                            //so that it will given hit to user that ENV_VAR_NAME to be
+                            //defined.
+                            value = splEntry;
+                        }
+                    } else {
+                        value = splEntry;
+                    }
+            }
+
+            result += line.substring(currentIdx, idxS) + value;
+            currentIdx = idxE + 1;
+        }
+
+        return result;
+    }
+
+    public static String replaceLineFromInputParameters(String line, Map<String, OnapCommandParameter> params)
             throws OnapCommandException {
         String result = "";
 
@@ -1487,6 +1549,7 @@ public class OnapCommandUtils {
             inp.getReqQueries().put(h, replaceLineFromInputParameters(value, params));
         }
 
+        //mrkanag replaceLineFromInputParameters for result_map, to support input param in result output
         return inp;
     }
 

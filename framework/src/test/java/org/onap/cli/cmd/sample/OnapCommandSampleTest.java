@@ -16,23 +16,32 @@
 
 package org.onap.cli.cmd.sample;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 import org.junit.Test;
+import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
 import org.onap.cli.fw.error.OnapCommandNotInitialized;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.ParameterType;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.onap.cli.fw.output.OnapCommandResultAttribute;
 
 public class OnapCommandSampleTest {
     @Test
     public void sampleTestVersion() {
-        OnapCommandSample sample = new OnapCommandSample();
-
+        
         try {
+        	
+        	OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
+
             List<OnapCommandParameter> parameters = new ArrayList();
             OnapCommandParameter v = new OnapCommandParameter();
             v.setName(Constants.DEFAULT_PARAMETER_VERSION);
@@ -66,8 +75,9 @@ public class OnapCommandSampleTest {
 
     @Test
     public void sampleTest() {
-        OnapCommandSample sample = new OnapCommandSample();
+        
         try {
+        	OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
             List<OnapCommandParameter> parameters = new ArrayList();
             OnapCommandParameter v = new OnapCommandParameter();
             v.setName(Constants.DEFAULT_PARAMETER_VERSION);
@@ -103,7 +113,17 @@ public class OnapCommandSampleTest {
             parameters.add(m);
             sample.setParameters(parameters);
             sample.execute();
-        } catch (OnapCommandException e) {
+            
+            //validate whether output attributes default value got initialized as part of execute()
+            OnapCommandResultAttribute attr = sample.getResult().getRecordsMap().get("output-1");
+            String attrValue = attr.getValues().get(0);
+            UUID.fromString(attrValue.substring(4));
+            attr = sample.getResult().getRecordsMap().get("output-2");
+            attrValue = attr.getValues().get(0);
+            assertEquals(attrValue, "test");
+        } catch (IllegalArgumentException e){
+        	fail("Failed to replace the output default value on output-1");
+    	} catch (OnapCommandException e) {
         }
     }
 
