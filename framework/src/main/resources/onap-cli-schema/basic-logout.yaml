@@ -1,0 +1,13 @@
+open_cli_schema_version: 1.0
+
+name: basic-logout
+
+description: basic logout auth command
+
+version: cli-1.0
+
+type: auth
+
+service:
+  name: onap-cli
+  version: 1.0.0

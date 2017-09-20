@@ -52,6 +52,8 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
 public class OnapCommandRegistrar {
     private Map<String, Class<? extends OnapCommand>> registry = new HashMap<>();
 
+    private Map<String, String> authCmds = new HashMap<>();
+
     private Set<String> availableProductVersions = new HashSet<>();
 
     private String enabledProductVersion = OnapCommandConfg.getEnabledProductVersion();
@@ -104,6 +106,7 @@ public class OnapCommandRegistrar {
 
         this.registry.put(name + ":" + version, cmd);
         this.availableProductVersions.add(version);
+
     }
 
     /**
@@ -194,6 +197,9 @@ public class OnapCommandRegistrar {
 
     private OnapCommand get(String cmdName, String version) throws OnapCommandException {
         Class<? extends OnapCommand> cls = registry.get(cmdName + ":" + version);
+        //mrkanag: Restrict auth/catalog type commands only available during devMode. in production
+        //don't expose the auth type and catalog type commands
+
         if (cls == null) {
                throw new OnapCommandNotFound(cmdName, version);
         }

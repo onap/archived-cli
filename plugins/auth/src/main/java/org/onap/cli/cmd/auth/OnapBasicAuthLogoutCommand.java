@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.onap.cli.fw.error;
+package org.onap.cli.cmd.auth;
 
-/**
- * Command not registered in CLI registrar.
- *
- */
-public class OnapCommandNotFound extends OnapCommandException {
+import org.onap.cli.fw.OnapCommandSchema;
+import org.onap.cli.fw.cmd.BasicAuthLogoutCommand;
+import org.onap.cli.fw.error.OnapCommandException;
 
-    private static final long serialVersionUID = 6676137916079057963L;
+@OnapCommandSchema(name = "basic-logout", version = "onap-1.1", type = "auth", schema = "basic-logout-onap-1-1.yaml")
+public class OnapBasicAuthLogoutCommand extends BasicAuthLogoutCommand {
 
-    public OnapCommandNotFound(String cmdName, String version) {
-        super("0x6003", "Command " + cmdName + " is not available for product version " + version);
+    @Override
+    protected void run() throws OnapCommandException {
+        super.run();
     }
 }

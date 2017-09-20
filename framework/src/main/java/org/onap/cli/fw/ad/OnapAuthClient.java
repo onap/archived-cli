@@ -23,6 +23,8 @@ import java.util.Map;
 import org.apache.http.HttpStatus;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.impl.auth.BasicScheme;
+import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -31,13 +33,16 @@ import org.onap.cli.fw.error.OnapCommandHttpFailure;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandLoginFailed;
 import org.onap.cli.fw.error.OnapCommandLogoutFailed;
+import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.error.OnapCommandServiceNotFound;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.http.OnapHttpConnection;
+import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.output.OnapCommandResultAttribute;
+import org.onap.cli.fw.utils.OnapCommandUtils;
 
 import com.jayway.jsonpath.JsonPath;
-import org.onap.cli.fw.input.OnapCommandParameter;
 
 /**
  * Onap Auth client helps to do login and logout.
@@ -45,38 +50,20 @@ import org.onap.cli.fw.input.OnapCommandParameter;
  */
 public class OnapAuthClient {
 
-    /*
-     * Onap credentials
-     */
+	private OnapCommand cmd = null;
+	
     private OnapHttpConnection http = null;
 
-    private OnapCredentials creds = null;
-
-    private OnapService service = new OnapService();
-
-    private Map<String, String> paramMap = new HashMap<>();
-
-    public OnapAuthClient(OnapCredentials creds, boolean debug, OnapService service, List<OnapCommandParameter> params) throws OnapCommandHttpFailure, OnapCommandInvalidParameterValue {
-        this.creds = creds;
-        this.service = service;
-        for (OnapCommandParameter param : params) {
-            paramMap.put(param.getName(), param.getValue().toString());
-        }
-
-        this.http = new OnapHttpConnection(creds.getHostUrl().startsWith("https"), debug);
+    public OnapAuthClient(OnapCommand cmd, boolean debug) throws OnapCommandHttpFailure, OnapCommandInvalidParameterValue {
+    	this.cmd = cmd;
+        this.http = new OnapHttpConnection(debug);
     }
 
     /**
      * Login.
      *
-     * @throws OnapCommandLoginFailed
-     *             LoginFailed Exception
-     * @throws OnapCommandHttpFailure
-     *             Http request failed
-     * @throws OnapCommandExecutionFailed
-     *             cmd exec failed
-     * @throws OnapCommandServiceNotFound
-     *             service not found
+     * @throws OnapCommandException
+     *             exception
      */
     public void login() throws OnapCommandException {
 
@@ -85,31 +72,28 @@ public class OnapAuthClient {
             return;
         }
 
-        if (this.service.getAuthType().equalsIgnoreCase(Constants.AUTH_BASIC)) {
-            String authToken = BasicScheme.authenticate(new UsernamePasswordCredentials(
-                    creds.getUsername(), creds.getPassword()), "UTF-8", false).getValue();
-
-            Map<String, String> mapHeaders = OnapCommandConfg.getBasicCommonHeaders(this.paramMap);
-            mapHeaders.putAll(OnapCommandConfg.getServiceHeaders(this.service.getName(), this.paramMap));
-            mapHeaders.put(OnapCommandConfg.getXAuthTokenName(), authToken);
-
-            this.http.setCommonHeaders(mapHeaders);
-            return;
+        OnapCommand login = this.findAuthCommand("login");        
+        
+        OnapCommandUtils.copyParamsFrom(this.cmd, login);
+        login.getParametersMap().get(Constants.DEAFULT_PARAMETER_HOST_URL).setValue(this.getServiceUrl(login));
+        login.execute();
+        
+        //It is safely assumed that all outputs are considered as common http headers.
+        Map<String, String> headers = new HashMap<>();
+        for (OnapCommandResultAttribute    attr: login.getResult().getRecords()) {
+            String headerValue = attr.getValues().get(0);
+            if (headerValue != null && !headerValue.isEmpty()) {
+                headers.put(attr.getName(), attr.getValues().get(0));
+            }
         }
-
-        //TODO mrkanag add support for aaf here
+        
+        this.http.setCommonHeaders(headers);
     }
 
     /**
      * Logout.
      *
-     * @throws OnapCommandExecutionFailed
-     *             cmd exec failed
-     * @throws OnapCommandServiceNotFound
-     *             service not found
-     * @throws OnapCommandLogoutFailed
-     *             logout failed
-     * @throws OnapCommandHttpFailure
+     * @throws OnapCommandException
      *             exception
      */
     public void logout() throws OnapCommandException {
@@ -118,65 +102,58 @@ public class OnapAuthClient {
             return;
         }
 
+        OnapCommand logout = this.findAuthCommand("logout");
+        
+        OnapCommandUtils.copyParamsFrom(this.cmd, logout);
+        
+        logout.execute();
+        
         this.http.close();
     }
 
     /**
      * Find given service base path.
      *
-     * @param srv
-     *            onap service
-     * @return string
-     * @throws OnapCommandExecutionFailed
-     *             Cmd execution failed exception
-     * @throws OnapCommandServiceNotFound
-     *             Service not found
-     * @throws OnapCommandHttpFailure
-     *             http request failed
+     * @throws OnapCommandException
+     *             exception
      */
-    public String getServiceBasePath(OnapService srv) throws OnapCommandException {
-        if (srv.getName().equals(OnapCommandConfg.getApiGateway())) {
-            return this.getApiGatewayUrl();
-        } else if (srv.isModeDirect()){
-            return this.creds.getHostUrl();
-        }
+    public String getServiceUrl() throws OnapCommandException {
+    	return this.getServiceUrl(this.cmd);
+    }
 
-
-        HttpInput input = new HttpInput().setUri(this.creds.getHostUrl()
-                + String.format(Constants.MSB_SERVICE_URI, srv.getName(), srv.getVersion()));
-        HttpResult result = this.http.get(input);
-
-        if (result.getStatus() == HttpStatus.SC_NOT_FOUND) {
-            throw new OnapCommandServiceNotFound(srv.toString());
-        }
-        if (!result.isSuccess()) {
-            throw new OnapCommandExecutionFailed("Failed to retrive service " + srv.toString());
-        }
-
-        try {
-            return this.creds.getHostUrl() + JsonPath.read(result.getBody(), "url");
-        } catch (Exception e) {
-            throw new OnapCommandExecutionFailed(e, srv.toString());
+    private String getServiceUrl(OnapCommand cmd) throws OnapCommandException {
+    	if (cmd.getService().isModeDirect()){
+    		return cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_HOST_URL).getValue().toString();
+        } else { //Catalog mode
+            OnapCommand catalog = OnapCommandRegistrar.getRegistrar().get("catalog");
+            
+            OnapCommandUtils.copyParamsFrom(cmd, catalog);
+            
+            catalog.execute();
+            
+            String hostUrl = catalog.getResult().getRecordsMap().get(Constants.CATALOG_SERVICE_HOST_URL).getValues().get(0);
+            hostUrl = hostUrl.trim();
+            if (hostUrl.endsWith("/")) {
+            	hostUrl = hostUrl.substring(0, hostUrl.length()-1);
+            }
+            
+            String basePath = catalog.getResult().getRecordsMap().get(Constants.CATALOG_SERVICE_BASE_PATH).getValues().get(0);
+            basePath = basePath.trim();
+            if (basePath.startsWith("/")) {
+            	basePath = basePath.substring(1);
+            }
+            
+            return hostUrl + "/" + basePath;
         }
     }
 
-    private String getAuthUrl() throws OnapCommandException {
-        OnapService srv = new OnapService();
-        srv.setName(Constants.AUTH_SERVICE);
-        srv.setVersion(Constants.AUTH_SERVICE_VERSION);
-        return this.getServiceBasePath(srv);
-    }
-
-    private String getApiGatewayUrl() {
-        return this.creds.getHostUrl() + Constants.MSB_URI;
-    }
 
     public String getDebugInfo() {
         return this.http.getDebugInfo();
     }
 
     /**
-     * Http call to auth service.
+     * Http call to external service.
      *
      * @param input
      *            http input
@@ -186,5 +163,29 @@ public class OnapAuthClient {
      */
     public HttpResult run(HttpInput input) throws OnapCommandHttpFailure {
         return this.http.request(input);
+    }
+    
+    private OnapCommand findAuthCommand(String authAction) throws OnapCommandException {
+    	OnapCommand auth = null;
+    	try {
+    		//Find the auth command for the given service and version under current enabled product
+    		auth = OnapCommandRegistrar.getRegistrar().get(
+        			this.cmd.getService().getName() + "-" +
+        			this.cmd.getService().getVersion() + "-" +
+        			this.cmd.getService().getAuthType() + "-" + authAction);
+        } catch (OnapCommandNotFound e) {
+        	try {
+        		//Find the auth command for the given service under current enabled product
+        		auth = OnapCommandRegistrar.getRegistrar().get(
+            			this.cmd.getService().getName() + "-" +
+            			this.cmd.getService().getAuthType() + "-" + authAction);
+            } catch (OnapCommandNotFound e1) {
+        		//Find the auth command for current enabled product
+            	auth = OnapCommandRegistrar.getRegistrar().get(
+                			this.cmd.getService().getAuthType() + "-" + authAction);
+            }
+        }
+    	
+    	return auth;
     }
 }

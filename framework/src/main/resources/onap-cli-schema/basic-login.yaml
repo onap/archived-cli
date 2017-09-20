@@ -1,0 +1,17 @@
+open_cli_schema_version: 1.0
+name: basic-login
+description: basic login auth command
+version: cli-1.0
+type: auth
+
+service:
+  name: onap-cli
+  version: 1.0.0
+    
+results:
+  direction: portrait
+  attributes:
+    - name: Authorization
+      description: Authorization
+      scope: short
+      type: string

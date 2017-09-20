@@ -1,0 +1,42 @@
+open_cli_schema_version: 1.0
+
+name: catalog
+
+description: cli catalog command to find the base path for service. 
+
+version: cli-1.0
+
+type: catalog
+
+service:
+  auth: none
+  name: onap-cli
+  version: 1.0.0
+  mode: direct
+ 
+parameters:
+  - name: catalog-service-name
+    type: string
+    description: service name registered in catalog service
+    short_option: l
+    long_option: catalog-service-name
+    is_optional: false
+  - name: catalog-service-version
+    type: string
+    description: service version registered in catalog service
+    short_option: i
+    long_option: catalog-service-version
+    is_optional: false
+results:
+  direction: portrait
+  attributes:
+    - name: catalog-service-host-url
+      description: Service connection url
+      scope: short
+      type: string
+      default_value: ${host-url}
+    - name: catalog-service-base-path
+      description: service base path, to append with host-url for connecting the service.
+      scope: short
+      type: string
+      default_value: /      

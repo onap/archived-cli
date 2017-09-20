@@ -68,7 +68,7 @@ public class OnapHttpConnectionTest {
             }
         };
         inp.setMethod("get");
-        con = new OnapHttpConnection(false, true);
+        con = new OnapHttpConnection(true);
         con.getDebugInfo();
         con.get(inp);
 
@@ -86,7 +86,7 @@ public class OnapHttpConnectionTest {
         };
 
         inp.setMethod("post");
-        con = new OnapHttpConnection(false, true);
+        con = new OnapHttpConnection(true);
         con.post(inp);
     }
 
@@ -104,7 +104,7 @@ public class OnapHttpConnectionTest {
 
         inp.setMethod("post");
         inp.setBinaryData(true);
-        con = new OnapHttpConnection(false, true);
+        con = new OnapHttpConnection(true);
         con.post(inp);
     }
 
@@ -119,7 +119,7 @@ public class OnapHttpConnectionTest {
             }
         };
         inp.setMethod("put");
-        con = new OnapHttpConnection(false, true);
+        con = new OnapHttpConnection(true);
         con.put(inp);
     }
 
@@ -134,7 +134,7 @@ public class OnapHttpConnectionTest {
             }
         };
         inp.setMethod("delete");
-        con = new OnapHttpConnection(false, true);
+        con = new OnapHttpConnection(true);
         con.delete(inp);
     }
 
@@ -149,14 +149,14 @@ public class OnapHttpConnectionTest {
             }
         };
         inp.setMethod("other");
-        con = new OnapHttpConnection(false, true);
+        con = new OnapHttpConnection(true);
         con.request(inp);
     }
 
     @Test()
     public void httpUnSecuredCloseExceptionTest() throws OnapCommandHttpFailure {
         inp.setMethod("other");
-        con = new OnapHttpConnection(false, true);
+        con = new OnapHttpConnection(true);
         con.close();
     }
 
@@ -180,8 +180,8 @@ public class OnapHttpConnectionTest {
             inp.setBody("body");
             inp.setReqHeaders(new HashMap<String, String>());
             inp.setReqQueries(new HashMap<String, String>());
-            inp.setUri("http://192.168.99.10:80");
-            OnapHttpConnection con = new OnapHttpConnection(true, false);
+            inp.setUri("https://192.168.99.10:80");
+            OnapHttpConnection con = new OnapHttpConnection(false);
             con.get(inp);
         } catch (OnapCommandHttpFailure e) {
             assertEquals("0x3001::IO Exception", e.getMessage());

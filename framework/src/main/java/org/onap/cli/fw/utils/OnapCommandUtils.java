@@ -369,7 +369,7 @@ public class OnapCommandUtils {
         }
 
 
-        List<String> sections = Arrays.asList(NAME, DESCRIPTION, SERVICE,
+        List<String> sections = Arrays.asList(NAME, DESCRIPTION, VERSION, COMMAND_TYPE, SERVICE,
                 DEFAULT_PARAMETERS, PARAMETERS, RESULTS);
 
         for (String key : sections) {
@@ -444,7 +444,7 @@ public class OnapCommandUtils {
                                     break;
 
                                 case VERSION:
-                                    srv.setVersion(serviceMap.get(key1));
+                                    srv.setVersion(serviceMap.get(key1).toString());
                                     break;
 
                                 case AUTH:
@@ -1862,5 +1862,26 @@ public class OnapCommandUtils {
             }
         }
         return schemaStr;
+    }
+    
+    /**
+     * Copy the parameters across the commands, mainly used for catalog, login and logout commands
+     * 
+     * @throws OnapCommandInvalidParameterValue 
+     */
+    public static void copyParamsFrom(OnapCommand from, OnapCommand to) throws OnapCommandInvalidParameterValue {
+    	for (OnapCommandParameter param: to.getParameters()) {
+    		
+    		OnapCommandParameter fromParam = from.getParametersMap().get(param.getName());
+    		
+    		if (fromParam != null) {
+    			param.setValue(fromParam.getValue());
+    			param.setDefaultValue(fromParam.getDefaultValue());
+    		} else if (param.getName().equalsIgnoreCase(Constants.CATALOG_SERVICE_NAME)) { // for catalog cmd
+    			param.setValue(from.getService().getName());
+    		} else if (param.getName().equalsIgnoreCase(Constants.CATALOG_SERVICE_VERSION)) {  // for catalog cmd
+    			param.setValue(from.getService().getVersion());
+    		}
+    	}
     }
 }

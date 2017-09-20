@@ -101,7 +101,8 @@ public abstract class OnapCommand {
 
     public boolean isCommandInternal() {
         return onapService.getName() != null
-                && onapService.getName().equalsIgnoreCase(OnapCommandConfg.getInternalCmd());
+                && onapService.getName().equalsIgnoreCase(OnapCommandConfg.getInternalCmd())
+                && this.type.equals(CommandType.CMD);
     }
 
     /*
@@ -278,8 +279,6 @@ public abstract class OnapCommand {
         }
 
         try {
-            OnapCredentials creds = OnapCommandUtils.fromParameters(this.getParameters());
-
             // For auth type commands, login and logout logic is not required
             boolean isAuthRequired = !this.onapService.isNoAuth()
                     && "false".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue())
@@ -287,10 +286,8 @@ public abstract class OnapCommand {
 
             if (!isCommandInternal()) {
                 this.authClient = new OnapAuthClient(
-                        creds,
-                        this.getResult().isDebug(),
-                        this.getService(),
-                        this.getParameters());
+                		this,
+                        this.getResult().isDebug());
             }
 
             if (isAuthRequired) {
@@ -326,7 +323,7 @@ public abstract class OnapCommand {
      * Get my service base path (endpoint).
      */
     protected String getBasePath() throws OnapCommandException {
-        return this.authClient.getServiceBasePath(this.getService());
+        return this.authClient.getServiceUrl();
     }
 
     /**

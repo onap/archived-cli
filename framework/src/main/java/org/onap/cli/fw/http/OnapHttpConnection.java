@@ -100,37 +100,39 @@ public class OnapHttpConnection {
     /**
      * OnapHttpConnection Constructor.
      *
-     * @param isSecured
-     *            boolean
      * @param debug
      *            boolean
      * @throws OnapCommandHttpFailure
      *             exception
      */
-    public OnapHttpConnection(boolean isSecured, boolean debug) throws OnapCommandHttpFailure {
-        try {
-            if (isSecured) {
-                SSLContext sslContext = SSLContext.getInstance(Constants.SSLCONTEST_TLS);
-                sslContext.init(null, new TrustManager[] { new TrustAllX509TrustManager() },
-                        new java.security.SecureRandom());
-                X509HostnameVerifier hostnameVerifier = new AllowAllHostnameVerifier();
-                Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder
-                        .<ConnectionSocketFactory>create()
-                        .register("https", new SSLConnectionSocketFactory(sslContext, hostnameVerifier)).build();
-                HttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-
-                this.httpClient = HttpClients.custom().setConnectionManager(connManager)
-                        .setRedirectStrategy(new LaxRedirectStrategy()).build();
-            } else {
-                this.httpClient = HttpClients.createDefault();
-            }
-        } catch (Exception e) {
-            throw new OnapCommandHttpFailure(e);
-        }
-
+    public OnapHttpConnection(boolean debug) throws OnapCommandHttpFailure {
         this.debug = debug;
     }
 
+    private void initHttpClient(boolean isSecured) throws OnapCommandHttpFailure {
+    	if (this.httpClient == null) {
+            try {
+                if (isSecured) {
+                    SSLContext sslContext = SSLContext.getInstance(Constants.SSLCONTEST_TLS);
+                    sslContext.init(null, new TrustManager[] { new TrustAllX509TrustManager() },
+                            new java.security.SecureRandom());
+                    X509HostnameVerifier hostnameVerifier = new AllowAllHostnameVerifier();
+                    Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder
+                            .<ConnectionSocketFactory>create()
+                            .register("https", new SSLConnectionSocketFactory(sslContext, hostnameVerifier)).build();
+                    HttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+
+                    this.httpClient = HttpClients.custom().setConnectionManager(connManager)
+                            .setRedirectStrategy(new LaxRedirectStrategy()).build();
+                } else {
+                    this.httpClient = HttpClients.createDefault();
+                }
+            } catch (Exception e) {
+                throw new OnapCommandHttpFailure(e);
+            }
+    	}
+    }
+    
     public String getDebugInfo() {
         return this.debugDetails;
     }
@@ -313,7 +315,9 @@ public class OnapHttpConnection {
             updateInputFromCookies(input, cookieStore);
             HttpContext localContext = new BasicHttpContext();
             localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
-
+            
+            this.initHttpClient(input.getUri().startsWith("https"));
+            
             HttpResponse resp = this.httpClient.execute(requestBase, localContext);
             String respContent = this.getResponseBody(resp);
             result.setBody(respContent);

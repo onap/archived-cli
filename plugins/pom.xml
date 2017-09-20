@@ -45,6 +45,7 @@
     </dependencies>
     <modules>
         <module>msb</module>
+        <module>auth</module>
         <module>aai</module>
         <module>sdc</module>
         <module>so</module>

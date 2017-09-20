@@ -192,9 +192,7 @@ public class OnapCommandErrorTest {
     public void onapCommandNotFoundTest() {
         OnapCommandNotFound failed = new OnapCommandNotFound("Test", "1.0");
 
-        assertEquals("0x6003::Command Test is not available for product version 1.0."
-                + " so please check command name or product version set in env variable CLI_PRODUCT_VERSION or"
-                + " cli.product.version in onap.properties", failed.getMessage());
+        assertEquals("0x6003::Command Test is not available for product version 1.0", failed.getMessage());
     }
 
     @Test

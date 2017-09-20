@@ -85,7 +85,7 @@ public class OnapHttpCommand extends OnapCommand {
     @Override
     protected void run() throws OnapCommandException {
         HttpInput httpInput = OnapCommandUtils.populateParameters(this.getParametersMap(), this.getInput());
-        httpInput.setUri(this.authClient.getServiceBasePath(this.getService()) + httpInput.getUri());
+        httpInput.setUri(this.authClient.getServiceUrl() + httpInput.getUri());
 
         HttpResult output = this.authClient.run(httpInput);
 
