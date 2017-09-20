@@ -32,13 +32,6 @@ http:
     - 200
   result_map:
     ems-id: $b{$.esr-ems.[*].ems-id}
-    name: $b{$.esr-ems.[*].esr-system-info-list.esr-system-info.[0].system-name}
-    type: $b{$.esr-ems.[*].esr-system-info-list.esr-system-info.[0].type}
-    vendor: $b{$.esr-ems.[*].esr-system-info-list.esr-system-info.[0].vendor}
-    version: $b{$.esr-ems.[*].esr-system-info-list.esr-system-info.[0].version}
-    url: $b{$.esr-ems.[*].esr-system-info-list.esr-system-info.[0].service-url}
-    username: $b{$.esr-ems.[*].esr-system-info-list.esr-system-info.[0].user-name}
-    remote-path: $b{$.esr-ems.[*].remote-path}
     resource-version: $b{$.esr-ems.[*].resource-version}
 
   sample_response:
