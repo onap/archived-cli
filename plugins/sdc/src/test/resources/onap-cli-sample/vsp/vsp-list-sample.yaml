@@ -5,7 +5,7 @@ version: onap-1.0
 samples:
     sample1:
         name: List Vendor Software Products
-        input: --onap-username cs0008 --onap-password demo123456!  --host-url http://localhost:8080
+        input: --host-username cs0008 --host-password demo123456!  --host-url http://localhost:8080
         output: |
            +----------------------------------+------------+
            |ID                                |name        |

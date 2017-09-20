@@ -1,18 +1,18 @@
 open_cli_schema_version: 1.0
 parameters:
-  - name: onap-username
+  - name: host-username
     type: string
-    description: Onap user name
+    description: Host user name
     short_option: u
-    long_option: onap-username
-    default_value: $s{env:ONAP_USERNAME}
+    long_option: host-username
+    default_value: $s{env:HOST_USERNAME}
     is_optional: false
-  - name: onap-password
+  - name: host-password
     type: string
-    description: Onap user password
+    description: Host user password
     short_option: p
-    long_option: onap-password
-    default_value: $s{env:ONAP_PASSWORD}
+    long_option: host-password
+    default_value: $s{env:HOST_PASSWORD}
     is_secured: true
     is_optional: false
   - name: host-url

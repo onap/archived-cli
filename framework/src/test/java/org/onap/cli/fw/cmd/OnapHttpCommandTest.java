@@ -31,12 +31,12 @@ public class OnapHttpCommandTest {
     @Test(expected = OnapCommandException.class)
     public void runTest() throws OnapCommandException {
         OnapCommandParameter param1 = new OnapCommandParameter();
-        param1.setLongOption("onap-username");
-        param1.setName("onap-username");
+        param1.setLongOption("host-username");
+        param1.setName("host-username");
         param1.setParameterType(ParameterType.STRING);
         OnapCommandParameter param2 = new OnapCommandParameter();
-        param2.setLongOption("onap-password");
-        param2.setName("onap-password");
+        param2.setLongOption("host-password");
+        param2.setName("host-password");
         param2.setParameterType(ParameterType.STRING);
         OnapCommandParameter param3 = new OnapCommandParameter();
         param3.setLongOption("host-url");

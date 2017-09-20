@@ -7,8 +7,8 @@ Provides unified commands to operate ONAP from Linux console.
 Configure the following environment variables, before using it:
 
 1. **HOST_URL** - Onap Micro service bus(MSB) URL or a service URL
-2. **ONAP_USERNAME** - Onap user name
-3. **ONAP_PASSWORD** - Onap user password
+2. **HOST_USERNAME** - Onap user name
+3. **HOST_PASSWORD** - Onap user password
 
 To Run a command
 -----------------
@@ -20,9 +20,9 @@ Type **onap** from linux console.
 
 And use the directive set to set the values for following parameters:
 
-1. **host-url** - Onap Micro service bus(MSB) URL or a service URL
-2. **onap-username** - Onap user name
-3. **onap-password** - Onap user password
+1. **onap-host-url** - Onap Micro service bus(MSB) URL or a service URL
+2. **host-username** - Onap user name
+3. **host-password** - Onap user password
 
 Set the product version
 ------------------------

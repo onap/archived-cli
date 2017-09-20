@@ -8,8 +8,8 @@ service:
   version: 1.0.0
 default_parameters:
   exclude:
-    - onap-username
-    - onap-password
+    - host-username
+    - host-password
     - host-url
     - no-auth
 parameters:

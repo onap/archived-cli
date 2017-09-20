@@ -115,8 +115,8 @@ public class Constants {
     public static final String DEFAULT_PARAMETER_FILE_NAME = "default_input_parameters.yaml";
 
     // Common parameters used across all commands.
-    public static final String DEAFULT_PARAMETER_USERNAME = "onap-username";
-    public static final String DEAFULT_PARAMETER_PASS_WORD = "onap-password";
+    public static final String DEAFULT_PARAMETER_USERNAME = "host-username";
+    public static final String DEAFULT_PARAMETER_PASS_WORD = "host-password";
     public static final String DEAFULT_PARAMETER_HOST_URL = "host-url";
     public static final String DEFAULT_PARAMETER_HELP = "help";
     public static final String DEFAULT_PARAMETER_VERSION = "version";

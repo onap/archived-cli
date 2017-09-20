@@ -34,12 +34,12 @@ public class OnapCliUtilsTest {
     @Test
     public void testpopulateParamsLong() throws OnapCommandException {
         OnapCommandParameter param1 = new OnapCommandParameter();
-        param1.setLongOption("onap-username");
-        param1.setName("onap-username");
+        param1.setLongOption("host-username");
+        param1.setName("host-username");
         param1.setParameterType(ParameterType.STRING);
         OnapCommandParameter param2 = new OnapCommandParameter();
-        param2.setLongOption("onap-password");
-        param2.setName("onap-password");
+        param2.setLongOption("host-password");
+        param2.setName("host-password");
         param2.setParameterType(ParameterType.STRING);
         OnapCommandParameter param3 = new OnapCommandParameter();
         param3.setLongOption("host-url");
@@ -61,13 +61,13 @@ public class OnapCliUtilsTest {
         paramslist.add(param4);
         paramslist.add(param5);
 
-        String[] args = new String[] { "sample-create", "--onap-username", "admin", "--onap-password", "123",
+        String[] args = new String[] { "sample-create", "--host-username", "admin", "--host-password", "123",
                 "--host-url", "a@b.com", "--string-param", "blah", "--long-opt", "10" };
         OnapCliUtils.populateParams(paramslist, Arrays.asList(args));
         List<String> expectedList = Arrays.asList(args);
 
-        Assert.assertEquals("onap-username", expectedList.get(2), param1.getValue());
-        Assert.assertEquals("onap-password", expectedList.get(4), param2.getValue());
+        Assert.assertEquals("host-username", expectedList.get(2), param1.getValue());
+        Assert.assertEquals("host-password", expectedList.get(4), param2.getValue());
         Assert.assertEquals("host-url", expectedList.get(6), param3.getValue());
         Assert.assertEquals("string-param", expectedList.get(8), param4.getValue());
         Assert.assertEquals("long-opt", expectedList.get(10), param5.getValue());
@@ -184,11 +184,11 @@ public class OnapCliUtilsTest {
 
         OnapCommandParameter param1 = new OnapCommandParameter();
         param1.setShortOption("u");
-        param1.setName("onap-username");
+        param1.setName("host-username");
         param1.setParameterType(ParameterType.STRING);
         OnapCommandParameter param2 = new OnapCommandParameter();
         param2.setShortOption("p");
-        param2.setName("onap-password");
+        param2.setName("host-password");
         param2.setParameterType(ParameterType.STRING);
         OnapCommandParameter param3 = new OnapCommandParameter();
         param3.setShortOption("r");

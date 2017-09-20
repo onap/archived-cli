@@ -5,4 +5,4 @@ version: onap-1.0
 samples:
     sample1:
         name: upload the zip file to Vendor Software Product
-        input: --onap-username cs0008 --onap-password demo123456! --host-url http://localhost:8080 --vsp-id E563CB23A6BE49AF9A84CF579DAFB929  --vsp-file /home/user/vFW.zip
+        input: --host-username cs0008 --host-password demo123456! --host-url http://localhost:8080 --vsp-id E563CB23A6BE49AF9A84CF579DAFB929  --vsp-file /home/user/vFW.zip

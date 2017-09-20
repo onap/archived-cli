@@ -41,8 +41,8 @@ public class TestDefaultParameterSection {
 
         OnapCommandUtils.loadSchema(cmd, "sample-test-include-param.yaml", true, false);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
-        assertTrue(parameters.contains("onap-username"));
-        assertTrue(parameters.contains("onap-password"));
+        assertTrue(parameters.contains("host-username"));
+        assertTrue(parameters.contains("host-password"));
         assertTrue(parameters.contains("host-url"));
     }
 
@@ -55,8 +55,8 @@ public class TestDefaultParameterSection {
 
         OnapCommandUtils.loadSchema(cmd, "sample-test-exclude-param.yaml", true, false);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
-        assertTrue(parameters.contains("onap-username"));
-        assertTrue(parameters.contains("onap-password"));
+        assertTrue(parameters.contains("host-username"));
+        assertTrue(parameters.contains("host-password"));
         assertTrue(parameters.contains("host-url"));
         assertFalse(parameters.contains("long"));
         assertFalse(parameters.contains("format"));
@@ -73,8 +73,8 @@ public class TestDefaultParameterSection {
         OnapCommandUtils.loadSchema(cmd, "sample-test-include-exclude.yaml", true, false);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
 
-        assertTrue(parameters.contains("onap-username"));
-        assertTrue(parameters.contains("onap-password"));
+        assertTrue(parameters.contains("host-username"));
+        assertTrue(parameters.contains("host-password"));
         assertTrue(parameters.contains("host-url"));
     }
 
@@ -88,8 +88,8 @@ public class TestDefaultParameterSection {
         OnapCommandUtils.loadSchema(cmd, "onap-test-schema.yaml", true, false);
         List<String> parameters = cmd.getParameters().stream().map(p -> p.getName()).collect(Collectors.toList());
 
-        assertFalse(parameters.contains("onap-username"));
-        assertFalse(parameters.contains("onap-password"));
+        assertFalse(parameters.contains("host-username"));
+        assertFalse(parameters.contains("host-password"));
         assertTrue(parameters.contains("host-url"));
         assertTrue(parameters.contains("debug"));
         assertTrue(parameters.contains("long"));

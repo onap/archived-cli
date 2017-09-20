@@ -3,4 +3,4 @@ service:
   auth: none
 default_parameters:
   include:
-    - onap-username
+    - host-username
