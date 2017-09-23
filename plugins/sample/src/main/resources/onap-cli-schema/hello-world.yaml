@@ -1,0 +1,31 @@
+open_cli_schema_version: 1.0
+
+name: hello-world
+
+description: First cmd hello world
+
+version: sample-1.0
+
+service:
+    name: sample-service
+    version: 1.0.0
+    auth: none
+    mode: direct
+
+parameters:
+    - name: name
+      description: name of the person
+      long_option: name
+      short_option: b
+      default_value: ${DEMO_NAME}
+      type: string
+      is_optional: false
+
+results:
+    direction: landscape
+    attributes:
+      - name: output
+        description: hello world output
+        type: string
+        scope: short
+

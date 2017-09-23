@@ -1,0 +1,43 @@
+open_cli_schema_version: 1.0
+
+name: hello-world-http
+
+description: First cmd hello world using http runing under lighttpd in cli at http://<cli-ip>:8080/version.json
+
+version: sample-1.0
+
+service:
+    name: sample-service
+    version: 1.0.0
+    auth: none
+    mode: direct
+
+parameters:
+    - name: name
+      description: name of the person
+      long_option: name
+      short_option: b
+      default_value: ${DEMO_NAME}
+      type: string
+      is_optional: false
+
+results:
+    direction: landscape
+    attributes:
+      - name: output
+        description: hello world output
+        type: string
+        scope: short
+
+http:
+    request:
+        uri: /version.json
+        method: GET
+    success_codes:
+        - 200
+        - 201
+    result_map:
+        output: Hello ${name}, You are running on $b{$.name} $b{$.version}
+
+    sample_response:
+        body: {"name": "oclip", "version": "1.0"}

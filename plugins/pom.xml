@@ -48,6 +48,7 @@
         <module>aai</module>
         <module>sdc</module>
         <module>so</module>
+        <module>sample</module>
     </modules>
      <build>
          <pluginManagement>
