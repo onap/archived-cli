@@ -264,7 +264,7 @@ public class OnapCommandRegistrar {
             version = OnapCommandConfg.getVersion();
         }
 
-        String configuredProductVersion = OnapCommandConfg.getEnabledProductVersion();
+        String configuredProductVersion = this.getEnabledProductVersion();
 
         String errorNote = "";
         String usageNote = "\n\nTo enable a product version, use one of following methods:"
