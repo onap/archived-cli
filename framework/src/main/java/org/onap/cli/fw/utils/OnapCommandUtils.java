@@ -1585,6 +1585,43 @@ public class OnapCommandUtils {
     }
 
     /**
+     * Populate result from input parameters.
+     *
+     * @param resultMap
+     *            map
+     * @param params
+     *            Map<String, OnapCommandParameter>
+     * @return map
+     * @throws OnapCommandHttpHeaderNotFound
+     *             header not found exception
+     * @throws OnapCommandHttpInvalidResponseBody
+     *             invalid response body exception
+     * @throws OnapCommandResultMapProcessingFailed
+     *             map processing failed exception
+     */
+    public static Map<String, ArrayList<String>> populateOutputsFromInputParameters(
+            Map<String, ArrayList<String>> resultMap,
+            Map<String, OnapCommandParameter> params)
+            throws OnapCommandException {
+        Map<String, ArrayList<String>> resultsProcessed = new HashMap<>();
+
+        for (Entry<String, ArrayList<String>> entry : resultMap.entrySet()) {
+            String key = entry.getKey();
+            resultsProcessed.put(key, new ArrayList<>());
+            for (String value: entry.getValue()) {
+                try {
+                    value = replaceLineFromInputParameters(value, params);
+                } catch(OnapCommandResultEmpty e) {
+                    // pass // NOSONAR
+                }
+                resultsProcessed.get(key).add(value);
+            }
+        }
+
+        return resultsProcessed;
+    }
+
+    /**
      * Find external schema files.
      *
      * @return list ExternalSchema
