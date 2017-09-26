@@ -6,9 +6,6 @@
 CLI user guide
 ==============
 
-.. toctree::
-   :maxdepth: 1
-
 **One Command to command whole Onap !!**
 
 Provides unified commands to operate ONAP from Linux console.
@@ -64,4 +61,9 @@ https://wiki.onap.org
 
 Command usage guide
 -------------------
+Following document provides the help message for list of command's supported in this release.
+
+.. toctree::
+   :maxdepth: 1
+
    cmd_help.rst
