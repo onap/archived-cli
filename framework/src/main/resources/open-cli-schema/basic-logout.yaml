@@ -11,3 +11,4 @@ type: auth
 service:
   name: open-cli
   version: 1.0.0
+  mode: direct

@@ -197,14 +197,16 @@ public class Constants {
     public static final String SPL_ENTRY_UUID = "uuid";
     public static final String SPL_ENTRY_ENV = "env:";
 
+    public static final String AUTH_SERVICE_AUTHORIZATION = "Authorization";
+
     public static final String CATALOG_SERVICE_NAME = "catalog-service-name";
-    
+
     public static final String CATALOG_SERVICE_VERSION = "catalog-service-version";
-    
+
     public static final String CATALOG_SERVICE_BASE_PATH = "catalog-service-base-path";
-    
+
     public static final String CATALOG_SERVICE_HOST_URL = "catalog-service-host-url";
-    
+
     private Constants() {
     }
 

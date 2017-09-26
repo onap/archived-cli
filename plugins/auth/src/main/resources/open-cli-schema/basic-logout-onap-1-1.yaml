@@ -11,3 +11,4 @@ type: auth
 service:
   name: onap
   version: v1
+  mode: direct

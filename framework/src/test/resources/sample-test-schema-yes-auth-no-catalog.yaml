@@ -1,0 +1,22 @@
+open_cli_schema_version: 1.0
+
+name: sample-cmd-yes-auth-no-catalog
+
+description: sample
+
+version: sample-test-1.0
+
+service:
+  name: sample
+  version: v1
+  auth: basic
+  mode: direct
+
+http:
+  request:
+    uri: /test
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    name: ${name}

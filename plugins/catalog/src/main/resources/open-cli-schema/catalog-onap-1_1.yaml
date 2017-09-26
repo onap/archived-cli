@@ -2,17 +2,17 @@ open_cli_schema_version: 1.0
 
 name: catalog
 
-description: ONAP catalog command to find the base path for service. 
+description: ONAP catalog command to find the base path for service.
 
 version: onap-1.1
 
 type: catalog
 
 service:
-  auth: none
   name: msb
   version: v1
   mode: direct
+  auth: none
 
 parameters:
   - name: catalog-service-name

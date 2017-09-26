@@ -22,6 +22,7 @@ import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.impl.auth.BasicScheme;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandSchema;
+import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameter;
 
@@ -33,9 +34,9 @@ public class BasicAuthLoginCommand extends OnapCommand {
 
         //get the input arguments
         Map<String, OnapCommandParameter> paramMap = getParametersMap();
-        OnapCommandParameter usernameParam = paramMap.get("username");
+        OnapCommandParameter usernameParam = paramMap.get(Constants.DEAFULT_PARAMETER_USERNAME);
         String username = usernameParam.getValue().toString();
-        OnapCommandParameter usernamePassword = paramMap.get("password");
+        OnapCommandParameter usernamePassword = paramMap.get(Constants.DEAFULT_PARAMETER_PASS_WORD);
         String password = usernamePassword.getValue().toString();
 
         //Execute the command to get token
@@ -43,6 +44,6 @@ public class BasicAuthLoginCommand extends OnapCommand {
                 username, password), "UTF-8", false).getValue();
 
         //Fill out the result part
-        this.getResult().getRecordsMap().get("Authorization").getValues().add(authToken);
+        this.getResult().getRecordsMap().get(Constants.AUTH_SERVICE_AUTHORIZATION).getValues().add(authToken);
     }
 }
