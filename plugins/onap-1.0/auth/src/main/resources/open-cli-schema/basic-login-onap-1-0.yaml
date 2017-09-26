@@ -1,0 +1,32 @@
+open_cli_schema_version: 1.0
+
+name: basic-login
+
+description: ONAP basic login auth command
+
+version: onap-1.0
+
+type: auth
+
+service:
+  name: onap
+  version: v1
+  mode: direct
+
+results:
+  direction: portrait
+  attributes:
+    - name: Authorization
+      description: Authorization
+      scope: short
+      type: string
+    - name: X-TransactionId
+      description: X-TransactionId
+      scope: short
+      type: string
+      default_value: req-$s{uuid}
+    - name: X-FromAppId
+      description: X-FromAppId
+      scope: short
+      type: string
+      default_value: ONAP CLI

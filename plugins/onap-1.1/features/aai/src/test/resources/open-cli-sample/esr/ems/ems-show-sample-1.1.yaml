@@ -1,0 +1,14 @@
+onap_cli_sample_version: 1.0
+
+name: ems-show
+version: onap-1.1
+samples:
+    sample1:
+        name: Show the ems
+        input: -x f962fa1e-d439-4b02-a122-cc38fd0da07c  -y 1505298922586
+        output: |
+            +--------+------------+--------+----------+------------------+
+            |name    |type        |vendor  |version   |url               |
+            +--------+------------+--------+----------+------------------+
+            |ems-1   |OpenStack   |HW      |1.0       |http://locahost   |
+            +--------+------------+--------+----------+------------------+

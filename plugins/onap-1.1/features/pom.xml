@@ -23,31 +23,21 @@
 
     <parent>
         <groupId>org.onap.cli</groupId>
-        <artifactId>cli</artifactId>
+        <artifactId>cli-plugins-onap-1.1</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cli-plugins</artifactId>
-    <name>cli/plugins</name>
+    <artifactId>cli-plugins-onap-1.1-features</artifactId>
+    <name>cli/plugins/onap-1.1/features</name>
     <packaging>pom</packaging>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-framework</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-    </dependencies>
+    
     <modules>
-        <module>onap-1.0</module>
-        <module>onap-1.1</module>
-        <module>sample</module>
+        <module>msb</module>
+        <module>aai</module>
+        <module>sdc</module>
+        <module>so</module>
     </modules>
+    
      <build>
          <pluginManagement>
             <plugins>
@@ -71,7 +61,7 @@
                             </artifactItem>
                         </artifactItems>
                         <!-- copy to plugin dependencies -->
-                        <outputDirectory>../../plugins/target/lib</outputDirectory>
+                        <outputDirectory>../../../../plugins/target/lib</outputDirectory>
                       </configuration>
                     </execution>
                   </executions>
@@ -80,4 +70,3 @@
         </pluginManagement>
     </build>
 </project>
-

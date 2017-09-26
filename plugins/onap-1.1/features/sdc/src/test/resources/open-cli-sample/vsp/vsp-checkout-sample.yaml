@@ -1,0 +1,9 @@
+onap_cli_sample_version: 1.0
+
+name: vsp-checkout
+version: onap-1.1
+
+samples:
+    sample1:
+        name: Checkout the Vendor Software Product
+        input: --host-username cs0008 --host-password demo123456!  --host-url http://localhost:8080 --vsp-id E563CB23A6BE49AF9A84CF579DAFB929

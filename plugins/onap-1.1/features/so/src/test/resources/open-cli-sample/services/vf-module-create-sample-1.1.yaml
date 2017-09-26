@@ -1,0 +1,8 @@
+onap_cli_sample_version: 1.0
+
+name: vf-module-create
+version: onap-1.1
+samples:
+    sample1:
+        name: Create a vnf
+        input: -h https://locahost:8080 -u InfraPortalClient -p password1$ -l region1 -t 123ABC -v b123-45565678da -s a445678-24da  -m a9a77d5a-123e-4ca2-9eb9-0b015d2ee0fb -r -i instance

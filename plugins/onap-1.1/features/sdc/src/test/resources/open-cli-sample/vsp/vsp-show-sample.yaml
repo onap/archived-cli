@@ -1,0 +1,14 @@
+onap_cli_sample_version: 1.0
+
+name: vsp-show
+version: onap-1.1
+samples:
+    sample1:
+        name: Show the details of Vendor Software Products
+        input: --host-username cs0008 --host-password demo123456!  --host-url http://localhost:8080 --vsp-id 2DEB6CB4B082415BB7A697C9CD1273BA
+        output: |
+           +----------+----------------------------------+--------------------------+
+           |name      |ID                                |description               |
+           +----------+----------------------------------+--------------------------+
+           |test-vsp  |2DEB6CB4B082415BB7A697C9CD1273BA  |vendor software product   |
+           +----------+----------------------------------+--------------------------+
