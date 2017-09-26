@@ -1101,15 +1101,15 @@ public class OnapCommandUtils {
             if (param.getShortOption() != null || param.getLongOption() != null) {
                 optFirstCol = OnapCommandParameter.printShortOption(param.getShortOption()) + " | "
                         + OnapCommandParameter.printLongOption(param.getLongOption());
-                commandOptions += "[" + optFirstCol + "] ";
+                commandOptions += " [" + optFirstCol + "]";
             } else {
                 optFirstCol = param.getName();
-                commandOptions += "<" + optFirstCol + "> ";
+                commandOptions += " <" + optFirstCol + ">";
             }
 
             newLineOptions++;
 
-            attrName.getValues().add(optFirstCol);
+            attrName.getValues().add(" " + optFirstCol);
 
             // Second column description
             String optSecondCol = param.getDescription().trim();
@@ -1142,7 +1142,7 @@ public class OnapCommandUtils {
         }
 
         try {
-            help += "\n\nOptions:\n" + commandOptions + "\nwhere,\n" + paramTable.print();
+            help += "\n\nOptions::\n\n" + commandOptions + "\n\nwhere::\n\n" + paramTable.print();
         } catch (OnapCommandException e) {
             throw new OnapCommandHelpFailed(e);
         }
@@ -1156,7 +1156,7 @@ public class OnapCommandUtils {
 
         for (OnapCommandResultAttribute attr : cmd.getResult().getRecords()) {
             OnapCommandResultAttribute attrHelp = new OnapCommandResultAttribute();
-            attrHelp.setName(attr.getName());
+            attrHelp.setName(" " + attr.getName());
             attrHelp.setDescription(attr.getDescription());
             String msg = attr.getDescription() + " and is of type " + attr.getType().name() + ".";
             if (attr.isSecured()) {
@@ -1166,14 +1166,17 @@ public class OnapCommandUtils {
             attrHelp.setType(attr.getType());
             resultTable.getRecords().add(attrHelp);
         }
-        try {
-            help += "\n\nResults:\n" + resultTable.print();
-        } catch (OnapCommandException e) {
-            throw new OnapCommandHelpFailed(e);
+
+        if (cmd.getResult().getRecords().size() > 0) {
+            try {
+                help += "\n\nResults::\n\n" + resultTable.print();
+            } catch (OnapCommandException e) {
+                throw new OnapCommandHelpFailed(e);
+            }
         }
 
         // Error
-        help += "\n\nError:\nOn error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>\n";
+        help += "\n\nError::\n\n On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>\n";
         return help;
     }
 

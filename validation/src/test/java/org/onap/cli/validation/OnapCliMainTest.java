@@ -60,14 +60,17 @@ public class OnapCliMainTest {
     }
 
     @Test
-    public void commandHelpTest() throws OnapCommandException {
+    public void usageReadTheDocsTest() throws OnapCommandException {
         for (String version: OnapCommandRegistrar.getRegistrar().getAvailableProductVersions()) {
             OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(version);
+            System.out.println(version);
+            System.out.println("==========================\n\n");
             for (ExternalSchema sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
                 if (sch.getCmdVersion().equals(version)) {
-                    System.out.println(
-                            "************************* help '" + sch.getCmdName() + "' *******************************");
+                    System.out.println(sch.getCmdName());
+                    System.out.println("-----------------------------------------------\n\n");
                     this.handle(new String[] { sch.getCmdName(), "-h"});
+                    System.out.println("\n");
                 }
             }
         }
