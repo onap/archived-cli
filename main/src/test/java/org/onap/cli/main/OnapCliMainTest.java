@@ -77,7 +77,7 @@ public class OnapCliMainTest {
 
     @Test
     public void testVersionShort() {
-        this.handle(new String[] { "--v" });
+        this.handle(new String[] { "-v" });
     }
 
     @Test
@@ -143,7 +143,7 @@ public class OnapCliMainTest {
     }
 
     @Test
-    public void testHandleSampleCommandFailure() throws OnapCommandException {
+    public void testHandleSampleCommandFailure() throws OnapCommandException{
         this.handle(new String[] { "sample-test", "--string-param"});
     }
 

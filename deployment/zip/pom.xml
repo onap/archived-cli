@@ -38,7 +38,7 @@
                 <version>1.5</version>
                 <executions>
                     <execution>
-                        <id>onap-cli-deployment</id>
+                        <id>open-cli-deployment</id>
                         <phase>package</phase>
                         <goals>
                             <goal>execute</goal>
@@ -62,8 +62,8 @@
                                 ant.delete(dir: "${deployUnzip}/lib")
                                 ant.mkdir(dir: "${deployUnzip}/lib")
 
-                                ant.delete(dir: "${deployUnzip}/onap-cli-schema")
-                                ant.mkdir(dir: "${deployUnzip}/onap-cli-schema")
+                                ant.delete(dir: "${deployUnzip}/open-cli-schema")
+                                ant.mkdir(dir: "${deployUnzip}/open-cli-schema")
 
                                 ant.delete(dir: "${deployUnzip}/data")
                                 ant.mkdir(dir: "${deployUnzip}/data")
@@ -93,7 +93,7 @@
                                 ant.copy(todir:
                                 "${deployUnzip}/conf") {
                                 fileset(file:
-                                "${project.build.directory}/../../../framework/src/main/resources/onap.properties")
+                                "${project.build.directory}/../../../framework/src/main/resources/open-cli.properties")
                                 }
 
                                 ant.copy(todir:

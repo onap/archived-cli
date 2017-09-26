@@ -1,10 +1,10 @@
 open_cli_schema_version: 1.0
 name: schema-refresh
-description: Onap command to refresh schemas stored in onap_cli_schema folders.
+description: Onap command to refresh schemas stored in OPEN_cli_schema folders.
 version: cli-1.0
 service:
   auth: none
-  name: onap-cli
+  name: open-cli
   version: 1.0.0
 results:
   direction: landscape

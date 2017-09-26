@@ -55,7 +55,7 @@ public final class OnapCommandConfg {
      * @return boolean
      */
     public static boolean isAuthIgnored() {
-        if ("true".equals(prps.getProperty(Constants.ONAP_IGNORE_AUTH))) {
+        if ("true".equals(prps.getProperty(Constants.OPEN_IGNORE_AUTH))) {
             return true;
         }
 
@@ -76,13 +76,13 @@ public final class OnapCommandConfg {
     }
 
     public static String getVersion() {
-        return prps.getProperty(Constants.ONAP_CLI_VERSION);
+        return prps.getProperty(Constants.OPEN_CLI_VERSION);
     }
 
     public static String getEnabledProductVersion() {
-        String version = System.getenv(Constants.ONAP_CLI_PRODUCT_VERSION_ENV_NAME);
+        String version = System.getenv(Constants.OPEN_CLI_PRODUCT_VERSION_ENV_NAME);
         if (version == null) {
-            version = prps.getProperty(Constants.ONAP_CLI_PRODUCT_VERSION);
+            version = prps.getProperty(Constants.OPEN_CLI_PRODUCT_VERSION);
         }
         return version;
     }
@@ -100,20 +100,8 @@ public final class OnapCommandConfg {
         return false;
     }
 
-    public static String getXAuthTokenName() {
-        return prps.getProperty(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS + "." + Constants.X_AUTH_TOKEN);
-    }
-
     public static String getInternalCmd() {
         return prps.getProperty(Constants.SERVICE_NAME);
-    }
-
-    public static String getApiGateway() {
-        return prps.getProperty(Constants.API_GATEWAY);
-    }
-
-    public static String getAuthService() {
-        return prps.getProperty(Constants.AUTH_SERVICE);
     }
 
     public static String getAuthType() {

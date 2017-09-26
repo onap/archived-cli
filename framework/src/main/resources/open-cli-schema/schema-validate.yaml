@@ -4,7 +4,7 @@ description: Onap command to validate schema
 version: cli-1.0
 service:
   auth: none
-  name: onap-cli
+  name: open-cli
   version: 1.0.0
 default_parameters:
   exclude:

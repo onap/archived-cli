@@ -1,23 +1,25 @@
-Onap Command-line interface (CLI).
+OPEN Command-line interface (CLI)
+==================================
 
-                            ____ __    ___
-  ___  _ __   __ _ _ __    / ___| |   |_ _|
- / _ \| '_ \ / _` | '_ \  | |   | |    | |
-| (_) | | | | (_| | |_) | | |___| |___ | |
- \___/|_| |_|\__,_| .__/   \____|_____|___|
-                  |_|
+ _____                    _____  _     _____ 
+|  _  |                  /  __ \| |   |_   _|
+| | | |_ __   ___ _ __   | /  \/| |     | |  
+| | | | '_ \ / _ \ '_ \  | |    | |     | |  
+\ \_/ / |_) |  __/ | | | | \__/\| |_____| |_ 
+ \___/| .__/ \___|_| |_|  \____/\_____/\___/ 
+      | |                                    
+      |_|                                    
+                                                                 
+Provides unified commands to operate any cloud enabled software
+products from Linux/Web console. Configure the following environment
+variables, before using it:
 
-
-One Command to command whole Onap !! It provides the unified commands
-to access and operate Onap functionalities. To use this CLI, please
-configure the following environment variables:
-
-1. ONAP_MSB_URL - Onap Micro service bus(MSB) URL
-2. HOST_USERNAME - Onap user name
-3. HOST_PASSWORD - Onap user password
+1. HOST_URL - Catalog service URL or a service URL
+2. HOST_USERNAME - Service user name
+3. HOST_PASSWORD - Service password
 
 To know the CLI version, type onap [-v|--version]
 To know the CLI usage, type onap [-h|--help]
 To know the usage of sub commands, type onap <command> [-h|--help]
 
-To know more, please refer the Onap wiki https://wiki.onap.org
+To know more, please refer the wiki https://wiki.onap.org

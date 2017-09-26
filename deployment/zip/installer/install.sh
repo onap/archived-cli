@@ -20,8 +20,7 @@ CLI_LATEST_BINARY="https://nexus.onap.org/service/local/artifact/maven/redirect?
 CLI_INSTALL_DIR=/opt/onap/cli
 CLI_ZIP=cli.zip
 CLI_BIN=/usr/bin/onap
-export ONAP_CLI_HOME=$CLI_INSTALL_DIR
-export CLI_PRODUCT_VERSION=onap-1.1
+export OPEN_CLI_HOME=$CLI_INSTALL_DIR
 
 #create install dir
 if [ -d $CLI_INSTALL_DIR ]
@@ -47,7 +46,7 @@ wget -O $CLI_ZIP $CLI_LATEST_BINARY
 
 unzip $CLI_ZIP
 if [ ! -d ./data ]; then mkdir ./data; fi
-if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi
+if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
 chmod +x ./bin/onap.sh
 
 #Make onap available in path

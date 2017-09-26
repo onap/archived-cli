@@ -10,7 +10,7 @@ RUN cd /tmp && curl -O https://storage.googleapis.com/golang/go1.9.linux-amd64.t
     mv /tmp/gotty/bin/gotty /usr/sbin/
 
 #Environments
-ENV ONAP_CLI_HOME /opt/onap/cli
+ENV OPEN_CLI_HOME /opt/onap/cli
 ENV ONAP_CLI_DEBUG false
 ENV ONAP_CLI_DEBUG_PORT 5005
 ENV CLI_MODE console
@@ -21,8 +21,8 @@ ENV ONAP_USERNAME guest
 ENV ONAP_PASSWORD guest
 
 #Copy CLI into docker
-ADD ./STAGE $ONAP_CLI_HOME
-WORKDIR $ONAP_CLI_HOME
+ADD ./STAGE $OPEN_CLI_HOME
+WORKDIR $OPEN_CLI_HOME
 
 #Setup the run time environment (RTE)
 #RTE: CLI
@@ -32,7 +32,7 @@ RUN chmod +x ./bin/onap.sh  && \
      if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi
 
 #Create the readable README
-RUN pandoc -t plain $ONAP_CLI_HOME/docs/README.md > $ONAP_CLI_HOME/docs/onap-readme.txt
+RUN pandoc -t plain $OPEN_CLI_HOME/docs/README.md > $OPEN_CLI_HOME/docs/onap-readme.txt
 
 #RTE: lighttpd
 COPY ./STAGE/http/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf

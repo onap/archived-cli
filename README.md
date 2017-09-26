@@ -1,14 +1,13 @@
-ONAP Command-line interface (CLI)
+OPEN Command-line interface (CLI)
 ==================================
 
-**One Command to command whole Onap !!**
+Provides unified commands to operate any cloud enabled software
+products from Linux/Web console. Configure the following environment
+variables, before using it:
 
-Provides unified commands to operate ONAP from Linux console.
-Configure the following environment variables, before using it:
-
-1. **HOST_URL** - Onap Micro service bus(MSB) URL or a service URL
-2. **HOST_USERNAME** - Onap user name
-3. **HOST_PASSWORD** - Onap user password
+1. **HOST_URL** - Catalog service URL or a service URL
+2. **HOST_USERNAME** - Service user name
+3. **HOST_PASSWORD** - Service password
 
 To Run a command
 -----------------
@@ -20,9 +19,9 @@ Type **onap** from linux console.
 
 And use the directive set to set the values for following parameters:
 
-1. **onap-host-url** - Onap Micro service bus(MSB) URL or a service URL
-2. **host-username** - Onap user name
-3. **host-password** - Onap user password
+1. **host-url** - Catalog service URL or a service URL 
+2. **host-username** - Service user name
+3. **host-password** - Service password
 
 Set the product version
 ------------------------
@@ -47,8 +46,8 @@ Help
 Debug Mode
 ----------
 To run in debug mode, set following environment variables:
-1. ONAP_CLI_DEBUG - By default its false, otherwise Set to true
-2. ONAP_CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number
+1. CLI_DEBUG - By default its false, otherwise Set to true
+2. CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number
 
 More details
 -------------

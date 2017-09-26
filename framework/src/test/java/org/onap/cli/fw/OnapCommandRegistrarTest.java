@@ -42,10 +42,10 @@ public class OnapCommandRegistrarTest {
     }
 
     private void createDir() {
-        URL url = OnapCommandRegistrarTest.class.getClassLoader().getResource("onap-cli-schema");
+        URL url = OnapCommandRegistrarTest.class.getClassLoader().getResource("open-cli-schema");
         if (url != null) {
             String path = url.getPath();
-            path = path.replaceFirst("onap-cli-schema", "data");
+            path = path.replaceFirst("open-cli-schema", "data");
             File file = new File(path);
             if (!file.exists()) {
                 file.mkdir();

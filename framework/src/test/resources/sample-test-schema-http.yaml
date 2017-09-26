@@ -1,7 +1,7 @@
 open_cli_schema_version: 1.0
 name: sample-create-http
 description: Register microservice into Onap
-version: onap-1.0
+version: cli-1.0
 service:
   name: msb
   version: v1

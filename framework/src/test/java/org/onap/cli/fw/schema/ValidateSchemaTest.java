@@ -55,7 +55,7 @@ public class ValidateSchemaTest {
             protected void run() throws OnapCommandException {}
         };
         OnapCommandUtils.loadSchema(cmd,
-                ValidateSchemaTest.class.getClassLoader().getResource("onap.properties").getFile(),
+                ValidateSchemaTest.class.getClassLoader().getResource("open-cli.properties").getFile(),
                 true, true);
     }
 

@@ -265,7 +265,7 @@ public class OnapCommandRegistrar {
         String errorNote = "";
         String usageNote = "\n\nTo enable a product version, use one of following methods:"
                 + "\n 1. set env variable CLI_PRODUCT_VERSION"
-                + "\n 2. set cli.product.version in onap.properties"
+                + "\n 2. set cli.product.version in open-cli.properties"
                 + "\n 3. in interactive mode, use the directive 'use <product version>'\n";
 
         if (!this.availableProductVersions.contains(configuredProductVersion)) {

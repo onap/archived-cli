@@ -282,7 +282,7 @@ public abstract class OnapCommand {
             // For auth type commands, login and logout logic is not required
             boolean isAuthRequired = !this.onapService.isNoAuth()
                     && "false".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue())
-                    && !this.getType().equals(CommandType.AUTH);
+                    && this.getType().equals(CommandType.CMD);
 
             if (!isCommandInternal()) {
                 this.authClient = new OnapAuthClient(

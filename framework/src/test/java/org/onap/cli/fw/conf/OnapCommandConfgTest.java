@@ -33,7 +33,7 @@ public class OnapCommandConfgTest {
     @Test
     public void isAuthIgnoredTest() throws IOException {
         Properties prps = new Properties();
-        prps.load(OnapCommandConfg.class.getClassLoader().getResourceAsStream("onap.properties"));
+        prps.load(OnapCommandConfg.class.getClassLoader().getResourceAsStream("open-cli.properties"));
         boolean auth = OnapCommandConfg.isAuthIgnored();
         Assert.assertTrue(auth == Boolean.valueOf(prps.getProperty("cli.ignore_auth")));
         Assert.assertTrue(OnapCommandConfg.isCookiesBasedAuth() == Boolean

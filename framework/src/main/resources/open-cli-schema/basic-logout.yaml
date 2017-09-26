@@ -9,5 +9,5 @@ version: cli-1.0
 type: auth
 
 service:
-  name: onap-cli
+  name: open-cli
   version: 1.0.0

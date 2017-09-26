@@ -16,14 +16,14 @@
 # limitations under the License.
 #*******************************************************************************
 
-if [ -z "$ONAP_CLI_HOME" ]
+if [ -z "$OPEN_CLI_HOME" ]
 then
-    echo "There is no ONAP_CLI_HOME"
+    echo "There is no OPEN_CLI_HOME"
     exit 1
 fi
 
-CLASSPATH=$ONAP_CLI_HOME:$ONAP_CLI_HOME/conf:$ONAP_CLI_HOME/docs
-for entry in "$ONAP_CLI_HOME/lib"/*
+CLASSPATH=$OPEN_CLI_HOME:$OPEN_CLI_HOME/conf:$OPEN_CLI_HOME/docs
+for entry in "$OPEN_CLI_HOME/lib"/*
 do
   CLASSPATH=$CLASSPATH:$entry
 done

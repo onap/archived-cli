@@ -20,7 +20,7 @@ where,
                         default, it is read from environment variable
                         HOST_PASSWORD. Secured.
 -m | --host-url          Onap MSB url. It is of type URL. By default, it
-                        is read from environment variable ONAP_MSB_URL.
+                        is read from environment variable OPEN_MSB_URL.
 -h | --help             Onap command help message. It is of type STRING.
                         By default, it is false.
 -v | --version          Onap command service version. It is of type

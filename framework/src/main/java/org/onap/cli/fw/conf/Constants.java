@@ -43,15 +43,7 @@ public class Constants {
 
     public static final String SSLCONTEST_TLS = "TLSV1.2";
     public static final String APPLICATION_JSON = "application/json";
-    public static final String X_AUTH_TOKEN = "x-auth-token";
 
-    public static final String AUTH_SERVICE = "cli.auth_service";
-    public static final String AUTH_SERVICE_VERSION = "v1";
-    public static final String TOKEN = "{\"userName\": \"%s\",\"password\": \"%s\"}";
-    public static final String MSB_URI = "/api/microservices/v1";
-    public static final String MSB_SERVICE_URI = MSB_URI + "/services/%s/version/%s";
-
-    public static final String API_GATEWAY = "cli.api_gateway";
     public static final String SERVICE_NAME = "cli.service_name";
 
     //http
@@ -127,11 +119,11 @@ public class Constants {
     public static final String DEFAULT_PARAMETER_OUTPUT_NO_AUTH = "no-auth";
 
     // Configuration properties
-    public static final String CONF = "onap.properties";
-    public static final String ONAP_IGNORE_AUTH = "cli.ignore_auth";
-    public static final String ONAP_CLI_VERSION = "cli.version";
-    public static final String ONAP_CLI_PRODUCT_VERSION = "cli.product.version";
-    public static final String ONAP_CLI_PRODUCT_VERSION_ENV_NAME = "CLI_PRODUCT_VERSION";
+    public static final String CONF = "open-cli.properties";
+    public static final String OPEN_IGNORE_AUTH = "cli.ignore_auth";
+    public static final String OPEN_CLI_VERSION = "cli.version";
+    public static final String OPEN_CLI_PRODUCT_VERSION = "cli.product.version";
+    public static final String OPEN_CLI_PRODUCT_VERSION_ENV_NAME = "CLI_PRODUCT_VERSION";
     public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
     public static final String EXCLUDE_PARAMS_INTERNAL_CMD = "cli.exclude_params_internal_cmd";
     public static final String NO_AUTH_DISABLE_INCLUDE_PARAMS_EXTERNAL_CMD = "cli.no_auth_disable_include_params_external_cmd";
@@ -144,7 +136,7 @@ public class Constants {
     public static final String PORTRAINT_COLUMN_NAME_PROPERTY = "property";
     public static final String PORTRAINT_COLUMN_NAME_VALUE = "value";
 
-    public static final String EXTERNAL_SCHEMA_DIRECTORY = "onap-cli-schema";
+    public static final String EXTERNAL_SCHEMA_DIRECTORY = "open-cli-schema";
     public static final String EXTERNAL_YAML_PATTERN = "/**/*.yaml";
     public static final String EXTERNAL_JSON_PATTERN = "/**/*.json";
     public static final String EXTERNAL_SCHEMA_PATH_PATERN = EXTERNAL_SCHEMA_DIRECTORY + EXTERNAL_YAML_PATTERN;
