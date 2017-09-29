@@ -198,7 +198,7 @@ public class OnapCommandUtilsTest {
         try {
             OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml");
         } catch (OnapCommandInvalidSchema e) {
-            assertTrue(e.getMessage().contains("0x0007::Command schema sample-test-schema.yaml is invalid"));
+            assertEquals("0x0007", e.getErrorCode());
         }
     }
 

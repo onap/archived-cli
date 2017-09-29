@@ -25,13 +25,13 @@ public class OnapCommandClientInitialzationFailed extends OnapCommandException {
     private static final long serialVersionUID = 8580121615330415000L;
     private static final String ERROR_CODE = "0x0021";
     private static final String ERROR_MESSAGE1 = "API client for the command ";
-    private static final String ERROR_MESSAGE2 = " is failed, ";
+    private static final String ERROR_MESSAGE2 = " is failed";
 
     public OnapCommandClientInitialzationFailed(String cmd, String error) {
-        super(ERROR_CODE, ERROR_MESSAGE1 + cmd + ERROR_MESSAGE2 + error);
+        super(ERROR_CODE, ERROR_MESSAGE1 + cmd + ERROR_MESSAGE2 + ", " + error);
     }
 
     public OnapCommandClientInitialzationFailed(String cmd, Throwable throwable) {
-        this(cmd, throwable.getMessage());
+        super(ERROR_CODE, ERROR_MESSAGE1 + cmd + ERROR_MESSAGE2, throwable);
     }
 }

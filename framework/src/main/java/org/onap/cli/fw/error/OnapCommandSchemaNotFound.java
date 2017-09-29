@@ -24,11 +24,15 @@ public class OnapCommandSchemaNotFound extends OnapCommandException {
 
     private static final long serialVersionUID = -3919580583845280200L;
 
+    private static final String ERROR_CODE = "0x0019";
+
+    private static final String ERROR_MSG = "Command schema is missing for command ";
+
     public OnapCommandSchemaNotFound(String cmdName) {
-        this(cmdName, new Exception(""));
+        super(ERROR_CODE, ERROR_MSG + cmdName);
     }
 
     public OnapCommandSchemaNotFound(String cmdName, Throwable throwable) {
-        super("0x0019", "Command schema " + cmdName + " is not found, " + throwable.getMessage());
+        super(ERROR_CODE, ERROR_MSG + cmdName, throwable);
     }
 }

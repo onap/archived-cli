@@ -108,7 +108,7 @@ public class OnapCommandRegistrarTest {
             registerar.get("Test2");
             fail("This should have thrown an exception");
         } catch (OnapCommandRegistrationFailed e) {
-            assertTrue(e.getMessage().contains("0x0018::Command Test2 is failed to register"));
+            assertEquals("0x0018", e.getErrorCode());
         }
     }
 

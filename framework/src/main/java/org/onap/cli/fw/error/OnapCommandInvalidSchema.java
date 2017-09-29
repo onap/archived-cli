@@ -24,16 +24,20 @@ public class OnapCommandInvalidSchema extends OnapCommandException {
 
     private static final long serialVersionUID = -3387652326582792833L;
 
+    private static final String ERROR_CODE = "0x0007";
+
+    private static final String ERROR_MSG = "Invalid command schema ";
+
     public OnapCommandInvalidSchema(String error) {
-        this("", error);
+        this(ERROR_CODE, error);
     }
 
     public OnapCommandInvalidSchema(String schema, String error) {
-        super("0x0007", "Command schema " + schema + " is invalid, " + error);
+        super(ERROR_CODE, ERROR_MSG + schema + ", " + error);
     }
 
     public OnapCommandInvalidSchema(String schema, Throwable throwable) {
-        this(schema, throwable.getMessage());
+        super(ERROR_CODE, ERROR_MSG + schema , throwable);
     }
 
 }

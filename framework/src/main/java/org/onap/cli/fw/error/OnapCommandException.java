@@ -16,6 +16,9 @@
 
 package org.onap.cli.fw.error;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Base command exception.
  *
@@ -23,6 +26,8 @@ package org.onap.cli.fw.error;
 public class OnapCommandException extends Exception {
 
     private static final long serialVersionUID = 2833124031431731711L;
+
+    private static Logger LOG = LoggerFactory.getLogger(OnapCommandException.class);
 
     /*
      * Command Error Code
@@ -70,4 +75,27 @@ public class OnapCommandException extends Exception {
         return message;
     }
 
+    public OnapCommandException(String errorCode, String errorMessage, Throwable e) {
+        this(errorCode, errorMessage + ", " + e.getMessage());
+        LOG.error(this.getMessage(), e);
+    }
+
+    public OnapCommandException(String errorCode, String errorMessage, Throwable e, long httpStatusCode) {
+        this(errorCode, errorMessage + ", " + e.getMessage(), httpStatusCode);
+        LOG.error(this.getMessage(), e);
+    }
+
+    public OnapCommandException(String errorCode, Throwable e, long httpStatusCode) {
+        this(errorCode, e.getMessage(), httpStatusCode);
+        LOG.error(this.getMessage(), e);
+    }
+
+    public OnapCommandException(String errorCode, Throwable e) {
+        this(errorCode, e.getMessage(), -1);
+        LOG.error(this.getMessage(), e);
+    }
+
+    public String getErrorCode() {
+        return this.errorCode;
+    }
 }

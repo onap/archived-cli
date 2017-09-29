@@ -24,11 +24,14 @@ public class OnapCommandHttpInvalidResponseBody extends OnapCommandException {
 
     private static final long serialVersionUID = 6676137916079057963L;
 
+    private static final String ERROR_CODE = "0x0028";
+    private static final String ERR_MSG = "Http response body does not have json entry ";
+
     public OnapCommandHttpInvalidResponseBody(String name, String error) {
-        super("0x0028", "Http response body does not have json entry " + name + ", " + error);
+        super(ERROR_CODE, ERR_MSG + name + ", " + error);
     }
 
     public OnapCommandHttpInvalidResponseBody(String name, Throwable throwable) {
-        this(name, throwable.getMessage());
+        super(ERROR_CODE, ERR_MSG + name, throwable);
     }
 }

@@ -35,10 +35,10 @@ public class OnapCommandDiscoveryFailed extends OnapCommandException {
     }
 
     public OnapCommandDiscoveryFailed(String directory, String fileName) {
-        this(directory, fileName, new Exception(""));
+        super(ERROR_CODE, ERROR_MESSAGE4 + fileName + ERROR_MESSAGE3 + directory + "'");
     }
 
     public OnapCommandDiscoveryFailed(String directory, String fileName, Throwable throwable) {
-        super(ERROR_CODE, ERROR_MESSAGE4 + fileName + ERROR_MESSAGE3 + directory + "' , " + throwable.getMessage());
+        super(ERROR_CODE, ERROR_MESSAGE4 + fileName + ERROR_MESSAGE3 + directory + "'", throwable);
     }
 }

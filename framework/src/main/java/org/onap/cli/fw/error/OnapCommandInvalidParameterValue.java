@@ -29,7 +29,7 @@ public class OnapCommandInvalidParameterValue extends OnapCommandException {
     }
 
     public OnapCommandInvalidParameterValue(String paramName, Throwable throwable) {
-        super("0x0028", "Parameter " + paramName + " value is invalid, " + throwable.getMessage());
+        super("0x0028", "Parameter " + paramName + " value is invalid", throwable);
     }
 
 }

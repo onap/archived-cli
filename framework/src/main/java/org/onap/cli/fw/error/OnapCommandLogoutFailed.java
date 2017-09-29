@@ -24,14 +24,14 @@ public class OnapCommandLogoutFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 1150649507734289032L;
     private static final String ERROR_CODE = "0x0010";
-    private static final String ERROR_MESSAGE1 = "Logout failed, ";
+    private static final String ERROR_MESSAGE1 = "Logout failed";
 
     public OnapCommandLogoutFailed(String error) {
-        super(ERROR_CODE, ERROR_MESSAGE1 + error);
+        super(ERROR_CODE, ERROR_MESSAGE1 +", " + error);
     }
 
     public OnapCommandLogoutFailed(Throwable throwable) {
-        this(throwable.getMessage());
+        super(ERROR_CODE, ERROR_MESSAGE1, throwable);
     }
 
     public OnapCommandLogoutFailed(int statusCode) {

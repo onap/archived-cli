@@ -23,13 +23,15 @@ package org.onap.cli.fw.error;
 public class OnapCommandResultMapProcessingFailed extends OnapCommandException {
     private static final long serialVersionUID = 488775545436113019L;
 
-    private static final String errorCode = "0x0028";
+    private static final String ERROR_CODE = "0x0028";
+
+    private static final String ERROR_MSG = "Failed to parse the result format of command ";
 
     public OnapCommandResultMapProcessingFailed(String resultMap, String error) {
-        super(errorCode, "Failed to process the result map " + resultMap + " in http section,  " + error);
+        super(ERROR_CODE, ERROR_MSG + resultMap + ", " + error);
     }
 
     public OnapCommandResultMapProcessingFailed(String resultMap, Throwable throwable) {
-        this(resultMap, throwable.getMessage());
+        super(ERROR_CODE, ERROR_MSG + resultMap, throwable);
     }
 }

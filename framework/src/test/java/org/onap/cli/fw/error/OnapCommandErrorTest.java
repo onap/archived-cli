@@ -27,7 +27,7 @@ public class OnapCommandErrorTest {
         OnapCommandDiscoveryFailed failed = new OnapCommandDiscoveryFailed("name");
         assertEquals("0x0010::Failed auto discover schema files from name under class path, ", failed.getMessage());
         failed = new OnapCommandDiscoveryFailed("directory", "name");
-        assertEquals("0x0010::Failed auto generate json file 'name' under class path directory 'directory' , ",
+        assertEquals("0x0010::Failed auto generate json file 'name' under class path directory 'directory'",
                 failed.getMessage());
     }
 
@@ -40,8 +40,8 @@ public class OnapCommandErrorTest {
     @Test
     public void onapCommandResultMapProcessingFailedTest() {
         OnapCommandResultMapProcessingFailed failed = new OnapCommandResultMapProcessingFailed("name",
-                new Exception(""));
-        assertEquals("0x0028::Failed to process the result map name in http section,  ", failed.getMessage());
+                new Exception("failed"));
+        assertEquals("0x0028::Failed to parse the result format of command name, failed", failed.getMessage());
     }
 
     @Test
@@ -155,7 +155,7 @@ public class OnapCommandErrorTest {
     public void onapCommandInvalidSchemaTest() {
         OnapCommandInvalidSchema failed = new OnapCommandInvalidSchema("Schema", "Failed");
 
-        assertEquals("0x0007::Command schema Schema is invalid, Failed", failed.getMessage());
+        assertEquals("0x0007::Invalid command schema Schema, Failed", failed.getMessage());
     }
 
     @Test
@@ -185,7 +185,7 @@ public class OnapCommandErrorTest {
         assertEquals("0x0010::Logout failed, Failed", failed.getMessage());
 
         failed = new OnapCommandLogoutFailed(200);
-        assertEquals("200::0x0010::Logout failed, ", failed.getMessage());
+        assertEquals("200::0x0010::Logout failed", failed.getMessage());
     }
 
     @Test
@@ -237,7 +237,7 @@ public class OnapCommandErrorTest {
     public void onapCommandRegistrationFailedTest() {
         OnapCommandRegistrationFailed failed = new OnapCommandRegistrationFailed("Test", "error");
 
-        assertEquals("0x0018::Command Test is failed to register, error", failed.getMessage());
+        assertEquals("0x0018::Failed to register the command Test, error", failed.getMessage());
     }
 
     @Test
@@ -245,14 +245,14 @@ public class OnapCommandErrorTest {
         OnapCommandResultInitialzationFailed failed = new OnapCommandResultInitialzationFailed("Test",
                 new Exception("error"));
 
-        assertEquals("0x0022::Command Test result format is failed, error", failed.getMessage());
+        assertEquals("0x0022::Failed to parse the result format of command Test, error", failed.getMessage());
     }
 
     @Test
     public void onapCommandSchemaNotFoundTest() {
         OnapCommandSchemaNotFound failed = new OnapCommandSchemaNotFound("Test");
 
-        assertEquals("0x0019::Command schema Test is not found, ", failed.getMessage());
+        assertEquals("0x0019::Command schema is missing for command Test", failed.getMessage());
     }
 
     @Test

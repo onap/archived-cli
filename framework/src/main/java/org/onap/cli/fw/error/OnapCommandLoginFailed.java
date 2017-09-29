@@ -25,17 +25,17 @@ public class OnapCommandLoginFailed extends OnapCommandException {
     private static final long serialVersionUID = 5518154493762956959L;
 
     private static final String ERROR_CODE = "0x0009";
-    private static final String ERROR_MESSAGE1 = "Login failed, ";
+    private static final String ERROR_MESSAGE1 = "Login failed";
 
     public OnapCommandLoginFailed(String error) {
-        super(ERROR_CODE, ERROR_MESSAGE1 + error);
+        super(ERROR_CODE, ERROR_MESSAGE1 + ", " + error);
     }
 
     public OnapCommandLoginFailed(String error, int httpStatus) {
-        super(ERROR_CODE, ERROR_MESSAGE1 + error, httpStatus);
+        super(ERROR_CODE, ERROR_MESSAGE1 + ", " + error, httpStatus);
     }
 
     public OnapCommandLoginFailed(Throwable throwable) {
-        this(throwable.getMessage());
+        super(ERROR_CODE, ERROR_MESSAGE1, throwable);
     }
 }

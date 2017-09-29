@@ -24,11 +24,15 @@ public class OnapCommandResultInitialzationFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 8580121615330415123L;
 
+    private static final String ERROR_CODE = "0x0022";
+
+    private static final String ERROR_MSG = "Failed to parse the result format of command ";
+
     public OnapCommandResultInitialzationFailed(String cmd, String error) {
-        super("0x0022", "Command " + cmd + " result format is failed, " + error);
+        super(ERROR_CODE, ERROR_MSG + cmd + ", " + error);
     }
 
     public OnapCommandResultInitialzationFailed(String cmd, Throwable throwable) {
-        this(cmd, throwable.getMessage());
+        super(ERROR_CODE, ERROR_MSG + cmd , throwable);
     }
 }

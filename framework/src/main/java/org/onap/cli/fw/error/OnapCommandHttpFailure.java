@@ -23,22 +23,22 @@ package org.onap.cli.fw.error;
 public class OnapCommandHttpFailure extends OnapCommandException {
     private static final long serialVersionUID = 488775545436993345L;
 
-    private static final String ERROR = "0x0025";
+    private static final String ERROR_CODE = "0x0025";
 
     public OnapCommandHttpFailure(String error, long httpStatus) {
-        super(ERROR, error, httpStatus);
+        super(ERROR_CODE, error, httpStatus);
     }
 
     public OnapCommandHttpFailure(String error) {
-        super(ERROR, error);
+        super(ERROR_CODE, error);
     }
 
     public OnapCommandHttpFailure(Throwable throwable) {
-        this(throwable.getMessage());
+        super(ERROR_CODE, throwable);
     }
 
     public OnapCommandHttpFailure(Throwable throwable, long httpStatus) {
-        this(throwable.getMessage(), httpStatus);
+        super(ERROR_CODE, throwable, httpStatus);
     }
 
 }

@@ -24,11 +24,15 @@ public class OnapCommandRegistrationFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 5513297861129088460L;
 
+    private static final String ERROR_CODE = "0x0018";
+
+    private static final String ERROR_MSG = "Failed to register the command ";
+
     public OnapCommandRegistrationFailed(String cmdName, String error) {
-        super("0x0018", "Command " + cmdName + " is failed to register, " + error);
+        super(ERROR_CODE,  ERROR_MSG + cmdName + ", " + error);
     }
 
     public OnapCommandRegistrationFailed(String cmdName, Throwable throwable) {
-        this(cmdName, throwable.getMessage());
+        super(ERROR_CODE,  ERROR_MSG + cmdName,  throwable);
     }
 }

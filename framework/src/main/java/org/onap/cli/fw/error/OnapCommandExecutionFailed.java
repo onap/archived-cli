@@ -25,15 +25,15 @@ public class OnapCommandExecutionFailed extends OnapCommandException {
 
     private static final String ERROR_CODE = "0x0001";
     private static final String ERROR_MESSAGE1 = "Command ";
-    private static final String ERROR_MESSAGE2 = " failed to execute, ";
-    private static final String ERROR_MESSAGE3 = "Failed to retrive service url, ";
+    private static final String ERROR_MESSAGE2 = " failed to execute";
+    private static final String ERROR_MESSAGE3 = "Failed to retrive service url";
 
     public OnapCommandExecutionFailed(String cmdName, String  error, long httpStatus) {
-        super(ERROR_CODE, ERROR_MESSAGE1 + cmdName + ERROR_MESSAGE2 + error, httpStatus);
+        super(ERROR_CODE, ERROR_MESSAGE1 + cmdName + ERROR_MESSAGE2 + ", " + error, httpStatus);
     }
 
     public OnapCommandExecutionFailed(String cmdName, Throwable throwable, long httpStatus) {
-        this(cmdName,throwable.getMessage(),httpStatus);
+        super(ERROR_CODE, ERROR_MESSAGE1 + cmdName + ERROR_MESSAGE2 ,throwable, httpStatus);
     }
 
     public OnapCommandExecutionFailed(String  error) {
@@ -41,15 +41,15 @@ public class OnapCommandExecutionFailed extends OnapCommandException {
     }
 
     public OnapCommandExecutionFailed(Throwable throwable, String  details) {
-        this(ERROR_MESSAGE3 + details + ", " + throwable.getMessage());
+        super(ERROR_CODE, ERROR_MESSAGE3 + ", " +details, throwable);
     }
 
 
     public OnapCommandExecutionFailed(String cmdName, String  error) {
-        super(ERROR_CODE, ERROR_MESSAGE1 + cmdName + ERROR_MESSAGE2 + error);
+        super(ERROR_CODE, ERROR_MESSAGE1 + cmdName + ERROR_MESSAGE2 + ", " + error);
     }
 
     public OnapCommandExecutionFailed(String cmd, Throwable throwable) {
-        this(cmd , throwable.getMessage());
+        super(ERROR_CODE, ERROR_MESSAGE1 + cmd + ERROR_MESSAGE2 , throwable);
     }
 }

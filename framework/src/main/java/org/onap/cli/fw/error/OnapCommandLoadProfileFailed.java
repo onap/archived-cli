@@ -24,15 +24,18 @@ public class OnapCommandLoadProfileFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 8580121615330415123L;
 
+    private static final String ERROR_CODE = "0x1301";
+
+    private static final String ERROR_MSG = "Failed to load profile details";
     /**
      * Command result empty.
      */
     public OnapCommandLoadProfileFailed(String error) {
-        super("0x1301", "Failed to load profile details, " + error);
+        super(ERROR_CODE, ERROR_MSG + ", " + error);
     }
 
     public OnapCommandLoadProfileFailed(Throwable error) {
-        this(error.getMessage());
+        super(ERROR_CODE, ERROR_MSG, error);
     }
 
 }

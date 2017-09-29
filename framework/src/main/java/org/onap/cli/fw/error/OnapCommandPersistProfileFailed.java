@@ -16,8 +16,6 @@
 
 package org.onap.cli.fw.error;
 
-import java.io.IOException;
-
 /**
  * Command profile persistence failed.
  *
@@ -26,14 +24,18 @@ public class OnapCommandPersistProfileFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 8580121615330415123L;
 
+    private static final String ERROR_CODE = "0x1302";
+
+    private static final String ERROR_MSG = "Failed to persist profile details";
+
     /**
      * Command result empty.
      */
     public OnapCommandPersistProfileFailed(String error) {
-        super("0x1302", "Failed to persist profile details, " + error);
+        super(ERROR_CODE, ERROR_MSG + ", " + error);
     }
 
     public OnapCommandPersistProfileFailed(Throwable e1) {
-        this(e1.getMessage());
+        super(ERROR_CODE, ERROR_MSG, e1);
     }
 }
