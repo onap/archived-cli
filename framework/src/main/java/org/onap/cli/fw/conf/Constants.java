@@ -196,7 +196,7 @@ public class Constants {
 
     public static final String PARAM_CACHE_FILE_NAME = "global-profile";
 
-    public static final String CLI_DEV_MODE = "CLI_DEV";
+    public static final String DISCOVER_ALWAYS = "discover_always";
 
     private Constants() {
     }

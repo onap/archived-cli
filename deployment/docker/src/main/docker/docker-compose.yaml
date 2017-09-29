@@ -24,7 +24,6 @@ services:
     tty: true
     image: onap/cli
     environment:
-      CLI_DEV: "true"
       CLI_MODE: 'console'
       ONAP_CLI_DEBUG: "true"
     expose:

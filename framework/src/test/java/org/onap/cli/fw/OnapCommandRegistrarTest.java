@@ -147,9 +147,6 @@ public class OnapCommandRegistrarTest {
         OnapCommandRegistrar.getRegistrar().getParamCache();
         OnapCommandRegistrar.getRegistrar().removeParamCache("a");
 
-        OnapCommandRegistrar.getRegistrar().setDevMode(true);
-        OnapCommandRegistrar.getRegistrar().isDevMode();
-
         OnapCommandRegistrar.getRegistrar().isInteractiveMode();
         OnapCommandRegistrar.getRegistrar().setInteractiveMode(false);
 

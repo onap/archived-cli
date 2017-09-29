@@ -1682,7 +1682,7 @@ public class OnapCommandUtils {
      */
     public static List<ExternalSchema> loadExternalSchemasFromJson() throws OnapCommandException {
         List<ExternalSchema> schemas = new ArrayList<>();
-        if (OnapCommandRegistrar.getRegistrar().isDevMode() || !isJsonFileDiscovered()) {
+        if (OnapCommandConfg.isDiscoverAlways() || !isJsonFileDiscovered()) {
             schemas = findAllExternalSchemas();
             if (!schemas.isEmpty()) {
                 persist(schemas);

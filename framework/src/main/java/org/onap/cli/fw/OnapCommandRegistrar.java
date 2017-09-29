@@ -58,8 +58,6 @@ public class OnapCommandRegistrar {
 
     private boolean isInteractiveMode = false;
 
-    private boolean isDevMode = Boolean.parseBoolean(System.getenv(Constants.CLI_DEV_MODE));
-
     private OnapCommandParameterCache paramCache = OnapCommandParameterCache.getInstance();
 
     public boolean isInteractiveMode() {
@@ -80,14 +78,6 @@ public class OnapCommandRegistrar {
 
     public void removeParamCache(String paramName) {
         paramCache.remove(this.getEnabledProductVersion(), paramName);
-    }
-
-    public boolean isDevMode() {
-        return isDevMode;
-    }
-
-    public void setDevMode(boolean isDevMode) {
-        this.isDevMode = isDevMode;
     }
 
     public void setProfile(String profileName) {

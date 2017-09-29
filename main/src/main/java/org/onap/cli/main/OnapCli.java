@@ -37,6 +37,8 @@ import org.onap.cli.fw.output.ResultType;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jline.TerminalFactory;
 import jline.console.ConsoleReader;
@@ -46,6 +48,8 @@ import jline.console.ConsoleReader;
  *
  */
 public class OnapCli {
+
+    private static Logger LOG = LoggerFactory.getLogger(OnapCli.class);
 
     private List<String> args = new ArrayList<>();
 
@@ -68,14 +72,8 @@ public class OnapCli {
     }
 
     private void print(Throwable throwable) {
-        System.out.println(throwable.getMessage());
-        try {
-            if (OnapCommandRegistrar.getRegistrar().isDevMode()) {
-                throwable.printStackTrace();  // NOSONAR
-            }
-        } catch (OnapCommandException e) {
-            System.out.println(e);
-        }
+        this.print(throwable.getMessage());
+        LOG.error(throwable.getMessage(), throwable);
     }
 
     private String getShortOption(String opt) {

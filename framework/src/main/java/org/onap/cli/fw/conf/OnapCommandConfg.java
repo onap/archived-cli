@@ -62,6 +62,19 @@ public final class OnapCommandConfg {
         return false;
     }
 
+    /**
+     * is discovery should do every time.
+     *
+     * @return boolean
+     */
+    public static boolean isDiscoverAlways() {
+        if ("true".equals(prps.getProperty(Constants.DISCOVER_ALWAYS))) {
+            return true;
+        }
+
+        return false;
+    }
+
     public static String getVersion() {
         return prps.getProperty(Constants.ONAP_CLI_VERSION);
     }
