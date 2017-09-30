@@ -22,9 +22,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
@@ -50,21 +55,16 @@ import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
 import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
+import org.onap.cli.fw.info.OnapCommandInfo;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.ParameterType;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.run.OnapCommandExecutor;
 import org.springframework.core.io.Resource;
 
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import mockit.Invocation;
+import mockit.Mock;
+import mockit.MockUp;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnapCommandUtilsTest {
@@ -432,6 +432,22 @@ public class OnapCommandUtilsTest {
 
         OnapCommandUtils.help(cmd);
 
+    }
+
+
+    @Test
+    public void test() throws OnapCommandException {
+        OnapCommandSampleInfo cmd = new OnapCommandSampleInfo();
+        OnapCommandUtils.loadSchema(cmd, "sample-test-info.yaml", true, false);
+        OnapCommandInfo info = cmd.getInfo();
+        assert info != null;
+    }
+
+    @OnapCommandSchema(name = "sample-test-info", version = "cli-1.0", schema = "sample-test-info.yaml")
+    class OnapCommandSampleInfo extends OnapCommand {
+        @Override
+        protected void run() throws OnapCommandException {
+        }
     }
 
     @OnapCommandSchema(name = "sample-test", version = "cli-1.0", schema = "sample-test-schema.yaml")

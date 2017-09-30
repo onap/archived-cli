@@ -27,6 +27,8 @@ public class Constants {
     public static final String TOP_LEVEL_MANDATORY_LIST ="cli.schema.top_level_mandatory_list";
     public static final String SERVICE_PARAMS_LIST ="cli.schema.service_params_list";
     public static final String SERVICE_PARAMS_MANDATORY_LIST ="cli.schema.service_params_mandatory_list";
+    public static final String INFO_PARAMS_LIST ="cli.schema.info_params_list";
+    public static final String INFO_PARAMS_MANDATORY_LIST ="cli.schema.info_params_mandatory_list";
     public static final String INPUT_PARAMS_LIST ="cli.schema.input_params_list";
     public static final String INPUT_PARAMS_MANDATORY_LIST ="cli.schema.input_params_mandatory_list";
     public static final String RESULT_PARAMS_LIST ="cli.schema.result_params_list";
@@ -39,7 +41,7 @@ public class Constants {
     public static final String BOOLEAN_VALUE ="cli.schema.boolean_values";
     public static final String AUTH_VALUES="cli.schema.auth_values";
     public static final String MODE_VALUES="cli.schema.mode_values";
-
+    public static final String COMMAND_TYPE_VALUES="cli.command.type";
 
     public static final String SSLCONTEST_TLS = "TLSV1.2";
     public static final String APPLICATION_JSON = "application/json";
@@ -59,6 +61,13 @@ public class Constants {
     public static final String SAMPLE_RESPONSE = "sample_response";
     public static final String SUCCESS_CODES = "success_codes";
     public static final String RESULT_MAP = "result_map";
+
+    //Info
+    public static final String INFO = "info";
+    public static final String INFO_PRODUCT = "product";
+    public static final String INFO_SERVICE = "service";
+    public static final String INFO_TYPE = "type";
+    public static final String INFO_AUTHOR = "author";
 
     //swagger
     public static final String EXECUTOR = "exec";

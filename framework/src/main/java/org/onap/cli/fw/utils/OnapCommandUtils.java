@@ -24,6 +24,7 @@ import static org.onap.cli.fw.conf.Constants.BODY;
 import static org.onap.cli.fw.conf.Constants.BOOLEAN_VALUE;
 import static org.onap.cli.fw.conf.Constants.CLIENT;
 import static org.onap.cli.fw.conf.Constants.COMMAND_TYPE;
+import static org.onap.cli.fw.conf.Constants.COMMAND_TYPE_VALUES;
 import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY;
 import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY_JSON_PATTERN;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_HOST_URL;
@@ -52,6 +53,13 @@ import static org.onap.cli.fw.conf.Constants.HTTP_REQUEST_MANDATORY_PARAMS;
 import static org.onap.cli.fw.conf.Constants.HTTP_REQUEST_PARAMS;
 import static org.onap.cli.fw.conf.Constants.HTTP_SECTIONS;
 import static org.onap.cli.fw.conf.Constants.HTTP_SUCCESS_CODE_INVALID;
+import static org.onap.cli.fw.conf.Constants.INFO;
+import static org.onap.cli.fw.conf.Constants.INFO_AUTHOR;
+import static org.onap.cli.fw.conf.Constants.INFO_PARAMS_LIST;
+import static org.onap.cli.fw.conf.Constants.INFO_PARAMS_MANDATORY_LIST;
+import static org.onap.cli.fw.conf.Constants.INFO_PRODUCT;
+import static org.onap.cli.fw.conf.Constants.INFO_SERVICE;
+import static org.onap.cli.fw.conf.Constants.INFO_TYPE;
 import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_LIST;
 import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_MANDATORY_LIST;
 import static org.onap.cli.fw.conf.Constants.IS_OPTIONAL;
@@ -138,6 +146,7 @@ import org.onap.cli.fw.error.OnapCommandResultMapProcessingFailed;
 import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
+import org.onap.cli.fw.info.OnapCommandInfo;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.ParameterType;
 import org.onap.cli.fw.input.cache.Param;
@@ -369,7 +378,7 @@ public class OnapCommandUtils {
         }
 
 
-        List<String> sections = Arrays.asList(NAME, DESCRIPTION, VERSION, COMMAND_TYPE, SERVICE,
+        List<String> sections = Arrays.asList(NAME, DESCRIPTION, INFO, VERSION, COMMAND_TYPE, SERVICE,
                 DEFAULT_PARAMETERS, PARAMETERS, RESULTS);
 
         for (String key : sections) {
@@ -401,6 +410,64 @@ public class OnapCommandUtils {
                     Object type = values.get(key);
                     if (type != null) {
                         cmd.setType(CommandType.get(type.toString()));
+                    }
+                    break;
+
+                case INFO:
+                    Map<String, String> infoMap = (Map<String, String>) values.get(key);
+
+                    if (infoMap != null) {
+                        if (validate) {
+                            validateTags(exceptionList, (Map<String, Object>) values.get(key),
+                                    OnapCommandConfg.getSchemaAttrInfo(INFO_PARAMS_LIST),
+                                    OnapCommandConfg.getSchemaAttrInfo(INFO_PARAMS_MANDATORY_LIST), INFO);
+
+                            HashMap<String, String> validationMap = new HashMap<>();
+                            validationMap.put(INFO_TYPE, COMMAND_TYPE_VALUES);
+
+                            for (String secKey : validationMap.keySet()) {
+                                if (infoMap.containsKey(secKey)) {
+                                    Object obj = infoMap.get(secKey);
+                                    if (obj == null) {
+                                        exceptionList.add("Attribute '" + secKey + "' under '" + INFO + "' is empty");
+                                    } else {
+                                        String value = String.valueOf(obj);
+                                        if (!OnapCommandConfg.getSchemaAttrInfo(validationMap.get(secKey)).contains(value)) {
+                                            exceptionList.add("Attribute '" + secKey + "' contains invalid value. Valide values are "
+                                                    + OnapCommandConfg.getSchemaAttrInfo(validationMap.get(key))); //
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        OnapCommandInfo info = new OnapCommandInfo();
+
+                        for (Map.Entry<String, String> entry1 : infoMap.entrySet()) {
+                            String key1 = entry1.getKey();
+
+                            switch (key1) {
+                                case INFO_PRODUCT:
+                                    info.setProduct(infoMap.get(key1));
+                                    break;
+
+                                case INFO_SERVICE:
+                                    info.setService(infoMap.get(key1).toString());
+                                    break;
+
+                                case INFO_TYPE:
+                                    Object obj = infoMap.get(key1);
+                                    info.setCommandType(CommandType.get(obj.toString()));
+                                    break;
+
+                                case INFO_AUTHOR:
+                                    Object mode = infoMap.get(key1);
+                                    info.setAuthor(mode.toString());
+                                    break;
+                            }
+                        }
+
+                        cmd.setInfo(info);
                     }
                     break;
 
@@ -1863,25 +1930,26 @@ public class OnapCommandUtils {
         }
         return schemaStr;
     }
-    
+
     /**
      * Copy the parameters across the commands, mainly used for catalog, login and logout commands
-     * 
-     * @throws OnapCommandInvalidParameterValue 
+     *
+     * @throws OnapCommandInvalidParameterValue
      */
     public static void copyParamsFrom(OnapCommand from, OnapCommand to) throws OnapCommandInvalidParameterValue {
-    	for (OnapCommandParameter param: to.getParameters()) {
-    		
-    		OnapCommandParameter fromParam = from.getParametersMap().get(param.getName());
-    		
-    		if (fromParam != null) {
-    			param.setValue(fromParam.getValue());
-    			param.setDefaultValue(fromParam.getDefaultValue());
-    		} else if (param.getName().equalsIgnoreCase(Constants.CATALOG_SERVICE_NAME)) { // for catalog cmd
-    			param.setValue(from.getService().getName());
-    		} else if (param.getName().equalsIgnoreCase(Constants.CATALOG_SERVICE_VERSION)) {  // for catalog cmd
-    			param.setValue(from.getService().getVersion());
-    		}
-    	}
+        for (OnapCommandParameter param: to.getParameters()) {
+
+            OnapCommandParameter fromParam = from.getParametersMap().get(param.getName());
+
+            if (fromParam != null) {
+                param.setValue(fromParam.getValue());
+                param.setDefaultValue(fromParam.getDefaultValue());
+            } else if (param.getName().equalsIgnoreCase(Constants.CATALOG_SERVICE_NAME)) { // for catalog cmd
+                param.setValue(from.getService().getName());
+            } else if (param.getName().equalsIgnoreCase(Constants.CATALOG_SERVICE_VERSION)) {  // for catalog cmd
+                param.setValue(from.getService().getVersion());
+            }
+        }
     }
 }
+

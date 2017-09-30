@@ -38,6 +38,7 @@ import org.onap.cli.fw.error.OnapCommandParameterNameConflict;
 import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
 import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
 import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
+import org.onap.cli.fw.info.OnapCommandInfo;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
@@ -56,6 +57,8 @@ public abstract class OnapCommand {
     private String cmdName;
 
     private String cmdSchemaName;
+
+    private OnapCommandInfo info;
 
     private String productVersion;
 
@@ -93,6 +96,14 @@ public abstract class OnapCommand {
 
     public void setName(String name) {
         this.cmdName = name;
+    }
+
+    public OnapCommandInfo getInfo() {
+        return info;
+    }
+
+    public void setInfo(OnapCommandInfo info) {
+        this.info = info;
     }
 
     public boolean isCommandInternal() {
