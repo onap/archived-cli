@@ -17,13 +17,13 @@
 package org.onap.cli.fw.error;
 
 /**
- * Command not registered in MSB.
+ * Command not registered in catalog.
  *
  */
 public class OnapCommandClientInitialzationFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 8580121615330415000L;
-    private static final String ERROR_CODE = "0x0021";
+    private static final String ERROR_CODE = "0x5001";
     private static final String ERROR_MESSAGE1 = "API client for the command ";
     private static final String ERROR_MESSAGE2 = " is failed";
 

@@ -36,7 +36,7 @@ public class PrintDirectionTest {
         try {
             PrintDirection.get("name");
         } catch (OnapCommandInvalidPrintDirection e) {
-            assertTrue("0x0004::Print direction name is invalid".equals(e.getMessage()));
+            assertTrue("0x8003::Print direction name is invalid".equals(e.getMessage()));
         }
 
     }

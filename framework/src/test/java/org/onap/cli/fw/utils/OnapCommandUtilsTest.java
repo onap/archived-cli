@@ -109,7 +109,7 @@ public class OnapCommandUtilsTest {
         } catch (OnapCommandInvalidSchema e) {
             fail("Test should not have thrown this exception : " + e.getMessage());
         } catch (OnapCommandSchemaNotFound e) {
-            assertEquals("0x0019::Command schema sample-test-schema1.yaml is not found", e.getMessage());
+            assertEquals("0xb002::Command schema sample-test-schema1.yaml is not found", e.getMessage());
         }
     }
 
@@ -121,7 +121,7 @@ public class OnapCommandUtilsTest {
         } catch (OnapCommandInvalidSchemaVersion e) {
             fail("Test should not have thrown this exception : " + e.getMessage());
         } catch (OnapCommandInvalidSchema e) {
-            assertTrue(e.getMessage().contains("0x0007::Command schema sample-test-invalid-schema.yaml is invalid"));
+            assertTrue(e.getMessage().contains("0xb001::Command schema sample-test-invalid-schema.yaml is invalid"));
         } catch (OnapCommandSchemaNotFound e) {
             fail("Test should not have thrown this exception : " + e.getMessage());
         }
@@ -133,7 +133,7 @@ public class OnapCommandUtilsTest {
         try {
             map = OnapCommandUtils.validateSchemaVersion("sample-test-schema.yaml", "1.1");
         } catch (OnapCommandInvalidSchemaVersion e) {
-            assertEquals("0x0008::Command schema open_cli_schema_version 1.0 is invalid or missing", e.getMessage());
+            assertEquals("0xb003::Command schema open_cli_schema_version 1.0 is invalid or missing", e.getMessage());
         } catch (OnapCommandInvalidSchema e) {
             fail("Test should not have thrown this exception : " + e.getMessage());
         } catch (OnapCommandSchemaNotFound e) {
@@ -198,7 +198,7 @@ public class OnapCommandUtilsTest {
         try {
             OnapCommandUtils.loadSchema(cmd, "sample-test-schema.yaml");
         } catch (OnapCommandInvalidSchema e) {
-            assertEquals("0x0007", e.getErrorCode());
+            assertEquals("0xb001", e.getErrorCode());
         }
     }
 
@@ -210,7 +210,7 @@ public class OnapCommandUtilsTest {
             OnapCommandExecutor exe = cmd.getExecutor();
             assertTrue(exe != null);
         } catch (OnapCommandInvalidSchema e) {
-            assertTrue(e.getMessage().contains("0x0007::Command schema sample-test-schema.yaml is invalid"));
+            assertTrue(e.getMessage().contains("0xb001::Command schema sample-test-schema.yaml is invalid"));
         }
     }
 
@@ -224,7 +224,7 @@ public class OnapCommandUtilsTest {
                 | OnapCommandInvalidParameterType | OnapCommandInvalidPrintDirection
                 | OnapCommandInvalidResultAttributeScope | OnapCommandSchemaNotFound | OnapCommandInvalidSchema
                 | OnapCommandInvalidSchemaVersion e) {
-            assertTrue(e.getMessage().contains("0x0007::Command schema sample-test-schema.yaml is invalid"));
+            assertTrue(e.getMessage().contains("0xb001::Command schema sample-test-schema.yaml is invalid"));
         }
     }
 
@@ -343,7 +343,7 @@ public class OnapCommandUtilsTest {
         try {
             input2 = OnapCommandUtils.populateParameters(params, input);
         } catch (OnapCommandParameterNotFound e) {
-            assertEquals("0x0026::Command input parameter body is not valid", e.getMessage());
+            assertEquals("0x7005::Command input parameter body is not valid", e.getMessage());
         }
 
     }
@@ -371,7 +371,7 @@ public class OnapCommandUtilsTest {
             input1 = OnapCommandUtils.populateOutputs(params, output);
         } catch (OnapCommandHttpInvalidResponseBody e) {
             assertEquals(
-                    "0x0028::Http response body does not have json entry {$.serviceName, Missing property in path $['{$']",
+                    "0x3004::Http response body does not have json entry {$.serviceName, Missing property in path $['{$']",
                     e.getMessage());
         }
         output.setBody("{}");

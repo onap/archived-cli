@@ -25,6 +25,6 @@ public class OnapCommandOutputFormatNotsupported extends OnapCommandException {
     private static final long serialVersionUID = 2429471829315901896L;
 
     public OnapCommandOutputFormatNotsupported(String format) {
-        super("0x0013", "Command  does not support the output format " + format);
+        super("0x8005", "Command  does not support the output format " + format);
     }
 }

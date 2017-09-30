@@ -24,7 +24,7 @@ public class OnapCommandInvalidSchema extends OnapCommandException {
 
     private static final long serialVersionUID = -3387652326582792833L;
 
-    private static final String ERROR_CODE = "0x0007";
+    private static final String ERROR_CODE = "0xb001";
 
     private static final String ERROR_MSG = "Invalid command schema ";
 

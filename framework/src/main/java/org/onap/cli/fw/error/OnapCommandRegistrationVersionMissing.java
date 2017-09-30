@@ -25,6 +25,6 @@ public class OnapCommandRegistrationVersionMissing extends OnapCommandException 
     private static final long serialVersionUID = 5513297861129088463L;
 
     public OnapCommandRegistrationVersionMissing(String cmdName) {
-        super("0x0031", "Command " + cmdName + " version is missing");
+        super("0x2003", "Command " + cmdName + " version is missing");
     }
 }

@@ -25,7 +25,7 @@ public class OnapCommandParameterOptionConflict extends OnapCommandException {
     private static final long serialVersionUID = -3107017890769007297L;
 
     public OnapCommandParameterOptionConflict(String name) {
-        super("0x0017", "Parameter option " + name + " is in conflict, only one option is allowed with given name");
+        super("0x7006", "Parameter option " + name + " is in conflict, only one option is allowed with given name");
 
     }
 }

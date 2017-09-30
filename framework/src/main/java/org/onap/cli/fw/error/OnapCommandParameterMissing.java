@@ -25,7 +25,7 @@ public class OnapCommandParameterMissing extends OnapCommandException {
     private static final long serialVersionUID = 2821256032317061066L;
 
     public OnapCommandParameterMissing(String paramName) {
-        super("0x0015", "Parameter " + paramName + " is mandatory");
+        super("0x7003", "Parameter " + paramName + " is mandatory");
 
     }
 

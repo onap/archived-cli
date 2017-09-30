@@ -24,7 +24,7 @@ public class OnapCommandPersistProfileFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 8580121615330415123L;
 
-    private static final String ERROR_CODE = "0x1302";
+    private static final String ERROR_CODE = "0xc002";
 
     private static final String ERROR_MSG = "Failed to persist profile details";
 

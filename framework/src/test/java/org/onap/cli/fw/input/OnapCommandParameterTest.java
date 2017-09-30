@@ -86,7 +86,7 @@ public class OnapCommandParameterTest {
         try {
             param.validate();
         } catch (OnapCommandException e) {
-            assertTrue("0x0015::Parameter null is mandatory".equals(e.getMessage()));
+            assertTrue("0x7003::Parameter null is mandatory".equals(e.getMessage()));
         }
     }
 

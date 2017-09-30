@@ -25,7 +25,7 @@ public class OnapCommandInvalidResultAttributeScope extends OnapCommandException
     private static final long serialVersionUID = 117926166492101573L;
 
     public OnapCommandInvalidResultAttributeScope(String attr) {
-        super("0x0006", "Result atrribute " + attr + " is invalid");
+        super("0x8002", "Result atrribute " + attr + " is invalid");
 
     }
 }

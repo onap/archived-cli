@@ -27,6 +27,6 @@ public class OnapCliArgumentValueMissing extends OnapCommandException {
     private static final long serialVersionUID = -6362824415803063442L;
 
     public OnapCliArgumentValueMissing(String arg) {
-        super("0x1001", "Value for argument " + arg + " is missing");
+        super("0x7001", "Value for argument " + arg + " is missing");
     }
 }

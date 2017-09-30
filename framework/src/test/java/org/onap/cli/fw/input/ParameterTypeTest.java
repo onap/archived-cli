@@ -44,7 +44,7 @@ public class ParameterTypeTest {
         try {
             ParameterType.get("name");
         } catch (OnapCommandInvalidParameterType e) {
-            assertTrue("0x0003::Parameter type name is invalid".equals(e.getMessage()));
+            assertTrue("0x7001::Parameter type name is invalid".equals(e.getMessage()));
         }
 
     }

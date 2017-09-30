@@ -25,6 +25,6 @@ public class OnapCommandExecutorInfoMissing extends OnapCommandException {
     private static final long serialVersionUID = 8580121615330415456L;
 
     public OnapCommandExecutorInfoMissing(String cmd) {
-        super("0x0023", "Command " + cmd + " excutor info is missing from schema");
+        super("0x6002", "Command " + cmd + " excutor info is missing from schema");
     }
 }

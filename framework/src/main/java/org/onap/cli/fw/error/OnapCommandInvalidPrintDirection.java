@@ -25,7 +25,7 @@ public class OnapCommandInvalidPrintDirection extends OnapCommandException {
     private static final long serialVersionUID = -6008135162231523072L;
 
     public OnapCommandInvalidPrintDirection(String direction) {
-        super("0x0004", "Print direction " + direction + " is invalid");
+        super("0x8003", "Print direction " + direction + " is invalid");
 
     }
 }

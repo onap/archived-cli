@@ -25,6 +25,6 @@ public class OnapCommandParameterNotFound extends OnapCommandException {
     private static final long serialVersionUID = 6676137916079057963L;
 
     public OnapCommandParameterNotFound(String paramName) {
-        super("0x0026", "Command input parameter " + paramName + " is not valid");
+        super("0x7005", "Command input parameter " + paramName + " is not valid");
     }
 }

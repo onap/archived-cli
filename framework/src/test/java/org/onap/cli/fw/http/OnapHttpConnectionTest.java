@@ -184,7 +184,7 @@ public class OnapHttpConnectionTest {
             OnapHttpConnection con = new OnapHttpConnection(true, false);
             con.get(inp);
         } catch (OnapCommandHttpFailure e) {
-            assertEquals("0x0025::IO Exception", e.getMessage());
+            assertEquals("0x3001::IO Exception", e.getMessage());
         }
     }
 

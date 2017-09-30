@@ -23,7 +23,7 @@ package org.onap.cli.fw.error;
 public class OnapCommandHelpFailed extends OnapCommandException {
     private static final long serialVersionUID = -1833571383961748518L;
 
-    private static final String ERROR_CODE = "0x0002";
+    private static final String ERROR_CODE = "0x9001";
 
     private static final String ERROR_MSG = "Command failed to print help message";
     /**

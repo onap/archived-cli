@@ -25,6 +25,6 @@ public class OnapCommandServiceNotFound extends OnapCommandException {
     private static final long serialVersionUID = 8580121615330415065L;
 
     public OnapCommandServiceNotFound(String service) {
-        super("0x0020", "Service " + service + " is not found in MSB");
+        super("0xd001", "Service " + service + " is not found in MSB");
     }
 }

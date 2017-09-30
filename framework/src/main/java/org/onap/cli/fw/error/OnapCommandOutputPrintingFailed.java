@@ -24,7 +24,7 @@ public class OnapCommandOutputPrintingFailed extends OnapCommandException {
 
     private static final long serialVersionUID = -1957064141442406239L;
 
-    private static final String ERROR_CODE = "0x0014";
+    private static final String ERROR_CODE = "0x8006";
 
     private static final String ERROR_MSG = "Command is failed to print the result";
 

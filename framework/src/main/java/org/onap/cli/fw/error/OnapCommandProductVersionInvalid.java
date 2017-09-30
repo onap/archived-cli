@@ -18,7 +18,7 @@ package org.onap.cli.fw.error;
 
 import java.util.Set;
 
-/**
+/*
  * ONAP command product version is invalid
  *
  */
@@ -27,6 +27,6 @@ public class OnapCommandProductVersionInvalid extends OnapCommandException {
     private static final long serialVersionUID = 5513297861129088463L;
 
     public OnapCommandProductVersionInvalid(String invalidVersion, Set<String> validVersions) {
-        super("0x0031", "Given product version " + invalidVersion + " is invalid. Please use one of " + validVersions);
+        super("0xd002", "Given product version " + invalidVersion + " is invalid. Please use one of " + validVersions);
     }
 }

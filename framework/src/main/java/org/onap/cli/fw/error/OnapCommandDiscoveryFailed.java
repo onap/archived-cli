@@ -20,7 +20,7 @@ public class OnapCommandDiscoveryFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 424464582747161435L;
 
-    private static final String ERROR_CODE = "0x0010";
+    private static final String ERROR_CODE = "0x1001";
     private static final String ERROR_MESSAGE1 = "Failed auto discover schema files from ";
     private static final String ERROR_MESSAGE2 = " under class path, ";
     private static final String ERROR_MESSAGE3 = "' under class path directory '";

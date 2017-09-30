@@ -23,7 +23,7 @@ package org.onap.cli.fw.error;
 public class OnapCommandExecutionFailed extends OnapCommandException {
     private static final long serialVersionUID = 488775545436993019L;
 
-    private static final String ERROR_CODE = "0x0001";
+    private static final String ERROR_CODE = "0x6001";
     private static final String ERROR_MESSAGE1 = "Command ";
     private static final String ERROR_MESSAGE2 = " failed to execute";
     private static final String ERROR_MESSAGE3 = "Failed to retrive service url";

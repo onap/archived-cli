@@ -25,7 +25,7 @@ public class OnapCommandInvalidParameterType extends OnapCommandException {
     private static final long serialVersionUID = 2821256032317061066L;
 
     public OnapCommandInvalidParameterType(String paramName) {
-        super("0x0003", "Parameter type " + paramName + " is invalid");
+        super("0x7001", "Parameter type " + paramName + " is invalid");
 
     }
 

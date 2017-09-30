@@ -21,7 +21,20 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Base command exception.
- *
+discovery 0x100
+registration 0x200
+http 0x300
+login/logout 0x400
+swagger 0x500
+execution 0x600
+input  0x700
+output 0x800
+help 0x900
+default parameter 0xa00
+schema 0xb00
+profile 0xc00
+product/service 0xd00
+catalog 0xe00
  */
 public class OnapCommandException extends Exception {
 

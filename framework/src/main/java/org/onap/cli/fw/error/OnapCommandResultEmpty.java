@@ -28,6 +28,6 @@ public class OnapCommandResultEmpty extends OnapCommandWarning {
      * Command result empty.
      */
     public OnapCommandResultEmpty() {
-        super("0x1001", "Command result is empty");
+        super("0x8003", "Command result is empty");
     }
 }

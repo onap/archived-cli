@@ -27,7 +27,7 @@ public class OnapCommandInvalidRegistration extends OnapCommandException {
     private static final long serialVersionUID = 7722163282274482532L;
 
     public OnapCommandInvalidRegistration(Class cls) {
-        super("0x0005", "Invalid commad class " + cls.getCanonicalName() + " registration, it should be derived from "
+        super("0x2001", "Invalid commad class " + cls.getCanonicalName() + " registration, it should be derived from "
                 + OnapCommand.class.getCanonicalName());
     }
 }

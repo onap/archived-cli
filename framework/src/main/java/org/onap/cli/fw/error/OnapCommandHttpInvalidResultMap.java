@@ -27,6 +27,6 @@ public class OnapCommandHttpInvalidResultMap extends OnapCommandException {
     private static final long serialVersionUID = 6676137916023457963L;
 
     public OnapCommandHttpInvalidResultMap(List<String> invalidParams) {
-        super("0x0028", "Invalide result map parameters : " + invalidParams.toString());
+        super("0x3005", "Invalide result map parameters : " + invalidParams.toString());
     }
 }

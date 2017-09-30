@@ -36,7 +36,7 @@ public class OnapCommandResultAttributeTest {
         try {
             OnapCommandResultAttributeScope.get("name");
         } catch (OnapCommandInvalidResultAttributeScope e) {
-            assertTrue("0x0006::Result atrribute name is invalid".equals(e.getMessage()));
+            assertTrue("0x8002::Result atrribute name is invalid".equals(e.getMessage()));
         }
 
     }

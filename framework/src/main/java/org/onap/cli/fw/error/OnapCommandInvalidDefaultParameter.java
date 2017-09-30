@@ -30,6 +30,6 @@ public class OnapCommandInvalidDefaultParameter extends OnapCommandException {
      * @param invalidParamsList message
      */
     public OnapCommandInvalidDefaultParameter(List<String> invalidParamsList) {
-        super("0x0024", "Invalid default_parameter: " + invalidParamsList.toString());
+        super("0xa001", "Invalid default_parameter: " + invalidParamsList.toString());
     }
 }

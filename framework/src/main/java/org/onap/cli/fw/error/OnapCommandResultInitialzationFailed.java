@@ -24,7 +24,7 @@ public class OnapCommandResultInitialzationFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 8580121615330415123L;
 
-    private static final String ERROR_CODE = "0x0022";
+    private static final String ERROR_CODE = "0x8004";
 
     private static final String ERROR_MSG = "Failed to parse the result format of command ";
 

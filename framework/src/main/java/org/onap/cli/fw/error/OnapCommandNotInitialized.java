@@ -25,6 +25,6 @@ public class OnapCommandNotInitialized extends OnapCommandException {
     private static final long serialVersionUID = -2828462844645573902L;
 
     public OnapCommandNotInitialized(String cmdName) {
-        super("0x0012", "Command " + cmdName + " is not initialized");
+        super("0x6004", "Command " + cmdName + " is not initialized");
     }
 }

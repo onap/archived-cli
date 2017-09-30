@@ -23,7 +23,7 @@ package org.onap.cli.fw.error;
 public class OnapCommandResultMapProcessingFailed extends OnapCommandException {
     private static final long serialVersionUID = 488775545436113019L;
 
-    private static final String ERROR_CODE = "0x0028";
+    private static final String ERROR_CODE = "0x3002";
 
     private static final String ERROR_MSG = "Failed to parse the result format of command ";
 

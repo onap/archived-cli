@@ -25,6 +25,6 @@ public class OnapCommandHttpHeaderNotFound extends OnapCommandException {
     private static final long serialVersionUID = 6676137916079057963L;
 
     public OnapCommandHttpHeaderNotFound(String name) {
-        super("0x0027", "Http header " + name + " is not returned from the service");
+        super("0x3003", "Http header " + name + " is not returned from the service");
     }
 }

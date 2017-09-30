@@ -24,7 +24,7 @@ public class OnapCommandRegistrationFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 5513297861129088460L;
 
-    private static final String ERROR_CODE = "0x0018";
+    private static final String ERROR_CODE = "0x2002";
 
     private static final String ERROR_MSG = "Failed to register the command ";
 

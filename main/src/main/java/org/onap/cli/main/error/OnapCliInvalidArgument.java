@@ -25,7 +25,7 @@ import org.onap.cli.fw.error.OnapCommandException;
 public class OnapCliInvalidArgument extends OnapCommandException {
 
     private static final long serialVersionUID = -1438492553530993246L;
-    private static final String ERROR_CODE = "0x1000";
+    private static final String ERROR_CODE = "0x7000";
     private static final String ERROR_MESSAGE1 = "Invalid argument ";
 
     public OnapCliInvalidArgument(String arg) {

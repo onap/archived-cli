@@ -24,7 +24,7 @@ public class OnapCommandLoginFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 5518154493762956959L;
 
-    private static final String ERROR_CODE = "0x0009";
+    private static final String ERROR_CODE = "0x4001";
     private static final String ERROR_MESSAGE1 = "Login failed";
 
     public OnapCommandLoginFailed(String error) {

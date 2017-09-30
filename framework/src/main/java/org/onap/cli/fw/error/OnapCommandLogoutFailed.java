@@ -23,7 +23,7 @@ package org.onap.cli.fw.error;
 public class OnapCommandLogoutFailed extends OnapCommandException {
 
     private static final long serialVersionUID = 1150649507734289032L;
-    private static final String ERROR_CODE = "0x0010";
+    private static final String ERROR_CODE = "0x4002";
     private static final String ERROR_MESSAGE1 = "Logout failed";
 
     public OnapCommandLogoutFailed(String error) {
