@@ -24,7 +24,7 @@ import org.onap.cli.fw.conf.OnapCommandConfg;
  */
 public class OnapService {
     /*
-     * Onap Service name like gso.
+     * Onap Service name like aai.
      */
     private String serviceName;
 

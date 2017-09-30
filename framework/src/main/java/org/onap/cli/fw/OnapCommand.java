@@ -21,8 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.onap.cli.fw.ad.OnapAuthClient;
-import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.cmd.CommandType;
 import org.onap.cli.fw.conf.Constants;
@@ -59,15 +57,13 @@ public abstract class OnapCommand {
 
     private String cmdSchemaName;
 
-    private String cmdVersion;
+    private String productVersion;
 
     private OnapService onapService = new OnapService();
 
     private List<OnapCommandParameter> cmdParameters = new ArrayList<>();
 
     private OnapCommandResult cmdResult = new OnapCommandResult();
-
-    protected OnapAuthClient authClient;
 
     protected boolean isInitialzied = false;
 
@@ -278,37 +274,7 @@ public abstract class OnapCommand {
             }
         }
 
-        try {
-            // For auth type commands, login and logout logic is not required
-            boolean isAuthRequired = !this.onapService.isNoAuth()
-                    && "false".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue())
-                    && this.getType().equals(CommandType.CMD);
-
-            if (!isCommandInternal()) {
-                this.authClient = new OnapAuthClient(
-                		this,
-                        this.getResult().isDebug());
-            }
-
-            if (isAuthRequired) {
-                this.authClient.login();
-            }
-
-            this.run();
-
-            if (isAuthRequired) {
-                this.authClient.logout();
-            }
-
-            if (this.cmdResult.isDebug() && authClient != null) {
-                this.cmdResult.setDebugInfo(this.authClient.getDebugInfo());
-            }
-        } catch (OnapCommandException e) {
-            if (this.cmdResult.isDebug() && authClient != null) {
-                this.cmdResult.setDebugInfo(this.authClient.getDebugInfo());
-            }
-            throw e;
-        }
+        this.run();
 
         return this.cmdResult;
     }
@@ -318,13 +284,6 @@ public abstract class OnapCommand {
      *
      */
     protected abstract void run() throws OnapCommandException;
-
-    /*
-     * Get my service base path (endpoint).
-     */
-    protected String getBasePath() throws OnapCommandException {
-        return this.authClient.getServiceUrl();
-    }
 
     /**
      * Returns the service service version it supports.
@@ -348,10 +307,10 @@ public abstract class OnapCommand {
     // (mrkanag) Add toString for all command, parameter, result, etc objects in JSON format
 
     public void setVersion(String version) {
-        this.cmdVersion = version;
+        this.productVersion = version;
     }
 
     public String getVersion() {
-        return this.cmdVersion;
+        return this.productVersion;
     }
 }

@@ -19,6 +19,7 @@ package org.onap.cli.fw.ad;
 /**
  * Onap Service credentials.
  */
+//mrkanag deprecate it
 public class OnapCredentials {
 
     /*

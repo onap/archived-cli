@@ -21,18 +21,17 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
+import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
 
 public class OnapAuthClientCommandBasedTest {
 
-    OnapCommand cmd;
-
     @Test
     public void internalCommandTest() {
         try {
-            cmd = OnapCommandRegistrar.getRegistrar().get("sample-test");
+            OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("sample-test");
             cmd.getService().setName(OnapCommandConfg.getInternalCmd());
 
             cmd.execute();
@@ -45,7 +44,7 @@ public class OnapAuthClientCommandBasedTest {
     @Test
     public void yesCatalogYesAuthTest() throws OnapCommandException {
         try {
-            cmd = getCommand("sample-test-schema-yes-auth-yes-catalog.yaml");
+            OnapHttpCommand cmd = getCommand("sample-test-schema-yes-auth-yes-catalog.yaml");
             cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_HOST_URL).setValue("http://localhost:8080");
             cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_USERNAME).setValue("test");
             cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_PASS_WORD).setValue("password");
@@ -60,7 +59,7 @@ public class OnapAuthClientCommandBasedTest {
     @Test
     public void yesCatalogNoAuthTest() throws OnapCommandException {
         try {
-            cmd = getCommand("sample-test-schema-no-auth-yes-catalog.yaml");
+            OnapHttpCommand cmd = getCommand("sample-test-schema-no-auth-yes-catalog.yaml");
             cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_HOST_URL).setValue("http://localhost:8080");
 
             cmd.execute();
@@ -73,7 +72,7 @@ public class OnapAuthClientCommandBasedTest {
     @Test
     public void noCatalogYesAuthTest() throws OnapCommandException {
         try {
-            cmd = getCommand("sample-test-schema-yes-auth-no-catalog.yaml");
+            OnapHttpCommand cmd = getCommand("sample-test-schema-yes-auth-no-catalog.yaml");
             cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_HOST_URL).setValue("http://localhost:8080");
             cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_USERNAME).setValue("test");
             cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_PASS_WORD).setValue("password");
@@ -88,7 +87,7 @@ public class OnapAuthClientCommandBasedTest {
     @Test
     public void noCatalogNoAuthTest() throws OnapCommandException {
         try {
-            cmd = getCommand("sample-test-schema-no-auth-no-catalog.yaml");
+            OnapHttpCommand cmd = getCommand("sample-test-schema-no-auth-no-catalog.yaml");
             cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_HOST_URL).setValue("http://localhost:8080");
 
             cmd.execute();
@@ -98,10 +97,10 @@ public class OnapAuthClientCommandBasedTest {
         }
     }
 
-    private OnapCommand getCommand(String yaml) throws OnapCommandException {
-        OnapCommand cmd = new OnapCommand() {
+    private OnapHttpCommand getCommand(String yaml) throws OnapCommandException {
+        OnapHttpCommand cmd = new OnapHttpCommand() {
             @Override
-            protected void run() throws OnapCommandException {
+            protected void processRequest() throws OnapCommandException {
                 if (!this.getService().isModeDirect()) {
                     String url = this.authClient.getServiceUrl();
                     assert url.equals(this.getParametersMap().get(Constants.DEAFULT_PARAMETER_HOST_URL).getValue() + "/");

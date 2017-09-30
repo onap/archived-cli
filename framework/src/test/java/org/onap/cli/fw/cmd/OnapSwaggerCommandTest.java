@@ -55,7 +55,7 @@ public class OnapSwaggerCommandTest {
         swagger.initializeResult(obj1);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void initializeResultTest3() throws OnapCommandException {
         OnapSwaggerCommandImpl swagger = new OnapSwaggerCommandImpl();
         swagger.initializeSchema("onap-test-schema.yaml");

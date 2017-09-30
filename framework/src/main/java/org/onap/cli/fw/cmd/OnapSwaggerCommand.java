@@ -16,17 +16,16 @@
 
 package org.onap.cli.fw.cmd;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandClientInitialzationFailed;
-import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandResultInitialzationFailed;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.run.OnapCommandExecutor;
 import org.onap.cli.fw.utils.OnapCommandUtils;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
 
 public abstract class OnapSwaggerCommand extends OnapCommand {
 
@@ -52,7 +51,8 @@ public abstract class OnapSwaggerCommand extends OnapCommand {
     protected <T> T initializeApiClient(T client) throws OnapCommandClientInitialzationFailed {
         try {
             Method basePath = client.getClass().getMethod("setBasePath", String.class);
-            basePath.invoke(client, this.getBasePath());
+            //mrkanag set the basepath
+            basePath.invoke(client, "/");
 
 //            if (this.getAuthToken() != null) {
 //                Method apiKey = client.getClass().getMethod("setApiKey", String.class);
@@ -60,7 +60,7 @@ public abstract class OnapSwaggerCommand extends OnapCommand {
 //            }
             return client;
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
-                | InvocationTargetException | OnapCommandException e) {
+                | InvocationTargetException e) {
             throw new OnapCommandClientInitialzationFailed(this.getName(), e);
         }
     }

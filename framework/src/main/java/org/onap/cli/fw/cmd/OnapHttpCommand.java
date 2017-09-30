@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.ad.OnapAuthClient;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -47,6 +48,8 @@ public class OnapHttpCommand extends OnapCommand {
     private List<Integer> successStatusCodes = new ArrayList<>();
 
     private Map<String, String> resultMap = new HashMap<>();
+
+    protected OnapAuthClient authClient;
 
     public void setInput(HttpInput input) {
         this.input = input;
@@ -84,6 +87,41 @@ public class OnapHttpCommand extends OnapCommand {
 
     @Override
     protected void run() throws OnapCommandException {
+        try {
+            // For auth type commands, login and logout logic is not required
+            boolean isAuthRequired = !this.getService().isNoAuth()
+                    && "false".equals(this.getParametersMap().get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue())
+                    && this.getType().equals(CommandType.CMD);
+
+            if (!isCommandInternal()) {
+                this.authClient = new OnapAuthClient(
+                        this,
+                        this.getResult().isDebug());
+            }
+
+            if (isAuthRequired) {
+                this.authClient.login();
+            }
+
+            this.processRequest();
+
+            if (isAuthRequired) {
+                this.authClient.logout();
+            }
+
+            if (this.getResult().isDebug() && authClient != null) {
+                this.getResult().setDebugInfo(this.authClient.getDebugInfo());
+            }
+        } catch (OnapCommandException e) {
+            if (this.getResult().isDebug() && authClient != null) {
+                this.getResult().setDebugInfo(this.authClient.getDebugInfo());
+            }
+            throw e;
+        }
+    }
+
+    protected void processRequest() throws OnapCommandException {
+
         HttpInput httpInput = OnapCommandUtils.populateParameters(this.getParametersMap(), this.getInput());
         httpInput.setUri(this.authClient.getServiceUrl() + httpInput.getUri());
 
