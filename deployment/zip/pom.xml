@@ -90,6 +90,12 @@
                                 }
 
                                 ant.copy(todir:
+                                "${deployUnzip}/conf") {
+                                fileset(file:
+                                "${project.build.directory}/../../../framework/src/main/resources/log4j.properties")
+                                }
+
+                                ant.copy(todir:
                                 "${deployUnzip}/docs") {
                                 fileset(file:
                                 "${project.build.directory}/../../../README.md")
