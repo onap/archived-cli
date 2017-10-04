@@ -89,7 +89,6 @@
                                 fileset(dir:
                                 "${project.build.directory}/../../../plugins/target/lib/")
                                 }
-
                                 ant.copy(todir:
                                 "${deployUnzip}/conf") {
                                 fileset(file:

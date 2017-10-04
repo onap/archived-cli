@@ -1,0 +1,30 @@
+open_cli_schema_version: 1.0
+parameters:
+  - name: host-username
+    type: string
+    description: Host user name
+    short_option: u
+    long_option: host-username
+    default_value: $s{env:HOST_USERNAME}
+    is_optional: false
+  - name: host-password
+    type: string
+    description: Host user password
+    short_option: p
+    long_option: host-password
+    default_value: $s{env:HOST_PASSWORD}
+    is_secured: true
+    is_optional: false
+  - name: host-url
+    type: url
+    description: host url in http(s)
+    short_option: m
+    long_option: host-url
+    is_optional: false
+    default_value: $s{env:HOST_URL}
+  - name: no-auth
+    type: bool
+    description: whether to authenticate user or not
+    short_option: a
+    long_option: no-auth
+    default_value: false

@@ -1,17 +1,13 @@
 open_cli_schema_version: 1.0
 name: schema-validate
 description: Onap command to validate schema
-version: cli-1.0
-service:
-  auth: none
-  name: open-cli
-  version: 1.0.0
-default_parameters:
-  exclude:
-    - host-username
-    - host-password
-    - host-url
-    - no-auth
+
+info:
+  product: open-cli
+  service: schema
+  type: auth
+  author: Kanagaraj Manickam mkr1481@gmail.com
+
 parameters:
   - name: schema-location
     type: url
@@ -25,6 +21,7 @@ parameters:
     short_option: i
     long_option: internal-schema
     is_optional: false
+
 results:
   direction: landscape
   attributes:
