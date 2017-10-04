@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.ad.OnapAuthClient;
+import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -31,6 +32,7 @@ import org.onap.cli.fw.error.OnapCommandExecutionFailed;
 import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
+import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.http.mock.MockJsonGenerator;
@@ -50,6 +52,8 @@ public class OnapHttpCommand extends OnapCommand {
     private Map<String, String> resultMap = new HashMap<>();
 
     protected OnapAuthClient authClient;
+
+    private OnapService onapService = new OnapService();
 
     public void setInput(HttpInput input) {
         this.input = input;
@@ -80,24 +84,51 @@ public class OnapHttpCommand extends OnapCommand {
         return resultMap;
     }
 
+    /*
+     * Onap service, this command uses to execute it.
+     */
+    public OnapService getService() {
+        return this.onapService;
+    }
+
+    public void setService(OnapService service) {
+        this.onapService = service;
+    }
+
     @Override
     protected void initializeProfileSchema() throws OnapCommandException {
-        OnapCommandUtils.loadHTTPSchemaSection(this, this.getSchemaName(), false);
+        OnapCommandUtils.loadHttpSchema(this, this.getSchemaName(), true, false);
+    }
+
+    @Override
+    protected void validate() throws OnapCommandException {
+        if (! this.isAuthRequired()) {
+            if (this.getParametersMap().containsKey(Constants.DEAFULT_PARAMETER_USERNAME)) {
+                this.getParametersMap().get(Constants.DEAFULT_PARAMETER_USERNAME).setOptional(true);
+            }
+            if (this.getParametersMap().containsKey(Constants.DEAFULT_PARAMETER_PASSWORD)) {
+                this.getParametersMap().get(Constants.DEAFULT_PARAMETER_PASSWORD).setOptional(true);
+            }
+        }
+
+        super.validate();
+    }
+
+    private boolean isAuthRequired() {
+        return !this.getService().isNoAuth()
+                && "false".equals(this.getParametersMap().get(Constants.DEFAULT_PARAMETER_NO_AUTH).getValue())
+                && this.getInfo().getCommandType().equals(CommandType.CMD);
     }
 
     @Override
     protected void run() throws OnapCommandException {
         try {
-            // For auth type commands, login and logout logic is not required
-            boolean isAuthRequired = !this.getService().isNoAuth()
-                    && "false".equals(this.getParametersMap().get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH).getValue())
-                    && this.getType().equals(CommandType.CMD);
+            // For auth/catalog type commands, login and logout logic is not required
+            boolean isAuthRequired = this.isAuthRequired();
 
-            if (!isCommandInternal()) {
-                this.authClient = new OnapAuthClient(
-                        this,
-                        this.getResult().isDebug());
-            }
+            this.authClient = new OnapAuthClient(
+                    this,
+                    this.getResult().isDebug());
 
             if (isAuthRequired) {
                 this.authClient.login();

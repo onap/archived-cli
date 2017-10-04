@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * Validate schema command.
  */
-@OnapCommandSchema(name = "schema-validate", version = "cli-1.0", schema = "schema-validate.yaml")
+@OnapCommandSchema(name = "schema-validate", version = "open-cli", schema = "schema-validate.yaml")
 public class OnapSchemaValidateCommand extends OnapCommand {
 
     @Override
@@ -50,8 +50,8 @@ public class OnapSchemaValidateCommand extends OnapCommand {
         }, location, true, true);
 
 
-         error.addAll(OnapCommandUtils.loadHTTPSchemaSection(new OnapHttpCommand(),
-                location, true));
+        error.addAll(OnapCommandUtils.loadHttpSchema(new OnapHttpCommand(),
+                location, true, true));
 
         List<String> slNumber = new ArrayList<>();
         for (int i = 1; i <= error.size(); i++) {

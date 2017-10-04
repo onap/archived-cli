@@ -4,7 +4,7 @@ services:
   occ:
     image: onap/cli
     environment:
-      CLI_MODE: 'daemon'
+      OPEN_CLI_MODE: 'daemon'
     expose:
       - 80
       - 8080
@@ -17,15 +17,15 @@ services:
     tty: true
     image: onap/cli
     environment:
-      CLI_MODE: 'console'
+      OPEN_CLI_MODE: 'console'
 
   debug:
     stdin_open: true
     tty: true
     image: onap/cli
     environment:
-      CLI_MODE: 'console'
-      ONAP_CLI_DEBUG: "true"
+      OPEN_CLI_MODE: 'console'
+      OPEN_CLI_DEBUG: "true"
     expose:
       - 5005
     ports:

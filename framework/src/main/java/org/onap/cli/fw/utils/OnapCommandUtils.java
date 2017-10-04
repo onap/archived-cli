@@ -23,17 +23,14 @@ import static org.onap.cli.fw.conf.Constants.AUTH_VALUES;
 import static org.onap.cli.fw.conf.Constants.BODY;
 import static org.onap.cli.fw.conf.Constants.BOOLEAN_VALUE;
 import static org.onap.cli.fw.conf.Constants.CLIENT;
-import static org.onap.cli.fw.conf.Constants.COMMAND_TYPE;
 import static org.onap.cli.fw.conf.Constants.COMMAND_TYPE_VALUES;
 import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY;
 import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY_JSON_PATTERN;
-import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_HOST_URL;
-import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_PASS_WORD;
+import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_PASSWORD;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_USERNAME;
-import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETERS;
-import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETERS_EXCLUDE;
-import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETERS_INCLUDE;
 import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETER_FILE_NAME;
+import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETER_HTTP_FILE_NAME;
+import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETER_NO_AUTH;
 import static org.onap.cli.fw.conf.Constants.DEFAULT_VALUE;
 import static org.onap.cli.fw.conf.Constants.DESCRIPTION;
 import static org.onap.cli.fw.conf.Constants.DIRECTION;
@@ -62,9 +59,9 @@ import static org.onap.cli.fw.conf.Constants.INFO_SERVICE;
 import static org.onap.cli.fw.conf.Constants.INFO_TYPE;
 import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_LIST;
 import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_MANDATORY_LIST;
+import static org.onap.cli.fw.conf.Constants.IS_INCLUDE;
 import static org.onap.cli.fw.conf.Constants.IS_OPTIONAL;
 import static org.onap.cli.fw.conf.Constants.IS_SECURED;
-import static org.onap.cli.fw.conf.Constants.IS_INCLUDE;
 import static org.onap.cli.fw.conf.Constants.LONG_OPTION;
 import static org.onap.cli.fw.conf.Constants.METHOD;
 import static org.onap.cli.fw.conf.Constants.METHOD_TYPE;
@@ -83,7 +80,6 @@ import static org.onap.cli.fw.conf.Constants.RESULT_PARAMS_MANDATORY_LIST;
 import static org.onap.cli.fw.conf.Constants.SAMPLE_RESPONSE;
 import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_NOT_EXIST;
 import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_WRONG_EXTN;
-import static org.onap.cli.fw.conf.Constants.SCHEMA_INVALID_DEFAULT_PARAMS_SECTION;
 import static org.onap.cli.fw.conf.Constants.SCOPE;
 import static org.onap.cli.fw.conf.Constants.SERVICE;
 import static org.onap.cli.fw.conf.Constants.SERVICE_PARAMS_LIST;
@@ -113,11 +109,8 @@ import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandRegistrar;
-import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.cmd.CommandType;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
@@ -130,7 +123,6 @@ import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandHttpHeaderNotFound;
 import org.onap.cli.fw.error.OnapCommandHttpInvalidResponseBody;
 import org.onap.cli.fw.error.OnapCommandHttpInvalidResultMap;
-import org.onap.cli.fw.error.OnapCommandInvalidDefaultParameter;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterType;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandInvalidPrintDirection;
@@ -265,9 +257,9 @@ public class OnapCommandUtils {
         try {
             Map<String, ?> defaultParameterMap = includeDefault ?
                     validateSchemaVersion(DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
-            Map<String, List<Map<String, String>>> commandYamlMap = (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
-            List<String> defParams = new ArrayList<>();
+            Map<String, List<Map<String, String>>> commandYamlMap =
+                    (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
             if (includeDefault) {
                 if (commandYamlMap.get(PARAMETERS) == null) {
@@ -275,11 +267,9 @@ public class OnapCommandUtils {
                 } else {
                     commandYamlMap.get(PARAMETERS).addAll((List<Map<String, String>>) defaultParameterMap.get(PARAMETERS));
                 }
-                defParams = ((List<Map<String, String>>) defaultParameterMap.get(PARAMETERS)).stream()
-                        .map(p -> p.get(NAME)).collect(Collectors.toList());
             }
 
-            return parseSchema(cmd, commandYamlMap, defParams, validateSchema);
+            return parseSchema(cmd, commandYamlMap, validateSchema);
         } catch (OnapCommandException e) {
             throw e;
         } catch (Exception e) {
@@ -287,39 +277,29 @@ public class OnapCommandUtils {
         }
     }
 
-    private static void processNoAuth(Set<String> parameterSet, final OnapCommand cmd, final List<String> includeParams,
-                                      final List<String> excludeParams) throws OnapCommandInvalidDefaultParameter {
-        // processing for no-auth type
-        if (cmd.getService() != null) {
-            List<String> includeAuthParams = new ArrayList();
-            List<String> excludeAuthParams = new ArrayList<>();
-            boolean noAuth = cmd.getService().isNoAuth();
 
-            if (cmd.isCommandInternal()) {
-                excludeAuthParams.addAll(OnapCommandConfg.getExcludeParamsForInternalCmd());
-            } else {
-                if (noAuth) {
-                    includeAuthParams.addAll(OnapCommandConfg.getIncludeParamsForNoAuthEnableExternalCmd());
-                    excludeAuthParams.addAll(OnapCommandConfg.getExcludeParamsForNoAuthEnableExternalCmd());
+    public static List<String> loadHttpSchema(OnapHttpCommand cmd, String schemaName, boolean includeDefault,
+                                          boolean validateSchema) throws OnapCommandException {
+        try {
+            Map<String, ?> defaultParameterMap = includeDefault ?
+                    validateSchemaVersion(DEFAULT_PARAMETER_HTTP_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+            Map<String, List<Map<String, String>>> commandYamlMap = (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+
+            if (includeDefault) {
+                if (commandYamlMap.get(PARAMETERS) == null) {
+                    commandYamlMap.put(PARAMETERS, (List<Map<String, String>>) defaultParameterMap.get(PARAMETERS));
                 } else {
-                    includeAuthParams.addAll(OnapCommandConfg.getIncludeParamsForNoAuthDisableExternalCmd());
+                    commandYamlMap.get(PARAMETERS).addAll((List<Map<String, String>>) defaultParameterMap.get(PARAMETERS));
                 }
-            }
+              }
+            List<String> errors = parseSchema(cmd, commandYamlMap, validateSchema);
+            errors.addAll(parseHttpSchema(cmd, commandYamlMap, validateSchema));
+            return errors;
 
-            List<String> invalidExclude = excludeAuthParams.stream().filter(includeParams::contains)
-                    .collect(Collectors.toList());
-
-            List<String> invalidInclude = includeAuthParams.stream().filter(excludeParams::contains)
-                    .filter(p->!includeParams.contains(p)).collect(Collectors.toList());
-
-            if (!invalidExclude.isEmpty() || !invalidInclude.isEmpty()) {
-                throw new OnapCommandInvalidDefaultParameter(Stream.concat(invalidExclude.stream(), invalidInclude.stream())
-                        .collect(Collectors.toList()));
-            }
-
-
-            parameterSet.addAll(includeAuthParams);
-            parameterSet.removeAll(excludeAuthParams);
+        } catch (OnapCommandException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new OnapCommandInvalidSchema(schemaName, e);
         }
     }
 
@@ -365,13 +345,11 @@ public class OnapCommandUtils {
 
     private static List<String> parseSchema(OnapCommand cmd,
                                             final Map<String, ?> values,
-                                            final List<String> defaultParamNames,
                                             boolean validate) throws OnapCommandException {
 
         List<String> exceptionList = new ArrayList<>();
         List<String> shortOptions = new ArrayList<>();
         List<String> longOptions = new ArrayList<>();
-        Set<String> filteredDefaultParams = new HashSet<>();
 
         if (validate) {
             validateTags(exceptionList, (Map<String, Object>) values, OnapCommandConfg.getSchemaAttrInfo(TOP_LEVEL_PARAMS_LIST),
@@ -379,8 +357,7 @@ public class OnapCommandUtils {
         }
 
 
-        List<String> sections = Arrays.asList(NAME, DESCRIPTION, INFO, VERSION, COMMAND_TYPE, SERVICE,
-                DEFAULT_PARAMETERS, PARAMETERS, RESULTS);
+        List<String> sections = Arrays.asList(NAME, DESCRIPTION, INFO, PARAMETERS, RESULTS);
 
         for (String key : sections) {
 
@@ -392,25 +369,10 @@ public class OnapCommandUtils {
                     }
                     break;
 
-                case VERSION:
-                    Object version = values.get(key);
-                    if (version != null) {
-                        cmd.setVersion(version.toString());
-                    }
-                    break;
-
                 case DESCRIPTION:
                     Object description = values.get(key);
                     if (description != null) {
                         cmd.setDescription(description.toString());
-                    }
-                    break;
-
-
-                case COMMAND_TYPE:
-                    Object type = values.get(key);
-                    if (type != null) {
-                        cmd.setType(CommandType.get(type.toString()));
                     }
                     break;
 
@@ -472,130 +434,20 @@ public class OnapCommandUtils {
                     }
                     break;
 
-                case SERVICE:
-                    Map<String, String> serviceMap = (Map<String, String>) values.get(key);
-
-                    if (serviceMap != null) {
-                        if (validate) {
-                            validateTags(exceptionList, (Map<String, Object>) values.get(key),
-                                    OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_LIST),
-                                    OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_MANDATORY_LIST), SERVICE);
-
-                            HashMap<String, String> validationMap = new HashMap<>();
-                            validationMap.put(AUTH, AUTH_VALUES);
-                            validationMap.put(MODE, MODE_VALUES);
-
-                            for (String secKey : validationMap.keySet()) {
-                                if (serviceMap.containsKey(secKey)) {
-                                    Object obj = serviceMap.get(secKey);
-                                    if (obj == null) {
-                                        exceptionList.add("Attribute '" + secKey + "' under '" + SERVICE + "' is empty");
-                                    } else {
-                                        String value = String.valueOf(obj);
-                                        if (!OnapCommandConfg.getSchemaAttrInfo(validationMap.get(secKey)).contains(value)) {
-                                            exceptionList.add("Attribute '" + secKey + "' contains invalid value. Valide values are "
-                                                    + OnapCommandConfg.getSchemaAttrInfo(validationMap.get(key))); //
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        OnapService srv = new OnapService();
-
-                        for (Map.Entry<String, String> entry1 : serviceMap.entrySet()) {
-                            String key1 = entry1.getKey();
-
-                            switch (key1) {
-                                case NAME:
-                                    srv.setName(serviceMap.get(key1));
-                                    break;
-
-                                case VERSION:
-                                    srv.setVersion(serviceMap.get(key1).toString());
-                                    break;
-
-                                case AUTH:
-                                    Object obj = serviceMap.get(key1);
-                                    srv.setAuthType(obj.toString());
-                                    break;
-
-                                case MODE:
-                                    Object mode = serviceMap.get(key1);
-                                    srv.setMode(mode.toString());
-                                    break;
-                            }
-                        }
-                        cmd.setService(srv);
-                    }
-                    break;
-
-                case DEFAULT_PARAMETERS:
-                    Map<String, List<String>> defParameters = (Map) values.get(DEFAULT_PARAMETERS);
-                    List<String> includeParams = new ArrayList<>();
-                    List<String> excludeParams = new ArrayList<>();
-
-                    if (values.containsKey(DEFAULT_PARAMETERS) && defParameters == null) {
-                        // if default parameter section is available then it must have either include
-                        // or exclude sub-section.
-                        throwOrCollect(new OnapCommandInvalidSchema(SCHEMA_INVALID_DEFAULT_PARAMS_SECTION),
-                                exceptionList, validate);
-                    }
-
-
-                    if (defParameters != null) {
-                        // validate default parameters
-                        if (defParameters.containsKey(DEFAULT_PARAMETERS_INCLUDE)) {
-                            includeParams = defParameters.get(DEFAULT_PARAMETERS_INCLUDE);
-                        }
-
-                        List<String> invInclude = includeParams.stream()
-                                .filter(p -> !defaultParamNames.contains(p))
-                                .collect(Collectors.toList());
-
-                        if (defParameters.containsKey(DEFAULT_PARAMETERS_EXCLUDE)) {
-                            excludeParams = defParameters.get(DEFAULT_PARAMETERS_EXCLUDE);
-                        }
-
-                        List<String> invExclude = excludeParams.stream().filter(p -> !defaultParamNames.contains(p))
-                                .collect(Collectors.toList());
-
-
-                        if (!invExclude.isEmpty() || !invInclude.isEmpty()) {
-
-                            throwOrCollect(new OnapCommandInvalidDefaultParameter(Stream.concat(invInclude.stream(),
-                                    invExclude.stream()).collect(Collectors.toList())),
-                                    exceptionList, validate);
-                        }
-
-                        if (!includeParams.isEmpty()) {
-                            filteredDefaultParams.addAll(includeParams);
-                        } else if (!excludeParams.isEmpty()) {
-                            List<String> finalExcludeParams = excludeParams;
-                            defaultParamNames.stream().filter(p -> !finalExcludeParams.contains(p))
-                                    .forEach(filteredDefaultParams::add);
-                        }
-                    } else {
-                        filteredDefaultParams.addAll(defaultParamNames);
-                    }
-                    try {
-                        processNoAuth(filteredDefaultParams, cmd, includeParams, excludeParams);
-                    } catch (OnapCommandException e) {
-                        throwOrCollect(e, exceptionList, validate);
-                    }
-                    break;
-
                 case PARAMETERS:
 
                     List<Map<String, String>> parameters = (List) values.get(key);
 
                     if (parameters != null) {
                         Set<String> names = new HashSet<>();
-                        Set<String> inputShortOptions = new HashSet<>();
-                        Set<String> inputLongOptions = new HashSet<>();
 
                         for (Map<String, String> parameter : parameters) {
                             OnapCommandParameter param = new OnapCommandParameter();
+
+                            //Override the parameters from its base such as default parameters list
+                            if (cmd.getParametersMap().containsKey(param.getName())) {
+                                param = cmd.getParametersMap().get(param.getName());
+                            }
 
                             if (validate) {
                                 validateTags(exceptionList, parameter, OnapCommandConfg.getSchemaAttrInfo(INPUT_PARAMS_LIST),
@@ -693,10 +545,7 @@ public class OnapCommandUtils {
                                 }
                             }
 
-                            // Add the element to command :
-                            // 1. if parameter is available in filtered parameter list.
-                            // 2. otherwise, parameter p is available in command yaml file.
-                            if (filteredDefaultParams.contains(param.getName()) || !defaultParamNames.contains(param.getName())) {
+                            if ( !cmd.getParametersMap().containsKey(param.getName()) ) {
                                 cmd.getParameters().add(param);
                             }
                         }
@@ -983,11 +832,11 @@ public class OnapCommandUtils {
      * @throws OnapCommandInvalidSchemaVersion
      *             invalid schema version
      */
-    public static ArrayList<String> loadHTTPSchemaSection(OnapHttpCommand cmd, String schemaName,
-                                                          boolean validate) throws OnapCommandException {
+    private static ArrayList<String> parseHttpSchema(OnapHttpCommand cmd,
+                                                    final Map<String, ?> values,
+                                                    boolean validate) throws OnapCommandException {
         ArrayList<String> errorList = new ArrayList<>();
         try {
-            Map<String, ?> values = (Map<String, ?>) validateSchemaVersion(schemaName, cmd.getSchemaVersion());
             Map<String, ?> valMap = (Map<String, ?>) values.get(HTTP);
 
             if (valMap != null) {
@@ -1035,8 +884,73 @@ public class OnapCommandUtils {
                                             break;
                                     }
                                 }catch (Exception ex) {
-                                    throwOrCollect(new OnapCommandInvalidSchema(schemaName, ex), errorList, validate);
+                                    throwOrCollect(new OnapCommandInvalidSchema(cmd.getSchemaName(), ex), errorList, validate);
                                 }
+                            }
+                            break;
+
+                        case SERVICE:
+                            Map<String, String> serviceMap = (Map<String, String>) valMap.get(key1);
+
+                            if (serviceMap != null) {
+                                if (validate) {
+                                    validateTags(errorList, (Map<String, Object>) valMap.get(key1),
+                                            OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_LIST),
+                                            OnapCommandConfg.getSchemaAttrInfo(SERVICE_PARAMS_MANDATORY_LIST), SERVICE);
+
+                                    HashMap<String, String> validationMap = new HashMap<>();
+                                    validationMap.put(AUTH, AUTH_VALUES);
+                                    validationMap.put(MODE, MODE_VALUES);
+
+                                    for (String secKey : validationMap.keySet()) {
+                                        if (serviceMap.containsKey(secKey)) {
+                                            Object obj = serviceMap.get(secKey);
+                                            if (obj == null) {
+                                                errorList.add("Attribute '" + secKey + "' under '" + SERVICE + "' is empty");
+                                            } else {
+                                                String value = String.valueOf(obj);
+                                                if (!OnapCommandConfg.getSchemaAttrInfo(validationMap.get(secKey)).contains(value)) {
+                                                    errorList.add("Attribute '" + secKey + "' contains invalid value. Valide values are "
+                                                            + OnapCommandConfg.getSchemaAttrInfo(validationMap.get(key1))); //
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                OnapService srv = new OnapService();
+
+                                for (Map.Entry<String, String> entry : serviceMap.entrySet()) {
+                                    String key = entry.getKey();
+
+                                    switch (key) {
+                                        case NAME:
+                                            srv.setName(serviceMap.get(key));
+                                            break;
+
+                                        case VERSION:
+                                            srv.setVersion(serviceMap.get(key).toString());
+                                            break;
+
+                                        case AUTH:
+                                            Object obj = serviceMap.get(key);
+                                            srv.setAuthType(obj.toString());
+
+                                            //On None type, username, password and no_auth are invalid
+                                            if (srv.isNoAuth()) {
+                                                cmd.getParametersMap().remove(DEAFULT_PARAMETER_USERNAME);
+                                                cmd.getParametersMap().remove(DEAFULT_PARAMETER_PASSWORD);
+                                                cmd.getParametersMap().remove(DEFAULT_PARAMETER_NO_AUTH);
+                                            }
+                                            break;
+
+                                        case MODE:
+                                            Object mode = serviceMap.get(key);
+                                            srv.setMode(mode.toString());
+                                            break;
+                                    }
+                                }
+                                cmd.setService(srv);
                             }
                             break;
 
@@ -1157,13 +1071,14 @@ public class OnapCommandUtils {
      *             help failed exception
      */
     public static String help(OnapCommand cmd) throws OnapCommandHelpFailed {
+        //mrkanag refactor onap name into oclip
         String help = "usage: onap " + cmd.getName();
 
         // Add description
         help += "\n\n" + cmd.getDescription();
 
         // Add service
-        help += "\n\nOnap service: " + cmd.getService();
+        help += "\n\nService: " + cmd.getInfo().getService();
 
         // Add whole command
         String commandOptions = "";
@@ -1276,27 +1191,6 @@ public class OnapCommandUtils {
         // Error
         help += "\n\nError::\n\n On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>\n";
         return help;
-    }
-
-    /**
-     * Helps to create OnapCredentials from default params.
-     *
-     * @param params
-     *            list of parameters
-     * @return OnapCredentials
-     * @throws OnapCommandInvalidParameterValue
-     *             exception
-     */
-    public static OnapCredentials fromParameters(List<OnapCommandParameter> params)
-            throws OnapCommandInvalidParameterValue {
-        Map<String, String> paramMap = new HashMap<>();
-
-        for (OnapCommandParameter param : params) {
-            paramMap.put(param.getName(), param.getValue().toString());
-        }
-        return new OnapCredentials(paramMap.get(DEAFULT_PARAMETER_USERNAME),
-                paramMap.get(DEAFULT_PARAMETER_PASS_WORD),
-                paramMap.get(DEAFULT_PARAMETER_HOST_URL));
     }
 
     /**
@@ -1728,10 +1622,13 @@ public class OnapCommandUtils {
                         schema.setCmdName((String) resourceMap.get(NAME));
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         schema.setVersion(obj.toString());
-                        schema.setCmdVersion(resourceMap.get(Constants.VERSION).toString());
 
-                        if (resourceMap.get(Constants.COMMAND_TYPE) != null) {
-                            schema.setType(resourceMap.get(Constants.COMMAND_TYPE).toString());
+                        Map<String, ?> infoMap = (Map<String, ?>) resourceMap.get(Constants.INFO);
+                        if (infoMap != null && infoMap.get(Constants.COMMAND_TYPE) != null) {
+                            schema.setType(infoMap.get(Constants.COMMAND_TYPE).toString());
+                        }
+                        if (infoMap != null && infoMap.get(Constants.INFO_PRODUCT) != null) {
+                            schema.setCmdVersion(infoMap.get(Constants.INFO_PRODUCT).toString());
                         }
 
                         if (resourceMap.get(Constants.HTTP) != null) {
@@ -1952,7 +1849,7 @@ public class OnapCommandUtils {
      *
      * @throws OnapCommandInvalidParameterValue
      */
-    public static void copyParamsFrom(OnapCommand from, OnapCommand to) throws OnapCommandInvalidParameterValue {
+    public static void copyParamsFrom(OnapHttpCommand from, OnapCommand to) throws OnapCommandInvalidParameterValue {
         for (OnapCommandParameter param: to.getParameters()) {
 
             OnapCommandParameter fromParam = from.getParametersMap().get(param.getName());

@@ -20,11 +20,11 @@ package org.onap.cli.fw.error;
  * Command Not registered in Onap Command Registrar as version missing.
  *
  */
-public class OnapCommandRegistrationVersionMissing extends OnapCommandException {
+public class OnapCommandRegistrationProductInfoMissing extends OnapCommandException {
 
     private static final long serialVersionUID = 5513297861129088463L;
 
-    public OnapCommandRegistrationVersionMissing(String cmdName) {
-        super("0x2003", "Command " + cmdName + " version is missing");
+    public OnapCommandRegistrationProductInfoMissing(String cmdName) {
+        super("0x2003", "Command " + cmdName + "'s product info is missing");
     }
 }

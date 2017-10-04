@@ -45,7 +45,7 @@ public class OnapSchemaRefreshCommandTest {
         assertTrue(cmdName.equalsIgnoreCase("sample-test1"));
         assertTrue(cmdFile.equalsIgnoreCase("sample-test1-schema-http.yaml"));
         assertTrue(version.equalsIgnoreCase("1.0"));
-        assertTrue(cmdVer.equalsIgnoreCase("cli-1.0"));
+        assertTrue(cmdVer.equalsIgnoreCase("open-cli"));
 
     }
 }

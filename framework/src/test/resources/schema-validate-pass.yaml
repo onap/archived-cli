@@ -1,9 +1,12 @@
 open_cli_schema_version: 1.0
 name: sdnc-create
 description: Register SDNC into Onap
-service:
-  name: extsys
-  version: v1
+info:
+  product: open-cli
+  service: test
+  type: cmd
+  author: Kanagaraj Manickam mkr1481@gmail.com
+
 parameters:
   - name: name
     description: Onap SDNC name
