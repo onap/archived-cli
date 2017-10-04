@@ -37,7 +37,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandSchema;
-import org.onap.cli.fw.ad.OnapCredentials;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.cmd.OnapSwaggerCommand;
 import org.onap.cli.fw.error.OnapCommandException;
