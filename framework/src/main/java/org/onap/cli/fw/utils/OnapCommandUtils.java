@@ -64,6 +64,7 @@ import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_LIST;
 import static org.onap.cli.fw.conf.Constants.INPUT_PARAMS_MANDATORY_LIST;
 import static org.onap.cli.fw.conf.Constants.IS_OPTIONAL;
 import static org.onap.cli.fw.conf.Constants.IS_SECURED;
+import static org.onap.cli.fw.conf.Constants.IS_INCLUDE;
 import static org.onap.cli.fw.conf.Constants.LONG_OPTION;
 import static org.onap.cli.fw.conf.Constants.METHOD;
 import static org.onap.cli.fw.conf.Constants.METHOD_TYPE;
@@ -672,6 +673,21 @@ public class OnapCommandUtils {
                                             param.setSecured(true);
                                         } else {
                                             param.setSecured(false);
+                                        }
+                                        break;
+
+                                    case IS_INCLUDE:
+                                        if (validate) {
+                                            if (!validateBoolean(String.valueOf(parameter.get(key2)))) {
+                                                exceptionList.add(invalidBooleanValueMessage(parameter.get(NAME),
+                                                        IS_INCLUDE, parameter.get(key2)));
+                                            }
+                                        }
+
+                                        if ("true".equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
+                                            param.setInclude(true);
+                                        } else {
+                                            param.setInclude(false);
                                         }
                                         break;
                                 }

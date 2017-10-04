@@ -109,6 +109,7 @@ public class Constants {
     public static final String IS_OPTIONAL = "is_optional";
     public static final String DEFAULT_VALUE = "default_value";
     public static final String IS_SECURED = "is_secured";
+    public static final String IS_INCLUDE = "is_include";
 
     public static final String DIRECTION = "direction";
     public static final String ATTRIBUTES = "attributes";

@@ -87,8 +87,16 @@ public class OnapCommandParameter {
 
     /*
      * raw value, get stored as its without processing it.
+     * it will have same value as stored in yaml template
      */
     private Object rawValue = null;
+
+    /*
+     * to support include concepts of templates, new variable
+     * called is_include is introduced and default its always
+     * true.
+     */
+    private boolean isInclude = true;
 
     public String getName() {
         return cmdName;
@@ -234,6 +242,14 @@ public class OnapCommandParameter {
 
     public void setSecured(boolean isSecured) {
         this.isSecured = isSecured;
+    }
+
+    public boolean isInclude() {
+        return isInclude;
+    }
+
+    public void setInclude(boolean isInclude) {
+        this.isInclude = isInclude;
     }
 
     public static String printShortOption(String option) {
