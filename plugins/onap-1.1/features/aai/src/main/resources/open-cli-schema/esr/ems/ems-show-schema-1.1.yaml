@@ -4,13 +4,11 @@ name: ems-show
 
 description: Show the details of configured ems
 
-version: onap-1.1
 
-service:
-  name: aai
-  version: v11
-  auth: basic
-  mode: direct
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: ems-id
@@ -49,6 +47,9 @@ results:
       type: string
 
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v11/external-system/esr-ems-list/esr-ems/${ems-id}/esr-system-info-list/esr-system-info/${ems-id}
     method: GET

@@ -5,8 +5,9 @@ name: hello-world-http
 description: First cmd hello world using http runing under lighttpd in cli at http://<cli-ip>:8080/version.json
 
 info:
-  product: sample
+  product: sample-1.0
   service: hello-world
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
     - name: name
@@ -31,6 +32,7 @@ http:
         version: 1.0.0
         auth: none
         mode: direct
+
     request:
         uri: /version.json
         method: GET

@@ -4,13 +4,11 @@ name: ems-register
 
 description: Register a EMS in Onap
 
-version: onap-1.1
 
-service:
-  name: aai
-  version: v11
-  auth: basic
-  mode: direct
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: ems-id
@@ -69,6 +67,9 @@ parameters:
     is_optional: false
 
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v11/external-system/esr-ems-list/esr-ems/${ems-id}
     method: PUT

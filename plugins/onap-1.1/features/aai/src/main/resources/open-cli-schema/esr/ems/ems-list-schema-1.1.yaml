@@ -4,13 +4,10 @@ name: ems-list
 
 description: List the configured ems
 
-version: onap-1.1
-
-service:
-  name: aai
-  version: v11
-  auth: basic
-  mode: direct
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 results:
   direction: landscape
@@ -25,6 +22,9 @@ results:
       type: string
 
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v11/external-system/esr-ems-list
     method: GET

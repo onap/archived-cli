@@ -4,13 +4,11 @@ name: vim-unregister
 
 description: Un-register a VIM under from cloud region in Onap
 
-version: onap-1.1
 
-service:
-  name: aai
-  version: v11
-  auth: basic
-  mode: direct
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: cloud-name
@@ -39,6 +37,9 @@ parameters:
     is_optional: true
 
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v11/cloud-infrastructure/cloud-regions/cloud-region/${cloud-name}/${region-name}/esr-system-info-list/esr-system-info/${vim-id}?resource-version=${resource-version}
     method: DELETE
