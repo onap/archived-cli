@@ -25,7 +25,7 @@ import org.onap.cli.fw.error.OnapCommandExecutionFailed;
  * This command helps to test the Command functionalities.
  *
  */
-@OnapCommandSchema(name = "sample-test", version="cli-1.0", schema = "sample-test-schema.yaml")
+@OnapCommandSchema(name = "sample-test", version="open-cli", schema = "sample-test-schema.yaml")
 public class OnapCommandSample extends OnapCommand {
 
     public OnapCommandSample() {

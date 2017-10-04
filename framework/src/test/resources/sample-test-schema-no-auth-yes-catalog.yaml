@@ -4,15 +4,21 @@ name: sample-cmd-no-auth-no-catalog
 
 description: sample
 
-version: sample-test-1.0
 
-service:
-  name: sample
-  version: v1
-  auth: none
-  mode: catalog
+info:
+  product: open-cli
+  service: test
+  type: cmd
+  author: Kanagaraj Manickam mkr1481@gmail.com
 
 http:
+
+  service:
+    name: sample
+    version: v1
+    auth: none
+    mode: catalog
+
   request:
     uri: /test
     method: GET

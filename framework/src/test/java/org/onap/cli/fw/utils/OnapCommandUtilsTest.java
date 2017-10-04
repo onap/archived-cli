@@ -176,10 +176,8 @@ public class OnapCommandUtilsTest {
             com.setValue("value");
         }
 
-        OnapCredentials cre = OnapCommandUtils.fromParameters(cmd.getParameters());
-        assertTrue(cre != null);
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 16);
+        assertTrue(map.size() == 15);
     }
 
     @Test
@@ -189,7 +187,7 @@ public class OnapCommandUtilsTest {
         assertTrue("sample-test".equals(cmd.getName()));
 
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 11);
+        assertTrue(map.size() == 7);
     }
 
     @Test
@@ -219,7 +217,7 @@ public class OnapCommandUtilsTest {
         OnapHttpCommand cmd = new OnapHttpCommandSample();
         cmd.setName("sample-test-http");
         try {
-            OnapCommandUtils.loadHTTPSchemaSection(cmd, "sample-test-schema.yaml", false);
+            OnapCommandUtils.loadHttpSchema(cmd, "sample-test-schema.yaml", true, false);
         } catch (OnapCommandParameterNameConflict | OnapCommandParameterOptionConflict
                 | OnapCommandInvalidParameterType | OnapCommandInvalidPrintDirection
                 | OnapCommandInvalidResultAttributeScope | OnapCommandSchemaNotFound | OnapCommandInvalidSchema
@@ -233,7 +231,7 @@ public class OnapCommandUtilsTest {
         OnapHttpCommand cmd = new OnapHttpCommandSample();
         cmd.setName("sample-create-http");
         try {
-            OnapCommandUtils.loadHTTPSchemaSection(cmd, "sample-test-schema-http.yaml", true);
+            OnapCommandUtils.loadHttpSchema(cmd, "sample-test-schema-http.yaml", true, true);
             assertTrue(cmd.getSuccessStatusCodes().size() == 2);
         } catch (OnapCommandParameterNameConflict | OnapCommandParameterOptionConflict
                 | OnapCommandInvalidParameterType | OnapCommandInvalidPrintDirection
@@ -251,6 +249,8 @@ public class OnapCommandUtilsTest {
         String actualResult = OnapCommandUtils.help(cmd);
 
         String expectedHelp = FileUtil.loadResource("sample-cmd-test-help.txt");
+
+        //mrkanag compare the result
     }
 
     @Test
@@ -443,21 +443,21 @@ public class OnapCommandUtilsTest {
         assert info != null;
     }
 
-    @OnapCommandSchema(name = "sample-test-info", version = "cli-1.0", schema = "sample-test-info.yaml")
+    @OnapCommandSchema(name = "sample-test-info", version = "open-cli", schema = "sample-test-info.yaml")
     class OnapCommandSampleInfo extends OnapCommand {
         @Override
         protected void run() throws OnapCommandException {
         }
     }
 
-    @OnapCommandSchema(name = "sample-test", version = "cli-1.0", schema = "sample-test-schema.yaml")
+    @OnapCommandSchema(name = "sample-test", version = "open-cli", schema = "sample-test-schema.yaml")
     class OnapCommandSample extends OnapCommand {
         @Override
         protected void run() throws OnapCommandException {
         }
     }
 
-    @OnapCommandSchema(name = "sample-swagger-test", version = "cli-1.0", schema = "sample-test-schema-swagger.yaml")
+    @OnapCommandSchema(name = "sample-swagger-test", version = "open-cli", schema = "sample-test-schema-swagger.yaml")
     class OnapSwaggerBasedCommandSample extends OnapSwaggerCommand {
 
         @Override
@@ -465,7 +465,7 @@ public class OnapCommandUtilsTest {
         }
     }
 
-    @OnapCommandSchema(name = "sample-http-test", version = "cli-1.0", schema = "sample-test-schema-http.yaml")
+    @OnapCommandSchema(name = "sample-http-test", version = "open-cli", schema = "sample-test-schema-http.yaml")
     class OnapHttpCommandSample extends OnapHttpCommand {
 
         @Override

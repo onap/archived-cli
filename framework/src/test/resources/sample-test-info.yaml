@@ -1,9 +1,9 @@
 open_cli_schema_version: 1.0
 name: sample-test-info
 description: Onap sample command to test the command features
-version: cli-1.0
+
 info:
-  product: cli-1.0
-  service: cli
+  product: open-cli
+  service: test
   type: cmd
   author: Kanagaraj Manickam mkr1481@gmail.com

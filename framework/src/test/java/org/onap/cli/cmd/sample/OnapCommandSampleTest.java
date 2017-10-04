@@ -37,10 +37,10 @@ import org.onap.cli.fw.output.OnapCommandResultAttribute;
 public class OnapCommandSampleTest {
     @Test
     public void sampleTestVersion() {
-        
+
         try {
-        	
-        	OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
+
+            OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
 
             List<OnapCommandParameter> parameters = new ArrayList();
             OnapCommandParameter v = new OnapCommandParameter();
@@ -75,9 +75,9 @@ public class OnapCommandSampleTest {
 
     @Test
     public void sampleTest() {
-        
+
         try {
-        	OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
+            OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
             List<OnapCommandParameter> parameters = new ArrayList();
             OnapCommandParameter v = new OnapCommandParameter();
             v.setName(Constants.DEFAULT_PARAMETER_VERSION);
@@ -100,7 +100,7 @@ public class OnapCommandSampleTest {
             t.setValue("true");
             parameters.add(t);
             OnapCommandParameter a = new OnapCommandParameter();
-            a.setName(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH);
+            a.setName(Constants.DEFAULT_PARAMETER_NO_AUTH);
             a.setValue("true");
             parameters.add(a);
             OnapCommandParameter d = new OnapCommandParameter();
@@ -113,7 +113,7 @@ public class OnapCommandSampleTest {
             parameters.add(m);
             sample.setParameters(parameters);
             sample.execute();
-            
+
             //validate whether output attributes default value got initialized as part of execute()
             OnapCommandResultAttribute attr = sample.getResult().getRecordsMap().get("output-1");
             String attrValue = attr.getValues().get(0);
@@ -122,8 +122,8 @@ public class OnapCommandSampleTest {
             attrValue = attr.getValues().get(0);
             assertEquals(attrValue, "test");
         } catch (IllegalArgumentException e){
-        	fail("Failed to replace the output default value on output-1");
-    	} catch (OnapCommandException e) {
+            fail("Failed to replace the output default value on output-1");
+        } catch (OnapCommandException e) {
         }
     }
 
@@ -154,7 +154,7 @@ public class OnapCommandSampleTest {
         t.setValue("true");
         parameters.add(t);
         OnapCommandParameter a = new OnapCommandParameter();
-        a.setName(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH);
+        a.setName(Constants.DEFAULT_PARAMETER_NO_AUTH);
         a.setValue("true");
         parameters.add(a);
         OnapCommandParameter d = new OnapCommandParameter();

@@ -348,9 +348,9 @@ public class OnapCli {
 
                 for (OnapCommandParameter param: cmd.getParameters()) {
                     if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(
-                            cmd.getService().getName() + ":" + param.getLongOption())) {
+                            cmd.getInfo().getService() + ":" + param.getLongOption())) {
                         param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
-                                cmd.getService().getName() + ":" + param.getLongOption()));
+                                cmd.getInfo().getService() + ":" + param.getLongOption()));
                     } else if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(param.getLongOption())) {
                         param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(param.getLongOption()));
                     }

@@ -169,7 +169,7 @@ public class OnapCliMainTest {
         }
 
         cli = new OnapCli(new String[] {});
-        mockConsole("use cli-1.0");
+        mockConsole("use open-cli");
         try {
             cli.handleInteractive();
         } catch (Exception e) {
