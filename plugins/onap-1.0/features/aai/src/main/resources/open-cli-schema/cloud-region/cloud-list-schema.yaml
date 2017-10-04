@@ -1,12 +1,12 @@
 open_cli_schema_version: 1.0
 name: cloud-list
 description: List the configured clouds and Onap service subscriptions
-version: onap-1.0
-service:
-  name: aai
-  version: v8
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.0
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
 
 results:
   direction: landscape
@@ -36,6 +36,9 @@ results:
       scope: long
       type: string
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v8/cloud-infrastructure/cloud-regions
     method: GET

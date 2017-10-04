@@ -4,13 +4,11 @@ name: sdnc-unregister
 
 description: Un-register a VNFM in Onap
 
-version: onap-1.1
 
-service:
-  name: aai
-  version: v11
-  auth: basic
-  mode: direct
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: sdnc-id
@@ -21,6 +19,9 @@ parameters:
     is_optional: false
 
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v11/external-system/esr-thirdparty-sdnc-list/esr-thirdparty-sdnc/${sdnc-id}
     method: DELETE

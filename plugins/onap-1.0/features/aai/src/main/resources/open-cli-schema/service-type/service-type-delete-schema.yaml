@@ -1,12 +1,12 @@
 open_cli_schema_version: 1.0
 name: service-type-delete
 description: Delete a service type from Onap
-version: onap-1.0
-service:
-  name: aai
-  version: v8
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.0
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
 
 parameters:
   - name: service-type-id
@@ -22,6 +22,9 @@ parameters:
     long_option: resource-version
     is_optional: true
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v8/service-design-and-creation/services/service/${service-type-id}?resource-version=${resource-version}
     queries:

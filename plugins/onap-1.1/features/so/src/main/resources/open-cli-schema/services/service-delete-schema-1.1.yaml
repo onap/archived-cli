@@ -1,12 +1,25 @@
 open_cli_schema_version: 1.0
 name: service-delete
+<<<<<<< a936ccab2b00d462f0b1f3e8318004f0414f07ef
 description: Delete service instance (experimental)
+=======
+<<<<<<< cf220435576757be81a477d68413c0dabc592478
+description: Delete service instance
+>>>>>>> Migrate plugins to use info section
 version: onap-1.1
 service:
   name: so
   version: v3
   auth: basic
   mode: direct
+=======
+description: Delete a service instance
+
+info:
+  product: onap-1.1
+  service: so
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+>>>>>>> Migrate plugins to use info section
 
 parameters:
   - name: service-id
@@ -59,6 +72,9 @@ parameters:
     is_optional: false
 
 http:
+  service:
+    auth: none
+    mode: direct
   request:
     uri: /ecomp/mso/infra/serviceInstances/v3/${service-id}
     method: DELETE
