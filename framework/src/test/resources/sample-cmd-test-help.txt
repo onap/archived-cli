@@ -5,7 +5,6 @@ Onap sample command to test the command features
 Onap service: sample v1
 
 Options:
-[-u | --host-username] [-p | --host-password] [-m | --host-url]
 [-h | --help] [-v | --version] [-d | --debug]
 [-f | --format] [-s | --long] [-t | --no-title]
 [-a | --no-auth] [-b | --bool] [-x | --secure]
@@ -13,14 +12,6 @@ Options:
 [-l | --long-opt] [-r | --url] [-z | --env]
 <positional-args>
 where,
--u | --host-username   Onap user name. It is of type STRING. By
-                        default, it is read from environment variable
-                        HOST_USERNAME.
--p | --host-password   Onap user password. It is of type STRING. By
-                        default, it is read from environment variable
-                        HOST_PASSWORD. Secured.
--m | --host-url          Onap MSB url. It is of type URL. By default, it
-                        is read from environment variable OPEN_MSB_URL.
 -h | --help             Onap command help message. It is of type STRING.
                         By default, it is false.
 -v | --version          Onap command service version. It is of type
@@ -35,8 +26,6 @@ where,
                         false.
 -t | --no-title         whether to print title or not. It is of type BOOL.
                         By default, it is false.
--a | --no-auth          whether to authenticate user or not. It is of type
-                        BOOL. By default, it is false.
 -b | --bool             Onap boolean param, by default its always false.
                         It is of type BOOL. It is optional. By default, it
                         is false.

@@ -4,11 +4,8 @@ name: basic-logout
 
 description: basic logout auth command
 
-version: cli-1.0
-
-type: auth
-
-service:
-  name: open-cli
-  version: 1.0.0
-  mode: direct
+info:
+  product: open-cli
+  service: basic-auth
+  type: auth
+  author: Kanagaraj Manickam mkr1481@gmail.com

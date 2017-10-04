@@ -46,7 +46,8 @@ public class Constants {
     public static final String SSLCONTEST_TLS = "TLSV1.2";
     public static final String APPLICATION_JSON = "application/json";
 
-    public static final String SERVICE_NAME = "cli.service_name";
+    public static final String OPEN_CLI_PRODUCT_NAME = "cli.product_name";
+
 
     //http
     public static final String URI = "uri";
@@ -86,9 +87,6 @@ public class Constants {
     public static final String COMMAND_TYPE = "type";
     public static final String SERVICE = "service";
     public static final String PARAMETERS = "parameters";
-    public static final String DEFAULT_PARAMETERS = "default_parameters";
-    public static final String DEFAULT_PARAMETERS_INCLUDE = "include";
-    public static final String DEFAULT_PARAMETERS_EXCLUDE = "exclude";
 
     public static final String RESULTS = "results";
 
@@ -115,10 +113,11 @@ public class Constants {
     public static final String ATTRIBUTES = "attributes";
 
     public static final String DEFAULT_PARAMETER_FILE_NAME = "default_input_parameters.yaml";
+    public static final String DEFAULT_PARAMETER_HTTP_FILE_NAME = "default_input_parameters_http.yaml";
 
     // Common parameters used across all commands.
     public static final String DEAFULT_PARAMETER_USERNAME = "host-username";
-    public static final String DEAFULT_PARAMETER_PASS_WORD = "host-password";
+    public static final String DEAFULT_PARAMETER_PASSWORD = "host-password";
     public static final String DEAFULT_PARAMETER_HOST_URL = "host-url";
     public static final String DEFAULT_PARAMETER_HELP = "help";
     public static final String DEFAULT_PARAMETER_VERSION = "version";
@@ -126,19 +125,15 @@ public class Constants {
     public static final String DEFAULT_PARAMETER_OUTPUT_FORMAT = "format";
     public static final String DEFAULT_PARAMETER_OUTPUT_ATTR_LONG = "long";
     public static final String DEFAULT_PARAMETER_OUTPUT_NO_TITLE = "no-title";
-    public static final String DEFAULT_PARAMETER_OUTPUT_NO_AUTH = "no-auth";
+    public static final String DEFAULT_PARAMETER_NO_AUTH = "no-auth";
 
     // Configuration properties
     public static final String CONF = "open-cli.properties";
     public static final String OPEN_IGNORE_AUTH = "cli.ignore_auth";
     public static final String OPEN_CLI_VERSION = "cli.version";
-    public static final String OPEN_CLI_PRODUCT_VERSION = "cli.product.version";
-    public static final String OPEN_CLI_PRODUCT_VERSION_ENV_NAME = "CLI_PRODUCT_VERSION";
+    public static final String OPEN_OPEN_CLI_PRODUCT_VERSION_ENV_NAME = "OPEN_CLI_PRODUCT_VERSION";
     public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
-    public static final String EXCLUDE_PARAMS_INTERNAL_CMD = "cli.exclude_params_internal_cmd";
-    public static final String NO_AUTH_DISABLE_INCLUDE_PARAMS_EXTERNAL_CMD = "cli.no_auth_disable_include_params_external_cmd";
-    public static final String NO_AUTH_ENABLE_EXCLUDE_PARAMS_EXTERNAL_CMD = "cli.no_auth_enable_exclude_params_external_cmd";
-    public static final String NO_AUTH_ENABLE_INCLUDE_PARAMS_EXTERNAL_CMD = "cli.no_auth_enable_include_params_external_cmd";
+
     public static final String SERVICE_AUTH = "cli.service.auth";
     public static final String SERVICE_AUTH_BASIC_HTTP_HEADERS = "cli.http.basic.common_headers";
 

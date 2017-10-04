@@ -2,18 +2,14 @@ open_cli_schema_version: 1.0
 
 name: catalog
 
-description: cli catalog command to find the base path for service. 
+description: cli catalog command to find the base path for service.
 
-version: cli-1.0
+info:
+  product: open-cli
+  service: catalog
+  type: catalog
+  author: Kanagaraj Manickam mkr1481@gmail.com
 
-type: catalog
-
-service:
-  auth: none
-  name: open-cli
-  version: 1.0.0
-  mode: direct
- 
 parameters:
   - name: catalog-service-name
     type: string
@@ -27,6 +23,7 @@ parameters:
     short_option: i
     long_option: catalog-service-version
     is_optional: false
+
 results:
   direction: portrait
   attributes:
@@ -39,4 +36,4 @@ results:
       description: service base path, to append with host-url for connecting the service.
       scope: short
       type: string
-      default_value: /      
+      default_value: /

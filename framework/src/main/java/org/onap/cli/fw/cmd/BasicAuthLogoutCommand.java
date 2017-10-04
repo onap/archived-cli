@@ -16,12 +16,11 @@
 
 package org.onap.cli.fw.cmd;
 
-import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.error.OnapCommandException;
 
-@OnapCommandSchema(name = "basic-logout", version = "cli-1.0", type = "auth", schema = "basic-logout.yaml")
-public class BasicAuthLogoutCommand extends OnapCommand {
+@OnapCommandSchema(name = "basic-logout", version = "open-cli", type = "auth", schema = "basic-logout.yaml")
+public class BasicAuthLogoutCommand extends OnapHttpCommand {
 
     @Override
     protected void run() throws OnapCommandException {

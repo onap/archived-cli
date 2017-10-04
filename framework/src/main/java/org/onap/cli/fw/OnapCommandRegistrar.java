@@ -34,7 +34,7 @@ import org.onap.cli.fw.error.OnapCommandInvalidRegistration;
 import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
-import org.onap.cli.fw.error.OnapCommandRegistrationVersionMissing;
+import org.onap.cli.fw.error.OnapCommandRegistrationProductInfoMissing;
 import org.onap.cli.fw.input.cache.OnapCommandParameterCache;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
@@ -51,8 +51,6 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
  */
 public class OnapCommandRegistrar {
     private Map<String, Class<? extends OnapCommand>> registry = new HashMap<>();
-
-    private Map<String, String> authCmds = new HashMap<>();
 
     private Set<String> availableProductVersions = new HashSet<>();
 
@@ -97,11 +95,11 @@ public class OnapCommandRegistrar {
      *            Command Class
      * @throws OnapCommandInvalidRegistration
      *             Invalid registration exception
-     * @throws OnapCommandRegistrationVersionMissing
+     * @throws OnapCommandRegistrationProductInfoMissing
      */
-    public void register(String name, String version, Class<? extends OnapCommand> cmd) throws OnapCommandInvalidRegistration, OnapCommandRegistrationVersionMissing {
+    public void register(String name, String version, Class<? extends OnapCommand> cmd) throws OnapCommandInvalidRegistration, OnapCommandRegistrationProductInfoMissing {
         if (version == null || version.isEmpty()) {
-            throw new OnapCommandRegistrationVersionMissing(name);
+            throw new OnapCommandRegistrationProductInfoMissing(name);
         }
 
         this.registry.put(name + ":" + version, cmd);
@@ -224,7 +222,7 @@ public class OnapCommandRegistrar {
         return cmd;
     }
 
-    private void autoDiscover() throws OnapCommandInvalidRegistration, OnapCommandRegistrationVersionMissing {
+    private void autoDiscover() throws OnapCommandInvalidRegistration, OnapCommandRegistrationProductInfoMissing {
         List<Class<OnapCommand>> cmds = OnapCommandUtils.findOnapCommands();
 
         for (Class<OnapCommand> cmd : cmds) {
@@ -264,7 +262,7 @@ public class OnapCommandRegistrar {
 
         String errorNote = "";
         String usageNote = "\n\nTo enable a product version, use one of following methods:"
-                + "\n 1. set env variable CLI_PRODUCT_VERSION"
+                + "\n 1. set env variable OPEN_CLI_PRODUCT_VERSION"
                 + "\n 2. set cli.product.version in open-cli.properties"
                 + "\n 3. in interactive mode, use the directive 'use <product version>'\n";
 

@@ -11,14 +11,14 @@ RUN cd /tmp && curl -O https://storage.googleapis.com/golang/go1.9.linux-amd64.t
 
 #Environments
 ENV OPEN_CLI_HOME /opt/onap/cli
-ENV ONAP_CLI_DEBUG false
-ENV ONAP_CLI_DEBUG_PORT 5005
-ENV CLI_MODE console
-ENV CLI_PRODUCT_VERSION onap-1.1
+ENV OPEN_CLI_DEBUG false
+ENV OPEN_CLI_DEBUG_PORT 5005
+ENV OPEN_CLI_MODE console
+ENV OPEN_CLI_PRODUCT_VERSION open-cli
 
 ENV HOST_URL http://localhost:8080
-ENV ONAP_USERNAME guest
-ENV ONAP_PASSWORD guest
+ENV OPEN_USERNAME guest
+ENV OPEN_PASSWORD guest
 
 #Copy CLI into docker
 ADD ./STAGE $OPEN_CLI_HOME
@@ -49,7 +49,7 @@ EXPOSE 80
 EXPOSE 8080
 
 #Start
-ENTRYPOINT if [ "$CLI_MODE" = "daemon" ]; then service lighttpd start; gotty --permit-write --reconnect onap; else onap -v && /bin/bash; fi
+ENTRYPOINT if [ "$OPEN_CLI_MODE" = "daemon" ]; then service lighttpd start; gotty --permit-write --reconnect onap; else onap -v && /bin/bash; fi
 
 #Cleanup
 RUN apt-get purge -y pandoc && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/go /tmp/gotty /tmp/* /var/tmp/*

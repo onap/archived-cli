@@ -186,6 +186,7 @@ public class OnapCommandParameter {
      * @throws OnapCommandInvalidParameterValue
      *             exception
      */
+    //mrkanag return value in the type format instead of string format
     public Object getValue()  {
         if (value != null) {
             return value;

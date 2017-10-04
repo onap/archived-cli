@@ -65,7 +65,6 @@ public class OnapAuthClient {
         OnapCommand login = this.findAuthCommand("login");
 
         OnapCommandUtils.copyParamsFrom(this.cmd, login);
-        login.getParametersMap().get(Constants.DEAFULT_PARAMETER_HOST_URL).setValue(this.getServiceUrl(login));
         login.execute();
 
         //It is safely assumed that all outputs are considered as common http headers.
@@ -111,7 +110,7 @@ public class OnapAuthClient {
         return this.getServiceUrl(this.cmd);
     }
 
-    private String getServiceUrl(OnapCommand cmd) throws OnapCommandException {
+    private String getServiceUrl(OnapHttpCommand cmd) throws OnapCommandException {
         if (cmd.getService().isModeDirect()){
             return cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_HOST_URL).getValue().toString();
         } else { //Catalog mode
@@ -166,20 +165,12 @@ public class OnapAuthClient {
         try {
             //Find the auth command for the given service and version under current enabled product
             auth = OnapCommandRegistrar.getRegistrar().get(
-                    this.cmd.getService().getName() + "-" +
-                    this.cmd.getService().getVersion() + "-" +
+                    this.cmd.getInfo().getService() + "-" +
                     this.cmd.getService().getAuthType() + "-" + authAction);
         } catch (OnapCommandNotFound e) {
-            try {
-                //Find the auth command for the given service under current enabled product
-                auth = OnapCommandRegistrar.getRegistrar().get(
-                        this.cmd.getService().getName() + "-" +
+            //Find the auth command for current enabled product
+            auth = OnapCommandRegistrar.getRegistrar().get(
                         this.cmd.getService().getAuthType() + "-" + authAction);
-            } catch (OnapCommandNotFound e1) {
-                //Find the auth command for current enabled product
-                auth = OnapCommandRegistrar.getRegistrar().get(
-                            this.cmd.getService().getAuthType() + "-" + authAction);
-            }
         }
 
         return auth;

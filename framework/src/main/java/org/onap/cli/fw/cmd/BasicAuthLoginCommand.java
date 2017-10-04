@@ -20,14 +20,13 @@ import java.util.Map;
 
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.impl.auth.BasicScheme;
-import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameter;
 
-@OnapCommandSchema(name = "basic-login", version = "cli-1.0", type = "auth", schema = "basic-login.yaml")
-public class BasicAuthLoginCommand extends OnapCommand {
+@OnapCommandSchema(name = "basic-login", version = "open-cli", type = "auth", schema = "basic-login.yaml")
+public class BasicAuthLoginCommand extends OnapHttpCommand {
 
     @Override
     protected void run() throws OnapCommandException {
@@ -36,7 +35,7 @@ public class BasicAuthLoginCommand extends OnapCommand {
         Map<String, OnapCommandParameter> paramMap = getParametersMap();
         OnapCommandParameter usernameParam = paramMap.get(Constants.DEAFULT_PARAMETER_USERNAME);
         String username = usernameParam.getValue().toString();
-        OnapCommandParameter usernamePassword = paramMap.get(Constants.DEAFULT_PARAMETER_PASS_WORD);
+        OnapCommandParameter usernamePassword = paramMap.get(Constants.DEAFULT_PARAMETER_PASSWORD);
         String password = usernamePassword.getValue().toString();
 
         //Execute the command to get token
