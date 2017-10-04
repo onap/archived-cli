@@ -255,21 +255,19 @@ public class OnapCommandUtils {
     public static List<String> loadSchema(OnapCommand cmd, String schemaName, boolean includeDefault,
                                           boolean validateSchema) throws OnapCommandException {
         try {
-            Map<String, ?> defaultParameterMap = includeDefault ?
-                    validateSchemaVersion(DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+            List<String> errors = new ArrayList<>();
+            if (includeDefault) {
+                Map<String, ?> defaultParameterMap = includeDefault ?
+                        validateSchemaVersion(DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+                errors.addAll(parseSchema(cmd, defaultParameterMap, validateSchema));
+            }
 
             Map<String, List<Map<String, String>>> commandYamlMap =
                     (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
-            if (includeDefault) {
-                if (commandYamlMap.get(PARAMETERS) == null) {
-                    commandYamlMap.put(PARAMETERS, (List<Map<String, String>>) defaultParameterMap.get(PARAMETERS));
-                } else {
-                    commandYamlMap.get(PARAMETERS).addAll((List<Map<String, String>>) defaultParameterMap.get(PARAMETERS));
-                }
-            }
+            errors.addAll(parseSchema(cmd, commandYamlMap, validateSchema));
 
-            return parseSchema(cmd, commandYamlMap, validateSchema);
+            return errors;
         } catch (OnapCommandException e) {
             throw e;
         } catch (Exception e) {
@@ -281,19 +279,18 @@ public class OnapCommandUtils {
     public static List<String> loadHttpSchema(OnapHttpCommand cmd, String schemaName, boolean includeDefault,
                                           boolean validateSchema) throws OnapCommandException {
         try {
-            Map<String, ?> defaultParameterMap = includeDefault ?
-                    validateSchemaVersion(DEFAULT_PARAMETER_HTTP_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
-            Map<String, List<Map<String, String>>> commandYamlMap = (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
-
+            List<String> errors = new ArrayList<>();
             if (includeDefault) {
-                if (commandYamlMap.get(PARAMETERS) == null) {
-                    commandYamlMap.put(PARAMETERS, (List<Map<String, String>>) defaultParameterMap.get(PARAMETERS));
-                } else {
-                    commandYamlMap.get(PARAMETERS).addAll((List<Map<String, String>>) defaultParameterMap.get(PARAMETERS));
-                }
-              }
-            List<String> errors = parseSchema(cmd, commandYamlMap, validateSchema);
+                Map<String, ?> defaultParameterMap = includeDefault ?
+                        validateSchemaVersion(DEFAULT_PARAMETER_HTTP_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+                errors.addAll(parseSchema(cmd, defaultParameterMap, validateSchema));
+            }
+
+            Map<String, List<Map<String, String>>> commandYamlMap =
+                    (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+
             errors.addAll(parseHttpSchema(cmd, commandYamlMap, validateSchema));
+
             return errors;
 
         } catch (OnapCommandException e) {
@@ -315,6 +312,7 @@ public class OnapCommandUtils {
     private static void validateTags(List<String> schemaErrors, Map<String, ?> yamlMap,
                                              List<String> totalParams, List<String> mandatoryParams,
                                              String section) {
+        //mrkanag capture invalid entries as well
         for (String param : totalParams) {
             boolean isMandatory = mandatoryParams.contains(param);
             boolean isYamlContains = yamlMap.containsKey(param);
@@ -441,12 +439,19 @@ public class OnapCommandUtils {
                     if (parameters != null) {
                         Set<String> names = new HashSet<>();
 
+                        //To support overriding of the parameters, if command is already
+                        //having the same named parameters, means same parameter is
+                        //Overridden from included template into current template
+                        Set<String> existingParamNames =  cmd.getParametersMap().keySet();
+
                         for (Map<String, String> parameter : parameters) {
+                            boolean isOverriding = false;
                             OnapCommandParameter param = new OnapCommandParameter();
 
                             //Override the parameters from its base such as default parameters list
-                            if (cmd.getParametersMap().containsKey(param.getName())) {
-                                param = cmd.getParametersMap().get(param.getName());
+                            if (existingParamNames.contains(parameter.getOrDefault(NAME, ""))) {
+                                param = cmd.getParametersMap().get(parameter.getOrDefault(NAME, ""));
+                                isOverriding = true;
                             }
 
                             if (validate) {
@@ -461,8 +466,10 @@ public class OnapCommandUtils {
                                     case NAME:
                                         if (names.contains(parameter.get(key2))) {
                                             throwOrCollect(new OnapCommandParameterNameConflict(parameter.get(key2)), exceptionList, validate);
+                                        } else {
+                                            names.add(parameter.get(key2));
                                         }
-                                        names.add(parameter.get(key2));
+
                                         param.setName(parameter.get(key2));
                                         break;
 
@@ -545,8 +552,10 @@ public class OnapCommandUtils {
                                 }
                             }
 
-                            if ( !cmd.getParametersMap().containsKey(param.getName()) ) {
+                            if ( !isOverriding) {
                                 cmd.getParameters().add(param);
+                            } else {
+                                cmd.getParametersMap().replace(param.getName(), param);
                             }
                         }
                     }
@@ -938,9 +947,9 @@ public class OnapCommandUtils {
 
                                             //On None type, username, password and no_auth are invalid
                                             if (srv.isNoAuth()) {
-                                                cmd.getParametersMap().remove(DEAFULT_PARAMETER_USERNAME);
-                                                cmd.getParametersMap().remove(DEAFULT_PARAMETER_PASSWORD);
-                                                cmd.getParametersMap().remove(DEFAULT_PARAMETER_NO_AUTH);
+                                                cmd.getParametersMap().get(DEAFULT_PARAMETER_USERNAME).setInclude(false);
+                                                cmd.getParametersMap().get(DEAFULT_PARAMETER_PASSWORD).setInclude(false);
+                                                cmd.getParametersMap().get(DEFAULT_PARAMETER_NO_AUTH).setInclude(false);
                                             }
                                             break;
 
@@ -1104,6 +1113,10 @@ public class OnapCommandUtils {
 
         int newLineOptions = 0;
         for (OnapCommandParameter param : cmd.getParameters()) {
+            if (!param.isInclude()) {
+                continue;
+            }
+
             // First column Option or positional args
             String optFirstCol;
             if (newLineOptions == 3) {
