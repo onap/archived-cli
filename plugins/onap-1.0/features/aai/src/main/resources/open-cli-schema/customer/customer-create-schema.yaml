@@ -1,12 +1,12 @@
 open_cli_schema_version: 1.0
 name: customer-create
 description: Create a customer in Onap
-version: onap-1.0
-service:
-  name: aai
-  version: v8
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.0
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
 
 parameters:
   - name: customer-name
@@ -23,6 +23,9 @@ parameters:
     is_optional: false
 
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v8/business/customers/customer/${customer-name}
     method: PUT

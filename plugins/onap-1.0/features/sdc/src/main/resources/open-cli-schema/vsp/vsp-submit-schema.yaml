@@ -1,12 +1,11 @@
 open_cli_schema_version: 1.0
 name: vsp-submit
 description: Submit Vendor Software Product
-version: onap-1.0
-service:
-  name: sdc
-  version: v1.0
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.0
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: vsp-id
@@ -16,6 +15,9 @@ parameters:
     long_option: vsp-id
     is_optional: false
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /onboarding-api/v1.0/vendor-software-products/${vsp-id}/actions
     method: PUT

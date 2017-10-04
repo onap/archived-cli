@@ -1,11 +1,11 @@
 open_cli_schema_version: 1.0
 name: microservice-create
 description: Register microservice into Onap
-version: onap-1.1
-service:
-  name: msb
-  version: v1
-  auth: none
+
+info:
+  product: onap-1.1
+  service: msb
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: service-name
@@ -81,6 +81,9 @@ results:
       scope: long
       type: string
 http:
+  service:
+    auth: none
+    mode: direct
   request:
     uri: /services
     method: POST

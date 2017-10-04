@@ -1,12 +1,11 @@
 open_cli_schema_version: 1.0
 name: vnf-delete
 description: delete a VNF
-version: onap-1.1
-service:
-  name: mso
-  version: v2
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.1
+  service: so
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: vnf-instance-id
@@ -35,6 +34,9 @@ parameters:
     is_optional: false
 
 http:
+  service:
+    auth: none
+    mode: direct
   request:
     uri: ecomp/mso/infra/serviceInstances/v2/${service-instance-id}/vnfs
     method: DELETE

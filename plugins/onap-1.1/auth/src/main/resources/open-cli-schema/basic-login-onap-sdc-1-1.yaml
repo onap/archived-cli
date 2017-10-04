@@ -4,14 +4,13 @@ name: sdc-basic-login
 
 description: ONAP basic login auth command
 
-version: onap-1.1
 
-type: auth
+info:
+  product: onap-1.1
+  service: sdc-basic-auth
+  type: auth
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
-service:
-  name: onap
-  version: v1
-  mode: direct
 
 results:
   direction: portrait

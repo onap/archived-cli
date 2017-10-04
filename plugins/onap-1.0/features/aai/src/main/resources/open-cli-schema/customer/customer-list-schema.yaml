@@ -1,12 +1,12 @@
 open_cli_schema_version: 1.0
 name: customer-list
 description: Lists the registetred customers in Onap
-version: onap-1.0
-service:
-  name: aai
-  version: v8
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.0
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
 results:
   direction: landscape
   attributes:
@@ -19,6 +19,9 @@ results:
       scope: short
       type: string
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v8/business/customers
     method: GET

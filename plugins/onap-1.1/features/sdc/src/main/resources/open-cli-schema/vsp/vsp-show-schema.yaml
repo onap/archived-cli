@@ -1,12 +1,11 @@
 open_cli_schema_version: 1.0
 name: vsp-show
 description: Details of the Vendor Software Product
-version: onap-1.1
-service:
-  name: sdc
-  version: v1.0
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.1
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: vsp-id
@@ -32,6 +31,9 @@ results:
       scope: short
       type: string
 http:
+  service:
+    auth: none
+    mode: direct
   request:
     uri: /onboarding-api/v1.0/vendor-software-products/${vsp-id}
     method: GET

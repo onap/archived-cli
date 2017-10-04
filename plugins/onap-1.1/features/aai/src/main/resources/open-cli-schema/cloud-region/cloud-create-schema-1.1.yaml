@@ -1,12 +1,12 @@
 open_cli_schema_version: 1.0
 name: cloud-create
 description: Create a cloud region in Onap
-version: onap-1.1
-service:
-  name: aai
-  version: v11
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
 
 parameters:
   - name: cloud-name
@@ -23,6 +23,9 @@ parameters:
     is_optional: false
 
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v11/cloud-infrastructure/cloud-regions/cloud-region/${cloud-name}/${region-name}
     method: PUT
