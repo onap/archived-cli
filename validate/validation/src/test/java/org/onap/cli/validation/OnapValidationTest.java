@@ -57,12 +57,19 @@ public class OnapValidationTest {
     }
 
     @Test
-    public void validateCommandSchemas() throws IOException, OnapCommandException {
-        OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("cli-1.0");
-        for (ExternalSchema sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
-            System.out.println(
+    public void validateCommandsResult() throws IOException, OnapCommandException {
+        for (String version: OnapCommandRegistrar.getRegistrar().getAvailableProductVersions()) {
+            OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(version);
+            System.out.println(version);
+            System.out.println("==========================\n\n");
+            for (ExternalSchema sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
+                if (sch.getCmdVersion().equals(version)) {
+                    System.out.println(
                     "************************* validate '" + sch.getCmdName() + "' *******************************");
-            this.handle(new String[] { "schema-validate", "-l", sch.getSchemaName(), "-i"});
+                    OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
+                    this.handle(new String[] { "schema-validate", "-l", sch.getSchemaName(), "-i"});
+                }
+            }
         }
     }
 
