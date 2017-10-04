@@ -1,9 +1,0 @@
-open_cli_schema_version: 1.0
-default_parameters:
-  include:
-    - host-username
-    - host-password
-    - host-url
-    - no-auth
-  exclude:
-    - long
