@@ -9,3 +9,11 @@ info:
   service: basic-auth
   type: auth
   author: Kanagaraj Manickam mkr1481@gmail.com
+
+parameters:
+  - name: host-username
+    is_include: false
+  - name: host-password
+    is_include: false
+  - name: no-auth
+    is_include: false

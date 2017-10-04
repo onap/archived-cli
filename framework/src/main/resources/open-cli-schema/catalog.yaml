@@ -23,7 +23,12 @@ parameters:
     short_option: i
     long_option: catalog-service-version
     is_optional: false
-
+  - name: host-username
+    is_include: false
+  - name: host-password
+    is_include: false
+  - name: no-auth
+    is_include: false
 results:
   direction: portrait
   attributes:
