@@ -1,3 +1,3 @@
-org.onap.cli.cmd.auth.OnapBasicAuthLoginCommand
-org.onap.cli.cmd.auth.OnapBasicAuthLogoutCommand
-org.onap.cli.cmd.auth.OnapSdcBasicAuthLoginCommand
+org.onap.cli.cmd.auth.OnapBasicAuthLoginCommandAmesterdam
+org.onap.cli.cmd.auth.OnapBasicAuthLogoutCommandAmesterdam
+org.onap.cli.cmd.auth.OnapSdcBasicAuthLoginCommandAmesterdam
