@@ -4,15 +4,13 @@ name: catalog
 
 description: ONAP catalog command to find the base path for service.
 
-version: onap-1.1
 
-type: catalog
+info:
+  product: onap-1.1
+  service: msb
+  type: catalog
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
-service:
-  name: msb
-  version: v1
-  mode: direct
-  auth: none
 
 parameters:
   - name: catalog-service-name
@@ -41,6 +39,9 @@ results:
       type: string
       default_value: /
 http:
+  service:
+    mode: direct
+    auth: none
   request:
     uri: /services/${catalog-service-name}/version/${catalog-service-version}
     method: GET

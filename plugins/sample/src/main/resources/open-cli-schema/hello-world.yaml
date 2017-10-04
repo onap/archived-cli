@@ -4,13 +4,10 @@ name: hello-world
 
 description: First cmd hello world
 
-version: sample-1.0
-
-service:
-    name: sample-service
-    version: 1.0.0
-    auth: none
-    mode: direct
+info:
+  product: sample-1.0
+  service: hello-world
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
     - name: name

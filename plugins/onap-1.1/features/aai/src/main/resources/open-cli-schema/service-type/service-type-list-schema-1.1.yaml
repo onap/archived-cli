@@ -1,12 +1,11 @@
 open_cli_schema_version: 1.0
 name: service-type-list
 description: List the service types configured in Onap
-version: onap-1.1
-service:
-  name: aai
-  version: v11
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 results:
   direction: landscape
@@ -24,6 +23,9 @@ results:
       scope: short
       type: string
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v11/service-design-and-creation/services
     method: GET
