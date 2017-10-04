@@ -17,14 +17,14 @@
 package org.onap.cli.cmd.auth;
 
 import org.onap.cli.fw.OnapCommandSchema;
-import org.onap.cli.fw.cmd.BasicAuthLoginCommand;
+import org.onap.cli.fw.cmd.BasicAuthLogoutCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 
-@OnapCommandSchema(name = "sdc-basic-login", version = "onap-1.1", type = "auth", schema = "basic-login-onap-sdc-1-1.yaml")
-public class OnapSdcBasicAuthLoginCommand extends BasicAuthLoginCommand {
+@OnapCommandSchema(name = "basic-logout", version = "onap-1.1", type = "auth", schema = "basic-logout-onap-1-1.yaml")
+public class OnapBasicAuthLogoutCommandAmesterdam extends BasicAuthLogoutCommand {
 
     @Override
     protected void run() throws OnapCommandException {
-    	super.run();
+        super.run();
     }
 }

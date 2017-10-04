@@ -21,7 +21,7 @@ import org.onap.cli.fw.cmd.BasicAuthLoginCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 
 @OnapCommandSchema(name = "basic-login", version = "onap-1.1", type = "auth", schema = "basic-login-onap-1-1.yaml")
-public class OnapBasicAuthLoginCommand extends BasicAuthLoginCommand {
+public class OnapBasicAuthLoginCommandAmesterdam extends BasicAuthLoginCommand {
 
     @Override
     protected void run() throws OnapCommandException {
