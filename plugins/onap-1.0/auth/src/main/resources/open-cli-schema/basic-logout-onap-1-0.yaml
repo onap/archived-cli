@@ -4,11 +4,8 @@ name: basic-logout
 
 description: ONAP basic logout auth command
 
-version: onap-1.0
-
-type: auth
-
-service:
-  name: onap
-  version: v1
-  mode: direct
+info:
+  product: onap-1.0
+  service: basic-auth
+  type: auth
+  author: ONAP CLI Team onap-discuss@lists.onap.org

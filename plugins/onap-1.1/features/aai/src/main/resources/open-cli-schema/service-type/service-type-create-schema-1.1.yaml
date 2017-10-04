@@ -1,13 +1,11 @@
 open_cli_schema_version: 1.0
 name: service-type-create
 description: Add a service type in Onap
-version: onap-1.1
-service:
-  name: aai
-  version: v11
-  auth: basic
-  mode: direct
 
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 parameters:
   - name: service-type
     description: Onap service type
@@ -23,6 +21,9 @@ parameters:
     is_optional: true
 
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v11/service-design-and-creation/services/service/${service-type-id}
     method: PUT

@@ -1,12 +1,11 @@
 open_cli_schema_version: 1.0
 name: license-model-show
 description: Details of the License Model
-version: onap-1.0
-service:
-  name: sdc
-  version: v1.0
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.0
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: license-model-id
@@ -36,6 +35,9 @@ results:
       scope: short
       type: string
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /onboarding-api/v1.0/vendor-software-products/${license-model-id}
     method: GET

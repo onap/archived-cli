@@ -4,14 +4,11 @@ name: basic-login
 
 description: ONAP basic login auth command
 
-version: onap-1.1
-
-type: auth
-
-service:
-  name: onap
-  version: v1
-  mode: direct
+info:
+  product: onap-1.1
+  service: basic-auth
+  type: auth
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 results:
   direction: portrait

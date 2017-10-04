@@ -1,12 +1,11 @@
 open_cli_schema_version: 1.0
 name: customer-delete
 description: Delete a customer from Onap
-version: onap-1.1
-service:
-  name: aai
-  version: v11
-  auth: basic
-  mode: direct
+
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: customer-name
@@ -22,6 +21,9 @@ parameters:
     long_option: resource-version
     is_optional: true
 http:
+  service:
+    auth: basic
+    mode: direct
   request:
     uri: /aai/v11/business/customers/customer/${customer-name}?resource-version=${resource-version}
     method: DELETE
