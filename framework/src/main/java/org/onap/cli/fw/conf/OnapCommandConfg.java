@@ -80,9 +80,9 @@ public final class OnapCommandConfg {
     }
 
     public static String getEnabledProductVersion() {
-        String version = System.getenv(Constants.OPEN_CLI_PRODUCT_VERSION_ENV_NAME);
+        String version = System.getenv(Constants.OPEN_OPEN_CLI_PRODUCT_VERSION_ENV_NAME);
         if (version == null) {
-            version = prps.getProperty(Constants.OPEN_CLI_PRODUCT_VERSION);
+            version = prps.getProperty(Constants.OPEN_CLI_PRODUCT_NAME);
         }
         return version;
     }
@@ -100,8 +100,8 @@ public final class OnapCommandConfg {
         return false;
     }
 
-    public static String getInternalCmd() {
-        return prps.getProperty(Constants.SERVICE_NAME);
+    public static String getProductName() {
+        return prps.getProperty(Constants.OPEN_CLI_PRODUCT_NAME);
     }
 
     public static String getAuthType() {
@@ -136,26 +136,6 @@ public final class OnapCommandConfg {
     public static Map<String, String> getServiceHeaders(String serviceName, Map<String, String> paramMap) {
         String serviceHeader = Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS+ "." + serviceName;
         return getHeaderValues(serviceHeader, paramMap);
-    }
-
-    public static Set<String> getExcludeParamsForInternalCmd() {
-        return Arrays.stream(prps.getProperty(Constants.EXCLUDE_PARAMS_INTERNAL_CMD)  // NOSONAR
-                .split(",")).map(String::trim).collect(Collectors.toSet());
-    }
-
-    public static Set<String> getIncludeParamsForNoAuthDisableExternalCmd() {
-        return Arrays.stream(prps.getProperty(Constants.NO_AUTH_DISABLE_INCLUDE_PARAMS_EXTERNAL_CMD)  // NOSONAR
-                .split(",")).map(String::trim).collect(Collectors.toSet());
-    }
-
-    public static Set<String> getExcludeParamsForNoAuthEnableExternalCmd() {
-        return Arrays.stream(prps.getProperty(Constants.NO_AUTH_ENABLE_EXCLUDE_PARAMS_EXTERNAL_CMD)  // NOSONAR
-                .split(",")).map(String::trim).collect(Collectors.toSet());
-    }
-
-    public static Set<String> getIncludeParamsForNoAuthEnableExternalCmd() {
-        return Arrays.stream(prps.getProperty(Constants.NO_AUTH_ENABLE_INCLUDE_PARAMS_EXTERNAL_CMD)  // NOSONAR
-                .split(",")).map(String::trim).collect(Collectors.toSet());
     }
 
     //mrkanag move this utils class

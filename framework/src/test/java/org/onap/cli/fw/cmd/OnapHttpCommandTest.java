@@ -16,18 +16,20 @@
 
 package org.onap.cli.fw.cmd;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.ParameterType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 public class OnapHttpCommandTest {
 
+    @Ignore
     @Test(expected = OnapCommandException.class)
     public void runTest() throws OnapCommandException {
         OnapCommandParameter param1 = new OnapCommandParameter();

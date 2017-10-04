@@ -29,7 +29,7 @@ public class OnapCommandInfo {
 
     private String author;
 
-    private CommandType type;
+    private CommandType type = CommandType.CMD;
 
     public String getProduct() {
         return product;

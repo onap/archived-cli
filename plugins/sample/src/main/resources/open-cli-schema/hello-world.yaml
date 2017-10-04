@@ -4,7 +4,9 @@ name: hello-world
 
 description: First cmd hello world
 
-version: sample-1.0
+info:
+  product: sample
+  service: hello-world
 
 service:
     name: sample-service

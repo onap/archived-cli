@@ -58,19 +58,13 @@ public abstract class OnapCommand {
 
     private String cmdSchemaName;
 
-    private OnapCommandInfo info;
-
-    private String productVersion;
-
-    private OnapService onapService = new OnapService();
+    private OnapCommandInfo info = new OnapCommandInfo();
 
     private List<OnapCommandParameter> cmdParameters = new ArrayList<>();
 
     private OnapCommandResult cmdResult = new OnapCommandResult();
 
     protected boolean isInitialzied = false;
-
-    protected CommandType type = CommandType.CMD;
 
     public String getSchemaVersion() {
         return Constants.OPEN_CLI_SCHEMA_VERSION_VALUE;
@@ -104,23 +98,6 @@ public abstract class OnapCommand {
 
     public void setInfo(OnapCommandInfo info) {
         this.info = info;
-    }
-
-    public boolean isCommandInternal() {
-        return onapService.getName() != null
-                && onapService.getName().equalsIgnoreCase(OnapCommandConfg.getInternalCmd())
-                && this.type.equals(CommandType.CMD);
-    }
-
-    /*
-     * Onap service, this command uses to execute it. , defined by derived command
-     */
-    public OnapService getService() {
-        return this.onapService;
-    }
-
-    public void setService(OnapService service) {
-        this.onapService = service;
     }
 
     public void setParameters(List<OnapCommandParameter> parameters) {
@@ -158,14 +135,6 @@ public abstract class OnapCommand {
 
     protected void setSchemaName(String schemaName) {
         this.cmdSchemaName = schemaName;
-    }
-
-    public CommandType getType() {
-        return this.type;
-    }
-
-    public void setType(CommandType type) {
-        this.type = type;
     }
 
     /**
@@ -208,23 +177,8 @@ public abstract class OnapCommand {
      */
     protected void validate() throws OnapCommandException {
         for (OnapCommandParameter param : this.getParameters()) {
-            try {
-                param.validate();
-            } catch (OnapCommandParameterMissing e) {
-                if (OnapCommandConfg.getExcludeParamsForNoAuthEnableExternalCmd().contains(param.getName())) {
-                    Optional<OnapCommandParameter> noAuthParamOpt = this.getParameters().stream().filter(p -> p.getName()
-                            .equalsIgnoreCase(Constants.DEFAULT_PARAMETER_OUTPUT_NO_AUTH)).findFirst();
-
-                    if (noAuthParamOpt.isPresent() && "true".equalsIgnoreCase(noAuthParamOpt.get().getValue().toString())) {
-                        continue;
-                    }
-                }
-                throw e;
-            } catch (OnapCommandException e) {
-                throw e;
-            }
-
-        }
+             param.validate();
+         }
     }
 
     /**
@@ -302,7 +256,7 @@ public abstract class OnapCommand {
      * @return version
      */
     public String printVersion() {
-        return this.getService().toString();
+        return this.getInfo().getService();
     }
 
     /**
@@ -315,13 +269,6 @@ public abstract class OnapCommand {
     public String printHelp() throws OnapCommandHelpFailed {
         return OnapCommandUtils.help(this);
     }
+
     // (mrkanag) Add toString for all command, parameter, result, etc objects in JSON format
-
-    public void setVersion(String version) {
-        this.productVersion = version;
-    }
-
-    public String getVersion() {
-        return this.productVersion;
-    }
 }

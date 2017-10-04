@@ -60,8 +60,8 @@ public class OnapCommandRegistrarTest {
     public void registerTest() throws OnapCommandException {
         OnapCommand test = new OnapCommandTest();
         Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
-        registerar.register("test", "cli-1.0", cmd);
-        OnapCommand cc = registerar.get("test");
+        registerar.register("Test", "open-cli", cmd);
+        OnapCommand cc = registerar.get("Test");
         assertTrue(cmd == cc.getClass());
 
     }
@@ -70,8 +70,8 @@ public class OnapCommandRegistrarTest {
     public void cmdTestSchema() throws OnapCommandException {
         OnapCommand test = new OnapCommandTest();
         Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
-        registerar.register("test", "cli-1.0", cmd);
-        OnapCommand cc = registerar.get("test");
+        registerar.register("Test", "open-cli", cmd);
+        OnapCommand cc = registerar.get("Test");
     }
 
     @Test
@@ -90,7 +90,7 @@ public class OnapCommandRegistrarTest {
     @Test
     public void onapCommandRegistrationFailedTest() throws OnapCommandException {
 
-        @OnapCommandSchema(name = "Test2", version= "cli-1.0", schema = "sample-test-schema.yaml")
+        @OnapCommandSchema(name = "Test2", version= "open-cli", schema = "sample-test-schema.yaml")
         class Test extends OnapCommand {
 
             @Override
@@ -103,7 +103,7 @@ public class OnapCommandRegistrarTest {
         OnapCommand com = new Test();
         Class<OnapCommand> cmd = (Class<OnapCommand>) com.getClass();
         try {
-            registerar.register("Test2", "cli-1.0", cmd);
+            registerar.register("Test2", "open-cli", cmd);
             registerar.get("Test2");
             fail("This should have thrown an exception");
         } catch (OnapCommandRegistrationFailed e) {
@@ -116,7 +116,7 @@ public class OnapCommandRegistrarTest {
         OnapCommand test = new OnapCommandTest1();
         Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
         registerar = new OnapCommandRegistrar();
-        registerar.register("test1", "cli-1.0", cmd);
+        registerar.register("test1", "open-cli", cmd);
         String help = registerar.getHelp();
         assertNotNull(help);
     }
@@ -149,8 +149,8 @@ public class OnapCommandRegistrarTest {
                 OnapCommandRegistrar.getRegistrar().setInteractiveMode(false);
                 assertTrue(!OnapCommandRegistrar.getRegistrar().isInteractiveMode());
 
-                OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("cli-1.0");
-                assertEquals("cli-1.0", OnapCommandRegistrar.getRegistrar().getEnabledProductVersion());
+                OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
+                assertEquals("open-cli", OnapCommandRegistrar.getRegistrar().getEnabledProductVersion());
                 OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
                 assertTrue(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion().contains("schema-refresh"));
 
@@ -161,7 +161,7 @@ public class OnapCommandRegistrarTest {
     }
 }
 
-@OnapCommandSchema(name = OnapCommandTest.CMD_NAME, version = "cli-1.0", schema = "sample-test-schema.yaml")
+@OnapCommandSchema(name = OnapCommandTest.CMD_NAME, version = "open-cli", schema = "sample-test-schema.yaml")
 class OnapCommandTest extends OnapCommand {
 
     public OnapCommandTest() {
@@ -176,7 +176,7 @@ class OnapCommandTest extends OnapCommand {
 
 }
 
-@OnapCommandSchema(name = OnapCommandTest1.CMD_NAME, version = "cli-1.0", schema = "test-schema.yaml")
+@OnapCommandSchema(name = OnapCommandTest1.CMD_NAME, version = "open-cli", schema = "test-schema.yaml")
 class OnapCommandTest1 extends OnapCommand {
 
     public OnapCommandTest1() {

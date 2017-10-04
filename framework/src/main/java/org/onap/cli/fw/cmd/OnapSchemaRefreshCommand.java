@@ -30,7 +30,7 @@ import java.util.List;
  * Refresh external schema.
  *
  */
-@OnapCommandSchema(name = "schema-refresh", version = "cli-1.0", schema = "schema-refresh.yaml")
+@OnapCommandSchema(name = "schema-refresh", version = "open-cli", schema = "schema-refresh.yaml")
 public class OnapSchemaRefreshCommand extends OnapCommand {
 
     @Override
@@ -59,11 +59,11 @@ public class OnapSchemaRefreshCommand extends OnapCommand {
                 attribute.setValues(slNumbers);
             } else if ("command".equals(attribute.getName())) {
                 attribute.setValues(cmdNames);
-            } else if ("product-version".equals(attribute.getName())) {
+            } else if ("product".equals(attribute.getName())) {
                 attribute.setValues(cmdVersions);
             } else if ("schema".equals(attribute.getName())) {
                 attribute.setValues(cmdFiles);
-            } else if ("version".equals(attribute.getName())) {
+            } else if ("ocs-version".equals(attribute.getName())) {
                 attribute.setValues(versions);
             }
         }

@@ -28,9 +28,9 @@ do
   CLASSPATH=$CLASSPATH:$entry
 done
 
-if [ "$ONAP_CLI_DEBUG" = "true" ]
+if [ "$OPEN_CLI_DEBUG" = "true" ]
 then
-    java -Xdebug -Xrunjdwp:transport=dt_socket,address=${ONAP_CLI_DEBUG_PORT:-5005},server=y -classpath $CLASSPATH -DONAP_CLI_HOME=$ONAP_CLI_HOME org.onap.cli.main.OnapCli "$@"
+    java -Xdebug -Xrunjdwp:transport=dt_socket,address=${OPEN_CLI_DEBUG_PORT:-5005},server=y -classpath $CLASSPATH -DOPEN_CLI_HOME=$OPEN_CLI_HOME org.onap.cli.main.OnapCli "$@"
 else
-    java -classpath $CLASSPATH -DONAP_CLI_HOME=$ONAP_CLI_HOME org.onap.cli.main.OnapCli "$@"
+    java -classpath $CLASSPATH -DOPEN_CLI_HOME=$OPEN_CLI_HOME org.onap.cli.main.OnapCli "$@"
 fi

@@ -1,8 +1,11 @@
 open_cli_schema_version: 1.0
 description: Register microservice into Onap
 name: schema-validate
-service:
-  name: msb
+info:
+  product: open-cli
+  service: test
+  type: cmd
+  author: Kanagaraj Manickam mkr1481@gmail.com
 parameters:
   - name: service-name1
     description: Onap service name

@@ -4,15 +4,19 @@ name: sample-cmd-yes-auth-no-catalog
 
 description: sample
 
-version: sample-test-1.0
-
-service:
-  name: sample
-  version: v1
-  auth: basic
-  mode: direct
+info:
+  product: open-cli
+  service: test
+  type: cmd
+  author: Kanagaraj Manickam mkr1481@gmail.com
 
 http:
+
+  service:
+    name: sample
+    version: v1
+    auth: basic
+    mode: direct
   request:
     uri: /test
     method: GET

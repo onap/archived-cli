@@ -66,7 +66,7 @@ public class OnapValidationTest {
                 if (sch.getCmdVersion().equals(version)) {
                     System.out.println(
                     "************************* validate '" + sch.getCmdName() + "' *******************************");
-                    OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("cli-1.0");
+                    OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
                     this.handle(new String[] { "schema-validate", "-l", sch.getSchemaName(), "-i"});
                 }
             }

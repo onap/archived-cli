@@ -4,13 +4,9 @@ name: hello-world-http
 
 description: First cmd hello world using http runing under lighttpd in cli at http://<cli-ip>:8080/version.json
 
-version: sample-1.0
-
-service:
-    name: sample-service
-    version: 1.0.0
-    auth: none
-    mode: direct
+info:
+  product: sample
+  service: hello-world
 
 parameters:
     - name: name
@@ -30,6 +26,11 @@ results:
         scope: short
 
 http:
+    service:
+        name: sample-service
+        version: 1.0.0
+        auth: none
+        mode: direct
     request:
         uri: /version.json
         method: GET
