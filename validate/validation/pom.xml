@@ -50,24 +50,10 @@
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-msb</artifactId>
+            <artifactId>cli-plugins-sample</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-sdc</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-aai</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-so</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+
   </dependencies>
 <!--   <build>
         <plugins>
