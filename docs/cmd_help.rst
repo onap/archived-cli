@@ -13,110 +13,10 @@ onap-1.1
 ==========================
 
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
 [1] microservice-delete
------------------------------------------------
-
-
-usage: onap microservice-delete
-
-Deletes the micro service from Onap
-
-Onap service: msb v1
-
-Options::
-
- [-x | --service-name] [-y | --service-version] [-i | --node-ip]
- [-r | --node-port] [-m | --host-url] [-h | --help]
- [-v | --version] [-d | --debug] [-f | --format]
- [-s | --long] [-t | --no-title]
-
-where::
-
- -x | --service-name      Onap service name. It is of type STRING.
- -y | --service-version   Onap service version. It is of type STRING.
- -i | --node-ip           Onap service running node IP. It is of type
-                          STRING.
- -r | --node-port         Onap service running node port. It is of type
-                          STRING.
- -m | --host-url          Onap host url. It is of type URL. By default, it
-                          is read from environment variable ONAP_HOST_URL.
- -h | --help              Onap command help message. It is of type STRING.
-                          By default, it is false.
- -v | --version           Onap command service version. It is of type
-                          STRING. By default, it is false.
- -d | --debug             Enable debug output. It is of type BOOL. By
-                          default, it is false.
- -f | --format            Output formats, supported formats such as table,
-                          csv, json, yaml. It is of type STRING. By
-                          default, it is table.
- -s | --long              whether to print all attributes or only short
-                          attributes. It is of type BOOL. By default, it is
-                          false.
- -t | --no-title          whether to print title or not. It is of type
-                          BOOL. By default, it is false.
-
-
-Error::
-
- On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
-
-
-
-[2] microservice-list
------------------------------------------------
-
-
-usage: onap microservice-list
-
-Lists the registetred micro services in Onap
-
-Onap service: msb v1
-
-Options::
-
- [-m | --host-url] [-h | --help] [-v | --version]
- [-d | --debug] [-f | --format] [-s | --long]
- [-t | --no-title]
-
-where::
-
- -m | --host-url  Onap host url. It is of type URL. By default, it
-                  is read from environment variable ONAP_HOST_URL.
- -h | --help      Onap command help message. It is of type STRING.
-                  By default, it is false.
- -v | --version   Onap command service version. It is of type
-                  STRING. By default, it is false.
- -d | --debug     Enable debug output. It is of type BOOL. By
-                  default, it is false.
- -f | --format    Output formats, supported formats such as table,
-                  csv, json, yaml. It is of type STRING. By
-                  default, it is table.
- -s | --long      whether to print all attributes or only short
-                  attributes. It is of type BOOL. By default, it is
-                  false.
- -t | --no-title  whether to print title or not. It is of type
-                  BOOL. By default, it is false.
-
-
-Results::
-
- name         Onap service name and is of type STRING.
- version      Onap service version and is of type STRING.
- url          Onap service base url and is of type URL.
- status       Onap service status and is of type DIGIT.
- nodes        Onap service running nodes and is of type JSON.
- enable-ssl   Onap service is enabled with https or not and is
-              of type STRING.
- path         Onap service path and is of type STRING.
-
-
-Error::
-
- On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
-
-
-
-[3] microservice-show
+=======
+[1] microservice-show
 -----------------------------------------------
 
 
@@ -172,7 +72,7 @@ Error::
 
 
 
-[4] microservice-create
+[2] microservice-create
 -----------------------------------------------
 
 
@@ -206,7 +106,7 @@ where::
  create-or-update         Onap service create or update. It is of type
                           BOOL. By default, it is false.
  -m | --host-url          Onap host url. It is of type URL. By default, it
-                          is read from environment variable ONAP_HOST_URL.
+                          is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
                           By default, it is false.
  -v | --version           Onap command service version. It is of type
@@ -241,6 +141,272 @@ Error::
 
 
 
+[3] microservice-delete
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+-----------------------------------------------
+
+
+usage: onap microservice-delete
+
+Deletes the micro service from Onap
+
+Onap service: msb v1
+
+Options::
+
+ [-x | --service-name] [-y | --service-version] [-i | --node-ip]
+ [-r | --node-port] [-m | --host-url] [-h | --help]
+ [-v | --version] [-d | --debug] [-f | --format]
+ [-s | --long] [-t | --no-title]
+
+where::
+
+ -x | --service-name      Onap service name. It is of type STRING.
+ -y | --service-version   Onap service version. It is of type STRING.
+ -i | --node-ip           Onap service running node IP. It is of type
+                          STRING.
+ -r | --node-port         Onap service running node port. It is of type
+                          STRING.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[2] microservice-list
+-----------------------------------------------
+
+
+usage: onap microservice-list
+
+Lists the registetred micro services in Onap
+
+Onap service: msb v1
+
+Options::
+
+ [-m | --host-url] [-h | --help] [-v | --version]
+ [-d | --debug] [-f | --format] [-s | --long]
+ [-t | --no-title]
+
+where::
+
+ -m | --host-url  Onap host url. It is of type URL. By default, it
+                  is read from environment variable OPEN_HOST_URL.
+ -h | --help      Onap command help message. It is of type STRING.
+                  By default, it is false.
+ -v | --version   Onap command service version. It is of type
+                  STRING. By default, it is false.
+ -d | --debug     Enable debug output. It is of type BOOL. By
+                  default, it is false.
+ -f | --format    Output formats, supported formats such as table,
+                  csv, json, yaml. It is of type STRING. By
+                  default, it is table.
+ -s | --long      whether to print all attributes or only short
+                  attributes. It is of type BOOL. By default, it is
+                  false.
+ -t | --no-title  whether to print title or not. It is of type
+                  BOOL. By default, it is false.
+
+
+Results::
+
+ name         Onap service name and is of type STRING.
+ version      Onap service version and is of type STRING.
+ url          Onap service base url and is of type URL.
+ status       Onap service status and is of type DIGIT.
+ nodes        Onap service running nodes and is of type JSON.
+ enable-ssl   Onap service is enabled with https or not and is
+              of type STRING.
+ path         Onap service path and is of type STRING.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[3] microservice-show
+-----------------------------------------------
+
+
+usage: onap microservice-show
+
+Details the registered microservice in Onap
+
+Onap service: msb v1
+
+Options::
+
+ [-x | --service-name] [-y | --service-version] [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+
+where::
+
+ -x | --service-name      Onap service name. It is of type STRING.
+ -y | --service-version   Onap service version. It is of type STRING.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+
+
+Results::
+
+ name         Onap service name and is of type STRING.
+ version      Onap service version and is of type STRING.
+ url          Onap service base url and is of type URL.
+ status       Onap service status and is of type DIGIT.
+ nodes        Onap service running nodes and is of type JSON.
+ enable-ssl   Onap service is enabled with https or not and is
+              of type STRING.
+ path         Onap service path and is of type STRING.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[4] microservice-create
+-----------------------------------------------
+
+
+usage: onap microservice-create
+
+Register microservice into Onap
+
+Onap service: msb v1
+
+Options::
+
+ [-x | --service-name] [-y | --service-version] [-r | --service-url]
+ [-b | --enable-ssl] [-c | --path] <node-ip>
+ <node-port> <create-or-update> [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+
+where::
+
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
+ -x | --service-name      Onap service name. It is of type STRING.
+ -y | --service-version   Onap service version. It is of type STRING.
+ -r | --service-url       Onap service base url. It is of type URL.
+ -b | --enable-ssl        Onap service is enabled with https or not. It is
+                          of type STRING. It is optional.
+ -c | --path              Onap service path. It is of type STRING. It is
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -b | --service-model-id  Service model ID. It is of type STRING. It is
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+                          optional.
+ node-ip                  Onap service running node IP. It is of type
+                          STRING.
+ node-port                Onap service running node port. It is of type
+                          STRING.
+ create-or-update         Onap service create or update. It is of type
+                          BOOL. By default, it is false.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable ONAP_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
+
+
+Results::
+
+ name         Onap service name and is of type STRING.
+ version      Onap service version and is of type STRING.
+ url          Onap service base url and is of type URL.
+ status       Onap service status and is of type DIGIT.
+ nodes        Onap service running nodes and is of type STRING.
+ enable-ssl   Onap service is enabled with https or not and is
+              of type STRING.
+ path         Onap service path and is of type STRING.
+=======
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+=======
+ -x | --vsp-id          Onap VSP ID. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
 [5] vlm-checkin
 -----------------------------------------------
 
@@ -264,12 +430,12 @@ where::
  -y | --vlm-version     VLM version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -314,6 +480,7 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -c | --vlm-id          License Model Id. It is of type STRING.
  -e | --vlm-version     License Model version. It is of type STRING.
  -x | --name            name. It is of type STRING.
@@ -321,6 +488,64 @@ where::
                         is of type STRING. By default, it is Universal.
  -z | --description     Description for License Key Group. It is of type
                         STRING. It is optional.
+=======
+ -b | --service-model-id  Service model ID. It is of type STRING. It is
+                          optional.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[9] vlm-checkout
+-----------------------------------------------
+
+
+usage: onap vlm-checkout
+
+Checkout Vendor License Model
+
+Onap service: sdc v1.0
+
+Options::
+
+ [-x | --vlm-id] [-y | --vlm-version] [-u | --onap-username]
+ [-p | --onap-password] [-m | --host-url] [-h | --help]
+ [-v | --version] [-d | --debug] [-f | --format]
+ [-s | --long] [-t | --no-title] [-a | --no-auth]
+
+where::
+
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -x | --vlm-id          Onap VLM ID. It is of type STRING.
+ -y | --vlm-version     VLM version. It is of type STRING.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
                         ONAP_USERNAME.
@@ -345,6 +570,36 @@ where::
                         BOOL. By default, it is false.
  -a | --no-auth         whether to authenticate user or not. It is of
                         type BOOL. By default, it is false.
+=======
+ -x | --customer-name     Onap customer name. It is of type STRING.
+ -y | --resource-version  Onap customer resource version. It is of type
+                          UUID. It is optional. By default, it is
+                          0f4899c3-771c-462e-9dc8-ffa2de5532f6.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Results::
@@ -370,7 +625,73 @@ Onap service: sdc v1.0
 
 Options::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  [-x | --vlm-id] [-y | --vlm-version] [-u | --onap-username]
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ [-x | --vendor-name] [-y | --description] [-u | --onap-username]
+=======
+ [-x | --cloud] [-y | --region] [-z | --tenant-id]
+ [-r | --resource-version] [-u | --onap-username] [-p | --onap-password]
+ [-m | --host-url] [-h | --help] [-v | --version]
+ [-d | --debug] [-f | --format] [-s | --long]
+ [-t | --no-title] [-a | --no-auth]
+
+where::
+
+ -x | --cloud             Onap cloud. It is of type STRING.
+ -y | --region            Onap cloud region. It is of type STRING.
+ -z | --tenant-id         Onap cloud tenant id. It is of type STRING.
+ -r | --resource-version  Onap cloud tenant version. It is of type UUID. It
+                          is optional. By default, it is
+                          adbbea15-de1a-442a-a0e3-793779ea25bb.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+tenant-list
+-----------------------------------------------
+
+
+usage: onap tenant-list
+
+Lists the tenants under given cloud region in Onap
+
+Onap service: aai v11
+
+Options::
+
+ [-x | --cloud] [-y | --region] [-u | --onap-username]
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  [-p | --onap-password] [-m | --host-url] [-h | --help]
  [-v | --version] [-d | --debug] [-f | --format]
  [-s | --long] [-t | --no-title] [-a | --no-auth]
@@ -381,12 +702,12 @@ where::
  -y | --vlm-version     License Model version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -436,6 +757,7 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -x | --vlm-id          License Model ID. It is of type STRING.
  -y | --vlm-version     License Model version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
@@ -462,12 +784,82 @@ where::
                         BOOL. By default, it is false.
  -a | --no-auth         whether to authenticate user or not. It is of
                         type BOOL. By default, it is false.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -x | --name                          Entitlement Pool name. It is of type STRING.
+ -y | --vlm-id                        License Model ID. It is of type STRING.
+ -e | --vlm-version                   License Model version. It is of type STRING.
+ -z | --description                   Description for Entitlement Pool. It is of type
+                                      STRING.
+ -g | --operational-scope             Operational Scope. It is of type STRING. By
+                                      default, it is Availability_Zone.
+ -k | --manufacture-reference-number  Manufature Reference Number. It is of type STRING.
+ -u | --onap-username                 Onap user name. It is of type STRING. By default,
+                                      it is read from environment variable
+                                      ONAP_USERNAME.
+ -p | --onap-password                 Onap user password. It is of type STRING. By
+                                      default, it is read from environment variable
+                                      ONAP_PASSWORD. Secured.
+ -m | --host-url                      Onap host url. It is of type URL. By default, it
+                                      is read from environment variable ONAP_HOST_URL.
+ -h | --help                          Onap command help message. It is of type STRING.
+                                      By default, it is false.
+ -v | --version                       Onap command service version. It is of type
+                                      STRING. By default, it is false.
+ -d | --debug                         Enable debug output. It is of type BOOL. By
+                                      default, it is false.
+ -f | --format                        Output formats, supported formats such as table,
+                                      csv, json, yaml. It is of type STRING. By
+                                      default, it is table.
+ -s | --long                          whether to print all attributes or only short
+                                      attributes. It is of type BOOL. By default, it is
+                                      false.
+ -t | --no-title                      whether to print title or not. It is of type
+                                      BOOL. By default, it is false.
+ -a | --no-auth                       whether to authenticate user or not. It is of
+                                      type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Results::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  ID     Feature group ID and is of type STRING.
  name   Feature group name and is of type STRING.
+=======
+ ID   Entitlement Pool ID and is of type STRING.
+=======
+ -x | --cloud-name        Onap cloud name. It is of type STRING.
+ -y | --region-name       Onap cloud region name. It is of type STRING.
+ -z | --resource-version  Onap cloud region version. It is of type UUID. It
+                          is optional. By default, it is
+                          93230cdb-aae3-4b87-a38a-fc4529e8aac9.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -500,12 +892,12 @@ where::
                         STRING. It is optional.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -624,12 +1016,12 @@ where::
  -y | --vsp-version     VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -677,12 +1069,12 @@ where::
  -y | --vsp-version     VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -726,8 +1118,14 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -x | --vsp-id          Onap VSP ID. It is of type STRING.
  -y | --vsp-version     VSP version. It is of type STRING.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -x | --vlm-id          License Model ID. It is of type STRING.
+ -y | --vlm-version     License Model version. It is of type STRING.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
                         ONAP_USERNAME.
@@ -754,6 +1152,48 @@ where::
                         type BOOL. By default, it is false.
 
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
+=======
+Results::
+
+ ID     Feature group ID and is of type STRING.
+ name   Feature group name and is of type STRING.
+=======
+ -x | --cloud-name        Onap cloud name. It is of type STRING.
+ -y | --region-name       Onap  region name. It is of type STRING.
+ -z | --vim-id            Onap VIM unique id. It is of type UUID. By
+                          default, it is
+                          65c6f4af-893f-4130-aa79-9158fcaed040.
+ -b | --resource-version  Onap vim resource version. It is of type STRING.
+                          It is optional.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+
+
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 Error::
 
  On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
@@ -772,10 +1212,89 @@ Onap service: sdc v1.0
 
 Options::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  [-x | --vsp-id] [-y | --vsp-version] [-u | --onap-username]
  [-p | --onap-password] [-m | --host-url] [-h | --help]
  [-v | --version] [-d | --debug] [-f | --format]
  [-s | --long] [-t | --no-title] [-a | --no-auth]
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+=======
+ [-x | --vim-id] [-y | --vnfm-id] [-b | --name]
+ [-c | --type] [-e | --vendor] [-q | --vnfm-version]
+ [-g | --url] [-i | --username] [-j | --password]
+ [-z | --certificate-url] [-u | --onap-username] [-p | --onap-password]
+ [-m | --host-url] [-h | --help] [-v | --version]
+ [-d | --debug] [-f | --format] [-s | --long]
+ [-t | --no-title] [-a | --no-auth]
+
+where::
+
+ -x | --vim-id            Onap VIM unique id. It is of type UUID. By
+                          default, it is
+                          e74f4b44-28ee-45e4-a1ac-7c3a0ed4a0b7.
+ -y | --vnfm-id           Onap VNFM unique id. It is of type UUID. By
+                          default, it is
+                          7a74f262-5b96-4445-8a56-2d43b73f6f6c.
+ -b | --name              Onap VNFM name. It is of type STRING.
+ -c | --type              Onap VNFM type. It is of type STRING.
+ -e | --vendor            Onap VNFM vendor. It is of type STRING.
+ -q | --vnfm-version      Onap VNFM version. It is of type STRING.
+ -g | --url               Onap VNFM URL. It is of type STRING.
+ -i | --username          Onap VNFM username. It is of type STRING.
+ -j | --password          Onap VNFM password. It is of type STRING.
+ -z | --certificate-url   Onap VNFM certificate-url. It is of type STRING.
+                          It is optional.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+vnfm-list
+-----------------------------------------------
+
+
+usage: onap vnfm-list
+
+List the configured vnfm
+
+Onap service: aai v11
+
+Options::
+
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+ [-u | --onap-username] [-p | --onap-password] [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+ [-a | --no-auth]
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 where::
 
@@ -783,12 +1302,12 @@ where::
  -y | --vsp-version     Onap VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -847,6 +1366,7 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -x | --vsp-name              Onap VSP Name. It is of type STRING.
  -y | --vsp-description       Description for VSP. It is of type STRING. It is
                               optional.
@@ -886,11 +1406,151 @@ where::
                               BOOL. By default, it is false.
  -a | --no-auth               whether to authenticate user or not. It is of
                               type BOOL. By default, it is false.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -x | --vlm-id          Onap VLM ID. It is of type STRING.
+ -y | --vlm-version     VLM version. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        ONAP_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        ONAP_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable ONAP_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+=======
+ -x | --service-type      Onap service type. It is of type STRING.
+ -y | --service-type-id   Onap service type uuid. It is of type UUID. It is
+                          optional. By default, it is
+                          3def24ae-701e-4c98-91a6-859c0f206759.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[19] vlm-submit
+-----------------------------------------------
+
+
+usage: onap vlm-submit
+
+Submit Vendor License Model
+
+Onap service: sdc v1.0
+
+Options::
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Results::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  ID   VSP ID and is of type STRING.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -x | --vlm-id          Onap VLM ID. It is of type STRING.
+ -y | --vlm-version     VLM version. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        ONAP_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        ONAP_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable ONAP_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+=======
+ -x | --service-type-id   Onap service type uuid. It is of type UUID. It is
+                          optional. By default, it is
+                          04ebd209-7800-43f4-bca4-aaf61e15783e.
+ -y | --resource-version  Onap service resource version. It is of type
+                          UUID. It is optional. By default, it is
+                          7b301a17-5eb2-413b-b214-fd1659fdf049.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -924,12 +1584,12 @@ where::
  -z | --vsp-file        CSAR File path. It is of type BINARY.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -973,16 +1633,75 @@ Options::
 
 where::
 
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
  -x | --vsp-id          Onap VSP ID. It is of type STRING.
  -y | --vsp-version     VSP version. It is of type STRING.
+=======
+ -x | --customer-name     Onap customer name. It is of type STRING.
+ -z | --cloud-name        Onap cloud name. It is of type STRING.
+ -r | --cloud-region      Onap cloud region. It is of type STRING.
+ -c | --cloud-tenant-id   Onap cloud tenant id. It is of type STRING.
+ -e | --service-type      Onap service type. It is of type STRING.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+cloud-list
+-----------------------------------------------
+
+
+usage: onap cloud-list
+
+List the configured clouds and Onap service subscriptions
+
+Onap service: aai v11
+
+Options::
+
+ [-u | --onap-username] [-p | --onap-password] [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+ [-a | --no-auth]
+
+where::
+
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -1030,12 +1749,12 @@ where::
  -y | --vsp-version     VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -1083,12 +1802,12 @@ where::
  -y | --vsp-version     VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -1107,6 +1826,105 @@ where::
                         type BOOL. By default, it is false.
 
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
+=======
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[24] vsp-create
+-----------------------------------------------
+
+
+usage: onap vsp-create
+
+Create Vendor Software Product
+
+Onap service: sdc v1.0
+
+Options::
+
+ [-x | --vsp-name] [-y | --vsp-description] [-z | --vsp-category]
+ [-b | --vsp-subcategory] [-c | --vsp-license-version] [-e | --vsp-vendor-name]
+ [-g | --vsp-vendor-id] [-i | --license-agreement-id] [-j | --feature-group-id]
+ [-u | --onap-username] [-p | --onap-password] [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+ [-a | --no-auth]
+
+where::
+
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -x | --vsp-name              Onap VSP Name. It is of type STRING.
+ -y | --vsp-description       Description for VSP. It is of type STRING. It is
+                              optional.
+ -z | --vsp-category          Category of the VSP. It is of type STRING. It is
+                              optional. By default, it is
+                              resourceNewCategory.generic.
+ -b | --vsp-subcategory       Sub Category of VSP. It is of type STRING. It is
+                              optional. By default, it is
+                              resourceNewCategory.generic.abstract.
+ -c | --vsp-license-version   License version. It is of type STRING. It is
+                              optional. By default, it is 1.0.
+ -e | --vsp-vendor-name       License Model Name. It is of type STRING.
+ -g | --vsp-vendor-id         License Model ID. It is of type STRING.
+ -i | --license-agreement-id  License Agreement ID. It is of type STRING.
+ -j | --feature-group-id      Feature Group ID. It is of type STRING.
+ -u | --onap-username         Onap user name. It is of type STRING. By default,
+                              it is read from environment variable
+                              ONAP_USERNAME.
+ -p | --onap-password         Onap user password. It is of type STRING. By
+                              default, it is read from environment variable
+                              ONAP_PASSWORD. Secured.
+ -m | --host-url              Onap host url. It is of type URL. By default, it
+                              is read from environment variable ONAP_HOST_URL.
+ -h | --help                  Onap command help message. It is of type STRING.
+                              By default, it is false.
+ -v | --version               Onap command service version. It is of type
+                              STRING. By default, it is false.
+ -d | --debug                 Enable debug output. It is of type BOOL. By
+                              default, it is false.
+ -f | --format                Output formats, supported formats such as table,
+                              csv, json, yaml. It is of type STRING. By
+                              default, it is table.
+ -s | --long                  whether to print all attributes or only short
+                              attributes. It is of type BOOL. By default, it is
+                              false.
+ -t | --no-title              whether to print title or not. It is of type
+                              BOOL. By default, it is false.
+ -a | --no-auth               whether to authenticate user or not. It is of
+                              type BOOL. By default, it is false.
+=======
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+
+
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 Results::
 
  status   Validation status and is of type STRING.
@@ -1140,12 +1958,12 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -1200,16 +2018,95 @@ Options::
 
 where::
 
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
  -x | --vsp-id          Onap VSP ID. It is of type STRING.
  -y | --vsp-version     VSP version. It is of type STRING.
+=======
+ -x | --ems-id            Onap EMS unique id. It is of type UUID. By
+                          default, it is
+                          efba894e-20f4-4658-9d43-1f8736188d3d.
+ -y | --resource-version  Onap vim resource version. It is of type STRING.
+                          It is optional.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+sdnc-register
+-----------------------------------------------
+
+
+usage: onap sdnc-register
+
+Register a SDNC in Onap
+
+Onap service: aai v11
+
+Options::
+
+ [-x | --location] [-y | --sdnc-id] [-b | --name]
+ [-c | --type] [-e | --vendor] [-q | --sdnc-version]
+ [-g | --ip-address] [-k | --port] [-r | --protocal]
+ [-i | --username] [-j | --password] [-z | --product-name]
+ [-u | --onap-username] [-p | --onap-password] [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+ [-a | --no-auth]
+
+where::
+
+ -x | --location        Onap VIM unique id. It is of type UUID. By
+                        default, it is
+                        0f283039-a3fd-4fe1-ac14-b8cdb3a20b26.
+ -y | --sdnc-id         Onap SDNC unique id. It is of type UUID. By
+                        default, it is
+                        b112c385-90ad-4eb7-ae6d-1f263925e97e.
+ -b | --name            Onap SDNC name. It is of type STRING.
+ -c | --type            Onap SDNC type. It is of type STRING.
+ -e | --vendor          Onap SDNC vendor. It is of type STRING.
+ -q | --sdnc-version    Onap SDNC version. It is of type STRING.
+ -g | --ip-address      Onap SDNC ip address. It is of type STRING.
+ -k | --port            Onap SDNC port. It is of type STRING.
+ -r | --protocal        Onap SDNC protocal. It is of type STRING.
+ -i | --username        Onap SDNC username. It is of type STRING.
+ -j | --password        Onap SDNC password. It is of type STRING.
+ -z | --product-name    Onap SDNC product-name. It is of type STRING.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -1253,6 +2150,7 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -b | --service-model-id  Service model ID. It is of type STRING. It is
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
@@ -1279,6 +2177,99 @@ where::
                           BOOL. By default, it is false.
  -a | --no-auth           whether to authenticate user or not. It is of
                           type BOOL. By default, it is false.
+=======
+ -x | --vsp-id          Onap VSP ID. It is of type STRING.
+ -y | --vsp-version     VSP version. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[28] vsp-show
+-----------------------------------------------
+
+
+usage: onap vsp-show
+
+Details of the Vendor Software Product
+
+Onap service: sdc v1.0
+
+Options::
+
+ [-x | --vsp-id] [-y | --vsp-version] [-u | --onap-username]
+ [-p | --onap-password] [-m | --host-url] [-h | --help]
+ [-v | --version] [-d | --debug] [-f | --format]
+ [-s | --long] [-t | --no-title] [-a | --no-auth]
+
+where::
+
+ -x | --vsp-id          Onap VSP ID. It is of type STRING.
+ -y | --vsp-version     Onap VSP version. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+
+
+Results::
+
+ name         VSP Name and is of type STRING.
+ ID           VSP ID and is of type STRING.
+ description  Description for the VSP and is of type STRING.
+ vendor-name  Vendor name and is of type STRING.
+ vendor-id    Vendor id and is of type STRING.
+ version      Version and is of type STRING.
+ status       status and is of type STRING.
+ license-id   license aggreement and is of type STRING.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -1306,6 +2297,7 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -b | --service-model-id  Service model ID. It is of type STRING. It is
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
@@ -1316,6 +2308,49 @@ where::
                           ONAP_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable ONAP_HOST_URL.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -x | --vsp-id          Onap VSP ID. It is of type STRING.
+ -y | --vsp-version     VSP version. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        ONAP_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        ONAP_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable ONAP_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+=======
+ -x | --vnfm-id           Onap VNFM unique id. It is of type UUID. By
+                          default, it is
+                          d8a2726f-18a6-4bb1-904f-554a3fb70865.
+ -y | --resource-version  Onap vim resource version. It is of type STRING.
+                          It is optional.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -h | --help              Onap command help message. It is of type STRING.
                           By default, it is false.
  -v | --version           Onap command service version. It is of type
@@ -1332,6 +2367,10 @@ where::
                           BOOL. By default, it is false.
  -a | --no-auth           whether to authenticate user or not. It is of
                           type BOOL. By default, it is false.
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
+=======
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -1361,12 +2400,12 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -1425,12 +2464,12 @@ where::
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          ONAP_USERNAME.
+                          OPEN_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          ONAP_PASSWORD. Secured.
+                          OPEN_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
-                          is read from environment variable ONAP_HOST_URL.
+                          is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
                           By default, it is false.
  -v | --version           Onap command service version. It is of type
@@ -1475,10 +2514,16 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -x | --service-model-id  Onap Service Name. It is of type STRING.
  -y | --vf-id             VF ID. It is of type STRING. It is optional.
  -z | --vf-name           VF ID. It is of type STRING. It is optional.
  -b | --vf-version        VF version. It is of type STRING. It is optional.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -b | --service-model-id  Service model ID. It is of type STRING. It is
+                          optional.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
                           ONAP_USERNAME.
@@ -1503,6 +2548,43 @@ where::
                           BOOL. By default, it is false.
  -a | --no-auth           whether to authenticate user or not. It is of
                           type BOOL. By default, it is false.
+=======
+ -x | --customer-name   Onap customer name. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+
+
+Results::
+
+ service-type       Onap service type and is of type STRING.
+ resource-version   Onap subscription resource version and is of type
+                    STRING.
+ tenant             Onap tenant name and is of type STRING.
+ region             Onap region name and is of type STRING.
+ cloud              Onap cloud name and is of type STRING.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Results::
@@ -1535,6 +2617,7 @@ Options::
 
 where::
 
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
  -b | --service-model-id  Service model ID. It is of type STRING. It is
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
@@ -1561,6 +2644,36 @@ where::
                           BOOL. By default, it is false.
  -a | --no-auth           whether to authenticate user or not. It is of
                           type BOOL. By default, it is false.
+=======
+ -x | --cloud           Onap cloud. It is of type STRING.
+ -y | --region          Onap cloud region. It is of type STRING.
+ -z | --tenant-id       Onap cloud tenant id. It is of type STRING.
+ -r | --tenant-name     Onap cloud tenant name. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -1569,7 +2682,151 @@ Error::
 
 
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
 [28] service-model-revert
+=======
+[34] service-model-create
+-----------------------------------------------
+
+
+usage: onap service-model-create
+
+Create Service model in SDC
+
+Onap service: sdc v1.0
+
+Options::
+
+ [-x | --name] [-y | --description] [-z | --project-code]
+ [-b | --category] [-c | --category-display-name] [-e | --icon-id]
+ [-u | --onap-username] [-p | --onap-password] [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+ [-a | --no-auth]
+
+where::
+
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -x | --name                    Onap Service Name. It is of type STRING.
+ -y | --description             Description for Service. It is of type STRING. It
+                                is optional.
+ -z | --project-code            Project code. It is of type STRING. It is
+                                optional.
+ -b | --category                Service category. It is of type STRING. It is
+                                optional. By default, it is network l1-3.
+ -c | --category-display-name   Service category display name. It is of type
+                                STRING. It is optional. By default, it is Network
+                                L1-3.
+ -e | --icon-id                 Service Icon id. It is of type STRING. It is
+                                optional. By default, it is defaulticon.
+=======
+ -x | --service-instace-id  unique id for service instance. It is of type
+                            STRING.
+ -u | --onap-username       Onap user name. It is of type STRING. By default,
+                            it is read from environment variable
+                            OPEN_USERNAME.
+ -p | --onap-password       Onap user password. It is of type STRING. By
+                            default, it is read from environment variable
+                            OPEN_PASSWORD. Secured.
+ -m | --host-url            Onap host url. It is of type URL. By default, it
+                            is read from environment variable OPEN_HOST_URL.
+ -h | --help                Onap command help message. It is of type STRING.
+                            By default, it is false.
+ -v | --version             Onap command service version. It is of type
+                            STRING. By default, it is false.
+ -d | --debug               Enable debug output. It is of type BOOL. By
+                            default, it is false.
+ -f | --format              Output formats, supported formats such as table,
+                            csv, json, yaml. It is of type STRING. By
+                            default, it is table.
+ -s | --long                whether to print all attributes or only short
+                            attributes. It is of type BOOL. By default, it is
+                            false.
+ -t | --no-title            whether to print title or not. It is of type
+                            BOOL. By default, it is false.
+ -a | --no-auth             whether to authenticate user or not. It is of
+                            type BOOL. By default, it is false.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+vnf-create
+-----------------------------------------------
+
+
+usage: onap vnf-create
+
+Create a VNF
+
+Onap service: mso v2
+
+Options::
+
+ [-l | --lcp-cloudregion-id] [-z | --tenant-id] [-w | --product-family-id]
+ [-i | --instance-name] [-r | --supress-rollback] [-y | --service-instance-id]
+ [-x | --parenet-service-model] [-u | --onap-username] [-p | --onap-password]
+ [-m | --host-url] [-h | --help] [-v | --version]
+ [-d | --debug] [-f | --format] [-s | --long]
+ [-t | --no-title] [-a | --no-auth]
+
+where::
+
+ -l | --lcp-cloudregion-id      AIC LCP node location identifier. It is of type
+                                STRING.
+ -z | --tenant-id               openstack tenant id (uuid). It is of type STRING.
+ -w | --product-family-id       UUID for product family (named service id in
+                                AAI). It is of type STRING.
+ -i | --instance-name           service instance name. It is of type STRING.
+ -r | --supress-rollback        rollback changes if instantiation fails. It is of
+                                type BOOL. It is optional. By default, it is
+                                false.
+ -y | --service-instance-id     unique id for service instance. It is of type
+                                STRING.
+ -x | --parenet-service-model   parent service model name. It is of type STRING.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+ -u | --onap-username           Onap user name. It is of type STRING. By default,
+                                it is read from environment variable
+                                OPEN_USERNAME.
+ -p | --onap-password           Onap user password. It is of type STRING. By
+                                default, it is read from environment variable
+                                OPEN_PASSWORD. Secured.
+ -m | --host-url                Onap host url. It is of type URL. By default, it
+                                is read from environment variable OPEN_HOST_URL.
+ -h | --help                    Onap command help message. It is of type STRING.
+                                By default, it is false.
+ -v | --version                 Onap command service version. It is of type
+                                STRING. By default, it is false.
+ -d | --debug                   Enable debug output. It is of type BOOL. By
+                                default, it is false.
+ -f | --format                  Output formats, supported formats such as table,
+                                csv, json, yaml. It is of type STRING. By
+                                default, it is table.
+ -s | --long                    whether to print all attributes or only short
+                                attributes. It is of type BOOL. By default, it is
+                                false.
+ -t | --no-title                whether to print title or not. It is of type
+                                BOOL. By default, it is false.
+ -a | --no-auth                 whether to authenticate user or not. It is of
+                                type BOOL. By default, it is false.
+
+
+Results::
+
+ ID   Service ID and is of type STRING.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[35] service-model-distribute
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 -----------------------------------------------
 
 
@@ -1588,6 +2845,7 @@ Options::
 
 where::
 
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
  -b | --service-model-id  Service model ID. It is of type STRING. It is
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
@@ -1614,6 +2872,38 @@ where::
                           BOOL. By default, it is false.
  -a | --no-auth           whether to authenticate user or not. It is of
                           type BOOL. By default, it is false.
+=======
+ -x | --vnf-instace-id      id for vnf. It is of type STRING.
+ -y | --service-instace-id  unique id for service instance. It is of type
+                            STRING.
+ -l | --lcp-cloudregion-id  AIC LCP node location identifier. It is of type
+                            STRING.
+ -z | --tenant-id           openstack tenant id (uuid). It is of type STRING.
+ -u | --onap-username       Onap user name. It is of type STRING. By default,
+                            it is read from environment variable
+                            OPEN_USERNAME.
+ -p | --onap-password       Onap user password. It is of type STRING. By
+                            default, it is read from environment variable
+                            OPEN_PASSWORD. Secured.
+ -m | --host-url            Onap host url. It is of type URL. By default, it
+                            is read from environment variable OPEN_HOST_URL.
+ -h | --help                Onap command help message. It is of type STRING.
+                            By default, it is false.
+ -v | --version             Onap command service version. It is of type
+                            STRING. By default, it is false.
+ -d | --debug               Enable debug output. It is of type BOOL. By
+                            default, it is false.
+ -f | --format              Output formats, supported formats such as table,
+                            csv, json, yaml. It is of type STRING. By
+                            default, it is table.
+ -s | --long                whether to print all attributes or only short
+                            attributes. It is of type BOOL. By default, it is
+                            false.
+ -t | --no-title            whether to print title or not. It is of type
+                            BOOL. By default, it is false.
+ -a | --no-auth             whether to authenticate user or not. It is of
+                            type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -1641,6 +2931,7 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -b | --service-model-id  Service model ID. It is of type STRING. It is
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
@@ -1747,6 +3038,9 @@ Options::
 
 where::
 
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -z | --service-model-id  Service model uuid. It is of type STRING.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
@@ -1780,6 +3074,39 @@ Results::
  vf-name                name and is of type STRING.
  vf-customization-uuid  customization UUID and is of type STRING.
  vf-version             version and is of type STRING.
+=======
+ -c | --global-subscriber-id  unique id for customer. It is of type STRING.
+ -b | --subscriber-name       subscriber name. It is of type STRING. It is
+                              optional.
+ -i | --instance-name         service instance name. It is of type STRING.
+ -r | --supress-rollback      rollback changes if instantiation fails. It is of
+                              type BOOL. It is optional. By default, it is
+                              false.
+ -u | --onap-username         Onap user name. It is of type STRING. By default,
+                              it is read from environment variable
+                              OPEN_USERNAME.
+ -p | --onap-password         Onap user password. It is of type STRING. By
+                              default, it is read from environment variable
+                              OPEN_PASSWORD. Secured.
+ -m | --host-url              Onap host url. It is of type URL. By default, it
+                              is read from environment variable OPEN_HOST_URL.
+ -h | --help                  Onap command help message. It is of type STRING.
+                              By default, it is false.
+ -v | --version               Onap command service version. It is of type
+                              STRING. By default, it is false.
+ -d | --debug                 Enable debug output. It is of type BOOL. By
+                              default, it is false.
+ -f | --format                Output formats, supported formats such as table,
+                              csv, json, yaml. It is of type STRING. By
+                              default, it is table.
+ -s | --long                  whether to print all attributes or only short
+                              attributes. It is of type BOOL. By default, it is
+                              false.
+ -t | --no-title              whether to print title or not. It is of type
+                              BOOL. By default, it is false.
+ -a | --no-auth               whether to authenticate user or not. It is of
+                              type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -1877,6 +3204,7 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -b | --service-model-id  Service model ID. It is of type STRING. It is
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
@@ -1937,6 +3265,10 @@ where::
  -z | --vendor-name     Vendor name. It is of type STRING. It is optional.
  -b | --vsp-id          VSP ID. It is of type STRING. It is optional.
  -g | --vsp-version     VSP version. It is of type STRING. It is optional.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -b | --vf-id           VF ID. It is of type STRING. It is optional.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
                         ONAP_USERNAME.
@@ -1961,6 +3293,39 @@ where::
                         BOOL. By default, it is false.
  -a | --no-auth         whether to authenticate user or not. It is of
                         type BOOL. By default, it is false.
+=======
+ -x | --vnf-instace-id      id for vnf. It is of type STRING.
+ -y | --service-instace-id  unique id for service instance. It is of type
+                            STRING.
+ -w | --vf-module-id        vf module id. It is of type STRING.
+ -l | --lcp-cloudregion-id  AIC LCP node location identifier. It is of type
+                            STRING.
+ -z | --tenant-id           openstack tenant id (uuid). It is of type STRING.
+ -u | --onap-username       Onap user name. It is of type STRING. By default,
+                            it is read from environment variable
+                            OPEN_USERNAME.
+ -p | --onap-password       Onap user password. It is of type STRING. By
+                            default, it is read from environment variable
+                            OPEN_PASSWORD. Secured.
+ -m | --host-url            Onap host url. It is of type URL. By default, it
+                            is read from environment variable OPEN_HOST_URL.
+ -h | --help                Onap command help message. It is of type STRING.
+                            By default, it is false.
+ -v | --version             Onap command service version. It is of type
+                            STRING. By default, it is false.
+ -d | --debug               Enable debug output. It is of type BOOL. By
+                            default, it is false.
+ -f | --format              Output formats, supported formats such as table,
+                            csv, json, yaml. It is of type STRING. By
+                            default, it is table.
+ -s | --long                whether to print all attributes or only short
+                            attributes. It is of type BOOL. By default, it is
+                            false.
+ -t | --no-title            whether to print title or not. It is of type
+                            BOOL. By default, it is false.
+ -a | --no-auth             whether to authenticate user or not. It is of
+                            type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Results::
@@ -1993,6 +3358,7 @@ Options::
 
 where::
 
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
  -b | --vf-id           VF ID. It is of type STRING. It is optional.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
@@ -2018,6 +3384,43 @@ where::
                         BOOL. By default, it is false.
  -a | --no-auth         whether to authenticate user or not. It is of
                         type BOOL. By default, it is false.
+=======
+ -l | --lcp-cloudregion-id      AIC LCP node location identifier. It is of type
+                                STRING.
+ -w | --tenant-id               openstack tenant id (uuid). It is of type STRING.
+ -y | --vnf-instace-id          vnf instance id. It is of type STRING.
+ -x | --service-instace-id      unique id for service instance. It is of type
+                                STRING.
+ -z | --parenet-service-model   parent service model name. It is of type STRING.
+ -r | --supress-rollback        rollback changes if instantiation fails. It is of
+                                type BOOL. It is optional. By default, it is
+                                false.
+ -i | --instance-name           service instance name. It is of type STRING.
+ -u | --onap-username           Onap user name. It is of type STRING. By default,
+                                it is read from environment variable
+                                OPEN_USERNAME.
+ -p | --onap-password           Onap user password. It is of type STRING. By
+                                default, it is read from environment variable
+                                OPEN_PASSWORD. Secured.
+ -m | --host-url                Onap host url. It is of type URL. By default, it
+                                is read from environment variable OPEN_HOST_URL.
+ -h | --help                    Onap command help message. It is of type STRING.
+                                By default, it is false.
+ -v | --version                 Onap command service version. It is of type
+                                STRING. By default, it is false.
+ -d | --debug                   Enable debug output. It is of type BOOL. By
+                                default, it is false.
+ -f | --format                  Output formats, supported formats such as table,
+                                csv, json, yaml. It is of type STRING. By
+                                default, it is table.
+ -s | --long                    whether to print all attributes or only short
+                                attributes. It is of type BOOL. By default, it is
+                                false.
+ -t | --no-title                whether to print title or not. It is of type
+                                BOOL. By default, it is false.
+ -a | --no-auth                 whether to authenticate user or not. It is of
+                                type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -2045,8 +3448,13 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -x | --vlm-id          Onap VLM ID. It is of type STRING.
  -y | --vlm-version     VLM version. It is of type STRING.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -b | --vf-id           VF ID. It is of type STRING. It is optional.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
                         ONAP_USERNAME.
@@ -2071,6 +3479,40 @@ where::
                         BOOL. By default, it is false.
  -a | --no-auth         whether to authenticate user or not. It is of
                         type BOOL. By default, it is false.
+=======
+ -x | --vendor-name                 vendor name. It is of type STRING.
+ -y | --license-model-description   Description for License Model. It is of type
+                                    STRING. It is optional.
+ -u | --onap-username               Onap user name. It is of type STRING. By default,
+                                    it is read from environment variable
+                                    OPEN_USERNAME.
+ -p | --onap-password               Onap user password. It is of type STRING. By
+                                    default, it is read from environment variable
+                                    OPEN_PASSWORD. Secured.
+ -m | --host-url                    Onap host url. It is of type URL. By default, it
+                                    is read from environment variable OPEN_HOST_URL.
+ -h | --help                        Onap command help message. It is of type STRING.
+                                    By default, it is false.
+ -v | --version                     Onap command service version. It is of type
+                                    STRING. By default, it is false.
+ -d | --debug                       Enable debug output. It is of type BOOL. By
+                                    default, it is false.
+ -f | --format                      Output formats, supported formats such as table,
+                                    csv, json, yaml. It is of type STRING. By
+                                    default, it is table.
+ -s | --long                        whether to print all attributes or only short
+                                    attributes. It is of type BOOL. By default, it is
+                                    false.
+ -t | --no-title                    whether to print title or not. It is of type
+                                    BOOL. By default, it is false.
+ -a | --no-auth                     whether to authenticate user or not. It is of
+                                    type BOOL. By default, it is false.
+
+
+Results::
+
+ ID   License Model ID and is of type STRING.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -2100,6 +3542,7 @@ Options::
 
 where::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  -x | --name                          Feature group name. It is of type STRING.
  -y | --vlm-id                        License Model ID. It is of type STRING.
  -e | --vlm-version                   License Model version. It is of type STRING.
@@ -2167,6 +3610,10 @@ where::
 
  -x | --vlm-id          Onap VLM ID. It is of type STRING.
  -y | --vlm-version     VLM version. It is of type STRING.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ -b | --vf-id           VF ID. It is of type STRING. It is optional.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
                         ONAP_USERNAME.
@@ -2191,6 +3638,52 @@ where::
                         BOOL. By default, it is false.
  -a | --no-auth         whether to authenticate user or not. It is of
                         type BOOL. By default, it is false.
+=======
+ -x | --vsp-name                  Onap VSP Name. It is of type STRING.
+ -y | --vsp-description           Description for VSP. It is of type STRING. It is
+                                  optional.
+ -null | --vsp-category           Category of the VSP. It is of type STRING. It is
+                                  optional. By default, it is
+                                  resourceNewCategory.generic.
+ -null | --vsp-subcategory        Sub Category of VSP. It is of type STRING. It is
+                                  optional. By default, it is
+                                  resourceNewCategory.generic.abstract.
+ -null | --vsp-license-version    License version. It is of type STRING. It is
+                                  optional. By default, it is 1.0.
+ -null | --vsp-vendor-name        License Model Name. It is of type STRING.
+ -null | --vsp-vendor-id          License Model ID. It is of type STRING.
+ -null | --license-agreement-id   License Agreement ID. It is of type STRING.
+ -null | --feature-group-id       Feature Group ID. It is of type STRING.
+ -u | --onap-username             Onap user name. It is of type STRING. By default,
+                                  it is read from environment variable
+                                  OPEN_USERNAME.
+ -p | --onap-password             Onap user password. It is of type STRING. By
+                                  default, it is read from environment variable
+                                  OPEN_PASSWORD. Secured.
+ -m | --host-url                  Onap host url. It is of type URL. By default, it
+                                  is read from environment variable OPEN_HOST_URL.
+ -h | --help                      Onap command help message. It is of type STRING.
+                                  By default, it is false.
+ -v | --version                   Onap command service version. It is of type
+                                  STRING. By default, it is false.
+ -d | --debug                     Enable debug output. It is of type BOOL. By
+                                  default, it is false.
+ -f | --format                    Output formats, supported formats such as table,
+                                  csv, json, yaml. It is of type STRING. By
+                                  default, it is table.
+ -s | --long                      whether to print all attributes or only short
+                                  attributes. It is of type BOOL. By default, it is
+                                  false.
+ -t | --no-title                  whether to print title or not. It is of type
+                                  BOOL. By default, it is false.
+ -a | --no-auth                   whether to authenticate user or not. It is of
+                                  type BOOL. By default, it is false.
+
+
+Results::
+
+ ID   VSP ID and is of type STRING.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -2221,12 +3714,12 @@ where::
  -b | --vf-id           VF ID. It is of type STRING. It is optional.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -2272,12 +3765,12 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -2338,12 +3831,12 @@ where::
  -y | --vlm-version     License Model version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -5893,7 +7386,40 @@ where::
 
 Results::
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
  ID   Entitlement Pool ID and is of type STRING.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ ID   License Model ID and is of type STRING.
+=======
+ -x | --vsp-id          Onap VSP ID. It is of type STRING.
+ -y | --vsp-file        CSAR File path. It is of type BINARY.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 
 Error::
@@ -5993,12 +7519,12 @@ where::
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          ONAP_USERNAME.
+                          OPEN_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          ONAP_PASSWORD. Secured.
+                          OPEN_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
-                          is read from environment variable ONAP_HOST_URL.
+                          is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
                           By default, it is false.
  -v | --version           Onap command service version. It is of type
@@ -6105,12 +7631,12 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -6167,12 +7693,12 @@ where::
                           6dc30068-de3c-483a-a9a8-7d483a39425d.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          ONAP_USERNAME.
+                          OPEN_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          ONAP_PASSWORD. Secured.
+                          OPEN_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
-                          is read from environment variable ONAP_HOST_URL.
+                          is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
                           By default, it is false.
  -v | --version           Onap command service version. It is of type
@@ -6220,12 +7746,12 @@ where::
  -y | --subscriber-name   Onap subscriber name. It is of type STRING.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          ONAP_USERNAME.
+                          OPEN_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          ONAP_PASSWORD. Secured.
+                          OPEN_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
-                          is read from environment variable ONAP_HOST_URL.
+                          is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
                           By default, it is false.
  -v | --version           Onap command service version. It is of type
@@ -6250,7 +7776,254 @@ Error::
 
 
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
 [19] service-type-create
+=======
+[16] customer-list
+-----------------------------------------------
+
+
+usage: onap customer-list
+
+Lists the registetred customers in Onap
+
+Onap service: aai v8
+
+Options::
+
+ [-u | --onap-username] [-p | --onap-password] [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+ [-a | --no-auth]
+
+where::
+
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+
+
+Results::
+
+ name               Onap customer name and is of type STRING.
+ resource-version   Onap customer resource version and is of type
+                    STRING.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[17] customer-show
+-----------------------------------------------
+
+
+usage: onap customer-show
+
+Lists the registetred customers in Onap
+
+Onap service: aai v8
+
+Options::
+
+ [-x | --customer-name] [-u | --onap-username] [-p | --onap-password]
+ [-m | --host-url] [-h | --help] [-v | --version]
+ [-d | --debug] [-f | --format] [-s | --long]
+ [-t | --no-title] [-a | --no-auth]
+
+where::
+
+ -x | --customer-name   Onap customer name. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+
+
+Results::
+
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+=======
+ service-type   Onap service type and is of type STRING.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+customer-list
+-----------------------------------------------
+
+
+usage: onap customer-list
+
+Lists the registetred customers in Onap
+
+Onap service: aai v8
+
+Options::
+
+ [-u | --onap-username] [-p | --onap-password] [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+ [-a | --no-auth]
+
+where::
+
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+
+
+Results::
+
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+ name               Onap customer name and is of type STRING.
+ subscriber-name    Onap subscriber name and is of type STRING.
+ resource-version   Onap subscriber resource version and is of type
+                    STRING.
+ subscriber-type    Onap subscriber type and is of type STRING.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+[18] service-type-create
+=======
+cloud-list
+-----------------------------------------------
+
+
+usage: onap cloud-list
+
+List the configured clouds and Onap service subscriptions
+
+Onap service: aai v8
+
+Options::
+
+ [-u | --onap-username] [-p | --onap-password] [-m | --host-url]
+ [-h | --help] [-v | --version] [-d | --debug]
+ [-f | --format] [-s | --long] [-t | --no-title]
+ [-a | --no-auth]
+
+where::
+
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+
+
+Results::
+
+ cloud      Onap cloud and is of type STRING.
+ region     Onap cloud region and is of type STRING.
+ tenant     Onap cloud tenat and is of type STRING.
+ tenant-id  Onap cloud tenat id and is of type STRING.
+ customer   Onap cloud customer and is of type STRING.
+ service    Onap cloud service and is of type STRING.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+service-type-create
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 -----------------------------------------------
 
 
@@ -6275,12 +8048,12 @@ where::
                           eb4a0d54-0e29-4174-8a3c-2c98e904a5f6.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          ONAP_USERNAME.
+                          OPEN_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          ONAP_PASSWORD. Secured.
+                          OPEN_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
-                          is read from environment variable ONAP_HOST_URL.
+                          is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
                           By default, it is false.
  -v | --version           Onap command service version. It is of type
@@ -6332,12 +8105,12 @@ where::
                           b06576ca-74b8-42f2-815b-6f7b80f9941c.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          ONAP_USERNAME.
+                          OPEN_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          ONAP_PASSWORD. Secured.
+                          OPEN_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
-                          is read from environment variable ONAP_HOST_URL.
+                          is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
                           By default, it is false.
  -v | --version           Onap command service version. It is of type
@@ -6383,12 +8156,12 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        ONAP_USERNAME.
+                        OPEN_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        ONAP_PASSWORD. Secured.
+                        OPEN_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
-                        is read from environment variable ONAP_HOST_URL.
+                        is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
                         By default, it is false.
  -v | --version         Onap command service version. It is of type
@@ -6421,7 +8194,76 @@ Error::
 
 
 
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
 [22] cloud-list
+=======
+[21] subscription-create
+-----------------------------------------------
+
+
+usage: onap subscription-create
+
+Create a subscription for a customer in Onap
+
+Onap service: aai v8
+
+Options::
+
+ [-x | --customer-name] [-y | --subscriber-name] [-z | --cloud-type]
+ [-r | --cloud-region] [-c | --cloud-tenant-id] [-e | --service-type]
+ [-g | --resource-version] [-u | --onap-username] [-p | --onap-password]
+ [-m | --host-url] [-h | --help] [-v | --version]
+ [-d | --debug] [-f | --format] [-s | --long]
+ [-t | --no-title] [-a | --no-auth]
+
+where::
+
+ -x | --customer-name     Onap customer name. It is of type STRING.
+ -y | --subscriber-name   Onap subscriber name. It is of type STRING.
+ -z | --cloud-type        Onap cloud type (openstack, rackspace). It is of
+                          type STRING.
+ -r | --cloud-region      Onap cloud region. It is of type STRING.
+ -c | --cloud-tenant-id   Onap cloud tenant id. It is of type STRING.
+ -e | --service-type      Onap service type. It is of type STRING.
+ -g | --resource-version  Onap subscription resource version. It is
+                          mandatory for existing customer to create a new
+                          subscription. It is of type STRING. It is
+                          optional.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable OPEN_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+[22] subscription-list
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 -----------------------------------------------
 
 
@@ -6483,6 +8325,9 @@ Error::
 
 
 cli-1.0
+=======
+open-cli
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 ==========================
 
 
