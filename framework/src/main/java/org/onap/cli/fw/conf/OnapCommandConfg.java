@@ -80,7 +80,7 @@ public final class OnapCommandConfg {
     }
 
     public static String getEnabledProductVersion() {
-        String version = System.getenv(Constants.OPEN_OPEN_CLI_PRODUCT_VERSION_ENV_NAME);
+        String version = System.getenv(Constants.OPEN_OPEN_CLI_PRODUCT_IN_USE_ENV_NAME);
         if (version == null) {
             version = prps.getProperty(Constants.OPEN_CLI_PRODUCT_NAME);
         }

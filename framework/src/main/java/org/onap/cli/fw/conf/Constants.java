@@ -131,7 +131,7 @@ public class Constants {
     public static final String CONF = "open-cli.properties";
     public static final String OPEN_IGNORE_AUTH = "cli.ignore_auth";
     public static final String OPEN_CLI_VERSION = "cli.version";
-    public static final String OPEN_OPEN_CLI_PRODUCT_VERSION_ENV_NAME = "OPEN_CLI_PRODUCT_VERSION";
+    public static final String OPEN_OPEN_CLI_PRODUCT_IN_USE_ENV_NAME = "OPEN_CLI_PRODUCT_IN_USE";
     public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
 
     public static final String SERVICE_AUTH = "cli.service.auth";
