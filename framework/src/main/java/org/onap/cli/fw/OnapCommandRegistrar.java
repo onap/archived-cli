@@ -199,7 +199,7 @@ public class OnapCommandRegistrar {
         //don't expose the auth type and catalog type commands
 
         if (cls == null) {
-               throw new OnapCommandNotFound(cmdName, version);
+            throw new OnapCommandNotFound(cmdName, version);
         }
 
         OnapCommand cmd;

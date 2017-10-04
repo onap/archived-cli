@@ -177,7 +177,9 @@ public abstract class OnapCommand {
      */
     protected void validate() throws OnapCommandException {
         for (OnapCommandParameter param : this.getParameters()) {
-             param.validate();
+             if (param.isInclude()) {
+                 param.validate();
+             }
          }
     }
 
