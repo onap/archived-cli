@@ -12,9 +12,9 @@ CLI user guide
 Provides unified commands to operate ONAP from Linux console.
 Configure the following environment variables, before using it:
 
-1. **ONAP_HOST_URL** - Onap Micro service bus(MSB) URL or a service URL
-2. **ONAP_USERNAME** - Onap user name
-3. **ONAP_PASSWORD** - Onap user password
+1. **OPEN_HOST_URL** - Onap Micro service bus(MSB) URL or a service URL
+2. **OPEN_USERNAME** - Onap user name
+3. **OPEN_PASSWORD** - Onap user password
 
 To Run a command
 -----------------
@@ -53,10 +53,15 @@ Help
 Debug Mode
 ----------
 To run in debug mode, set following environment variables:
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
 
 1. ONAP_CLI_DEBUG - By default its false, otherwise Set to true
 
 2. ONAP_CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number
+=======
+1. OPEN_CLI_DEBUG - By default its false, otherwise Set to true
+2. OPEN_CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number
+>>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 
 More details
 -------------
