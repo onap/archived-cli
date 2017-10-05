@@ -26,8 +26,8 @@ WORKDIR $OPEN_CLI_HOME
 
 #Setup the run time environment (RTE)
 #RTE: CLI
-RUN chmod +x ./bin/onap.sh  && \
-     ln ./bin/onap.sh /usr/sbin/onap  && \
+RUN chmod +x ./bin/oclip.sh  && \
+     ln ./bin/oclip.sh /usr/sbin/onap  && \
      if [ ! -d ./data ]; then mkdir ./data; fi  && \
      if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi
 
