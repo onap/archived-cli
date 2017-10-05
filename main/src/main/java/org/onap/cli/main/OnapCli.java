@@ -307,7 +307,7 @@ public class OnapCli {
                     OnapCliConstants.PARAM_INTERACTIVE_UNSET,
                     OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
             console.addCompleter(strCompleter);
-            console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT);
+            console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT + ":" + OnapCommandRegistrar.getRegistrar().getEnabledProductVersion() + ">");
         } catch (OnapCommandException e) { // NOSONAR
             this.print("Failed to load onap commands," + e.getMessage());
         }
