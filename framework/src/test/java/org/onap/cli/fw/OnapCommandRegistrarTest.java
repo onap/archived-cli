@@ -149,8 +149,8 @@ public class OnapCommandRegistrarTest {
                 OnapCommandRegistrar.getRegistrar().setInteractiveMode(false);
                 assertTrue(!OnapCommandRegistrar.getRegistrar().isInteractiveMode());
 
-                OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("cli-1.0");
-                assertEquals("cli-1.0", OnapCommandRegistrar.getRegistrar().getEnabledProductVersion());
+                OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
+                assertEquals("open-cli", OnapCommandRegistrar.getRegistrar().getEnabledProductVersion());
                 OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
                 assertTrue(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion().contains("schema-refresh"));
 

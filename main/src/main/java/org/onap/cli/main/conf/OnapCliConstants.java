@@ -30,7 +30,7 @@ public final class OnapCliConstants {
     public static final int EXIT_SUCCESS = 0;
     public static final int EXIT_FAILURE = 1;
 
-    public static final String PARAM_INTERACTIVE_PROMPT = "onap>";
+    public static final String PARAM_INTERACTIVE_PROMPT = "oclip";
     public static final String PARAM_INTERACTIVE_EXIT = "exit";
     public static final String PARAM_INTERACTIVE_EXIT_MSG = "To exit from the session.";
     public static final String PARAM_INTERACTIVE_CLEAR = "clear";

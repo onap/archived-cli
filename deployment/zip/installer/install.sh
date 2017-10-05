@@ -47,10 +47,10 @@ wget -O $CLI_ZIP $CLI_LATEST_BINARY
 unzip $CLI_ZIP
 if [ ! -d ./data ]; then mkdir ./data; fi
 if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
-chmod +x ./bin/onap.sh
+chmod +x ./bin/oclip.sh
 
 #Make onap available in path
-ln ./bin/onap.sh $CLI_BIN
+ln ./bin/oclip.sh $CLI_BIN
 
 #Print the version
 onap -v
