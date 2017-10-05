@@ -16,20 +16,20 @@
 
 package org.onap.cli.fw;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.File;
+import java.net.URL;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
-
-import java.io.File;
-import java.net.URL;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class OnapCommandRegistrarTest {
 
@@ -113,7 +113,6 @@ public class OnapCommandRegistrarTest {
     }
 
     @Test(expected = OnapCommandHelpFailed.class)
-    // For coverage
     public void helpTestException() throws OnapCommandException {
         OnapCommand test = new OnapCommandTest1();
         Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
@@ -141,22 +140,25 @@ public class OnapCommandRegistrarTest {
     }
 
     @Test
-    public void testCoverageScope() throws OnapCommandException {
-        OnapCommandRegistrar.getRegistrar().setProfile("test");
-        OnapCommandRegistrar.getRegistrar().addParamCache("a", "b");
-        OnapCommandRegistrar.getRegistrar().getParamCache();
-        OnapCommandRegistrar.getRegistrar().removeParamCache("a");
+    public void testProfile() throws OnapCommandException {
+        try {
+                OnapCommandRegistrar.getRegistrar().setProfile("test");
+                OnapCommandRegistrar.getRegistrar().addParamCache("a", "b");
+                OnapCommandRegistrar.getRegistrar().getParamCache();
+                OnapCommandRegistrar.getRegistrar().removeParamCache("a");
 
-        OnapCommandRegistrar.getRegistrar().isInteractiveMode();
-        OnapCommandRegistrar.getRegistrar().setInteractiveMode(false);
+                OnapCommandRegistrar.getRegistrar().setInteractiveMode(false);
+                assertTrue(!OnapCommandRegistrar.getRegistrar().isInteractiveMode());
 
-        OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("cli-1.0");
-        OnapCommandRegistrar.getRegistrar().getEnabledProductVersion();
-        OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
-        OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion();
+                OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("cli-1.0");
+                assertEquals("cli-1.0", OnapCommandRegistrar.getRegistrar().getEnabledProductVersion());
+                OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
+                assertTrue(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion().contains("schema-refresh"));
 
-        OnapCommandRegistrar.getRegistrar().listCommandInfo();
-
+                assertTrue(OnapCommandRegistrar.getRegistrar().listCommandInfo().size() > 2);
+        } catch (Exception e) {
+            fail("failed to test the profile");
+        }
     }
 }
 
