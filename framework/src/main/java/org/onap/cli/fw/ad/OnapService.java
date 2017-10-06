@@ -17,7 +17,6 @@
 package org.onap.cli.fw.ad;
 
 import org.onap.cli.fw.conf.Constants;
-import org.onap.cli.fw.conf.OnapCommandConfg;
 
 /**
  * Onap Service as reported in api catalog.
@@ -42,9 +41,9 @@ public class OnapService {
      * Another mode is 'direct', in which bastPath will be
      * same as OnapCredentails.ServiceUrl.
      */
-    private String mode = Constants.MODE_CATALOG;
+    private String mode = Constants.MODE_DIRECT;
 
-    private String authType =  OnapCommandConfg.getAuthType();;
+    private String authType =  Constants.AUTH_NONE;
 
     public String getMode() {
         return mode;

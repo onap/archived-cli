@@ -42,10 +42,5 @@ public class OnapSchemaRefreshCommandTest {
         String version = onapCommandResultAttribute.get(4).getValues().get(0);
 
         assertTrue(s1Number.equalsIgnoreCase("1"));
-        assertTrue(cmdName.equalsIgnoreCase("sample-test1"));
-        assertTrue(cmdFile.equalsIgnoreCase("sample-test1-schema-http.yaml"));
-        assertTrue(version.equalsIgnoreCase("1.0"));
-        assertTrue(cmdVer.equalsIgnoreCase("open-cli"));
-
     }
 }

@@ -30,7 +30,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.utils.ExternalSchema;
+import org.onap.cli.fw.utils.SchemaInfo;
 import org.onap.cli.main.OnapCli;
 import org.onap.cli.moco.OnapCommandHttpMocoServer;
 import org.onap.cli.moco.OnapCommandSample;
@@ -62,8 +62,8 @@ public class OnapValidationTest {
             OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(version);
             System.out.println(version);
             System.out.println("==========================\n\n");
-            for (ExternalSchema sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
-                if (sch.getCmdVersion().equals(version)) {
+            for (SchemaInfo sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
+                if (sch.getProduct().equals(version)) {
                     System.out.println(
                     "************************* validate '" + sch.getCmdName() + "' *******************************");
                     OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
@@ -80,8 +80,8 @@ public class OnapValidationTest {
             System.out.println(version);
             System.out.println("==========================\n\n");
             int i = 1;
-            for (ExternalSchema sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
-                if (sch.getCmdVersion().equals(version)) {
+            for (SchemaInfo sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
+                if (sch.getProduct().equals(version)) {
                     System.out.println("[" + i++ + "] " + sch.getCmdName());
                     System.out.println("-----------------------------------------------\n\n");
                     this.handle(new String[] { sch.getCmdName(), "-h"});
@@ -93,7 +93,7 @@ public class OnapValidationTest {
 
     @Ignore
     @Test
-    public void validateCommands() throws OnapCommandException {
+    public void verifyCommandResults() throws OnapCommandException {
         OnapCommandHttpMocoServer server = new OnapCommandHttpMocoServer();
         server.verifySamples();
     }
