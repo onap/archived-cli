@@ -1204,7 +1204,7 @@ public class OnapCommandUtils {
     }
 
     /**
-     * Discover the Onap commands.
+     * Discover the Oclip commands.
      *
      * @return list
      */

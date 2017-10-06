@@ -24,7 +24,7 @@ import org.onap.cli.fw.cmd.CommandType;
 
 /**
  * Provide command name and schema file location, which is placed in the main resources folder (in classpath). It is
- * recommended to keep the name for schema, in the form of onap-[command-name]-schema.yaml, considered this format as
+ * recommended to keep the name for schema, in the form of oclip-[command-name]-schema.yaml, considered this format as
  * default if the schema declaration is missing for a command abc-create, schema file name could be
  * abc-create-schema.yaml, corresponding command would like as below
  *

@@ -30,13 +30,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Onap Command result holds the final output of the command.
+ * Oclip Command result holds the final output of the command.
  *
  */
 public class OnapCommandResult {
 
     /*
-     * if type=JSON, then JSON response of the command from back-end Onap service, by default all the command would
+     * if type=JSON, then JSON response of the command from back-end Oclip service, by default all the command would
      * set this value once the back-end call returns, which would be useful to print the output in JSON format, returned
      * from the back-end service.
      *

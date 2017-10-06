@@ -17,7 +17,7 @@
 package org.onap.cli.fw.run;
 
 /**
- * Onap Command executor.
+ * Oclip Command executor.
  *
  */
 public class OnapCommandExecutor {

@@ -18,8 +18,8 @@ variables, before using it:
 2. OPEN_CLI_HOST_USERNAME - Service user name
 3. OPEN_CLI_HOST_PASSWORD - Service password
 
-To know the CLI version, type onap [-v|--version]
-To know the CLI usage, type onap [-h|--help]
-To know the usage of sub commands, type onap <command> [-h|--help]
+To know the CLI version, type oclip [-v|--version]
+To know the CLI usage, type oclip [-h|--help]
+To know the usage of sub commands, type oclip <command> [-h|--help]
 
 To know more, please refer the wiki https://wiki.onap.org
