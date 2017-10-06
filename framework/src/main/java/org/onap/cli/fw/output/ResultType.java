@@ -17,7 +17,7 @@
 package org.onap.cli.fw.output;
 
 /**
- * Onap command result format.
+ * Oclip command result format.
  *
  */
 public enum ResultType {

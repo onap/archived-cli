@@ -35,7 +35,7 @@ import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 /**
- * Onap Auth client helps to do login and logout.
+ * Oclip Auth client helps to do login and logout.
  *
  */
 public class OnapAuthClient {

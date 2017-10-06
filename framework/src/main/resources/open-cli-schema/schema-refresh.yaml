@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
 name: schema-refresh
-description: Onap command to refresh schemas stored in open_cli_schema folders.
+description: Oclip command to refresh schemas stored in open_cli_schema folders.
 
 info:
   product: open-cli
