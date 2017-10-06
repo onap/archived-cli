@@ -90,7 +90,7 @@ public class OnapCommandRegistrarTest {
     @Test
     public void onapCommandRegistrationFailedTest() throws OnapCommandException {
 
-        @OnapCommandSchema(name = "Test2", version= "open-cli", schema = "sample-test-schema.yaml")
+        @OnapCommandSchema(schema = "sample-test-schema.yaml")
         class Test extends OnapCommand {
 
             @Override
@@ -161,7 +161,7 @@ public class OnapCommandRegistrarTest {
     }
 }
 
-@OnapCommandSchema(name = OnapCommandTest.CMD_NAME, version = "open-cli", schema = "sample-test-schema.yaml")
+@OnapCommandSchema(schema = "sample-test-schema.yaml")
 class OnapCommandTest extends OnapCommand {
 
     public OnapCommandTest() {
@@ -176,7 +176,7 @@ class OnapCommandTest extends OnapCommand {
 
 }
 
-@OnapCommandSchema(name = OnapCommandTest1.CMD_NAME, version = "open-cli", schema = "test-schema.yaml")
+@OnapCommandSchema(schema = "test-schema.yaml")
 class OnapCommandTest1 extends OnapCommand {
 
     public OnapCommandTest1() {

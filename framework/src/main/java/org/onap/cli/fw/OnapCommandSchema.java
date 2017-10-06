@@ -35,30 +35,9 @@ import org.onap.cli.fw.cmd.CommandType;
 @Documented
 public @interface OnapCommandSchema {
     /**
-     * Command name
-     *
-     * @return
-     */
-    String name();
-
-    /**
-     * Command version
-     *
-     * @return
-     */
-    String version();
-
-    /**
      * Schema file name placed under class path
      *
      * @return
      */
-    String schema() default "";
-
-    /**
-     * Command type
-     *
-     * @return
-     */
-    String type() default "cmd";
+    String schema();
 }

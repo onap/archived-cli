@@ -93,7 +93,7 @@ public class OnapCommandParameterCache {
         }
 
         try {
-            OnapCommandUtils.persistParams(params, this.profileName);
+            OnapCommandUtils.persistProfile(params, this.profileName);
         } catch (OnapCommandPersistProfileFailed e) {
             throw new RuntimeException(e);   // NOSONAR
         }

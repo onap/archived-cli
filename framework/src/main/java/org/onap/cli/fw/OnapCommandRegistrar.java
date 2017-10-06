@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.onap.cli.fw.cmd.CommandType;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
@@ -35,14 +34,16 @@ import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
 import org.onap.cli.fw.error.OnapCommandRegistrationProductInfoMissing;
+import org.onap.cli.fw.error.OnapUnsupportedSchemaProfile;
 import org.onap.cli.fw.input.cache.OnapCommandParameterCache;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.PrintDirection;
 import org.onap.cli.fw.output.ResultType;
-import org.onap.cli.fw.utils.ExternalSchema;
 import org.onap.cli.fw.utils.OnapCommandUtils;
+import org.onap.cli.fw.utils.SchemaInfo;
+
 
 /**
  * Onap Command registrar provides a common place, where every command would get registered automatically when its
@@ -116,8 +117,7 @@ public class OnapCommandRegistrar {
     public static OnapCommandRegistrar getRegistrar() throws OnapCommandException {
         if (registrar == null) {
             registrar = new OnapCommandRegistrar();
-            registrar.autoDiscover();
-            registrar.autoDiscoverHttpSchemas();
+            registrar.autoDiscoverSchemas();
         }
 
         return registrar;
@@ -176,8 +176,8 @@ public class OnapCommandRegistrar {
      * @throws OnapCommandException
      *             exception
      */
-    public List<ExternalSchema> listCommandInfo() throws OnapCommandException {
-        return OnapCommandUtils.findAllExternalSchemas();
+    public List<SchemaInfo> listCommandInfo() throws OnapCommandException {
+        return OnapCommandUtils.discoverSchemas();
     }
 
     /**
@@ -209,7 +209,7 @@ public class OnapCommandRegistrar {
 
             String schemaName;
             if (cmd.getClass().equals(OnapHttpCommand.class)) { // NOSONAR
-                schemaName = OnapCommandUtils.loadExternalSchemaFromJson(cmdName, version).getSchemaName();
+                schemaName = OnapCommandUtils.getSchemaInfo(cmdName, version).getSchemaName();
             } else {
                 schemaName = this.getSchemaFileName(cls);
             }
@@ -222,22 +222,32 @@ public class OnapCommandRegistrar {
         return cmd;
     }
 
-    private void autoDiscover() throws OnapCommandInvalidRegistration, OnapCommandRegistrationProductInfoMissing {
-        List<Class<OnapCommand>> cmds = OnapCommandUtils.findOnapCommands();
+    private Map<String, Class<OnapCommand>> autoDiscoverCommandPlugins() throws OnapCommandException {
+        List<Class<OnapCommand>> cmds = OnapCommandUtils.discoverCommandPlugins();
+        Map<String, Class<OnapCommand>> map = new HashMap<>();
 
         for (Class<OnapCommand> cmd : cmds) {
             if (cmd.isAnnotationPresent(OnapCommandSchema.class)) {
                 OnapCommandSchema ano = cmd.getAnnotation(OnapCommandSchema.class);
-                this.register(ano.name(), ano.version(), cmd);
+                map.put(ano.schema(), cmd);
             }
         }
+
+        return map;
     }
 
-    private void autoDiscoverHttpSchemas() throws OnapCommandException {
-        List<ExternalSchema> schemas = OnapCommandUtils.loadExternalSchemasFromJson();
-        for (ExternalSchema schema : schemas) {
+    private void autoDiscoverSchemas() throws OnapCommandException {
+        List<SchemaInfo> schemas = OnapCommandUtils.discoverOrLoadSchemas();
+
+        Map<String, Class<OnapCommand>> plugins = this.autoDiscoverCommandPlugins();
+
+        for (SchemaInfo schema : schemas) {
             if (schema.isHttp()) {
-                this.register(schema.getCmdName(), schema.getCmdVersion(), OnapHttpCommand.class);
+                this.register(schema.getCmdName(), schema.getProduct(), OnapHttpCommand.class);
+            } else if (plugins.containsKey(schema.getSchemaName())) {
+                this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaName()));
+            } else {
+                throw new OnapUnsupportedSchemaProfile(schema.getSchemaURI());
             }
         }
     }
@@ -304,7 +314,7 @@ public class OnapCommandRegistrar {
 
         OnapCommandResultAttribute attrVer = new OnapCommandResultAttribute();
         if (!isEnabledProductVersionOnly) {
-            attrVer.setName(Constants.PRODUCT_VERSION.toUpperCase());
+            attrVer.setName(Constants.INFO_PRODUCT.toUpperCase());
             attrVer.setDescription(Constants.DESCRIPTION);
             attrVer.setScope(OnapCommandResultAttributeScope.SHORT);
             help.getRecords().add(attrVer);

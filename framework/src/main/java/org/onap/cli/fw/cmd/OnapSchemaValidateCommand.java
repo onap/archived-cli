@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * Validate schema command.
  */
-@OnapCommandSchema(name = "schema-validate", version = "open-cli", schema = "schema-validate.yaml")
+@OnapCommandSchema(schema = "schema-validate.yaml")
 public class OnapSchemaValidateCommand extends OnapCommand {
 
     @Override
