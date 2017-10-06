@@ -1,5 +1,5 @@
-OPEN Command-line interface (CLI)
-==================================
+Open Command-line interface Platform (OCLIP)
+============================================
 
 Provides unified commands to operate any cloud enabled software
 products from Linux/Web console. Configure the following environment
