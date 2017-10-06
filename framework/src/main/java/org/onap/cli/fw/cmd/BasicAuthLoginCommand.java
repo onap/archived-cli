@@ -25,7 +25,7 @@ import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameter;
 
-@OnapCommandSchema(name = "basic-login", version = "open-cli", type = "auth", schema = "basic-login.yaml")
+@OnapCommandSchema(schema = "basic-login.yaml")
 public class BasicAuthLoginCommand extends OnapHttpCommand {
 
     @Override

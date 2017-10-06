@@ -36,7 +36,6 @@ public class OpenCommandRegistrarTest {
         OnapCommand cmd = registrar.get("sample-test");
         cmd.printVersion();
         registrar.listCommands();
-
     }
 
 }
