@@ -19,7 +19,7 @@ package org.onap.cli.fw.error;
 import java.util.Set;
 
 /*
- * ONAP command product version is invalid
+ * Open CLI command product version is invalid
  *
  */
 public class OnapCommandProductVersionInvalid extends OnapCommandException {

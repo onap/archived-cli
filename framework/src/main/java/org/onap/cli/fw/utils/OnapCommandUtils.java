@@ -1062,8 +1062,8 @@ public class OnapCommandUtils {
      *             help failed exception
      */
     public static String help(OnapCommand cmd) throws OnapCommandHelpFailed {
-        //mrkanag refactor onap name into oclip
-        String help = "usage: onap " + cmd.getName();
+
+        String help = "usage: oclip " + cmd.getName();
 
         // Add description
         help += "\n\n" + cmd.getDescription();
