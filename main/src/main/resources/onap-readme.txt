@@ -1,22 +1,22 @@
 OPEN Command-line interface (CLI)
 ==================================
 
- _____                    _____  _     _____ 
+ _____                    _____  _     _____
 |  _  |                  /  __ \| |   |_   _|
-| | | |_ __   ___ _ __   | /  \/| |     | |  
-| | | | '_ \ / _ \ '_ \  | |    | |     | |  
-\ \_/ / |_) |  __/ | | | | \__/\| |_____| |_ 
- \___/| .__/ \___|_| |_|  \____/\_____/\___/ 
-      | |                                    
-      |_|                                    
-                                                                 
+| | | |_ __   ___ _ __   | /  \/| |     | |
+| | | | '_ \ / _ \ '_ \  | |    | |     | |
+\ \_/ / |_) |  __/ | | | | \__/\| |_____| |_
+ \___/| .__/ \___|_| |_|  \____/\_____/\___/
+      | |
+      |_|
+
 Provides unified commands to operate any cloud enabled software
 products from Linux/Web console. Configure the following environment
 variables, before using it:
 
-1. HOST_URL - Catalog service URL or a service URL
-2. HOST_USERNAME - Service user name
-3. HOST_PASSWORD - Service password
+1. OPEN_CLI_HOST_URL - Catalog service URL or a service URL
+2. OPEN_CLI_HOST_USERNAME - Service user name
+3. OPEN_CLI_HOST_PASSWORD - Service password
 
 To know the CLI version, type onap [-v|--version]
 To know the CLI usage, type onap [-h|--help]
