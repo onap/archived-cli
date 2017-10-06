@@ -20,7 +20,7 @@ import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
-import org.onap.cli.fw.utils.ExternalSchema;
+import org.onap.cli.fw.utils.SchemaInfo;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 import java.util.ArrayList;
@@ -30,15 +30,15 @@ import java.util.List;
  * Refresh external schema.
  *
  */
-@OnapCommandSchema(name = "schema-refresh", version = "open-cli", schema = "schema-refresh.yaml")
+@OnapCommandSchema(schema = "schema-refresh.yaml")
 public class OnapSchemaRefreshCommand extends OnapCommand {
 
     @Override
     protected void run() throws OnapCommandException {
 
-        List<ExternalSchema> schemas = OnapCommandUtils.findAllExternalSchemas();
+        List<SchemaInfo> schemas = OnapCommandUtils.discoverSchemas();
         // Will override the existing json file
-        OnapCommandUtils.persist(schemas);
+        OnapCommandUtils.persistSchemaInfo(schemas);
 
         List<String> slNumbers = new ArrayList<>();
         List<String> cmdNames = new ArrayList<>();
@@ -47,12 +47,12 @@ public class OnapSchemaRefreshCommand extends OnapCommand {
         List<String> cmdVersions = new ArrayList<>();
 
         for (int i = 0; i < schemas.size(); i++) {
-            ExternalSchema schema = schemas.get(i);
+            SchemaInfo schema = schemas.get(i);
             slNumbers.add(String.valueOf(i + 1));
             cmdNames.add(schema.getCmdName());
             cmdFiles.add(schema.getSchemaName());
             versions.add(schema.getVersion());
-            cmdVersions.add(schema.getCmdVersion());
+            cmdVersions.add(schema.getProduct());
         }
         for (OnapCommandResultAttribute attribute : this.getResult().getRecords()) {
             if ("sl-no".equals(attribute.getName())) {

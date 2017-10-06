@@ -14,11 +14,22 @@
  * limitations under the License.
  */
 
-package org.onap.cli.cmd.cs.msb;
+package org.onap.cli.fw.error;
 
-import org.onap.cli.fw.OnapCommandSchema;
-import org.onap.cli.fw.cmd.OnapHttpCommand;
+/**
+ * Command schema not found.
+ *
+ */
+public class OnapUnsupportedSchemaProfile extends OnapCommandException {
 
-@OnapCommandSchema(name = "microservice-create", version = "onap-1.1", schema = "microservice-create-schema.yaml")
-public class OnapServiceCreateCommand extends OnapHttpCommand {
+    private static final long serialVersionUID = -3919580583845280200L;
+
+    private static final String ERROR_CODE = "0xb004";
+
+    private static final String ERROR_MSG = "Unsupported schema profile";
+
+    public OnapUnsupportedSchemaProfile(String schema) {
+        super(ERROR_CODE, ERROR_MSG + schema);
+    }
+
 }
