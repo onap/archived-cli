@@ -1,37 +1,37 @@
 <!DOCTYPE html><html><head><link rel="icon" href="./onap-cli.png">
-<meta charset="utf-8"><title>ONAP CLI</title><style></style></head><body id="preview">
+<meta charset="utf-8"><title>ONAP CLI</title><style></style>
+<script>
+function redirectToConsole(){
+   window.location.href="http://"+  window.location.hostname + ":9090";
+}
+</script>
+</head>
+
+<body id="preview">
 <h1><a id="ONAP_Commandline_interface_CLI_0"></a>ONAP Command-line interface (CLI)</h1>
 <p style="color:blue"><strong>One Command to command whole Onap !!</strong></p>
-<p>Provides unified commands to operate ONAP from Linux console.<br>
-Configure the following environment variables, before using it:</p>
-<ol>
-<li><strong>ONAP_HOST_URL</strong> - Onap Micro service bus(MSB) URL or a service URL</li>
-<li><strong>ONAP_USERNAME</strong> - Onap user name</li>
-<li><strong>ONAP_PASSWORD</strong> - Onap user password</li>
-</ol>
-<h2><a id="To_Run_a_command_12"></a>To Run a command</h2>
-<p>Type <strong>onap &lt;command&gt;</strong> from linux console.</p>
-<h2><a id="To_Run_in_Interactive_mode_16"></a>To Run in Interactive mode</h2>
-<p>Type <strong>onap</strong> from linux console</p>
-<h2><a id="Set_the_product_version_20"></a>Set the product version</h2>
-<p>CLI framework is enhanced to handle multiple product versions at same<br>
-time. so to choose the product version, set evironment variable<br>
-<strong>CLI_PROUDCT_VERSION</strong>.</p>
-<p>NOTE: In interactive mode, product version can be selected using<br>
-typing <strong>use &lt;product-version&gt;</strong></p>
-<p>Run <em>onap [-v|–version]</em> to see the CLI and available product version details</p>
-<h2><a id="Help_31"></a>Help</h2>
-<p><em>onap [-h|–help]</em><br>
-<em>onap &lt;command&gt; [-h|–help]</em></p>
-<h2><a id="Debug_Mode_36"></a>Debug Mode</h2>
-<p>To run in debug mode, set following environment variables:</p>
-<ol>
-<li>ONAP_CLI_DEBUG - By default its false, otherwise Set to true</li>
-<li>ONAP_CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number</li>
-</ol>
-<h2><a id="More_details_42"></a>More details</h2>
-<p><a href="https://wiki.onap.org">https://wiki.onap.org</a></p>
+<p>Provides unified commands to operate ONAP from Linux console and Web console.</p>
 
 <h2><a id="Download_42"></a>To download</h2>
 <p style="color:red">Please download ONAP CLI <a href="./onap-cli.zip">here</a></p>
+
+<h2><a id="Console_42"></a>Web Command console</h2>
+<p style="color:blue">To open Console, Click <img src="./onap-cli.png" alt="Web Command console" style="width:30px;height:22px;" onclick="redirectToConsole();"> </p>
+
+<h2><a id="To_Run_a_command_12"></a>To Run a command</h2>
+
+<p>Configure the following environment variables, before using it in Linux console:</p>
+<ol>
+<li><strong>ONAP_HOST_URL</strong> - Onap service URL</li>
+<li><strong>ONAP_USERNAME</strong> - Onap user name</li>
+<li><strong>ONAP_PASSWORD</strong> - Onap user password</li>
+</ol>
+
+<p>Type <strong>onap &lt;command&gt;</strong> from Linux console.</p>
+
+<h2><a id="To_Run_in_Interactive_mode_16"></a>To Run in Interactive mode</h2>
+<p>Type <strong>onap</strong> from linux console</p>
+
+<h2><a id="More_details_42"></a>More details</h2>
+<p><a href="https://wiki.onap.org">https://wiki.onap.org</a></p>
 </body></html>
