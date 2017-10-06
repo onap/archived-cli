@@ -20,7 +20,7 @@ import org.onap.cli.fw.error.OnapCommandInvalidCommandType;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterType;
 
 /**
- * Command type supported by Onap CLI.
+ * Command type supported by Oclip CLI.
  *
  */
 public enum CommandType {

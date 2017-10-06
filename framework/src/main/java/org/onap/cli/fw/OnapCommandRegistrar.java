@@ -46,7 +46,7 @@ import org.onap.cli.fw.utils.SchemaInfo;
 
 
 /**
- * Onap Command registrar provides a common place, where every command would get registered automatically when its
+ * Oclip Command registrar provides a common place, where every command would get registered automatically when its
  * loaded into JVM.
  *
  */
@@ -258,7 +258,7 @@ public class OnapCommandRegistrar {
     }
 
     /**
-     * Helps to find the Onap CLI version, could be used with --version or -v option.
+     * Helps to find the Oclip CLI version, could be used with --version or -v option.
      *
      * @return string
      */

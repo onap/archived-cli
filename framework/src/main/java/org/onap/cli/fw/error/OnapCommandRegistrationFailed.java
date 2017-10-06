@@ -17,7 +17,7 @@
 package org.onap.cli.fw.error;
 
 /**
- * Command Not registered in Onap Command Registrar.
+ * Command Not registered in Oclip Command Registrar.
  *
  */
 public class OnapCommandRegistrationFailed extends OnapCommandException {

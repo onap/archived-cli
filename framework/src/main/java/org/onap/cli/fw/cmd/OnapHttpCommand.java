@@ -40,7 +40,7 @@ import org.onap.cli.http.mock.MockRequest;
 import org.onap.cli.http.mock.MockResponse;
 
 /**
- * Onap Command.
+ * Oclip Command.
  *
  */
 public class OnapHttpCommand extends OnapCommand {
@@ -53,7 +53,7 @@ public class OnapHttpCommand extends OnapCommand {
 
     protected OnapAuthClient authClient;
 
-    private OnapService onapService = new OnapService();
+    private OnapService oclipService = new OnapService();
 
     public void setInput(HttpInput input) {
         this.input = input;
@@ -85,14 +85,14 @@ public class OnapHttpCommand extends OnapCommand {
     }
 
     /*
-     * Onap service, this command uses to execute it.
+     * Oclip service, this command uses to execute it.
      */
     public OnapService getService() {
-        return this.onapService;
+        return this.oclipService;
     }
 
     public void setService(OnapService service) {
-        this.onapService = service;
+        this.oclipService = service;
     }
 
     @Override

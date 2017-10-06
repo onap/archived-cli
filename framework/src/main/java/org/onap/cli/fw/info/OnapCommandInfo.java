@@ -19,7 +19,7 @@ package org.onap.cli.fw.info;
 import org.onap.cli.fw.cmd.CommandType;
 
 /**
- * Onap Command info like product version, service, contact, etc.
+ * Oclip Command info like product version, service, contact, etc.
  */
 public class OnapCommandInfo {
 

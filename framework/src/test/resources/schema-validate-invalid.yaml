@@ -8,56 +8,56 @@ info:
   author: Kanagaraj Manickam mkr1481@gmail.com
 parameters:
   - name: name
-    description: Onap SDNC name
+    description: Oclip SDNC name
     scope: short
     type: string
     short_option: n
     long_option: name
     is_optional: false
   - name: vendor
-    description: Onap SDNC vendor
+    description: Oclip SDNC vendor
     scope: short
     type: string
     short_option: e
     long_option: vendor
     is_optional: false
   - name: type
-    description: Onap SDNC type
+    description: Oclip SDNC type
     scope: short
     type: string
     short_option: y
     long_option: type
     is_optional: false
   - name: sdnc-version
-    description: Onap SDNC version
+    description: Oclip SDNC version
     scope: short
     type: string
     short_option: r
     long_option: sdnc-version
     is_optional: false
   - name: url
-    description: Onap SDNC base url
+    description: Oclip SDNC base url
     scope: short
     type: url
     short_option: l
     long_option: url
     is_optional: false
   - name: description
-    description: Onap SDNC description
+    description: Oclip SDNC description
     scope: short
     type: string
     short_option: i
     long_option: description
     is_optional: false
   - name: username
-    description: Onap SDNC username
+    description: Oclip SDNC username
     scope: short
     type: string
     short_option: g
     long_option: username
     is_optional: false
   - name: password
-    description: Onap SDNC password
+    description: Oclip SDNC password
     scope: short
     type: string
     is_secured: true
@@ -65,14 +65,14 @@ parameters:
     long_option: password
     is_optional: false
   - name: product-name
-    description: Onap SDNC product-name
+    description: Oclip SDNC product-name
     scope: short
     type: string
     short_option: o
     long_option: product-name
     is_optional: false
   - name: protocol
-    description: Onap SDNC protocol
+    description: Oclip SDNC protocol
     scope: short
     type: string
     short_option: k
@@ -82,52 +82,52 @@ results:
   direction: portrait
   attributes:
     - name: id
-      description: Onap SDNC ID
+      description: Oclip SDNC ID
       scope: short
       type: string
     - name: name
-      description: Onap SDNC name
+      description: Oclip SDNC name
       scope: short
       type: string
     - name: vendor
-      description: Onap SDNC vendor
+      description: Oclip SDNC vendor
       scope: short
       type: string
     - name: type
-      description: Onap SDNC type
+      description: Oclip SDNC type
       scope: short
       type: string
     - name: version
-      description: Onap SDNC version
+      description: Oclip SDNC version
       scope: short
       type: string
     - name: url
-      description: Onap SDNC base url
+      description: Oclip SDNC base url
       scope: short
       type: url
     - name: description
-      description: Onap SDNC description
+      description: Oclip SDNC description
       scope: short
       type: string
     - name: username
-      description: Onap SDNC username
+      description: Oclip SDNC username
       scope: short
       type: string
     - name: password
-      description: Onap SDNC password
+      description: Oclip SDNC password
       scope: short
       type: string
       is_secured: true
     - name: product-name
-      description: Onap SDNC product name
+      description: Oclip SDNC product name
       scope: short
       type: string
     - name: protocol
-      description: Onap SDNC protocol
+      description: Oclip SDNC protocol
       scope: short
       type: string
     - name: create-time
-      description: Onap SDNC create-time
+      description: Oclip SDNC create-time
       scope: long
       type: string
 http:

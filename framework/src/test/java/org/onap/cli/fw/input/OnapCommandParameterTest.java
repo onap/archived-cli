@@ -91,7 +91,7 @@ public class OnapCommandParameterTest {
     }
 
     @Test(expected = OnapCommandInvalidParameterValue.class)
-    public void onapCommandInvalidParameterValueArrayExeceptionTest() throws OnapCommandInvalidParameterValue {
+    public void oclipCommandInvalidParameterValueArrayExeceptionTest() throws OnapCommandInvalidParameterValue {
         OnapCommandParameter param = new OnapCommandParameter();
         param.setName("name");
         param.setParameterType(ParameterType.ARRAY);
@@ -101,7 +101,7 @@ public class OnapCommandParameterTest {
     }
 
     @Test(expected = OnapCommandInvalidParameterValue.class)
-    public void onapCommandInvalidParameterValueMapExeceptionTest() throws OnapCommandInvalidParameterValue {
+    public void oclipCommandInvalidParameterValueMapExeceptionTest() throws OnapCommandInvalidParameterValue {
         OnapCommandParameter param = new OnapCommandParameter();
         param.setName("name");
         param.setParameterType(ParameterType.MAP);
@@ -110,7 +110,7 @@ public class OnapCommandParameterTest {
     }
 
     @Test(expected = OnapCommandInvalidParameterValue.class)
-    public void onapCommandInvalidParameterValueBinaryExeceptionTest() throws OnapCommandException {
+    public void oclipCommandInvalidParameterValueBinaryExeceptionTest() throws OnapCommandException {
         OnapCommandParameter param = new OnapCommandParameter();
         param.setName("name");
         param.setParameterType(ParameterType.BINARY);
