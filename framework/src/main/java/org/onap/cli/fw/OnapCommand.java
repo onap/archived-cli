@@ -47,7 +47,7 @@ import org.onap.cli.fw.output.ResultType;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 /**
- * Onap Command.
+ * Oclip Command.
  *
  */
 public abstract class OnapCommand {
@@ -71,7 +71,7 @@ public abstract class OnapCommand {
     }
 
     /**
-     * Onap command description, defined by derived command.
+     * Oclip command description, defined by derived command.
      */
     public String getDescription() {
         return this.cmdDescription;
@@ -82,7 +82,7 @@ public abstract class OnapCommand {
     }
 
     /*
-     * Onap command name like user-create, ns-list, etc , defined by derived command
+     * Oclip command name like user-create, ns-list, etc , defined by derived command
      */
     public String getName() {
         return this.cmdName;
@@ -105,21 +105,21 @@ public abstract class OnapCommand {
     }
 
     /*
-     * Onap command input parameters, defined by derived command
+     * Oclip command input parameters, defined by derived command
      */
     public List<OnapCommandParameter> getParameters() {
         return this.cmdParameters;
     }
 
     /*
-     * Onap command input parameters, defined by derived command
+     * Oclip command input parameters, defined by derived command
      */
     public Map<String, OnapCommandParameter> getParametersMap() {
         return OnapCommandUtils.getInputMap(this.getParameters());
     }
 
     /*
-     * Onap command output results, defined by derived command
+     * Oclip command output results, defined by derived command
      */
     public OnapCommandResult getResult() {
         return this.cmdResult;
@@ -184,7 +184,7 @@ public abstract class OnapCommand {
     }
 
     /**
-     * Onap command execute with given parameters on service. Before calling this method, its mandatory to set all
+     * Oclip command execute with given parameters on service. Before calling this method, its mandatory to set all
      * parameters value.
      *
      * @throws OnapCommandException

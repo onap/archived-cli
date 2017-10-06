@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
 name: sample-test
-description: Onap sample command to test the command features
+description: Oclip sample command to test the command features
 info:
   product: open-cli
   service: test
@@ -9,7 +9,7 @@ info:
 parameters:
   - name: bool-param
     type: bool
-    description: Onap boolean param, by default its always false.
+    description: Oclip boolean param, by default its always false.
     short_option: b
     long_option: bool
     is_optional: true
@@ -17,7 +17,7 @@ parameters:
     is_include: true
   - name: secure-param
     type: string
-    description: Onap secure param such as password
+    description: Oclip secure param such as password
     short_option: x
     long_option: secure
     is_secured: true
@@ -25,61 +25,61 @@ parameters:
     default_Value: pass123#
   - name: string-param
     type: string
-    description: Onap string param
+    description: Oclip string param
     long_option: string-param
     short_option: c
     is_optional: true
     default_Value: test
   - name: yaml-param
     type: json
-    description: Onap yaml file location param
+    description: Oclip yaml file location param
     long_option: yaml-param
     short_option: y
     is_optional: true
   - name: json-param
     type: json
-    description: Onap json file location param
+    description: Oclip json file location param
     long_option: json-param
     short_option: j
     is_optional: true
     is_secured: false
   - name: long-param
     type: digit
-    description: Onap long param
+    description: Oclip long param
     short_option: l
     long_option: long-opt
     is_optional: true
     default_value: 10
   - name: url-param
     type: url
-    description: Onap url param
+    description: Oclip url param
     short_option: r
     long_option: url
     is_optional: true
     default_value: http://localhost:8082/file.txt
   - name: env-param
     type: string
-    description: Onap env param.
+    description: Oclip env param.
     short_option: z
     long_option: env
     is_optional: true
     default_value: ${ENV_VAR}
   - name: positional-args
     type: string
-    description: Onap positional args, if no short option and no long option given for it
+    description: Oclip positional args, if no short option and no long option given for it
     is_optional: true
     default_value: http://localhost:8082/file.txt
 results:
   direction: portrait
   attributes:
     - name: output-1
-      description: Onap output attribute marked in short
+      description: Oclip output attribute marked in short
       scope: short
       type: string
       is_secured: true
       default_value: req-$s{uuid}
     - name: output-2
-      description: Onap output attribute marked in long
+      description: Oclip output attribute marked in long
       scope: short
       is_secured: false
       type: string

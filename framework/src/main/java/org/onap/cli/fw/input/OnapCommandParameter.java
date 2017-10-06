@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Onap Command's input parameter.
+ * Oclip Command's input parameter.
  *
  */
 public class OnapCommandParameter {

@@ -1,8 +1,8 @@
 usage: oclip sample-test
 
-Onap sample command to test the command features
+Oclip sample command to test the command features
 
-Onap service: sample v1
+Oclip service: sample v1
 
 Options:
 [-h | --help] [-v | --version] [-d | --debug]
@@ -12,9 +12,9 @@ Options:
 [-l | --long-opt] [-r | --url] [-z | --env]
 <positional-args>
 where,
--h | --help             Onap command help message. It is of type STRING.
+-h | --help             Oclip command help message. It is of type STRING.
                         By default, it is false.
--v | --version          Onap command service version. It is of type
+-v | --version          Oclip command service version. It is of type
                         STRING. By default, it is false.
 -d | --debug            Enable debug output. It is of type BOOL. By
                         default, it is false.
@@ -26,34 +26,34 @@ where,
                         false.
 -t | --no-title         whether to print title or not. It is of type BOOL.
                         By default, it is false.
--b | --bool             Onap boolean param, by default its always false.
+-b | --bool             Oclip boolean param, by default its always false.
                         It is of type BOOL. It is optional. By default, it
                         is false.
--x | --secure           Onap secure param such as password. It is of
+-x | --secure           Oclip secure param such as password. It is of
                         type STRING. Secured.
--c | --string-param     Onap string param. It is of type STRING.
--y | --yaml-param       Onap yaml file location param. It is of type
+-c | --string-param     Oclip string param. It is of type STRING.
+-y | --yaml-param       Oclip yaml file location param. It is of type
                         JSON. It's recommended to input the complete path
                         of the file, which is having the value for it.
--j | --json-param       Onap json file location param. It is of type
+-j | --json-param       Oclip json file location param. It is of type
                         JSON. It's recommended to input the complete path
                         of the file, which is having the value for it.
--l | --long-opt         Onap long param. It is of type LONG. By default,
+-l | --long-opt         Oclip long param. It is of type LONG. By default,
                         it is 10.
--r | --url              Onap url param. It is of type URL. By default,
+-r | --url              Oclip url param. It is of type URL. By default,
                         it is http://localhost:8082/file.txt.
--z | --env              Onap env param. It is of type STRING. By
+-z | --env              Oclip env param. It is of type STRING. By
                         default, it is read from environment variable
                         ENV_VAR.
-positional-args         Onap positional args, if no short option and no
+positional-args         Oclip positional args, if no short option and no
                         long option given for it. It is of type STRING. By
                         default, it is http://localhost:8082/file.txt.
 
 
 Results:
-output-1  Onap output attribute marked in short and is of
+output-1  Oclip output attribute marked in short and is of
           type STRING. It is secured.
-output-2  Onap output attribute marked in long and is of
+output-2  Oclip output attribute marked in long and is of
           type STRING.
 
 

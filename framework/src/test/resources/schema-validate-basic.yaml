@@ -8,64 +8,64 @@ info:
   author: Kanagaraj Manickam mkr1481@gmail.com
 parameters:
   - name: service-name1
-    description: Onap service name
+    description: Oclip service name
     type: string
     short_option: x
     long_option: service-name
     is_optional: false
   - name: service-version
-    description: Onap service version
+    description: Oclip service version
     type: string
     short_option: x
     long_option: service-version
     is_optional: false
   - name: service-url
-    description: Onap service base url
+    description: Oclip service base url
     type: url1
     short_option: u
     long_option: service-url
     is_optional: false1
   - name: status
-    description: Onap service status
+    description: Oclip service status
     type: digit
     short_option: z
     long_option: service-version
     is_optional: true
     default_value: 1
   - name: node-ip
-    description: Onap service running node IP
+    description: Oclip service running node IP
     type: string
   - name: node-port
-    description: Onap service running node port
+    description: Oclip service running node port
     type: string
   - name: create-or-update
-    description: Onap service create or update
+    description: Oclip service create or update
     type: cfbcv
     default_value: true
 results:
   direction: portrait1
   attributes:
     - name: name
-      description: Onap service name
+      description: Oclip service name
       scope: short
       type: string
     - name: version
-      description: Onap service version
+      description: Oclip service version
       scope: short
       type: string
     - name: status
-      description: Onap service base url
+      description: Oclip service base url
       scope: short
       type: url
     - name: status
-      description: Onap service status
+      description: Oclip service status
       scope: short1
       type: digit
     - name: nodes
-      description: Onap service running nodes
+      description: Oclip service running nodes
       scope: long
       type: string
     - name: location
-      description: Onap service location
+      description: Oclip service location
       scope: long
       type: url

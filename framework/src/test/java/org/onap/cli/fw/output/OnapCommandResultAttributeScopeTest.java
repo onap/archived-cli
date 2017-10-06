@@ -25,7 +25,7 @@ import java.util.Collections;
 
 public class OnapCommandResultAttributeScopeTest {
     @Test
-    public void onapCommandResultAttributeTest() {
+    public void oclipCommandResultAttributeTest() {
         OnapCommandResultAttribute att = new OnapCommandResultAttribute();
         att.setDescription("description");
         att.setName("name");
