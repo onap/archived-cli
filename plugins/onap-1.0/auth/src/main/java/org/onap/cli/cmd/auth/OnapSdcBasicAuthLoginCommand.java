@@ -20,11 +20,11 @@ import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.cmd.BasicAuthLoginCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 
-@OnapCommandSchema(name = "sdc-basic-login", version = "onap-1.0", type = "auth", schema = "basic-login-onap-sdc-1-0.yaml")
+@OnapCommandSchema(schema = "basic-login-onap-sdc-1-0.yaml")
 public class OnapSdcBasicAuthLoginCommand extends BasicAuthLoginCommand {
 
     @Override
     protected void run() throws OnapCommandException {
-    	super.run();
+        super.run();
     }
 }

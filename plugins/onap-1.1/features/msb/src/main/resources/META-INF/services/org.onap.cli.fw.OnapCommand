@@ -1,4 +1,0 @@
-org.onap.cli.cmd.cs.msb.OnapServiceListCommand
-org.onap.cli.cmd.cs.msb.OnapServiceShowCommand
-org.onap.cli.cmd.cs.msb.OnapServiceDeleteCommand
-org.onap.cli.cmd.cs.msb.OnapServiceCreateCommand

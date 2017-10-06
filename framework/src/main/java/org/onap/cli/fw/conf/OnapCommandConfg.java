@@ -104,10 +104,6 @@ public final class OnapCommandConfg {
         return prps.getProperty(Constants.OPEN_CLI_PRODUCT_NAME);
     }
 
-    public static String getAuthType() {
-        return prps.getProperty(Constants.SERVICE_AUTH, Constants.AUTH_BASIC);
-    }
-
     private static Map<String, String> getHeaderValues(String headerKey, Map<String, String> paramMap) {
         Map<String, String> mapHeaders = new HashMap<String, String> ();
         if (prps.containsKey(headerKey)) {
@@ -127,15 +123,6 @@ public final class OnapCommandConfg {
                     });
         }
         return mapHeaders;
-    }
-
-    public static Map<String, String> getBasicCommonHeaders(Map<String, String> paramMap) {
-        return getHeaderValues(Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS, paramMap);
-    }
-
-    public static Map<String, String> getServiceHeaders(String serviceName, Map<String, String> paramMap) {
-        String serviceHeader = Constants.SERVICE_AUTH_BASIC_HTTP_HEADERS+ "." + serviceName;
-        return getHeaderValues(serviceHeader, paramMap);
     }
 
     //mrkanag move this utils class
