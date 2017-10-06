@@ -22,7 +22,12 @@ package org.onap.cli.fw.conf;
  */
 public class Constants {
 
-    // schema validation
+    //config
+    public static final String CONF = "open-cli.properties";
+    public static final String OPEN_IGNORE_AUTH = "cli.ignore_auth";
+    public static final String OPEN_CLI_VERSION = "cli.version";
+    public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
+
     public static final String TOP_LEVEL_PARAMS_LIST ="cli.schema.top_level_params_list";
     public static final String TOP_LEVEL_MANDATORY_LIST ="cli.schema.top_level_mandatory_list";
     public static final String SERVICE_PARAMS_LIST ="cli.schema.service_params_list";
@@ -43,64 +48,32 @@ public class Constants {
     public static final String MODE_VALUES="cli.schema.mode_values";
     public static final String COMMAND_TYPE_VALUES="cli.command.type";
 
+    //http connection
     public static final String SSLCONTEST_TLS = "TLSV1.2";
     public static final String APPLICATION_JSON = "application/json";
 
     public static final String OPEN_CLI_PRODUCT_NAME = "cli.product_name";
 
+    //schema
+    public static final String OPEN_CLI_SCHEMA_VERSION = "open_cli_schema_version";
+    public static final String OPEN_CLI_SCHEMA_VERSION_VALUE_1_0 = "1.0";
 
-    //http
-    public static final String URI = "uri";
-    public static final String BODY = "body";
-    public static final String METHOD_TYPE = "method";
-    public static final String HEADERS = "headers";
-    public static final String QUERIES = "queries";
-    public static final String COOKIES = "cookies";
+    public static final String NAME = "name";
 
-    public static final String HTTP = "http";
-    public static final String REQUEST = "request";
-    public static final String SAMPLE_RESPONSE = "sample_response";
-    public static final String SUCCESS_CODES = "success_codes";
-    public static final String RESULT_MAP = "result_map";
+    public static final String DESCRIPTION = "description";
 
     //Info
     public static final String INFO = "info";
+
     public static final String INFO_PRODUCT = "product";
+    public static final String OPEN_OPEN_CLI_PRODUCT_IN_USE_ENV_NAME = "OPEN_CLI_PRODUCT_IN_USE";
+
     public static final String INFO_SERVICE = "service";
     public static final String INFO_TYPE = "type";
     public static final String INFO_AUTHOR = "author";
 
-    //swagger
-    public static final String EXECUTOR = "exec";
-
-    public static final String API = "api";
-    public static final String CLIENT = "client";
-    public static final String ENTITY = "entity";
-    public static final String METHOD = "method";
-    public static final String MULTIPART_ENTITY_NAME = "multipart_entity_name";
-    public static final String EXCEPTION = "exception";
-
-    public static final String SCOPE = "scope";
-
-    public static final String OPEN_CLI_SCHEMA_VERSION_VALUE = "1.0";
-    public static final String DESCRIPTION = "description";
-    public static final String COMMAND_TYPE = "type";
-    public static final String SERVICE = "service";
+    //parameters
     public static final String PARAMETERS = "parameters";
-
-    public static final String RESULTS = "results";
-
-    public static final String OPEN_CLI_SCHEMA_VERSION = "open_cli_schema_version";
-    public static final String NAME = "name";
-    public static final String VERSION = "version";
-    public static final String BASE_PATH = "base_path";
-    public static final String AUTH = "auth";
-    public static final String AUTH_NONE = "none";
-    public static final String AUTH_BASIC = "basic";
-    public static final String MODE = "mode";
-    public static final String MODE_DIRECT = "direct";
-    public static final String MODE_CATALOG = "catalog";
-
     public static final String SHORT_OPTION = "short_option";
     public static final String LONG_OPTION = "long_option";
     public static final String TYPE = "type";
@@ -108,47 +81,6 @@ public class Constants {
     public static final String DEFAULT_VALUE = "default_value";
     public static final String IS_SECURED = "is_secured";
     public static final String IS_INCLUDE = "is_include";
-
-    public static final String DIRECTION = "direction";
-    public static final String ATTRIBUTES = "attributes";
-
-    public static final String DEFAULT_PARAMETER_FILE_NAME = "default_input_parameters.yaml";
-    public static final String DEFAULT_PARAMETER_HTTP_FILE_NAME = "default_input_parameters_http.yaml";
-
-    // Common parameters used across all commands.
-    public static final String DEAFULT_PARAMETER_USERNAME = "host-username";
-    public static final String DEAFULT_PARAMETER_PASSWORD = "host-password";
-    public static final String DEAFULT_PARAMETER_HOST_URL = "host-url";
-    public static final String DEFAULT_PARAMETER_HELP = "help";
-    public static final String DEFAULT_PARAMETER_VERSION = "version";
-    public static final String DEFAULT_PARAMETER_DEBUG = "debug";
-    public static final String DEFAULT_PARAMETER_OUTPUT_FORMAT = "format";
-    public static final String DEFAULT_PARAMETER_OUTPUT_ATTR_LONG = "long";
-    public static final String DEFAULT_PARAMETER_OUTPUT_NO_TITLE = "no-title";
-    public static final String DEFAULT_PARAMETER_NO_AUTH = "no-auth";
-
-    // Configuration properties
-    public static final String CONF = "open-cli.properties";
-    public static final String OPEN_IGNORE_AUTH = "cli.ignore_auth";
-    public static final String OPEN_CLI_VERSION = "cli.version";
-    public static final String OPEN_OPEN_CLI_PRODUCT_IN_USE_ENV_NAME = "OPEN_CLI_PRODUCT_IN_USE";
-    public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
-
-    public static final String SERVICE_AUTH = "cli.service.auth";
-    public static final String SERVICE_AUTH_BASIC_HTTP_HEADERS = "cli.http.basic.common_headers";
-
-    // Used while printing the column name during PORTRAIT mode print
-    public static final String PORTRAINT_COLUMN_NAME_PROPERTY = "property";
-    public static final String PORTRAINT_COLUMN_NAME_VALUE = "value";
-
-    public static final String EXTERNAL_SCHEMA_DIRECTORY = "open-cli-schema";
-    public static final String EXTERNAL_YAML_PATTERN = "/**/*.yaml";
-    public static final String EXTERNAL_JSON_PATTERN = "/**/*.json";
-    public static final String EXTERNAL_SCHEMA_PATH_PATERN = EXTERNAL_SCHEMA_DIRECTORY + EXTERNAL_YAML_PATTERN;
-    public static final String DATA_DIRECTORY = "data";
-    public static final String EXTERNAL_DISCOVERY_FILE = "cli-schema.json";
-    public static final String DATA_DIRECTORY_JSON_PATTERN = DATA_DIRECTORY
-            + EXTERNAL_JSON_PATTERN;
 
     public static final String PARAMETER_TYPE_JSON = "json";
     public static final String PARAMETER_TYPE_YAML = "yaml";
@@ -160,24 +92,97 @@ public class Constants {
     public static final String PARAMETER_TYPE_BINARY = "binary";
     public static final String PARAMETER_TYPE_MAP = "map";
 
-    public static final String BOOLEAN_TRUE = "true";
-    public static final String BOOLEAN_FALSE = "false";
+    public static final String DEFAULT_PARAMETER_FILE_NAME = "default_input_parameters.yaml";
+    public static final String DEFAULT_PARAMETER_HTTP_FILE_NAME = "default_input_parameters_http.yaml";
 
+    public static final String DEAFULT_PARAMETER_USERNAME = "host-username";
+    public static final String DEAFULT_PARAMETER_PASSWORD = "host-password";
+    public static final String DEAFULT_PARAMETER_HOST_URL = "host-url";
+    public static final String DEFAULT_PARAMETER_HELP = "help";
+    public static final String DEFAULT_PARAMETER_VERSION = "version";
+    public static final String DEFAULT_PARAMETER_DEBUG = "debug";
+    public static final String DEFAULT_PARAMETER_OUTPUT_FORMAT = "format";
+    public static final String DEFAULT_PARAMETER_OUTPUT_ATTR_LONG = "long";
+    public static final String DEFAULT_PARAMETER_OUTPUT_NO_TITLE = "no-title";
+    public static final String DEFAULT_PARAMETER_NO_AUTH = "no-auth";
+
+    //results
+    public static final String RESULTS = "results";
+
+    public static final String DIRECTION = "direction";
     public static final String DIRECTION_PORTRAIT = "portrait";
     public static final String DIRECTION_LANDSCAPE = "landscape";
 
+    public static final String ATTRIBUTES = "attributes";
+
+    public static final String SCOPE = "scope";
     public static final String RESULT_SCOPE_SHORT = "short";
     public static final String RESULT_SCOPE_LONG = "long";
 
+    //print
+    public static final String PORTRAINT_COLUMN_NAME_PROPERTY = "property";
+    public static final String PORTRAINT_COLUMN_NAME_VALUE = "value";
+
+    public static final String SCHEMA_DIRECTORY = "open-cli-schema";
+    public static final String YAML_PATTERN = "/**/*.yaml";
+    public static final String JSON_PATTERN = "/**/*.json";
+    public static final String SCHEMA_PATH_PATERN = SCHEMA_DIRECTORY + YAML_PATTERN;
+    public static final String DATA_DIRECTORY = "data";
+    public static final String DISCOVERY_FILE = "cli-schema.json";
+    public static final String DATA_PATH_JSON_PATTERN = DATA_DIRECTORY + JSON_PATTERN;
+    public static final String DISCOVER_ALWAYS = "discover_always";
+    public static final String PARAM_CACHE_FILE_NAME = "global-profile";
+
+    //normal
+    public static final String BASIC_SCHEMA_PROFILE = "basic-schema";
+    public static final String HTTP_SCHEMA_PROFILE = "http-schema";
+
+    //http
+    public static final String HTTP = "http";
+
+    public static final String SERVICE = "service";
+    public static final String VERSION = "version";
+    public static final String BASE_PATH = "base_path";
+    public static final String AUTH = "auth";
+    public static final String AUTH_NONE = "none";
+    public static final String AUTH_BASIC = "basic";
+    public static final String MODE = "mode";
+    public static final String MODE_DIRECT = "direct";
+    public static final String MODE_CATALOG = "catalog";
+
+    public static final String REQUEST = "request";
+    public static final String URI = "uri";
+    public static final String BODY = "body";
+
+    public static final String METHOD_TYPE = "method";
     public static final String POST = "post";
     public static final String GET = "get";
     public static final String DELETE = "delete";
     public static final String PUT = "put";
     public static final String HEAD = "delete";
 
-    public static final String DEFAULT_SCHEMA_FILE_NAME = "default_input_parameters.yaml";
+    public static final String HEADERS = "headers";
+    public static final String QUERIES = "queries";
+    public static final String COOKIES = "cookies";
 
-    public static final String PRODUCT_VERSION = "product version";
+    public static final String SUCCESS_CODES = "success_codes";
+
+    public static final String RESULT_MAP = "result_map";
+
+    public static final String SAMPLE_RESPONSE = "sample_response";
+
+    //swagger
+    public static final String EXECUTOR = "exec";
+
+    public static final String API = "api";
+    public static final String CLIENT = "client";
+    public static final String ENTITY = "entity";
+    public static final String METHOD = "method";
+    public static final String MULTIPART_ENTITY_NAME = "multipart_entity_name";
+    public static final String EXCEPTION = "exception";
+    public static final String BOOLEAN_TRUE = "true";
+    public static final String BOOLEAN_FALSE = "false";
+
     // Error message
     public static final String SCHEMA_INVALID_DEFAULT_PARAMS_SECTION = "Invalid default_parameter section";
     public static final String SCHEMA_FILE_EMPTY = "The schema file cann't be null or empty";
@@ -192,9 +197,6 @@ public class Constants {
     public static final String HTTP_SAMPLE_RESPONSE_FAILED_PARSING = "The http Sample response json is failed to parse.";
     public static final String USE_DIRECTIVE = "use";
 
-    public static final String PARAM_CACHE_FILE_NAME = "global-profile";
-
-    public static final String DISCOVER_ALWAYS = "discover_always";
 
     public static final String SAMPLE_GEN_ENABLED = "cli.sample.gen.enable";
     public static final String SAMPLE_GEN_TARGET_FOLDER = "cli.sample.gen.target";
@@ -202,14 +204,13 @@ public class Constants {
     public static final String SPL_ENTRY_UUID = "uuid";
     public static final String SPL_ENTRY_ENV = "env:";
 
+    //auth plugin
     public static final String AUTH_SERVICE_AUTHORIZATION = "Authorization";
 
+    //catalog plugin
     public static final String CATALOG_SERVICE_NAME = "catalog-service-name";
-
     public static final String CATALOG_SERVICE_VERSION = "catalog-service-version";
-
     public static final String CATALOG_SERVICE_BASE_PATH = "catalog-service-base-path";
-
     public static final String CATALOG_SERVICE_HOST_URL = "catalog-service-host-url";
 
     private Constants() {

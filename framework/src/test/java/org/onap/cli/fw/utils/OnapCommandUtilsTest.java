@@ -81,7 +81,7 @@ public class OnapCommandUtilsTest {
 
     @Test
     public void externalSchemaTest() {
-        ExternalSchema schema = new ExternalSchema();
+        SchemaInfo schema = new SchemaInfo();
         schema.setCmdName("cmdName");
         schema.setSchemaName("schemaName");
         schema.setVersion("version");
@@ -254,7 +254,7 @@ public class OnapCommandUtilsTest {
 
     @Test
     public void findOnapCommandsTest() {
-        List<Class<OnapCommand>> cmds = OnapCommandUtils.findOnapCommands();
+        List<Class<OnapCommand>> cmds = OnapCommandUtils.discoverCommandPlugins();
         assertTrue(cmds.size() == 6);
     }
 
@@ -405,21 +405,21 @@ public class OnapCommandUtilsTest {
     public void zendExceptionTest4() throws OnapCommandException {
 
         mockExternalResources();
-        OnapCommandUtils.loadExternalSchemasFromJson();
+        OnapCommandUtils.discoverOrLoadSchemas();
     }
 
     @Test(expected = OnapCommandException.class)
     public void zendExceptionTest5() throws OnapCommandException {
 
         mockExternalResources();
-        OnapCommandUtils.findAllExternalSchemas();
+        OnapCommandUtils.discoverSchemas();
     }
 
     @Test(expected = OnapCommandException.class)
     public void zendExceptionTest6() throws OnapCommandException {
 
         mockExternalResources();
-        OnapCommandUtils.persist(new ArrayList<ExternalSchema>());
+        OnapCommandUtils.persistSchemaInfo(new ArrayList<SchemaInfo>());
     }
 
     @Test(expected = OnapCommandHelpFailed.class)
@@ -442,21 +442,21 @@ public class OnapCommandUtilsTest {
         assert info != null;
     }
 
-    @OnapCommandSchema(name = "sample-test-info", version = "open-cli", schema = "sample-test-info.yaml")
+    @OnapCommandSchema(schema = "sample-test-info.yaml")
     class OnapCommandSampleInfo extends OnapCommand {
         @Override
         protected void run() throws OnapCommandException {
         }
     }
 
-    @OnapCommandSchema(name = "sample-test", version = "open-cli", schema = "sample-test-schema.yaml")
+    @OnapCommandSchema(schema = "sample-test-schema.yaml")
     class OnapCommandSample extends OnapCommand {
         @Override
         protected void run() throws OnapCommandException {
         }
     }
 
-    @OnapCommandSchema(name = "sample-swagger-test", version = "open-cli", schema = "sample-test-schema-swagger.yaml")
+    @OnapCommandSchema(schema = "sample-test-schema-swagger.yaml")
     class OnapSwaggerBasedCommandSample extends OnapSwaggerCommand {
 
         @Override
@@ -464,7 +464,7 @@ public class OnapCommandUtilsTest {
         }
     }
 
-    @OnapCommandSchema(name = "sample-http-test", version = "open-cli", schema = "sample-test-schema-http.yaml")
+    @OnapCommandSchema(schema = "sample-test-schema-http.yaml")
     class OnapHttpCommandSample extends OnapHttpCommand {
 
         @Override

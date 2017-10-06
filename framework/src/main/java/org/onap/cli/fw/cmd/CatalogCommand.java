@@ -19,7 +19,7 @@ package org.onap.cli.fw.cmd;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.error.OnapCommandException;
 
-@OnapCommandSchema(name = "catalog", version = "open-cli", type = "catalog", schema = "catalog.yaml")
+@OnapCommandSchema(schema = "catalog.yaml")
 public class CatalogCommand extends OnapHttpCommand {
 
     @Override

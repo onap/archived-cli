@@ -25,7 +25,7 @@ import static org.onap.cli.fw.conf.Constants.BOOLEAN_VALUE;
 import static org.onap.cli.fw.conf.Constants.CLIENT;
 import static org.onap.cli.fw.conf.Constants.COMMAND_TYPE_VALUES;
 import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY;
-import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY_JSON_PATTERN;
+import static org.onap.cli.fw.conf.Constants.DATA_PATH_JSON_PATTERN;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_PASSWORD;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_USERNAME;
 import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETER_FILE_NAME;
@@ -34,12 +34,10 @@ import static org.onap.cli.fw.conf.Constants.DEFAULT_PARAMETER_NO_AUTH;
 import static org.onap.cli.fw.conf.Constants.DEFAULT_VALUE;
 import static org.onap.cli.fw.conf.Constants.DESCRIPTION;
 import static org.onap.cli.fw.conf.Constants.DIRECTION;
+import static org.onap.cli.fw.conf.Constants.DISCOVERY_FILE;
 import static org.onap.cli.fw.conf.Constants.ENTITY;
 import static org.onap.cli.fw.conf.Constants.EXCEPTION;
 import static org.onap.cli.fw.conf.Constants.EXECUTOR;
-import static org.onap.cli.fw.conf.Constants.EXTERNAL_DISCOVERY_FILE;
-import static org.onap.cli.fw.conf.Constants.EXTERNAL_SCHEMA_DIRECTORY;
-import static org.onap.cli.fw.conf.Constants.EXTERNAL_SCHEMA_PATH_PATERN;
 import static org.onap.cli.fw.conf.Constants.HEADERS;
 import static org.onap.cli.fw.conf.Constants.HTTP;
 import static org.onap.cli.fw.conf.Constants.HTTP_BODY_FAILED_PARSING;
@@ -78,8 +76,10 @@ import static org.onap.cli.fw.conf.Constants.RESULT_MAP;
 import static org.onap.cli.fw.conf.Constants.RESULT_PARAMS_LIST;
 import static org.onap.cli.fw.conf.Constants.RESULT_PARAMS_MANDATORY_LIST;
 import static org.onap.cli.fw.conf.Constants.SAMPLE_RESPONSE;
+import static org.onap.cli.fw.conf.Constants.SCHEMA_DIRECTORY;
 import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_NOT_EXIST;
 import static org.onap.cli.fw.conf.Constants.SCHEMA_FILE_WRONG_EXTN;
+import static org.onap.cli.fw.conf.Constants.SCHEMA_PATH_PATERN;
 import static org.onap.cli.fw.conf.Constants.SCOPE;
 import static org.onap.cli.fw.conf.Constants.SERVICE;
 import static org.onap.cli.fw.conf.Constants.SERVICE_PARAMS_LIST;
@@ -149,6 +149,8 @@ import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.PrintDirection;
 import org.onap.cli.fw.output.ResultType;
 import org.onap.cli.fw.run.OnapCommandExecutor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -166,6 +168,7 @@ import net.minidev.json.JSONObject;
  */
 public class OnapCommandUtils {
 
+    private static Logger LOG = LoggerFactory.getLogger(OnapCommandUtils.class);
     /**
      * Private constructor.
      */
@@ -187,7 +190,7 @@ public class OnapCommandUtils {
         InputStream inputStream = OnapCommandUtils.class.getClassLoader().getResourceAsStream(schemaName);
 
         try {
-            Resource resource = getExternalResource(schemaName, EXTERNAL_SCHEMA_PATH_PATERN);
+            Resource resource = getExternalResource(schemaName, SCHEMA_PATH_PATERN);
 
             if (resource != null) {
                 inputStream = resource.getInputStream();
@@ -243,14 +246,7 @@ public class OnapCommandUtils {
      * @param schemaName     schema name
      * @param includeDefault include if default
      * @param validateSchema flag to represent validation
-     * @throws OnapCommandParameterNameConflict       param name conflict exception
-     * @throws OnapCommandParameterOptionConflict     param option conflict exception
-     * @throws OnapCommandInvalidParameterType        invalid param type exception
-     * @throws OnapCommandInvalidPrintDirection       invalid print direction exception
-     * @throws OnapCommandInvalidResultAttributeScope invalid scope exception
-     * @throws OnapCommandSchemaNotFound              schema not found
-     * @throws OnapCommandInvalidSchema               invalid schema
-     * @throws OnapCommandInvalidSchemaVersion        invalid schema version
+     * @throws OnapCommandException  on error
      */
     public static List<String> loadSchema(OnapCommand cmd, String schemaName, boolean includeDefault,
                                           boolean validateSchema) throws OnapCommandException {
@@ -298,47 +294,6 @@ public class OnapCommandUtils {
         } catch (Exception e) {
             throw new OnapCommandInvalidSchema(schemaName, e);
         }
-    }
-
-    private static void throwOrCollect(OnapCommandException ex, List<String> list,
-                                       boolean shouldCollectException) throws OnapCommandException {
-        if (shouldCollectException) {
-            list.add(ex.getMessage());
-        } else {
-            throw ex;
-        }
-    }
-
-    private static void validateTags(List<String> schemaErrors, Map<String, ?> yamlMap,
-                                             List<String> totalParams, List<String> mandatoryParams,
-                                             String section) {
-        //mrkanag capture invalid entries as well
-        for (String param : totalParams) {
-            boolean isMandatory = mandatoryParams.contains(param);
-            boolean isYamlContains = yamlMap.containsKey(param);
-            if (isMandatory) {
-                if (!isYamlContains) {
-                    schemaErrors.add("Mandatory attribute '" + param + "' is missing under '" + section + "'");
-                } else {
-                    String value = String.valueOf(yamlMap.get(param));
-                    if (value == null || value.isEmpty()) {
-                        schemaErrors.add("Mandatory attribute '" + param + "' under '" + section
-                                + "' shouldn't be null or empty");
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Validate Boolean.
-     *
-     * @param toValidate
-     *            string
-     * @return boolean
-     */
-    protected static boolean validateBoolean(String toValidate) {
-        return OnapCommandConfg.getSchemaAttrInfo(BOOLEAN_VALUE).contains(toValidate.toLowerCase());
     }
 
     private static List<String> parseSchema(OnapCommand cmd,
@@ -658,111 +613,6 @@ public class OnapCommandUtils {
         return exceptionList;
     }
 
-    private static String emptySection(String section) {
-        return "The section '" + section + ":' cann't be null or empty";
-    }
-
-    private static String invalidBooleanValueMessage(String section, String attribute, String value) {
-        return "The value '" + value + "' of '" + attribute + "' present under '" + section + "' should be boolean";
-    }
-
-    private static Set<String> validateHttpQueries(Map<String, Object> requestMap) {
-        Map<String, Object> queries = (Map<String, Object>) requestMap.get(QUERIES);
-        Set<String> queryParamNames = new HashSet<>();
-        if (queries != null) {
-            for (Entry<String, Object> entry : queries.entrySet()) {
-                parseParameters(String.valueOf(entry.getValue()), queryParamNames);
-            }
-        }
-        return queryParamNames;
-    }
-
-
-    private static Set<String> validateHttpHeaders(Map<String, Object> requestMap) {
-
-        Map<String, Object> headers = (Map<String, Object>) requestMap.get(HEADERS);
-        Set<String> headerParamNames = new HashSet<>();
-        if (headers != null) {
-            for (Entry<String, Object> entry : headers.entrySet()) {
-                parseParameters(String.valueOf(entry.getValue()), headerParamNames);
-            }
-        }
-        return headerParamNames;
-    }
-
-    private static Set<String> validateHttpBody(List<String> errorList, Map<String, Object> requestMap) {
-        Set<String> bodyParamNames = new HashSet<>();
-        Object bodyString = requestMap.get(BODY);
-        if (bodyString == null) {
-            return bodyParamNames;
-        }
-
-        String body = String.valueOf(bodyString);
-        JSONObject obj = null;
-        try {
-            obj = new ObjectMapper().readValue(body, JSONObject.class);
-        } catch (IOException e1) { // NOSONAR
-            errorList.add(HTTP_BODY_FAILED_PARSING);
-        }
-        if (obj == null || "".equals(obj.toString())) {
-            errorList.add(HTTP_BODY_JSON_EMPTY);
-        }
-        parseParameters(body, bodyParamNames);
-
-        return bodyParamNames;
-    }
-
-    private static Set<String> validateHttpUri(List<String> errorList, Map<String, Object> requestMap) {
-        Set<String> uriParamNames = new HashSet<>();
-        String uri = (String) requestMap.get(URI);
-        if (uri == null || uri.isEmpty()) {
-            errorList.add(emptySection(URI));
-            return uriParamNames;
-        }
-        parseParameters(uri, uriParamNames);
-        return uriParamNames;
-    }
-
-    private static void parseParameters(String line, Set<String> paramNames) {
-
-        int currentIdx = 0;
-        while (currentIdx < line.length()) {
-            int idxS = line.indexOf("${", currentIdx);
-            if (idxS == -1) {
-                break;
-            }
-            int idxE = line.indexOf("}", idxS);
-            String paramName = line.substring(idxS + 2, idxE);
-            paramNames.add(paramName.trim());
-
-            currentIdx = idxE + 1;
-        }
-
-    }
-
-    private static Set<String> getRequestParams(Map<String, ?> yamlMap) {
-
-        Set<String> set = new HashSet<>();
-
-        @SuppressWarnings("unchecked")
-        List<Map<String, Object>> inputParams = (List<Map<String, Object>>) yamlMap.get(PARAMETERS);
-
-        if (inputParams != null) {
-            for (Map<String, Object> map : inputParams) {
-                for (Entry<String, Object> entry : map.entrySet()) {
-                    Object key = entry.getKey();
-
-                    if (NAME.equals(key)) {
-                        set.add(String.valueOf(entry.getValue()));
-                        break;
-                    }
-                }
-            }
-        }
-
-        return set;
-    }
-
     /**
      * Load the schema.
      *
@@ -824,22 +674,8 @@ public class OnapCommandUtils {
      *            OnapHttpCommand
      * @param schemaName
      *            schema name
-     * @throws OnapCommandParameterNameConflict
-     *             param name conflict exception
-     * @throws OnapCommandParameterOptionConflict
-     *             param option conflict exception
-     * @throws OnapCommandInvalidParameterType
-     *             invalid param type exception
-     * @throws OnapCommandInvalidPrintDirection
-     *             invalid print direction exception
-     * @throws OnapCommandInvalidResultAttributeScope
-     *             invalid scope exception
-     * @throws OnapCommandSchemaNotFound
-     *             schema not found
-     * @throws OnapCommandInvalidSchema
-     *             invalid schema
-     * @throws OnapCommandInvalidSchemaVersion
-     *             invalid schema version
+     * @throws OnapCommandException
+     *             on error
      */
     private static ArrayList<String> parseHttpSchema(OnapHttpCommand cmd,
                                                     final Map<String, ?> values,
@@ -987,6 +823,152 @@ public class OnapCommandUtils {
             throwOrCollect(e, errorList, validate);
         }
         return errorList;
+    }
+
+
+    private static void throwOrCollect(OnapCommandException ex, List<String> list, boolean shouldCollectException)
+            throws OnapCommandException {
+        if (shouldCollectException) {
+            list.add(ex.getMessage());
+        } else {
+            throw ex;
+        }
+    }
+
+    private static void validateTags(List<String> schemaErrors, Map<String, ?> yamlMap, List<String> totalParams,
+            List<String> mandatoryParams, String section) {
+        // mrkanag capture invalid entries as well
+        for (String param : totalParams) {
+            boolean isMandatory = mandatoryParams.contains(param);
+            boolean isYamlContains = yamlMap.containsKey(param);
+            if (isMandatory) {
+                if (!isYamlContains) {
+                    schemaErrors.add("Mandatory attribute '" + param + "' is missing under '" + section + "'");
+                } else {
+                    String value = String.valueOf(yamlMap.get(param));
+                    if (value == null || value.isEmpty()) {
+                        schemaErrors.add("Mandatory attribute '" + param + "' under '" + section
+                                + "' shouldn't be null or empty");
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Validate Boolean.
+     *
+     * @param toValidate
+     *            string
+     * @return boolean
+     */
+    protected static boolean validateBoolean(String toValidate) {
+        return OnapCommandConfg.getSchemaAttrInfo(BOOLEAN_VALUE).contains(toValidate.toLowerCase());
+    }
+
+    private static String emptySection(String section) {
+        return "The section '" + section + ":' cann't be null or empty";
+    }
+
+    private static String invalidBooleanValueMessage(String section, String attribute, String value) {
+        return "The value '" + value + "' of '" + attribute + "' present under '" + section + "' should be boolean";
+    }
+
+    private static Set<String> validateHttpQueries(Map<String, Object> requestMap) {
+        Map<String, Object> queries = (Map<String, Object>) requestMap.get(QUERIES);
+        Set<String> queryParamNames = new HashSet<>();
+        if (queries != null) {
+            for (Entry<String, Object> entry : queries.entrySet()) {
+                parseParameters(String.valueOf(entry.getValue()), queryParamNames);
+            }
+        }
+        return queryParamNames;
+    }
+
+
+    private static Set<String> validateHttpHeaders(Map<String, Object> requestMap) {
+
+        Map<String, Object> headers = (Map<String, Object>) requestMap.get(HEADERS);
+        Set<String> headerParamNames = new HashSet<>();
+        if (headers != null) {
+            for (Entry<String, Object> entry : headers.entrySet()) {
+                parseParameters(String.valueOf(entry.getValue()), headerParamNames);
+            }
+        }
+        return headerParamNames;
+    }
+
+    private static Set<String> validateHttpBody(List<String> errorList, Map<String, Object> requestMap) {
+        Set<String> bodyParamNames = new HashSet<>();
+        Object bodyString = requestMap.get(BODY);
+        if (bodyString == null) {
+            return bodyParamNames;
+        }
+
+        String body = String.valueOf(bodyString);
+        JSONObject obj = null;
+        try {
+            obj = new ObjectMapper().readValue(body, JSONObject.class);
+        } catch (IOException e1) { // NOSONAR
+            errorList.add(HTTP_BODY_FAILED_PARSING);
+        }
+        if (obj == null || "".equals(obj.toString())) {
+            errorList.add(HTTP_BODY_JSON_EMPTY);
+        }
+        parseParameters(body, bodyParamNames);
+
+        return bodyParamNames;
+    }
+
+    private static Set<String> validateHttpUri(List<String> errorList, Map<String, Object> requestMap) {
+        Set<String> uriParamNames = new HashSet<>();
+        String uri = (String) requestMap.get(URI);
+        if (uri == null || uri.isEmpty()) {
+            errorList.add(emptySection(URI));
+            return uriParamNames;
+        }
+        parseParameters(uri, uriParamNames);
+        return uriParamNames;
+    }
+
+    private static void parseParameters(String line, Set<String> paramNames) {
+
+        int currentIdx = 0;
+        while (currentIdx < line.length()) {
+            int idxS = line.indexOf("${", currentIdx);
+            if (idxS == -1) {
+                break;
+            }
+            int idxE = line.indexOf("}", idxS);
+            String paramName = line.substring(idxS + 2, idxE);
+            paramNames.add(paramName.trim());
+
+            currentIdx = idxE + 1;
+        }
+
+    }
+
+    private static Set<String> getRequestParams(Map<String, ?> yamlMap) {
+
+        Set<String> set = new HashSet<>();
+
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> inputParams = (List<Map<String, Object>>) yamlMap.get(PARAMETERS);
+
+        if (inputParams != null) {
+            for (Map<String, Object> map : inputParams) {
+                for (Entry<String, Object> entry : map.entrySet()) {
+                    Object key = entry.getKey();
+
+                    if (NAME.equals(key)) {
+                        set.add(String.valueOf(entry.getValue()));
+                        break;
+                    }
+                }
+            }
+        }
+
+        return set;
     }
 
     private static void validateHttpResultMap(List<String> errorList, Map<String, ?> values) throws OnapCommandException {
@@ -1226,7 +1208,7 @@ public class OnapCommandUtils {
      *
      * @return list
      */
-    public static List<Class<OnapCommand>> findOnapCommands() {
+    public static List<Class<OnapCommand>> discoverCommandPlugins() {
         ServiceLoader<OnapCommand> loader = ServiceLoader.load(OnapCommand.class);
         List<Class<OnapCommand>> clss = new ArrayList<>();
         for (OnapCommand implClass : loader) {
@@ -1539,7 +1521,6 @@ public class OnapCommandUtils {
             inp.getReqQueries().put(h, replaceLineFromInputParameters(value, params));
         }
 
-        //mrkanag replaceLineFromInputParameters for result_map, to support input param in result output
         return inp;
     }
 
@@ -1620,42 +1601,60 @@ public class OnapCommandUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static List<ExternalSchema> findAllExternalSchemas() throws OnapCommandException {
-        List<ExternalSchema> extSchemas = new ArrayList<>();
+    public static List<SchemaInfo> discoverSchemas() throws OnapCommandException {
+        List<SchemaInfo> extSchemas = new ArrayList<>();
         try {
-            Resource[] res = getExternalResources(EXTERNAL_SCHEMA_PATH_PATERN);
+            Resource[] res = getExternalResources(SCHEMA_PATH_PATERN);
             if (res != null && res.length > 0) {
                 Map<String, ?> resourceMap;
+
                 for (Resource resource : res) {
-                    resourceMap = getExternalSchemaMap(resource);
+                    resourceMap = loadSchema(resource);
+
                     if (resourceMap != null && resourceMap.size() > 0) {
-                        ExternalSchema schema = new ExternalSchema();
-                        schema.setSchemaName(resource.getFilename());
+                        SchemaInfo schema = new SchemaInfo();
+
                         schema.setSchemaURI(resource.getURI().toString());
-                        schema.setCmdName((String) resourceMap.get(NAME));
+
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         schema.setVersion(obj.toString());
 
-                        Map<String, ?> infoMap = (Map<String, ?>) resourceMap.get(Constants.INFO);
-                        if (infoMap != null && infoMap.get(Constants.COMMAND_TYPE) != null) {
-                            schema.setType(infoMap.get(Constants.COMMAND_TYPE).toString());
-                        }
-                        if (infoMap != null && infoMap.get(Constants.INFO_PRODUCT) != null) {
-                            schema.setCmdVersion(infoMap.get(Constants.INFO_PRODUCT).toString());
+                        if (!schema.getVersion().equalsIgnoreCase(Constants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
+                            LOG.info("Unsupported Schema version found " + schema.getSchemaURI());
+                            continue;
                         }
 
-                        if (resourceMap.get(Constants.HTTP) != null) {
-                            schema.setHttp("true");
+                        schema.setSchemaName(resource.getFilename());
+                        schema.setCmdName((String) resourceMap.get(NAME));
+
+                        Map<String, ?> infoMap = (Map<String, ?>) resourceMap.get(Constants.INFO);
+                        if (infoMap != null && infoMap.get(Constants.INFO_TYPE) != null) {
+                            schema.setType(infoMap.get(Constants.INFO_TYPE).toString());
                         }
+
+                        if (infoMap != null && infoMap.get(Constants.INFO_PRODUCT) != null) {
+                            schema.setProduct(infoMap.get(Constants.INFO_PRODUCT).toString());
+                        }
+
+                        schema.setSchemaProfile(identitySchemaProfileType(resourceMap));
+
                         extSchemas.add(schema);
                     }
                 }
             }
         } catch (IOException e) {
-            throw new OnapCommandDiscoveryFailed(EXTERNAL_SCHEMA_DIRECTORY, e);
+            throw new OnapCommandDiscoveryFailed(SCHEMA_DIRECTORY, e);
         }
 
         return extSchemas;
+    }
+
+    private static String identitySchemaProfileType(Map<String, ?> schemaYamlMap) {
+        if (schemaYamlMap.get(Constants.HTTP) != null) {
+            return Constants.HTTP_SCHEMA_PROFILE;
+        }
+
+        return Constants.BASIC_SCHEMA_PROFILE;
     }
 
     /**
@@ -1704,7 +1703,7 @@ public class OnapCommandUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> getExternalSchemaMap(Resource resource) throws OnapCommandInvalidSchema {
+    public static Map<String, ?> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
         Map<String, ?> values = null;
         try {
             values = (Map<String, ?>) new Yaml().load(resource.getInputStream());
@@ -1722,24 +1721,24 @@ public class OnapCommandUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static void persist(List<ExternalSchema> schemas) throws OnapCommandDiscoveryFailed {
+    public static void persistSchemaInfo(List<SchemaInfo> schemas) throws OnapCommandDiscoveryFailed {
         if (schemas != null) {
             try {
                 Resource[] resources = getExternalResources(DATA_DIRECTORY);
                 if (resources != null && resources.length == 1) {
                     String path = resources[0].getURI().getPath();
-                    File file = new File(path + File.separator + EXTERNAL_DISCOVERY_FILE);
+                    File file = new File(path + File.separator + DISCOVERY_FILE);
                     ObjectMapper mapper = new ObjectMapper();
                     mapper.writerWithDefaultPrettyPrinter().writeValue(file, schemas);
                 }
             } catch (IOException e1) {
                 throw new OnapCommandDiscoveryFailed(DATA_DIRECTORY,
-                        EXTERNAL_DISCOVERY_FILE, e1);
+                        DISCOVERY_FILE, e1);
             }
         }
     }
 
-    public static void persistParams(List<Param> params, String profileName) throws OnapCommandPersistProfileFailed {
+    public static void persistProfile(List<Param> params, String profileName) throws OnapCommandPersistProfileFailed {
         if (params != null) {
             try {
                 Resource[] resources = getExternalResources(DATA_DIRECTORY);
@@ -1762,17 +1761,17 @@ public class OnapCommandUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static boolean isJsonFileDiscovered() throws OnapCommandDiscoveryFailed {
+    public static boolean isAlreadyDiscovered() throws OnapCommandDiscoveryFailed {
         Resource resource = null;
         try {
-            resource = getExternalResource(EXTERNAL_DISCOVERY_FILE,
-                    DATA_DIRECTORY_JSON_PATTERN);
+            resource = getExternalResource(DISCOVERY_FILE,
+                    DATA_PATH_JSON_PATTERN);
             if (resource != null) {
                 return true;
             }
         } catch (IOException e) {
             throw new OnapCommandDiscoveryFailed(DATA_DIRECTORY,
-                    EXTERNAL_DISCOVERY_FILE, e);
+                    DISCOVERY_FILE, e);
         }
 
         return false;
@@ -1787,26 +1786,26 @@ public class OnapCommandUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static List<ExternalSchema> loadExternalSchemasFromJson() throws OnapCommandException {
-        List<ExternalSchema> schemas = new ArrayList<>();
-        if (OnapCommandConfg.isDiscoverAlways() || !isJsonFileDiscovered()) {
-            schemas = findAllExternalSchemas();
+    public static List<SchemaInfo> discoverOrLoadSchemas() throws OnapCommandException {
+        List<SchemaInfo> schemas = new ArrayList<>();
+        if (OnapCommandConfg.isDiscoverAlways() || !isAlreadyDiscovered()) {
+            schemas = discoverSchemas();
             if (!schemas.isEmpty()) {
-                persist(schemas);
+                persistSchemaInfo(schemas);
             }
         } else {
             try {
-                Resource resource = getExternalResource(EXTERNAL_DISCOVERY_FILE,
-                        DATA_DIRECTORY_JSON_PATTERN);
+                Resource resource = getExternalResource(DISCOVERY_FILE,
+                        DATA_PATH_JSON_PATTERN);
                 if (resource != null) {
                     File file = new File(resource.getURI().getPath());
                     ObjectMapper mapper = new ObjectMapper();
-                    ExternalSchema[] list = mapper.readValue(file, ExternalSchema[].class);
+                    SchemaInfo[] list = mapper.readValue(file, SchemaInfo[].class);
                     schemas.addAll(Arrays.asList(list));
                 }
             } catch (IOException e) {
                 throw new OnapCommandDiscoveryFailed(DATA_DIRECTORY,
-                        EXTERNAL_DISCOVERY_FILE, e);
+                        DISCOVERY_FILE, e);
             }
         }
 
@@ -1818,7 +1817,7 @@ public class OnapCommandUtils {
 
         try {
             Resource resource = getExternalResource(profileName + ".json",
-                    DATA_DIRECTORY_JSON_PATTERN);
+                    DATA_PATH_JSON_PATTERN);
             if (resource != null) {
                 File file = new File(resource.getURI().getPath());
                 ObjectMapper mapper = new ObjectMapper();
@@ -1843,12 +1842,12 @@ public class OnapCommandUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static ExternalSchema loadExternalSchemaFromJson(String cmd, String version) throws OnapCommandException {
-        List<ExternalSchema> list = loadExternalSchemasFromJson();
-        ExternalSchema schemaStr = null;
+    public static SchemaInfo getSchemaInfo(String cmd, String version) throws OnapCommandException {
+        List<SchemaInfo> list = discoverOrLoadSchemas();
+        SchemaInfo schemaStr = null;
         if (list != null) {
-            for (ExternalSchema schema : list) {
-                if (cmd.equals(schema.getCmdName()) && version.equals(schema.getCmdVersion())) {
+            for (SchemaInfo schema : list) {
+                if (cmd.equals(schema.getCmdName()) && version.equals(schema.getProduct())) {
                     schemaStr = schema;
                     break;
                 }
