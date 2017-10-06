@@ -1,70 +1,61 @@
 <!DOCTYPE html><html><head><link rel="icon" href="./open-cli.png">
-<meta charset="utf-8"><title>ONAP CLI</title><style></style></head><body id="preview">
-<h1><a id="OPEN_Commandline_interface_CLI_0"></a>ONAP Command-line interface (CLI)</h1>
-<p style="color:blue"><strong>One Command to command whole Onap !!</strong></p>
-<p>Provides unified commands to operate ONAP from Linux console and Web console.</p>
+<meta charset="utf-8"><title>Open CLI Platform (OCLIP)</title><style></style></head><body id="preview">
+<script>
+function redirectToConsole(){
+   window.location.href="http://"+  window.location.hostname + ":9090";
+}
+</script>
 
-<h2><a id="Download_42"></a>To download</h2>
-<p style="color:red">Please download ONAP CLI <a href="./onap-cli.zip">here</a></p>
-
-<h3><a id="Download_42"></a>To install</h3>
-<p>Please follow the instructions given below for installing ONAP CLI.</p>
-<ol>
-<li>Un-zip the above download file into <b>/opt/onap/cli folder</b></li>
-<li>Run the following commands:
-<br>export ONAP_CLI_HOME=$CLI_INSTALL_DIR
-<br>export CLI_PRODUCT_VERSION=onap-1.1
-<br>
-<br>cd $CLI_INSTALL_DIR
-<br>
-<br>if [ ! -d ./data ]; then mkdir ./data; fi
-<br>if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi
-<br>
-<br>chmod +x ./bin/onap.sh
-<br>
-<br>#Make onap available in path
-<br>ln ./bin/onap.sh $CLI_BIN
-<br>
-<br>#Print the version
-<br>onap -v</li>
+<h1 id="open-command-line-interface-cli">OPEN Command-line interface (CLI)</h1>
+<p>Provides unified commands to operate any cloud enabled software products from Linux/Web console. Configure the following environment variables, before using it:</p>
+<ol style="list-style-type: decimal">
+<li><strong>OPEN_CLI_HOST_URL</strong> - Catalog service URL or a service URL</li>
+<li><strong>OPEN_CLI_HOST_USERNAME</strong> - Service user name</li>
+<li><strong>OPEN_CLI_HOST_PASSWORD</strong> - Service password</li>
 </ol>
-
-<h2><a id="Console_42"></a>Web Command console</h2>
-<p style="color:blue">To open Console, Click <img src="./onap-cli.png" alt="Web Command console" style="width:30px;height:22px;" onclick="redirectToConsole();"> </p>
-
-<h2><a id="To_Run_a_command_12"></a>To Run a command</h2>
-
-<p>Configure the following environment variables, before using it in Linux console:</p>
-<ol>
-<li><strong>HOST_URL</strong> - Onap Micro service bus(MSB) URL or a service URL</li>
-<li><strong>HOST_USERNAME</strong> - Onap user name</li>
-<li><strong>HOST_PASSWORD</strong> - Onap user password</li>
+<h2 id="to-run-a-command">To Run a command</h2>
+<p>Type <strong>oclip <command></strong> from linux console.</p>
+<h2 id="to-run-in-interactive-mode">To Run in Interactive mode</h2>
+<p>Type <strong>oclip</strong> from linux console.</p>
+<p>And use the directive set to set the values for following parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>host-url</strong> - Catalog service URL or a service URL</li>
+<li><strong>host-username</strong> - Service user name</li>
+<li><strong>host-password</strong> - Service password</li>
 </ol>
-
-<p>Type <strong>onap &lt;command&gt;</strong> from Linux console.</p>
-
-<h2><a id="To_Run_in_Interactive_mode_16"></a>To Run in Interactive mode</h2>
-<p>Type <strong>onap</strong> from linux console</p>
-<h2><a id="Set_the_product_version_20"></a>Set the product version</h2>
-<p>CLI framework is enhanced to handle multiple product versions at same<br>
-time. so to choose the product version, set evironment variable<br>
-<strong>CLI_PROUDCT_VERSION</strong>.</p>
-<p>NOTE: In interactive mode, product version can be selected using<br>
-typing <strong>use &lt;product-version&gt;</strong></p>
-<p>Run <em>onap [-v|–version]</em> to see the CLI and available product version details</p>
-<h2><a id="Help_31"></a>Help</h2>
-<p><em>onap [-h|–help]</em><br>
-<em>onap &lt;command&gt; [-h|–help]</em></p>
-<h2><a id="Debug_Mode_36"></a>Debug Mode</h2>
+<h2 id="set-the-product-version">Set the product version</h2>
+<p>CLI framework is enhanced to handle multiple product versions at same time. so to choose the product version, set evironment variable <strong>OPEN_CLI_PROUDCT_IN_USE</strong>.</p>
+<p>NOTE: In interactive mode, product version can be selected using typing <strong>use <product-version></strong></p>
+<p>Run <em>oclip [-v|--version]</em> to see the CLI and available product version details</p>
+<h2 id="set-the-parameter-values">Set the parameter values</h2>
+<p>Use the directive 'set' for setting the values for parameters and 'unset' for un-seting the values.</p>
+<h2 id="help">Help</h2>
+<p><em>oclip [-h|--help]</em> <em>oclip <command> [-h|--help]</em></p>
+<h2 id="debug-mode">Debug Mode</h2>
 <p>To run in debug mode, set following environment variables:</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li>OPEN_CLI_DEBUG - By default its false, otherwise Set to true</li>
 <li>OPEN_CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number</li>
 </ol>
-<h2><a id="More_details_42"></a>More details</h2>
-<p><a href="https://wiki.onap.org">https://wiki.onap.org</a></p>
+<h2>
+<a id="More_details_42"></a>More details
+</h2>
+<p>
+<a href="https://wiki.onap.org">https://wiki.onap.org</a>
+</p>
+<h2>
+<a id="Download_42"></a>To download
+</h2>
+<p style="color:red">Please download Open CLI Platform <a href="./open-cli.zip">here</a></p>
 
+<a id="Console_42"></a>Web Command console
+</h2>
+<p style="color:blue">Click me <a onclick="redirectToConsole();">here</a></p>
+
+<<<<<<< 476f5637ae4e816f7abf3536c5eeb156e0af6bed
 <h2><a id="Download_42"></a>To download</h2>
 <p style="color:red">Please download ONAP CLI <a href="./open-cli.zip">here</a></p>
 
+=======
+>>>>>>> Normalize all env with OPEN_CLI
 </body></html>

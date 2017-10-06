@@ -13,8 +13,8 @@ Provides unified commands to operate ONAP from Linux console.
 Configure the following environment variables, before using it:
 
 1. **OPEN_HOST_URL** - Onap Micro service bus(MSB) URL or a service URL
-2. **OPEN_USERNAME** - Onap user name
-3. **OPEN_PASSWORD** - Onap user password
+2. **OPEN_CLI_USERNAME** - Onap user name
+3. **OPEN_CLI_PASSWORD** - Onap user password
 
 To Run a command
 -----------------

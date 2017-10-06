@@ -1,4 +1,4 @@
-usage: onap sample-test
+usage: oclip sample-test
 
 Onap sample command to test the command features
 

@@ -18,7 +18,7 @@
 
 if [ -z "$OPEN_CLI_HOME" ]
 then
-    echo "There is no OPEN_CLI_HOME"
+    echo "OPEN_CLI_HOME is not set."
     exit 1
 fi
 
