@@ -19,16 +19,16 @@ package org.onap.cli.fw.ad;
 import org.onap.cli.fw.conf.Constants;
 
 /**
- * Onap Service as reported in api catalog.
+ * Oclip Service as reported in api catalog.
  */
 public class OnapService {
     /*
-     * Onap Service name like aai.
+     * Oclip Service name like aai.
      */
     private String serviceName;
 
     /*
-     * Onap Service API version like v1, v2, etc
+     * Oclip Service API version like v1, v2, etc
      */
     private String serviceVersion;
 

@@ -75,7 +75,7 @@ public class OnapCommandRegistrarTest {
     }
 
     @Test
-    public void onapCommandNotFoundTest() throws OnapCommandException {
+    public void oclipCommandNotFoundTest() throws OnapCommandException {
         try {
             registerar = OnapCommandRegistrar.getRegistrar();
             registerar.get("Test1");
@@ -88,7 +88,7 @@ public class OnapCommandRegistrarTest {
     }
 
     @Test
-    public void onapCommandRegistrationFailedTest() throws OnapCommandException {
+    public void oclipCommandRegistrationFailedTest() throws OnapCommandException {
 
         @OnapCommandSchema(schema = "sample-test-schema.yaml")
         class Test extends OnapCommand {

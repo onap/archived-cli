@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
 name: sample-test-info
-description: Onap sample command to test the command features
+description: Oclip sample command to test the command features
 
 info:
   product: open-cli

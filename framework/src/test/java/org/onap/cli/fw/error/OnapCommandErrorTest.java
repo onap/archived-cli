@@ -23,7 +23,7 @@ import org.junit.Test;
 public class OnapCommandErrorTest {
 
     @Test
-    public void onapCommandDiscoveryFailedTest() {
+    public void oclipCommandDiscoveryFailedTest() {
         OnapCommandDiscoveryFailed failed = new OnapCommandDiscoveryFailed("name");
         assertEquals("0x1001::Failed auto discover schema files from name under class path, ", failed.getMessage());
         failed = new OnapCommandDiscoveryFailed("directory", "name");
@@ -32,45 +32,45 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void onapCommandInvalidParameterValueTest() {
+    public void oclipCommandInvalidParameterValueTest() {
         OnapCommandInvalidParameterValue failed = new OnapCommandInvalidParameterValue("name");
         assertEquals("0x7002::Parameter name value is invalid, ", failed.getMessage());
     }
 
     @Test
-    public void onapCommandResultMapProcessingFailedTest() {
+    public void oclipCommandResultMapProcessingFailedTest() {
         OnapCommandResultMapProcessingFailed failed = new OnapCommandResultMapProcessingFailed("name",
                 new Exception("failed"));
         assertEquals("0x3002::Failed to parse the result format of command name, failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandHttpHeaderNotFoundTest() {
+    public void oclipCommandHttpHeaderNotFoundTest() {
         OnapCommandHttpHeaderNotFound failed = new OnapCommandHttpHeaderNotFound("name");
         assertEquals("0x3003::Http header name is not returned from the service", failed.getMessage());
     }
 
     @Test
-    public void onapCommandClientInitialzationFailedTest() {
+    public void oclipCommandClientInitialzationFailedTest() {
         OnapCommandClientInitialzationFailed failed = new OnapCommandClientInitialzationFailed("Test",
                 new Exception("Test Command Failed"));
         assertEquals("0x5001::API client for the command Test is failed, Test Command Failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandExceptionTest1() {
+    public void oclipCommandExceptionTest1() {
         OnapCommandException failed = new OnapCommandException("1", "Test Command Failed");
         assertEquals("1::Test Command Failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandExceptionTest2() {
+    public void oclipCommandExceptionTest2() {
         OnapCommandException failed = new OnapCommandException("1", "Test Command Failed", 201);
         assertEquals("201::1::Test Command Failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandExecutionFailedTest1() {
+    public void oclipCommandExecutionFailedTest1() {
         OnapCommandExecutionFailed failed = new OnapCommandExecutionFailed("Test", "Test Command Failed", 201);
         assertEquals("201::0x6001::Command Test failed to execute, Test Command Failed", failed.getMessage());
         failed = new OnapCommandExecutionFailed("Test", new Exception("Test Command Failed"), 201);
@@ -78,13 +78,13 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void onapCommandExecutionFailedTest2() {
+    public void oclipCommandExecutionFailedTest2() {
         OnapCommandExecutionFailed failed = new OnapCommandExecutionFailed("Test Command Failed");
         assertEquals("0x6001::Test Command Failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandExecutionFailedTest3() {
+    public void oclipCommandExecutionFailedTest3() {
         OnapCommandExecutionFailed failed = new OnapCommandExecutionFailed("Test", "Test Command Failed");
         assertEquals("0x6001::Command Test failed to execute, Test Command Failed", failed.getMessage());
 
@@ -93,21 +93,21 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void onapCommandExecutorInfoMissingTest() {
+    public void oclipCommandExecutorInfoMissingTest() {
         OnapCommandExecutorInfoMissing failed = new OnapCommandExecutorInfoMissing("Test");
 
         assertEquals("0x6002::Command Test excutor info is missing from schema", failed.getMessage());
     }
 
     @Test
-    public void onapCommandHelpFailedTest() {
+    public void oclipCommandHelpFailedTest() {
         OnapCommandHelpFailed failed = new OnapCommandHelpFailed(new Exception("Failed"));
 
         assertEquals("0x9001::Command failed to print help message, Failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandHttpFailureTest1() {
+    public void oclipCommandHttpFailureTest1() {
         OnapCommandHttpFailure failed = new OnapCommandHttpFailure("Failed");
         assertEquals("0x3001::Failed", failed.getMessage());
 
@@ -116,28 +116,28 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void onapCommandHttpFailureTest2() {
+    public void oclipCommandHttpFailureTest2() {
         OnapCommandHttpFailure failed = new OnapCommandHttpFailure("Failed", 203);
 
         assertEquals("203::0x3001::Failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandInvalidParameterTypeTest() {
+    public void oclipCommandInvalidParameterTypeTest() {
         OnapCommandInvalidParameterType failed = new OnapCommandInvalidParameterType("Failed");
 
         assertEquals("0x7001::Parameter type Failed is invalid", failed.getMessage());
     }
 
     @Test
-    public void onapCommandInvalidPrintDirectionTest() {
+    public void oclipCommandInvalidPrintDirectionTest() {
         OnapCommandInvalidPrintDirection failed = new OnapCommandInvalidPrintDirection("Direction");
 
         assertEquals("0x8003::Print direction Direction is invalid", failed.getMessage());
     }
 
     @Test
-    public void onapCommandInvalidRegistrationTest() {
+    public void oclipCommandInvalidRegistrationTest() {
         OnapCommandInvalidRegistration failed = new OnapCommandInvalidRegistration(OnapCommandErrorTest.class);
 
         assertEquals("0x2001::Invalid commad class org.onap.cli.fw.error.OnapCommandErrorTest registration, "
@@ -145,42 +145,42 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void onapCommandInvalidResultAttributeScopeTest() {
+    public void oclipCommandInvalidResultAttributeScopeTest() {
         OnapCommandInvalidResultAttributeScope failed = new OnapCommandInvalidResultAttributeScope("Attribute");
 
         assertEquals("0x8002::Result atrribute Attribute is invalid", failed.getMessage());
     }
 
     @Test
-    public void onapCommandInvalidSchemaTest() {
+    public void oclipCommandInvalidSchemaTest() {
         OnapCommandInvalidSchema failed = new OnapCommandInvalidSchema("Schema", "Failed");
 
         assertEquals("0xb001::Invalid command schema Schema, Failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandInvalidSchemaVersionTest() {
+    public void oclipCommandInvalidSchemaVersionTest() {
         OnapCommandInvalidSchemaVersion failed = new OnapCommandInvalidSchemaVersion("1.0");
 
         assertEquals("0xb003::Command schema open_cli_schema_version 1.0 is invalid or missing", failed.getMessage());
     }
 
     @Test
-    public void onapCommandLoginFailedTest1() {
+    public void oclipCommandLoginFailedTest1() {
         OnapCommandLoginFailed failed = new OnapCommandLoginFailed(new Exception("Failed"));
 
         assertEquals("0x4001::Login failed, Failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandLoginFailedTest2() {
+    public void oclipCommandLoginFailedTest2() {
         OnapCommandLoginFailed failed = new OnapCommandLoginFailed("Failed", 201);
 
         assertEquals("201::0x4001::Login failed, Failed", failed.getMessage());
     }
 
     @Test
-    public void onapCommandLogoutFailedTest() {
+    public void oclipCommandLogoutFailedTest() {
         OnapCommandLogoutFailed failed = new OnapCommandLogoutFailed(new Exception("Failed"));
         assertEquals("0x4002::Logout failed, Failed", failed.getMessage());
 
@@ -189,42 +189,42 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void onapCommandNotFoundTest() {
+    public void oclipCommandNotFoundTest() {
         OnapCommandNotFound failed = new OnapCommandNotFound("Test", "1.0");
 
         assertEquals("0x6003::Command Test is not available for product version 1.0", failed.getMessage());
     }
 
     @Test
-    public void onapCommandNotInitializedTest() {
+    public void oclipCommandNotInitializedTest() {
         OnapCommandNotInitialized failed = new OnapCommandNotInitialized("Test");
 
         assertEquals("0x6004::Command Test is not initialized", failed.getMessage());
     }
 
     @Test
-    public void onapCommandOutputPrintingFailedTest() {
+    public void oclipCommandOutputPrintingFailedTest() {
         OnapCommandOutputPrintingFailed failed = new OnapCommandOutputPrintingFailed(new Exception("error"));
 
         assertEquals("0x8006::Command is failed to print the result, error", failed.getMessage());
     }
 
     @Test
-    public void onapCommandParameterMissingTest() {
+    public void oclipCommandParameterMissingTest() {
         OnapCommandParameterMissing failed = new OnapCommandParameterMissing("paramName");
 
         assertEquals("0x7003::Parameter paramName is mandatory", failed.getMessage());
     }
 
     @Test
-    public void onapCommandParameterNameConflictTest() {
+    public void oclipCommandParameterNameConflictTest() {
         OnapCommandParameterNameConflict failed = new OnapCommandParameterNameConflict("paramName");
 
         assertEquals("0x7004::Parameter name paramName is in conflict", failed.getMessage());
     }
 
     @Test
-    public void onapCommandParameterOptionConflictTest() {
+    public void oclipCommandParameterOptionConflictTest() {
         OnapCommandParameterOptionConflict failed = new OnapCommandParameterOptionConflict("option");
 
         assertEquals("0x7006::Parameter option option is in conflict, only one option is allowed with given name",
@@ -232,14 +232,14 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void onapCommandRegistrationFailedTest() {
+    public void oclipCommandRegistrationFailedTest() {
         OnapCommandRegistrationFailed failed = new OnapCommandRegistrationFailed("Test", "error");
 
         assertEquals("0x2002::Failed to register the command Test, error", failed.getMessage());
     }
 
     @Test
-    public void onapCommandResultInitialzationFailedTest() {
+    public void oclipCommandResultInitialzationFailedTest() {
         OnapCommandResultInitialzationFailed failed = new OnapCommandResultInitialzationFailed("Test",
                 new Exception("error"));
 
@@ -247,32 +247,21 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void onapCommandSchemaNotFoundTest() {
+    public void oclipCommandSchemaNotFoundTest() {
         OnapCommandSchemaNotFound failed = new OnapCommandSchemaNotFound("Test");
 
         assertEquals("0xb002::Command schema is missing for command Test", failed.getMessage());
     }
 
     @Test
-    public void onapCommandSampleInvalidTest() {
-        OnapCommandInvalidSample failed = new OnapCommandInvalidSample("Test", "error");
-
-        assertEquals("0xf001::Invalid command sample Test, error", failed.getMessage());
-
-        failed = new OnapCommandInvalidSample("Test", new Exception("error"));
-
-        assertEquals("0xf001::Invalid command sample Test, error", failed.getMessage());
-    }
-
-    @Test
-    public void onapCommandServiceNotFoundTest() {
+    public void oclipCommandServiceNotFoundTest() {
         OnapCommandServiceNotFound failed = new OnapCommandServiceNotFound("Service");
 
         assertEquals("0xd001::Service Service is not found in MSB", failed.getMessage());
     }
 
     @Test
-    public void onapCommandOutputFormatNotsupportedTest() {
+    public void oclipCommandOutputFormatNotsupportedTest() {
         OnapCommandOutputFormatNotsupported failed = new OnapCommandOutputFormatNotsupported("Format");
 
         assertEquals("0x8005::Command  does not support the output format Format", failed.getMessage());
@@ -280,7 +269,7 @@ public class OnapCommandErrorTest {
 
 
     @Test
-    public void onapProfilePersistTest() {
+    public void oclipProfilePersistTest() {
         OnapCommandPersistProfileFailed failed = new OnapCommandPersistProfileFailed("error");
 
         assertEquals("0xc002::Failed to persist profile details, error", failed.getMessage());
@@ -292,7 +281,7 @@ public class OnapCommandErrorTest {
 
 
     @Test
-    public void onapProfileLoadTest() {
+    public void oclipProfileLoadTest() {
         OnapCommandLoadProfileFailed failed = new OnapCommandLoadProfileFailed("error");
 
         assertEquals("0xc001::Failed to load profile details, error", failed.getMessage());
@@ -303,7 +292,7 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void onapCommandTypeInvalidTest() {
+    public void oclipCommandTypeInvalidTest() {
         OnapCommandInvalidCommandType failed = new OnapCommandInvalidCommandType("test");
 
         assertEquals("0x3003::Command type test is invalid", failed.getMessage());

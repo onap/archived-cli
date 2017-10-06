@@ -19,7 +19,7 @@ package org.onap.cli.fw.output;
 import org.onap.cli.fw.error.OnapCommandInvalidResultAttributeScope;
 
 /**
- * Onap command supports to print output with given set of defined attributes, and each attributes are marked with this
+ * Oclip command supports to print output with given set of defined attributes, and each attributes are marked with this
  * visibility.
  *
  */

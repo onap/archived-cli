@@ -19,7 +19,7 @@ package org.onap.cli.fw.input;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterType;
 
 /**
- * Parameter type supported by Onap CLI.
+ * Parameter type supported by Oclip CLI.
  *
  */
 public enum ParameterType {

@@ -69,12 +69,12 @@ import mockit.MockUp;
 public class OnapCommandUtilsTest {
 
     @Test(expected = OnapCommandInvalidSchema.class)
-    public void onapCommandUtilsInputStreamNullTest() throws OnapCommandException {
+    public void oclipCommandUtilsInputStreamNullTest() throws OnapCommandException {
         OnapCommandUtils.validateSchemaVersion("sample-test1-schema-http1.yaml", "1.0");
     }
 
     @Test
-    public void onapCommandUtilsInputStreamNotNullTest() throws OnapCommandException {
+    public void oclipCommandUtilsInputStreamNotNullTest() throws OnapCommandException {
         Map<String, ?> map = OnapCommandUtils.validateSchemaVersion("sample-test1-schema-http.yaml", "1.0");
         assertTrue(map != null);
     }

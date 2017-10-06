@@ -47,7 +47,7 @@ import jline.TerminalFactory;
 import jline.console.ConsoleReader;
 
 /**
- * Onap Command Line Interface (CLI).
+ * Oclip Command Line Interface (CLI).
  *
  */
 public class OnapCli {
@@ -309,7 +309,7 @@ public class OnapCli {
             console.addCompleter(strCompleter);
             console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT + ":" + OnapCommandRegistrar.getRegistrar().getEnabledProductVersion() + ">");
         } catch (OnapCommandException e) { // NOSONAR
-            this.print("Failed to load onap commands," + e.getMessage());
+            this.print("Failed to load oclip commands," + e.getMessage());
         }
 
         return console;
