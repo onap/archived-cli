@@ -27,7 +27,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
- * Onap command constants.
+ * Oclip command constants.
  *
  */
 public final class OnapCommandConfg {

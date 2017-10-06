@@ -9,7 +9,7 @@ info:
 parameters:
   - name: user
     type: string
-    description: Onap user
+    description: Oclip user
     short_option: n
     long_option: username
     is_optional: false
@@ -17,7 +17,7 @@ results:
   direction: portrait
   attributes:
     - name: name
-      description: Onap user
+      description: Oclip user
       scope: short
       type: string
 exec:

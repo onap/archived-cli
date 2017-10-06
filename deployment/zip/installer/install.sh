@@ -49,7 +49,7 @@ if [ ! -d ./data ]; then mkdir ./data; fi
 if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
 chmod +x ./bin/oclip.sh
 
-#Make onap available in path
+#Make oclip available in path
 ln ./bin/oclip.sh $CLI_BIN
 
 #Print the version

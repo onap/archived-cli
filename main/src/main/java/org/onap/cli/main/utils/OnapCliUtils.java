@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Onap CLI utilities.
+ * Oclip CLI utilities.
  *
  */
 public class OnapCliUtils {
@@ -91,7 +91,7 @@ public class OnapCliUtils {
         }
 
         int positionalIdx = 0;
-        // Skip the first args onap cmd name, so start from 1
+        // Skip the first args oclip cmd name, so start from 1
         for (int i = 1; i < args.size(); i++) {
             // check if short option exist
             // (mrkanag) Optimize the below code to handle short and long options in one iteration

@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Onap command output records, helps to define the title and its description while command is defined and during run
+ * Oclip command output records, helps to define the title and its description while command is defined and during run
  * time, it captures the value of the output as well.
  */
 public class OnapCommandResultAttribute {

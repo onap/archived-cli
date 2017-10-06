@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
- * Onap Command Table print.
+ * Oclip Command Table print.
  *
  */
 public class OnapCommandPrint {

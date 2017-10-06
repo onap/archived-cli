@@ -117,8 +117,8 @@ public class ValidateSchemaTest {
         };
         List<String> errorList4 = OnapCommandUtils.loadSchema(cmd2, "schema-validate-invalid.yaml", true, true);
 
-        OnapHttpCommand onapHttpCommand = new OnapHttpCommand();
-        errorList4.addAll(OnapCommandUtils.loadHttpSchema(onapHttpCommand,
+        OnapHttpCommand oclipHttpCommand = new OnapHttpCommand();
+        errorList4.addAll(OnapCommandUtils.loadHttpSchema(oclipHttpCommand,
                 "schema-validate-invalid.yaml", true, true));
         assertTrue(errorList4.size() > 0);
 

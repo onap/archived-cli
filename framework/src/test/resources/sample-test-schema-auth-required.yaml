@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
 name: sample-test
-description: Onap sample command to test the command features
+description: Oclip sample command to test the command features
 info:
   product: open-cli
   service: test
@@ -9,7 +9,7 @@ info:
 parameters:
   - name: bool-param
     type: bool
-    description: Onap boolean param, by default its always false.
+    description: Oclip boolean param, by default its always false.
     short_option: b
     long_option: bool
     is_optional: true
