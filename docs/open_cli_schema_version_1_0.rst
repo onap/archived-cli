@@ -485,7 +485,7 @@ name: host-username
 
     long_option: host-username
 
-    default_value: ${HOST_USERNAME}
+    default_value: ${OPEN_CLI_HOST_USERNAME}
 
     is_optional: false
 
@@ -500,7 +500,7 @@ name: host-password
 
     long_option: host-password
 
-    default_value: ${HOST_PASSWORD}
+    default_value: ${OPEN_CLI_HOST_PASSWORD}
 
     is_secured: true
 
@@ -518,7 +518,7 @@ name: host-url
 
     is_optional: false
 
-    default_value: ${HOST_URL}
+    default_value: ${OPEN_CLI_HOST_URL}
 
 name: help
 ~~~~~~~~~~

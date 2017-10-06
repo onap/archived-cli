@@ -375,10 +375,10 @@ Results::
  -x | --vsp-id          Onap VSP ID. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -430,10 +430,10 @@ where::
  -y | --vlm-version     VLM version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -493,10 +493,10 @@ where::
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -577,10 +577,10 @@ where::
                           0f4899c3-771c-462e-9dc8-ffa2de5532f6.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -647,10 +647,10 @@ where::
                           adbbea15-de1a-442a-a0e3-793779ea25bb.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -702,10 +702,10 @@ where::
  -y | --vlm-version     License Model version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -836,10 +836,10 @@ Results::
                           93230cdb-aae3-4b87-a38a-fc4529e8aac9.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -892,10 +892,10 @@ where::
                         STRING. It is optional.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -948,7 +948,12 @@ Options::
 
 where::
 
+<<<<<<< ece4fcf67742a307d5d68fbde1723f3e0485b7fb
  -x | --name                          Entitlement Pool name. It is of type STRING.
+=======
+<<<<<<< 476f5637ae4e816f7abf3536c5eeb156e0af6bed
+ -x | --name                          Feature group name. It is of type STRING.
+>>>>>>> Normalize all env with OPEN_CLI
  -y | --vlm-id                        License Model ID. It is of type STRING.
  -e | --vlm-version                   License Model version. It is of type STRING.
  -z | --description                   Description for Entitlement Pool. It is of type
@@ -980,6 +985,32 @@ where::
                                       BOOL. By default, it is false.
  -a | --no-auth                       whether to authenticate user or not. It is of
                                       type BOOL. By default, it is false.
+=======
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_PASSWORD. Secured.
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+>>>>>>> Normalize all env with OPEN_CLI
 
 
 Results::
@@ -1016,10 +1047,10 @@ where::
  -y | --vsp-version     VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -1168,10 +1199,10 @@ Results::
                           It is optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -1247,10 +1278,10 @@ where::
                           It is optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -1302,10 +1333,10 @@ where::
  -y | --vsp-version     Onap VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -1441,10 +1472,10 @@ where::
                           3def24ae-701e-4c98-91a6-859c0f206759.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -1527,10 +1558,10 @@ Results::
                           7b301a17-5eb2-413b-b214-fd1659fdf049.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -1584,10 +1615,10 @@ where::
  -z | --vsp-file        CSAR File path. It is of type BINARY.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -1644,10 +1675,10 @@ where::
  -e | --service-type      Onap service type. It is of type STRING.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -1696,10 +1727,10 @@ where::
 >>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -1749,10 +1780,10 @@ where::
  -y | --vsp-version     VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -1802,10 +1833,10 @@ where::
  -y | --vsp-version     VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -1899,10 +1930,10 @@ where::
 =======
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -1958,10 +1989,10 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -2029,10 +2060,10 @@ where::
                           It is optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -2101,10 +2132,10 @@ where::
 >>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -2182,10 +2213,10 @@ where::
  -y | --vsp-version     VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -2235,10 +2266,10 @@ where::
  -y | --vsp-version     Onap VSP version. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -2344,10 +2375,10 @@ where::
                           It is optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
 >>>>>>> Migrate docs to use OPEN_ instead of ONAP_
@@ -2400,10 +2431,10 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -2464,10 +2495,10 @@ where::
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -2552,10 +2583,10 @@ where::
  -x | --customer-name   Onap customer name. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -2651,10 +2682,10 @@ where::
  -r | --tenant-name     Onap cloud tenant name. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -2724,10 +2755,10 @@ where::
                             STRING.
  -u | --onap-username       Onap user name. It is of type STRING. By default,
                             it is read from environment variable
-                            OPEN_USERNAME.
+                            OPEN_CLI_USERNAME.
  -p | --onap-password       Onap user password. It is of type STRING. By
                             default, it is read from environment variable
-                            OPEN_PASSWORD. Secured.
+                            OPEN_CLI_PASSWORD. Secured.
  -m | --host-url            Onap host url. It is of type URL. By default, it
                             is read from environment variable OPEN_HOST_URL.
  -h | --help                Onap command help message. It is of type STRING.
@@ -2790,10 +2821,10 @@ where::
 >>>>>>> Migrate docs to use OPEN_ instead of ONAP_
  -u | --onap-username           Onap user name. It is of type STRING. By default,
                                 it is read from environment variable
-                                OPEN_USERNAME.
+                                OPEN_CLI_USERNAME.
  -p | --onap-password           Onap user password. It is of type STRING. By
                                 default, it is read from environment variable
-                                OPEN_PASSWORD. Secured.
+                                OPEN_CLI_PASSWORD. Secured.
  -m | --host-url                Onap host url. It is of type URL. By default, it
                                 is read from environment variable OPEN_HOST_URL.
  -h | --help                    Onap command help message. It is of type STRING.
@@ -2845,6 +2876,7 @@ Options::
 
 where::
 
+<<<<<<< 476f5637ae4e816f7abf3536c5eeb156e0af6bed
 <<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
  -b | --service-model-id  Service model ID. It is of type STRING. It is
                           optional.
@@ -2873,6 +2905,8 @@ where::
  -a | --no-auth           whether to authenticate user or not. It is of
                           type BOOL. By default, it is false.
 =======
+=======
+>>>>>>> Normalize all env with OPEN_CLI
  -x | --vnf-instace-id      id for vnf. It is of type STRING.
  -y | --service-instace-id  unique id for service instance. It is of type
                             STRING.
@@ -2881,10 +2915,17 @@ where::
  -z | --tenant-id           openstack tenant id (uuid). It is of type STRING.
  -u | --onap-username       Onap user name. It is of type STRING. By default,
                             it is read from environment variable
+<<<<<<< 476f5637ae4e816f7abf3536c5eeb156e0af6bed
                             OPEN_USERNAME.
  -p | --onap-password       Onap user password. It is of type STRING. By
                             default, it is read from environment variable
                             OPEN_PASSWORD. Secured.
+=======
+                            OPEN_CLI_USERNAME.
+ -p | --onap-password       Onap user password. It is of type STRING. By
+                            default, it is read from environment variable
+                            OPEN_CLI_PASSWORD. Secured.
+>>>>>>> Normalize all env with OPEN_CLI
  -m | --host-url            Onap host url. It is of type URL. By default, it
                             is read from environment variable OPEN_HOST_URL.
  -h | --help                Onap command help message. It is of type STRING.
@@ -3084,10 +3125,10 @@ Results::
                               false.
  -u | --onap-username         Onap user name. It is of type STRING. By default,
                               it is read from environment variable
-                              OPEN_USERNAME.
+                              OPEN_CLI_USERNAME.
  -p | --onap-password         Onap user password. It is of type STRING. By
                               default, it is read from environment variable
-                              OPEN_PASSWORD. Secured.
+                              OPEN_CLI_PASSWORD. Secured.
  -m | --host-url              Onap host url. It is of type URL. By default, it
                               is read from environment variable OPEN_HOST_URL.
  -h | --help                  Onap command help message. It is of type STRING.
@@ -3303,10 +3344,10 @@ where::
  -z | --tenant-id           openstack tenant id (uuid). It is of type STRING.
  -u | --onap-username       Onap user name. It is of type STRING. By default,
                             it is read from environment variable
-                            OPEN_USERNAME.
+                            OPEN_CLI_USERNAME.
  -p | --onap-password       Onap user password. It is of type STRING. By
                             default, it is read from environment variable
-                            OPEN_PASSWORD. Secured.
+                            OPEN_CLI_PASSWORD. Secured.
  -m | --host-url            Onap host url. It is of type URL. By default, it
                             is read from environment variable OPEN_HOST_URL.
  -h | --help                Onap command help message. It is of type STRING.
@@ -3398,10 +3439,10 @@ where::
  -i | --instance-name           service instance name. It is of type STRING.
  -u | --onap-username           Onap user name. It is of type STRING. By default,
                                 it is read from environment variable
-                                OPEN_USERNAME.
+                                OPEN_CLI_USERNAME.
  -p | --onap-password           Onap user password. It is of type STRING. By
                                 default, it is read from environment variable
-                                OPEN_PASSWORD. Secured.
+                                OPEN_CLI_PASSWORD. Secured.
  -m | --host-url                Onap host url. It is of type URL. By default, it
                                 is read from environment variable OPEN_HOST_URL.
  -h | --help                    Onap command help message. It is of type STRING.
@@ -3485,10 +3526,10 @@ where::
                                     STRING. It is optional.
  -u | --onap-username               Onap user name. It is of type STRING. By default,
                                     it is read from environment variable
-                                    OPEN_USERNAME.
+                                    OPEN_CLI_USERNAME.
  -p | --onap-password               Onap user password. It is of type STRING. By
                                     default, it is read from environment variable
-                                    OPEN_PASSWORD. Secured.
+                                    OPEN_CLI_PASSWORD. Secured.
  -m | --host-url                    Onap host url. It is of type URL. By default, it
                                     is read from environment variable OPEN_HOST_URL.
  -h | --help                        Onap command help message. It is of type STRING.
@@ -3656,10 +3697,10 @@ where::
  -null | --feature-group-id       Feature Group ID. It is of type STRING.
  -u | --onap-username             Onap user name. It is of type STRING. By default,
                                   it is read from environment variable
-                                  OPEN_USERNAME.
+                                  OPEN_CLI_USERNAME.
  -p | --onap-password             Onap user password. It is of type STRING. By
                                   default, it is read from environment variable
-                                  OPEN_PASSWORD. Secured.
+                                  OPEN_CLI_PASSWORD. Secured.
  -m | --host-url                  Onap host url. It is of type URL. By default, it
                                   is read from environment variable OPEN_HOST_URL.
  -h | --help                      Onap command help message. It is of type STRING.
@@ -3765,10 +3806,10 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -7348,6 +7389,7 @@ Options::
 
 where::
 
+<<<<<<< ece4fcf67742a307d5d68fbde1723f3e0485b7fb
  -x | --ep-name               Entitlement Pool name. It is of type STRING.
  -y | --license-model-id      License Model ID. It is of type STRING.
  -z | --ep-description        Description for Entitlement Pool. It is of type
@@ -7382,24 +7424,102 @@ where::
                               BOOL. By default, it is false.
  -a | --no-auth               whether to authenticate user or not. It is of
                               type BOOL. By default, it is false.
+=======
+ -x | --group-name                  group name. It is of type STRING.
+ -y | --license-model-id            License Model ID. It is of type STRING.
+ -z | --license-group-description   Description for License Group. It is of type
+                                    STRING. It is optional.
+ -u | --onap-username               Onap user name. It is of type STRING. By default,
+                                    it is read from environment variable
+                                    ONAP_USERNAME.
+ -p | --onap-password               Onap user password. It is of type STRING. By
+                                    default, it is read from environment variable
+                                    ONAP_PASSWORD. Secured.
+ -m | --host-url                    Onap host url. It is of type URL. By default, it
+                                    is read from environment variable ONAP_HOST_URL.
+ -h | --help                        Onap command help message. It is of type STRING.
+                                    By default, it is false.
+ -v | --version                     Onap command service version. It is of type
+                                    STRING. By default, it is false.
+ -d | --debug                       Enable debug output. It is of type BOOL. By
+                                    default, it is false.
+ -f | --format                      Output formats, supported formats such as table,
+                                    csv, json, yaml. It is of type STRING. By
+                                    default, it is table.
+ -s | --long                        whether to print all attributes or only short
+                                    attributes. It is of type BOOL. By default, it is
+                                    false.
+ -t | --no-title                    whether to print title or not. It is of type
+                                    BOOL. By default, it is false.
+ -a | --no-auth                     whether to authenticate user or not. It is of
+                                    type BOOL. By default, it is false.
 
 
 Results::
 
-<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
- ID   Entitlement Pool ID and is of type STRING.
-=======
-<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
- ID   License Model ID and is of type STRING.
+ ID   License Group ID and is of type STRING.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[10] license-group-show
+-----------------------------------------------
+
+
+usage: onap license-group-show
+
+Details of the License Group
+
+Onap service: sdc v1.0
+
+Options::
+
+ [-x | --license-model-id] [-y | --license-group-id] [-u | --onap-username]
+ [-p | --onap-password] [-m | --host-url] [-h | --help]
+ [-v | --version] [-d | --debug] [-f | --format]
+ [-s | --long] [-t | --no-title] [-a | --no-auth]
+
+where::
+
+<<<<<<< 476f5637ae4e816f7abf3536c5eeb156e0af6bed
+ -x | --license-model-id  Onap License Model ID. It is of type STRING.
+ -y | --license-group-id  Onap License Group ID. It is of type STRING.
+ -u | --onap-username     Onap user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          ONAP_USERNAME.
+ -p | --onap-password     Onap user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          ONAP_PASSWORD. Secured.
+ -m | --host-url          Onap host url. It is of type URL. By default, it
+                          is read from environment variable ONAP_HOST_URL.
+ -h | --help              Onap command help message. It is of type STRING.
+                          By default, it is false.
+ -v | --version           Onap command service version. It is of type
+                          STRING. By default, it is false.
+ -d | --debug             Enable debug output. It is of type BOOL. By
+                          default, it is false.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING. By
+                          default, it is table.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL. By default, it is
+                          false.
+ -t | --no-title          whether to print title or not. It is of type
+                          BOOL. By default, it is false.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL. By default, it is false.
 =======
  -x | --vsp-id          Onap VSP ID. It is of type STRING.
- -y | --vsp-file        CSAR File path. It is of type BINARY.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -7418,8 +7538,96 @@ Results::
                         BOOL. By default, it is false.
  -a | --no-auth         whether to authenticate user or not. It is of
                         type BOOL. By default, it is false.
+>>>>>>> Normalize all env with OPEN_CLI
+>>>>>>> Normalize all env with OPEN_CLI
+
+
+Results::
+
+<<<<<<< ece4fcf67742a307d5d68fbde1723f3e0485b7fb
+<<<<<<< ab8942a839cc04dc8df1bf9cb19f375757f848b7
+ ID   Entitlement Pool ID and is of type STRING.
+=======
+<<<<<<< 08468db7c00dd0594d6846c4c761f0582be9fc06
+ ID   License Model ID and is of type STRING.
+=======
+ -x | --vsp-id          Onap VSP ID. It is of type STRING.
+ -y | --vsp-file        CSAR File path. It is of type BINARY.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_PASSWORD. Secured.
+=======
+<<<<<<< 476f5637ae4e816f7abf3536c5eeb156e0af6bed
+ name         License Group Name and is of type STRING.
+ ID           License Group ID and is of type STRING.
+ description  Description for the License Group and is of type
+              STRING.
+=======
+ name         VSP Name and is of type STRING.
+ ID           VSP ID and is of type STRING.
+ description  Description for the VSP and is of type STRING.
+
+
+Error::
+
+ On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+vsp-submit
+-----------------------------------------------
+
+
+usage: onap vsp-submit
+
+Submit Vendor Software Product
+
+Onap service: sdc v1.0
+
+Options::
+
+ [-x | --vsp-id] [-u | --onap-username] [-p | --onap-password]
+ [-m | --host-url] [-h | --help] [-v | --version]
+ [-d | --debug] [-f | --format] [-s | --long]
+ [-t | --no-title] [-a | --no-auth]
+
+where::
+
+ -x | --vsp-id          Onap VSP ID. It is of type STRING.
+ -u | --onap-username   Onap user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_PASSWORD. Secured.
+>>>>>>> Normalize all env with OPEN_CLI
+ -m | --host-url        Onap host url. It is of type URL. By default, it
+                        is read from environment variable OPEN_HOST_URL.
+ -h | --help            Onap command help message. It is of type STRING.
+                        By default, it is false.
+ -v | --version         Onap command service version. It is of type
+                        STRING. By default, it is false.
+ -d | --debug           Enable debug output. It is of type BOOL. By
+                        default, it is false.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING. By
+                        default, it is table.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL. By default, it is
+                        false.
+ -t | --no-title        whether to print title or not. It is of type
+                        BOOL. By default, it is false.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL. By default, it is false.
+<<<<<<< ece4fcf67742a307d5d68fbde1723f3e0485b7fb
 >>>>>>> Migrate docs to use OPEN_ instead of ONAP_
 >>>>>>> Migrate docs to use OPEN_ instead of ONAP_
+=======
+>>>>>>> Normalize all env with OPEN_CLI
+>>>>>>> Normalize all env with OPEN_CLI
 
 
 Error::
@@ -7450,10 +7658,17 @@ where::
  -x | --customer-name   Onap customer name. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
+<<<<<<< ece4fcf67742a307d5d68fbde1723f3e0485b7fb
                         ONAP_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
                         ONAP_PASSWORD. Secured.
+=======
+                        OPEN_CLI_USERNAME.
+ -p | --onap-password   Onap user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_PASSWORD. Secured.
+>>>>>>> Normalize all env with OPEN_CLI
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable ONAP_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -7519,10 +7734,10 @@ where::
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -7631,10 +7846,10 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -7693,10 +7908,10 @@ where::
                           6dc30068-de3c-483a-a9a8-7d483a39425d.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -7746,10 +7961,10 @@ where::
  -y | --subscriber-name   Onap subscriber name. It is of type STRING.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -7800,10 +8015,10 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -7859,10 +8074,10 @@ where::
  -x | --customer-name   Onap customer name. It is of type STRING.
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -7917,10 +8132,10 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -7981,10 +8196,10 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -8048,10 +8263,10 @@ where::
                           eb4a0d54-0e29-4174-8a3c-2c98e904a5f6.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -8105,10 +8320,10 @@ where::
                           b06576ca-74b8-42f2-815b-6f7b80f9941c.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
@@ -8156,10 +8371,10 @@ where::
 
  -u | --onap-username   Onap user name. It is of type STRING. By default,
                         it is read from environment variable
-                        OPEN_USERNAME.
+                        OPEN_CLI_USERNAME.
  -p | --onap-password   Onap user password. It is of type STRING. By
                         default, it is read from environment variable
-                        OPEN_PASSWORD. Secured.
+                        OPEN_CLI_PASSWORD. Secured.
  -m | --host-url        Onap host url. It is of type URL. By default, it
                         is read from environment variable OPEN_HOST_URL.
  -h | --help            Onap command help message. It is of type STRING.
@@ -8231,10 +8446,10 @@ where::
                           optional.
  -u | --onap-username     Onap user name. It is of type STRING. By default,
                           it is read from environment variable
-                          OPEN_USERNAME.
+                          OPEN_CLI_USERNAME.
  -p | --onap-password     Onap user password. It is of type STRING. By
                           default, it is read from environment variable
-                          OPEN_PASSWORD. Secured.
+                          OPEN_CLI_PASSWORD. Secured.
  -m | --host-url          Onap host url. It is of type URL. By default, it
                           is read from environment variable OPEN_HOST_URL.
  -h | --help              Onap command help message. It is of type STRING.
