@@ -380,47 +380,6 @@ public class OnapCommandUtilsTest {
         input1 = OnapCommandUtils.populateOutputs(params, output);
     }
 
-    @Test(expected = OnapCommandException.class)
-    public void zendExceptionTest1() throws OnapCommandException {
-
-        mockExternalResources();
-        OnapCommandUtils.loadSchema(new OnapSwaggerBasedCommandSample(), "schemaName");
-    }
-
-    @Test(expected = OnapCommandException.class)
-    public void zendExceptionTest2() throws OnapCommandException {
-
-        mockExternalResources();
-        OnapCommandUtils.loadSchema(new OnapHttpCommandSample(), "schemaName", false, false);
-    }
-
-    @Test(expected = OnapCommandException.class)
-    public void zendExceptionTest3() throws OnapCommandException {
-
-        mockExternalResources();
-        OnapCommandUtils.validateSchemaVersion("schemaName", "version");
-    }
-
-    @Test(expected = OnapCommandException.class)
-    public void zendExceptionTest4() throws OnapCommandException {
-
-        mockExternalResources();
-        OnapCommandUtils.discoverOrLoadSchemas();
-    }
-
-    @Test(expected = OnapCommandException.class)
-    public void zendExceptionTest5() throws OnapCommandException {
-
-        mockExternalResources();
-        OnapCommandUtils.discoverSchemas();
-    }
-
-    @Test(expected = OnapCommandException.class)
-    public void zendExceptionTest6() throws OnapCommandException {
-
-        mockExternalResources();
-        OnapCommandUtils.persistSchemaInfo(new ArrayList<SchemaInfo>());
-    }
 
     @Test(expected = OnapCommandHelpFailed.class)
     public void zendExceptionHelpTest1() throws OnapCommandException {
