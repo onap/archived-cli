@@ -190,7 +190,7 @@ public class OnapCommandUtils {
         InputStream inputStream = OnapCommandUtils.class.getClassLoader().getResourceAsStream(schemaName);
 
         try {
-            Resource resource = getExternalResource(schemaName, SCHEMA_PATH_PATERN);
+            Resource resource = findResource(schemaName, SCHEMA_PATH_PATERN);
 
             if (resource != null) {
                 inputStream = resource.getInputStream();
@@ -1604,12 +1604,17 @@ public class OnapCommandUtils {
     public static List<SchemaInfo> discoverSchemas() throws OnapCommandException {
         List<SchemaInfo> extSchemas = new ArrayList<>();
         try {
-            Resource[] res = getExternalResources(SCHEMA_PATH_PATERN);
+            Resource[] res = findResources(SCHEMA_PATH_PATERN);
             if (res != null && res.length > 0) {
                 Map<String, ?> resourceMap;
 
                 for (Resource resource : res) {
-                    resourceMap = loadSchema(resource);
+                    try {
+                        resourceMap = loadSchema(resource);
+                    } catch (OnapCommandException e) {
+                        LOG.error("Invalid schema " + resource.getURI().toString(), e);
+                        continue;
+                    }
 
                     if (resourceMap != null && resourceMap.size() > 0) {
                         SchemaInfo schema = new SchemaInfo();
@@ -1666,7 +1671,7 @@ public class OnapCommandUtils {
      * @throws IOException
      *             exception
      */
-    public static Resource[] getExternalResources(String pattern) throws IOException {
+    public static Resource[] findResources(String pattern) throws IOException {
         ClassLoader cl = OnapCommandUtils.class.getClassLoader();
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
         return resolver.getResources("classpath*:" + pattern);
@@ -1681,8 +1686,8 @@ public class OnapCommandUtils {
      * @throws IOException
      *             exception
      */
-    public static Resource getExternalResource(String fileName, String pattern) throws IOException {
-        Resource[] resources = getExternalResources(pattern);
+    public static Resource findResource(String fileName, String pattern) throws IOException {
+        Resource[] resources = findResources(pattern);
         if (resources != null && resources.length > 0) {
             for (Resource res : resources) {
                 if (res.getFilename().equals(fileName)) {
@@ -1724,7 +1729,7 @@ public class OnapCommandUtils {
     public static void persistSchemaInfo(List<SchemaInfo> schemas) throws OnapCommandDiscoveryFailed {
         if (schemas != null) {
             try {
-                Resource[] resources = getExternalResources(DATA_DIRECTORY);
+                Resource[] resources = findResources(DATA_DIRECTORY);
                 if (resources != null && resources.length == 1) {
                     String path = resources[0].getURI().getPath();
                     File file = new File(path + File.separator + DISCOVERY_FILE);
@@ -1741,7 +1746,7 @@ public class OnapCommandUtils {
     public static void persistProfile(List<Param> params, String profileName) throws OnapCommandPersistProfileFailed {
         if (params != null) {
             try {
-                Resource[] resources = getExternalResources(DATA_DIRECTORY);
+                Resource[] resources = findResources(DATA_DIRECTORY);
                 if (resources != null && resources.length == 1) {
                     String path = resources[0].getURI().getPath();
                     File file = new File(path + File.separator + profileName + ".json");
@@ -1764,7 +1769,7 @@ public class OnapCommandUtils {
     public static boolean isAlreadyDiscovered() throws OnapCommandDiscoveryFailed {
         Resource resource = null;
         try {
-            resource = getExternalResource(DISCOVERY_FILE,
+            resource = findResource(DISCOVERY_FILE,
                     DATA_PATH_JSON_PATTERN);
             if (resource != null) {
                 return true;
@@ -1795,7 +1800,7 @@ public class OnapCommandUtils {
             }
         } else {
             try {
-                Resource resource = getExternalResource(DISCOVERY_FILE,
+                Resource resource = findResource(DISCOVERY_FILE,
                         DATA_PATH_JSON_PATTERN);
                 if (resource != null) {
                     File file = new File(resource.getURI().getPath());
@@ -1816,7 +1821,7 @@ public class OnapCommandUtils {
         List<Param> params = new ArrayList<>();
 
         try {
-            Resource resource = getExternalResource(profileName + ".json",
+            Resource resource = findResource(profileName + ".json",
                     DATA_PATH_JSON_PATTERN);
             if (resource != null) {
                 File file = new File(resource.getURI().getPath());

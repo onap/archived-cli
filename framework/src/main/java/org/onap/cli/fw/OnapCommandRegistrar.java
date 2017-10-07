@@ -213,6 +213,7 @@ public class OnapCommandRegistrar {
             } else {
                 schemaName = this.getSchemaFileName(cls);
             }
+
             cmd.initializeSchema(schemaName);
         } catch (OnapCommandException | NoSuchMethodException | SecurityException | InstantiationException
                 | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
