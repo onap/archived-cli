@@ -33,6 +33,12 @@ parameters:
     long_option: enable-ssl
     is_optional: true
     default: false
+  - name: path
+    description: Onap service path
+    type: string
+    short_option: c
+    long_option: path
+    is_optional: true
   - name: node-ip
     description: Onap service running node IP
     type: string
@@ -70,11 +76,15 @@ results:
       description: Onap service is enabled with https or not
       scope: long
       type: string
+    - name: path
+      description: Onap service path
+      scope: long
+      type: string
 http:
   request:
     uri: /services
     method: POST
-    body: '{"serviceName":"${service-name}","version":"${service-version}","url":"${service-url}","protocol":"REST", "enable_ssl":"${enable-ssl}", "visualRange":"1","lb_policy":"ip_hash","nodes":[{"ip":"${node-ip}","port":"${node-port}","ttl":0}]}'
+    body: '{"serviceName":"${service-name}","version":"${service-version}","path":"${path}","url":"${service-url}","protocol":"REST", "enable_ssl":"${enable-ssl}", "visualRange":"1","lb_policy":"ip_hash","nodes":[{"ip":"${node-ip}","port":"${node-port}","ttl":0}]}'
     headers:
     queries:
       createOrUpdate: ${create-or-update}
@@ -86,7 +96,8 @@ http:
     version: $b{$.version}
     url: $b{$.url}
     status: $b{$.status}
-    enable-ssl: $b{$.enable-ssl}
+    enable-ssl: $b{$.enable_ssl}
+    path: $b{$.path}
     nodes: $b{$.nodes[*].ip}:$b{$.nodes[*].port}
 
   sample_response:
