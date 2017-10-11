@@ -28,10 +28,6 @@ public class OnapCommandInvalidSample extends OnapCommandException {
 
     private static final String ERROR_MSG = "Invalid command sample ";
 
-    public OnapCommandInvalidSample(String error) {
-        this(ERROR_CODE, error);
-    }
-
     public OnapCommandInvalidSample(String schema, String error) {
         super(ERROR_CODE, ERROR_MSG + schema + ", " + error);
     }

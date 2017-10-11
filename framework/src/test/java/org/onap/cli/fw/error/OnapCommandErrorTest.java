@@ -256,6 +256,17 @@ public class OnapCommandErrorTest {
     }
 
     @Test
+    public void onapCommandSampleInvalidTest() {
+        OnapCommandInvalidSample failed = new OnapCommandInvalidSample("Test", "error");
+
+        assertEquals("0xf001::Invalid command sample Test, error", failed.getMessage());
+
+        failed = new OnapCommandInvalidSample("Test", new Exception("error"));
+
+        assertEquals("0xf001::Invalid command sample Test, error", failed.getMessage());
+    }
+
+    @Test
     public void onapCommandServiceNotFoundTest() {
         OnapCommandServiceNotFound failed = new OnapCommandServiceNotFound("Service");
 

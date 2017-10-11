@@ -105,13 +105,13 @@ public class OnapCommandHttpMocoServer {
         try {
             values = (Map<String, ?>) new Yaml().load(file.getInputStream());
         } catch (Exception e) {
-            throw new OnapCommandInvalidSample("Invalid sample", e);
+            throw new OnapCommandInvalidSample(file.getFilename(), e);
         }
 
         OnapCommandSample sample = new OnapCommandSample();
 
         if (!this.getValue(values, SAMPLE_VERSION).equals(SAMPLE_VERSION_1_0)) {
-            throw new OnapCommandInvalidSample("Invalid sample version " + this.getValue(values, SAMPLE_VERSION));
+            throw new OnapCommandInvalidSample(file.getFilename(), "Invalid sample version " + this.getValue(values, SAMPLE_VERSION));
         }
 
         sample.setCommandName(this.getValue(values, SAMPLE_COMMAND_NAME));
