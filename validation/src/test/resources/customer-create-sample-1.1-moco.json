@@ -1,0 +1,11 @@
+[{
+  "request" :
+    {
+      "method" : "get",
+      "uri" : "/aai/v11/business/customers/customer/test"
+    },
+  "response" :
+    {
+      "status" : 201
+    }
+}]
