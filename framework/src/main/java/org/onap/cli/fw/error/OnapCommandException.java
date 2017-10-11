@@ -35,6 +35,7 @@ schema 0xb00
 profile 0xc00
 product/service 0xd00
 catalog 0xe00
+sample 0xf00
  */
 public class OnapCommandException extends Exception {
 
