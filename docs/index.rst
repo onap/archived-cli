@@ -32,6 +32,7 @@ ONAP CLI is developed using the industry first CLI platform called
    :maxdepth: 1
 
    OCLIP.rst
+   architecture.rst
    developer_guide.rst
    user_guide.rst
    installation_guide.rst
