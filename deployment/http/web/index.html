@@ -15,6 +15,28 @@ function redirectToConsole(){
 <h2><a id="Download_42"></a>To download</h2>
 <p style="color:red">Please download ONAP CLI <a href="./onap-cli.zip">here</a></p>
 
+<h3><a id="Download_42"></a>To install</h3>
+<p>Please follow the instructions given below for installing ONAP CLI.</p>
+<ol>
+<li>Un-zip the above download file into <b>/opt/onap/cli folder</b></li>
+<li>Run the following commands:
+<br>export ONAP_CLI_HOME=$CLI_INSTALL_DIR
+<br>export CLI_PRODUCT_VERSION=onap-1.1
+<br>
+<br>cd $CLI_INSTALL_DIR
+<br>
+<br>if [ ! -d ./data ]; then mkdir ./data; fi
+<br>if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi
+<br>
+<br>chmod +x ./bin/onap.sh
+<br>
+<br>#Make onap available in path
+<br>ln ./bin/onap.sh $CLI_BIN
+<br>
+<br>#Print the version
+<br>onap -v</li>
+</ol>
+
 <h2><a id="Console_42"></a>Web Command console</h2>
 <p style="color:blue">To open Console, Click <img src="./onap-cli.png" alt="Web Command console" style="width:30px;height:22px;" onclick="redirectToConsole();"> </p>
 
