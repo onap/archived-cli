@@ -60,19 +60,18 @@ public class OnapCommandRegistrarTest {
     public void registerTest() throws OnapCommandException {
         OnapCommand test = new OnapCommandTest();
         Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
-        registerar.register("Test", "cli-1.0", cmd);
-        OnapCommand cc = registerar.get("Test");
+        registerar.register("test", "cli-1.0", cmd);
+        OnapCommand cc = registerar.get("test");
         assertTrue(cmd == cc.getClass());
 
     }
 
     @Test
-    // For Coverage
     public void cmdTestSchema() throws OnapCommandException {
         OnapCommand test = new OnapCommandTest();
         Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
-        registerar.register("Test", "cli-1.0", cmd);
-        OnapCommand cc = registerar.get("Test");
+        registerar.register("test", "cli-1.0", cmd);
+        OnapCommand cc = registerar.get("test");
     }
 
     @Test
