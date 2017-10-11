@@ -17,16 +17,14 @@
 package org.onap.cli.validation;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 
 import org.aspectj.lang.annotation.After;
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.utils.ExternalSchema;
-import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.main.OnapCli;
+import org.onap.cli.moco.OnapCommandHttpMocoServer;
 
 public class OnapCliMainTest {
 
@@ -50,7 +48,7 @@ public class OnapCliMainTest {
     }
 
     @Test
-    public void validateCommands() throws IOException, OnapCommandException {
+    public void validateCommandSchemas() throws IOException, OnapCommandException {
         OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("cli-1.0");
         for (ExternalSchema sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
             System.out.println(
@@ -74,6 +72,12 @@ public class OnapCliMainTest {
                 }
             }
         }
+    }
+
+    @Test
+    public void validateCommands() throws OnapCommandException {
+        OnapCommandHttpMocoServer server = new OnapCommandHttpMocoServer();
+        server.verifySamples();
     }
 
  }
