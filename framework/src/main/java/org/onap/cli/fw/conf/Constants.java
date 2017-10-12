@@ -213,6 +213,11 @@ public class Constants {
     public static final String CATALOG_SERVICE_BASE_PATH = "catalog-service-base-path";
     public static final String CATALOG_SERVICE_HOST_URL = "catalog-service-host-url";
 
+    public static final String VERSION_INFO = "version.info";
+    public static final String VERSION_INFO_PLACE_HOLDER_VERSION = "__VERSION__";
+    public static final String VERSION_INFO_PLACE_HOLDER_AVL_PRD_VER = "__AVAILABLE_PRODUCT_VERSIONS__";
+    public static final String VERSION_INFO_PLACE_HOLDER_ENB_PRD_VER = "__ENABLED_PRODUCT_VERSIONS__";
+
     private Constants() {
     }
 

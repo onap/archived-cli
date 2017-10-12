@@ -1,0 +1,7 @@
+CLI version       : __VERSION__
+Available products: __AVAILABLE_PRODUCT_VERSIONS__
+Enabled product   : __ENABLED_PRODUCT_VERSIONS__
+
+To enable a product , use one of following methods:
+1. In scripting mode, Set environment variable OPEN_CLI_PRODUCT_IN_USE
+2. In interactive mode, set the directive 'use <product>'
