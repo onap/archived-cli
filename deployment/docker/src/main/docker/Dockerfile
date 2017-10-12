@@ -35,7 +35,7 @@ RUN chmod +x ./bin/oclip.sh  && \
      if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
 
 #Create the readable README
-RUN pandoc -t plain $OPEN_CLI_HOME/docs/README.md > $OPEN_CLI_HOME/docs/onap-readme.txt
+RUN pandoc -t plain $OPEN_CLI_HOME/docs/README.md > $OPEN_CLI_HOME/docs/oclip-readme.txt
 
 #RTE: lighttpd
 COPY ./STAGE/http/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf
