@@ -108,6 +108,9 @@ import java.util.Map.Entry;
 import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.UUID;
+import java.util.jar.Attributes;
+import java.util.jar.JarFile;
+import java.util.jar.Manifest;
 import java.util.stream.Collectors;
 
 import org.onap.cli.fw.OnapCommand;
@@ -1880,6 +1883,30 @@ public class OnapCommandUtils {
                 param.setValue(from.getService().getVersion());
             }
         }
+    }
+
+    /**
+     * Returns the build time from manifest.mf
+     */
+    public static String findLastBuildTime() {
+        String impBuildDate = "";
+        try
+        {
+            String path = OnapCommandUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+            JarFile jar = new JarFile(path);
+            Manifest manifest = jar.getManifest();
+            jar.close();
+
+            Attributes attributes = manifest.getMainAttributes();
+
+            impBuildDate = attributes.getValue("Build-Time");
+        }
+        catch (IOException e)
+        {
+            //Ignore it as it will never occur
+        }
+
+        return impBuildDate;
     }
 }
 
