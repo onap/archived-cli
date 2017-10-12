@@ -16,15 +16,13 @@
 
 package org.onap.cli.fw.cmd;
 
+import java.util.List;
+
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.output.OnapCommandResultAttribute;
-import org.onap.cli.fw.utils.SchemaInfo;
 import org.onap.cli.fw.utils.OnapCommandUtils;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.onap.cli.fw.utils.SchemaInfo;
 
 /**
  * Refresh external schema.
@@ -40,32 +38,14 @@ public class OnapSchemaRefreshCommand extends OnapCommand {
         // Will override the existing json file
         OnapCommandUtils.persistSchemaInfo(schemas);
 
-        List<String> slNumbers = new ArrayList<>();
-        List<String> cmdNames = new ArrayList<>();
-        List<String> cmdFiles = new ArrayList<>();
-        List<String> versions = new ArrayList<>();
-        List<String> cmdVersions = new ArrayList<>();
-
         for (int i = 0; i < schemas.size(); i++) {
             SchemaInfo schema = schemas.get(i);
-            slNumbers.add(String.valueOf(i + 1));
-            cmdNames.add(schema.getCmdName());
-            cmdFiles.add(schema.getSchemaName());
-            versions.add(schema.getVersion());
-            cmdVersions.add(schema.getProduct());
-        }
-        for (OnapCommandResultAttribute attribute : this.getResult().getRecords()) {
-            if ("sl-no".equals(attribute.getName())) {
-                attribute.setValues(slNumbers);
-            } else if ("command".equals(attribute.getName())) {
-                attribute.setValues(cmdNames);
-            } else if ("product".equals(attribute.getName())) {
-                attribute.setValues(cmdVersions);
-            } else if ("schema".equals(attribute.getName())) {
-                attribute.setValues(cmdFiles);
-            } else if ("ocs-version".equals(attribute.getName())) {
-                attribute.setValues(versions);
-            }
+            this.getResult().getRecordsMap().get("sr.no").getValues().add(String.valueOf(i + 1));
+            this.getResult().getRecordsMap().get("command").getValues().add(schema.getCmdName());
+            this.getResult().getRecordsMap().get("schema").getValues().add(schema.getSchemaName());
+            this.getResult().getRecordsMap().get("ocs-version").getValues().add(schema.getVersion());
+            this.getResult().getRecordsMap().get("product").getValues().add(schema.getProduct());
+            this.getResult().getRecordsMap().get("type").getValues().add(schema.getSchemaProfile());
         }
     }
 
