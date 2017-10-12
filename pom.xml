@@ -34,7 +34,7 @@
         <package.name>cli</package.name>
     </properties>
 
-    <modules>
+  <modules>
         <module>framework</module>
         <module>plugins</module>
         <module>main</module>
@@ -51,7 +51,16 @@
 
     <build>
         <pluginManagement>
-        <plugins>
+          <plugins>
+            <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-surefire-plugin</artifactId>
+               <configuration>
+                 <systemPropertyVariables>
+                    <ONAP_CLI_HOME>.</ONAP_CLI_HOME>
+                 </systemPropertyVariables>
+               </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
