@@ -5,3 +5,87 @@
 
 CLI developer guide
 ===================
+
+Develop ONAP CLI using plug-ins or YAML.
+
+As a Plug-in
+-------------
+The plug-in approach is useful for implementing commands for products that do not support REST APIs.
+It uses this approach to provide the commands for its platform-related operations and provides the following commands as plug-ins:
+
+* Schema-validate : To validate the OCS YAML
+* Schema-refresh: To enable the newly added commands
+
+It also offers the flexibility to implement any kind of command. For example, a specific plug-in command is provided in the CLI to handle
+HTTP commands, which helps to develop commands by **No coding, just by texting**
+
+Follow the steps below to implement new plug-in commands in ONAP:
+
+#. Create a new mvn module (ex: demo) under plugins project.
+
+#. Use the plugins/sample project as a reference and update the new module demo project pom.xml file.
+
+#. Add new command YAML with a unique name under 'src/main/resources/onap-cli-schema'.
+
+#. To implement a command as a plug-in, create a new plug-in class as follows: ::
+
+    package org.onap.cli.sample;
+
+    import java.util.Map;
+
+    import org.onap.cli.fw.OnapCommand;
+    import org.onap.cli.fw.OnapCommandSchema;
+    import org.onap.cli.fw.error.OnapCommandException;
+    import org.onap.cli.fw.input.OnapCommandParameter;
+
+    /**
+     * Hello world.
+     */
+    @OnapCommandSchema(name = "hello-world", version = "sample-1.0", schema = "hello-world.yaml")
+    public class OnapHelloWorldCommand extends OnapCommand {
+
+        @Override
+        protected void run() throws OnapCommandException {
+            //Read the input arguments
+            Map<String, OnapCommandParameter> paramMap = getParametersMap();
+            OnapCommandParameter nameP = paramMap.get("name");
+            String name = String.valueOf(nameP.getValue());
+
+            //Process command
+            String output = "Hello " + name;
+
+            //Populate outputs
+            this.getResult().getRecordsMap().get("output").getValues().add(output);
+       }
+    }
+
+Note the following points:
+
+* 'org.onap.cli.sample.OnapHelloWorldCommand' extends 'OnapCommand' and is annotated with OnapCommandSchema, which carries the command name, product version and schema file name, and is placed under the 'src/main/resources/onap-cli-schema' folder.
+
+* getParametersMap() helps to get the arguments value given for a command before executing it
+
+* getResult().getRecordsMap() helps to set the attributes values of command after executing it
+
+#. Add the new plug-in class package path into the 'src/main/resources/META-INF/services/org.onap.cli.fw.OnapCommand' file
+
+#. Now the command is ready. Build the project by running 'mvn clean install'. ONAP CLI framework automatically delivers these commands as part of the ONAP CLI zip file as part of this build.
+
+#. To test this command, run the command 'onap hello-world --name amesterdam'
+
+As a YAML
+---------
+
+All ONAP CLI commands can be implemented as YAML using HTTP profile.
+
+Follow the steps below to implement new commands in ONAP using YAML:
+
+#. Install the latest ONAP CLI using the guide installation_guide_.
+
+#. Under the onap-cli-schema folder, add a new YAML file by referring to open_cli_schema_version_1_0_.
+
+#. Use the command 'onap schema-validate' to validate the YAML before testing its functionality.
+
+#. Run 'onap schema-refresh' command to take the new YAML file. We recommed validating the YAML before running this command.
+
+#. To test this command, run the command 'onap CMD-NAME --help'.
