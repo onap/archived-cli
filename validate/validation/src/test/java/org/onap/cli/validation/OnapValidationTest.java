@@ -57,7 +57,7 @@ public class OnapValidationTest {
     }
 
     @Test
-    public void validateCommands() throws IOException, OnapCommandException {
+    public void validateCommandSchemas() throws IOException, OnapCommandException {
         for (String version: OnapCommandRegistrar.getRegistrar().getAvailableProductVersions()) {
             OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(version);
             System.out.println(version);
