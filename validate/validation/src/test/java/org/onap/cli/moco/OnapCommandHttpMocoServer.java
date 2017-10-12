@@ -117,7 +117,7 @@ public class OnapCommandHttpMocoServer {
     private List<Resource> dicoverSampleYamls() {
         Resource[] resources = new Resource [] {};
         try {
-            resources = OnapCommandUtils.getExternalResources(SAMPLE_PATTERN + this.samplesToTest);
+            resources = OnapCommandUtils.findResources(SAMPLE_PATTERN + this.samplesToTest);
         } catch (IOException e) {
             LOG.error("Failed to discover the samples", e);
         }
