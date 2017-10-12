@@ -31,6 +31,7 @@ ONAP CLI is developed using the industry first CLI platform called
 .. toctree::
    :maxdepth: 1
 
+   console.rst
    OCLIP.rst
    open_cli_schema_version_1_0.rst
    architecture.rst
@@ -39,4 +40,3 @@ ONAP CLI is developed using the industry first CLI platform called
    installation_guide.rst
    OOM_and_HEAT_based_deployment.rst
    logging.rst
-
