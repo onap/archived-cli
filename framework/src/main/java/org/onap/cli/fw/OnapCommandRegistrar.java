@@ -16,14 +16,17 @@
 
 package org.onap.cli.fw;
 
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
@@ -278,21 +281,18 @@ public class OnapCommandRegistrar {
 
         String configuredProductVersion = this.getEnabledProductVersion();
 
-        String errorNote = "";
-        String usageNote = "\n\nTo enable a product version, use one of following methods:"
-                + "\n 1. set env variable OPEN_CLI_PRODUCT_IN_USE"
-                + "\n 2. set cli.product.version in open-cli.properties"
-                + "\n 3. in interactive mode, use the directive 'use <product version>'\n";
-
-        if (!this.availableProductVersions.contains(configuredProductVersion)) {
-            errorNote = "** CUATION: Please configure the enabled product version to use one of " + this.availableProductVersions.toString() + ".";
-
+        String versionInfo = "";
+        try {
+            versionInfo = IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream(Constants.VERSION_INFO));
+        } catch (IOException e) {
+            //Never occurs  // NOSONAR
         }
 
-        return "CLI version               : " + version + buildTime + "\n"
-                + "Available product versions: " + this.availableProductVersions.toString() + "\n"
-                + "Enabled product version   : " + configuredProductVersion + "\n" +
-                errorNote + usageNote;
+        versionInfo = versionInfo.replaceAll(Constants.VERSION_INFO_PLACE_HOLDER_ENB_PRD_VER, configuredProductVersion);
+        versionInfo = versionInfo.replaceAll(Constants.VERSION_INFO_PLACE_HOLDER_AVL_PRD_VER, this.availableProductVersions.toString());
+        versionInfo = versionInfo.replaceAll(Constants.VERSION_INFO_PLACE_HOLDER_VERSION + "", version + buildTime);
+
+        return versionInfo;
     }
 
     /**
