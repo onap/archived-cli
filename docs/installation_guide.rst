@@ -11,7 +11,7 @@ ONAP CLI is delivered in following formats:
 * Nexus ZIP artifact
 * Docker image
 
-And tt could be installed by following one of the approaches given below:
+And it could be installed by following one of the approaches given below:
 
 Using install.sh
 ----------------

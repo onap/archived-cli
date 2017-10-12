@@ -21,11 +21,11 @@ Type **onap <command>** from linux console.
 
 To Run in Interactive mode
 --------------------------
-Type **onap** from linux console.
+Type **onap** from linux/web console.
 
 And use the directive set to set the values for following parameters:
 
-1. **onap-host-url** - Onap Micro service bus(MSB) URL or a service URL
+1. **host-url** - Onap Micro service bus(MSB) URL or a service URL
 2. **onap-username** - Onap user name
 3. **onap-password** - Onap user password
 
