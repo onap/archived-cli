@@ -134,8 +134,8 @@ public class Constants {
     public static final String PARAM_CACHE_FILE_NAME = "global-profile";
 
     //normal
-    public static final String BASIC_SCHEMA_PROFILE = "basic-schema";
-    public static final String HTTP_SCHEMA_PROFILE = "http-schema";
+    public static final String BASIC_SCHEMA_PROFILE = "basic";
+    public static final String HTTP_SCHEMA_PROFILE = "http";
 
     //http
     public static final String HTTP = "http";
