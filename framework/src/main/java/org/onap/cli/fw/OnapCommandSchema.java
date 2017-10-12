@@ -20,8 +20,6 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import org.onap.cli.fw.cmd.CommandType;
-
 /**
  * Provide command name and schema file location, which is placed in the main resources folder (in classpath). It is
  * recommended to keep the name for schema, in the form of oclip-[command-name]-schema.yaml, considered this format as

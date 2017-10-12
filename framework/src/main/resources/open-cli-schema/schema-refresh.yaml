@@ -11,7 +11,7 @@ info:
 results:
   direction: landscape
   attributes:
-    - name: sl-no
+    - name: sr.no
       description: Serial Number
       scope: short
       type: string
@@ -29,5 +29,9 @@ results:
       type: string
     - name: ocs-version
       description: Schema version
+      scope: short
+      type: string
+    - name: type
+      description: Command type
       scope: short
       type: string
