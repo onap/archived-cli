@@ -269,6 +269,13 @@ public class OnapCommandRegistrar {
             version = OnapCommandConfg.getVersion();
         }
 
+        String buildTime = OnapCommandUtils.findLastBuildTime();
+        if (buildTime!= null && !buildTime.isEmpty()) {
+            buildTime = " [" + buildTime + "]";
+        } else {
+            buildTime = "";
+        }
+
         String configuredProductVersion = this.getEnabledProductVersion();
 
         String errorNote = "";
@@ -281,7 +288,8 @@ public class OnapCommandRegistrar {
             errorNote = "** CUATION: Please configure the enabled product version to use one of " + this.availableProductVersions.toString() + ".";
 
         }
-        return "CLI version               : " + version + "\n"
+
+        return "CLI version               : " + version + buildTime + "\n"
                 + "Available product versions: " + this.availableProductVersions.toString() + "\n"
                 + "Enabled product version   : " + configuredProductVersion + "\n" +
                 errorNote + usageNote;
