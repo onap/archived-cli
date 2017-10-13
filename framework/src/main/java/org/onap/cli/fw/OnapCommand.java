@@ -39,7 +39,8 @@ import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.ResultType;
-import org.onap.cli.fw.utils.OnapCommandSchemaLoader;
+import org.onap.cli.fw.utils.OnapCommandHelperUtils;
+import org.onap.cli.fw.utils.OnapCommandSchemaLoaderUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 /**
@@ -157,7 +158,7 @@ public abstract class OnapCommand {
      */
     public void initializeSchema(String schema) throws OnapCommandException {
         this.setSchemaName(schema);
-        OnapCommandSchemaLoader.loadSchema(this, schema, true, false);
+        OnapCommandSchemaLoaderUtils.loadSchema(this, schema, true, false);
         this.initializeProfileSchema();
         this.isInitialzied = true;
     }
@@ -265,7 +266,7 @@ public abstract class OnapCommand {
      *             Failed to execute Help command.
      */
     public String printHelp() throws OnapCommandHelpFailed {
-        return OnapCommandUtils.help(this);
+        return OnapCommandHelperUtils.help(this);
     }
 
     // (mrkanag) Add toString for all command, parameter, result, etc objects in JSON format
