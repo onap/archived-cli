@@ -17,11 +17,11 @@
 package org.onap.cli.fw.http;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -31,9 +31,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandHttpFailure;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import mockit.Invocation;
+import mockit.Mock;
+import mockit.MockUp;
 
 public class OnapHttpConnectionTest {
     HttpInput inp = null;

@@ -16,15 +16,18 @@
 
 package org.onap.cli.fw.cmd;
 
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandSchema;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.input.OnapCommandParameter;
-import org.onap.cli.fw.utils.OnapCommandSchemaLoaderUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.OnapCommandRegistrar;
+import org.onap.cli.fw.OnapCommandSchema;
+import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
+import org.onap.cli.fw.utils.OnapCommandSchemaLoaderUtils;
 
 /**
  * Validate schema command.
@@ -35,30 +38,40 @@ public class OnapSchemaValidateCommand extends OnapCommand {
     @Override
     protected void run() throws OnapCommandException {
         Map<String, OnapCommandParameter> paramMap = getParametersMap();
+
         OnapCommandParameter locationParam = paramMap.get("schema-location");
         String location = String.valueOf(locationParam.getValue());
+
         OnapCommandParameter interSchemaParam = paramMap.get("internal-schema");
         boolean isInternalSchema = Boolean.valueOf(String.valueOf(interSchemaParam.getValue()));
-        if (isInternalSchema) {
+        if (isInternalSchema && location.startsWith("/")) {
             location = location.substring(1);
         }
 
-        List<String> error = OnapCommandSchemaLoaderUtils.loadSchema(new OnapCommand() {
-            @Override
-            protected void run() throws OnapCommandException {
-            }
-        }, location, true, true);
+        OnapCommandParameter versionParam = paramMap.get("ocs-version");
+        String ocsVersion = String.valueOf(versionParam.getValue());
 
+        String type = OnapCommandDiscoveryUtils.identitySchemaProfileType(
+                OnapCommandSchemaLoaderUtils.validateSchemaVersion(location, ocsVersion));
 
-        error.addAll(OnapCommandSchemaLoaderUtils.loadHttpSchema(new OnapHttpCommand(),
-                location, true, true));
+        OnapCommand cmd = null;
+        if (type.equals(Constants.BASIC_SCHEMA_PROFILE)) {
+            cmd = new OnapCommand() {
+                @Override
+                protected void run() throws OnapCommandException {
+                }
+            };
+        } else {
+            cmd = OnapCommandDiscoveryUtils.loadCommandClass(OnapCommandRegistrar.getRegistrar().getProfilePlugin(type));
+        }
 
+        List<String> error = cmd.initializeSchema(location, true);
         List<String> slNumber = new ArrayList<>();
         for (int i = 1; i <= error.size(); i++) {
             slNumber.add(String.valueOf(i));
         }
-        this.getResult().getRecords().get(0).setValues(slNumber);
-        this.getResult().getRecords().get(1).setValues(error);
+        this.getResult().getRecordsMap().get("sl-no").setValues(slNumber);
+        this.getResult().getRecordsMap().get("error").setValues(error);
     }
 
 }

@@ -71,6 +71,7 @@ public class Constants {
     public static final String INFO_SERVICE = "service";
     public static final String INFO_TYPE = "type";
     public static final String INFO_AUTHOR = "author";
+    public static final String INFO_IGNORE = "ignore";
 
     //parameters
     public static final String PARAMETERS = "parameters";

@@ -26,6 +26,8 @@ import static org.onap.cli.fw.conf.Constants.SCHEMA_PATH_PATERN;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +39,7 @@ import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandInstantiationFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -59,7 +62,7 @@ public class OnapCommandDiscoveryUtils {
      *             exception
      */
     public static SchemaInfo getSchemaInfo(String cmd, String version) throws OnapCommandException {
-        List<SchemaInfo> list = OnapCommandDiscoveryUtils.discoverOrLoadSchemas();
+        List<SchemaInfo> list = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(false);
         SchemaInfo schemaInfo = null;
         if (list != null) {
             for (SchemaInfo schema : list) {
@@ -81,9 +84,9 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static List<SchemaInfo> discoverOrLoadSchemas() throws OnapCommandException {
+    public static List<SchemaInfo> discoverOrLoadSchemas(boolean forceRefresh) throws OnapCommandException {
         List<SchemaInfo> schemas = new ArrayList<>();
-        if (OnapCommandConfg.isDiscoverAlways() || !OnapCommandDiscoveryUtils.isAlreadyDiscovered()) {
+        if (forceRefresh || OnapCommandConfg.isDiscoverAlways() || !OnapCommandDiscoveryUtils.isAlreadyDiscovered()) {
             schemas = OnapCommandDiscoveryUtils.discoverSchemas();
             if (!schemas.isEmpty()) {
                 OnapCommandDiscoveryUtils.persistSchemaInfo(schemas);
@@ -211,7 +214,7 @@ public class OnapCommandDiscoveryUtils {
         return resolver.getResources("classpath*:" + pattern);
     }
 
-    static String identitySchemaProfileType(Map<String, ?> schemaYamlMap) {
+    public static String identitySchemaProfileType(Map<String, ?> schemaYamlMap) {
 
         for (String schemeType : OnapCommandConfg.getSchemaAttrInfo(Constants.SCHEMA_TYPES_SUPPORTED)) {
             if (schemaYamlMap.get(schemeType) != null) {
@@ -240,9 +243,9 @@ public class OnapCommandDiscoveryUtils {
 
                 for (Resource resource : res) {
                     try {
-                        resourceMap = loadSchema(resource);
+                        resourceMap = OnapCommandSchemaLoaderUtils.loadSchema(resource);
                     } catch (OnapCommandException e) {
-                        OnapCommandUtils.LOG.error("Invalid schema " + resource.getURI().toString(), e);
+                        OnapCommandUtils.LOG.error("Ignores invalid schema " + resource.getURI().toString(), e);
                         continue;
                     }
 
@@ -271,6 +274,9 @@ public class OnapCommandDiscoveryUtils {
                             schema.setProduct(infoMap.get(Constants.INFO_PRODUCT).toString());
                         }
 
+                        if (infoMap != null && infoMap.get(Constants.INFO_IGNORE) != null) {
+                            schema.setIgnore(infoMap.get(Constants.INFO_IGNORE).toString());
+                        }
                         schema.setSchemaProfile(identitySchemaProfileType(resourceMap));
 
                         extSchemas.add(schema);
@@ -299,4 +305,18 @@ public class OnapCommandDiscoveryUtils {
         return clss;
     }
 
+    /**
+     * Instantiate command plugin
+     * @throws OnapCommandInstantiationFailed
+     */
+    public static OnapCommand loadCommandClass(Class <? extends OnapCommand> cls) throws OnapCommandInstantiationFailed {
+        try {
+            Constructor<?> constr = cls.getConstructor();
+            return (OnapCommand) constr.newInstance();
+        } catch (NoSuchMethodException | SecurityException | InstantiationException
+                | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            throw new OnapCommandInstantiationFailed(cls.getName(), e);
+        }
+
+    }
 }

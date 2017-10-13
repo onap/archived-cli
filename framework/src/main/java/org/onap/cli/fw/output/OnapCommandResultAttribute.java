@@ -16,11 +16,11 @@
 
 package org.onap.cli.fw.output;
 
-import org.onap.cli.fw.input.ParameterType;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.onap.cli.fw.input.ParameterType;
 
 /**
  * Oclip command output records, helps to define the title and its description while command is defined and during run
