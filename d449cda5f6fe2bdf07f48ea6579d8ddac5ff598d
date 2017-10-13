@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_572b7230",
+        "filename": "plugins/sdc/src/test/resources/onap-cli-sample/license-model-create-schema-1.1-moco.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-13T19:08:05Z",
+      "side": 1,
+      "message": "pls add body",
+      "range": {
+        "startLine": 8,
+        "startChar": 5,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "d449cda5f6fe2bdf07f48ea6579d8ddac5ff598d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
