@@ -3,8 +3,8 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright 2017 Huawei Technologies Co., Ltd.
 
-Open Command Line Interface (CLI) Schema Version 1.0
-====================================================
+Open Command Line Interface (CLI) Schema Version (OCS) 1.0
+==========================================================
 
 Open CLI Platform (OCLIP) provides model based framework to implement
 Linux Commands for any given software products, by using YAML template
