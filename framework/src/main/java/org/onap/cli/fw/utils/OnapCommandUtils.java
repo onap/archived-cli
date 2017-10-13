@@ -1658,8 +1658,11 @@ public class OnapCommandUtils {
     }
 
     private static String identitySchemaProfileType(Map<String, ?> schemaYamlMap) {
-        if (schemaYamlMap.get(Constants.HTTP) != null) {
-            return Constants.HTTP_SCHEMA_PROFILE;
+
+        for (String schemeType : OnapCommandConfg.getSchemaAttrInfo(Constants.SCHEMA_TYPES_SUPPORTED)) {
+            if (schemaYamlMap.get(schemeType) != null) {
+                return schemeType;
+            }
         }
 
         return Constants.BASIC_SCHEMA_PROFILE;
@@ -1852,16 +1855,16 @@ public class OnapCommandUtils {
      */
     public static SchemaInfo getSchemaInfo(String cmd, String version) throws OnapCommandException {
         List<SchemaInfo> list = discoverOrLoadSchemas();
-        SchemaInfo schemaStr = null;
+        SchemaInfo schemaInfo = null;
         if (list != null) {
             for (SchemaInfo schema : list) {
                 if (cmd.equals(schema.getCmdName()) && version.equals(schema.getProduct())) {
-                    schemaStr = schema;
+                    schemaInfo = schema;
                     break;
                 }
             }
         }
-        return schemaStr;
+        return schemaInfo;
     }
 
     /**

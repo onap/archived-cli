@@ -255,7 +255,7 @@ public class OnapCommandUtilsTest {
     @Test
     public void findOnapCommandsTest() {
         List<Class<OnapCommand>> cmds = OnapCommandUtils.discoverCommandPlugins();
-        assertTrue(cmds.size() == 6);
+        assertTrue(cmds.size() == 7);
     }
 
     @Test
