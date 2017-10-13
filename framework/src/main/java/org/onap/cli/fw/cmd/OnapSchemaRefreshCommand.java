@@ -34,13 +34,15 @@ public class OnapSchemaRefreshCommand extends OnapCommand {
     @Override
     protected void run() throws OnapCommandException {
 
-        List<SchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverSchemas();
-        // Will override the existing json file
-        OnapCommandDiscoveryUtils.persistSchemaInfo(schemas);
-
-        for (int i = 0; i < schemas.size(); i++) {
-            SchemaInfo schema = schemas.get(i);
-            this.getResult().getRecordsMap().get("sr.no").getValues().add(String.valueOf(i + 1));
+        List<SchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(true);
+        int i = 0;
+        for (SchemaInfo schema :  schemas) {
+            if (schema.isIgnore()) {
+                continue;
+            }
+            
+            i++;
+            this.getResult().getRecordsMap().get("sr.no").getValues().add(String.valueOf(i));
             this.getResult().getRecordsMap().get("command").getValues().add(schema.getCmdName());
             this.getResult().getRecordsMap().get("schema").getValues().add(schema.getSchemaName());
             this.getResult().getRecordsMap().get("ocs-version").getValues().add(schema.getVersion());

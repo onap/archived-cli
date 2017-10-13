@@ -21,6 +21,13 @@ parameters:
     short_option: i
     long_option: internal-schema
     is_optional: false
+  - name: ocs-version
+    type: string
+    description: OCS version
+    short_option: b
+    long_option: ocs-version
+    is_optional: true
+    default_value: 1.0
 
 results:
   direction: landscape

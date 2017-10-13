@@ -16,18 +16,18 @@
 
 package org.onap.cli.fw.input;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandParameterMissing;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
-import java.io.File;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Oclip Command's input parameter.
