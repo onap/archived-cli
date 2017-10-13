@@ -1,0 +1,15 @@
+[{
+  "request" :
+    {
+      "method" : "get",
+      "uri" : "onboarding-api/v1.0/vendor-license-models",
+      "headers" : {
+          "USER_ID": "cs0008",
+          "content-type" : "application/json"
+      }
+    },
+  "response" :
+    {
+      "value":"81997d7d4795485daea7418fae26c5d0"
+    }
+}]
