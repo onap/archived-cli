@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_4c81a949",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/license-models/license-model-show-schema-1.1.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-10-13T13:44:39Z",
+      "side": 1,
+      "message": "show details of license model",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 27
+      },
+      "revId": "89d0d9414f388ee0896afd9a2a3d259a7dbfbe90",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_6c7c6573",
+        "filename": "plugins/sdc/src/main/resources/onap-cli-schema/license-models/license-model-show-schema-1.1.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-10-13T13:44:39Z",
+      "side": 1,
+      "message": "convert to uuid",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "89d0d9414f388ee0896afd9a2a3d259a7dbfbe90",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
