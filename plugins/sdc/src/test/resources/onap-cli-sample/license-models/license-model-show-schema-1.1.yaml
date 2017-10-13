@@ -1,0 +1,9 @@
+onap_cli_sample_version: 1.0
+
+name: license-model-show
+version: onap-1.1
+samples:
+  sample1:
+    name: list license models
+    input: -u cs0008 -p demo123456! -m http://192.168.17.126:8080 -d
+    moco: license-model-show-schema-1.1-moco.json
