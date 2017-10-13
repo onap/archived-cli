@@ -25,15 +25,15 @@ public class OnapCliArgumentTest {
     @Test
     public void onapCliArgumentValueMissingTest() {
         OnapCliArgumentValueMissing failed = new OnapCliArgumentValueMissing("Argument value missing");
-        assertEquals("0x7001::Value for argument Argument value missing is missing", failed.getMessage());
+        assertEquals("0x7101::Value for argument Argument value missing is missing", failed.getMessage());
     }
 
     @Test
     public void onapCliInvalidArgumentTest() {
         OnapCliInvalidArgument failed = new OnapCliInvalidArgument("Invalid Argument");
-        assertEquals("0x7000::Invalid argument Invalid Argument", failed.getMessage());
+        assertEquals("0x7102::Invalid argument Invalid Argument", failed.getMessage());
         failed = new OnapCliInvalidArgument("Invalid Argument", new Exception(""));
-        assertEquals("0x7000::Invalid argument Invalid Argument , ", failed.getMessage());
+        assertEquals("0x7102::Invalid argument Invalid Argument , ", failed.getMessage());
     }
 
 }

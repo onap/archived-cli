@@ -19,35 +19,33 @@ package org.onap.cli.fw.utils;
 import org.onap.cli.fw.cmd.CommandType;
 import org.onap.cli.fw.conf.Constants;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 /**
  * SchemaInfo is used in discovery caching.
  *
  */
 public class SchemaInfo {
 
-	/**
-	 * Name of the schema file name
-	 */
+    /**
+     * Name of the schema file name
+     */
     private String schemaName;
-    
+
     /**
      * Schema location in complete path
      */
     private String schemaURI;
-    
+
     private String cmdName;
-    
+
     private String product;
-    
+
     /**
      * OCS version
      */
     private String version;
-    
+
     private String type = CommandType.CMD.name();
-    
+
     private String schemaProfile = Constants.BASIC_SCHEMA_PROFILE;
 
     public String getSchemaName() {
@@ -96,11 +94,6 @@ public class SchemaInfo {
 
     public void setSchemaProfile(String internal) {
         this.schemaProfile = internal;
-    }
-
-    @JsonIgnore
-    public boolean isHttp() {
-        return this.getSchemaProfile().equals(Constants.HTTP_SCHEMA_PROFILE);
     }
 
     public String getType() {
