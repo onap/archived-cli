@@ -94,9 +94,9 @@ public class OnapCommandErrorTest {
 
     @Test
     public void oclipCommandExecutorInfoMissingTest() {
-        OnapCommandExecutorInfoMissing failed = new OnapCommandExecutorInfoMissing("Test");
+        OnapCommandInstantiationFailed failed = new OnapCommandInstantiationFailed("Test");
 
-        assertEquals("0x6002::Command Test excutor info is missing from schema", failed.getMessage());
+        assertEquals("0x6002::Failed to instantiate the command plugin Test", failed.getMessage());
     }
 
     @Test
@@ -225,9 +225,9 @@ public class OnapCommandErrorTest {
 
     @Test
     public void oclipCommandParameterOptionConflictTest() {
-        OnapCommandParameterOptionConflict failed = new OnapCommandParameterOptionConflict("option");
+        OnapCommandParameterOptionConflict failed = new OnapCommandParameterOptionConflict("test", "option");
 
-        assertEquals("0x7006::Parameter option option is in conflict, only one option is allowed with given name",
+        assertEquals("0x7006::In test, Parameter option option is in conflict, only one option is allowed with given name",
                 failed.getMessage());
     }
 
@@ -296,5 +296,5 @@ public class OnapCommandErrorTest {
         OnapCommandInvalidCommandType failed = new OnapCommandInvalidCommandType("test");
 
         assertEquals("0x3003::Command type test is invalid", failed.getMessage());
-    }    
+    }
 }

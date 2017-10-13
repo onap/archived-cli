@@ -16,11 +16,6 @@
 
 package org.onap.cli.fw.output.print;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
-import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
-import org.onap.cli.fw.output.PrintDirection;
-
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -30,6 +25,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
+import org.onap.cli.fw.output.PrintDirection;
 
 /**
  * Oclip Command Table print.

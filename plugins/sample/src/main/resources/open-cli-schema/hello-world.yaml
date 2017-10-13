@@ -14,7 +14,7 @@ parameters:
       description: name of the person
       long_option: name
       short_option: b
-      default_value: ${DEMO_NAME}
+      default_value: ${env:DEMO_NAME}
       type: string
       is_optional: false
 
