@@ -39,7 +39,7 @@ import java.util.stream.Stream;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidSample;
-import org.onap.cli.fw.utils.OnapCommandUtils;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.main.OnapCli;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -117,7 +117,7 @@ public class OnapCommandHttpMocoServer {
     private List<Resource> dicoverSampleYamls() {
         Resource[] resources = new Resource [] {};
         try {
-            resources = OnapCommandUtils.findResources(SAMPLE_PATTERN + this.samplesToTest);
+            resources = OnapCommandDiscoveryUtils.findResources(SAMPLE_PATTERN + this.samplesToTest);
         } catch (IOException e) {
             LOG.error("Failed to discover the samples", e);
         }
