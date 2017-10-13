@@ -8,9 +8,7 @@ CLI architecture
 
 Following diagram shows the high-level architecture of ONAP CLI.
 
-|image3|
-
-.. |image3| image:: images/portal-cli-arch.png
+.. image:: images/portal-cli-arch.png
    :height: 600px
    :width: 800px
 
@@ -19,7 +17,7 @@ the corresponding command route the request to that command plugin.
 
 * **Command Discoverer** : Discoverer discovers the commands both in plug-in format and YAML and auto-matically register them into Registrar.
 
-* **Command Plug-ings** : Implement the command as plugin. More details developer_guide_.
+* **Command Plug-ings** : Implement the command as plugin. More details :ref:`developer_guide`
 
 * **HTTP Command** : Plug-in for implementing all Rest based command as YAML without any coding.
 

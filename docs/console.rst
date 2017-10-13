@@ -7,24 +7,18 @@
 CLI Console
 ===========
 
-Please install the CLI by following guidelines provided in OOM_and_HEAT_based_deployment_.
-
-.. _OOM_and_HEAT_based_deployment : OOM_and_HEAT_based_deployment.rst
+Please install the CLI by following guidelines provided in :ref:`OOM_and_HEAT_based_deployment`
 
 After installation, ONAP CLI can be used in following form:
 
 # Command Shell
 
-|image4|
-
-.. |image4| image:: images/portal-cli-shell.png
+.. image:: images/portal-cli-shell.png
    :height: 600px
    :width: 800px
 
 # Web Command Console
 
-|image5|
-
-.. |image5| image:: images/portal-cli-web-con.png
+.. image:: images/portal-cli-web-con.png
    :height: 600px
    :width: 800px
