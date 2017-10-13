@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
-name: license-model-show
-description: Details of the License Model
+name: ep-show
+description: Details of the Entitlement Pool
 version: onap-1.0
 service:
   name: sdc
@@ -15,36 +15,37 @@ parameters:
     short_option: x
     long_option: license-model-id
     is_optional: false
+  - name: pool-id
+    description: Onap Entitlement Pool ID
+    type: string
+    short_option: y
+    long_option: pool-id
+    is_optional: false
 
 results:
   direction: landscape
   attributes:
     - name: name
-      description: License Model  Name
+      description: Entitlement Pool Name
       scope: short
       type: string
     - name: ID
-      description: License Model ID
+      description: Entitlement Pool ID
       scope: short
       type: string
     - name: description
-      description: Description for the License Model
-      scope: short
-      type: string
-    - name: status
-      description: Status of the License Model
+      description: Description for the Entitlement Pool
       scope: short
       type: string
 http:
   request:
-    uri: /onboarding-api/v1.0/vendor-license-models/${license-model-id}
+    uri: /onboarding-api/v1.0/vendor-license-models/${license-model-id}/entitlement-pools/${pool-id}
     method: GET
   success_codes:
     - 200
   result_map:
-    name: $b{$.vendorName}
+    name: $b{$.name}
     ID: $b{$.id}
     description: $b{$.description}
-    status: $b{$.status}
   sample_response:
-    body: '{"vendorName": "5aa8a88c","description": "vendor license model","iconRef": "icon","id": "109F0F948B974D998D89893A1BD39D4A","version": "0.1","status": "Locked","lockingUser": "cs0008","viewableVersions": ["0.1"]}'
+    body: '{"name":"demo-group","description":"","type":"Universal","operationalScope":{"choices":["Tenant"]},"id":"FF87C2483B854B5BA5F96751BF251F46","referencingFeatureGroups":[]}'

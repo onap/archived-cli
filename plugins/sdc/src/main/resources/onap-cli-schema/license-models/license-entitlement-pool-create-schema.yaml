@@ -1,0 +1,83 @@
+open_cli_schema_version: 1.0
+name: ep-create
+description: Create Entitlement Pool
+version: onap-1.0
+service:
+  name: sdc
+  version: v1.0
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: ep-name
+    description: Entitlement Pool name
+    type: string
+    short_option: x
+    long_option: ep-name
+    is_optional: false
+  - name: license-model-id
+    description: License Model ID
+    type: string
+    short_option: y
+    long_option: license-model-id
+    is_optional: false
+  - name: license-group-description
+    description: Description for Entitlement Pool
+    type: string
+    short_option: z
+    long_option: ep-description
+    is_optional: true
+  - name: threshold-value
+    description: Threshold Value
+    type: string
+    long-option: threshold-value
+    short-option: t
+  - name: threshold-units
+    description: Threshold Units
+    type: string
+    long-option: threshold-units
+    short-option: s
+  - name: entitlement-metric
+    description: Entitlement Metric
+    type: string
+    long-option: entitlement-metric
+    short-option: p
+  - name: aggregation-function
+    description: Aggregation-function
+    type: string
+    long-option: aggregation-function
+    short-option: q
+  - name: operational-scope
+    description: Operation Scope
+    type: string
+    long-option: operational-scope
+    short-option: u
+  - name: time
+    description: Time units
+    type: string
+    long-option: time
+    short-option: v
+  - name: manufacturer-rn
+    description: Manufacturer Reference Number
+    type: string
+    long-option: manufacturer-rn
+    short-option: w
+
+results:
+  direction: portrait
+  attributes:
+    - name: ID
+      description: Entitlement Pool ID
+      scope: short
+      type: string
+http:
+  request:
+    uri: /onboarding-api/v1.0/vendor-license-models/${license-model-id}/entitlement-pools
+    method: POST
+    body: '{"name": "${ep-name}", "description": "${ep-description}",  "thresholdValue": "${threshold-value}", "thresholdUnits": "${threshold-units}", "entitlementMetric": {"choice": "${entitement-metric}","other": ""}, "increments": "robot", "aggregationFunction": {"choice": "${aggregation-function}","other": ""}, "operationalScope": {"choices":["${operational-scope}"], "other":""},"time": {"choice": "${time}", "other":""},"manufacturerReferenceNumber": "${manufacturer-rn}"}'
+  success_codes:
+    - 200
+  result_map:
+    ID: $b{$.value}
+  sample_response:
+    body: '{"value":"2DEB6CB4B082415BB7A697C9CD1273BA"}'
