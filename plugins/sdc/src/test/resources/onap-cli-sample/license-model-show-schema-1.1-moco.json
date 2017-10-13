@@ -1,0 +1,39 @@
+[{
+  "request" :
+    {
+      "method" : "get",
+      "uri" : "onboarding-api/v1.0/vendor-license-models",
+      "headers" : {
+          "USER_ID": "cs0008",
+          "content-type" : "application/json"
+      }
+    },
+  "response" :
+    {
+      "listCount": 1,
+    "results": [
+        {
+            "vendorName": "856acdac-40ef-4482-9981",
+            "description": "vendor license model",
+            "iconRef": "icon",
+            "id": "214fa77b19bb4253a35df7882562f2d0",
+            "version": {
+                "id": "1.0",
+                "label": "1.0"
+            },
+            "status": "Final",
+            "viewableVersions": [
+                {
+                    "id": "1.0",
+                    "label": "1.0"
+                }
+            ],
+            "finalVersions": [
+                {
+                    "id": "1.0",
+                    "label": "1.0"
+                }
+            ]
+        }]
+    }
+}]
