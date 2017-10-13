@@ -1,0 +1,51 @@
+[{
+  "request" :
+    {
+      "method" : "get",
+      "uri" : "onboarding-api/v1.0/vendor-license-models",
+      "headers" : {
+          "USER_ID": "cs0008",
+          "content-type" : "application/json"
+      }
+    },
+  "response" :
+    {
+      "listCount": 1,
+      "results": [
+        {
+          "name": "7cad489b-3a50-4c10-8193",
+          "description": "vendor software product",
+          "category": "resourceNewCategory.generic",
+          "subCategory": "resourceNewCategory.generic.abstract",
+          "vendorName": "856acdac-40ef-4482-9981",
+          "vendorId": "214fa77b19bb4253a35df7882562f2d0",
+          "licensingVersion": {
+            "id": "1.0",
+            "label": "1.0"
+          },
+          "licensingData": {
+            "licenseAgreement": "8183a6177bef4ba5abfc7b74fd8b851c",
+            "featureGroups": [
+              "b32502d05b834988b93e12688fc57a4e"
+            ]
+          },
+          "onboardingMethod": "NetworkPackage",
+          "onboardingOrigin": "none",
+          "id": "918e3f1721f74ce69f89826d4be807ac",
+          "version": {
+            "id": "0.1",
+            "label": "0.1"
+          },
+          "viewableVersions": [
+            {
+              "id": "0.1",
+              "label": "0.1"
+            }
+          ],
+          "status": "Locked",
+          "lockingUser": "cs0008",
+          "isOldVersion": "False"
+        }
+      ]
+    }
+}]

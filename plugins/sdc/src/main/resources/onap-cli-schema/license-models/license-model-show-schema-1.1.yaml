@@ -1,0 +1,65 @@
+open_cli_schema_version: 1.0
+name: license-model-show
+description: Details of the License Model
+version: onap-1.1
+service:
+  name: sdc
+  version: v1.0
+  auth: basic
+  mode: direct
+
+results:
+  direction: landscape
+  attributes:
+    - name: id
+      description: License ID
+      scope: short
+      type: string
+    - name: name
+      description: License  Name
+      scope: long
+      type: string
+    - name: vendor-id
+      description: Vendor  ID
+      scope: short
+      type: string
+    - name: vendor-name
+      description: Vendor  Name
+      scope: short
+      type: string
+    - name: category
+      description: License Category
+      scope: long
+      type: string
+    - name: sub-category
+      description: License Sub-Category
+      scope: long
+      type: string
+    - name: status
+      description: status
+      scope: short
+      type: string
+    - name: locking-user
+      description: Username Checkout License
+      scope: long
+      type: string
+    - name: description
+      description: License description
+      scope: short
+      type: string
+http:
+  request:
+    uri: /onboarding-api/v1.0/vendor-software-products
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    id: $b{$.results.[*].id}
+    name: $b{$.results.[*].name}
+    vendor-id: $b{$.results.[*].vendorId}
+    vendor-name: $b{$.results.[*].vendorName}
+    category: $b{$.results.[*].category}
+    sub-category: $b{$.results.[*].subCategory}
+    status: $b{$.results.[*].status}
+    locking-user: $b{$.results.[*].lockingUser}
+    description: $b{$.results.[*].description}
