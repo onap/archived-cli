@@ -1,7 +1,8 @@
-.. _developer_guide:
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright 2017 Huawei Technologies Co., Ltd.
+
+.. _cli_developer_guide:
 
 CLI developer guide
 ===================
@@ -80,9 +81,9 @@ All ONAP CLI commands can be implemented as YAML using HTTP profile.
 
 Follow the steps below to implement new commands in ONAP using YAML:
 
-#. Install the latest ONAP CLI using the guide installation_guide_.
+#. Install the latest ONAP CLI using the guide :ref:`cli_installation_guide`.
 
-#. Under the onap-cli-schema folder, add a new YAML file by referring to open_cli_schema_version_1_0_.
+#. Under the onap-cli-schema folder, add a new YAML file by referring to :ref:`open_cli_schema_version_1_0`.
 
 #. Use the command 'onap schema-validate' to validate the YAML before testing its functionality.
 

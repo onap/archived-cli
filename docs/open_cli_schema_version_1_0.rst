@@ -1,7 +1,8 @@
-.. _open_cli_schema_version_1_0:
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright 2017 Huawei Technologies Co., Ltd.
+
+.. _open_cli_schema_version_1_0:
 
 Open Command Line Interface (CLI) Schema Version (OCS) 1.0
 ==========================================================
@@ -638,11 +639,11 @@ direction
 printed. It can be:
 
 * *portrait* : To print the results in two columns. First column is the name of
-the attribute and second column is the value of the attribute. It's more useful
-while command does operations like creation of resource, viewing of resources.
+  the attribute and second column is the value of the attribute. It's more useful
+  while command does operations like creation of resource, viewing of resources.
 
 * *landscape* : To print the results row vise in landscape mode. It's more
-useful while command does operations like listing of resource.
+  useful while command does operations like listing of resource.
 
 attributes
 ~~~~~~~~~~
@@ -691,8 +692,8 @@ there are two scopes:
 * *short* : attribute configured with this option will always printed by default
 
 * *long* : attriuted configured with this option will get printed only when
-user inputs the default parameter *long*, defined in *default_parameters*
-section. So to print all attributes of a command, user will input parameter:
+  user inputs the default parameter *long*, defined in *default_parameters*
+  section. So to print all attributes of a command, user will input parameter:
 
     --long
 

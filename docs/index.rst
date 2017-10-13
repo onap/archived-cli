@@ -40,3 +40,4 @@ ONAP CLI is developed using the industry first CLI platform called
    installation_guide.rst
    OOM_and_HEAT_based_deployment.rst
    logging.rst
+   release-notes.rst
