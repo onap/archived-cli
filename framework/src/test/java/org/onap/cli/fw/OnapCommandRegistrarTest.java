@@ -25,6 +25,7 @@ import java.io.File;
 import java.net.URL;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
@@ -57,24 +58,6 @@ public class OnapCommandRegistrarTest {
     }
 
     @Test
-    public void registerTest() throws OnapCommandException {
-        OnapCommand test = new OnapCommandTest();
-        Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
-        registerar.register("Test", "open-cli", cmd);
-        OnapCommand cc = registerar.get("Test");
-        assertTrue(cmd == cc.getClass());
-
-    }
-
-    @Test
-    public void cmdTestSchema() throws OnapCommandException {
-        OnapCommand test = new OnapCommandTest();
-        Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
-        registerar.register("Test", "open-cli", cmd);
-        OnapCommand cc = registerar.get("Test");
-    }
-
-    @Test
     public void oclipCommandNotFoundTest() throws OnapCommandException {
         try {
             registerar = OnapCommandRegistrar.getRegistrar();
@@ -85,40 +68,6 @@ public class OnapCommandRegistrarTest {
         } catch (Exception e) {
             fail("This should have thrown an OnapCommandNotFound exception");
         }
-    }
-
-    @Test
-    public void oclipCommandRegistrationFailedTest() throws OnapCommandException {
-
-        @OnapCommandSchema(schema = "sample-test-schema.yaml")
-        class Test extends OnapCommand {
-
-            @Override
-            protected void run() throws OnapCommandException {
-
-            }
-
-        }
-
-        OnapCommand com = new Test();
-        Class<OnapCommand> cmd = (Class<OnapCommand>) com.getClass();
-        try {
-            registerar.register("Test2", "open-cli", cmd);
-            registerar.get("Test2");
-            fail("This should have thrown an exception");
-        } catch (OnapCommandRegistrationFailed e) {
-            assertEquals("0x2002", e.getErrorCode());
-        }
-    }
-
-    @Test(expected = OnapCommandHelpFailed.class)
-    public void helpTestException() throws OnapCommandException {
-        OnapCommand test = new OnapCommandTest1();
-        Class<OnapCommand> cmd = (Class<OnapCommand>) test.getClass();
-        registerar = new OnapCommandRegistrar();
-        registerar.register("test1", "open-cli", cmd);
-        String help = registerar.getHelp();
-        assertNotNull(help);
     }
 
     @Test

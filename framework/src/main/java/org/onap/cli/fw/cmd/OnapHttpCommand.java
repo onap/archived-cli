@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.ad.OnapAuthClient;
 import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.conf.Constants;
@@ -32,7 +33,6 @@ import org.onap.cli.fw.error.OnapCommandExecutionFailed;
 import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
-import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.http.mock.MockJsonGenerator;
@@ -43,6 +43,7 @@ import org.onap.cli.http.mock.MockResponse;
  * Oclip Command.
  *
  */
+@OnapCommandSchema(type = Constants.HTTP_SCHEMA_PROFILE)
 public class OnapHttpCommand extends OnapCommand {
 
     private HttpInput input = new HttpInput();
