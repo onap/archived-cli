@@ -34,6 +34,7 @@ import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
+import org.onap.cli.fw.utils.OnapCommandSchemaLoader;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.http.mock.MockJsonGenerator;
 import org.onap.cli.http.mock.MockRequest;
@@ -98,7 +99,7 @@ public class OnapHttpCommand extends OnapCommand {
 
     @Override
     protected void initializeProfileSchema() throws OnapCommandException {
-        OnapCommandUtils.loadHttpSchema(this, this.getSchemaName(), true, false);
+        OnapCommandSchemaLoader.loadHttpSchema(this, this.getSchemaName(), true, false);
     }
 
     @Override
