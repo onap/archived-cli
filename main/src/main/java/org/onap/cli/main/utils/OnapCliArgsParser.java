@@ -41,12 +41,12 @@ import java.util.Map;
  * Oclip CLI utilities.
  *
  */
-public class OnapCliUtils {
+public class OnapCliArgsParser {
 
     /**
      * private Constructor.
      */
-    private OnapCliUtils() {
+    private OnapCliArgsParser() {
 
     }
 
@@ -93,52 +93,56 @@ public class OnapCliUtils {
         int positionalIdx = 0;
         // Skip the first args oclip cmd name, so start from 1
         for (int i = 1; i < args.size(); i++) {
-            // check if short option exist
-            // (mrkanag) Optimize the below code to handle short and long options in one iteration
-            // now its redundant
-            if (shortOptionMap.containsKey(args.get(i))) {
+        	String paramName = null;
+        	if (shortOptionMap.containsKey(args.get(i))) {
+        		paramName = shortOptionMap.get(args.get(i));
+        	} else if (longOptionMap.containsKey(args.get(i))) {
+        		paramName = longOptionMap.get(args.get(i));
+        	}
+        	
+        	if (paramName != null) {
                 // end of the list or if its option rather than a value
                 if ((i + 1) == args.size() || args.get(i + 1).startsWith("-")) {
-                    if (paramMap.get(shortOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.BOOL)) {
-                        paramMap.get(shortOptionMap.get(args.get(i))).setValue("true");
+                    if (paramMap.get(paramName).getParameterType().equals(ParameterType.BOOL)) {
+                        paramMap.get(paramName).setValue("true");
                         continue;
                     }
                     throw new OnapCliArgumentValueMissing(args.get(i));
                 }
 
-                if (paramMap.get(shortOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.JSON)) {
-                    paramMap.get(shortOptionMap.get(args.get(i))).setValue(readJsonStringFromUrl(args.get(i + 1),
-                            paramMap.get(shortOptionMap.get(args.get(i))).getName()));
+                if (paramMap.get(paramName).getParameterType().equals(ParameterType.JSON)) {
+                    paramMap.get(paramName).setValue(readJsonStringFromUrl(args.get(i + 1),
+                            paramMap.get(paramName).getName()));
                     i++;
                     continue;
-                } if (paramMap.get(shortOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.TEXT)) {
-                    paramMap.get(shortOptionMap.get(args.get(i))).setValue(readTextStringFromUrl(args.get(i + 1),
-                            paramMap.get(shortOptionMap.get(args.get(i))).getName()));
+                } if (paramMap.get(paramName).getParameterType().equals(ParameterType.TEXT)) {
+                    paramMap.get(paramName).setValue(readTextStringFromUrl(args.get(i + 1),
+                            paramMap.get(paramName).getName()));
                     i++;
                     continue;
-                } else if (paramMap.get(shortOptionMap.get(args.get(i))).getParameterType()
+                } else if (paramMap.get(paramName).getParameterType()
                         .equals(ParameterType.ARRAY)) {
-                    Object value = paramMap.get(shortOptionMap.get(args.get(i))).getValue();
+                    Object value = paramMap.get(paramName).getValue();
                     List<String> list;
                     if (value == "") {
                         list = new ArrayList<>();
                     } else {
-                        list = convertJsonToListString(paramMap.get(shortOptionMap.get(args.get(i))).getName(),
+                        list = convertJsonToListString(paramMap.get(paramName).getName(),
                                 value.toString());
                     }
                     list.add(args.get(i + 1));
-                    paramMap.get(shortOptionMap.get(args.get(i))).setValue(list);
+                    paramMap.get(paramName).setValue(list);
                     i++;
                     continue;
-                } else if (paramMap.get(shortOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.MAP)) {
-                    Object value = paramMap.get(shortOptionMap.get(args.get(i))).getValue();
+                } else if (paramMap.get(paramName).getParameterType().equals(ParameterType.MAP)) {
+                    Object value = paramMap.get(paramName).getValue();
 
                     Map<String, String> map;
 
                     if (value == "") {
                         map = new HashMap<>();
                     } else {
-                        map = convertJsonToMapString(paramMap.get(shortOptionMap.get(args.get(i))).getName(),
+                        map = convertJsonToMapString(paramMap.get(paramName).getName(),
                                 value.toString());
                     }
 
@@ -146,83 +150,16 @@ public class OnapCliUtils {
                     String[] argArr = arg.split("=");
 
                     if (argArr.length != 2) {
-                        throw new OnapCliInvalidArgument(paramMap.get(shortOptionMap.get(args.get(i))).getName());
+                        throw new OnapCliInvalidArgument(paramMap.get(paramName).getName());
                     }
 
                     map.put(argArr[0], argArr[1]);
-                    paramMap.get(shortOptionMap.get(args.get(i))).setValue(map);
+                    paramMap.get(paramName).setValue(map);
                     i++;
                     continue;
                 }
 
-                paramMap.get(shortOptionMap.get(args.get(i))).setValue(args.get(i + 1));
-
-                i++;
-                continue;
-            }
-
-            // check if long option exist
-            if (longOptionMap.containsKey(args.get(i))) {
-                // end of the list or if its option rather than a value
-                if ((i + 1) == args.size() || args.get(i + 1).startsWith("-")) {
-                    if (paramMap.get(longOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.BOOL)) {
-                        paramMap.get(longOptionMap.get(args.get(i))).setValue("true");
-                        continue;
-                    }
-                    throw new OnapCliArgumentValueMissing(args.get(i));
-                }
-
-                if (paramMap.get(longOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.JSON)) {
-                    paramMap.get(longOptionMap.get(args.get(i))).setValue(readJsonStringFromUrl(args.get(i + 1),
-                            paramMap.get(longOptionMap.get(args.get(i))).getName()));
-                    i++;
-                    continue;
-                } else if (paramMap.get(longOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.TEXT)) {
-                    paramMap.get(longOptionMap.get(args.get(i))).setValue(readTextStringFromUrl(args.get(i + 1),
-                            paramMap.get(longOptionMap.get(args.get(i))).getName()));
-                    i++;
-                    continue;
-                } else if (paramMap.get(longOptionMap.get(args.get(i))).getParameterType()
-                        .equals(ParameterType.ARRAY)) {
-                    Object value = paramMap.get(longOptionMap.get(args.get(i))).getValue();
-                    List<String> list;
-                    if (value == "") {
-                        list = new ArrayList<>();
-                    } else {
-                        list = convertJsonToListString(paramMap.get(longOptionMap.get(args.get(i))).getName(),
-                                value.toString());
-                    }
-                    list.add(args.get(i + 1));
-                    paramMap.get(longOptionMap.get(args.get(i))).setValue(list);
-                    i++;
-                    continue;
-                } else if (paramMap.get(longOptionMap.get(args.get(i))).getParameterType().equals(ParameterType.MAP)) {
-
-                    Object value = paramMap.get(longOptionMap.get(args.get(i))).getValue();
-
-                    Map<String, String> map;
-
-                    if (value == "") {
-                        map = new HashMap<>();
-                    } else {
-                        map = convertJsonToMapString(paramMap.get(longOptionMap.get(args.get(i))).getName(),
-                                value.toString());
-                    }
-
-                    String arg = args.get(i + 1);
-                    String[] argArr = arg.split("=");
-
-                    if (argArr.length != 2) {
-                        throw new OnapCliInvalidArgument(paramMap.get(longOptionMap.get(args.get(i))).getName());
-                    }
-
-                    map.put(argArr[0], argArr[1]);
-                    paramMap.get(longOptionMap.get(args.get(i))).setValue(map);
-                    i++;
-                    continue;
-                }
-
-                paramMap.get(longOptionMap.get(args.get(i))).setValue(args.get(i + 1));
+                paramMap.get(paramName).setValue(args.get(i + 1));
 
                 i++;
                 continue;
