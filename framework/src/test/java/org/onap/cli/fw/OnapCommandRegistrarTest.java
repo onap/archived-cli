@@ -25,12 +25,10 @@ import java.io.File;
 import java.net.URL;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandNotFound;
-import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
 
 public class OnapCommandRegistrarTest {
 

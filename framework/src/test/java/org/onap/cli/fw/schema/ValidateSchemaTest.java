@@ -16,16 +16,16 @@
 
 package org.onap.cli.fw.schema;
 
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.utils.OnapCommandSchemaLoaderUtils;
-
-import java.util.List;
-
-import static org.junit.Assert.assertTrue;
 
 public class ValidateSchemaTest {
 
