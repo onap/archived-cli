@@ -34,14 +34,14 @@ import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
-import org.onap.cli.fw.utils.OnapCommandSchemaLoader;
+import org.onap.cli.fw.utils.OnapCommandSchemaLoaderUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.http.mock.MockJsonGenerator;
 import org.onap.cli.http.mock.MockRequest;
 import org.onap.cli.http.mock.MockResponse;
 
 /**
- * Oclip Command.
+ * Oclip http Command.
  *
  */
 @OnapCommandSchema(type = Constants.HTTP_SCHEMA_PROFILE)
@@ -99,7 +99,7 @@ public class OnapHttpCommand extends OnapCommand {
 
     @Override
     protected void initializeProfileSchema() throws OnapCommandException {
-        OnapCommandSchemaLoader.loadHttpSchema(this, this.getSchemaName(), true, false);
+        OnapCommandSchemaLoaderUtils.loadHttpSchema(this, this.getSchemaName(), true, false);
     }
 
     @Override
