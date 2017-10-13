@@ -135,7 +135,7 @@ public abstract class OnapCommand {
     }
 
     /**
-     * Initialize this command from command schema.
+     * Initialize this command from command schema and assumes schema is already validated.
      *
      * @throws OnapCommandRegistrationFailed
      *             Command Registration Exception
@@ -155,18 +155,27 @@ public abstract class OnapCommand {
      *             ParameterNameConflict Exception
      * @throws OnapCommandInvalidSchemaVersion
      *             InvalidSchemaVersion Exception
+     *
+     * @return List of error strings
      */
-    public void initializeSchema(String schema) throws OnapCommandException {
-        this.setSchemaName(schema);
-        OnapCommandSchemaLoaderUtils.loadSchema(this, schema, true, false);
-        this.initializeProfileSchema();
-        this.isInitialzied = true;
+    public List<String> initializeSchema(String schema) throws OnapCommandException {
+        return this.initializeSchema(schema, false);
     }
 
+    public List<String> initializeSchema(String schema, boolean validate) throws OnapCommandException {
+        this.setSchemaName(schema);
+
+        List<String> errors = OnapCommandSchemaLoaderUtils.loadSchema(this, schema, true, validate);
+        errors.addAll(this.initializeProfileSchema());
+        this.isInitialzied = true;
+
+        return errors;
+    }
     /**
-     * Any additional profile based such as http/swagger schema could be initialized.
+     * Any additional profile based such as http schema could be initialized.
      */
-    protected void initializeProfileSchema() throws OnapCommandException {
+    protected List<String> initializeProfileSchema() throws OnapCommandException {
+        return new ArrayList<>();
     }
 
     /*

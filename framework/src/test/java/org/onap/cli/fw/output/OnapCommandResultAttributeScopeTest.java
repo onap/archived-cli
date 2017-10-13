@@ -18,10 +18,10 @@ package org.onap.cli.fw.output;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Collections;
+
 import org.junit.Test;
 import org.onap.cli.fw.input.ParameterType;
-
-import java.util.Collections;
 
 public class OnapCommandResultAttributeScopeTest {
     @Test

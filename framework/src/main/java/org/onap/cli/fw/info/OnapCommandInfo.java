@@ -31,6 +31,8 @@ public class OnapCommandInfo {
 
     private CommandType type = CommandType.CMD;
 
+    private boolean ignore = false;
+
     public String getProduct() {
         return product;
     }
@@ -62,4 +64,14 @@ public class OnapCommandInfo {
     public void setCommandType(CommandType type) {
         this.type = type;
     }
+
+    public boolean isIgnore() {
+        return ignore;
+    }
+
+    public void setIgnore(boolean ignore) {
+        this.ignore = ignore;
+    }
+
+
 }

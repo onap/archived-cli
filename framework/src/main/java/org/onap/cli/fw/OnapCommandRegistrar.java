@@ -17,8 +17,6 @@
 package org.onap.cli.fw;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -33,7 +31,6 @@ import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidRegistration;
 import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
-import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
 import org.onap.cli.fw.error.OnapCommandRegistrationProductInfoMissing;
 import org.onap.cli.fw.error.OnapUnsupportedSchemaProfile;
 import org.onap.cli.fw.input.cache.OnapCommandParameterCache;
@@ -55,6 +52,8 @@ import org.onap.cli.fw.utils.SchemaInfo;
  */
 public class OnapCommandRegistrar {
     private Map<String, Class<? extends OnapCommand>> registry = new HashMap<>();
+
+    private Map<String, Class<? extends OnapCommand>> registryProfilePlugins = new HashMap<>();
 
     private Set<String> availableProductVersions = new HashSet<>();
 
@@ -111,6 +110,10 @@ public class OnapCommandRegistrar {
 
     }
 
+    private void registerProfilePlugin(String profile, Class<? extends OnapCommand> cmd) {
+        this.registryProfilePlugins.put(profile, cmd);
+    }
+
     /**
      * Get global registrar.
      *
@@ -154,6 +157,14 @@ public class OnapCommandRegistrar {
             }
         }
         return cmds;
+    }
+
+    public Class<? extends OnapCommand> getProfilePlugin(String profile) throws OnapUnsupportedSchemaProfile {
+        if (!this.registryProfilePlugins.containsKey(profile)) {
+            throw new OnapUnsupportedSchemaProfile(profile);
+        }
+
+        return this.registryProfilePlugins.get(profile);
     }
 
     public Set<String> getAvailableProductVersions() {
@@ -205,18 +216,9 @@ public class OnapCommandRegistrar {
             throw new OnapCommandNotFound(cmdName, version);
         }
 
-        OnapCommand cmd;
-        try {
-            Constructor<?> constr = cls.getConstructor();
-            cmd = (OnapCommand) constr.newInstance();
-
-            String schemaName = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version).getSchemaName();
-
-            cmd.initializeSchema(schemaName);
-        } catch (OnapCommandException | NoSuchMethodException | SecurityException | InstantiationException
-                | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            throw new OnapCommandRegistrationFailed(cmdName, e);
-        }
+        OnapCommand cmd = OnapCommandDiscoveryUtils.loadCommandClass(cls);
+        String schemaName = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version).getSchemaName();
+        cmd.initializeSchema(schemaName);
 
         return cmd;
     }
@@ -231,6 +233,7 @@ public class OnapCommandRegistrar {
                 if (ano.schema() != null && !ano.schema().isEmpty()) {
                     map.put(ano.schema(), cmd);
                 } else if (ano.type() != null && !ano.type().isEmpty()) {
+                	this.registerProfilePlugin(ano.type(), cmd);
                     map.put(ano.type(), cmd);
                 } else {
                     throw new OnapUnsupportedSchemaProfile(ano.schema());
@@ -242,15 +245,19 @@ public class OnapCommandRegistrar {
     }
 
     private void autoDiscoverSchemas() throws OnapCommandException {
-        List<SchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas();
+        List<SchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(true);
 
         Map<String, Class<OnapCommand>> plugins = this.autoDiscoverCommandPlugins();
 
         for (SchemaInfo schema : schemas) {
-            if (plugins.containsKey(schema.getSchemaProfile())) {
+            if (schema.isIgnore()) {
+                continue;
+            }
+
+             if (plugins.containsKey(schema.getSchemaName())) {
+                 this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaName()));
+             } else if (plugins.containsKey(schema.getSchemaProfile())) {
                 this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaProfile()));
-            } else if (plugins.containsKey(schema.getSchemaName())) {
-                this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaName()));
             } else {
                 throw new OnapUnsupportedSchemaProfile(schema.getSchemaURI());
             }

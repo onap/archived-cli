@@ -48,6 +48,8 @@ public class SchemaInfo {
 
     private String schemaProfile = Constants.BASIC_SCHEMA_PROFILE;
 
+    private String ignore = Constants.BOOLEAN_FALSE;
+
     public String getSchemaName() {
         return schemaName;
     }
@@ -104,6 +106,17 @@ public class SchemaInfo {
         this.type = type;
     }
 
+    public boolean isIgnore() {
+        return Constants.BOOLEAN_TRUE.equalsIgnoreCase(this.getIgnore());
+    }
+
+    public String getIgnore() {
+        return ignore;
+    }
+
+    public void setIgnore(String ignore) {
+        this.ignore = ignore;
+    }
 
 
 }
