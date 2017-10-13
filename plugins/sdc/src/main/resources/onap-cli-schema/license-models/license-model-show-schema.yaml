@@ -37,7 +37,7 @@ results:
       type: string
 http:
   request:
-    uri: /onboarding-api/v1.0/vendor-software-products/${license-model-id}
+    uri: /onboarding-api/v1.0/vendor-license-models/${license-model-id}
     method: GET
   success_codes:
     - 200
