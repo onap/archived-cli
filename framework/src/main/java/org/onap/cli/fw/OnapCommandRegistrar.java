@@ -42,6 +42,8 @@ import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.PrintDirection;
 import org.onap.cli.fw.output.ResultType;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
+import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.fw.utils.SchemaInfo;
 
@@ -178,7 +180,7 @@ public class OnapCommandRegistrar {
      *             exception
      */
     public List<SchemaInfo> listCommandInfo() throws OnapCommandException {
-        return OnapCommandUtils.discoverSchemas();
+        return OnapCommandDiscoveryUtils.discoverSchemas();
     }
 
     /**
@@ -208,7 +210,7 @@ public class OnapCommandRegistrar {
             Constructor<?> constr = cls.getConstructor();
             cmd = (OnapCommand) constr.newInstance();
 
-            String schemaName = OnapCommandUtils.getSchemaInfo(cmdName, version).getSchemaName();
+            String schemaName = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version).getSchemaName();
 
             cmd.initializeSchema(schemaName);
         } catch (OnapCommandException | NoSuchMethodException | SecurityException | InstantiationException
@@ -220,7 +222,7 @@ public class OnapCommandRegistrar {
     }
 
     private Map<String, Class<OnapCommand>> autoDiscoverCommandPlugins() throws OnapCommandException {
-        List<Class<OnapCommand>> cmds = OnapCommandUtils.discoverCommandPlugins();
+        List<Class<OnapCommand>> cmds = OnapCommandDiscoveryUtils.discoverCommandPlugins();
         Map<String, Class<OnapCommand>> map = new HashMap<>();
 
         for (Class<OnapCommand> cmd : cmds) {
@@ -240,7 +242,7 @@ public class OnapCommandRegistrar {
     }
 
     private void autoDiscoverSchemas() throws OnapCommandException {
-        List<SchemaInfo> schemas = OnapCommandUtils.discoverOrLoadSchemas();
+        List<SchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas();
 
         Map<String, Class<OnapCommand>> plugins = this.autoDiscoverCommandPlugins();
 
@@ -266,7 +268,7 @@ public class OnapCommandRegistrar {
             version = OnapCommandConfg.getVersion();
         }
 
-        String buildTime = OnapCommandUtils.findLastBuildTime();
+        String buildTime = OnapCommandHelperUtils.findLastBuildTime();
         if (buildTime!= null && !buildTime.isEmpty()) {
             buildTime = " [" + buildTime + "]";
         } else {

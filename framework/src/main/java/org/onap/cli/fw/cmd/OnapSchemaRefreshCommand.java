@@ -21,7 +21,7 @@ import java.util.List;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.utils.OnapCommandUtils;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.fw.utils.SchemaInfo;
 
 /**
@@ -34,9 +34,9 @@ public class OnapSchemaRefreshCommand extends OnapCommand {
     @Override
     protected void run() throws OnapCommandException {
 
-        List<SchemaInfo> schemas = OnapCommandUtils.discoverSchemas();
+        List<SchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverSchemas();
         // Will override the existing json file
-        OnapCommandUtils.persistSchemaInfo(schemas);
+        OnapCommandDiscoveryUtils.persistSchemaInfo(schemas);
 
         for (int i = 0; i < schemas.size(); i++) {
             SchemaInfo schema = schemas.get(i);
