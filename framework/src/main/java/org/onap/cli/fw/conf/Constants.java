@@ -28,26 +28,26 @@ public class Constants {
     public static final String OPEN_CLI_VERSION = "cli.version";
     public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
 
-    public static final String TOP_LEVEL_PARAMS_LIST ="cli.schema.top_level_params_list";
-    public static final String TOP_LEVEL_MANDATORY_LIST ="cli.schema.top_level_mandatory_list";
-    public static final String SERVICE_PARAMS_LIST ="cli.schema.service_params_list";
-    public static final String SERVICE_PARAMS_MANDATORY_LIST ="cli.schema.service_params_mandatory_list";
-    public static final String INFO_PARAMS_LIST ="cli.schema.info_params_list";
-    public static final String INFO_PARAMS_MANDATORY_LIST ="cli.schema.info_params_mandatory_list";
-    public static final String INPUT_PARAMS_LIST ="cli.schema.input_params_list";
-    public static final String INPUT_PARAMS_MANDATORY_LIST ="cli.schema.input_params_mandatory_list";
-    public static final String RESULT_PARAMS_LIST ="cli.schema.result_params_list";
-    public static final String RESULT_PARAMS_MANDATORY_LIST ="cli.schema.result_params_mandatory_list";
-    public static final String HTTP_SECTIONS ="cli.schema.http_sections";
-    public static final String HTTP_MANDATORY_SECTIONS ="cli.schema.http_mandatory_sections";
-    public static final String HTTP_REQUEST_PARAMS ="cli.schema.http_request_params";
-    public static final String HTTP_REQUEST_MANDATORY_PARAMS ="cli.schema.http_request_mandatory_params";
-    public static final String HTTP_METHODS ="cli.schema.http_methods";
-    public static final String BOOLEAN_VALUE ="cli.schema.boolean_values";
-    public static final String AUTH_VALUES="cli.schema.auth_values";
-    public static final String MODE_VALUES="cli.schema.mode_values";
-    public static final String COMMAND_TYPE_VALUES="cli.command.type";
-
+    public static final String TOP_LEVEL_PARAMS_LIST = "cli.schema.top_level_params_list";
+    public static final String TOP_LEVEL_MANDATORY_LIST = "cli.schema.top_level_mandatory_list";
+    public static final String SERVICE_PARAMS_LIST = "cli.schema.service_params_list";
+    public static final String SERVICE_PARAMS_MANDATORY_LIST = "cli.schema.service_params_mandatory_list";
+    public static final String INFO_PARAMS_LIST = "cli.schema.info_params_list";
+    public static final String INFO_PARAMS_MANDATORY_LIST = "cli.schema.info_params_mandatory_list";
+    public static final String INPUT_PARAMS_LIST = "cli.schema.input_params_list";
+    public static final String INPUT_PARAMS_MANDATORY_LIST = "cli.schema.input_params_mandatory_list";
+    public static final String RESULT_PARAMS_LIST = "cli.schema.result_params_list";
+    public static final String RESULT_PARAMS_MANDATORY_LIST = "cli.schema.result_params_mandatory_list";
+    public static final String HTTP_SECTIONS = "cli.schema.http_sections";
+    public static final String HTTP_MANDATORY_SECTIONS = "cli.schema.http_mandatory_sections";
+    public static final String HTTP_REQUEST_PARAMS = "cli.schema.http_request_params";
+    public static final String HTTP_REQUEST_MANDATORY_PARAMS = "cli.schema.http_request_mandatory_params";
+    public static final String HTTP_METHODS = "cli.schema.http_methods";
+    public static final String BOOLEAN_VALUE = "cli.schema.boolean_values";
+    public static final String AUTH_VALUES = "cli.schema.auth_values";
+    public static final String MODE_VALUES = "cli.schema.mode_values";
+    public static final String COMMAND_TYPE_VALUES = "cli.command.type";
+    public static final String SCHEMA_TYPES_SUPPORTED = "cli.schema.type.supported";
     //http connection
     public static final String SSLCONTEST_TLS = "TLSV1.2";
     public static final String APPLICATION_JSON = "application/json";
