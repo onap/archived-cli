@@ -18,14 +18,14 @@ package org.onap.cli.fw.output.print;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
 import org.onap.cli.fw.output.PrintDirection;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class OnapCommandPrintTest {
 

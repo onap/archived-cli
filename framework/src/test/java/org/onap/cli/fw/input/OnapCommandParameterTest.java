@@ -16,15 +16,15 @@
 
 package org.onap.cli.fw.input;
 
-import org.junit.Test;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 
 public class OnapCommandParameterTest {
 

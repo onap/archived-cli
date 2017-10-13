@@ -63,6 +63,9 @@ public class OnapValidationTest {
             System.out.println(version);
             System.out.println("==========================\n\n");
             for (SchemaInfo sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
+                if (sch.isIgnore()) {
+                    continue;
+                }
                 if (sch.getProduct().equals(version)) {
                     System.out.println(
                     "************************* validate '" + sch.getCmdName() + "' *******************************");
@@ -81,6 +84,9 @@ public class OnapValidationTest {
             System.out.println("==========================\n\n");
             int i = 1;
             for (SchemaInfo sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
+            	if (sch.isIgnore()) {
+                    continue;
+                }
                 if (sch.getProduct().equals(version)) {
                     System.out.println("[" + i++ + "] " + sch.getCmdName());
                     System.out.println("-----------------------------------------------\n\n");
