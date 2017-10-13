@@ -39,6 +39,7 @@ import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.ResultType;
+import org.onap.cli.fw.utils.OnapCommandSchemaLoader;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 /**
@@ -156,7 +157,7 @@ public abstract class OnapCommand {
      */
     public void initializeSchema(String schema) throws OnapCommandException {
         this.setSchemaName(schema);
-        OnapCommandUtils.loadSchema(this, schema, true, false);
+        OnapCommandSchemaLoader.loadSchema(this, schema, true, false);
         this.initializeProfileSchema();
         this.isInitialzied = true;
     }

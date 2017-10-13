@@ -38,7 +38,7 @@ import org.onap.cli.fw.output.PrintDirection;
 import org.onap.cli.fw.output.ResultType;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
-import org.onap.cli.main.utils.OnapCliUtils;
+import org.onap.cli.main.utils.OnapCliArgsParser;
 import org.onap.cli.sample.yaml.SampleYamlGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -356,7 +356,7 @@ public class OnapCli {
                     }
                 }
 
-                OnapCliUtils.populateParams(cmd.getParameters(), args);
+                OnapCliArgsParser.populateParams(cmd.getParameters(), args);
                 OnapCommandResult result = cmd.execute();
 
                 this.print(result.getDebugInfo());
