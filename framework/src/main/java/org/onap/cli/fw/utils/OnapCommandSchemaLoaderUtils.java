@@ -35,6 +35,7 @@ import static org.onap.cli.fw.conf.Constants.HTTP_MANDATORY_SECTIONS;
 import static org.onap.cli.fw.conf.Constants.HTTP_SECTIONS;
 import static org.onap.cli.fw.conf.Constants.INFO;
 import static org.onap.cli.fw.conf.Constants.INFO_AUTHOR;
+import static org.onap.cli.fw.conf.Constants.INFO_IGNORE;
 import static org.onap.cli.fw.conf.Constants.INFO_PARAMS_LIST;
 import static org.onap.cli.fw.conf.Constants.INFO_PARAMS_MANDATORY_LIST;
 import static org.onap.cli.fw.conf.Constants.INFO_PRODUCT;
@@ -92,6 +93,7 @@ import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.ad.OnapService;
 import org.onap.cli.fw.cmd.CommandType;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
+import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
@@ -138,12 +140,7 @@ public class OnapCommandSchemaLoaderUtils {
             inputStream = OnapCommandSchemaLoaderUtils.loadSchemaFromFile(schemaName);
         }
 
-        Map<String, ?> values = null;
-        try {
-            values = (Map<String, ?>) new Yaml().load(inputStream);
-        } catch (Exception e) {
-            throw new OnapCommandInvalidSchema(schemaName, e);
-        }
+        Map<String, ?> values = OnapCommandSchemaLoaderUtils.loadSchema(inputStream, schemaName);
         String schemaVersion = "";
         if (values.keySet().contains(OPEN_CLI_SCHEMA_VERSION)) {
             Object obj = values.get(OPEN_CLI_SCHEMA_VERSION);
@@ -173,6 +170,11 @@ public class OnapCommandSchemaLoaderUtils {
             if (includeDefault) {
                 Map<String, ?> defaultParameterMap = includeDefault ?
                         validateSchemaVersion(DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+                //mrkanag default_parameter is supported only for parameters.
+                if (defaultParameterMap.containsKey(INFO)) {
+                	defaultParameterMap.remove(Constants.INFO);
+                }
+                
                 errors.addAll(OnapCommandSchemaLoaderUtils.parseSchema(cmd, defaultParameterMap, validateSchema));
             }
 
@@ -196,6 +198,12 @@ public class OnapCommandSchemaLoaderUtils {
             if (includeDefault) {
                 Map<String, ?> defaultParameterMap = includeDefault ?
                         validateSchemaVersion(DEFAULT_PARAMETER_HTTP_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+                
+                //mrkanag default_parameter is supported only for parameters.
+                if (defaultParameterMap.containsKey(INFO)) {
+                	defaultParameterMap.remove(Constants.INFO);
+                }
+                
                 errors.addAll(OnapCommandSchemaLoaderUtils.parseSchema(cmd, defaultParameterMap, validateSchema));
             }
 
@@ -297,6 +305,11 @@ public class OnapCommandSchemaLoaderUtils {
                                     Object mode = infoMap.get(key1);
                                     info.setAuthor(mode.toString());
                                     break;
+
+                                case INFO_IGNORE:
+                                    Object ignore = infoMap.get(key1);
+                                    info.setIgnore(ignore.toString().equalsIgnoreCase(Constants.BOOLEAN_TRUE));
+                                    break;
                             }
                         }
 
@@ -351,7 +364,9 @@ public class OnapCommandSchemaLoaderUtils {
 
                                     case SHORT_OPTION:
                                         if (shortOptions.contains(parameter.get(key2))) {
-                                            OnapCommandUtils.throwOrCollect(new OnapCommandParameterOptionConflict(parameter.get(key2)), exceptionList, validate);
+                                            OnapCommandUtils.throwOrCollect(new OnapCommandParameterOptionConflict(
+                                                    cmd.getSchemaName(),
+                                                    parameter.get(key2)), exceptionList, validate);
                                         }
                                         shortOptions.add(parameter.get(key2));
                                         param.setShortOption(parameter.get(key2));
@@ -359,7 +374,9 @@ public class OnapCommandSchemaLoaderUtils {
 
                                     case LONG_OPTION:
                                         if (longOptions.contains(parameter.get(key2))) {
-                                            OnapCommandUtils.throwOrCollect(new OnapCommandParameterOptionConflict(parameter.get(key2)), exceptionList, validate);
+                                            OnapCommandUtils.throwOrCollect(new OnapCommandParameterOptionConflict(
+                                                    cmd.getSchemaName(),
+                                                    parameter.get(key2)), exceptionList, validate);
                                         }
                                         longOptions.add(parameter.get(key2));
                                         param.setLongOption(parameter.get(key2));
@@ -688,7 +705,7 @@ public class OnapCommandSchemaLoaderUtils {
         return errorList;
     }
 
-    static InputStream loadSchemaFromFile(String schemaLocation) throws OnapCommandInvalidSchema {
+    public static InputStream loadSchemaFromFile(String schemaLocation) throws OnapCommandInvalidSchema {
         File schemaFile = new File(schemaLocation);
         try {
             FileInputStream inputFileStream = new FileInputStream(schemaFile);
@@ -705,4 +722,41 @@ public class OnapCommandSchemaLoaderUtils {
         }
     }
 
+    /**
+     * Get schema map.
+     *
+     * @param resource
+     *            resource obj
+     * @return map
+     * @throws OnapCommandInvalidSchema
+     *             exception
+     */
+    public static Map<String, ?> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
+        try {
+            return  OnapCommandSchemaLoaderUtils.loadSchema(resource.getInputStream(), resource.getFilename());
+        } catch (IOException e) {
+            throw new OnapCommandInvalidSchema(resource.getFilename(), e);
+        }
+
+    }
+
+    /**
+     * Get schema map.
+     *
+     * @param resource
+     *            resource obj
+     * @return map
+     * @throws OnapCommandInvalidSchema
+     *             exception
+     */
+    public static Map<String, ?> loadSchema(InputStream stream, String schemaName) throws OnapCommandInvalidSchema  {
+        Map<String, ?> values = null;
+        try {
+            values = (Map<String, ?>) new Yaml().load(stream);
+        } catch (Exception e) {
+            throw new OnapCommandInvalidSchema(schemaName, e);
+        }
+
+        return values;
+    }
 }

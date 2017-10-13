@@ -16,11 +16,11 @@
 
 package org.onap.cli.fw.conf;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.IOException;
 import java.util.Properties;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class OnapCommandConfgTest {
 

@@ -16,13 +16,13 @@
 
 package org.onap.cli.fw.cmd;
 
-import org.junit.Test;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.output.OnapCommandResultAttribute;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.output.OnapCommandResultAttribute;
 
 public class OnapSchemaRefreshCommandTest {
 
@@ -32,15 +32,11 @@ public class OnapSchemaRefreshCommandTest {
         cmd.initializeSchema("schema-refresh.yaml");
         cmd.execute();
 
-        List<OnapCommandResultAttribute> oclipCommandResultAttribute = cmd.getResult()
+        List<OnapCommandResultAttribute> oclipCommandResultAttributes = cmd.getResult()
                 .getRecords();
 
-        String s1Number = oclipCommandResultAttribute.get(0).getValues().get(0);
-        String cmdName = oclipCommandResultAttribute.get(1).getValues().get(0);
-        String cmdVer = oclipCommandResultAttribute.get(2).getValues().get(0);
-        String cmdFile = oclipCommandResultAttribute.get(3).getValues().get(0);
-        String version = oclipCommandResultAttribute.get(4).getValues().get(0);
 
-        assertTrue(s1Number.equalsIgnoreCase("1"));
+        assertTrue(oclipCommandResultAttributes.size() > 1);
+
     }
 }

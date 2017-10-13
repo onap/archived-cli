@@ -18,9 +18,9 @@ package org.onap.cli.fw.http;
 
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
-
 import java.util.HashMap;
+
+import org.junit.Test;
 
 public class HttpInputOutputTest {
 
