@@ -1,0 +1,24 @@
+[{
+  "requesN" :
+    {
+      "method" : "get",
+      "uri" : "onboarding-api/v1.0/vendor-license-models/4904E77EC4EF4CB18083E8ED7D283585/license-key-groups/3F57DDC6AF55420680D499CDAC047253",
+      "headers" : {
+          "USER_ID": "cs0008",
+          "content-type" : "application/json"
+      }
+    },
+  "response" :{
+    "json" : {
+        "name": "demo-key-group",
+        "description": "",
+        "type": "Universal",
+        "operationalScope": {
+            "choices": [
+                "Tenant"
+            ]
+        },
+        "id": "3F57DDC6AF55420680D499CDAC047253",
+        "referencingFeatureGroups": []
+    }}
+}]
