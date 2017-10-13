@@ -20,7 +20,7 @@ import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameter;
-import org.onap.cli.fw.utils.OnapCommandSchemaLoader;
+import org.onap.cli.fw.utils.OnapCommandSchemaLoaderUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,14 +43,14 @@ public class OnapSchemaValidateCommand extends OnapCommand {
             location = location.substring(1);
         }
 
-        List<String> error = OnapCommandSchemaLoader.loadSchema(new OnapCommand() {
+        List<String> error = OnapCommandSchemaLoaderUtils.loadSchema(new OnapCommand() {
             @Override
             protected void run() throws OnapCommandException {
             }
         }, location, true, true);
 
 
-        error.addAll(OnapCommandSchemaLoader.loadHttpSchema(new OnapHttpCommand(),
+        error.addAll(OnapCommandSchemaLoaderUtils.loadHttpSchema(new OnapHttpCommand(),
                 location, true, true));
 
         List<String> slNumber = new ArrayList<>();
