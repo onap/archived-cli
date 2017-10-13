@@ -19,12 +19,8 @@ package org.onap.cli.fw;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
-import org.onap.cli.fw.ad.OnapService;
-import org.onap.cli.fw.cmd.CommandType;
 import org.onap.cli.fw.conf.Constants;
-import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterType;
@@ -33,7 +29,6 @@ import org.onap.cli.fw.error.OnapCommandInvalidResultAttributeScope;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.error.OnapCommandInvalidSchemaVersion;
 import org.onap.cli.fw.error.OnapCommandNotInitialized;
-import org.onap.cli.fw.error.OnapCommandParameterMissing;
 import org.onap.cli.fw.error.OnapCommandParameterNameConflict;
 import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
 import org.onap.cli.fw.error.OnapCommandRegistrationFailed;
@@ -198,7 +193,7 @@ public abstract class OnapCommand {
         Map<String, OnapCommandParameter> paramMap = this.getParametersMap();
 
         // -h or --help is always higher precedence !, user can set this value to get help message
-        if ("true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_HELP).getValue())) {
+        if (Constants.BOOLEAN_TRUE.equals(paramMap.get(Constants.DEFAULT_PARAMETER_HELP).getValue())) {
             OnapCommandResult result = new OnapCommandResult();
             result.setType(ResultType.TEXT);
             result.setOutput(this.printHelp());
@@ -206,7 +201,7 @@ public abstract class OnapCommand {
         }
 
         // -v or --version is next higher precedence !, user can set this value to get help message
-        if ("true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_VERSION).getValue())) {
+        if (Constants.BOOLEAN_TRUE.equals(paramMap.get(Constants.DEFAULT_PARAMETER_VERSION).getValue())) {
             OnapCommandResult result = new OnapCommandResult();
             result.setType(ResultType.TEXT);
             result.setOutput(this.printVersion());
@@ -219,16 +214,16 @@ public abstract class OnapCommand {
         // -f or --format
         this.cmdResult.setType(
                 ResultType.get(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_FORMAT).getValue().toString()));
-        if ("true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG).getValue())) {
+        if (Constants.BOOLEAN_TRUE.equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG).getValue())) {
             this.cmdResult.setScope(OnapCommandResultAttributeScope.LONG);
         }
         // --no-title
-        if ("true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE).getValue())) {
+        if (Constants.BOOLEAN_TRUE.equals(paramMap.get(Constants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE).getValue())) {
             this.cmdResult.setIncludeTitle(false);
         }
 
         // --debug
-        if ("true".equals(paramMap.get(Constants.DEFAULT_PARAMETER_DEBUG).getValue())) {
+        if (Constants.BOOLEAN_TRUE.equals(paramMap.get(Constants.DEFAULT_PARAMETER_DEBUG).getValue())) {
             this.cmdResult.setDebug(true);
         }
 

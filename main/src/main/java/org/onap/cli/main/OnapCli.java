@@ -98,7 +98,7 @@ public class OnapCli {
         try {
             if ((args.size() == 1) && (this.getLongOption(OnapCliConstants.PARAM_HELP_LOGN).equals(args.get(0))
                         || this.getShortOption(OnapCliConstants.PARAM_HELP_SHORT).equals(args.get(0)))) {
-                this.print(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("onap-readme.txt")));
+                this.print(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("oclip-readme.txt")));
                 String help = OnapCommandRegistrar.getRegistrar().getHelp();
                 this.print(help);
                 this.exitSuccessfully();
