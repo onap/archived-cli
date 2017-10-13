@@ -24,7 +24,7 @@ import java.util.Map;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.error.OnapCommandLoadProfileFailed;
 import org.onap.cli.fw.error.OnapCommandPersistProfileFailed;
-import org.onap.cli.fw.utils.OnapCommandUtils;
+import org.onap.cli.fw.utils.OnapCommandProfileUtils;
 
 public class OnapCommandParameterCache {
 
@@ -93,7 +93,7 @@ public class OnapCommandParameterCache {
         }
 
         try {
-            OnapCommandUtils.persistProfile(params, this.profileName);
+            OnapCommandProfileUtils.persistProfile(params, this.profileName);
         } catch (OnapCommandPersistProfileFailed e) {
             throw new RuntimeException(e);   // NOSONAR
         }
@@ -102,7 +102,7 @@ public class OnapCommandParameterCache {
     private void load() {
         List<Param> params= new ArrayList<>();
         try {
-            params = OnapCommandUtils.loadParamFromCache(this.profileName);
+            params = OnapCommandProfileUtils.loadParamFromCache(this.profileName);
         } catch (OnapCommandLoadProfileFailed e) {
             throw new RuntimeException(e);   // NOSONAR
         }
