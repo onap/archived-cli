@@ -31,7 +31,7 @@ import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
-import org.onap.cli.main.utils.OnapCliUtils;
+import org.onap.cli.main.utils.OnapCliArgsParser;
 
 import jline.console.ConsoleReader;
 import mockit.Invocation;
@@ -120,7 +120,7 @@ public class OnapCliMainTest {
         OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("sample-create");
         List<String> args = new ArrayList<>(Arrays.asList(new String[] { "sample-create", "--service-name", "test-service", "-i", "ip1", "-i",
                 "ip2", "-o", "port1=value1", "-o", "port2=value2" }));
-        OnapCliUtils.populateParams(cmd.getParameters(), args);
+        OnapCliArgsParser.populateParams(cmd.getParameters(), args);
     }
 
     @Test

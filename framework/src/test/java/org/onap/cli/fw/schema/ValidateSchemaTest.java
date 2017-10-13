@@ -21,7 +21,7 @@ import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
-import org.onap.cli.fw.utils.OnapCommandUtils;
+import org.onap.cli.fw.utils.OnapCommandSchemaLoader;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        OnapCommandUtils.loadSchema(cmd, "fdsfds.yaml", true, true);
+        OnapCommandSchemaLoader.loadSchema(cmd, "fdsfds.yaml", true, true);
     }
 
     @Test(expected = OnapCommandInvalidSchema.class)
@@ -45,7 +45,7 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        OnapCommandUtils.loadSchema(cmd, "fdsfds", true, true);
+        OnapCommandSchemaLoader.loadSchema(cmd, "fdsfds", true, true);
     }
 
     @Test(expected = OnapCommandInvalidSchema.class)
@@ -54,7 +54,7 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        OnapCommandUtils.loadSchema(cmd,
+        OnapCommandSchemaLoader.loadSchema(cmd,
                 ValidateSchemaTest.class.getClassLoader().getResource("open-cli.properties").getFile(),
                 true, true);
     }
@@ -65,7 +65,7 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        OnapCommandUtils.loadSchema(cmd, "schema-invalid-file-null.yaml", true, true);
+        OnapCommandSchemaLoader.loadSchema(cmd, "schema-invalid-file-null.yaml", true, true);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        OnapCommandUtils.loadSchema(cmd, "schema-validate-pass.yaml", true, true);
+        OnapCommandSchemaLoader.loadSchema(cmd, "schema-validate-pass.yaml", true, true);
 
     }
 
@@ -84,7 +84,7 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        OnapCommandUtils.loadSchema(cmd, "schema-invalid-file.yaml", true, true);
+        OnapCommandSchemaLoader.loadSchema(cmd, "schema-invalid-file.yaml", true, true);
     }
 
     @Test
@@ -94,31 +94,31 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        List<String> errorList1 = OnapCommandUtils.loadSchema(cmd1, "schema-validate-http.yaml", true, true);
+        List<String> errorList1 = OnapCommandSchemaLoader.loadSchema(cmd1, "schema-validate-http.yaml", true, true);
         assertTrue(errorList1.size() > 0);
 
         OnapCommand cmd2 = new OnapCommand() {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        List<String> errorList2 = OnapCommandUtils.loadSchema(cmd2, "schema-validate-basic.yaml", true, true);
+        List<String> errorList2 = OnapCommandSchemaLoader.loadSchema(cmd2, "schema-validate-basic.yaml", true, true);
         assertTrue(errorList2.size() > 0);
 
         OnapCommand cmd3 = new OnapCommand() {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        List<String> errorList3 = OnapCommandUtils.loadSchema(cmd2, "schema-validate-invalidschematype.yaml", true, true);
+        List<String> errorList3 = OnapCommandSchemaLoader.loadSchema(cmd2, "schema-validate-invalidschematype.yaml", true, true);
         assertTrue(errorList3.size() > 0);
 
         OnapCommand cmd4 = new OnapCommand() {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        List<String> errorList4 = OnapCommandUtils.loadSchema(cmd2, "schema-validate-invalid.yaml", true, true);
+        List<String> errorList4 = OnapCommandSchemaLoader.loadSchema(cmd2, "schema-validate-invalid.yaml", true, true);
 
         OnapHttpCommand oclipHttpCommand = new OnapHttpCommand();
-        errorList4.addAll(OnapCommandUtils.loadHttpSchema(oclipHttpCommand,
+        errorList4.addAll(OnapCommandSchemaLoader.loadHttpSchema(oclipHttpCommand,
                 "schema-validate-invalid.yaml", true, true));
         assertTrue(errorList4.size() > 0);
 
@@ -126,7 +126,7 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        List<String> errorList5 = OnapCommandUtils.loadSchema(cmd5, "schema-validate-pass.yaml", true, true);
+        List<String> errorList5 = OnapCommandSchemaLoader.loadSchema(cmd5, "schema-validate-pass.yaml", true, true);
         assertTrue(errorList5.size() == 0);
 
     }
