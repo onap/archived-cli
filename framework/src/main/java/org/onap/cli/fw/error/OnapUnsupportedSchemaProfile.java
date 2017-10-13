@@ -26,7 +26,7 @@ public class OnapUnsupportedSchemaProfile extends OnapCommandException {
 
     private static final String ERROR_CODE = "0xb004";
 
-    private static final String ERROR_MSG = "Unsupported schema profile";
+    private static final String ERROR_MSG = "Unsupported schema profile ";
 
     public OnapUnsupportedSchemaProfile(String schema) {
         super(ERROR_CODE, ERROR_MSG + schema);
