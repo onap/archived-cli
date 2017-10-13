@@ -30,7 +30,7 @@ Please follow the instructions given below, for installing CLI using install.sh.
 
    onap -v
 
-4. For more details, please refer user_guide_.
+4. For details, see :ref:`user_guide`
 
 
 Using Portal CLI app
@@ -40,17 +40,13 @@ Please follow the instructions given below, for installing CLI from portal.
 
 1. After installing Portal, ONAP CLI will be available as Portal application as shown below:
 
-|image0|
-
-.. |image0| image:: images/portal-cli-app.png
+.. image:: images/portal-cli-app.png
    :height: 600px
    :width: 800px
 
 2. Click on CLI application and it will show the following page and download the CLI as reported in this page.
 
-|image1|
-
-.. |image1| image:: images/portal-cli-dowload.png
+.. image:: images/portal-cli-dowload.png
    :height: 600px
    :width: 800px
 
@@ -60,7 +56,7 @@ Please follow the instructions given below, for installing CLI from portal.
 
    onap -v
 
-5. For more details, please refer user_guide_.
+5. For details, see :ref:`user_guide`
 
 Using docker image
 -----------------
@@ -76,6 +72,6 @@ Please follow the instructions given below, for installing CLI using docker imag
 
    docker run onap/cli onap -v
 
-3. For more details, please refer user_guide_.
+3. For details, see :ref:`user_guide`
 
 

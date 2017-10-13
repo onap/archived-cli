@@ -8,9 +8,7 @@ CLI architecture
 
 Following diagram shows the high-level architecture of ONAP CLI.
 
-|image3|
-
-.. |image3| image:: images/portal-cli-arch.png
+.. image:: images/portal-cli-arch.png
    :height: 600px
    :width: 800px
 
