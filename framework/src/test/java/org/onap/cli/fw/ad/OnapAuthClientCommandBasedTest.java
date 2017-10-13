@@ -18,6 +18,7 @@ package org.onap.cli.fw.ad;
 
 import static org.junit.Assert.fail;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
@@ -25,8 +26,14 @@ import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 
 public class OnapAuthClientCommandBasedTest {
+
+    @Before
+    public void setup() throws OnapCommandProductVersionInvalid, OnapCommandException {
+        OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(OnapCommandConfg.getProductName());
+    }
 
     @Test
     public void internalCommandTest() {
@@ -37,7 +44,7 @@ public class OnapAuthClientCommandBasedTest {
             cmd.execute();
         } catch (OnapCommandException e) {
             fail("Internal command failed to run");
-            e.printStackTrace();
+            e.printStackTrace(System.out);
         }
     }
 
@@ -52,7 +59,7 @@ public class OnapAuthClientCommandBasedTest {
             cmd.execute();
         } catch (OnapCommandException e) {
             fail("External command Yes Auth Yes Catalog failed to run");
-            e.printStackTrace();
+            e.printStackTrace(System.out);
         }
     }
 
@@ -64,8 +71,8 @@ public class OnapAuthClientCommandBasedTest {
 
             cmd.execute();
         } catch (OnapCommandException e) {
-            fail("External command Yes Auth No Catalog failed to run");
-            e.printStackTrace();
+            fail("External command Yes Auth No Catalog failed to run " + e.getMessage());
+            e.printStackTrace(System.out);
         }
     }
 
@@ -80,7 +87,7 @@ public class OnapAuthClientCommandBasedTest {
             cmd.execute();
         } catch (OnapCommandException e) {
             fail("External command Yes Auth No Catalog failed to run");
-            e.printStackTrace();
+            e.printStackTrace(System.out);
         }
     }
 
@@ -93,7 +100,7 @@ public class OnapAuthClientCommandBasedTest {
             cmd.execute();
         } catch (OnapCommandException e) {
             fail("External command No Auth No Catalog failed to run");
-            e.printStackTrace();
+            e.printStackTrace(System.out);
         }
     }
 

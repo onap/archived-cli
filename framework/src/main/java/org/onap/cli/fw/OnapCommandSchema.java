@@ -26,7 +26,7 @@ import java.lang.annotation.RetentionPolicy;
  * default if the schema declaration is missing for a command abc-create, schema file name could be
  * abc-create-schema.yaml, corresponding command would like as below
  *
- * @OnapCommandSchema(name="abc-create", schema="onap-abc-create-schema.yaml") public class AbcCreate extends
+ * @OnapCommandSchema(type="http", schema="onap-abc-create-schema.yaml") public class AbcCreate extends
  *                                        OnapCommand { ... }
  */
 @Retention(RetentionPolicy.RUNTIME)
@@ -37,5 +37,10 @@ public @interface OnapCommandSchema {
      *
      * @return
      */
-    String schema();
+    String schema() default "";
+
+    /**
+     * Schema type
+     */
+    String type() default "";
 }
