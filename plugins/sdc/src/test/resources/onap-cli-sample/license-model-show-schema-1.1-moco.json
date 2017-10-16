@@ -8,8 +8,8 @@
           "content-type" : "application/json"
       }
     },
-  "response" :
-    {
+  "response" :{
+    "json" : {
       "listCount": 1,
     "results": [
         {
@@ -35,5 +35,5 @@
                 }
             ]
         }]
-    }
+    }}
 }]

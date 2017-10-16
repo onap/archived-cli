@@ -16,19 +16,21 @@
 
 package org.onap.cli.fw.cmd;
 
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.conf.Constants;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandExecutionFailed;
-import org.onap.cli.fw.http.HttpInput;
-import org.onap.cli.fw.http.HttpResult;
-import org.onap.cli.fw.output.OnapCommandResultAttribute;
-import org.onap.cli.fw.utils.OnapCommandUtils;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConfg;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandExecutionFailed;
+import org.onap.cli.fw.http.HttpInput;
+import org.onap.cli.fw.http.HttpResult;
+import org.onap.cli.fw.http.mock.MockJsonGenerator;
+import org.onap.cli.fw.output.OnapCommandResultAttribute;
+import org.onap.cli.fw.utils.OnapCommandUtils;
 
 /**
  * Onap Command.
@@ -92,6 +94,10 @@ public class OnapHttpCommand extends OnapCommand {
 
         for (OnapCommandResultAttribute attr : this.getResult().getRecords()) {
             attr.setValues(results.get(attr.getName()));
+        }
+
+        if (OnapCommandConfg.isMocoGenerateEnabled()) {
+            MockJsonGenerator.generateMocking(httpInput, output, this.getName());
         }
     }
 }
