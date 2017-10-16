@@ -198,6 +198,9 @@ public class Constants {
 
     public static final String DISCOVER_ALWAYS = "discover_always";
 
+    public static final String MOCO_ENABLED = "cli.moco.enable";
+    public static final String MOCO_TARGET_FOLDER = "cli.moco.target";
+
     private Constants() {
     }
 
