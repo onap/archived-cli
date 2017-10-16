@@ -3,46 +3,17 @@
 CLI Release Notes
 =================
 
-.. note::
-	* This Release Notes must be updated each time the team decides to Release new artifacts.
-	* The scope of this Release Notes is for this particular component. In other words, each ONAP component has its Release Notes.
-	* This Release Notes is cumulative, the most recently Released artifact is made visible in the top of this Release Notes.
-	* Except the date and the version number, all the other sections are optional but there must be at least one section describing the purpose of this new release.
-	* This note must be removed after content has been added.
-
-
-Version: x.y.z
+Version: 1.1.0
 --------------
 
-
-:Release Date: yyyy-mm-dd
-
+:Release Date: 2017-11-16 (DRAFT)
 
 
 **New Features**
 
-One or two sentences explaining the purpose of this Release.
-
-**Bug Fixes**
-	- `CIMAN-65 <https://jira.onap.org/browse/CIMAN-65>`_ and a sentence explaining what this defect is addressing.
-**Known Issues**
-	- `CIMAN-65 <https://jira.onap.org/browse/CIMAN-65>`_ and two, three sentences.
-	  One sentences explaining what is the issue.
-	  
-	  Another sentence explaining the impact of the issue.
-	  
-	  And an optional sentence providing a workaround.
-
-**Security Issues**
-	You may want to include a reference to CVE (Common Vulnerabilities and Exposures) `CVE <https://cve.mitre.org>`_
-
-
-**Upgrade Notes**
-
-**Deprecation Notes**
-
-**Other**
-
-===========
-
-End of Release Notes
+* Release first version of Open Command Line Interface Platform (OCLIP), an CLI platform for implementing CLI using YAML file without coding
+  For more details, :ref:`OCLIP`.
+* It provides Open Command Specification (OCS) 1.0 for defining the commands in YAML format, similar to Open API Specification (API).
+  For more details, :ref:`open_cli_schema_version_1_0`.
+* All Onap commands are developed using OCLIP by authoring set of YAML files.
+  For more details, :ref:`cmd_help`.
