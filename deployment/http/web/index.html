@@ -4,56 +4,120 @@
 function redirectToConsole(){
    window.location.href="http://"+  window.location.hostname + ":9090";
 }
+
+var slideIndex = 0;
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+
 </script>
+<style>
+
+body {
+    margin: 1% 3% 0;
+    background-color: black
+}
+
+.readme {
+    display: inline-block;
+    width: 40%;
+    float: left;
+    color: white
+}
+
+* {box-sizing:border-box}
+
+.slideshow-container {
+ display: inline-block;
+ width: 50%;
+ float: right;
+ max-width: 1000px;
+ position: relative;
+ margin: 12% 3% 0;
+}
+
+.mySlides {
+    display: none;
+}
+
+</style>
+
 </head>
 
-<body id="preview">
-<h1><a id="ONAP_Commandline_interface_CLI_0"></a>ONAP Command-line interface (CLI)</h1>
-<p style="color:blue"><strong>One Command to command whole Onap !!</strong></p>
-<p>Provides unified commands to operate ONAP from Linux console and Web console.</p>
+<body onload="showSlides()">
+<div class="readme">
+<h1>ONAP Command-Line Interface (CLI)</h1>
+<p style="color: blue;"><strong>One Command to command whole Onap !!</strong></p>
+<p>Provides unified commands to operate ONAP from Linux command console and Web browser.</p>
 
-<h2><a id="Download_42"></a>To download</h2>
-<p style="color:red">Please download ONAP CLI <a href="./onap-cli.zip">here</a></p>
+<div style="background-color: white;color: black;">
+<h2 >Web Command Console</h2>
+<p>To open Console, <button class="button" onclick="redirectToConsole();">Click Me !</button></p>
+<br>
+</div>
 
-<h3><a id="Download_42"></a>To install</h3>
+<div style="background-color: white;color: black;">
+<h2>Linux Command Shell</h2>
+<p>Type <strong>onap</strong> from linux command console</p>
+
+<h3>Download</h3>
+<p>Please download ONAP CLI <a href="./onap-cli.zip">here</a></p>
+
+<h3>Install</h3>
 <p>Please follow the instructions given below for installing ONAP CLI.</p>
 <ol>
-<li>Un-zip the above download file into <b>/opt/onap/cli folder</b></li>
-<li>Run the following commands:
-<br>export ONAP_CLI_HOME=$CLI_INSTALL_DIR
-<br>export CLI_PRODUCT_VERSION=onap-1.1
-<br>
-<br>cd $CLI_INSTALL_DIR
-<br>
-<br>if [ ! -d ./data ]; then mkdir ./data; fi
-<br>if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi
-<br>
-<br>chmod +x ./bin/onap.sh
-<br>
-<br>#Make onap available in path
-<br>ln ./bin/onap.sh $CLI_BIN
-<br>
-<br>#Print the version
-<br>onap -v</li>
+<li>Un-zip the above download file into <strong>/opt/onap/cli folder</strong></li>
+<li>Run the following commands:</li>
 </ol>
+<blockquote>
+<p><span ><em>export ONAP_CLI_HOME=/opt/onap/cli </em></span><br /><span ><em>export CLI_PRODUCT_VERSION=onap-1.1 </em></span><br /> <br /><span ><em>cd $ONAP_CLI_HOME </em></span><br /> <br /><span ><em>if [ ! -d ./data ]; then mkdir ./data; fi </em></span><br /><span ><em>if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi </em></span><br /> <br /><span ><em>chmod +x ./bin/onap.sh </em></span><br /> <br /><span ><em>#Make onap available in path </em></span><br /><span ><em>ln ./bin/onap.sh /usr/bin/onap </em></span><br /> <br /><span ><em>#Print the version </em></span><br /><span ><em>onap -v</em></span></p>
+</blockquote>
 
-<h2><a id="Console_42"></a>Web Command console</h2>
-<p style="color:blue">To open Console, Click <img src="./onap-cli.png" alt="Web Command console" style="width:30px;height:22px;" onclick="redirectToConsole();"> </p>
-
-<h2><a id="To_Run_a_command_12"></a>To Run a command</h2>
-
-<p>Configure the following environment variables, before using it in Linux console:</p>
+<h3>Run onap command</h3>
+<p>Configure the following environment variables:</p>
 <ol>
 <li><strong>ONAP_HOST_URL</strong> - Onap service URL</li>
 <li><strong>ONAP_USERNAME</strong> - Onap user name</li>
 <li><strong>ONAP_PASSWORD</strong> - Onap user password</li>
 </ol>
+<p>Type <strong>onap &lt;command&gt;</strong> from command shell.</p>
+<h3><a href="http://onap.readthedocs.io/en/latest/submodules/cli.git/docs/index.htmlhttps://wiki.onap.org" target="_blank" rel="noopener">More details</a></h3>
+</div>
+</div>
 
-<p>Type <strong>onap &lt;command&gt;</strong> from Linux console.</p>
+<div class="slideshow-container">
+  <div class="mySlides">
+    <img src="images/onap-cli-ad-1.png" style="width:100%">
+  </div>
 
-<h2><a id="To_Run_in_Interactive_mode_16"></a>To Run in Interactive mode</h2>
-<p>Type <strong>onap</strong> from linux console</p>
+  <div class="mySlides">
+    <img src="images/onap-cli-ad-2.png" style="width:100%">
+  </div>
 
-<h2><a id="More_details_42"></a>More details</h2>
-<p><a href="https://wiki.onap.org">https://wiki.onap.org</a></p>
+  <div class="mySlides">
+    <img src="images/onap-cli-ad-3.png" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <img src="images/onap-cli-ad-4.png" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <img src="images/onap-cli-ad-5.png" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <img src="images/onap-cli-ad-6.png" style="width:100%">
+  </div>
+
+</div>
 </body></html>
