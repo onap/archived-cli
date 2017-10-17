@@ -23,13 +23,12 @@ function showSlides() {
 <style>
 
 body {
-    margin: 1% 3% 0;
+    margin: 0 1% 0;
     background-color: black
 }
 
 .readme {
     display: inline-block;
-    width: 40%;
     float: left;
     color: white
 }
@@ -38,11 +37,10 @@ body {
 
 .slideshow-container {
  display: inline-block;
- width: 50%;
  float: right;
- max-width: 1000px;
+ max-width: 700px;
  position: relative;
- margin: 12% 3% 0;
+ margin: 5% 3% 0;
 }
 
 .mySlides {
@@ -56,42 +54,27 @@ body {
 <body onload="showSlides()">
 <div class="readme">
 <h1>ONAP Command-Line Interface (CLI)</h1>
+
 <p style="color: blue;"><strong>One Command to command whole Onap !!</strong></p>
-<p>Provides unified commands to operate ONAP from Linux command console and Web browser.</p>
-
-<div style="background-color: white;color: black;">
-<h2 >Web Command Console</h2>
-<p>To open Console, <button class="button" onclick="redirectToConsole();">Click Me !</button></p>
+<p>Provides unified commands to operate ONAP using CLI.</p>
+<p>Powered by Open CLI Platform (OCLIP)</p>
+<p><a href="http://onap.readthedocs.io/en/latest/submodules/cli.git/docs/index.htmlhttps://wiki.onap.org"
+target="_blank" rel="noopener">More details</a></p>
 <br>
-</div>
 
-<div style="background-color: white;color: black;">
+<h2 >Web Command Console</h2>
+<p>To access ONAP shell from browser, <button class="button" onclick="redirectToConsole();">Click Me !</button></p>
+<br>
+
 <h2>Linux Command Shell</h2>
-<p>Type <strong>onap</strong> from linux command console</p>
-
-<h3>Download</h3>
-<p>Please download ONAP CLI <a href="./onap-cli.zip">here</a></p>
-
-<h3>Install</h3>
 <p>Please follow the instructions given below for installing ONAP CLI.</p>
 <ol>
-<li>Un-zip the above download file into <strong>/opt/onap/cli folder</strong></li>
-<li>Run the following commands:</li>
+<li>Download ONAP CLI <a href="./onap-cli.zip">here</a></li>
+<li>Un-zip into folder <strong>/opt/onap/cli</strong></li>
+<li>Run command <strong>/opt/onap/cli/cli-init.sh</strong></li>
+<li>For more details, refer <strong>/opt/onap/cli/README.md</strong></li>
 </ol>
-<blockquote>
-<p><span ><em>export ONAP_CLI_HOME=/opt/onap/cli </em></span><br /><span ><em>export CLI_PRODUCT_VERSION=onap-1.1 </em></span><br /> <br /><span ><em>cd $ONAP_CLI_HOME </em></span><br /> <br /><span ><em>if [ ! -d ./data ]; then mkdir ./data; fi </em></span><br /><span ><em>if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi </em></span><br /> <br /><span ><em>chmod +x ./bin/onap.sh </em></span><br /> <br /><span ><em>#Make onap available in path </em></span><br /><span ><em>ln ./bin/onap.sh /usr/bin/onap </em></span><br /> <br /><span ><em>#Print the version </em></span><br /><span ><em>onap -v</em></span></p>
-</blockquote>
-
-<h3>Run onap command</h3>
-<p>Configure the following environment variables:</p>
-<ol>
-<li><strong>ONAP_HOST_URL</strong> - Onap service URL</li>
-<li><strong>ONAP_USERNAME</strong> - Onap user name</li>
-<li><strong>ONAP_PASSWORD</strong> - Onap user password</li>
-</ol>
-<p>Type <strong>onap &lt;command&gt;</strong> from command shell.</p>
-<h3><a href="http://onap.readthedocs.io/en/latest/submodules/cli.git/docs/index.htmlhttps://wiki.onap.org" target="_blank" rel="noopener">More details</a></h3>
-</div>
+<br>
 </div>
 
 <div class="slideshow-container">
