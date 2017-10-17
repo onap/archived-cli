@@ -174,4 +174,11 @@ public final class OnapCommandConfg {
         return Arrays.stream(prps.getProperty(key).split(",")).map(String::trim).collect(Collectors.toList());  // NOSONAR
     }
 
+    public static String getMocoTargetFolder() {
+        return prps.getProperty(Constants.MOCO_TARGET_FOLDER, ".");
+    }
+
+    public static boolean isMocoGenerateEnabled() {
+        return "true".equals(prps.getProperty(Constants.MOCO_ENABLED));
+    }
 }
