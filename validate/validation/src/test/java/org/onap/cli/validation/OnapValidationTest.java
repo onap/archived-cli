@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
-import org.aspectj.lang.annotation.After;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommandRegistrar;
@@ -38,18 +37,6 @@ import org.onap.cli.moco.OnapCommandSample;
 public class OnapValidationTest {
 
     OnapCli cli = null;
-
-    /**
-     * Clean up.
-     */
-    @After(value = "")
-    public void cleanup() {
-        if (this.cli != null) {
-            if (cli.getExitCode() != 0) {
-                // Fail test case
-            }
-        }
-    }
 
     private void handle(String[] args) {
         cli = new OnapCli(args);
@@ -84,7 +71,7 @@ public class OnapValidationTest {
             System.out.println("==========================\n\n");
             int i = 1;
             for (SchemaInfo sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
-            	if (sch.isIgnore()) {
+                if (sch.isIgnore()) {
                     continue;
                 }
                 if (sch.getProduct().equals(version)) {
