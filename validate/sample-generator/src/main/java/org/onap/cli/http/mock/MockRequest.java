@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package org.onap.cli.fw.http.mock;
+package org.onap.cli.http.mock;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
-
-import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,13 +42,9 @@ public class MockRequest {
         return uri;
     }
 
-    public void setUri(String url) throws OnapCommandFailedMocoGenerate {
+    public void setUri(String url) throws IOException {
         URL urlt;
-        try {
-            urlt = new URL(url);
-        } catch (MalformedURLException error) {
-            throw new OnapCommandFailedMocoGenerate(null, error);
-        }
+        urlt = new URL(url);
         this.uri = urlt.getPath();
     }
 
@@ -67,17 +60,13 @@ public class MockRequest {
         return json;
     }
 
-    public void setJson(String json) throws OnapCommandFailedMocoGenerate {
+    public void setJson(String json) throws IOException {
         if (json.isEmpty()) {
             this.json = JsonNodeFactory.instance.objectNode();
             return;
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
-        try {
             this.json = objectMapper.readTree(json);
-        }catch (IOException error) {
-            throw new OnapCommandFailedMocoGenerate(null, error);
-        }
     }
 }
