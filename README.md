@@ -50,9 +50,4 @@ To run in debug mode, set following environment variables:
 1. OPEN_CLI_DEBUG - By default its false, otherwise Set to true
 2. OPEN_CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number
 
-<h2><a id="More_details_42"></a>More details</h2>
-<p><a href="https://wiki.onap.org">https://wiki.onap.org</a></p>
-
-<h2><a id="Download_42"></a>To download</h2>
-<p style="color:red">Please download Open CLI Platform <a href="./open-cli.zip">here</a></p>
 
