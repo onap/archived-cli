@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.onap.cli.fw.http.mock;
+package org.onap.cli.http.mock;
 
 public class MockObject {
     private MockRequest request;
