@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-package org.onap.cli.fw.http.mock;
+package org.onap.cli.http.mock;
 
 import java.io.IOException;
 
-import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
 public class MockResponse {
     private int status;
@@ -40,17 +37,10 @@ public class MockResponse {
         return json;
     }
 
-    public void setJson(String json) throws OnapCommandFailedMocoGenerate {
-        if (json.isEmpty()) {
-            this.json = JsonNodeFactory.instance.objectNode();
-            return;
-        }
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
+    public void setJson(String json) throws IOException {
+        if (!json.isEmpty()) {
+            ObjectMapper objectMapper = new ObjectMapper();
             this.json = objectMapper.readTree(json);
-        } catch (IOException error) {
-            throw new OnapCommandFailedMocoGenerate(null, error);
         }
     }
 }

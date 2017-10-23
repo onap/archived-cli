@@ -25,8 +25,10 @@ import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
+import org.onap.cli.fw.error.OnapCommandInvalidSample;
 import org.onap.cli.fw.error.OnapCommandWarning;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResult;
@@ -37,6 +39,7 @@ import org.onap.cli.fw.output.ResultType;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliUtils;
+import org.onap.cli.sample.yaml.SampleYamlGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -355,9 +358,12 @@ public class OnapCli {
 
                 OnapCliUtils.populateParams(cmd.getParameters(), args);
                 OnapCommandResult result = cmd.execute();
+
                 this.print(result.getDebugInfo());
                 this.print(result.print());
                 this.exitSuccessfully();
+
+                generateSmapleYaml(result);
             } catch (Exception e) {
                 this.print(cmd.getResult().getDebugInfo());
                 if (e instanceof OnapCommandWarning) {
@@ -366,6 +372,19 @@ public class OnapCli {
                     this.print(e);
                     this.exitFailure();
                 }
+            }
+        }
+    }
+
+    private void generateSmapleYaml(OnapCommandResult result) throws OnapCommandException {
+        if (OnapCommandConfg.isSampleGenerateEnabled() && this.getExitCode() == OnapCliConstants.EXIT_SUCCESS) {
+            try {
+                SampleYamlGenerator.generateSampleYaml(args, result.print(),
+                        OnapCommandRegistrar.getRegistrar().getEnabledProductVersion(),
+                        OnapCommandConfg.getSampleGenerateTargetFolder(),
+                        result.isDebug());
+            } catch (IOException error) {
+                throw new OnapCommandInvalidSample(args.get(0), error);
             }
         }
     }
