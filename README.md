@@ -2,20 +2,25 @@ Open Command-line interface Platform (OCLIP)
 ============================================
 
 Provides unified commands to operate any cloud enabled software
-products from Linux/Web console. Configure the following environment
-variables, before using it:
+products from Linux/Web console.
+
+Set the following environment variable, before using OCLIP:
+
+**OPEN_CLI_HOME** - Complete path of directory, where OCLIP is installed.
+
+To Run a command
+-----------------
+Configure the following environment variables:
 
 1. **OPEN_CLI_HOST_URL** - Catalog service URL or a service URL
 2. **OPEN_CLI_HOST_USERNAME** - Service user name
 3. **OPEN_CLI_HOST_PASSWORD** - Service password
 
-To Run a command
------------------
-Type **oclip <command>** from linux console.
+Run **oclip <command>** from Linux console.
 
 To Run in Interactive mode
 --------------------------
-Type **oclip** from linux console.
+Run **oclip** from Linux console.
 
 And use the directive set to set the values for following parameters:
 
@@ -23,8 +28,8 @@ And use the directive set to set the values for following parameters:
 2. **host-username** - Service user name
 3. **host-password** - Service password
 
-Set the product version
-------------------------
+Select the product version
+--------------------------
 CLI framework is enhanced to handle multiple product versions at same
 time. so to choose the product version, set evironment variable
 **OPEN_CLI_PROUDCT_IN_USE**.
@@ -32,7 +37,7 @@ time. so to choose the product version, set evironment variable
 NOTE: In interactive mode, product version can be selected using
 typing **use <product-version>**
 
-Run *oclip [-v|--version]* to see the CLI and available product version details
+Run *oclip [-v|--version]* to see the available product version details.
 
 Set the parameter values
 ------------------------
@@ -49,5 +54,3 @@ To run in debug mode, set following environment variables:
 
 1. OPEN_CLI_DEBUG - By default its false, otherwise Set to true
 2. OPEN_CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number
-
-
