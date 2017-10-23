@@ -39,7 +39,8 @@
         <module>plugins</module>
         <module>main</module>
         <module>deployment</module>
-        <module>validation</module>
+        <module>validate/validation</module>
+        <module>validate/sample-generator</module>
   </modules>
 
     <distributionManagement>
