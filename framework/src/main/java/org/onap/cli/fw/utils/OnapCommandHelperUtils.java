@@ -77,8 +77,10 @@ public class OnapCommandHelperUtils {
         // Add description
         help += "\n\n" + cmd.getDescription();
 
-        // Add service
-        help += "\n\nService: " + cmd.getInfo().getService();
+        // Add info
+        help += "\n\nProduct: " + cmd.getInfo().getProduct();
+        help += "\nService: " + cmd.getInfo().getService();
+        help += "\nAuthor: " + cmd.getInfo().getAuthor();
 
         // Add whole command
         String commandOptions = "";
