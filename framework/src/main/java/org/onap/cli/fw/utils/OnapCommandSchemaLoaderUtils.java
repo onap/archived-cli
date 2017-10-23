@@ -20,6 +20,7 @@ import static org.onap.cli.fw.conf.Constants.ATTRIBUTES;
 import static org.onap.cli.fw.conf.Constants.AUTH;
 import static org.onap.cli.fw.conf.Constants.AUTH_VALUES;
 import static org.onap.cli.fw.conf.Constants.BODY;
+import static org.onap.cli.fw.conf.Constants.BOOLEAN_TRUE;
 import static org.onap.cli.fw.conf.Constants.COMMAND_TYPE_VALUES;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_PASSWORD;
 import static org.onap.cli.fw.conf.Constants.DEAFULT_PARAMETER_USERNAME;
@@ -172,9 +173,9 @@ public class OnapCommandSchemaLoaderUtils {
                         validateSchemaVersion(DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
                 //mrkanag default_parameter is supported only for parameters.
                 if (defaultParameterMap.containsKey(INFO)) {
-                	defaultParameterMap.remove(Constants.INFO);
+                    defaultParameterMap.remove(Constants.INFO);
                 }
-                
+
                 errors.addAll(OnapCommandSchemaLoaderUtils.parseSchema(cmd, defaultParameterMap, validateSchema));
             }
 
@@ -198,12 +199,12 @@ public class OnapCommandSchemaLoaderUtils {
             if (includeDefault) {
                 Map<String, ?> defaultParameterMap = includeDefault ?
                         validateSchemaVersion(DEFAULT_PARAMETER_HTTP_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
-                
+
                 //mrkanag default_parameter is supported only for parameters.
                 if (defaultParameterMap.containsKey(INFO)) {
-                	defaultParameterMap.remove(Constants.INFO);
+                    defaultParameterMap.remove(Constants.INFO);
                 }
-                
+
                 errors.addAll(OnapCommandSchemaLoaderUtils.parseSchema(cmd, defaultParameterMap, validateSchema));
             }
 
@@ -402,7 +403,7 @@ public class OnapCommandSchemaLoaderUtils {
                                                         IS_SECURED, parameter.get(key2)));
                                             }
                                         }
-                                        if ("true".equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
+                                        if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
                                             param.setOptional(true);
                                         } else {
                                             param.setOptional(false);
@@ -417,7 +418,7 @@ public class OnapCommandSchemaLoaderUtils {
                                             }
                                         }
 
-                                        if ("true".equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
+                                        if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
                                             param.setSecured(true);
                                         } else {
                                             param.setSecured(false);
@@ -432,7 +433,7 @@ public class OnapCommandSchemaLoaderUtils {
                                             }
                                         }
 
-                                        if ("true".equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
+                                        if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
                                             param.setInclude(true);
                                         } else {
                                             param.setInclude(false);
@@ -525,7 +526,7 @@ public class OnapCommandSchemaLoaderUtils {
                                                                     IS_SECURED, map.get(key4)));
                                                         }
                                                     }
-                                                    if ("true".equals(String.valueOf(map.get(key4)))) {
+                                                    if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
                                                         attr.setSecured(true);
                                                     } else {
                                                         attr.setSecured(false);
@@ -668,6 +669,8 @@ public class OnapCommandSchemaLoaderUtils {
                                                 cmd.getParametersMap().get(DEFAULT_PARAMETER_NO_AUTH).setInclude(false);
                                             }
                                             break;
+
+                                            //mrkanag: from auth command, add the parameters to the command's parameters list
 
                                         case MODE:
                                             Object mode = serviceMap.get(key);
