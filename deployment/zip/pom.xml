@@ -106,6 +106,13 @@
                                 fileset(file:
                                 "${project.build.directory}/../../../README.md")
                                 }
+
+                                ant.copy(todir:
+                                "${deployUnzip}") {
+                                fileset(file:
+                                "${project.build.directory}/../installer/install.sh")
+                                }
+
                                 ant.zip(destfile:
                                 "${deployFolder}/${outfileName}") {
                                 zipfileset(dir: "${deployUnzip}", excludes: "**/*.sh")
