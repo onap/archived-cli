@@ -17,67 +17,35 @@
 package org.onap.cli.fw.http.mock;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Map;
-
-import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
-public class MockRequest {
-    private String method;
-    private String uri;
-    private Map<String, String> headers;
+public class MockResponse {
+    private int status;
     private JsonNode json;
 
-    public String getMethod() {
-        return method;
+    public int getStatus() {
+        return status;
     }
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    public String getUri() {
-        return uri;
-    }
-
-    public void setUri(String url) throws OnapCommandFailedMocoGenerate {
-        URL urlt;
-        try {
-            urlt = new URL(url);
-        } catch (MalformedURLException error) {
-            throw new OnapCommandFailedMocoGenerate(null, error);
-        }
-        this.uri = urlt.getPath();
-    }
-
-    public Map<String, String> getHeaders() {
-        return headers;
-    }
-
-    public void setHeaders(Map<String, String> headers) {
-        this.headers = headers;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public JsonNode getJson() {
         return json;
     }
 
-    public void setJson(String json) throws OnapCommandFailedMocoGenerate {
+    public void setJson(String json) throws IOException {
         if (json.isEmpty()) {
             this.json = JsonNodeFactory.instance.objectNode();
             return;
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
-        try {
             this.json = objectMapper.readTree(json);
-        }catch (IOException error) {
-            throw new OnapCommandFailedMocoGenerate(null, error);
-        }
+
     }
 }

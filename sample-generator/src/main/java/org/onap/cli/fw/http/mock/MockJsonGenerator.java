@@ -21,28 +21,13 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
-import org.onap.cli.fw.conf.OnapCommandConfg;
-import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
-import org.onap.cli.fw.http.HttpInput;
-import org.onap.cli.fw.http.HttpResult;
-
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class MockJsonGenerator {
-    public static void generateMocking(HttpInput httpInput, HttpResult httpResult,
-            String jsonFileName) throws OnapCommandFailedMocoGenerate {
-
-        MockRequest mockRequest = new MockRequest();
-        mockRequest.setMethod(httpInput.getMethod());
-        mockRequest.setUri(httpInput.getUri());
-        mockRequest.setHeaders(httpInput.getReqHeaders());
-        mockRequest.setJson(httpInput.getBody());
-
-        MockResponse mockResponse = new MockResponse();
-        mockResponse.setStatus(httpResult.getStatus());
-        mockResponse.setJson(httpResult.getBody());
+    public static void generateMocking(MockRequest mockRequest, MockResponse mockResponse,
+            String jsonFilePath) throws IOException {
 
         MockObject mockObject = new MockObject();
         mockObject.setRequest(mockRequest);
@@ -50,12 +35,8 @@ public class MockJsonGenerator {
 
         ObjectMapper mapper = new ObjectMapper();
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        try {
-            String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-            writer.writeValue(new File(OnapCommandConfg.getMocoTargetFolder() + "/" + jsonFileName + "-" + timeStamp + "-moco.json"),
-                    Arrays.asList(mockObject));
-        } catch (IOException error ) {
-            throw new OnapCommandFailedMocoGenerate(jsonFileName, error);
-        }
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        writer.writeValue(new File(jsonFilePath + "-" + timeStamp + "-moco.json"),
+                Arrays.asList(mockObject));
     }
 }

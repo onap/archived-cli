@@ -16,6 +16,7 @@
 
 package org.onap.cli.fw.cmd;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,9 +27,12 @@ import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
+import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
 import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.http.mock.MockJsonGenerator;
+import org.onap.cli.fw.http.mock.MockRequest;
+import org.onap.cli.fw.http.mock.MockResponse;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
@@ -95,9 +99,29 @@ public class OnapHttpCommand extends OnapCommand {
         for (OnapCommandResultAttribute attr : this.getResult().getRecords()) {
             attr.setValues(results.get(attr.getName()));
         }
+        generateJsonMock(httpInput, output, this.getName());
+    }
+
+    public static void generateJsonMock(HttpInput httpInput, HttpResult httpResult, String fileName)
+            throws OnapCommandFailedMocoGenerate {
 
         if (OnapCommandConfg.isMocoGenerateEnabled()) {
-            MockJsonGenerator.generateMocking(httpInput, output, this.getName());
+            try {
+                MockRequest mockRequest = new MockRequest();
+                mockRequest.setMethod(httpInput.getMethod());
+                mockRequest.setUri(httpInput.getUri());
+                mockRequest.setHeaders(httpInput.getReqHeaders());
+                mockRequest.setJson(httpInput.getBody());
+
+                MockResponse mockResponse = new MockResponse();
+                mockResponse.setStatus(httpResult.getStatus());
+                mockResponse.setJson(httpResult.getBody());
+
+                MockJsonGenerator.generateMocking(mockRequest, mockResponse, OnapCommandConfg.getMocoTargetFolder()
+                        + "/" + fileName);
+            } catch (IOException error) {
+                throw new OnapCommandFailedMocoGenerate(fileName, error);
+            }
         }
     }
 }

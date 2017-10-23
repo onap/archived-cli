@@ -40,6 +40,7 @@
         <module>main</module>
         <module>deployment</module>
         <module>validation</module>
+        <module>sample-generator</module>
   </modules>
 
     <distributionManagement>
