@@ -16,6 +16,8 @@
 
 package org.onap.cli.main;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.aspectj.lang.annotation.After;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommand;
@@ -37,23 +38,10 @@ import jline.console.ConsoleReader;
 import mockit.Invocation;
 import mockit.Mock;
 import mockit.MockUp;
-import static org.junit.Assert.fail;
 
 public class OnapCliMainTest {
 
     OnapCli cli = null;
-
-    /**
-     * Clean up.
-     */
-    @After(value = "")
-    public void cleanup() {
-        if (this.cli != null) {
-            if (cli.getExitCode() != 0) {
-                // Fail test case
-            }
-        }
-    }
 
     private void handle(String[] args) {
         cli = new OnapCli(args);
