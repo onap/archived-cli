@@ -16,20 +16,43 @@
 # limitations under the License.
 #*******************************************************************************
 
-export OPEN_CLI_HOME=/opt/oclip
-export OPEN_CLI_PRODUCT_IN_USE=open-cli
+CLI_LATEST_BINARY="https://nexus.onap.org/service/local/artifact/maven/redirect?r=snapshots&g=org.onap.cli&a=cli-zip&e=zip&v=LATEST"
+CLI_INSTALL_DIR=/opt/onap/cli
+CLI_ZIP=cli.zip
+CLI_BIN=/usr/bin/onap
+export OPEN_CLI_HOME=$CLI_INSTALL_DIR
 
-cd $OPEN_CLI_HOME
+#create install dir
+if [ -d $CLI_INSTALL_DIR ]
+then
+    mv $CLI_INSTALL_DIR $CLI_INSTALL_DIR/../cli_`date +"%m-%d-%y-%H-%M-%S"`
+    rm $CLI_BIN
+fi
 
+mkdir -p $CLI_INSTALL_DIR
+cd $CLI_INSTALL_DIR
+
+#Download and unzip CLI
+apt-get install -y wget unzip
+
+#check for java
+java -version
+if [ $? == 127 ]
+then
+    apt-get install -y openjdk-8-jre
+fi
+
+wget -O $CLI_ZIP $CLI_LATEST_BINARY
+
+unzip $CLI_ZIP
 if [ ! -d ./data ]; then mkdir ./data; fi
 if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
-
 chmod +x ./bin/oclip.sh
 
 #Make oclip available in path
-ln -sf ./bin/oclip.sh /usr/bin/oclip
+ln ./bin/oclip.sh $CLI_BIN
 
 #Print the version
-oclip -v
+onap -v
 
 cd -
