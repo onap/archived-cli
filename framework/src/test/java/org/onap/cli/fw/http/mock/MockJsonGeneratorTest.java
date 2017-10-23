@@ -15,52 +15,51 @@
  */
 package org.onap.cli.fw.http.mock;
 
+import java.io.IOException;
+
 import org.junit.Test;
-import org.onap.cli.fw.error.OnapCommandFailedMocoGenerate;
-import org.onap.cli.fw.http.HttpInput;
-import org.onap.cli.fw.http.HttpResult;
 
 public class MockJsonGeneratorTest {
 
     @Test
-    public void mocoGenerateTest() throws OnapCommandFailedMocoGenerate {
-        HttpInput httpInput = new HttpInput();
-        httpInput.setBody("{\"value\" : \"234sdf-345\"}");
-        httpInput.setMethod("get");
-        httpInput.setUri("http://1.1.1.1:80/getResource");
+    public void mocoGenerateTest() throws IOException {
+        MockRequest mockRequest = new MockRequest();
+        mockRequest.setJson("{\"value\" : \"234sdf-345\"}");
+        mockRequest.setMethod("get");
+        mockRequest.setUri("http://1.1.1.1:80/getResource");
 
-        HttpResult httpResult = new HttpResult();
-        httpResult.setStatus(200);
-        httpResult.setBody("{\"value\" : \"234sdf-345\"}");
+        MockResponse mockResponse = new MockResponse();
+        mockResponse.setStatus(200);
+        mockResponse.setJson("{\"value\" : \"234sdf-345\"}");
 
-        MockJsonGenerator.generateMocking(httpInput, httpResult, "test");
+        MockJsonGenerator.generateMocking(mockRequest, mockResponse, "test");
     }
 
-    @Test(expected=OnapCommandFailedMocoGenerate.class)
-    public void mocoGenerateFailedInvalidBodyTest() throws OnapCommandFailedMocoGenerate {
-        HttpInput httpInput = new HttpInput();
-        httpInput.setBody("{\"value\" : \"234sdf-345\"");
-        httpInput.setMethod("get");
-        httpInput.setUri("http://1.1.1.1:80/getResource");
+    @Test(expected=IOException.class)
+    public void mocoGenerateFailedInvalidBodyTest() throws IOException {
+        MockRequest mockRequest = new MockRequest();
+        mockRequest.setJson("{\"value\" : \"234sdf-345\"");
+        mockRequest.setMethod("get");
+        mockRequest.setUri("http://1.1.1.1:80/getResource");
 
-        HttpResult httpResult = new HttpResult();
-        httpResult.setStatus(200);
-        httpResult.setBody("{\"value\" : \"234sdf-345\"");
+        MockResponse mockResponse = new MockResponse();
+        mockResponse.setStatus(200);
+        mockResponse.setJson("{\"value\" : \"234sdf-345\"");
 
-        MockJsonGenerator.generateMocking(httpInput, httpResult, "test");
+        MockJsonGenerator.generateMocking(mockRequest, mockResponse, "test");
     }
 
-    @Test(expected=OnapCommandFailedMocoGenerate.class)
-    public void mocoGenerateFailedInvalidUrlTest() throws OnapCommandFailedMocoGenerate {
-        HttpInput httpInput = new HttpInput();
-        httpInput.setBody("{\"value\" : \"234sdf-345\"");
-        httpInput.setMethod("get");
-        httpInput.setUri("http://1.1.1.1:80:invalid");
+    @Test(expected=IOException.class)
+    public void mocoGenerateFailedInvalidUrlTest() throws IOException {
+        MockRequest mockRequest = new MockRequest();
+        mockRequest.setJson("{\"value\" : \"234sdf-345\"");
+        mockRequest.setMethod("get");
+        mockRequest.setUri("http://1.1.1.1:80:invalid");
 
-        HttpResult httpResult = new HttpResult();
-        httpResult.setStatus(200);
-        httpResult.setBody("{\"value\" : \"234sdf-345\"");
+        MockResponse mockResponse = new MockResponse();
+        mockResponse.setStatus(200);
+        mockResponse.setJson("{\"value\" : \"234sdf-345\"");
 
-        MockJsonGenerator.generateMocking(httpInput, httpResult, "test");
+        MockJsonGenerator.generateMocking(mockRequest, mockResponse, "test");
     }
 }
