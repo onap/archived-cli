@@ -78,7 +78,7 @@
         </dependency>
         <dependency>
         <groupId>org.onap.cli</groupId>
-        <artifactId>cli-sample-generator</artifactId>
+        <artifactId>cli-sample-mock-generator</artifactId>
         <version>${project.version}</version>
         </dependency>
         <dependency>

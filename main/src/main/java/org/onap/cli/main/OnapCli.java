@@ -25,6 +25,7 @@ import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandWarning;
@@ -37,6 +38,7 @@ import org.onap.cli.fw.output.ResultType;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliUtils;
+import org.onap.cli.sample.yaml.SampleYamlGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -355,6 +357,14 @@ public class OnapCli {
 
                 OnapCliUtils.populateParams(cmd.getParameters(), args);
                 OnapCommandResult result = cmd.execute();
+
+                if (OnapCommandConfg.isSampleGenerateEnabled() && this.getExitCode() != OnapCliConstants.EXIT_SUCCESS) {
+                    SampleYamlGenerator.generateSampleYaml(args, result.print(),
+                            OnapCommandRegistrar.getRegistrar().getEnabledProductVersion(),
+                            OnapCommandConfg.getSampleGenerateTargetFolder(),
+                            result.isDebug());
+                }
+
                 this.print(result.getDebugInfo());
                 this.print(result.print());
                 this.exitSuccessfully();

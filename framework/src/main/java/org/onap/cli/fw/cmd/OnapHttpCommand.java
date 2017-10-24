@@ -105,7 +105,7 @@ public class OnapHttpCommand extends OnapCommand {
     private void generateJsonMock(HttpInput httpInput, HttpResult httpResult, String fileName)
             throws OnapCommandFailedMocoGenerate {
 
-        if (OnapCommandConfg.isMocoGenerateEnabled()) {
+        if (OnapCommandConfg.isSampleGenerateEnabled()) {
             try {
                 MockRequest mockRequest = new MockRequest();
                 mockRequest.setMethod(httpInput.getMethod());
@@ -117,7 +117,7 @@ public class OnapHttpCommand extends OnapCommand {
                 mockResponse.setStatus(httpResult.getStatus());
                 mockResponse.setJson(httpResult.getBody());
 
-                MockJsonGenerator.generateMocking(mockRequest, mockResponse, OnapCommandConfg.getMocoTargetFolder()
+                MockJsonGenerator.generateMocking(mockRequest, mockResponse, OnapCommandConfg.getSampleGenerateTargetFolder()
                         + "/" + fileName);
             } catch (IOException error) {
                 throw new OnapCommandFailedMocoGenerate(fileName, error);
