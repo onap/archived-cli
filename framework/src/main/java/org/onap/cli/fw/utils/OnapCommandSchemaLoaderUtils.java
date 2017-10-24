@@ -705,6 +705,13 @@ public class OnapCommandSchemaLoaderUtils {
         }catch (OnapCommandException e) {
             OnapCommandUtils.throwOrCollect(e, errorList, validate);
         }
+
+        //Handle the parameters for auth
+        if (!cmd.getService().isNoAuth()) {
+            OnapCommand login = OnapCommandDiscoveryUtils.findAuthCommand(cmd, "login");
+            OnapCommandUtils.copyParamSchemasFrom(login, cmd);
+        }
+
         return errorList;
     }
 

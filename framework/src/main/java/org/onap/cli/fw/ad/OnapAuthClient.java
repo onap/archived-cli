@@ -32,6 +32,7 @@ import org.onap.cli.fw.http.HttpInput;
 import org.onap.cli.fw.http.HttpResult;
 import org.onap.cli.fw.http.OnapHttpConnection;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 /**
@@ -62,7 +63,7 @@ public class OnapAuthClient {
             return;
         }
 
-        OnapCommand login = this.findAuthCommand("login");
+        OnapCommand login = OnapCommandDiscoveryUtils.findAuthCommand(this.cmd, "login");
 
         OnapCommandUtils.copyParamsFrom(this.cmd, login);
         login.execute();
@@ -91,7 +92,7 @@ public class OnapAuthClient {
             return;
         }
 
-        OnapCommand logout = this.findAuthCommand("logout");
+        OnapCommand logout = OnapCommandDiscoveryUtils.findAuthCommand(this.cmd, "logout");
 
         OnapCommandUtils.copyParamsFrom(this.cmd, logout);
 
@@ -116,7 +117,11 @@ public class OnapAuthClient {
         } else { //Catalog mode
             OnapCommand catalog = OnapCommandRegistrar.getRegistrar().get("catalog");
 
-            OnapCommandUtils.copyParamsFrom(cmd, catalog);
+            Map<String, String> paramsOverrides = new HashMap<>();
+            paramsOverrides.put(Constants.CATALOG_SERVICE_NAME, cmd.getService().getName());
+            paramsOverrides.put(Constants.CATALOG_SERVICE_VERSION, cmd.getService().getVersion());
+
+            OnapCommandUtils.copyParamsFrom(cmd, catalog, paramsOverrides);
 
             catalog.execute();
 
@@ -152,27 +157,5 @@ public class OnapAuthClient {
      */
     public HttpResult run(HttpInput input) throws OnapCommandHttpFailure {
         return this.http.request(input);
-    }
-
-    /**
-     *
-     * @param authAction login/logout
-     * @return
-     * @throws OnapCommandException
-     */
-    private OnapCommand findAuthCommand(String authAction) throws OnapCommandException {
-        OnapCommand auth = null;
-        try {
-            //Find the auth command for the given service and version under current enabled product
-            auth = OnapCommandRegistrar.getRegistrar().get(
-                    this.cmd.getInfo().getService() + "-" +
-                    this.cmd.getService().getAuthType() + "-" + authAction);
-        } catch (OnapCommandNotFound e) {
-            //Find the auth command for current enabled product
-            auth = OnapCommandRegistrar.getRegistrar().get(
-                        this.cmd.getService().getAuthType() + "-" + authAction);
-        }
-
-        return auth;
     }
 }
