@@ -35,12 +35,15 @@ import java.util.Map;
 import java.util.ServiceLoader;
 
 import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.OnapCommandRegistrar;
+import org.onap.cli.fw.cmd.OnapHttpCommand;
 import org.onap.cli.fw.conf.Constants;
 import org.onap.cli.fw.conf.OnapCommandConfg;
 import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInstantiationFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -319,4 +322,27 @@ public class OnapCommandDiscoveryUtils {
         }
 
     }
+
+    /**
+    *
+    * @param authAction login/logout
+    * @return
+    * @throws OnapCommandException
+    */
+   public static OnapCommand findAuthCommand(OnapHttpCommand forCmd, String authAction) throws OnapCommandException {
+       OnapCommand auth = null;
+       try {
+           //mrkanag: fix this to discover the auth command by matching info->product & service
+           auth = OnapCommandRegistrar.getRegistrar().get(
+                   forCmd.getInfo().getService() + "-" +
+                   forCmd.getService().getAuthType() + "-" + authAction,
+                   forCmd.getInfo().getProduct());
+       } catch (OnapCommandNotFound e) {
+           auth = OnapCommandRegistrar.getRegistrar().get(
+                   forCmd.getService().getAuthType() + "-" + authAction,
+                   forCmd.getInfo().getProduct());
+       }
+
+       return auth;
+   }
 }
