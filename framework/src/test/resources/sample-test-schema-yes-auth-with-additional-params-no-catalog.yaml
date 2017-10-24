@@ -1,0 +1,28 @@
+open_cli_schema_version: 1.0
+
+name: sample-cmd-yes-auth-no-catalog-extra-params
+
+description: sample
+
+
+info:
+  product: open-cli
+  service: test
+  type: cmd
+  author: Kanagaraj Manickam mkr1481@gmail.com
+
+http:
+
+  service:
+    name: sample
+    version: v1
+    auth: testauth
+    mode: catalog
+
+  request:
+    uri: /test
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    name: ${name}

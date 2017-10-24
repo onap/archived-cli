@@ -1,0 +1,19 @@
+open_cli_schema_version: 1.0
+
+name: testauth-logout
+
+description: basic logout auth command
+
+info:
+  product: open-cli
+  service: test
+  type: auth
+  author: Kanagaraj Manickam mkr1481@gmail.com
+
+# followings are dummy simulator for http command
+http:
+   request:
+     uri: /
+     method: GET
+   success_codes:
+     - 200

@@ -705,7 +705,7 @@ public class OnapCommandUtils {
      *
      * @throws OnapCommandInvalidParameterValue
      */
-    public static void copyParamsFrom(OnapHttpCommand from, OnapCommand to) throws OnapCommandInvalidParameterValue {
+    public static void copyParamsFrom(OnapCommand from, OnapCommand to, Map<String, String> paramOverride) throws OnapCommandInvalidParameterValue {
         for (OnapCommandParameter param: to.getParameters()) {
 
             OnapCommandParameter fromParam = from.getParametersMap().get(param.getName());
@@ -713,10 +713,28 @@ public class OnapCommandUtils {
             if (fromParam != null) {
                 param.setValue(fromParam.getValue());
                 param.setDefaultValue(fromParam.getDefaultValue());
-            } else if (param.getName().equalsIgnoreCase(Constants.CATALOG_SERVICE_NAME)) { // for catalog cmd
-                param.setValue(from.getService().getName());
-            } else if (param.getName().equalsIgnoreCase(Constants.CATALOG_SERVICE_VERSION)) {  // for catalog cmd
-                param.setValue(from.getService().getVersion());
+            }
+
+            if (paramOverride.containsKey(param.getName())) {
+                 param.setValue(paramOverride.get(param.getName()));
+            }
+        }
+    }
+
+    public static void copyParamsFrom(OnapCommand from, OnapCommand to) throws OnapCommandInvalidParameterValue {
+        OnapCommandUtils.copyParamsFrom(from, to, new HashMap<String, String>());
+    }
+
+    /**
+     * Copy param schema from source command to destination command, useful in adding login command params into command
+     * @param from
+     * @param to
+     * @throws OnapCommandException
+     */
+    public static void copyParamSchemasFrom(OnapCommand from, OnapCommand to) throws OnapCommandException {
+        for (OnapCommandParameter param: from.getParameters()) {
+            if (!to.getParametersMap().containsKey(param.getName())) {
+                to.getParameters().add(param);
             }
         }
     }
