@@ -16,6 +16,7 @@
 
 package org.onap.cli.fw.ad;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
@@ -85,6 +86,17 @@ public class OnapAuthClientCommandBasedTest {
             cmd.getParametersMap().get(Constants.DEAFULT_PARAMETER_PASSWORD).setValue("password");
 
             cmd.execute();
+        } catch (OnapCommandException e) {
+            fail("External command Yes Auth No Catalog failed to run");
+            e.printStackTrace(System.out);
+        }
+    }
+
+    @Test
+    public void noCatalogYesAuthWithAdditionalParamsTest() throws OnapCommandException {
+        try {
+            OnapHttpCommand cmd = getCommand("sample-test-schema-yes-auth-with-additional-params-no-catalog.yaml");
+            assertTrue(cmd.getParametersMap().containsKey("string-param"));
         } catch (OnapCommandException e) {
             fail("External command Yes Auth No Catalog failed to run");
             e.printStackTrace(System.out);
