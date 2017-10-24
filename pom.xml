@@ -40,7 +40,8 @@
         <module>main</module>
         <module>deployment</module>
         <module>validate/validation</module>
-        <module>validate/sample-generator</module>
+        <module>validate/sample-mock-generator</module>
+        <module>validate/sample-yaml-generator</module>
   </modules>
 
     <distributionManagement>
