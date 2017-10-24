@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_a4b92a30",
+        "filename": "framework/src/main/java/org/onap/cli/fw/cmd/OnapHttpCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-24T06:46:15Z",
+      "side": 1,
+      "message": "pls move this to a seprate fn. so you could ut easily",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 13
+      },
+      "revId": "97323a5c137a76f1c19e074efc12983e1d91e2a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
