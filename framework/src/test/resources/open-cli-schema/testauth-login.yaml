@@ -1,0 +1,28 @@
+open_cli_schema_version: 1.0
+
+name: testauth-login
+
+description: basic login auth command
+
+info:
+  product: open-cli
+  service: test
+  type: auth
+  author: Kanagaraj Manickam mkr1481@gmail.com
+
+parameters:
+  - name: string-param
+    type: string
+    description: Oclip string param
+    long_option: string-param
+    short_option: c
+    is_optional: false
+    default_Value: test
+
+# followings are dummy simulator for http command
+http:
+   request:
+     uri: /
+     method: GET
+   success_codes:
+     - 200
