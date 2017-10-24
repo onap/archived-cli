@@ -207,7 +207,18 @@ public class OnapCommandRegistrar {
         return this.get(cmdName, this.getEnabledProductVersion());
     }
 
-    private OnapCommand get(String cmdName, String version) throws OnapCommandException {
+    /**
+     * Get the OnapCommand, which CLI main would use to find the command based on the command name.
+     *
+     * @param cmdName
+     *            Name of command
+     * @param version
+     *            product version
+     * @return OnapCommand
+     * @throws OnapCommandException
+     *             Exception
+     */
+    public OnapCommand get(String cmdName, String version) throws OnapCommandException {
         Class<? extends OnapCommand> cls = registry.get(cmdName + ":" + version);
         //mrkanag: Restrict auth/catalog type commands only available during devMode. in production
         //don't expose the auth type and catalog type commands
@@ -233,7 +244,7 @@ public class OnapCommandRegistrar {
                 if (ano.schema() != null && !ano.schema().isEmpty()) {
                     map.put(ano.schema(), cmd);
                 } else if (ano.type() != null && !ano.type().isEmpty()) {
-                	this.registerProfilePlugin(ano.type(), cmd);
+                    this.registerProfilePlugin(ano.type(), cmd);
                     map.put(ano.type(), cmd);
                 } else {
                     throw new OnapUnsupportedSchemaProfile(ano.schema());
