@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_705f780f",
+        "filename": "sample-generator/src/main/java/org/onap/cli/mock/MockObject.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-25T04:03:22Z",
+      "side": 1,
+      "message": "sample mock",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "7846ad4bb28f65796e9bdd7c6d234034035432f4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
