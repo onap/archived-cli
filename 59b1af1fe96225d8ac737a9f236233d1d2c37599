@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_5bb7fdd8",
+        "filename": "framework/pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-25T13:36:40Z",
+      "side": 1,
+      "message": "format pls",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "59b1af1fe96225d8ac737a9f236233d1d2c37599",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_3bbc31bb",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-25T13:36:40Z",
+      "side": 1,
+      "message": "check pls,\n\nmove this logic to func.",
+      "range": {
+        "startLine": 361,
+        "startChar": 66,
+        "endLine": 361,
+        "endChar": 117
+      },
+      "revId": "59b1af1fe96225d8ac737a9f236233d1d2c37599",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
