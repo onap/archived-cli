@@ -28,6 +28,8 @@ And use the directive set to set the values for following parameters:
 2. **host-username** - Service user name
 3. **host-password** - Service password
 
+NOTE: This mode is available as Web command console when OCLIP is running from docker.
+
 Select the product version
 --------------------------
 CLI framework is enhanced to handle multiple product versions at same
