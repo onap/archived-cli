@@ -99,10 +99,10 @@ public class OnapHttpCommand extends OnapCommand {
         for (OnapCommandResultAttribute attr : this.getResult().getRecords()) {
             attr.setValues(results.get(attr.getName()));
         }
-        generateJsonMock(httpInput, output, this.getName());
+        generateJsonMock(httpInput, output, this.getSchemaName());
     }
 
-    private void generateJsonMock(HttpInput httpInput, HttpResult httpResult, String fileName)
+    private void generateJsonMock(HttpInput httpInput, HttpResult httpResult, String schemaName)
             throws OnapCommandFailedMocoGenerate {
 
         if (OnapCommandConfg.isSampleGenerateEnabled()) {
@@ -118,9 +118,9 @@ public class OnapHttpCommand extends OnapCommand {
                 mockResponse.setJson(httpResult.getBody());
 
                 MockJsonGenerator.generateMocking(mockRequest, mockResponse, OnapCommandConfg.getSampleGenerateTargetFolder()
-                        + "/" + fileName);
+                        + "/" + schemaName.replace(".yaml", "") + "-moco.json");
             } catch (IOException error) {
-                throw new OnapCommandFailedMocoGenerate(fileName, error);
+                throw new OnapCommandFailedMocoGenerate(schemaName, error);
             }
         }
     }

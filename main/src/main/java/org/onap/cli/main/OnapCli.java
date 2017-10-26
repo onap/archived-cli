@@ -363,7 +363,7 @@ public class OnapCli {
                 this.print(result.print());
                 this.exitSuccessfully();
 
-                generateSmapleYaml(result);
+                generateSmapleYaml(cmd);
             } catch (Exception e) {
                 this.print(cmd.getResult().getDebugInfo());
                 if (e instanceof OnapCommandWarning) {
@@ -376,13 +376,13 @@ public class OnapCli {
         }
     }
 
-    private void generateSmapleYaml(OnapCommandResult result) throws OnapCommandException {
+    private void generateSmapleYaml(OnapCommand cmd) throws OnapCommandException {
         if (OnapCommandConfg.isSampleGenerateEnabled() && this.getExitCode() == OnapCliConstants.EXIT_SUCCESS) {
             try {
-                SampleYamlGenerator.generateSampleYaml(args, result.print(),
+                SampleYamlGenerator.generateSampleYaml(args, cmd.getResult().print(),
                         OnapCommandRegistrar.getRegistrar().getEnabledProductVersion(),
-                        OnapCommandConfg.getSampleGenerateTargetFolder(),
-                        result.isDebug());
+                        OnapCommandConfg.getSampleGenerateTargetFolder() + "/" + cmd.getSchemaName().replaceAll(".yaml", "") + "-sample.yaml",
+                        cmd.getResult().isDebug());
             } catch (IOException error) {
                 throw new OnapCommandInvalidSample(args.get(0), error);
             }
