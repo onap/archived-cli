@@ -17,9 +17,7 @@ package org.onap.cli.http.mock;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,8 +33,7 @@ public class MockJsonGenerator {
 
         ObjectMapper mapper = new ObjectMapper();
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        writer.writeValue(new File(jsonFilePath + "-" + timeStamp + "-moco.json"),
+        writer.writeValue(new File(jsonFilePath),
                 Arrays.asList(mockObject));
     }
 }

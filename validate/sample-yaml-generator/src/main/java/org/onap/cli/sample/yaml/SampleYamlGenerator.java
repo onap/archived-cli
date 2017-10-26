@@ -16,6 +16,7 @@
 
 package org.onap.cli.sample.yaml;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -27,11 +28,11 @@ public class SampleYamlGenerator {
     static int nTab;
 
     public static void generateSampleYaml(List<String> input, String ouput, String version,
-            String targetFolder, boolean debug) throws IOException {
+            String targetPath, boolean debug) throws IOException {
 
         String cmdName = input.get(0);
 
-        PrintWriter writer = new PrintWriter(targetFolder + "/" + cmdName + "-sample.yaml", "UTF-8");
+        PrintWriter writer = new PrintWriter(targetPath, "UTF-8");
         writeKeyValuePair(writer, "onap_cli_sample_version", "1.0");
         writeKeyValuePair(writer, "name", cmdName);
         writeKeyValuePair(writer, "version", version);
@@ -41,7 +42,7 @@ public class SampleYamlGenerator {
 
         writeKeyValuePair(writer, "name", cmdName);
         writeKeyValuePair(writer, "input", input.stream().skip(1).collect(Collectors.joining(" ")));
-        writeKeyValuePair(writer, "moco", cmdName + "-sample-yaml.yaml");
+        writeKeyValuePair(writer, "moco", new File(targetPath).getName().replaceAll("-sample.yaml", "-moco.json"));
         writeMultilineKeyValue(writer, "ouput", ouput, debug);
 
         writeEndKey();
