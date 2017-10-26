@@ -1,0 +1,22 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v11/business/customers/customer/test",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-9ad55bff-efbb-4306-bc8a-b76687e8e065",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "global-customer-id" : "test",
+      "subscriber-name" : "test",
+      "subscriber-type" : "INFRA"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]
