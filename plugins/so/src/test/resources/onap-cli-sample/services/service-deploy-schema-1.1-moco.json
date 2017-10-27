@@ -1,0 +1,48 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/ecomp/mso/infra/serviceInstances/v3",
+    "headers" : {
+      "Authorization" : "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-0dc01d80-f629-4ea9-b49f-0bc45b79bfaf",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "requestDetails" : {
+        "cloudConfiguration" : {
+          "lcpCloudRegionId" : "RegionOne",
+          "tenantId" : "onap"
+        },
+        "modelInfo" : {
+          "modelType" : "service",
+          "modelInvariantId" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+          "modelNameVersionId" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+          "modelName" : "demoVLB",
+          "modelVersion" : "1.0"
+        },
+        "subscriberInfo" : {
+          "globalSubscriberId" : "Demonstration"
+        },
+        "requestInfo" : {
+          "instanceName" : "sample-service-onap-cli-13",
+          "source" : "VID",
+          "suppressRollback" : "false"
+        },
+        "requestParameters" : {
+          "subscriptionServiceType" : "vLB"
+        }
+      }
+    }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "requestReferences" : {
+        "instanceId" : "957949b4-f857-497c-81b0-832ce7bb9434",
+        "requestId" : "d59fc98a-b0fa-4de9-b426-6ef40dfd0812"
+      }
+    }
+  }
+} ]
