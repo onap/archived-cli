@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_f9834cca",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "deploy",
+      "range": {
+        "startLine": 2,
+        "startChar": 14,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_b96dc434",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "pls check",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_79775c03",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "pls remove",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_5974a0fc",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 15,
+        "startChar": 29,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_19661852",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "pls give all valid values",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_f95a2c82",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "skip",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_d95f7071",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "skip",
+      "range": {
+        "startLine": 32,
+        "startChar": 15,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_594b80b0",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "model-uuid",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_794e3cc3",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "some more details and give some example",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_39c8b421",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "customer-name",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_19cdf831",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "skip it",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_f9d10cce",
+        "filename": "plugins/so/src/main/resources/onap-cli-schema/services/service-create-schema-1.1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-10-27T07:14:44Z",
+      "side": 1,
+      "message": "service-type",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "4d5471422f25216a50338b25684cf55e84aebd59",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
