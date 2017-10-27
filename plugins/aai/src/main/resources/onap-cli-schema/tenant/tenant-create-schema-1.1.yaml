@@ -23,7 +23,7 @@ parameters:
     is_optional: false
   - name: tenant-id
     description: Onap cloud tenant id
-    type: string
+    type: uuid
     short_option: z
     long_option: tenant-id
     is_optional: false

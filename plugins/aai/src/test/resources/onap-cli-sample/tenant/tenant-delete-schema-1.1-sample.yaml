@@ -1,0 +1,10 @@
+onap_cli_sample_version: 1.0
+name: tenant-delete
+version: onap-1.1
+samples:
+  sample1:
+    name: tenant-delete
+    input: --cloud huawei-cloud --region bangalore --tenant-id 82dde8de-738f-41a6-b28a-8eb60b999024 --resource-version 1509077432821
+    moco: tenant-delete-schema-1.1-moco.json
+    ouput: |
+
