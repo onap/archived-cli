@@ -41,9 +41,9 @@ public class SampleYamlGenerator {
         writeKey(writer, "sample1");
 
         writeKeyValuePair(writer, "name", cmdName);
-        writeKeyValuePair(writer, "input", input.stream().skip(1).collect(Collectors.joining(" ")));
+        writeKeyValuePair(writer, "input", input.stream().skip(1).collect(Collectors.joining(" ")).trim());
         writeKeyValuePair(writer, "moco", new File(targetPath).getName().replaceAll("-sample.yaml", "-moco.json"));
-        writeMultilineKeyValue(writer, "ouput", ouput, debug);
+        writeMultilineKeyValue(writer, "ouput", ouput.trim(), debug);
 
         writeEndKey();
         writeEndKey();
@@ -53,7 +53,11 @@ public class SampleYamlGenerator {
     }
 
     private static void writeMultilineKeyValue(PrintWriter writer, String key, String value, boolean debug) {
-        writer.write(printTabs() + key + ": |\n");
+        writer.write(printTabs() + key + ":");
+        if (value.isEmpty()) {
+            return;
+        }
+        writer.write("|\n");
         nTab++;
         String[] lines = value.split("\n");
         long skipLines = debug ? 12 : 0;
