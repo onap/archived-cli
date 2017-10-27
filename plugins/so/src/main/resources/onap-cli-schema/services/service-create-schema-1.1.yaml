@@ -9,6 +9,41 @@ service:
   mode: direct
 
 parameters:
+  - name: cloud-region-id
+    description: cloud region id
+    type: string
+    long_option: cloud-region-id
+    is_optional: false
+  - name: tenant-id
+    description: tenant id
+    type: string
+    long_option: tenant-id
+    is_optional: false
+  - name: model-type
+    description: model-type
+    type: string
+    long_option: model-type
+    is_optional: false
+  - name: model-invariant-id
+    description: model invariant id
+    type: string
+    long_option: model-invariant-id
+    is_optional: false
+  - name: model-name-version-id
+    description: model name version id
+    type: string
+    long_option: model-name-version-id
+    is_optional: false
+  - name: model-name
+    description: model name
+    type: string
+    long_option: model-name
+    is_optional: false
+  - name: model-version
+    description: model-version
+    type: string
+    long_option: model-version
+    is_optional: false
   - name: global-subscriber-id
     description: unique id for customer
     type: string
@@ -33,10 +68,15 @@ parameters:
     short_option: r
     long_option: supress-rollback
     is_optional: true
+  - name: subscription-service-type
+    description: subscription service type
+    type: string
+    long_option: subscription-service-type
+    is_optional: false
 
 results:
   direction: portrait
-  attribute:
+  attributes:
     - name: instance-id
       description: instance id for the created service.
       type: string
@@ -45,13 +85,13 @@ results:
 
 http:
   request:
-    uri: ecomp/mso/infra/serviceInstances/v2
-    method: PUT
-    body: '{"requestDetails": {"modelInfo": {"modelType": "service","modelInvariantId": "ff3514e3-5a33-55df-13ab-12abad84e7ff","modelNameVersionId": "fe6985cd-ea33-3346-ac12-ab121484a3fe","modelName": "Test","modelVersion": "1.0"},"subscriberInfo": {"globalSubscriberId": "${global-subscriber-id}","subscriberName": "${subscriber-name}"},"requestInfo": {"instanceName": "${instance-name}","source": "VID","suppressRollback": "${supress-rollback}"},"requestParameters": {"subscriptionServiceType": "MOG"}}}'
+    uri: /ecomp/mso/infra/serviceInstances/v3
+    method: POST
+    body: '{"requestDetails": {"cloudConfiguration" : {"lcpCloudRegionId": "${cloud-region-id}","tenantId": "${tenant-id}"},"modelInfo": {"modelType": "${model-type}","modelInvariantId": "${model-invariant-id}","modelNameVersionId": "${model-name-version-id}","modelName": "${model-name}","modelVersion": "${model-version}"},"subscriberInfo": {"globalSubscriberId": "${global-subscriber-id}","subscriberName": "${subscriber-name}"},"requestInfo": {"instanceName": "${instance-name}","source": "VID","suppressRollback": "${supress-rollback}"},"requestParameters": {"subscriptionServiceType": "${subscription-service-type}"}}}'
 
   success_codes:
     - 202
-  result_mpa:
-    instance-id: $b{$.instance-id}
+  result_map:
+    instance-id: $b{$.requestReferences.instanceId}
   sample_response:
-    body: '{"instance-id":"234567AB"}'
+    body: '{"requestReferences":{"instanceId":"${instance-id}","requestId":"375ba428-65e7-4f2b-afb9-74735ac6bfd0"}}'

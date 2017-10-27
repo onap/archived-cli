@@ -1,0 +1,14 @@
+onap_cli_sample_version: 1.0
+name: service-create
+version: onap-1.1
+samples:
+  sample1:
+    name: service-create
+    input: --cloud-region-id RegionOne --tenant-id onap --model-type service --model-invariant-id 1de901ed-17af-4b03-bc1f-41659cfa27cb --model-name-version-id ace39141-09ec-4068-b06d-ac6b23bdc6e0 --model-name demoVLB --model-version 1.0 -c Demonstration -b Demonstration --instance-name sample-service-onap-cli-9 --subscription-service-type vLB -m http://192.168.17.121:8080 -u InfraPortalClient -p password1$
+    moco: service-create-schema-1.1-moco.json
+    ouput:|
+      +--------------+--------------------------------------+
+      |property      |value                                 |
+      +--------------+--------------------------------------+
+      |instance-id   |fdb98970-9de8-48a3-a321-d02693d2d1ad  |
+      +--------------+--------------------------------------+
