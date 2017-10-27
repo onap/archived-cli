@@ -4,28 +4,28 @@ description: Create a VNF
 version: onap-1.1
 service:
   name: mso
-  version: v2
+  version: v3
   auth: basic
   mode: direct
 
 parameters:
-  - name: lcp-cloudregion-id
-    description: AIC LCP node location identifier
+  - name: cloud-region
+    description: cloud region identifier
     type: string
     short_option: l
-    long_option: lcp-cloudregion-id
+    long_option: cloud-region
     is_optional: false
   - name: tenant-id
-    description: openstack tenant id (uuid)
+    description: openstack tenant id
     type: string
     short_option: z
     long_option: tenant-id
     is_optional: false
-  - name: product-family-id
-    description: UUID for product family (named service id in AAI)
+  - name: product-family
+    description: service type for serivce (e.g. vLB)
     type: string
     short_option: w
-    long_option: product-family-id
+    long_option: product-family
     is_optional: false
   - name: instance-name
     description: service instance name
@@ -33,42 +33,76 @@ parameters:
     short_option: i
     long_option: instance-name
     is_optional: false
-  - name: supress-rollback
-    description: rollback changes if instantiation fails.
-    type: bool
-    short_option: r
-    long_option: supress-rollback
-    is_optional: true
   - name: service-instance-id
     description: unique id for service instance
     type: string
     short_option: y
     long_option: service-instance-id
     is_optional: false
-  - name: parenet-service-model
-    description: parent service model name
+  - name: vf-model-invariant-id
+    description: vf model invariant id
     type: string
-    short_option: x
-    long_option: parenet-service-model
+    long_option: vf-model-invariant-id
     is_optional: false
+  - name: vf-model-uuid
+    description: model uuid for vf
+    type: string
+    long_option: vf-model-uuid
+    is_optional: false
+  - name: vf-model-name
+    description: vf model name
+    type: string
+    long_option: vf-model-name
+    is_optional: false
+  - name: vf-model-version
+    description: vf model version
+    type: string
+    long_option: vf-model-version
+    is_optional: false
+  - name: vf-model-customization-id
+    description: vf model customization id
+    type: string
+    long_option: vf-model-customization-id
+    is_optional: false
+  - name: service-model-invariant-id
+    description: model invariant id
+    type: string
+    long_option: service-model-invariant-id
+    is_optional: false
+  - name: service-model-uuid
+    description: model name version id
+    type: string
+    long_option: service-model-uuid
+    is_optional: false
+  - name: service-model-name
+    description: service model name
+    type: string
+    long_option: service-model-name
+    is_optional: false
+  - name: service-model-version
+    description: service model version
+    type: string
+    long_option: service-model-version
+    is_optional: false
+
 
 results:
   direction: portrait
-  attribute:
-    - name: vnf-instance-id
+  attributes:
+    - name: instance-id
       description: id for the created vnf
       type: string
       scope: short
 
 http:
   request:
-    uri: ecomp/mso/infra/serviceInstances/v2/${service-instance-id}/vnfs
-    method: PUT
-    body: '{"requestDetails":{"modelInfo":{"modelType":"vnf","modelInvariantId":"ff5256d1-5a33-55df-13ab-12abad84e7ff","modelNameVersionId":"fe6478e4-ea33-3346-ac12-ab121484a3fe","modelName":"vSAMP12","modelVersion":"1.0","modelCustomizationName":"vSAMP12 1"},"cloudConfiguration":{"lcpCloudRegionId": "${lcp-cloudregion-id}","tenantId":"${tenant-id}"},"requestInfo":{"instanceName":"${instance-name}","productFamilyId":"${product-family-id}","source":"VID","suppressRollback":"${supress-rollback}"},"relatedInstanceList":[{"relatedInstance":{"instanceId":"${service-instance-id}","modelInfo":{"modelType":"service","modelInvariantId":"ff3514e3-5a33-55df-13ab-12abad84e7ff","modelNameVersionId":"fe6985cd-ea33-3346-ac12-ab121484a3fe","modelName":"${parenet-service-model}","modelVersion":"1.0"}}}],"requestParameters":{}}}'
+    uri: /ecomp/mso/infra/serviceInstances/v3/${service-instance-id}/vnfs
+    method: POST
+    body: '{"requestDetails": {"modelInfo": {"modelType": "vnf","modelInvariantId": "${vf-model-invariant-id}","modelVersionId": "${vf-model-uuid}","modelName": "${vf-model-name}","modelVersion": "${vf-model-version}","modelCustomizationId": "${vf-model-customization-id}"},"cloudConfiguration": {"lcpCloudRegionId": "${cloud-region}","tenantId": "${tenant-id}"},"requestInfo": {"instanceName": "${instance-name}","source": "VID","productFamilyId": "${product-family}" },"relatedInstanceList": [{"relatedInstance": {"instanceId": "${service-instance-id}","modelInfo": {"modelType": "service","modelInvariantId": "${service-model-invariant-id}","modelVersionId": "${service-model-uuid}","modelName": "${service-model-name}","modelVersion": "${service-model-version}"}}}],"requestParameters": {}}}'
 
   success_codes:
     - 202
-  result_mpa:
-    vnf-instance-id: $b{$.vnfInstanceId}
+  result_map:
+    instance-id: $b{$.requestReferences.instanceId}
   sample_response:
-    body: '{"vnfInstanceId":"234567AB"}'
+    body: '{"requestReferences": {"instanceId": "2a152730-f6eb-4dc6-9b81-7a6f6f263d71","requestId": "6402628f-7f67-4605-9e60-0d8632616d02"}}'
