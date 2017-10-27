@@ -1,0 +1,21 @@
+onap_cli_sample_version: 1.0
+name: vsp-show
+version: onap-1.1
+samples:
+  sample1:
+    name: vsp-show
+    input: --vsp-id b1caa2ec31ba4b738cbe5aab362b35aa --vsp-version 1.0 -d
+    moco: vsp-show-schema-1.1-moco.json
+    ouput:|
+      |property      |value                             |
+      +--------------+----------------------------------+
+      |name          |Kanag-VSP                         |
+      +--------------+----------------------------------+
+      |ID            |b1caa2ec31ba4b738cbe5aab362b35aa  |
+      +--------------+----------------------------------+
+      |description   |Test VSP created by Kanag         |
+      +--------------+----------------------------------+
+      |version       |1.0                               |
+      +--------------+----------------------------------+
+      |status        |Final                             |
+      +--------------+----------------------------------+
