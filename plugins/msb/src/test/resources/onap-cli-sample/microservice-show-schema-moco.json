@@ -1,0 +1,41 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/api/microservices/v1/services/test/version/v1",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "serviceName" : "test",
+      "version" : "v1",
+      "url" : "/C:/Git/test",
+      "protocol" : "REST",
+      "visualRange" : "1",
+      "lb_policy" : "ip_hash",
+      "publish_port" : "",
+      "namespace" : "",
+      "network_plane_type" : "",
+      "host" : "",
+      "path" : "/C:/Git/test",
+      "enable_ssl" : false,
+      "nodes" : [ {
+        "ip" : "10.0.0.1",
+        "port" : "8080",
+        "checkType" : "",
+        "checkUrl" : "",
+        "ha_role" : "",
+        "nodeId" : "_test_10.0.0.1_8080",
+        "status" : "passing"
+      } ],
+      "metadata" : [ ],
+      "labels" : [ ],
+      "status" : "1",
+      "is_manual" : false
+    }
+  }
+} ]
