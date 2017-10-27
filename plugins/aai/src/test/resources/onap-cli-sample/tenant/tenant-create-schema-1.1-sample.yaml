@@ -1,0 +1,10 @@
+onap_cli_sample_version: 1.0
+name: tenant-create
+version: onap-1.1
+samples:
+  sample1:
+    name: tenant-create
+    input: --cloud huawei-cloud --region bangalore --tenant-name test
+    moco: tenant-create-schema-1.1-moco.json
+    ouput: |
+
