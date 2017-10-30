@@ -1,0 +1,37 @@
+open_cli_schema_version: 1.0
+name: vsp-upload
+description: Upload the CSAR file to VSP
+version: onap-1.1
+service:
+  name: sdc
+  version: v1.0
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: vsp-id
+    description: Onap VSP ID
+    type: string
+    short_option: x
+    long_option: vsp-id
+    is_optional: false
+  - name: vsp-version
+    description: Onap VSP version
+    type: string
+    short_option: y
+    long_option: vsp-version
+    is_optional: false
+  - name: vsp-file
+    description: CSAR File path
+    type: binary
+    short_option: z
+    long_option: vsp-file
+    is_optional: false
+http:
+  request:
+    uri: /onboarding-api/v1.0/vendor-software-products/${vsp-id}/versions/${vsp-version}/orchestration-template-candidate
+    method: POST
+    body: ${vsp-file}
+    multipart_entity_name: upload
+  success_codes:
+    - 200
