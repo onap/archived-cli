@@ -6,7 +6,8 @@ samples:
     name: vsp-create
     input: --vsp-name kanag-cli-vfw --vsp-description VSP created from CLI for vFW --vsp-vendor-name Kanag --vsp-vendor-id b1caa2ec31ba4b738cbe5aab362b35aa --license-agreement-id b373c16f28854c6db9e027929ae5e5ed --feature-group-id efea8b9817b344c4b93c45dc141f6703 -d --vsp-license-version 4.0
     moco: vsp-create-schema-1.1-moco.json
-    ouput:|
+    ouput: |
+      +----------+----------------------------------+
       |property  |value                             |
       +----------+----------------------------------+
       |ID        |5ca119e2326045d1857ae3f04a816434  |
