@@ -1,0 +1,21 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products/e65baf44883e4868ba96f9faed9ba97a/versions/0.2/actions",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-1126bf53-958c-4f9d-95b7-233291c8ffb9",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "action" : "Undo_Checkout"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : { }
+  }
+} ]
