@@ -1,0 +1,25 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-dfe8f907-9276-45ad-8fa8-ff557d61f661",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "vendorName" : "kanag-cli",
+      "description" : "First License created from CLI",
+      "iconRef" : "icon"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "cf2d907d998e44698ce3b4cded5f66a7"
+    }
+  }
+} ]
