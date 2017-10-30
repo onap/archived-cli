@@ -1,0 +1,38 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-aa703f95-a8ab-4c5c-8971-40e73df98a28",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "category" : "resourceNewCategory.generic",
+      "vendorId" : "b1caa2ec31ba4b738cbe5aab362b35aa",
+      "subCategory" : "resourceNewCategory.generic.abstract",
+      "description" : "VSP created from CLI for vFW",
+      "licensingVersion" : {
+        "id" : "4.0",
+        "label" : "4.0"
+      },
+      "licensingData" : {
+        "featureGroups" : [ "efea8b9817b344c4b93c45dc141f6703" ],
+        "licenseAgreement" : "b373c16f28854c6db9e027929ae5e5ed"
+      },
+      "icon" : "icon",
+      "onboardingMethod" : "NetworkPackage",
+      "vendorName" : "Kanag",
+      "name" : "kanag-cli-vfw"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "vspId" : "5ca119e2326045d1857ae3f04a816434"
+    }
+  }
+} ]

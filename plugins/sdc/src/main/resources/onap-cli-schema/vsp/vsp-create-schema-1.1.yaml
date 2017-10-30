@@ -1,0 +1,86 @@
+open_cli_schema_version: 1.0
+name: vsp-create
+description: Create Vendor Software Product
+version: onap-1.1
+service:
+  name: sdc
+  version: v1.0
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: vsp-name
+    description: Onap VSP Name
+    type: string
+    short_option: x
+    long_option: vsp-name
+    is_optional: false
+  - name: vsp-description
+    description: Description for VSP
+    type: string
+    short_option: y
+    long_option: vsp-description
+    is_optional: true
+  - name: vsp-category
+    description: Category of the VSP
+    type: string
+    long_option: vsp-category
+    short_option: z
+    is_optional: true
+    default_value: resourceNewCategory.generic
+  - name: vsp-subcategory
+    description: Sub Category of VSP
+    type: string
+    long_option: vsp-subcategory
+    short_option: b
+    is_optional: true
+    default_value: resourceNewCategory.generic.abstract
+  - name: vsp-license-version
+    description: License version
+    type: string
+    long_option: vsp-license-version
+    short_option: c
+    is_optional: true
+    default_value: 1.0
+  - name: vsp-vendor-name
+    description: License Model Name
+    type: string
+    long_option: vsp-vendor-name
+    short_option: e
+    is_optional: false
+  - name: vsp-vendor-id
+    description: License Model ID
+    type: string
+    long_option: vsp-vendor-id
+    short_option: g
+    is_optional: false
+  - name: license-agreement-id
+    description: License Agreement ID
+    type: string
+    long_option: license-agreement-id
+    short_option: i
+    is_optional: false
+  - name: feature-group-id
+    description: Feature Group ID
+    type: string
+    long_option: feature-group-id
+    short_option: j
+    is_optional: false
+results:
+  direction: portrait
+  attributes:
+    - name: ID
+      description: VSP ID
+      scope: short
+      type: string
+http:
+  request:
+    uri: /onboarding-api/v1.0/vendor-software-products
+    method: POST
+    body: '{"category": "${vsp-category}", "vendorId": "${vsp-vendor-id}", "subCategory": "${vsp-subcategory}", "description": "${vsp-description}", "licensingVersion": {"id": "${vsp-license-version}", "label": "${vsp-license-version}"}, "licensingData": {"featureGroups": ["${feature-group-id}"], "licenseAgreement": "${license-agreement-id}"}, "icon": "icon", "onboardingMethod": "NetworkPackage", "vendorName": "${vsp-vendor-name}", "name": "${vsp-name}"}'
+  success_codes:
+    - 200
+  result_map:
+    ID: $b{$.vspId}
+  sample_response:
+    body: '{"vspId":"2DEB6CB4B082415BB7A697C9CD1273BA"}'
