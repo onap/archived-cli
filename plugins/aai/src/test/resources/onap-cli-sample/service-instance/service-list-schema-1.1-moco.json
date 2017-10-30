@@ -1,0 +1,205 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v11/business/customers/customer/Demonstration/service-subscriptions/service-subscription/vLB/service-instances",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-f23a4ee4-d7fe-4f66-8a3a-2811f2c7b21b",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "service-instance" : [ {
+        "service-instance-id" : "1db042a9-6b28-4290-baba-872d32eeecf2",
+        "service-instance-name" : "sample-instance",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509022618290"
+      }, {
+        "service-instance-id" : "9244629b-4ae4-48a0-bac0-b76937105ec7",
+        "service-instance-name" : "demo-vlb-vid",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509022547366"
+      }, {
+        "service-instance-id" : "912d6d8d-9534-41d0-9323-289e81d4e399",
+        "service-instance-name" : "sample-instance-3",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509080251181"
+      }, {
+        "service-instance-id" : "26b4ea72-d119-4345-95c8-568b08a093aa",
+        "service-instance-name" : "sample-service-onap-cli-2",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509084185281"
+      }, {
+        "service-instance-id" : "b2ebdb88-cfa5-496f-93a5-d535accbf56a",
+        "service-instance-name" : "sample-instance-1",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509023258677"
+      }, {
+        "service-instance-id" : "01eb6e59-5c28-4c76-85c7-a6b1e48058b9",
+        "service-instance-name" : "sample-service-onap-cli-4",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509084558970"
+      }, {
+        "service-instance-id" : "03acb854-647b-4cf9-bfd8-a76083bb7266",
+        "service-instance-name" : "sample-service-onap-cli-3",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509084249566"
+      }, {
+        "service-instance-id" : "14a9d485-63de-4ce2-b763-133ec3ce3d23",
+        "service-instance-name" : "sample-service-onap-cli-8",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509086790040"
+      }, {
+        "service-instance-id" : "fdb98970-9de8-48a3-a321-d02693d2d1ad",
+        "service-instance-name" : "sample-service-onap-cli-9",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509086896605"
+      }, {
+        "service-instance-id" : "50de14d5-73d6-458e-880e-de8278b6f944",
+        "service-instance-name" : "test",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509106683895"
+      }, {
+        "service-instance-id" : "2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee",
+        "service-instance-name" : "sample-instance-cli-10",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509109122018",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/1a667ce8-8b8b-4f59-ba5c-b162ae462fef",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "1a667ce8-8b8b-4f59-ba5c-b162ae462fef"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-8"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/048c2c4a-ee30-41a1-bb55-c4e7fe1a9a0d",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "048c2c4a-ee30-41a1-bb55-c4e7fe1a9a0d"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-11"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/c37c401f-a839-4b6e-9c65-33e023c412ee",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "c37c401f-a839-4b6e-9c65-33e023c412ee"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-10"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/b544f164-97c9-483a-98eb-eafd1f808e79",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "b544f164-97c9-483a-98eb-eafd1f808e79"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-5"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/5ef95bd9-4d7a-4d06-879e-0c7964f9de65",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "5ef95bd9-4d7a-4d06-879e-0c7964f9de65"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-4"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/eb29edb5-0a9f-4bc6-a7bf-3211341fffc2",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "eb29edb5-0a9f-4bc6-a7bf-3211341fffc2"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-9"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/2a152730-f6eb-4dc6-9b81-7a6f6f263d71",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "2a152730-f6eb-4dc6-9b81-7a6f6f263d71"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-1"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/f53cd512-e172-410e-87b4-37064b5b5f8c",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "f53cd512-e172-410e-87b4-37064b5b5f8c"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-7"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/f4bfcd6a-2ea1-42ab-853a-5d863b150c40",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "f4bfcd6a-2ea1-42ab-853a-5d863b150c40"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-3"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "related-link" : "/aai/v11/network/generic-vnfs/generic-vnf/4bb4beaa-5b6b-414e-97d8-53949bbb5c5e",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "4bb4beaa-5b6b-414e-97d8-53949bbb5c5e"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb-cli-sample-6"
+            } ]
+          } ]
+        }
+      }, {
+        "service-instance-id" : "4415727d-dc2a-4378-a3a7-bc4411d391c7",
+        "service-instance-name" : "sample-service-onap-cli-5",
+        "model-invariant-id" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+        "model-version-id" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+        "resource-version" : "1509084703790"
+      } ]
+    }
+  }
+} ]
