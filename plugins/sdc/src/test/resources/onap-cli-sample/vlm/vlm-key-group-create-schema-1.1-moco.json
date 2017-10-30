@@ -1,0 +1,25 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/0.1/license-key-groups",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-bf1823d9-7c60-4156-b22f-fa765af714fe",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "description" : "Kanag CLI key group",
+      "name" : "kanag-cli-kg",
+      "type" : "Universal"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "c37a1f205f444161a573f55dfec5f170"
+    }
+  }
+} ]
