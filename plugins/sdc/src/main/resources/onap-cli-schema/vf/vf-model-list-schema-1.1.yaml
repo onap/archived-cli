@@ -35,7 +35,14 @@ results:
       description: description
       type: string
       scope: long
-
+    - name: vsp-uuid
+      description: VSP uuid
+      type: string
+      scope: long
+    - name: vsp-version
+      description: VSP version
+      type: string
+      scope: long
 http:
   request:
     uri: /sdc2/rest/v1/followed
@@ -49,4 +56,5 @@ http:
     name: $b{resources.[*].name}
     status: $b{resources.[*].lifecycleState}
     description: $b{resources.[*].description}
-
+    vsp-uuid: $b{resources.[*].csarUUID}
+    vsp-version: $b{resources.[*].csarVersion}
