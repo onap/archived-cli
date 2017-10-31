@@ -1,0 +1,49 @@
+open_cli_schema_version: 1.0
+name: service2vf-model-list
+description: List the VF in a given service model in SDC
+version: onap-1.1
+service:
+  name: sdc
+  version: v1.0
+  auth: basic
+  mode: direct
+
+parameters:
+  - name: service-model-id
+    description: Service model uuid
+    type: string
+    short_option: z
+    long_option: service-model-id
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: vf-uuid
+      description: UUID
+      type: string
+      scope: short
+    - name: vf-name
+      description: name
+      type: string
+      scope: short
+    - name: vf-customization-uuid
+      description: customization UUID
+      type: string
+      scope: short
+    - name: vf-version
+      description: version
+      type: string
+      scope: short
+
+http:
+  request:
+    uri: /sdc2/rest/v1/catalog/services/${service-model-id}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    vf-uuid: $b{componentInstances.[*].componentUid}
+    vf-name: $b{componentInstances.[*].componentName}
+    vf-version: $b{componentInstances.[*].componentVersion}
+    vf-customization-uuid: $b{componentInstances.[*].customizationUUID}
