@@ -1,0 +1,52 @@
+open_cli_schema_version: 1.0
+name: vf-model-list
+description: List the VF resource model in SDC
+version: onap-1.1
+service:
+  name: sdc
+  version: v1.0
+  auth: basic
+  mode: direct
+
+results:
+  direction: landscape
+  attributes:
+    - name: uuid
+      description: UUID
+      type: string
+      scope: short
+    - name: invariant-uuid
+      description: Invariant UUID
+      type: string
+      scope: short
+    - name: name
+      description: Name
+      type: string
+      scope: short
+    - name: version
+      description: version
+      type: string
+      scope: short
+    - name: status
+      description: status
+      type: string
+      scope: short
+    - name: description
+      description: description
+      type: string
+      scope: long
+
+http:
+  request:
+    uri: /sdc2/rest/v1/followed
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    uuid: $b{resources.[*].uniqueId}
+    invariant-uuid: $b{resources.[*].invariantUUID}
+    version: $b{resources.[*].version}
+    name: $b{resources.[*].name}
+    status: $b{resources.[*].lifecycleState}
+    description: $b{resources.[*].description}
+
