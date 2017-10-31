@@ -1,0 +1,56 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/ecomp/mso/infra/serviceInstances/v3/2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee/vnfs",
+    "headers" : {
+      "Authorization" : "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-8120ae88-0e56-4f1d-9a00-44f07e9469db",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "requestDetails" : {
+        "modelInfo" : {
+          "modelType" : "vnf",
+          "modelInvariantId" : "cc34cd54-dd7c-44cd-8847-f9577c6f1a49",
+          "modelVersionId" : "8b1f63f3-e0cc-4c27-8903-fafe2f25bfbe",
+          "modelName" : "847cb26a-59a6-475a-94dd",
+          "modelVersion" : "1.0",
+          "modelCustomizationId" : "cf893f5a-1bb1-4e32-a92b-2456e12178f8"
+        },
+        "cloudConfiguration" : {
+          "lcpCloudRegionId" : "RegionOne",
+          "tenantId" : "onap"
+        },
+        "requestInfo" : {
+          "instanceName" : "vlb-cli-sample-11",
+          "source" : "VID",
+          "productFamilyId" : "vLB"
+        },
+        "relatedInstanceList" : [ {
+          "relatedInstance" : {
+            "instanceId" : "2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee",
+            "modelInfo" : {
+              "modelType" : "service",
+              "modelInvariantId" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
+              "modelVersionId" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
+              "modelName" : "demoVLB",
+              "modelVersion" : "1.0"
+            }
+          }
+        } ],
+        "requestParameters" : { }
+      }
+    }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "requestReferences" : {
+        "instanceId" : "048c2c4a-ee30-41a1-bb55-c4e7fe1a9a0d",
+        "requestId" : "7bbf50b3-50d9-449e-a87d-694e2f373aea"
+      }
+    }
+  }
+} ]
