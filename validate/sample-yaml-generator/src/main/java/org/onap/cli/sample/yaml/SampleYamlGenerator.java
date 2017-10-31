@@ -57,10 +57,10 @@ public class SampleYamlGenerator {
         if (value.isEmpty()) {
             return;
         }
-        writer.write("|\n");
+        writer.write(" |\n");
         nTab++;
         String[] lines = value.split("\n");
-        long skipLines = debug ? 12 : 0;
+        long skipLines = debug ? 11 : 0;
         Arrays.stream(lines).skip(skipLines ).forEach(line -> writer.write(printTabs() + line + "\n")); // NOSONAR
     }
 
