@@ -23,7 +23,7 @@
 
     <parent>
         <groupId>org.onap.cli</groupId>
-        <artifactId>cli</artifactId>
+        <artifactId>cli-validate</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
