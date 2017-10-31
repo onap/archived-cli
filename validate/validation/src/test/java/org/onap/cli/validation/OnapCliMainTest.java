@@ -63,9 +63,10 @@ public class OnapCliMainTest {
             OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(version);
             System.out.println(version);
             System.out.println("==========================\n\n");
+            int i = 1;
             for (ExternalSchema sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
                 if (sch.getCmdVersion().equals(version)) {
-                    System.out.println(sch.getCmdName());
+                    System.out.println("[" + i++ + "] " + sch.getCmdName());
                     System.out.println("-----------------------------------------------\n\n");
                     this.handle(new String[] { sch.getCmdName(), "-h"});
                     System.out.println("\n");

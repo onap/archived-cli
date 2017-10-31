@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>cli-validation</artifactId>
-    <name>cli/validation</name>
+    <name>cli/validate/validation</name>
     <packaging>jar</packaging>
     <dependencies>
        <dependency>

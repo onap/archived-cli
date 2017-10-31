@@ -42,8 +42,6 @@ import org.onap.cli.fw.output.PrintDirection;
 import org.onap.cli.fw.output.ResultType;
 import org.onap.cli.fw.utils.ExternalSchema;
 import org.onap.cli.fw.utils.OnapCommandUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Onap Command registrar provides a common place, where every command would get registered automatically when its
@@ -51,9 +49,6 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class OnapCommandRegistrar {
-
-    private static Logger LOG = LoggerFactory.getLogger(OnapCommandRegistrar.class);
-
     private Map<String, Class<? extends OnapCommand>> registry = new HashMap<>();
 
     private Set<String> availableProductVersions = new HashSet<>();
