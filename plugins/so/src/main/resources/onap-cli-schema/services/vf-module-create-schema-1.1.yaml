@@ -1,74 +1,125 @@
 open_cli_schema_version: 1.0
 name: vf-module-create
-description: Create a VF Module
+description: Create a VF module
 version: onap-1.1
 service:
   name: mso
-  version: v2
+  version: v3
   auth: basic
   mode: direct
 
 parameters:
-  - name: lcp-cloudregion-id
-    description: AIC LCP node location identifier
+  - name: cloud-region
+    description: cloud region identifier
     type: string
     short_option: l
-    long_option: lcp-cloudregion-id
+    long_option: cloud-region
     is_optional: false
   - name: tenant-id
-    description: openstack tenant id (uuid)
-    type: string
-    short_option: w
-    long_option: tenant-id
-    is_optional: false
-  - name: vnf-instance-id
-    description: vnf instance id
-    type: string
-    short_option: y
-    long_option: vnf-instace-id
-    is_optional: false
-  - name: service-instance-id
-    description: unique id for service instance
-    type: string
-    short_option: x
-    long_option: service-instace-id
-    is_optional: false
-  - name: parenet-service-model
-    description: parent service model name
+    description: openstack tenant id
     type: string
     short_option: z
-    long_option: parenet-service-model
+    long_option: tenant-id
     is_optional: false
-  - name: supress-rollback
-    description: rollback changes if instantiation fails.
-    type: bool
-    short_option: r
-    long_option: supress-rollback
-    is_optional: true
-  - name: instance-name
-    description: service instance name
+  - name: vf-module-invariant-id
+    description: vf-module model invariant id
+    type: string
+    long_option: vf-module-invariant-id
+    is_optional: false
+  - name: vf-module-uuid
+    description: model uuid for vf-module
+    type: string
+    long_option: vf-module-uuid
+    is_optional: false
+  - name: vf-module-name
+    description: vf-module model name
+    type: string
+    long_option: vf-module-name
+    is_optional: false
+  - name: vf-module-version
+    description: vf module version
+    type: string
+    long_option: vf-module-version
+    is_optional: false
+  - name: module-name
+    description: vf-module name
     type: string
     short_option: i
-    long_option: instance-name
+    long_option: module-name
     is_optional: false
+  - name: service-id
+    description: unique id for service
+    type: string
+    long_option: service-id
+    is_optional: false
+  - name: vf-id
+    description: unique id for related VF
+    type: string
+    short_option: y
+    long_option: vf-id
+    is_optional: false
+  - name: vf-model-invariant-id
+    description: vf model invariant id
+    type: string
+    long_option: vf-model-invariant-id
+    is_optional: false
+  - name: vf-model-uuid
+    description: model uuid for vf
+    type: string
+    long_option: vf-model-uuid
+    is_optional: false
+  - name: vf-model-name
+    description: vf model name
+    type: string
+    long_option: vf-model-name
+    is_optional: false
+  - name: vf-model-version
+    description: vf model version
+    type: string
+    long_option: vf-model-version
+    is_optional: false
+  - name: vf-model-customization-id
+    description: vf model customization id
+    type: string
+    long_option: vf-model-customization-id
+    is_optional: false
+  - name: service-model-invariant-id
+    description: model invariant id
+    type: string
+    long_option: service-model-invariant-id
+    is_optional: false
+  - name: service-model-uuid
+    description: model name version id
+    type: string
+    long_option: service-model-uuid
+    is_optional: false
+  - name: service-model-name
+    description: service model name
+    type: string
+    long_option: service-model-name
+    is_optional: false
+  - name: service-model-version
+    description: service model version
+    type: string
+    long_option: service-model-version
+    is_optional: false
+
 
 results:
   direction: portrait
-  attribute:
-    - name: vf-instance-id
-      description: id for the created vf
+  attributes:
+    - name: vf-module-id
+      description: id for the created vnf
       type: string
       scope: short
 
 http:
   request:
-    uri: ecomp/mso/infra/serviceInstances/v2/${service-instance-id}/vnfs/${vnf-instance-id}/vfModules
-    method: PUT
-    body: '{"requestDetails":{"modelInfo":{"modelType":"vfModule","modelInvariantId":"ff5256d2-5a33-55df-13ab-12abad84e7ff","modelNameVersionId":"fe6478e5-ea33-3346-ac12-ab121484a3fe","modelName":"vSAMP12..base..module-0","modelVersion":"1"},"cloudConfiguration":{"lcpCloudRegionId":"${lcp-cloudregion-id}","tenantId":"${tenant-id}"},"requestInfo":{"instanceName":"${instance-name}","source":"VID","suppressRollback":"${supress-rollback}"},"relatedInstanceList":[{"relatedInstance":{"instanceId":"${service-instance-id}","modelInfo":{"modelType":"service","modelInvariantId":"ff3514e3-5a33-55df-13ab-12abad84e7ff","modelNameVersionId":"fe6985cd-ea33-3346-ac12-ab121484a3fe","modelName":"${parenet-service-model}","modelVersion":"1.0"}}},{"relatedInstance":{"instanceId":"${vnf-instance-id}","modelInfo":{"modelType":"vnf","modelInvariantId":"ff5256d1-5a33-55df-13ab-12abad84e7ff","modelNameVersionId":"fe6478e4-ea33-3346-ac12-ab121484a3fe","modelName":"vSAMP12","modelVersion":"1.0","modelCustomizationName":"vSAMP12 1"}}}],"requestParameters":{"userParams":[]}}}'
+    uri: /ecomp/mso/infra/serviceInstances/v3/${service-id}/vnfs/${vf-id}/vfModules
+    method: POST
+    body: '{"requestDetails": {"modelInfo": {"modelType": "vfModule","modelInvariantId": "${vf-module-invariant-id}","modelNameVersionId": "${vf-module-uuid}","modelName": "${vf-module-name}","modelVersion": "${vf-module-version}"},"cloudConfiguration": {"lcpCloudRegionId": "${cloud-region}","tenantId": "${tenant-id}"},"requestInfo": {"instanceName": "${module-name}","source": "VID"},"relatedInstanceList": [{"relatedInstance": {"instanceId": "${service-id}","modelInfo": {"modelType": "service","modelInvariantId": "${service-model-invariant-id}","modelNameVersionId": "${service-model-uuid}","modelName": "${service-model-name}","modelVersion": "${service-model-version}"}}},{"relatedInstance": {"instanceId": "${vf-id}","modelInfo": {"modelType": "vnf","modelInvariantId": "${vf-model-invariant-id}","modelNameVersionId": "${vf-model-uuid}","modelName": "${vf-model-name}","modelVersion": "${vf-model-version}","modelCustomizationName": "${vf-model-customization-id}"}}}],"requestParameters": {"userParams": []}}}'
 
   success_codes:
     - 202
-  result_mpa:
-    vf-instance-id: $b{$.vfInstanceId}
-  sample_response:
-    body: '{"vfInstanceId":"234567AB"}'
+  result_map:
+    vf-module-id: $b{$.requestReferences.instanceId}
