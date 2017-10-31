@@ -6,7 +6,7 @@ samples:
     name: microservice-show
     input: --service-name test --service-version v1 --long
     moco: microservice-show-schema-moco.json
-    ouput:|
+    ouput: |
       +------------+----------------+
       |property    |value           |
       +------------+----------------+

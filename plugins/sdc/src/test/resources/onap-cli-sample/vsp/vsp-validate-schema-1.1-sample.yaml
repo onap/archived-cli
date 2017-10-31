@@ -6,7 +6,7 @@ samples:
     name: vsp-validate
     input: --vsp-id 5ca119e2326045d1857ae3f04a816434 --vsp-version 0.1
     moco: vsp-validate-schema-1.1-moco.json
-    ouput:|
+    ouput: |
       +----------+----------------------------------------------------+
       |property  |value                                               |
       +----------+----------------------------------------------------+

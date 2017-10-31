@@ -6,7 +6,7 @@ samples:
     name: ems-list
     input: 
     moco: ems-list-schema-1.1-moco.json
-    ouput:|
+    ouput: |
       +--------------------------------------+------------------+
       |ems-id                                |resource-version  |
       +--------------------------------------+------------------+

@@ -6,7 +6,7 @@ samples:
     name: vsp-show
     input: --vsp-id b1caa2ec31ba4b738cbe5aab362b35aa --vsp-version 1.0 -d
     moco: vsp-show-schema-1.1-moco.json
-    ouput:|
+    ouput: |
       |property      |value                             |
       +--------------+----------------------------------+
       |name          |Kanag-VSP                         |

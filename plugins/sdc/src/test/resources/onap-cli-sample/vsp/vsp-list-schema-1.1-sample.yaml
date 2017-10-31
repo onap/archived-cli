@@ -6,7 +6,7 @@ samples:
     name: vsp-list
     input: -d
     moco: vsp-list-schema-1.1-moco.json
-    ouput:|
+    ouput: |
       |ID                                |name                                  |vendor-name               |version   |status  |license-id                        |
       +----------------------------------+--------------------------------------+--------------------------+----------+--------+----------------------------------+
       |8f08a17b9a4c4538b51a3064468baec0  |test-vsp                              |test-vendor               |0.3       |Locked  |0a12d68750704a54a7e9974595d7e951  |

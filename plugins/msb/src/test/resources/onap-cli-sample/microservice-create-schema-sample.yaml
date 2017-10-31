@@ -6,7 +6,7 @@ samples:
     name: microservice-create
     input: --service-name test --service-version v1 --service-url C:/Git/test --path C:/Git/test 10.0.0.1 8080
     moco: microservice-create-schema-moco.json
-    ouput:|
+    ouput: |
       +----------+--------------+
       |property  |value         |
       +----------+--------------+
