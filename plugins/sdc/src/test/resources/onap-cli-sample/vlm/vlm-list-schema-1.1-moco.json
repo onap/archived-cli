@@ -7,7 +7,7 @@
       "X-FromAppId" : "onap-cli",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-8dd63676-53d7-4825-adea-be1a21add819",
+      "X-TransactionId" : "req-45e743b7-f417-4159-9a1b-95af8b24aad2",
       "Content-Type" : "application/json"
     },
     "json" : null
@@ -22,13 +22,17 @@
         "iconRef" : "icon",
         "id" : "cf2d907d998e44698ce3b4cded5f66a7",
         "version" : {
-          "id" : "1.0",
-          "label" : "1.0"
+          "id" : "1.1",
+          "label" : "1.1"
         },
-        "status" : "Final",
+        "status" : "Locked",
+        "lockingUser" : "cs0008",
         "viewableVersions" : [ {
           "id" : "1.0",
           "label" : "1.0"
+        }, {
+          "id" : "1.1",
+          "label" : "1.1"
         } ],
         "finalVersions" : [ {
           "id" : "1.0",
