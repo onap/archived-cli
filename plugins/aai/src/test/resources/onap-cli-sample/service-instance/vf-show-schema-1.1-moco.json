@@ -1,0 +1,55 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v11/network/generic-vnfs/generic-vnf/1a667ce8-8b8b-4f59-ba5c-b162ae462fef",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-46bd1d68-55a3-442a-91b3-850787784bab",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "vnf-id" : "1a667ce8-8b8b-4f59-ba5c-b162ae462fef",
+      "vnf-name" : "vlb-cli-sample-8",
+      "vnf-type" : "demoVLB/null",
+      "service-id" : "vLB",
+      "prov-status" : "PREPROV",
+      "orchestration-status" : "Created",
+      "in-maint" : false,
+      "is-closed-loop-disabled" : false,
+      "resource-version" : "1509115214962",
+      "model-invariant-id" : "cc34cd54-dd7c-44cd-8847-f9577c6f1a49",
+      "model-version-id" : "8b1f63f3-e0cc-4c27-8903-fafe2f25bfbe",
+      "model-customization-id" : "cf893f5a-1bb1-4e32-a92b-2456e12178f8",
+      "nf-type" : "",
+      "nf-function" : "",
+      "nf-role" : "",
+      "nf-naming-code" : "",
+      "relationship-list" : {
+        "relationship" : [ {
+          "related-to" : "service-instance",
+          "related-link" : "/aai/v11/business/customers/customer/Demonstration/service-subscriptions/service-subscription/vLB/service-instances/service-instance/2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee",
+          "relationship-data" : [ {
+            "relationship-key" : "customer.global-customer-id",
+            "relationship-value" : "Demonstration"
+          }, {
+            "relationship-key" : "service-subscription.service-type",
+            "relationship-value" : "vLB"
+          }, {
+            "relationship-key" : "service-instance.service-instance-id",
+            "relationship-value" : "2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee"
+          } ],
+          "related-to-property" : [ {
+            "property-key" : "service-instance.service-instance-name",
+            "property-value" : "sample-instance-cli-10"
+          } ]
+        } ]
+      }
+    }
+  }
+} ]
