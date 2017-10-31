@@ -19,6 +19,14 @@ parameters:
 results:
   direction: landscape
   attributes:
+    - name: vsp-uuid
+      description: VSP uuid
+      type: string
+      scope: short
+    - name: vsp-version
+      description: VSP version
+      type: string
+      scope: short
     - name: module-uuid
       description: UUID
       type: string
@@ -47,3 +55,5 @@ http:
     module-name: $b{groups.[?(@.type == 'org.openecomp.groups.VfModule')].name}
     module-version: $b{groups.[?(@.type == 'org.openecomp.groups.VfModule')].version}
     module-invariant-uuid: $b{groups.[?(@.type == 'org.openecomp.groups.VfModule')].invariantUUID}
+    vsp-uuid: $b{$.csarUUID}
+    vsp-version: $b{$.csarVersion}
