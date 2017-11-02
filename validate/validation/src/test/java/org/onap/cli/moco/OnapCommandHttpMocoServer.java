@@ -16,18 +16,25 @@
 
 package org.onap.cli.moco;
 
+import static com.github.dreamhead.moco.Moco.pathResource;
 import static com.github.dreamhead.moco.MocoJsonRunner.jsonHttpServer;
 import static com.github.dreamhead.moco.Runner.runner;
-import static com.github.dreamhead.moco.Moco.pathResource;
-import static com.github.dreamhead.moco.Moco.file;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -78,6 +85,35 @@ public class OnapCommandHttpMocoServer {
     public OnapCommandHttpMocoServer() {
     }
 
+    public static Map<String, List<OnapCommandSample>> discoverYamls(File path) throws IOException {
+        Map<String, List<OnapCommandSample>> cliProductSamples = new HashMap<>();
+
+        Stream<Path> walk = Files.walk(path.toPath());
+        walk.filter(p -> (p.toString().contains("src/test/resources/onap-cli-sample")))
+        .filter(p -> p.toString().endsWith("sample.yaml"))
+        .forEach(p -> {
+                    collectSamples(new File(p.toUri()), cliProductSamples);
+        });
+
+        return cliProductSamples;
+    }
+
+    private static void collectSamples(File file, Map<String, List<OnapCommandSample>> result) {
+        OnapCommandHttpMocoServer onapCommandHttpMocoServer = new OnapCommandHttpMocoServer();
+        List<OnapCommandSample> loadSamples;
+            try {
+                loadSamples = onapCommandHttpMocoServer.loadSamples(file);
+                loadSamples.stream().forEach(sample -> {
+                    if (!result.containsKey(sample.getProduct())) {
+                        result.put(sample.getProduct(), new ArrayList<>());
+                    }
+                    result.get(sample.getProduct()).add(sample);
+                });
+            } catch (OnapCommandInvalidSample e) {
+                LOG.error("Failed to read sample file", e);
+            }
+    }
+
     private List<Resource> dicoverSampleYamls() {
         Resource[] resources = new Resource [] {};
         try {
@@ -98,20 +134,19 @@ public class OnapCommandHttpMocoServer {
          return "";
     }
 
-    private List<OnapCommandSample> loadSamples(Resource file) throws OnapCommandInvalidSample {
-
+    public List<OnapCommandSample> loadSamples(InputStream inputStream, String fileName) throws OnapCommandInvalidSample {
         List<OnapCommandSample> samples = new ArrayList<>();
         Map<String, ?> values = null;
         try {
-            values = (Map<String, ?>) new Yaml().load(file.getInputStream());
+            values = (Map<String, ?>) new Yaml().load(inputStream);
         } catch (Exception e) {
-            throw new OnapCommandInvalidSample(file.getFilename(), e);
+            throw new OnapCommandInvalidSample(fileName, e);
         }
 
         OnapCommandSample sample = new OnapCommandSample();
 
         if (!this.getValue(values, SAMPLE_VERSION).equals(SAMPLE_VERSION_1_0)) {
-            throw new OnapCommandInvalidSample(file.getFilename(), "Invalid sample version " + this.getValue(values, SAMPLE_VERSION));
+            throw new OnapCommandInvalidSample(fileName, "Invalid sample version " + this.getValue(values, SAMPLE_VERSION));
         }
 
         sample.setCommandName(this.getValue(values, SAMPLE_COMMAND_NAME));
@@ -132,6 +167,21 @@ public class OnapCommandHttpMocoServer {
         return samples;
     }
 
+    public List<OnapCommandSample> loadSamples(Resource file) throws OnapCommandInvalidSample {
+        try {
+            return loadSamples(file.getInputStream(), file.getFilename());
+        } catch (IOException e) {
+            throw new OnapCommandInvalidSample(file.getFilename(), e);
+        }
+    }
+
+    public List<OnapCommandSample> loadSamples(File file) throws OnapCommandInvalidSample {
+        try {
+            return loadSamples(new FileInputStream(file), file.getName());
+        } catch (FileNotFoundException e) {
+            throw new OnapCommandInvalidSample(file.getName(), e);
+        }
+    }
     private void verifySample(OnapCommandSample sample) throws OnapCommandException {
 
         List <String> args = new ArrayList<>();

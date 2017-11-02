@@ -16,8 +16,15 @@
 
 package org.onap.cli.validation;
 
-import java.io.IOException;
+import static org.junit.Assert.fail;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.io.FileUtils;
 import org.aspectj.lang.annotation.After;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -26,6 +33,7 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.utils.ExternalSchema;
 import org.onap.cli.main.OnapCli;
 import org.onap.cli.moco.OnapCommandHttpMocoServer;
+import org.onap.cli.moco.OnapCommandSample;
 
 public class OnapValidationTest {
 
@@ -81,6 +89,42 @@ public class OnapValidationTest {
     public void validateCommands() throws OnapCommandException {
         OnapCommandHttpMocoServer server = new OnapCommandHttpMocoServer();
         server.verifySamples();
+    }
+
+    @Test
+    public void collectSampleYamlTest() {
+        try {
+            File root = new File("../../");
+            String sampleFileName = "target/sample.rst";
+
+            FileUtils.deleteQuietly(new File(sampleFileName));
+            Map<String, List<OnapCommandSample>> discoveredYamls = OnapCommandHttpMocoServer.discoverYamls(root);
+
+            writeSamples(new File(sampleFileName), discoveredYamls);
+        } catch (IOException e) {
+            fail();
+        }
+    }
+
+    private void writeSamples(File dest, Map<String, List<OnapCommandSample>> cliProductSamples) throws IOException {
+
+        for (String product: cliProductSamples.keySet()) {
+            FileUtils.write(dest, "\n" + product, "UTF-8", true);
+            FileUtils.write(dest, "\n========\n\n", "UTF-8", true);
+
+            for(OnapCommandSample sample: cliProductSamples.get(product)) {
+                FileUtils.write(dest, "\n\n" + sample.getCommandName(), "UTF-8", true);
+                FileUtils.write(dest, "\n" + String.join("", Collections.nCopies(sample.getCommandName().length(), "-"))+ "\n", "UTF-8", true);
+
+                if (!sample.getInput().isEmpty()) {
+                    FileUtils.write(dest, "\ninput::\n\n " + sample.getInput() + "\n", "UTF-8", true);
+                }
+
+                if (!sample.getOutput().isEmpty()) {
+                    FileUtils.write(dest, "\noutput::\n\n " + sample.getOutput().replaceAll("\n", "\n ").trim(), "UTF-8", true);
+                }
+            }
+        }
     }
 
  }
