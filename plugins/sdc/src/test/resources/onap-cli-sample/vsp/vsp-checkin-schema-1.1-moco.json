@@ -7,11 +7,11 @@
       "X-FromAppId" : "onap-cli",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-171c004a-033f-4c3b-bcba-b191d1be634e",
+      "X-TransactionId" : "req-37a1e812-60cc-4243-acb6-6a420f672b33",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "action" : "Checkout"
+      "action" : "Checkin"
     }
   },
   "response" : {

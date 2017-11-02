@@ -4,18 +4,25 @@ version: onap-1.1
 samples:
   sample1:
     name: vsp-show
-    input: --vsp-id b1caa2ec31ba4b738cbe5aab362b35aa --vsp-version 1.0 -d
+    input: --vsp-id a8cd007fa101470e98516cd4549c568f --vsp-version 1.0 --long
     moco: vsp-show-schema-1.1-moco.json
     ouput: |
+      +--------------+----------------------------------+
       |property      |value                             |
       +--------------+----------------------------------+
-      |name          |Kanag-VSP                         |
+      |name          |847cb26a-59a6-475a-94dd           |
       +--------------+----------------------------------+
-      |ID            |b1caa2ec31ba4b738cbe5aab362b35aa  |
+      |ID            |a8cd007fa101470e98516cd4549c568f  |
       +--------------+----------------------------------+
-      |description   |Test VSP created by Kanag         |
+      |description   |vendor software product           |
+      +--------------+----------------------------------+
+      |vendor-name   |01eb54a1-f1ff-41a2-aafc           |
+      +--------------+----------------------------------+
+      |vendor-id     |1a49df7b78654777a71f64f2c6c2468f  |
       +--------------+----------------------------------+
       |version       |1.0                               |
       +--------------+----------------------------------+
       |status        |Final                             |
+      +--------------+----------------------------------+
+      |license-id    |99e3783033de443db69d05996341e28d  |
       +--------------+----------------------------------+

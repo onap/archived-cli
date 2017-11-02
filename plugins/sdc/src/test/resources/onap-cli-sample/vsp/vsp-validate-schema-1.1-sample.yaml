@@ -4,7 +4,7 @@ version: onap-1.1
 samples:
   sample1:
     name: vsp-validate
-    input: --vsp-id 5ca119e2326045d1857ae3f04a816434 --vsp-version 0.1
+    input: --vsp-id f19cad8343794e93acb9cda2e4126281 --vsp-version 0.1
     moco: vsp-validate-schema-1.1-moco.json
     ouput: |
       +----------+----------------------------------------------------+
@@ -12,33 +12,50 @@ samples:
       +----------+----------------------------------------------------+
       |status    |Success                                             |
       +----------+----------------------------------------------------+
-      |errors    |{base_vfw.yaml=[{"level":"WARNING","message":"WARN  |
-      |          |ING: Port 'Fixed_IPS' Parameter Name not aligned    |
-      |          |with Guidelines, Parameter Name                     |
+      |errors    |{dnsscaling.yaml=[{"level":"WARNING","message":"WA  |
+      |          |RNING: Port 'Fixed_IPS' Parameter Name not          |
+      |          |aligned with Guidelines, Parameter Name             |
+      |          |[vlb_private_net_id], Resource ID                   |
+      |          |[vdns_2_private_0_port]. As a result, VF\/VFC       |
+      |          |Profile may miss this information"},{"level":"WARN  |
+      |          |ING","message":"WARNING: Port 'Fixed_IPS'           |
+      |          |Parameter Name not aligned with Guidelines,         |
+      |          |Parameter Name [onap_private_subnet_id], Resource   |
+      |          |ID [vdns_2_private_1_port]. As a result, VF\/VFC    |
+      |          |Profile may miss this information"},{"level":"WARN  |
+      |          |ING","message":"WARNING: Nova Server naming         |
+      |          |convention in image, flavor and name properties     |
+      |          |is not consistent, Resource ID [vdns_2]"}], base_v  |
+      |          |lb.yaml=[{"level":"WARNING","message":"WARNING:     |
+      |          |Port 'Fixed_IPS' Parameter Name not aligned with    |
+      |          |Guidelines, Parameter Name                          |
       |          |[onap_private_subnet_id], Resource ID               |
-      |          |[vfw_private_2_port]. As a result, VF\/VFC          |
+      |          |[vlb_private_1_port]. As a result, VF\/VFC          |
+      |          |Profile may miss this information"},{"level":"WARN  |
+      |          |ING","message":"WARNING: Port 'Fixed_IPS'           |
+      |          |Parameter Name not aligned with Guidelines,         |
+      |          |Parameter Name [onap_private_subnet_id], Resource   |
+      |          |ID [vdns_private_1_port]. As a result, VF\/VFC      |
       |          |Profile may miss this information"},{"level":"WARN  |
       |          |ING","message":"WARNING: Port 'Fixed_IPS'           |
       |          |Parameter Name not aligned with Guidelines,         |
       |          |Parameter Name [onap_private_subnet_id], Resource   |
       |          |ID [vpg_private_1_port]. As a result, VF\/VFC       |
       |          |Profile may miss this information"},{"level":"WARN  |
-      |          |ING","message":"WARNING: Port 'Fixed_IPS'           |
-      |          |Parameter Name not aligned with Guidelines,         |
-      |          |Parameter Name [onap_private_subnet_id], Resource   |
-      |          |ID [vsn_private_1_port]. As a result, VF\/VFC       |
-      |          |Profile may miss this information"},{"level":"WARN  |
       |          |ING","message":"WARNING: A resource is connected    |
       |          |twice to the same network role, Network Role        |
-      |          |[vpg_0], Resource ID [onap_private]"},{"level":"WA  |
-      |          |RNING","message":"WARNING: Nova Server naming       |
+      |          |[vdns_0], Resource ID [onap_private]"},{"level":"W  |
+      |          |ARNING","message":"WARNING: Nova Server naming      |
       |          |convention in image, flavor and name properties     |
       |          |is not consistent, Resource ID                      |
+      |          |[vdns_0]"},{"level":"WARNING","message":"WARNING:   |
+      |          |Missing Nova Server Metadata property, Resource     |
+      |          |ID                                                  |
       |          |[vpg_0]"},{"level":"WARNING","message":"WARNING:    |
       |          |A resource is connected twice to the same network   |
-      |          |role, Network Role [vsn_0], Resource ID [onap_priv  |
+      |          |role, Network Role [vpg_0], Resource ID [onap_priv  |
       |          |ate]"},{"level":"WARNING","message":"WARNING:       |
       |          |Nova Server naming convention in image, flavor      |
       |          |and name properties is not consistent, Resource     |
-      |          |ID [vsn_0]"}]}                                      |
+      |          |ID [vpg_0]"}]}                                      |
       +----------+----------------------------------------------------+
