@@ -26,7 +26,7 @@ import org.onap.cli.fw.utils.ExternalSchema;
 import org.onap.cli.main.OnapCli;
 import org.onap.cli.moco.OnapCommandHttpMocoServer;
 
-public class OnapCliMainTest {
+public class OnapValidationTest {
 
     OnapCli cli = null;
 
@@ -58,7 +58,7 @@ public class OnapCliMainTest {
     }
 
     @Test
-    public void usageReadTheDocsTest() throws OnapCommandException {
+    public void genReadTheDocs() throws OnapCommandException {
         for (String version: OnapCommandRegistrar.getRegistrar().getAvailableProductVersions()) {
             OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(version);
             System.out.println(version);
@@ -75,6 +75,7 @@ public class OnapCliMainTest {
         }
     }
 
+    @Ignore
     @Test
     public void validateCommands() throws OnapCommandException {
         OnapCommandHttpMocoServer server = new OnapCommandHttpMocoServer();
