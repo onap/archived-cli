@@ -15,6 +15,10 @@ results:
       description: UUID
       type: string
       scope: short
+    - name: uniqueid
+      description: UUID
+      type: string
+      scope: short
     - name: invariant-uuid
       description: Invariant UUID
       type: string
@@ -50,7 +54,8 @@ http:
   success_codes:
     - 200
   result_map:
-    uuid: $b{resources.[*].uniqueId}
+    uuid: $b{resources.[*].uuid}
+    uniqueid: $b{resources.[*].uniqueId}
     invariant-uuid: $b{resources.[*].invariantUUID}
     version: $b{resources.[*].version}
     name: $b{resources.[*].name}
