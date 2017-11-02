@@ -1,0 +1,9 @@
+onap_cli_sample_version: 1.0
+name: service-model-distribute
+version: onap-1.1
+samples:
+  sample1:
+    name: service-model-distribute
+    input: --service-model-id 7b427dbf-685b-4ba9-8838-a9b3b3c8e584
+    moco: service-model-distribute-schema-1.1-moco.json
+    ouput:
