@@ -7,7 +7,7 @@
       "X-FromAppId" : "onap-cli",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-45e743b7-f417-4159-9a1b-95af8b24aad2",
+      "X-TransactionId" : "req-2c363ccc-f8be-4fcf-8844-ccd2e44f1651",
       "Content-Type" : "application/json"
     },
     "json" : null
@@ -15,28 +15,264 @@
   "response" : {
     "status" : 200,
     "json" : {
-      "listCount" : 21,
+      "listCount" : 34,
       "results" : [ {
+        "vendorName" : "ciLicensef008e06a",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "b5ea95a60e3b483da03d0911968cd778",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense5c11752c",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "84352b5d014c4d5382ce856d7597aebf",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicenseaf880546",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "8e13a8b2e1f34374ad578edc9c912f11",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicensecce293bb",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "9f7053ae1aa04b8c9fa3d991f944a49b",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense7d28e221",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "3f47950121bf4e31a058b4870020bc2f",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense02ddba7e",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "6fc132eca87d4e49b56357b9d83843a5",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense9acc959f",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "0094601590ec4e709e560e928c44232a",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicensee5394ee2",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "8f82813eb6304957911955e077d9be6f",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense3eed3665",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "b620898b5e5e4231a30a2ccecd39927e",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense372060ea",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "12cce4998b874d5e8096070f9c5d7395",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense36e962a4",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "78fd596a39534d51953e867adaef78f6",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicensef9a1b52b",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "651180d666c54887880b673884e03481",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense76f62092",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "dd10e18e3af54234a20897ad65bfa311",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
         "vendorName" : "kanag-cli",
         "description" : "First License created from CLI",
         "iconRef" : "icon",
         "id" : "cf2d907d998e44698ce3b4cded5f66a7",
         "version" : {
-          "id" : "1.1",
-          "label" : "1.1"
+          "id" : "2.0",
+          "label" : "2.0"
         },
-        "status" : "Locked",
-        "lockingUser" : "cs0008",
+        "status" : "Final",
         "viewableVersions" : [ {
           "id" : "1.0",
           "label" : "1.0"
         }, {
-          "id" : "1.1",
-          "label" : "1.1"
+          "id" : "2.0",
+          "label" : "2.0"
         } ],
         "finalVersions" : [ {
           "id" : "1.0",
           "label" : "1.0"
+        }, {
+          "id" : "2.0",
+          "label" : "2.0"
         } ]
       }, {
         "vendorName" : "Test",
