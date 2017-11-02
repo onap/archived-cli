@@ -16,8 +16,13 @@
 
 package org.onap.cli.validation;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.stream.Stream;
 
+import org.apache.commons.io.FileUtils;
 import org.aspectj.lang.annotation.After;
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommandRegistrar;
@@ -79,6 +84,35 @@ public class OnapCliMainTest {
     public void validateCommands() throws OnapCommandException {
         OnapCommandHttpMocoServer server = new OnapCommandHttpMocoServer();
         server.verifySamples();
+    }
+
+    @Test
+    public void getAllSampleFiles() {
+        System.out.println("test");
+        File root = new File("../../");
+        try {
+            String sampleFileName = "sample.rst";
+
+            FileUtils.forceDelete(new File(sampleFileName));
+            File samples = new File(sampleFileName);
+
+            Stream<Path> walk = Files.walk(root.toPath());
+            walk.filter(p -> (p.toString().contains("src/main/resources/onap-cli-schema")))
+            .filter(p -> p.toString().endsWith(".yaml"))
+            .forEach(p -> appendSample(new File(p.toUri()), samples));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void appendSample(File src, File dest) {
+        System.out.println(src.getAbsolutePath());
+        try {
+            FileUtils.write(dest, FileUtils.readFileToString(src, "UTF-8"), "UTF-8", true);
+            FileUtils.write(dest, "----\n", "UTF-8", true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
  }
