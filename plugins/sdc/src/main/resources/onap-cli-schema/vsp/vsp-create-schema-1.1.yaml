@@ -35,35 +35,35 @@ parameters:
     short_option: b
     is_optional: true
     default_value: resourceNewCategory.generic.abstract
-  - name: vsp-license-version
+  - name: vlm-version
     description: License version
     type: string
-    long_option: vsp-license-version
+    long_option: vlm-version
     short_option: c
     is_optional: true
     default_value: 1.0
-  - name: vsp-vendor-name
-    description: License Model Name
+  - name: vlm-vendor
+    description: License Model vendor
     type: string
-    long_option: vsp-vendor-name
+    long_option: vlm-vendor
     short_option: e
     is_optional: false
-  - name: vsp-vendor-id
+  - name: vlm-id
     description: License Model ID
     type: string
-    long_option: vsp-vendor-id
+    long_option: vlm-id
     short_option: g
     is_optional: false
-  - name: license-agreement-id
+  - name: vlm-agreement-id
     description: License Agreement ID
     type: string
-    long_option: license-agreement-id
+    long_option: vlm-agreement-id
     short_option: i
     is_optional: false
-  - name: feature-group-id
+  - name: vlm-feature-group-id
     description: Feature Group ID
     type: string
-    long_option: feature-group-id
+    long_option: vlm-feature-group-id
     short_option: j
     is_optional: false
 results:
@@ -77,7 +77,7 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-software-products
     method: POST
-    body: '{"category": "${vsp-category}", "vendorId": "${vsp-vendor-id}", "subCategory": "${vsp-subcategory}", "description": "${vsp-description}", "licensingVersion": {"id": "${vsp-license-version}", "label": "${vsp-license-version}"}, "licensingData": {"featureGroups": ["${feature-group-id}"], "licenseAgreement": "${license-agreement-id}"}, "icon": "icon", "onboardingMethod": "NetworkPackage", "vendorName": "${vsp-vendor-name}", "name": "${vsp-name}"}'
+    body: '{"category": "${vsp-category}", "vendorId": "${vlm-id}", "subCategory": "${vsp-subcategory}", "description": "${vsp-description}", "licensingVersion": {"id": "${vlm-version}", "label": "${vlm-version}"}, "licensingData": {"featureGroups": ["${vlm-feature-group-id}"], "licenseAgreement": "${vlm-agreement-id}"}, "icon": "icon", "onboardingMethod": "NetworkPackage", "vendorName": "${vlm-vendor}", "name": "${vsp-name}"}'
   success_codes:
     - 200
   result_map:
