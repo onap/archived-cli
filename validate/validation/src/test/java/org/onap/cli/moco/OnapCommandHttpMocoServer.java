@@ -147,10 +147,9 @@ public class OnapCommandHttpMocoServer {
 
         String output = new String(bo.toByteArray());
 
-        //mrkanag uncomment following lines once moco server setup is done
-        //assert cli.getExitCode() == 0;
+        assert cli.getExitCode() == 0;
 
-        //assert sample.getOutput().equals(output);
+        assert sample.getOutput().equals(output);
     }
 
     public void verifySamples() throws OnapCommandException {
