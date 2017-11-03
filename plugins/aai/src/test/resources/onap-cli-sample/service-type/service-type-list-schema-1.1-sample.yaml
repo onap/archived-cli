@@ -6,7 +6,7 @@ samples:
     name: service-type-list
     input:
     moco: service-type-list-schema-1.1-moco.json
-    ouput: |
+    output: |
       +--------------------------------------+--------------+------------------+
       |service-type-id                       |service-type  |resource-version  |
       +--------------------------------------+--------------+------------------+

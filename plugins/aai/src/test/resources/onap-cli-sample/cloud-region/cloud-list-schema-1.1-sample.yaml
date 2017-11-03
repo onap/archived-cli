@@ -6,7 +6,7 @@ samples:
     name: cloud-list
     input:
     moco: cloud-list-schema-1.1-moco.json
-    ouput: |
+    output: |
       +--------------+------------+------------------+
       |cloud         |region      |resource-version  |
       +--------------+------------+------------------+
