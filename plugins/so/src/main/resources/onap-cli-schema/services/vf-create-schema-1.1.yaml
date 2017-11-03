@@ -30,7 +30,7 @@ parameters:
   - name: instance-name
     description: service instance name
     type: string
-    short_option: i
+    short_option: o
     long_option: instance-name
     is_optional: false
   - name: service-instance-id
@@ -42,46 +42,55 @@ parameters:
   - name: vf-model-invariant-id
     description: vf model invariant id
     type: string
+    short_option: b
     long_option: vf-model-invariant-id
     is_optional: false
   - name: vf-model-uuid
     description: model uuid for vf
     type: string
+    short_option: c
     long_option: vf-model-uuid
     is_optional: false
   - name: vf-model-name
     description: vf model name
     type: string
+    short_option: e
     long_option: vf-model-name
     is_optional: false
   - name: vf-model-version
     description: vf model version
     type: string
+    short_option: g
     long_option: vf-model-version
     is_optional: false
   - name: vf-model-customization-id
     description: vf model customization id
     type: string
+    short_option: i
     long_option: vf-model-customization-id
     is_optional: false
   - name: service-model-invariant-id
     description: model invariant id
     type: string
+    short_option: j
     long_option: service-model-invariant-id
     is_optional: false
   - name: service-model-uuid
     description: model name version id
     type: string
+    short_option: k
     long_option: service-model-uuid
     is_optional: false
   - name: service-model-name
     description: service model name
     type: string
+    short_option: q
     long_option: service-model-name
     is_optional: false
   - name: service-model-version
     description: service model version
     type: string
+    short_option: n
     long_option: service-model-version
     is_optional: false
 

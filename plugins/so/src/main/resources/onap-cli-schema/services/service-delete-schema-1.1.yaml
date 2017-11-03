@@ -18,21 +18,25 @@ parameters:
   - name: model-invariant-id
     description: model invariant id for service in SDC catalog
     type: string
+    short_option: b
     long_option: model-invariant-id
     is_optional: false
   - name: model-uuid
     description: model uuid for service in SDC catalog
     type: string
+    short_option: i
     long_option: model-uuid
     is_optional: false
   - name: model-name
     description: model name available in SDC catalog
     type: string
+    short_option: e
     long_option: model-name
     is_optional: false
   - name: model-version
     description: model version of service (eg. 1.0)
     type: string
+    short_option: g
     long_option: model-version
     is_optional: false
   - name: customer-name
@@ -44,11 +48,13 @@ parameters:
   - name: cloud-region
     description: cloud region id
     type: string
+    short_option: j
     long_option: cloud-region
     is_optional: false
   - name: tenant-id
     description: tenant id
     type: string
+    short_option: k
     long_option: tenant-id
     is_optional: false
 

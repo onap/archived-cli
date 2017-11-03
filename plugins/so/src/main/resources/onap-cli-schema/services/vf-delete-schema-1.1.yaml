@@ -35,21 +35,25 @@ parameters:
 - name: model-invariant-id
   description: model invariant id for service in SDC catalog
   type: string
+  short_option: b
   long_option: model-invariant-id
   is_optional: false
 - name: model-uuid
   description: model uuid for service in SDC catalog
   type: string
+  short_option: c
   long_option: model-uuid
   is_optional: false
 - name: model-name
   description: model name available in SDC catalog
   type: string
+  short_option: e
   long_option: model-name
   is_optional: false
 - name: model-version
   description: model version of service (eg. 1.0)
   type: string
+  short_option: g
   long_option: model-version
   is_optional: false
 http:
