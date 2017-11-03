@@ -6,7 +6,7 @@ samples:
     name: vlm-entitlement-pool-create
     input: --name kanag-cli-ep --vlm-id cf2d907d998e44698ce3b4cded5f66a7 --description kanag vlm ep --manufacture-reference-number mkr123456 -d --vlm-version 0.1
     moco: vlm-entitlement-pool-create-schema-1.1-moco.json
-    ouput: |
+    output: |
       +----------+----------------------------------+
       |property  |value                             |
       +----------+----------------------------------+
