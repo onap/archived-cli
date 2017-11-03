@@ -53,7 +53,9 @@ Help
 Debug Mode
 ----------
 To run in debug mode, set following environment variables:
+
 1. ONAP_CLI_DEBUG - By default its false, otherwise Set to true
+
 2. ONAP_CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number
 
 More details
@@ -62,9 +64,10 @@ https://wiki.onap.org
 
 Command usage guide
 -------------------
-Following document provides the help message for list of command's supported in this release.
+Following document provides the help message and samples for commands supported in this release.
 
 .. toctree::
    :maxdepth: 1
 
    cmd_help.rst
+   cmd_sample.rst

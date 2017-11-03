@@ -31,3 +31,7 @@ Advantages
 This platform defines Open Command Specification (OCS) for CLI, which is similar to the Open API specification (OAS) defined by swagger for REST API. It is like : **API for developers, CLI for admins/users/operators !** For more details of OCS :ref:`open_cli_schema_version_1_0`
 
 
+.. toctree::
+   :maxdepth: 1
+
+   open_cli_schema_version_1_0.rst
