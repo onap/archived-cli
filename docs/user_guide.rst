@@ -62,9 +62,10 @@ https://wiki.onap.org
 
 Command usage guide
 -------------------
-Following document provides the help message for list of command's supported in this release.
+Following document provides the help message and samples for commands supported in this release.
 
 .. toctree::
    :maxdepth: 1
 
    cmd_help.rst
+   cmd_sample.rst
