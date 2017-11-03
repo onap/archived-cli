@@ -11,12 +11,12 @@ Following diagram shows the high-level architecture of ONAP CLI.
 
 .. image:: images/portal-cli-arch.png
 
-* **Command Registrar** :  Registrar keeps track of the commands regsitered in ONAP CLI and when user invokes the command, it identify
-  the corresponding command route the request to that command plugin.
+* **Command Registrar** :  Registrar keeps track of the commands registered in ONAP CLI and when user invokes the command, it identify
+  the corresponding command route the request to that command plug-in.
 
-* **Command Discoverer** : Discoverer discovers the commands both in plug-in format and YAML and auto-matically register them into Registrar.
+* **Command Discoverer** : Discoverer discovers the commands both in plug-in format and YAML and automatically register them into Registrar.
 
-* **Command Plug-ings** : Implement the command as plugin. More details :ref:`cli_developer_guide`
+* **Command Plug-ing** : Implement the command as plug-in. More details :ref:`cli_developer_guide`
 
 * **HTTP Command** : Plug-in for implementing all Rest based command as YAML without any coding.
 

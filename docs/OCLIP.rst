@@ -26,10 +26,5 @@ Advantages
 * Helps Operator/user to create new commands/fix the existing commands just by modifying the YAML file, so User no need to wait for an release time to get the fix for a bug or new commands.
 * Similar to Tomcat for deploying more than one webapps, on OCLIP, multiple's products commands could be deployed and executed.
 
-This platform defines Open Command Specification (OCS) for CLI, which is similar to the Open API specification (OAS) defined by swagger for REST API. It is like : **API for developers, CLI for admins/users/operators !** For more details of OCS :ref:`open_cli_schema_version_1_0`
-
-
-.. toctree::
-   :maxdepth: 1
-
-   open_cli_schema_version_1_0.rst
+This platform defines Open Command Specification (OCS) for CLI, which is similar to the Open API specification (OAS) defined by swagger for REST API. It is like : **API for developers, CLI for admins/users/operators !**
+For more details of OCS :ref:`open_cli_schema_version_1_0`
