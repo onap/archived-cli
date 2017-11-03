@@ -46,14 +46,10 @@ Please follow the instructions given below, for installing CLI from portal.
 1. After installing Portal, ONAP CLI will be available as Portal application as shown below:
 
 .. image:: images/portal-cli-app.png
-   :height: 600px
-   :width: 800px
 
 2. Click on CLI application and it will show the following page and download the CLI as reported in this page.
 
 .. image:: images/portal-cli-dowload.png
-   :height: 600px
-   :width: 800px
 
 3. After downloading, please follow the instruction given in this page to install ONAP CLI.
 

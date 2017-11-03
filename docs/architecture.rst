@@ -10,8 +10,6 @@ CLI architecture
 Following diagram shows the high-level architecture of ONAP CLI.
 
 .. image:: images/portal-cli-arch.png
-   :height: 600px
-   :width: 800px
 
 * **Command Registrar** :  Registrar keeps track of the commands regsitered in ONAP CLI and when user invokes the command, it identify
   the corresponding command route the request to that command plugin.

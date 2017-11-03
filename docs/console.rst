@@ -14,11 +14,7 @@ After installation, ONAP CLI can be used in following form:
 # Command Shell
 
 .. image:: images/portal-cli-shell.png
-   :height: 600px
-   :width: 800px
 
 # Web Command Console
 
 .. image:: images/portal-cli-web-con.png
-   :height: 600px
-   :width: 800px

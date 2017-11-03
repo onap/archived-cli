@@ -7,9 +7,7 @@
 Open CLI Platform (OCLIP)
 =========================
 
-.. role:: blue
-
-:blue:`No coding, just texting !`
+**No coding, just texting !**
 
 In Telco/IT world, Any software platform/platform with out CLI is considered as in-complete and as there is no platform exists
  today for implementing CLI, similar to Tomcat exists for HTTP applications, and followings are the main problems:
