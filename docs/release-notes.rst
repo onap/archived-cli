@@ -18,7 +18,7 @@ NOTE: ONAP portal does not support following features, so user is recommended to
 
 **New Features**
 
-* ONAP CLI available as nexus artifacts and docker images.
+* ONAP CLI available as Nexus artifacts and docker images.
   For more details, :ref:`cli_installation_guide`.
 * It is delivered as part of portal installation during HEAT based installation. Also its supported in OOM as well.
   For more details, :ref:`OOM_and_HEAT_based_deployment`.

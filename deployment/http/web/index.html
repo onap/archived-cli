@@ -30,7 +30,8 @@ body {
 .readme {
     display: inline-block;
     float: left;
-    color: white
+    margin: 3% 3% 0;
+
 }
 
 * {box-sizing:border-box}
@@ -40,7 +41,7 @@ body {
  float: right;
  max-width: 700px;
  position: relative;
- margin: 5% 3% 0;
+ margin: 6% 3% 0;
 }
 
 .mySlides {
@@ -51,56 +52,60 @@ body {
 
 </head>
 
-<body onload="showSlides()">
+<body onload="showSlides()" style="background-color: white;color: black">
 <div class="readme">
-<h1>ONAP Command-Line Interface (CLI)</h1>
+<h2>ONAP Command-Line Interface (CLI)</h2>
 
-<p style="color: blue;"><strong>One Command to command whole Onap !!</strong></p>
-<p>Provides unified commands to operate ONAP using CLI.</p>
-<p>Powered by Open CLI Platform (OCLIP)</p>
-<p><a href="http://onap.readthedocs.io/en/latest/submodules/cli.git/docs/index.htmlhttps://wiki.onap.org"
-target="_blank" rel="noopener">More details</a></p>
-<br>
+<p>Provides unified commands to operate ONAP from Linux shell and web-console.
 
-<h2 >Web Command Console</h2>
-<p>To access ONAP shell from browser, <button class="button" onclick="redirectToConsole();">Click Me !</button></p>
-<br>
+<h3 >Web Command Console</h3>
+<p>To open web command console for ONAP,
+<a onclick="redirectToConsole();" style="color: blue;cursor: pointer">Click here !</a>
 
-<h2>Linux Command Shell</h2>
+<h3>Linux Command Console</h3>
 <p>Please follow the instructions given below for installing ONAP CLI.</p>
 <ol>
-<li>Download ONAP CLI <a href="./onap-cli.zip">here</a></li>
-<li>Un-zip into folder <strong>/opt/onap/cli</strong></li>
-<li>Run command <strong>/opt/onap/cli/cli-init.sh</strong></li>
-<li>For more details, refer <strong>/opt/onap/cli/README.md</strong></li>
+<li>Download ONAP CLI from <a href="./onap-cli.zip">here</a></li>
+<li>Unzip into folder /opt/onap/cli</li>
+<li>Initialize CLI by running /opt/onap/cli/cli-init.sh</li>
+<li>Run ONAP CLI, by typing <strong>onap</strong> from command line
+<li>For more details, refer /opt/onap/cli/README.md</li>
 </ol>
 <br>
+<a href="http://onap.readthedocs.io/en/latest/submodules/cli.git/docs/index.html" style="color: blue;">
+<sub style="color: blue;"><strong>One Command to command whole Onap !!</strong></sub></a>
+<hr>
+<p><i>Powered by <strong>Open CLI Platform (OCLIP) </strong>
+<a href="http://onap.readthedocs.io/en/latest/submodules/cli.git/docs/OCLIP.html" style="color: blue;">1.0</a>
+</i></p>
 </div>
 
 <div class="slideshow-container">
   <div class="mySlides">
-    <img src="images/onap-cli-ad-1.png" style="width:100%">
+    <img src="images/onap-cli-ad-1.png" style="width:80%">
   </div>
 
   <div class="mySlides">
-    <img src="images/onap-cli-ad-2.png" style="width:100%">
+    <img src="images/onap-cli-ad-2.png" style="width:80%">
   </div>
 
   <div class="mySlides">
-    <img src="images/onap-cli-ad-3.png" style="width:100%">
+    <img src="images/onap-cli-ad-3.png" style="width:80%">
   </div>
 
   <div class="mySlides">
-    <img src="images/onap-cli-ad-4.png" style="width:100%">
+    <img src="images/onap-cli-ad-4.png" style="width:80%">
   </div>
 
   <div class="mySlides">
-    <img src="images/onap-cli-ad-5.png" style="width:100%">
+    <img src="images/onap-cli-ad-5.png" style="width:80%">
   </div>
 
   <div class="mySlides">
-    <img src="images/onap-cli-ad-6.png" style="width:100%">
+    <img src="images/onap-cli-ad-6.png" style="width:80%">
   </div>
 
 </div>
+
+
 </body></html>

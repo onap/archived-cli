@@ -72,7 +72,7 @@ Note the following points:
 
 #. Now the command is ready. Build the project by running 'mvn clean install'. ONAP CLI framework automatically delivers these commands as part of the ONAP CLI zip file as part of this build.
 
-#. To test this command, run the command 'onap hello-world --name amesterdam'
+#. To test this command, run the command 'onap hello-world --name amsterdam'
 
 As a YAML
 ---------

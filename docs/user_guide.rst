@@ -33,7 +33,7 @@ And use the directive set to set the values for following parameters:
 Set the product version
 ------------------------
 CLI framework is enhanced to handle multiple product versions at same
-time. so to choose the product version, set evironment variable
+time. so to choose the product version, set environment variable
 **CLI_PROUDCT_VERSION**.
 
 NOTE: In interactive mode, product version can be selected using
@@ -43,7 +43,7 @@ Run *onap [-v|--version]* to see the CLI and available product version details
 
 Set the parameter values
 ------------------------
-Use the directive 'set' for setting the values for parameters and 'unset' for un-seting the values.
+Use the directive 'set' for setting the values for parameters and 'unset' for reseting the values.
 
 Help
 ----
