@@ -6,7 +6,7 @@ samples:
     name: ems-show
     input: --ems-id 51a480ed-649c-4c47-a84b-f966dc4f9554
     moco: ems-show-schema-1.1-moco.json
-    ouput: |
+    output: |
       +------+------+--------+----------+------------------+
       |name  |type  |vendor  |version   |url               |
       +------+------+--------+----------+------------------+

@@ -6,4 +6,4 @@ samples:
     name: vsp-revert
     input: --vsp-id e65baf44883e4868ba96f9faed9ba97a --vsp-version 0.2
     moco: vsp-revert-schema-1.1-moco.json
-    ouput:
+    output:

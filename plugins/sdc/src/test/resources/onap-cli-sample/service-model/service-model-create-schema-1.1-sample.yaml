@@ -6,7 +6,7 @@ samples:
     name: service-model-create
     input: --name kanag-cli-VLB --description VLB created from CLI --project-code kanag-123456
     moco: service-model-create-schema-1.1-moco.json
-    ouput: |
+    output: |
       +----------+--------------------------------------+
       |property  |value                                 |
       +----------+--------------------------------------+

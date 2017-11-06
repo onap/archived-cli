@@ -6,4 +6,4 @@ samples:
     name: service-model-distribute
     input: --service-model-id 7b427dbf-685b-4ba9-8838-a9b3b3c8e584
     moco: service-model-distribute-schema-1.1-moco.json
-    ouput:
+    output:

@@ -6,5 +6,5 @@ samples:
     name: customer-create
     input: --customer-name test --subscriber-name test
     moco: customer-create-schema-1.1-moco.json
-    ouput: |
+    output: |
 

@@ -27,7 +27,7 @@ public class SampleYamlGenerator {
 
     static int nTab;
 
-    public static void generateSampleYaml(List<String> input, String ouput, String version,
+    public static void generateSampleYaml(List<String> input, String output, String version,
             String targetPath, boolean debug) throws IOException {
 
         String cmdName = input.get(0);
@@ -43,7 +43,7 @@ public class SampleYamlGenerator {
         writeKeyValuePair(writer, "name", cmdName);
         writeKeyValuePair(writer, "input", input.stream().skip(1).collect(Collectors.joining(" ")).trim());
         writeKeyValuePair(writer, "moco", new File(targetPath).getName().replaceAll("-sample.yaml", "-moco.json"));
-        writeMultilineKeyValue(writer, "ouput", ouput.trim(), debug);
+        writeMultilineKeyValue(writer, "output", output.trim(), debug);
 
         writeEndKey();
         writeEndKey();

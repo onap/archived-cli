@@ -6,7 +6,7 @@ samples:
     name: vsp-show
     input: --vsp-id a8cd007fa101470e98516cd4549c568f --vsp-version 1.0 --long
     moco: vsp-show-schema-1.1-moco.json
-    ouput: |
+    output: |
       +--------------+----------------------------------+
       |property      |value                             |
       +--------------+----------------------------------+
