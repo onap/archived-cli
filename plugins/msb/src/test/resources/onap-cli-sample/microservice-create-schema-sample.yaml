@@ -4,7 +4,7 @@ version: onap-1.1
 samples:
   sample1:
     name: microservice-create
-    input: --service-name test --service-version v1 --service-url C:/Git/test --path C:/Git/test 10.0.0.1 8080
+    input: --service-name test --service-version v1 --service-url /test --path /test 10.0.0.1 8080
     moco: microservice-create-schema-moco.json
     output: |
       +----------+--------------+
