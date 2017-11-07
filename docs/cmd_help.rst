@@ -9,6 +9,7 @@
 
 .. _cli_cmd_help:
 
+<<<<<<< 74528bd0c35056e2e10d0aa29aac387cb6d6b05d
 onap-1.1
 ==========================
 
@@ -8640,3 +8641,6 @@ Results::
 Error::
 
  On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+=======
+TBD
+>>>>>>> Pls verify the usage
