@@ -1,0 +1,14 @@
+onap_cli_sample_version: 1.0
+name: schema-validate
+version: cli-1.0
+samples:
+  sample1:
+    name: schema-validate
+    input: -l /home/ubuntu/dev/onap/cli/deployment/zip/target/deployunzip/onap-cli-schema/vfmodule-create-schema-1.1.yaml
+    moco: schema-validate-moco.json
+    output: |
+      +--------+--------+
+      |sl-no   |error   |
+      +--------+--------+
+      |        |        |
+      +--------+--------+
