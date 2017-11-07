@@ -10,7 +10,7 @@ Version: 1.1.0
 
 ONAP CLI helps user to perform any operations over ONAP from command line, Linux console and web-console.
 
-NOTE: ONAP portal does not support following features, so user is recommended to use them over CLI:
+NOTE: ONAP portal does not support following features, so user could use CLI for these features:
 
 * Customer and subscription management
 * VNF Cloud on-boarding
@@ -29,13 +29,13 @@ NOTE: ONAP portal does not support following features, so user is recommended to
 * All Onap commands are developed using OCLIP by authoring set of YAML files.
   For more details, :ref:`cli_cmd_help`.
 * All commands are tested completely and samples also provided for reference.
-  For more details, :ref:`_cli_cmd_sample`.
+  For more details, :ref:`cli_cmd_sample`.
 * User could develop new commands on-the-fly and deploy it and use.
   For more details, :ref:`cli_developer_guide`.
 
 **Know Issues**
 
-* VF customizationUUID is not available over SDC REST API, so user is recommended to refer it from SDC portal
-* CLI impersonate VID as source while creating service, vf and vf-modules, due to SO limitation (SO-272)
+* VF customizationUUID is not available over SDC REST API, so user is recommended to refer it from SDC portal, while creating VF.
+* CLI impersonate VID as source while creating service, VF and VF module, due to SO limitation (SO-272)
 * vsp-add-artifact command sometime fails to upload the file, in that case, please use option -d to see the debug information
-
+* service-delete, vf-delete, vfmodule-create and vfmodule-delete commands are not verified (CLI-63)

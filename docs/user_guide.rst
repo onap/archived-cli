@@ -64,10 +64,18 @@ https://wiki.onap.org
 
 Command usage guide
 -------------------
-Following document provides the help message and samples for commands supported in this release.
+Following document provides the help message for commands supported in this release.
 
 .. toctree::
    :maxdepth: 1
 
    cmd_help.rst
+
+Command Samples
+---------------
+Following document provides the samples for commands supported in this release.
+
+.. toctree::
+   :maxdepth: 1
+
    cmd_sample.rst
