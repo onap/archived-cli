@@ -4,10 +4,6 @@
 
 .. _cli_cmd_sample:
 
-CLI Samples
-==============
-
-
 
 onap-1.1
 ========
@@ -384,7 +380,7 @@ microservice-create
 
 input::
 
- --service-name test --service-version v1 --service-url C:/Git/test --path C:/Git/test 10.0.0.1 8080
+ --service-name test --service-version v1 --service-url /test --path /test 10.0.0.1 8080
 
 output::
 
@@ -543,7 +539,7 @@ output::
  +------------+----------------+
  |version     |v1              |
  +------------+----------------+
- |url         |/C:/Git/test    |
+ |url         |/test           |
  +------------+----------------+
  |status      |1               |
  +------------+----------------+
@@ -551,7 +547,7 @@ output::
  +------------+----------------+
  |enable-ssl  |false           |
  +------------+----------------+
- |path        |/C:/Git/test    |
+ |path        |/test           |
  +------------+----------------+
 
 microservice-delete
@@ -1386,7 +1382,7 @@ output::
   +--------+--------+
 
 
- schema-refresh
+schema-refresh
 ----------------
 
 output::
