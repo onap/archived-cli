@@ -4,7 +4,7 @@ version: cli-1.0
 samples:
   sample1:
     name: schema-refresh
-    input: 
+    input:
     moco: schema-refresh-moco.json
     output: |
       +--------+--------------------------------+------------------+------------------------------------------------+----------+
