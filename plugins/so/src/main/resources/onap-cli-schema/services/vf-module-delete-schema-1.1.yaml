@@ -1,50 +1,68 @@
 open_cli_schema_version: 1.0
-name: vf-module-delete
+name: vfmodule-delete
 description: delete a VF module
 version: onap-1.1
 service:
-  name: mso
-  version: v2
+  name: so
+  version: v3
   auth: basic
   mode: direct
 
 parameters:
-  - name: vnf-instance-id
-    description: id for vnf
+  - name: vfmodule-id
+    description: VF module Id
     type: string
     short_option: x
-    long_option: vnf-instace-id
+    long_option: vfmodule-id
     is_optional: false
-  - name: service-instance-id
-    description: unique id for service instance
+  - name: service-id
+    description: unique id for service
+    type: string
+    short_option: j
+    long_option: service-id
+    is_optional: false
+  - name: vf-id
+    description: unique id for related VF
     type: string
     short_option: y
-    long_option: service-instace-id
+    long_option: vf-id
     is_optional: false
-  - name: vf-module-id
-    description: vf module id
+  - name: vf-model-invariant-id
+    description: vf model invariant id
     type: string
-    short_option: w
-    long_option: vf-module-id
+    short_option: k
+    long_option: vf-model-invariant-id
     is_optional: false
-  - name: lcp-cloudregion-id
-    description: AIC LCP node location identifier
+  - name: vfmodule-name
+    description: vfmodule model name
+    type: string
+    short_option: e
+    long_option: vfmodule-name
+    is_optional: false
+  - name: vfmodule-version
+    description: vf module version
+    type: string
+    short_option: g
+    long_option: vfmodule-version
+    is_optional: false
+  - name: cloud-region
+    description: cloud region identifier
     type: string
     short_option: l
-    long_option: lcp-cloudregion-id
+    long_option: cloud-region
     is_optional: false
   - name: tenant-id
-    description: openstack tenant id (uuid)
+    description: openstack tenant id
     type: string
-    short_option: z
     long_option: tenant-id
+    short_option: z
     is_optional: false
 
 http:
   request:
-    uri: ecomp/mso/infra/serviceInstances/v2/${service-instance-id}/vnfs/${vnf-instance-id}/vfModules/${vf-module-id}
+    uri: /ecomp/mso/infra/serviceInstances/v3/${service-id}/vnfs/${vf-id}/vfModules/${vfmodule-id}
     method: DELETE
-    body: '{"requestDetails":{"modelInfo":{"modelType":"vfModule","modelInvariantId":"ff5256d2-5a33-55df-13ab-12abad84e7ff","modelName":"vSAMP12..base..module-0","modelVersion":"1"},"cloudConfiguration":{"lcpCloudRegionId":"${lcp-cloudregion-id}","tenantId":"${tenant-id}"},"requestInfo":{"source":"VID"}}}'
+    body: '{"requestDetails":{"modelInfo":{"modelType":"vfModule","modelInvariantId":"${vf-model-invariant-id}","modelName":"${vfmodule-name}","modelVersion":"${vfmodule-version}"},"cloudConfiguration":{"lcpCloudRegionId":"${cloud-region}","tenantId":"${tenant-id}"},"requestInfo":{"source":"VID"}}}'
 
   success_codes:
     - 202

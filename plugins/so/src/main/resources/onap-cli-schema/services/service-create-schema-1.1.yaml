@@ -3,7 +3,7 @@ name: service-create
 description: Create a service instance using MSO
 version: onap-1.1
 service:
-  name: mso
+  name: so
   version: v3
   auth: basic
   mode: direct
@@ -12,7 +12,7 @@ parameters:
   - name: cloud-region
     description: cloud region identifier
     type: string
-    short_option: k
+    short_option: l
     long_option: cloud-region
     is_optional: false
   - name: tenant-id
@@ -66,6 +66,7 @@ parameters:
   - name: service-type
     description: subscription service type
     type: string
+    short_option: w
     long_option: service-type
     is_optional: false
 

@@ -3,7 +3,7 @@ name: service-delete
 description: Delete service instance
 version: onap-1.1
 service:
-  name: mso
+  name: so
   version: v3
   auth: basic
   mode: direct

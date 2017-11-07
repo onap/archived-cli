@@ -3,7 +3,7 @@ name: vf-create
 description: Create a VF
 version: onap-1.1
 service:
-  name: mso
+  name: so
   version: v3
   auth: basic
   mode: direct
