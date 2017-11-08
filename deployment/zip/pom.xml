@@ -73,6 +73,13 @@
                                 exclude(name: "**/.gitignore")
                                 }
                                 }
+
+                                ant.copy(todir: "${deployUnzip}") {
+                                fileset(file: "${basedir}/installer/cli-init.sh")
+                                }
+                                ant.chmod(file: "${deployUnzip}/bin/onap.sh", perm: "ugo+x")
+                                ant.chmod(file: "${deployUnzip}/cli-init.sh", perm: "ugo+x")
+
                                 ant.copy(todir:
                                 "${deployUnzip}/lib") {
                                 fileset(file:
