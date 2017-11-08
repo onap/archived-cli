@@ -26,9 +26,7 @@ In ONAP Amsterdam release, CLI provides following ONAP operations as command:
 **Know Issues**
 
 * VF customizationUUID is not available over SDC REST API, so user is recommended to refer it from SDC portal, while creating VF.
-* CLI impersonate VID as source while creating service, VF and VF module, due to SO limitation ( SO-272_ )
 * vsp-add-artifact command sometime fails to upload the file, in that case, please use option -d to see the debug information
 * service-delete, vf-delete, vfmodule-create and vfmodule-delete commands are not verified ( CLI-63_ )
 
-.. _SO-272: https://jira.onap.org/browse/SO-272
 .. _CLI-63: https://jira.onap.org/browse/CLI-63
