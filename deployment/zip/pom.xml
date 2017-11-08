@@ -73,6 +73,13 @@
                                 exclude(name: "**/.gitignore")
                                 }
                                 }
+
+                                ant.copy(todir: "${deployUnzip}") {
+                                fileset(file: "${basedir}/installer/cli-init.sh")
+                                }
+                                ant.chmod(file: "${deployUnzip}/bin/onap.sh", perm: "ugo+x")
+                                ant.chmod(file: "${deployUnzip}/cli-init.sh", perm: "ugo+x")
+
                                 ant.copy(todir:
                                 "${deployUnzip}/lib") {
                                 fileset(file:
@@ -102,7 +109,9 @@
                                 }
                                 ant.zip(destfile:
                                 "${deployFolder}/${outfileName}") {
-                                fileset(dir: "${deployUnzip}")
+                                zipfileset(dir: "${deployUnzip}", excludes: "**/*.sh")
+                                zipfileset(dir: "${deployUnzip}", includes: "cli-init.sh", filemode: "755")
+                                zipfileset(dir: "${deployUnzip}", includes: "bin/onap.sh", filemode: "755")
                                 }
                                 System.out.println("******** completed. ************")
                             </source>
