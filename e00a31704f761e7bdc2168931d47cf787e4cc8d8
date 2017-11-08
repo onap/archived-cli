@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a4e6583_b92bb9ea",
+        "filename": "deployment/zip/install-local/cli-init.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-11-08T08:21:36Z",
+      "side": 1,
+      "message": "pls move to installer folder",
+      "revId": "e00a31704f761e7bdc2168931d47cf787e4cc8d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
