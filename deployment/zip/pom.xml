@@ -73,6 +73,9 @@
                                 exclude(name: "**/.gitignore")
                                 }
                                 }
+
+                                ant.chmod(file: "${deployUnzip}/bin/onap.sh", perm: "ugo+x")
+
                                 ant.copy(todir:
                                 "${deployUnzip}/lib") {
                                 fileset(file:
