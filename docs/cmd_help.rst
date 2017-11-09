@@ -4758,7 +4758,7 @@ Error::
 
 usage: onap service-delete
 
-Delete service instance
+Delete service instance (experimental)
 
 Onap service: so v3
 
@@ -4824,7 +4824,7 @@ Error::
 
 usage: onap vfmodule-delete
 
-delete a VF module
+delete a VF module (experimental)
 
 Onap service: so v3
 
@@ -5041,7 +5041,7 @@ Error::
 -----------------------------------------------
 
 
-usage: onap vf-delete
+usage: onap vf-delete (experimental)
 
 delete a VF
 

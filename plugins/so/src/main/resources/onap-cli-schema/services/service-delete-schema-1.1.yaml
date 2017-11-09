@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
 name: service-delete
-description: Delete service instance
+description: Delete service instance (experimental)
 version: onap-1.1
 service:
   name: so
