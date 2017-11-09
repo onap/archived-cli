@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
 name: vf-delete
-description: delete a VF
+description: delete a VF (experimental)
 version: onap-1.1
 service:
   name: so
