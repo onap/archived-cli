@@ -1,0 +1,15 @@
+open_cli_sample_version: 1.0
+
+name: license-model-show
+version: onap-1.0
+samples:
+  sample1:
+    name: Get specific license model
+    input: -u cs0008 -p demo123456! -m http://192.168.17.126:8080 -x 4904E77EC4EF4CB18083E8ED7D283585
+    moco: license-model-show-schema-moco.json
+    output: |
+      +----------+----------------------------------+----------------------+--------+
+      |name      |ID                                |description           |status  |
+      +----------+----------------------------------+----------------------+--------+
+      |5aa8a88c  |4904E77EC4EF4CB18083E8ED7D283585  |vendor license model  |Locked  |
+      +----------+----------------------------------+----------------------+--------+

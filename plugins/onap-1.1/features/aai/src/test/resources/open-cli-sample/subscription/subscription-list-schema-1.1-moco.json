@@ -1,0 +1,43 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v11/business/customers/customer/kanag/service-subscriptions",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-fd86411d-c6ea-4af5-a4f8-2296587b832b",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "service-subscription" : [ {
+        "service-type" : "vFW-kanag",
+        "resource-version" : "1509079144326",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "tenant",
+            "related-link" : "/aai/v11/cloud-infrastructure/cloud-regions/cloud-region/huawei-cloud/bangalore/tenants/tenant/e18173e6-6a13-4614-a13c-3859e7321103",
+            "relationship-data" : [ {
+              "relationship-key" : "cloud-region.cloud-owner",
+              "relationship-value" : "huawei-cloud"
+            }, {
+              "relationship-key" : "cloud-region.cloud-region-id",
+              "relationship-value" : "bangalore"
+            }, {
+              "relationship-key" : "tenant.tenant-id",
+              "relationship-value" : "e18173e6-6a13-4614-a13c-3859e7321103"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "tenant.tenant-name",
+              "property-value" : "kanag-tenant"
+            } ]
+          } ]
+        }
+      } ]
+    }
+  }
+} ]
