@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vnfm-register
+version: onap-1.1
+samples:
+  sample1:
+    name: vnfm-register
+    input: --vim-id acc5e14e-1320-4ab5-97fe-b7cc82ad03f2 --name vnfm1 --type OpenStack --vendor ONAP --vnfm-version 1.0 --url http://10.0.1.1 --username admin --password password
+    moco: vnfm-create-schema-1.1-moco.json
+    output:
