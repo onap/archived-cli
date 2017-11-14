@@ -1,0 +1,70 @@
+open_cli_schema_version: 1.0
+name: vf-model-list
+description: List the VF resource model in SDC
+
+info:
+  product: onap-1.1
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+results:
+  direction: landscape
+  attributes:
+    - name: uuid
+      description: UUID
+      type: string
+      scope: short
+    - name: uniqueid
+      description: UUID
+      type: string
+      scope: short
+    - name: invariant-uuid
+      description: Invariant UUID
+      type: string
+      scope: short
+    - name: name
+      description: Name
+      type: string
+      scope: short
+    - name: version
+      description: version
+      type: string
+      scope: short
+    - name: status
+      description: status
+      type: string
+      scope: short
+    - name: description
+      description: description
+      type: string
+      scope: long
+    - name: vsp-uuid
+      description: VSP uuid
+      type: string
+      scope: long
+    - name: vsp-version
+      description: VSP version
+      type: string
+      scope: long
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/followed
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    uuid: $b{resources.[*].uuid}
+    uniqueid: $b{resources.[*].uniqueId}
+    invariant-uuid: $b{resources.[*].invariantUUID}
+    version: $b{resources.[*].version}
+    name: $b{resources.[*].name}
+    status: $b{resources.[*].lifecycleState}
+    description: $b{resources.[*].description}
+    vsp-uuid: $b{resources.[*].csarUUID}
+    vsp-version: $b{resources.[*].csarVersion}

@@ -53,7 +53,7 @@ public class OnapCommandHttpMocoServer {
 
     public static final String SAMPLE_PATTERN = "onap-cli-sample/**/";
 
-    public static final String SAMPLE_VERSION = "onap_cli_sample_version";
+    public static final String SAMPLE_VERSION = "open_cli_sample_version";
     public static final String SAMPLE_VERSION_1_0 = "1.0";
 
     public static final String SAMPLE_COMMAND_NAME = "name";

@@ -1,24 +1,12 @@
 open_cli_schema_version: 1.0
 name: vfmodule-delete
-<<<<<<< a936ccab2b00d462f0b1f3e8318004f0414f07ef
+
 description: delete a VF module (experimental)
-=======
-description: delete a VF module
-<<<<<<< e22e4b6be3fe804a926136cf9ffd03341920ff50
->>>>>>> Migrate plugins to use info section
-version: onap-1.1
-service:
-  name: so
-  version: v3
-  auth: basic
-  mode: direct
-=======
 
 info:
   product: onap-1.1
   service: so
   author: ONAP CLI Team onap-discuss@lists.onap.org
->>>>>>> Migrate plugins to use info section
 
 parameters:
   - name: vfmodule-id
@@ -72,7 +60,9 @@ parameters:
 
 http:
   service:
-    auth: none
+    name: so
+    version: v3
+    auth: basic
     mode: direct
   request:
     uri: /ecomp/mso/infra/serviceInstances/v3/${service-id}/vnfs/${vf-id}/vfModules/${vfmodule-id}
