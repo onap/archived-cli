@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: vlm-key-group-list
+version: onap-1.1
+samples:
+  sample1:
+    name: vlm-key-group-list
+    input: --vlm-id cf2d907d998e44698ce3b4cded5f66a7 --vlm-version 2.0
+    moco: vlm-key-group-list-schema-1.1-moco.json
+    output: |
+      +----------------------------------+----------------------+
+      |ID                                |name                  |
+      +----------------------------------+----------------------+
+      |c37a1f205f444161a573f55dfec5f170  |kanag-cli-kg          |
+      +----------------------------------+----------------------+
+      |f0a684fa680b44979edee03fcc12ca85  |kanag-cli-key-group   |
+      +----------------------------------+----------------------+

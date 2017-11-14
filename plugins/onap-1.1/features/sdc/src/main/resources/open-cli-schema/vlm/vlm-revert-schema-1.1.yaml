@@ -1,0 +1,36 @@
+open_cli_schema_version: 1.0
+name: vlm-revert
+description: Revert Vendor License Model
+
+info:
+  product: onap-1.1
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: vlm-id
+    description: Onap VLM ID
+    type: string
+    short_option: x
+    long_option: vlm-id
+    is_optional: false
+  - name: vlm-version
+    description: VLM version
+    type: string
+    short_option: y
+    long_option: vlm-version
+    is_optional: false
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/actions
+    method: PUT
+    body: '{"action": "Undo_Checkout"}'
+  success_codes:
+    - 201
+    - 200
