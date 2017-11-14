@@ -6,7 +6,7 @@ info:
   product: open-cli
   service: schema
   type: auth
-  author: Kanagaraj Manickam mkr1481@gmail.com
+  author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
 
 parameters:
   - name: schema-location

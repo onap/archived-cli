@@ -1,0 +1,22 @@
+open_cli_sample_version: 1.0
+name: vnfm-show
+version: onap-1.1
+samples:
+  sample1:
+    name: vnfm-show
+    input: --vnfm-id c0ecd788-22f4-49a4-a969-68051cd517e7
+    moco: vnfm-show-schema-1.1-moco.json
+    output: |
+      +----------+------------------+
+      |property  |value             |
+      +----------+------------------+
+      |name      |vnfm1             |
+      +----------+------------------+
+      |type      |OpenStack         |
+      +----------+------------------+
+      |vendor    |ONAP              |
+      +----------+------------------+
+      |version   |1.0               |
+      +----------+------------------+
+      |url       |http://10.0.1.1   |
+      +----------+------------------+

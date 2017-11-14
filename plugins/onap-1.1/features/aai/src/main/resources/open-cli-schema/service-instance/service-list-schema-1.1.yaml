@@ -1,0 +1,67 @@
+open_cli_schema_version: 1.0
+name: service-list
+description: List created service instance
+
+info:
+  product: onap-1.1
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: customer-name
+    description: customer name
+    type: string
+    short_option: x
+    long_option: customer-name
+    is_optional: false
+  - name: service-type
+    description: service subscription type
+    type: string
+    short_option: y
+    long_option: service-type
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: service-id
+      description: instance id of service
+      scope: short
+      type: string
+    - name: service-name
+      description: Service name
+      scope: short
+      type: string
+    - name: model-invariant-id
+      description: Model invariant id of service model
+      scope: long
+      type: string
+    - name: model-uuid
+      description: Model uuid for service model
+      scope: long
+      type: string
+    - name: description
+      description: service description
+      scope: long
+      type: string
+
+http:
+  service:
+    name: aai
+    version: v11
+    auth: basic
+    mode: direct
+
+  request:
+    uri: /aai/v11/business/customers/customer/${customer-name}/service-subscriptions/service-subscription/${service-type}/service-instances
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    service-id: $b{service-instance.[*].service-instance-id}
+    service-name: $b{service-instance.[*].service-instance-name}
+    model-invariant-id: $b{service-instance.[*].model-invariant-id}
+    model-uuid: $b{service-instance.[*].model-version-id}
+    description: $b{service-instance.[*].description}
+  sample_response:
+    body: '{"service-instance": [{"service-instance-id": "${service-id}","service-instance-name": "${service-name}","description": "${description}","model-invariant-id": "${model-invariant-id}","model-version-id": "${model-uuid}"}]}'

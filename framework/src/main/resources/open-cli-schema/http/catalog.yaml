@@ -8,7 +8,7 @@ info:
   product: open-cli
   service: catalog
   type: catalog
-  author: Kanagaraj Manickam mkr1481@gmail.com
+  author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
 
 parameters:
   - name: catalog-service-name

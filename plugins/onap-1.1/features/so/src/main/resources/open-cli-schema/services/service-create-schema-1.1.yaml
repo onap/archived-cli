@@ -1,20 +1,11 @@
 open_cli_schema_version: 1.0
 name: service-create
 description: Create a service instance using MSO
-<<<<<<< cf220435576757be81a477d68413c0dabc592478
-version: onap-1.1
-service:
-  name: so
-  version: v3
-  auth: basic
-  mode: direct
-=======
 
 info:
   product: onap-1.1
   service: so
   author: ONAP CLI Team onap-discuss@lists.onap.org
->>>>>>> Migrate plugins to use info section
 
 parameters:
   - name: cloud-region
@@ -89,7 +80,9 @@ results:
 
 http:
   service:
-    auth: none
+    name: so
+    version: v3
+    auth: basic
     mode: direct
   request:
     uri: /ecomp/mso/infra/serviceInstances/v3
