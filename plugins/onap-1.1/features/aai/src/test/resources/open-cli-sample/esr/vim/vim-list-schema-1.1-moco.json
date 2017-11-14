@@ -1,0 +1,54 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v11/cloud-infrastructure/cloud-regions/cloud-region/huawei-cloud/bangalore/esr-system-info-list",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-170cf86a-e3df-4940-b361-973aa698e015",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "esr-system-info" : [ {
+        "esr-system-info-id" : "acc5e14e-1320-4ab5-97fe-b7cc82ad03f2",
+        "system-name" : "RegionOne",
+        "type" : "OpenStack",
+        "vendor" : "Devstack",
+        "version" : "newton",
+        "service-url" : "http://192.168.16.149/identity",
+        "user-name" : "onap",
+        "password" : "onap",
+        "system-type" : "vim",
+        "ssl-cacert" : "",
+        "ssl-insecure" : false,
+        "ip-address" : "",
+        "port" : "",
+        "cloud-domain" : "default",
+        "default-tenant" : "onap",
+        "resource-version" : "1509093477505"
+      }, {
+        "esr-system-info-id" : "810edb5a-42e9-462d-9587-96bc9272ac27",
+        "system-name" : "vim1",
+        "type" : "OpenStack",
+        "vendor" : "Devstack",
+        "version" : "newton",
+        "service-url" : "http://192.168.16.149/identity",
+        "user-name" : "onap",
+        "password" : "onap",
+        "system-type" : "vim",
+        "ssl-cacert" : "",
+        "ssl-insecure" : false,
+        "ip-address" : "",
+        "port" : "",
+        "cloud-domain" : "default",
+        "default-tenant" : "onap",
+        "resource-version" : "1509093590932"
+      } ]
+    }
+  }
+} ]
