@@ -1,8 +1,0 @@
-onap_cli_sample_version: 1.0
-
-name: cloud-delete
-version: onap-1.1
-samples:
-    sample1:
-        name: Delete the cloud region in onap
-        input: -h https://locahost:8443 -u AAI -p AAI  -x abc-xyz -y ABCXYZ25 -z 1504257554519

@@ -1,8 +1,0 @@
-onap_cli_sample_version: 1.0
-
-name: vnfm-register
-version: onap-1.1
-samples:
-    sample1:
-        name: Create a vnfm
-        input: -x f962fa1e-d439-4b02-a122-cc38fd0da07c  -y f962fa1e-d439-4b02-a122-cc38fd0da07c -b vnfm-2 -c OpenStack -e HW -q 1.0 -g http://locahost -i user -j password -d

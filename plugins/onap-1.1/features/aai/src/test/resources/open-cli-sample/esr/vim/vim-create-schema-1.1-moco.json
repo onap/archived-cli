@@ -1,0 +1,35 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v11/cloud-infrastructure/cloud-regions/cloud-region/huawei-cloud/bangalore/esr-system-info-list/esr-system-info/810edb5a-42e9-462d-9587-96bc9272ac27",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-bbda56c1-81d6-4a3f-b82f-4c74f9673be7",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "esr-system-info-id" : "810edb5a-42e9-462d-9587-96bc9272ac27",
+      "system-name" : "vim1",
+      "type" : "OpenStack",
+      "vendor" : "Devstack",
+      "version" : "newton",
+      "service-url" : "http://192.168.16.149/identity",
+      "user-name" : "onap",
+      "password" : "onap",
+      "system-type" : "vim",
+      "protocal" : "",
+      "ssl-cacert" : "",
+      "ssl-insecure" : "false",
+      "ip-address" : "",
+      "port" : "",
+      "cloud-domain" : "default",
+      "default-tenant" : "onap"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]
