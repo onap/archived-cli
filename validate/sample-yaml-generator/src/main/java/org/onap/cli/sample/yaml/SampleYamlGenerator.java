@@ -33,7 +33,7 @@ public class SampleYamlGenerator {
         String cmdName = input.get(0);
 
         PrintWriter writer = new PrintWriter(targetPath, "UTF-8");
-        writeKeyValuePair(writer, "onap_cli_sample_version", "1.0");
+        writeKeyValuePair(writer, "open_cli_sample_version", "1.0");
         writeKeyValuePair(writer, "name", cmdName);
         writeKeyValuePair(writer, "version", version);
 

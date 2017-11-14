@@ -61,7 +61,9 @@ results:
 
 http:
   service:
-    auth: none
+    name: so
+    version: v3
+    auth: basic
     mode: direct
   request:
     uri: ecomp/mso/infra/serviceInstances/v2/${service-instance-id}/vnfs/${vnf-instance-id}/vfModules

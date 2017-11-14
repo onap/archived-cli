@@ -1,0 +1,44 @@
+open_cli_schema_version: 1.0
+name: vlm-create
+description: Create License Model
+
+info:
+  product: onap-1.1
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: vendor-name
+    description: vendor name
+    type: string
+    short_option: x
+    long_option: vendor-name
+    is_optional: false
+  - name: description
+    description: Description for License Model
+    type: string
+    short_option: y
+    long_option: description
+    is_optional: true
+results:
+  direction: portrait
+  attributes:
+    - name: ID
+      description: License Model ID
+      scope: short
+      type: uuid
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-license-models
+    method: POST
+    body: '{"vendorName": "${vendor-name}", "description": "${description}",  "iconRef": "icon"}'
+  success_codes:
+    - 200
+  result_map:
+    ID: $b{$.value}
