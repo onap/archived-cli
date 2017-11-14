@@ -474,7 +474,7 @@ OCLIP platform provides following default parameters for every command and
 author is allowed to customize the inclusion or exclusion of these input
 parameters for a given command.
 
-name: host-username
+name: onap-username
 ~~~~~~~~~~~~~~~~~~~
 
     type: string
@@ -483,13 +483,13 @@ name: host-username
 
     short_option: u
 
-    long_option: host-username
+    long_option: onap-username
 
-    default_value: ${OPEN_CLI_HOST_USERNAME}
+    default_value: ${ONAP_USERNAME}
 
     is_optional: false
 
-name: host-password
+name: onap-password
 ~~~~~~~~~~~~~~~~~~~
 
     type: string
@@ -498,9 +498,9 @@ name: host-password
 
     short_option: p
 
-    long_option: host-password
+    long_option: onap-password
 
-    default_value: ${OPEN_CLI_HOST_PASSWORD}
+    default_value: ${ONAP_PASSWORD}
 
     is_secured: true
 
@@ -518,7 +518,7 @@ name: host-url
 
     is_optional: false
 
-    default_value: ${OPEN_CLI_HOST_URL}
+    default_value: ${ONAP_HOST_URL}
 
 name: help
 ~~~~~~~~~~
@@ -611,15 +611,15 @@ and logout.
 
 For example, OCLIP platform provides a command called 'schema-validate' to
 validate schematics of template against the specification defined in this
-document. For this command, host-url, host-username, host-password, no-auth
+document. For this command, host-url, onap-username, onap-password, no-auth
 parameters are required. so author could exclude these parameters by defining
 as :
 
     default_parameters:
       exclude:
-        \- host-username
+        \- onap-username
 
-        \- host-password
+        \- onap-password
 
         \- host-url
 
