@@ -26,7 +26,7 @@ parameters:
     type: string
     long_option: project-code
     short_option: z
-    is_optional: true
+    is_optional: false
   - name: category
     description: Service category
     type: string
