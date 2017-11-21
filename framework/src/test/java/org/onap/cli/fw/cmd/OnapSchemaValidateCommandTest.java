@@ -16,17 +16,14 @@
 
 package org.onap.cli.fw.cmd;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.OnapCommand;
 import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.schema.ValidateSchemaTest;
 
-
 public class OnapSchemaValidateCommandTest {
 
-    @Ignore
     @Test
     public void validateSchemaCommandTest1() throws OnapCommandException {
         OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("schema-validate");
@@ -35,7 +32,6 @@ public class OnapSchemaValidateCommandTest {
         cmd.execute();
     }
 
-    @Ignore
     @Test
     public void validateSchemaCommandTest2() throws OnapCommandException {
         OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("schema-validate");
