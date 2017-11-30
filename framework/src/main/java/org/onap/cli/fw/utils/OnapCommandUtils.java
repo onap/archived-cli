@@ -218,7 +218,7 @@ public class OnapCommandUtils {
     private static InputStream loadSchemaFromFile(String schemaLocation) throws OnapCommandInvalidSchema {
         File schemaFile = new File(schemaLocation);
         try {
-            FileInputStream inputFileStream = new FileInputStream(schemaFile);
+            FileInputStream inputFileStream = new FileInputStream(schemaFile);  // NOSONAR
             if (!schemaFile.isFile()) {
                 throw new OnapCommandInvalidSchema(schemaFile.getName(), SCHEMA_FILE_NOT_EXIST);
             }
@@ -294,15 +294,14 @@ public class OnapCommandUtils {
                 }
             }
 
-            List<String> invalidExclude = excludeAuthParams.stream().filter(includeParams::contains)
+            List<String> invalidParams = excludeAuthParams.stream().filter(includeParams::contains)
                     .collect(Collectors.toList());
 
-            List<String> invalidInclude = includeAuthParams.stream().filter(excludeParams::contains)
-                    .filter(p->!includeParams.contains(p)).collect(Collectors.toList());
+            invalidParams.addAll(includeAuthParams.stream().filter(excludeParams::contains)
+                    .filter(p->!includeParams.contains(p)).collect(Collectors.toList()));
 
-            if (!invalidExclude.isEmpty() || !invalidInclude.isEmpty()) {
-                throw new OnapCommandInvalidDefaultParameter(Stream.concat(invalidExclude.stream(), invalidInclude.stream())
-                        .collect(Collectors.toList()));
+            if (!invalidParams.isEmpty()) {
+                throw new OnapCommandInvalidDefaultParameter(invalidParams);
             }
 
 
