@@ -16,18 +16,18 @@
 # limitations under the License.
 #*******************************************************************************
 
-export ONAP_CLI_HOME=/opt/onap/cli
-export CLI_PRODUCT_VERSION=onap-amsterdam
+export OPEN_CLI_HOME=/opt/oclip
+export OPEN_CLI_PRODUCT_IN_USE=open-cli
 
-cd $ONAP_CLI_HOME
+cd $OPEN_CLI_HOME
 
 if [ ! -d ./data ]; then mkdir ./data; fi
-if [ ! -d ./onap-cli-schema ]; then mkdir ./onap-cli-schema; fi
+if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
 
-chmod +x ./bin/onap.sh
+chmod +x ./bin/oclip.sh
 
-#Make onap available in path
-ln ./bin/onap.sh /usr/bin/onap
+#Make oclip available in path
+ln ./bin/oclip.sh /usr/bin/oclip
 
 #Print the version
-onap -v
+oclip -v
