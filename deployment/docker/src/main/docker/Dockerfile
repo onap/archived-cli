@@ -21,7 +21,6 @@ ENV OPEN_CLI_USERNAME guest
 ENV OPEN_CLI_PASSWORD guest
 
 ENV GOTTY_TITLE_FORMAT {{ .command }}
-ENV GOTTY_INDEX  $OPEN_CLI_HOME/http/web/occ.html
 
 #Copy CLI into docker
 ADD ./STAGE $OPEN_CLI_HOME

@@ -203,6 +203,7 @@ public class OnapCli {
                 String line = null;
 
                 while ((line = console.readLine()) != null) {
+                    line = line.trim();
                     if (OnapCliConstants.PARAM_INTERACTIVE_EXIT.equalsIgnoreCase(line)) {
                         break;
                     } else if (OnapCliConstants.PARAM_INTERACTIVE_CLEAR.equalsIgnoreCase(line)) {

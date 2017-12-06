@@ -22,10 +22,17 @@ then
     exit 1
 fi
 
-CLASSPATH=$OPEN_CLI_HOME:$OPEN_CLI_HOME/conf:$OPEN_CLI_HOME/docs
+if [ "$OSTYPE" = "msys" ]
+then
+    SEP=\;
+else
+    SEP=:
+fi
+
+CLASSPATH=${OPEN_CLI_HOME}${SEP}${OPEN_CLI_HOME}/conf${SEP}${OPEN_CLI_HOME}/docs
 for entry in "$OPEN_CLI_HOME/lib"/*
 do
-  CLASSPATH=$CLASSPATH:$entry
+  CLASSPATH=${CLASSPATH}${SEP}${entry}
 done
 
 if [ "$OPEN_CLI_DEBUG" = "true" ]
