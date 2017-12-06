@@ -15,7 +15,7 @@ In Telco/IT world, Any software platform/platform with out CLI is considered as 
 * Vendor/Community chooses some appropriate frameworks/libraries to develop CLI and it incurs large amount of efforts/time/money.
 * For any bug-fixes/features, user needs to wait for (max. of one release cycle approx. 6 months)
 
-To address these problems, in open-source ONAP community, Open CLI Platform (OCLIP) is developed and used for creating the CLI for ONAP.
+To address these problems, in open-source ONAP community, Open CLI Platform (OCLIP) is developed and is successfully used for developing CLI for ONAP.
 It helps to implement the commands just by writing YAML files for any cloud enabled software products and also provides plug-in mechanism to implement the commands which requires specific implementation.
 
 Advantages

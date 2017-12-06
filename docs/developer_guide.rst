@@ -7,7 +7,7 @@
 CLI developer guide
 ===================
 
-Develop ONAP CLI using plug-ins or YAML.
+Develop OCLIP using plug-ins or YAML.
 
 As a Plug-in
 -------------
@@ -20,13 +20,13 @@ It uses this approach to provide the commands for its platform-related operation
 It also offers the flexibility to implement any kind of command. For example, a specific plug-in command is provided in the CLI to handle
 HTTP commands, which helps to develop commands by **No coding, just by texting**
 
-Follow the steps below to implement new plug-in commands in ONAP:
+Follow the steps below to implement new plug-in commands for ONAP:
 
 #. Create a new mvn module (ex: demo) under plugins project.
 
 #. Use the plugins/sample project as a reference and update the new module demo project pom.xml file.
 
-#. Add new command YAML with a unique name under 'src/main/resources/onap-cli-schema'.
+#. Add new command YAML with a unique name under 'src/main/resources/open-cli-schema'.
 
 #. To implement a command as a plug-in, create a new plug-in class as follows: ::
 
@@ -70,26 +70,26 @@ Note the following points:
 
 #. Add the new plug-in class package path into the 'src/main/resources/META-INF/services/org.onap.cli.fw.OnapCommand' file
 
-#. Now the command is ready. Build the project by running 'mvn clean install'. ONAP CLI framework automatically delivers these commands as part of the ONAP CLI zip file as part of this build.
+#. Now the command is ready. Build the project by running 'mvn clean install'. OCLIP framework automatically delivers these commands as part of the OCLIP zip file as part of this build.
 
-#. To test this command, run the command 'onap hello-world --name amsterdam'
+#. To test this command, run the command 'oclip hello-world --name amsterdam'
 
 As a YAML
 ---------
 
-All ONAP CLI commands can be implemented as YAML using HTTP profile.
+All OCLIP commands can be implemented as YAML using HTTP profile.
 
-Follow the steps below to implement new commands in ONAP using YAML:
+Follow the steps below to implement new commands for ONAP using YAML:
 
-#. Install the latest ONAP CLI using the guide :ref:`cli_installation_guide`.
+#. Install the latest OCLIP using the guide :ref:`cli_installation_guide`.
 
-#. Under the onap-cli-schema folder, add a new YAML file by referring to :ref:`open_cli_schema_version_1_0`.
+#. Under the open-cli-schema folder, add a new YAML file by referring to :ref:`open_cli_schema_version_1_0`.
 
-#. Use the command 'onap schema-validate' to validate the YAML before testing its functionality.
+#. Use the command 'oclip schema-validate' to validate the YAML before testing its functionality.
 
-#. Run 'onap schema-refresh' command to take the new YAML file. We recommended validating the YAML before running this command.
+#. Run 'oclip schema-refresh' command to take the new YAML file. We recommended validating the YAML before running this command.
 
-#. To test this command, run the command 'onap CMD-NAME --help'.
+#. To test this command, run the command 'oclip CMD-NAME --help'.
 
 Sample YAML
 ~~~~~~~~~~~~

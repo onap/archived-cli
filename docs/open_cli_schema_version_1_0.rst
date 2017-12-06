@@ -81,9 +81,9 @@ the following format:
     action - Version of the product
 
     For example, to implement a command for Open Network Automation Platform
-    (onap) version 1.1, set the version as:
+    (onap) version amsterdam, set the version as:
 
-    **version** : **onap-1.1**
+    **version** : **onap-amsterdam**
 
 *CAUTION*: version should not have any space character in it.
 
@@ -100,7 +100,7 @@ service. This is an section and is having entries defined in below sections.
 name
 ~~~~
 *name* entry allows to configure the service name. For example, to configure
-service component 'aai' in onap-1.1 product,
+service component 'aai' in onap-amsterdam product,
 
     service:
         name: aai
@@ -113,7 +113,7 @@ version
 ~~~~~~~
 *version* entry allows to mention the particular version of service for which
 command is implemented. For example, the service 'aai' in the product
-'onap-1.1' having versions like v11.
+'onap-amsterdam' having versions like v11.
 
     service:
         version: v11
@@ -133,7 +133,7 @@ CLIP supports in two different mode.
 
 In *catalog* mode, OCLIP will discover the service details based on given
 *name* and *version* from the configured *host-url* parameter. For example,
-the product 'onap-1.1' provides the service 'msb' as the catalog service where
+the product 'onap-amsterdam' provides the service 'msb' as the catalog service where
 all other services will get registered. so OCLIP can discover the given
 service such as 'aai' from the catalog service 'msb'. In this mode, *host-url*
 will be configured with the *msb* service url. In this case:
@@ -474,18 +474,18 @@ OCLIP platform provides following default parameters for every command and
 author is allowed to customize the inclusion or exclusion of these input
 parameters for a given command.
 
-name: onap-username
+name: host-username
 ~~~~~~~~~~~~~~~~~~~
 
     type: string
 
-    description: Onap user name
+    description: Host user name
 
     short_option: u
 
-    long_option: onap-username
+    long_option: host-username
 
-    default_value: ${ONAP_USERNAME}
+    default_value: ${OPEN_CLI_USERNAME}
 
     is_optional: false
 

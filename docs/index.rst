@@ -22,7 +22,8 @@ Amsterdam release, it provides commands for following features:
 * ONAP micro-service discovery
 * ONAP external system and VNF cloud on-boarding
 * ONAP customer and subscription management
-* ONAP VSP on-boarding
+* ONAP resource on-boarding
+* ONAP Product and service management
 * ONAP network service life-cycle management
 
 .. toctree::

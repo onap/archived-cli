@@ -7,11 +7,11 @@
 CLI architecture
 ================
 
-Following diagram shows the high-level architecture of ONAP CLI.
+Following diagram shows the high-level architecture of OCLIP.
 
 .. image:: images/portal-cli-arch.png
 
-* **Command Registrar** :  Registrar keeps track of the commands registered in ONAP CLI and when user invokes the command, it identify
+* **Command Registrar** :  Registrar keeps track of the commands registered in OCLIP and when user invokes the command, it identify
   the corresponding command route the request to that command plug-in.
 
 * **Command Discoverer** : Discoverer discovers the commands both in plug-in format and YAML and automatically register them into Registrar.
