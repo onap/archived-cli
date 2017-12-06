@@ -1,0 +1,36 @@
+open_cli_schema_version: 1.0
+name: cloud-create
+description: Create a cloud region in Onap
+
+info:
+  product: onap-amsterdam
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: cloud-name
+    description: Onap cloud name
+    type: string
+    short_option: x
+    long_option: cloud-name
+    is_optional: false
+  - name: region-name
+    description: Onap  region name
+    type: string
+    short_option: y
+    long_option:  region-name
+    is_optional: false
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/cloud-infrastructure/cloud-regions/cloud-region/${cloud-name}/${region-name}
+    method: PUT
+    body: '{"sriov-automation": false, "cloud-region-id": "${region-name}", "cloud-owner": "${cloud-name}", "new-attribute-for-demo": "blah", "number-attribute-for-demo": 1 }'
+  success_codes:
+    - 201
+  sample_response:
+    body: ''

@@ -1,7 +1,7 @@
 open_cli_sample_version: 1.0
 
 name: customer-create
-version: onap-1.1
+version: onap-amsterdam
 samples:
   sample1:
     name: Create a customer

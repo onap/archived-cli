@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: subscription-delete
+version: onap-amsterdam
+samples:
+  sample1:
+    name: subscription-delete
+    input: --customer-name kanag --service-type vFW-kanag --resource-version 1509079144326
+    moco: subscription-delete-schema-1.1-moco.json
+    output:

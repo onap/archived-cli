@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+
+name: vsp-create
+version: openecomp
+samples:
+    sample1:
+        name: Create the Vendor Software Product
+        input: --host-username cs0008 --host-password demo123456! --host-url http://locahost:8080 --vsp-name demo-vsp2 --vsp-vendor-name 5aa8a88c --vsp-vendor-id DBB202617952486691C1E35C9    621CD4E --license-agreement-id E19DBDDB137B494385F9535325BFD585 --feature-group-id 94835F096DAF4ED78781A394A4F22AD1
+        output: |
+           +----------+----------------------------------+
+           |property  |value                             |
+           +----------+----------------------------------+
+           |ID        |6897DFFF8E864F84AD17A34B7FB936A3  |
+           +----------+----------------------------------+

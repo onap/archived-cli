@@ -1,0 +1,49 @@
+open_cli_schema_version: 1.0
+
+name: vnfm-list
+
+description: List the configured vnfm
+
+
+info:
+  product: onap-amsterdam
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: landscape
+  attributes:
+    - name: vnfm-id
+      description: Onap vnfm id
+      scope: short
+      type: string
+    - name: vim-id
+      description: Onap vnfm id
+      scope: short
+      type: string
+    - name: certificate-url
+      description: Onap vnfm certificate-url
+      scope: short
+      type: string
+    - name: resource-version
+      description: Onap vnfm resource version
+      scope: short
+      type: string
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/external-system/esr-vnfm-list
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    vnfm-id: $b{$.esr-vnfm.[*].vnfm-id}
+    vim-id: $b{$.esr-vnfm.[*].vim-id}
+    certificate-url: $b{$.esr-vnfm.[*].certificate-url}
+    resource-version: $b{$.esr-vnfm.[*].resource-version}
+
+  sample_response:
+    body: '{"esr-vnfm":[{"vnfm-id":"example-vnfm-id-val-36878","vim-id":"vim-id","certificate-url":"example-remotepath-val-80493","esr-system-info-list":{"esr-system-info":[{"esr-system-info-id":"example-esr-system-info-id-val-44791","system-name":"example-system-name-val-48687","type":"example-type-val-95885","vendor":"example-vendor-val-41061","version":"example-version-val-38559","service-url":"example-service-url-val-2663","user-name":"example-user-name-val-26126","password":"example-password-val-33838","system-type":"vnfm","protocal":"","ssl-cacert":"","ssl-insecure":false,"ip-address":"","port":"","cloud-domain":"","default-tenant":""}]}}]}'

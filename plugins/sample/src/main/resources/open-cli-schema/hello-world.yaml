@@ -5,7 +5,7 @@ name: hello-world
 description: First cmd hello world
 
 info:
-  product: sample-1.0
+  product: sample-helloworld
   service: hello-world
   author: ONAP CLI Team onap-discuss@lists.onap.org
 

@@ -1,0 +1,38 @@
+open_cli_schema_version: 1.0
+name: cloud-delete
+description: Delete a cloud region from Onap
+
+info:
+  product: onap-amsterdam
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: cloud-name
+    description: Onap cloud name
+    type: string
+    short_option: x
+    long_option: cloud-name
+    is_optional: false
+  - name: region-name
+    description: Onap cloud region name
+    type: string
+    short_option: y
+    long_option: region-name
+    is_optional: false
+  - name: resource-version
+    description: Onap cloud region version
+    type: uuid
+    short_option: z
+    long_option: resource-version
+    is_optional: true
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/cloud-infrastructure/cloud-regions/cloud-region/${cloud-name}/${region-name}?resource-version=${resource-version}
+    method: DELETE
+  success_codes:
+    - 204
+    - 404

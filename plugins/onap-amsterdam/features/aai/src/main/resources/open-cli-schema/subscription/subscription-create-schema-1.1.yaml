@@ -1,0 +1,54 @@
+open_cli_schema_version: 1.0
+name: subscription-create
+description: Create a subscription of a customer for given service in specific cloud region in Onap
+
+info:
+  product: onap-amsterdam
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: customer-name
+    description: Onap customer name
+    type: string
+    short_option: x
+    long_option: customer-name
+    is_optional: false
+  - name: cloud-name
+    description: Onap cloud name
+    type: string
+    short_option: z
+    long_option: cloud-name
+    is_optional: false
+  - name: cloud-region
+    description: Onap cloud region
+    type: string
+    short_option: r
+    long_option: cloud-region
+    is_optional: false
+  - name: cloud-tenant-id
+    description: Onap cloud tenant id
+    type: string
+    short_option: c
+    long_option: cloud-tenant-id
+    is_optional: false
+  - name: service-type
+    description: Onap service type
+    type: string
+    short_option: e
+    long_option: service-type
+    is_optional: false
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/business/customers/customer/${customer-name}/service-subscriptions/service-subscription/${service-type}
+    method: PUT
+    body: '{"relationship-list":{"relationship":[{"related-to":"tenant","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"${cloud-name}"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"${cloud-region}"},{"relationship-key":"tenant.tenant-id","relationship-value":"${cloud-tenant-id}"}]}]},"service-type":"${service-type}"}'
+  success_codes:
+    - 200
+    - 201
+  sample_response:
+    body: ''

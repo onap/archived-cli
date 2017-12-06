@@ -1,0 +1,56 @@
+open_cli_schema_version: 1.0
+name: ep-show
+description: Details of the Entitlement Pool
+
+info:
+  product: onap-amsterdam
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: license-model-id
+    description: Onap License Model ID
+    type: string
+    short_option: x
+    long_option: license-model-id
+    is_optional: false
+  - name: pool-id
+    description: Onap Entitlement Pool ID
+    type: string
+    short_option: y
+    long_option: pool-id
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: name
+      description: Entitlement Pool Name
+      scope: short
+      type: string
+    - name: ID
+      description: Entitlement Pool ID
+      scope: short
+      type: string
+    - name: description
+      description: Description for the Entitlement Pool
+      scope: short
+      type: string
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-license-models/${license-model-id}/entitlement-pools/${pool-id}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    name: $b{$.name}
+    ID: $b{$.id}
+    description: $b{$.description}
+  sample_response:
+    body: '{"name":"demo-group","description":"","type":"Universal","operationalScope":{"choices":["Tenant"]},"id":"FF87C2483B854B5BA5F96751BF251F46","referencingFeatureGroups":[]}'

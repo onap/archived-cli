@@ -17,7 +17,7 @@
 #*******************************************************************************
 
 export ONAP_CLI_HOME=/opt/onap/cli
-export CLI_PRODUCT_VERSION=onap-1.1
+export CLI_PRODUCT_VERSION=onap-amsterdam
 
 cd $ONAP_CLI_HOME
 

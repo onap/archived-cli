@@ -1,0 +1,31 @@
+open_cli_schema_version: 1.0
+name: service-model-certify-complete
+description: Completes the certification of Service model in SDC
+
+info:
+  product: onap-amsterdam
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: service-model-id
+    description: Service model ID
+    type: string
+    long_option: service-model-id
+    short_option: b
+    is_optional: true
+
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/catalog/services/${service-model-id}/lifecycleState/certify
+    method: POST
+    body: '{"userRemarks": "Completing certification via CLI"}'
+  success_codes:
+    - 200
+

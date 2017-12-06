@@ -59,8 +59,8 @@
             <activeByDefault>true</activeByDefault>
           </activation>
           <modules>
-            <module>onap-1.0</module>
-            <module>onap-1.1</module>
+            <module>openecomp</module>
+            <module>onap-amsterdam</module>
           </modules>
        </profile>
 

@@ -1,0 +1,88 @@
+open_cli_schema_version: 1.0
+name: vsp-create
+description: Create Vendor Software Product
+
+info:
+  product: openecomp
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: vsp-name
+    description: Onap VSP Name
+    type: string
+    short_option: x
+    long_option: vsp-name
+    is_optional: false
+  - name: vsp-description
+    description: Description for VSP
+    type: string
+    short_option: y
+    long_option: vsp-description
+    is_optional: true
+  - name: vsp-category
+    description: Category of the VSP
+    type: string
+    short_option: b
+    long_option: vsp-category
+    is_optional: true
+    default_value: resourceNewCategory.generic
+  - name: vsp-subcategory
+    description: Sub Category of VSP
+    type: string
+    short_option: c
+    long_option: vsp-subcategory
+    is_optional: true
+    default_value: resourceNewCategory.generic.abstract
+  - name: vlm-version
+    description: License version
+    type: string
+    short_option: e
+    long_option: vlm-version
+    is_optional: true
+    default_value: 1.0
+  - name: vlm-vendor
+    description: License Model Name
+    type: string
+    short_option: g
+    long_option: vlm-vendor
+    is_optional: false
+  - name: vlm-id
+    description: License Model ID
+    type: string
+    short_option: i
+    long_option: vlm-id
+    is_optional: false
+  - name: vlm-agreement-id
+    description: License Agreement ID
+    type: string
+    short_option: j
+    long_option: vlm-agreement-id
+    is_optional: false
+  - name: vlm-feature-group-id
+    description: Feature Group ID
+    type: string
+    short_option: k
+    long_option: vlm-feature-group-id
+    is_optional: false
+results:
+  direction: portrait
+  attributes:
+    - name: ID
+      description: VSP ID
+      scope: short
+      type: string
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-software-products
+    method: POST
+    body: '{"name": "${vsp-name}", "description": "${vsp-description}",  "category": "${vsp-category}",  "subCategory": "${vsp-subcategory}",  "licensingVersion": "${vlm-version}",  "vendorName": "${vlm-vendor}",  "vendorId": "${vlm-id}",  "icon": "icon",  "licensingData": { "licenseAgreement": "${vlm-agreement-id}",    "featureGroups": [ "${vlm-feature-group-id}"  ]}}'
+  success_codes:
+    - 200
+  result_map:
+    ID: $b{$.vspId}
+  sample_response:
+    body: '{"vspId":"2DEB6CB4B082415BB7A697C9CD1273BA"}'

@@ -1,0 +1,44 @@
+open_cli_schema_version: 1.0
+name: license-model-create
+description: Create License Model
+
+info:
+  product: openecomp
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: vendor-name
+    description: vendor name
+    type: string
+    short_option: x
+    long_option: vendor-name
+    is_optional: false
+  - name: license-model-description
+    description: Description for License Model
+    type: string
+    short_option: y
+    long_option: license-model-description
+    is_optional: true
+results:
+  direction: portrait
+  attributes:
+    - name: ID
+      description: License Model ID
+      scope: short
+      type: string
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-license-models
+    method: POST
+    body: '{"vendorName": "${vendor-name}", "description": "${license-model-description}",  "iconRef": "icon"}'
+  success_codes:
+    - 200
+  result_map:
+    ID: $b{$.value}
+  sample_response:
+    body: '{"value":"2DEB6CB4B082415BB7A697C9CD1273BA"}'

@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: subscription-list
+version: onap-amsterdam
+samples:
+  sample1:
+    name: subscription-list
+    input: --customer-name kanag
+    moco: subscription-list-schema-1.1-moco.json
+    output: |
+      +--------------+------------------+
+      |service-type  |resource-version  |
+      +--------------+------------------+
+      |vFW-kanag     |1509079144326     |
+      +--------------+------------------+

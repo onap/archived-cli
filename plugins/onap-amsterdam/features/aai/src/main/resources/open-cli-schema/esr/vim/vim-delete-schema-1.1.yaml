@@ -1,0 +1,52 @@
+open_cli_schema_version: 1.0
+
+name: vim-unregister
+
+description: Un-register a VIM under from cloud region in Onap
+
+
+info:
+  product: onap-amsterdam
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: cloud-name
+    description: Onap cloud name
+    type: string
+    short_option: x
+    long_option: cloud-name
+    is_optional: false
+  - name: region-name
+    description: Onap  region name
+    type: string
+    short_option: y
+    long_option:  region-name
+    is_optional: false
+  - name: vim-id
+    description: Onap VIM unique id
+    type: uuid
+    short_option: z
+    long_option:  vim-id
+    is_optional: false
+  - name: resource-version
+    description: Onap vim resource version
+    type: string
+    short_option: b
+    long_option: resource-version
+    is_optional: true
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/cloud-infrastructure/cloud-regions/cloud-region/${cloud-name}/${region-name}/esr-system-info-list/esr-system-info/${vim-id}?resource-version=${resource-version}
+    method: DELETE
+
+  success_codes:
+    - 204
+    - 404
+
+  sample_response:
+    body: ''

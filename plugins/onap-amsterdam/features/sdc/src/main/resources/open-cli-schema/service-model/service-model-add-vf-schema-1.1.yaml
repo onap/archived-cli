@@ -1,0 +1,58 @@
+open_cli_schema_version: 1.0
+name: service-model-add-vf
+description: Helps to add VF into service models in SDC
+
+info:
+  product: onap-amsterdam
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: service-model-id
+    description: Onap Service Name
+    type: string
+    short_option: x
+    long_option: service-model-id
+    is_optional: false
+  - name: vf-id
+    description: VF ID
+    type: string
+    short_option: y
+    long_option: vf-id
+    is_optional: true
+  - name: vf-name
+    description: VF ID
+    type: string
+    short_option: z
+    long_option: vf-name
+    is_optional: true
+  - name: vf-version
+    description: VF version
+    type: string
+    long_option: vf-version
+    short_option: b
+    is_optional: true
+
+results:
+  direction: portrait
+  attributes:
+    - name: ID
+      description: Service ID
+      scope: short
+      type: string
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/catalog/services/${service-model-id}/resourceInstance
+    method: POST
+    body: '{"name": "${vf-name}", "componentVersion": "${vf-version}", "posY": 248, "posX": 406, "uniqueId": "${service-model-id}-${vf-id}", "originType": "VF", "componentUid": "${vf-id}", "icon": "defaulticon"}'
+  success_codes:
+    - 201
+  result_map:
+    ID: $b{$.uniqueId}
+

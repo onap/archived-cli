@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: vlm-aggreement-list
+version: onap-amsterdam
+samples:
+  sample1:
+    name: vlm-aggreement-list
+    input: --vlm-id cf2d907d998e44698ce3b4cded5f66a7 --vlm-version 2.0
+    moco: vlm-aggreement-list-schema-1.1-moco.json
+    output: |
+      +----------------------------------+--------------+
+      |ID                                |name          |
+      +----------------------------------+--------------+
+      |1e2edfccaca847f896070d0fac26667a  |sf            |
+      +----------------------------------+--------------+
+      |77e151d0503b45ecb7e40f5f5f1a887e  |kanag-cli-la  |
+      +----------------------------------+--------------+

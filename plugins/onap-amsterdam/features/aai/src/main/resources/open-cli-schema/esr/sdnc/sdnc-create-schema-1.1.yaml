@@ -1,0 +1,98 @@
+open_cli_schema_version: 1.0
+
+name: sdnc-register
+
+description: Register a SDNC in Onap
+
+
+info:
+  product: onap-amsterdam
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: location
+    description: Onap VIM unique id
+    type: uuid
+    short_option: x
+    long_option:  location
+    is_optional: false
+  - name: sdnc-id
+    description: Onap SDNC unique id
+    type: uuid
+    short_option: y
+    long_option:  sdnc-id
+    is_optional: false
+  - name: name
+    description: Onap SDNC name
+    type: string
+    short_option: b
+    long_option:  name
+    is_optional: false
+  - name: type
+    description: Onap SDNC type
+    type: string
+    short_option: c
+    long_option:  type
+    is_optional: false
+  - name: vendor
+    description: Onap SDNC vendor
+    type: string
+    short_option: e
+    long_option:  vendor
+    is_optional: false
+  - name: sdnc-version
+    description: Onap SDNC version
+    type: string
+    short_option: q
+    long_option:  sdnc-version
+    is_optional: false
+  - name: ip-address
+    description: Onap SDNC ip address
+    type: string
+    short_option: g
+    long_option:  ip-address
+    is_optional: false
+  - name: port
+    description: Onap SDNC port
+    type: string
+    short_option: k
+    long_option:  port
+    is_optional: false
+  - name: protocal
+    description: Onap SDNC protocal
+    type: string
+    short_option: r
+    long_option:  protocal
+    is_optional: false
+  - name: username
+    description: Onap SDNC username
+    type: string
+    short_option: i
+    long_option:  username
+    is_optional: false
+  - name: password
+    description: Onap SDNC password
+    type: string
+    short_option: j
+    long_option:  password
+    is_optional: false
+  - name: product-name
+    description: Onap SDNC product-name
+    type: string
+    short_option: z
+    long_option: product-name
+    is_optional: false
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/external-system/esr-thirdparty-sdnc-list/esr-thirdparty-sdnc/${sdnc-id}
+    method: PUT
+    body: '{"thirdparty-sdnc-id":"${sdnc-id}","location":"${location}","product-name":"${product-name}","esr-system-info-list":{"esr-system-info":[{"esr-system-info-id":"${sdnc-id}","system-name":"${name}","type":"${type}","vendor":"${vendor}","version":"${sdnc-version}","service-url":"","user-name":"${username}","password":"${password}","system-type":"sdnc","protocal":"${protocal}","ssl-cacert":"","ssl-insecure":"","ip-address":"${ip-address}","port":"${port}","cloud-domain":"","default-tenant":""}]}}'
+  success_codes:
+    - 201
+  sample_response:
+    body: ''

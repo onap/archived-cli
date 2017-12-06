@@ -55,34 +55,34 @@
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-1.1-catalog</artifactId>
-            <version>${project.version}</version>
-        </dependency> 
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-1.1-auth</artifactId>
-            <version>${project.version}</version>
-        </dependency>                 
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-1.1-features-so</artifactId>
-            <version>${project.version}</version>
-        </dependency>        
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-1.1-features-sdc</artifactId>
+            <artifactId>cli-plugins-onap-amsterdam-catalog</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-1.1-features-msb</artifactId>
+            <artifactId>cli-plugins-onap-amsterdam-auth</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-1.1-features-aai</artifactId>
+            <artifactId>cli-plugins-onap-amsterdam-features-so</artifactId>
             <version>${project.version}</version>
-        </dependency>                
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-plugins-onap-amsterdam-features-sdc</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-plugins-onap-amsterdam-features-msb</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-plugins-onap-amsterdam-features-aai</artifactId>
+            <version>${project.version}</version>
+        </dependency>
   </dependencies>
 <!--   <build>
         <plugins>

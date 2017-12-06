@@ -1,0 +1,35 @@
+open_cli_schema_version: 1.0
+name: customer-create
+description: Create a customer in Onap
+
+info:
+  product: onap-amsterdam
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: customer-name
+    description: Onap customer name
+    type: string
+    short_option: x
+    long_option: customer-name
+    is_optional: false
+  - name: subscriber-name
+    description: Onap subscriber name
+    type: string
+    short_option: y
+    long_option: subscriber-name
+    is_optional: false
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/business/customers/customer/${customer-name}
+    method: PUT
+    body: '{"global-customer-id": "${customer-name}", "subscriber-name": "${subscriber-name}", "subscriber-type": "INFRA"}'
+  success_codes:
+    - 201
+  sample_response:
+    body: ''

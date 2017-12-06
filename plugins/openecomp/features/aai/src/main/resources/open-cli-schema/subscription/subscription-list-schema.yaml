@@ -1,0 +1,43 @@
+open_cli_schema_version: 1.0
+name: subscription-list
+description: Lists the subscription for a given customer in Onap
+
+info:
+  product: openecomp
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: customer-name
+    description: Onap customer name
+    type: string
+    short_option: x
+    long_option: customer-name
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: service-type
+      description: Onap service type
+      scope: short
+      type: string
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v8/business/customers/customer/${customer-name}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    service-type: $b{$.service-subscriptions.service-subscription.[*].service-type}
+  sample_response:
+    body: '{"global-customer-id":"Linan","subscriber-name":"Linan","subscriber-type":"INFRA","resource-version":"1501768482","service-subscriptions":{"service-subscription":[{"service-type":"vFW","resource-version":"1501768482","relationship-list":{"relationship":[{"related-to":"tenant","related-link":"https://192.168.17.12:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/Rackspace/RegionOne/tenants/tenant/e69e6d64b44347509c3fc512391f34a6/","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"Rackspace"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"RegionOne"},{"relationship-key":"tenant.tenant-id","relationship-value":"e69e6d64b44347509c3fc512391f34a6"}],"related-to-property":[{"property-key":"tenant.tenant-name","property-value":"onap"}]}]}},{"service-type":"vLB","resource-version":"1501768482","relationship-list":{"relationship":[{"related-to":"tenant","related-link":"https://192.168.17.12:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/Rackspace/RegionOne/tenants/tenant/e69e6d64b44347509c3fc512391f34a6/","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"Rackspace"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"RegionOne"},{"relationship-key":"tenant.tenant-id","relationship-value":"e69e6d64b44347509c3fc512391f34a6"}],"related-to-property":[{"property-key":"tenant.tenant-name","property-value":"onap"}]}]}}]}}'
+
+
+
+

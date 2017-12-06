@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: customer-show
+version: onap-amsterdam
+samples:
+  sample1:
+    name: customer-show
+    input: --customer-name kanag --long
+    moco: customer-show-schema-1.1-moco.json
+    output: |
+      +--------+------------------+------------------+------------------+
+      |name    |subscriber-name   |resource-version  |subscriber-type   |
+      +--------+------------------+------------------+------------------+
+      |kanag   |kanag             |1509029007060     |INFRA             |
+      +--------+------------------+------------------+------------------+
