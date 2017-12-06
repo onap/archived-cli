@@ -13,8 +13,8 @@ Provides unified commands to operate any products from Linux console and web com
 Configure the following environment variables, before using it:
 
 1. **OPEN_CLI_HOST_URL** - Catalog or service URL
-2. **OPEN_CLI_USERNAME** - Service user name
-3. **OPEN_CLI_PASSWORD** - Service user password
+2. **OPEN_CLI_HOST_USERNAME** - Service user name
+3. **OPEN_CLI_HOST_PASSWORD** - Service user password
 
 To Run a command
 -----------------
