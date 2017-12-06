@@ -485,22 +485,22 @@ name: host-username
 
     long_option: host-username
 
-    default_value: ${OPEN_CLI_USERNAME}
+    default_value: ${OPEN_CLI_HOST_USERNAME}
 
     is_optional: false
 
-name: onap-password
+name: host-password
 ~~~~~~~~~~~~~~~~~~~
 
     type: string
 
-    description: Onap user password
+    description: Host user password
 
     short_option: p
 
-    long_option: onap-password
+    long_option: host-password
 
-    default_value: ${ONAP_PASSWORD}
+    default_value: ${OPEN_CLI_HOST_PASSWORD}
 
     is_secured: true
 
@@ -510,7 +510,7 @@ name: host-url
 ~~~~~~~~~~~~~~
     type: url
 
-    description: Onap host url
+    description: Host url
 
     short_option: m
 
@@ -518,13 +518,13 @@ name: host-url
 
     is_optional: false
 
-    default_value: ${ONAP_HOST_URL}
+    default_value: ${OPEN_CLI_HOST_URL}
 
 name: help
 ~~~~~~~~~~
     type: string
 
-    description: Onap command help message
+    description: Command help message
 
     short_option: h
 
@@ -536,7 +536,7 @@ name: version
 ~~~~~~~~~~~~~
     type: string
 
-    description: Onap command service version
+    description: Command service version
 
     short_option: v
 
@@ -606,26 +606,8 @@ name: no-auth
     default_value: false
 
 *NOTE*: no-auth parameter is very helpful to by-pass the login and logout phase
-of each commands. Please refere *service* section to find more details on login
+of each commands. Please refer *service* section to find more details on login
 and logout.
-
-For example, OCLIP platform provides a command called 'schema-validate' to
-validate schematics of template against the specification defined in this
-document. For this command, host-url, onap-username, onap-password, no-auth
-parameters are required. so author could exclude these parameters by defining
-as :
-
-    default_parameters:
-      exclude:
-        \- onap-username
-
-        \- onap-password
-
-        \- host-url
-
-        \- no-auth
-
-
 
 results
 -------

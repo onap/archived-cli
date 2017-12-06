@@ -5,8 +5,8 @@
 .. _cli_cmd_sample:
 
 
-onap-1.1
-========
+onap-amsterdam
+==============
 
 
 
@@ -1285,8 +1285,8 @@ output::
  +--------------+--------------------------------------+
  |vf-id         |048c2c4a-ee30-41a1-bb55-c4e7fe1a9a0d  |
  +--------------+--------------------------------------+
-onap-1.0
-========
+openecomp
+=========
 
 
 
@@ -1363,7 +1363,7 @@ output::
  |test-vsp  |2DEB6CB4B082415BB7A697C9CD1273BA  |vendor software product   |
  +----------+----------------------------------+--------------------------+
 
-cli-1.0
+open-cli
 ========
 
 schema-validate
@@ -1390,232 +1390,232 @@ output::
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
   |sl-no   |command                         |product-version   |schema                                          |version   |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |1       |vfmodule-create                 |onap-1.1          |vfmodule-create-schema-1.1.yaml                 |1.0       |
+  |1       |vfmodule-create                 |onap-amsterdam    |vfmodule-create-schema-1.1.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |2       |schema-validate                 |cli-1.0           |schema-validate.yaml                            |1.0       |
+  |2       |schema-validate                 |open-cli          |schema-validate.yaml                            |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |3       |schema-refresh                  |cli-1.0           |schema-refresh.yaml                             |1.0       |
+  |3       |schema-refresh                  |open-cli          |schema-refresh.yaml                             |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |4       |cloud-list                      |onap-1.1          |cloud-list-schema-1.1.yaml                      |1.0       |
+  |4       |cloud-list                      |onap-amsterdam    |cloud-list-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |5       |sdnc-list                       |onap-1.1          |sdnc-list-schema-1.1.yaml                       |1.0       |
+  |5       |sdnc-list                       |onap-amsterdam    |sdnc-list-schema-1.1.yaml                       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |6       |sdnc-register                   |onap-1.1          |sdnc-create-schema-1.1.yaml                     |1.0       |
+  |6       |sdnc-register                   |onap-amsterdam    |sdnc-create-schema-1.1.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |7       |sdnc-unregister                 |onap-1.1          |sdnc-delete-schema-1.1.yaml                     |1.0       |
+  |7       |sdnc-unregister                 |onap-amsterdam    |sdnc-delete-schema-1.1.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |8       |vnfm-show                       |onap-1.1          |vnfm-show-schema-1.1.yaml                       |1.0       |
+  |8       |vnfm-show                       |onap-amsterdam    |vnfm-show-schema-1.1.yaml                       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |9       |vnfm-unregister                 |onap-1.1          |vnfm-delete-schema-1.1.yaml                     |1.0       |
+  |9       |vnfm-unregister                 |onap-amsterdam    |vnfm-delete-schema-1.1.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |10      |vnfm-register                   |onap-1.1          |vnfm-create-schema-1.1.yaml                     |1.0       |
+  |10      |vnfm-register                   |onap-amsterdam    |vnfm-create-schema-1.1.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |11      |vnfm-list                       |onap-1.1          |vnfm-list-schema-1.1.yaml                       |1.0       |
+  |11      |vnfm-list                       |onap-amsterdam    |vnfm-list-schema-1.1.yaml                       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |12      |vim-register                    |onap-1.1          |vim-create-schema-1.1.yaml                      |1.0       |
+  |12      |vim-register                    |onap-amsterdam    |vim-create-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |13      |vim-unregister                  |onap-1.1          |vim-delete-schema-1.1.yaml                      |1.0       |
+  |13      |vim-unregister                  |onap-amsterdam    |vim-delete-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |14      |vim-list                        |onap-1.1          |vim-list-schema-1.1.yaml                        |1.0       |
+  |14      |vim-list                        |onap-amsterdam    |vim-list-schema-1.1.yaml                        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |15      |ems-list                        |onap-1.1          |ems-list-schema-1.1.yaml                        |1.0       |
+  |15      |ems-list                        |onap-amsterdam    |ems-list-schema-1.1.yaml                        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |16      |ems-register                    |onap-1.1          |ems-create-schema-1.1.yaml                      |1.0       |
+  |16      |ems-register                    |onap-amsterdam    |ems-create-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |17      |ems-show                        |onap-1.1          |ems-show-schema-1.1.yaml                        |1.0       |
+  |17      |ems-show                        |onap-amsterdam    |ems-show-schema-1.1.yaml                        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |18      |cloud-delete                    |onap-1.1          |cloud-delete-schema-1.1.yaml                    |1.0       |
+  |18      |cloud-delete                    |onap-amsterdam    |cloud-delete-schema-1.1.yaml                    |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |19      |ems-unregister                  |onap-1.1          |ems-delete-schema-1.1.yaml                      |1.0       |
+  |19      |ems-unregister                  |onap-amsterdam    |ems-delete-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |20      |subscription-list               |onap-1.0          |subscription-list-schema.yaml                   |1.0       |
+  |20      |subscription-list               |openecomp         |subscription-list-schema.yaml                   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |21      |subscription-create             |onap-1.0          |subscription-create-schema.yaml                 |1.0       |
+  |21      |subscription-create             |openecomp         |subscription-create-schema.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |22      |subscription-list               |onap-1.1          |subscription-list-schema-1.1.yaml               |1.0       |
+  |22      |subscription-list               |onap-amsterdam    |subscription-list-schema-1.1.yaml               |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |23      |subscription-create             |onap-1.1          |subscription-create-schema-1.1.yaml             |1.0       |
+  |23      |subscription-create             |onap-amsterdam    |subscription-create-schema-1.1.yaml             |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |24      |subscription-delete             |onap-1.1          |subscription-delete-schema-1.1.yaml             |1.0       |
+  |24      |subscription-delete             |onap-amsterdam    |subscription-delete-schema-1.1.yaml             |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |25      |customer-show                   |onap-1.0          |customer-show-schema.yaml                       |1.0       |
+  |25      |customer-show                   |openecomp         |customer-show-schema.yaml                       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |26      |customer-show                   |onap-1.1          |customer-show-schema-1.1.yaml                   |1.0       |
+  |26      |customer-show                   |onap-amsterdam    |customer-show-schema-1.1.yaml                   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |27      |customer-list                   |onap-1.0          |customer-list-schema.yaml                       |1.0       |
+  |27      |customer-list                   |openecomp         |customer-list-schema.yaml                       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |28      |customer-delete                 |onap-1.0          |customer-delete-schema.yaml                     |1.0       |
+  |28      |customer-delete                 |openecomp         |customer-delete-schema.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |29      |customer-create                 |onap-1.0          |customer-create-schema.yaml                     |1.0       |
+  |29      |customer-create                 |openecomp         |customer-create-schema.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |30      |customer-create                 |onap-1.1          |customer-create-schema-1.1.yaml                 |1.0       |
+  |30      |customer-create                 |onap-amsterdam    |customer-create-schema-1.1.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |31      |customer-delete                 |onap-1.1          |customer-delete-schema-1.1.yaml                 |1.0       |
+  |31      |customer-delete                 |onap-amsterdam    |customer-delete-schema-1.1.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |32      |customer-list                   |onap-1.1          |customer-list-schema-1.1.yaml                   |1.0       |
+  |32      |customer-list                   |onap-amsterdam    |customer-list-schema-1.1.yaml                   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |33      |vf-list                         |onap-1.1          |vf-list-schema-1.1.yaml                         |1.0       |
+  |33      |vf-list                         |onap-amsterdam    |vf-list-schema-1.1.yaml                         |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |34      |service-list                    |onap-1.1          |service-list-schema-1.1.yaml                    |1.0       |
+  |34      |service-list                    |onap-amsterdam    |service-list-schema-1.1.yaml                    |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |35      |vf-show                         |onap-1.1          |vf-show-schema-1.1.yaml                         |1.0       |
+  |35      |vf-show                         |onap-amsterdam    |vf-show-schema-1.1.yaml                         |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |36      |tenant-create                   |onap-1.1          |tenant-create-schema-1.1.yaml                   |1.0       |
+  |36      |tenant-create                   |onap-amsterdam    |tenant-create-schema-1.1.yaml                   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |37      |tenant-list                     |onap-1.1          |tenant-list-schema-1.1.yaml                     |1.0       |
+  |37      |tenant-list                     |onap-amsterdam    |tenant-list-schema-1.1.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |38      |tenant-delete                   |onap-1.1          |tenant-delete-schema-1.1.yaml                   |1.0       |
+  |38      |tenant-delete                   |onap-amsterdam    |tenant-delete-schema-1.1.yaml                   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |39      |service-type-create             |onap-1.0          |service-type-create-schema.yaml                 |1.0       |
+  |39      |service-type-create             |openecomp         |service-type-create-schema.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |40      |service-type-list               |onap-1.1          |service-type-list-schema-1.1.yaml               |1.0       |
+  |40      |service-type-list               |onap-amsterdam    |service-type-list-schema-1.1.yaml               |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |41      |service-type-create             |onap-1.1          |service-type-create-schema-1.1.yaml             |1.0       |
+  |41      |service-type-create             |onap-amsterdam    |service-type-create-schema-1.1.yaml             |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |42      |service-type-delete             |onap-1.0          |service-type-delete-schema.yaml                 |1.0       |
+  |42      |service-type-delete             |openecomp         |service-type-delete-schema.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |43      |service-type-list               |onap-1.0          |service-type-list-schema.yaml                   |1.0       |
+  |43      |service-type-list               |openecomp         |service-type-list-schema.yaml                   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |44      |service-type-delete             |onap-1.1          |service-type-delete-schema-1.1.yaml             |1.0       |
+  |44      |service-type-delete             |onap-amsterdam    |service-type-delete-schema-1.1.yaml             |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |45      |cloud-create                    |onap-1.1          |cloud-create-schema-1.1.yaml                    |1.0       |
+  |45      |cloud-create                    |onap-amsterdam    |cloud-create-schema-1.1.yaml                    |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |46      |cloud-list                      |onap-1.0          |cloud-list-schema.yaml                          |1.0       |
+  |46      |cloud-list                      |openecomp         |cloud-list-schema.yaml                          |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |47      |microservice-delete             |onap-1.1          |microservice-delete-schema.yaml                 |1.0       |
+  |47      |microservice-delete             |onap-amsterdam    |microservice-delete-schema.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |48      |microservice-list               |onap-1.1          |microservice-list-schema.yaml                   |1.0       |
+  |48      |microservice-list               |onap-amsterdam    |microservice-list-schema.yaml                   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |49      |microservice-show               |onap-1.1          |microservice-show-schema.yaml                   |1.0       |
+  |49      |microservice-show               |onap-amsterdam    |microservice-show-schema.yaml                   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |50      |microservice-create             |onap-1.1          |microservice-create-schema.yaml                 |1.0       |
+  |50      |microservice-create             |onap-amsterdam    |microservice-create-schema.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
   |51      |hello-world                     |sample-1.0        |hello-world.yaml                                |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
   |52      |hello-world-http                |sample-1.0        |hello-world-http.yaml                           |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |53      |vlm-checkin                     |onap-1.1          |vlm-checkin-schema-1.1.yaml                     |1.0       |
+  |53      |vlm-checkin                     |onap-amsterdam    |vlm-checkin-schema-1.1.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |54      |license-group-create            |onap-1.0          |license-group-create-schema.yaml                |1.0       |
+  |54      |license-group-create            |openecomp         |license-group-create-schema.yaml                |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |55      |vlm-key-group-create            |onap-1.1          |vlm-key-group-create-schema-1.1.yaml            |1.0       |
+  |55      |vlm-key-group-create            |onap-amsterdam    |vlm-key-group-create-schema-1.1.yaml            |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |56      |vlm-aggreement-list             |onap-1.1          |vlm-aggreement-list-schema-1.1.yaml             |1.0       |
+  |56      |vlm-aggreement-list             |onap-amsterdam    |vlm-aggreement-list-schema-1.1.yaml             |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |57      |vlm-key-group-list              |onap-1.1          |vlm-key-group-list-schema-1.1.yaml              |1.0       |
+  |57      |vlm-key-group-list              |onap-amsterdam    |vlm-key-group-list-schema-1.1.yaml              |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |58      |vlm-create                      |onap-1.1          |vlm-create-schema-1.1.yaml                      |1.0       |
+  |58      |vlm-create                      |onap-amsterdam    |vlm-create-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |59      |vlm-entitlement-pool-create     |onap-1.1          |vlm-entitlement-pool-create-schema-1.1.yaml     |1.0       |
+  |59      |vlm-entitlement-pool-create     |onap-amsterdam    |vlm-entitlement-pool-create-schema-1.1.yaml     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |60      |ep-show                         |onap-1.0          |license-entitlement-pool-show-schema.yaml       |1.0       |
+  |60      |ep-show                         |openecomp         |license-entitlement-pool-show-schema.yaml       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |61      |license-model-create            |onap-1.0          |license-model-create-schema.yaml                |1.0       |
+  |61      |license-model-create            |openecomp         |license-model-create-schema.yaml                |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |62      |license-group-show              |onap-1.0          |license-group-show-schema.yaml                  |1.0       |
+  |62      |license-group-show              |openecomp         |license-group-show-schema.yaml                  |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |63      |vsp-upload                      |onap-1.0          |vsp-upload-schema.yaml                          |1.0       |
+  |63      |vsp-upload                      |openecomp         |vsp-upload-schema.yaml                          |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |64      |vsp-package                     |onap-1.1          |vsp-package-schema-1.1.yaml                     |1.0       |
+  |64      |vsp-package                     |onap-amsterdam    |vsp-package-schema-1.1.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |65      |vsp-submit                      |onap-1.1          |vsp-submit-schema-1.1.yaml                      |1.0       |
+  |65      |vsp-submit                      |onap-amsterdam    |vsp-submit-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |66      |vsp-checkout                    |onap-1.1          |vsp-checkout-schema-1.1.yaml                    |1.0       |
+  |66      |vsp-checkout                    |onap-amsterdam    |vsp-checkout-schema-1.1.yaml                    |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |67      |vsp-create                      |onap-1.0          |vsp-create-schema.yaml                          |1.0       |
+  |67      |vsp-create                      |openecomp         |vsp-create-schema.yaml                          |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |68      |vsp-list                        |onap-1.0          |vsp-list-schema.yaml                            |1.0       |
+  |68      |vsp-list                        |openecomp         |vsp-list-schema.yaml                            |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |69      |vsp-show                        |onap-1.1          |vsp-show-schema-1.1.yaml                        |1.0       |
+  |69      |vsp-show                        |onap-amsterdam    |vsp-show-schema-1.1.yaml                        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |70      |vsp-show                        |onap-1.0          |vsp-show-schema.yaml                            |1.0       |
+  |70      |vsp-show                        |openecomp         |vsp-show-schema.yaml                            |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |71      |vsp-submit                      |onap-1.0          |vsp-submit-schema.yaml                          |1.0       |
+  |71      |vsp-submit                      |openecomp         |vsp-submit-schema.yaml                          |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |72      |vsp-create                      |onap-1.1          |vsp-create-schema-1.1.yaml                      |1.0       |
+  |72      |vsp-create                      |onap-amsterdam    |vsp-create-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |73      |vsp-add-artifact                |onap-1.1          |vsp-add-artifact-schema-1.1.yaml                |1.0       |
+  |73      |vsp-add-artifact                |onap-amsterdam    |vsp-add-artifact-schema-1.1.yaml                |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |74      |vsp-revert                      |onap-1.1          |vsp-revert-schema-1.1.yaml                      |1.0       |
+  |74      |vsp-revert                      |onap-amsterdam    |vsp-revert-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |75      |vsp-checkin                     |onap-1.0          |vsp-checkin-schema.yaml                         |1.0       |
+  |75      |vsp-checkin                     |openecomp         |vsp-checkin-schema.yaml                         |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |76      |vsp-checkout                    |onap-1.1          |vsp-checkout-schema.yaml                        |1.0       |
+  |76      |vsp-checkout                    |onap-amsterdam    |vsp-checkout-schema.yaml                        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |77      |vsp-validate                    |onap-1.1          |vsp-validate-schema-1.1.yaml                    |1.0       |
+  |77      |vsp-validate                    |onap-amsterdam    |vsp-validate-schema-1.1.yaml                    |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |78      |vsp-list                        |onap-1.1          |vsp-list-schema-1.1.yaml                        |1.0       |
+  |78      |vsp-list                        |onap-amsterdam    |vsp-list-schema-1.1.yaml                        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |79      |vsp-checkin                     |onap-1.1          |vsp-checkin-schema-1.1.yaml                     |1.0       |
+  |79      |vsp-checkin                     |onap-amsterdam    |vsp-checkin-schema-1.1.yaml                     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |80      |service-model-checkin           |onap-1.1          |service-model-checkin-schema-1.1.yaml           |1.0       |
+  |80      |service-model-checkin           |onap-amsterdam    |service-model-checkin-schema-1.1.yaml           |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |81      |service-model-distribute        |onap-1.1          |service-model-distribute-schema-1.1.yaml        |1.0       |
+  |81      |service-model-distribute        |onap-amsterdam    |service-model-distribute-schema-1.1.yaml        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |82      |service-model-list              |onap-1.1          |service-model-list-schema-1.1.yaml              |1.0       |
+  |82      |service-model-list              |onap-amsterdam    |service-model-list-schema-1.1.yaml              |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |83      |service-model-certify-start     |onap-1.1          |service-model-certify-start-schema-1.1.yaml     |1.0       |
+  |83      |service-model-certify-start     |onap-amsterdam    |service-model-certify-start-schema-1.1.yaml     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |84      |service-model-add-vf            |onap-1.1          |service-model-add-vf-schema-1.1.yaml            |1.0       |
+  |84      |service-model-add-vf            |onap-amsterdam    |service-model-add-vf-schema-1.1.yaml            |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |85      |service-model-certify-request   |onap-1.1          |service-model-certify-request-schema-1.1.yaml   |1.0       |
+  |85      |service-model-certify-request   |onap-amsterdam    |service-model-certify-request-schema-1.1.yaml   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |86      |service-model-revert            |onap-1.1          |service-model-checkout-schema-1.1.yaml          |1.0       |
+  |86      |service-model-revert            |onap-amsterdam    |service-model-checkout-schema-1.1.yaml          |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |87      |service-model-checkout          |onap-1.1          |service-model-revert-schema-1.1.yaml            |1.0       |
+  |87      |service-model-checkout          |onap-amsterdam    |service-model-revert-schema-1.1.yaml            |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |88      |service-model-certify-complete  |onap-1.1          |service-model-certify-complete-schema-1.1.yaml  |1.0       |
+  |88      |service-model-certify-complete  |onap-amsterdam    |service-model-certify-complete-schema-1.1.yaml  |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |89      |service2vf-model-list           |onap-1.1          |service2vf-model-list-schema-1.1.yaml           |1.0       |
+  |89      |service2vf-model-list           |onap-amsterdam    |service2vf-model-list-schema-1.1.yaml           |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |90      |service-model-create            |onap-1.1          |service-model-create-schema-1.1.yaml            |1.0       |
+  |90      |service-model-create            |onap-amsterdam    |service-model-create-schema-1.1.yaml            |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |91      |service-model-approve           |onap-1.1          |service-model-approve-schema-1.1.yaml           |1.0       |
+  |91      |service-model-approve           |onap-amsterdam    |service-model-approve-schema-1.1.yaml           |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |92      |vf-model-create                 |onap-1.1          |vf-model-create-schema-1.1.yaml                 |1.0       |
+  |92      |vf-model-create                 |onap-amsterdam    |vf-model-create-schema-1.1.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |93      |vf-model-checkin                |onap-1.1          |vf-model-checkin-schema-1.1.yaml                |1.0       |
+  |93      |vf-model-checkin                |onap-amsterdam    |vf-model-checkin-schema-1.1.yaml                |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |94      |vlm-revert                      |onap-1.1          |vlm-revert-schema-1.1.yaml                      |1.0       |
+  |94      |vlm-revert                      |onap-amsterdam    |vlm-revert-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |95      |vlm-feature-group-create        |onap-1.1          |vlm-feature-group-create-schema-1.1.yaml        |1.0       |
+  |95      |vlm-feature-group-create        |onap-amsterdam    |vlm-feature-group-create-schema-1.1.yaml        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |96      |vlm-submit                      |onap-1.1          |vlm-submit-schema-1.1.yaml                      |1.0       |
+  |96      |vlm-submit                      |onap-amsterdam    |vlm-submit-schema-1.1.yaml                      |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |97      |license-model-show              |onap-1.0          |license-model-show-schema.yaml                  |1.0       |
+  |97      |license-model-show              |openecomp         |license-model-show-schema.yaml                  |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |98      |vf-model-certify-start          |onap-1.1          |vf-model-certify-start-schema-1.1.yaml          |1.0       |
+  |98      |vf-model-certify-start          |onap-amsterdam    |vf-model-certify-start-schema-1.1.yaml          |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |99      |vf-model-list                   |onap-1.1          |vf-model-list-schema-1.1.yaml                   |1.0       |
+  |99      |vf-model-list                   |onap-amsterdam    |vf-model-list-schema-1.1.yaml                   |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |100     |vlm-entitlement-pool-list       |onap-1.1          |vlm-entitlement-pool-list-schema-1.1.yaml       |1.0       |
+  |100     |vlm-entitlement-pool-list       |onap-amsterdam    |vlm-entitlement-pool-list-schema-1.1.yaml       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |101     |vlm-feature-group-list          |onap-1.1          |vlm-feature-group-list-schema-1.1.yaml          |1.0       |
+  |101     |vlm-feature-group-list          |onap-amsterdam    |vlm-feature-group-list-schema-1.1.yaml          |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |102     |vlm-checkout                    |onap-1.1          |vlm-checkout-schema-1.1.yaml                    |1.0       |
+  |102     |vlm-checkout                    |onap-amsterdam    |vlm-checkout-schema-1.1.yaml                    |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |103     |vlm-list                        |onap-1.1          |vlm-list-schema-1.1.yaml                        |1.0       |
+  |103     |vlm-list                        |onap-amsterdam    |vlm-list-schema-1.1.yaml                        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |104     |vlm-aggreement-create           |onap-1.1          |vlm-aggreement-create-schema-1.1.yaml           |1.0       |
+  |104     |vlm-aggreement-create           |onap-amsterdam    |vlm-aggreement-create-schema-1.1.yaml           |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |105     |vf-model-certify-request        |onap-1.1          |vf-model-certify-request-schema-1.1.yaml        |1.0       |
+  |105     |vf-model-certify-request        |onap-amsterdam    |vf-model-certify-request-schema-1.1.yaml        |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |106     |ep-create                       |onap-1.0          |license-entitlement-pool-create-schema.yaml     |1.0       |
+  |106     |ep-create                       |openecomp         |license-entitlement-pool-create-schema.yaml     |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |107     |vf2vfmodule-model-list          |onap-1.1          |vf2vfmodule-model-list-schema-1.1.yaml          |1.0       |
+  |107     |vf2vfmodule-model-list          |onap-amsterdam    |vf2vfmodule-model-list-schema-1.1.yaml          |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |108     |vf-model-certify-complete       |onap-1.1          |vf-model-certify-complete-schema-1.1.yaml       |1.0       |
+  |108     |vf-model-certify-complete       |onap-amsterdam    |vf-model-certify-complete-schema-1.1.yaml       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |109     |service-delete                  |onap-1.1          |service-delete-schema-1.1.yaml                  |1.0       |
+  |109     |service-delete                  |onap-amsterdam    |service-delete-schema-1.1.yaml                  |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |110     |vfmodule-delete                 |onap-1.1          |vf-module-delete-schema-1.1.yaml                |1.0       |
+  |110     |vfmodule-delete                 |onap-amsterdam    |vf-module-delete-schema-1.1.yaml                |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |111     |vfmodule-create                 |onap-1.1          |vfmodule-create-schema-1.1.yaml                 |1.0       |
+  |111     |vfmodule-create                 |onap-amsterdam    |vfmodule-create-schema-1.1.yaml                 |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |112     |service-create                  |onap-1.1          |service-create-schema-1.1.yaml                  |1.0       |
+  |112     |service-create                  |onap-amsterdam    |service-create-schema-1.1.yaml                  |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |113     |vf-delete                       |onap-1.1          |vf-delete-schema-1.1.yaml                       |1.0       |
+  |113     |vf-delete                       |onap-amsterdam    |vf-delete-schema-1.1.yaml                       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
-  |114     |vf-create                       |onap-1.1          |vf-create-schema-1.1.yaml                       |1.0       |
+  |114     |vf-create                       |onap-amsterdam    |vf-create-schema-1.1.yaml                       |1.0       |
   +--------+--------------------------------+------------------+------------------------------------------------+----------+
 
