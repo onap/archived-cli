@@ -26,7 +26,7 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.input.ParameterType;
+import org.onap.cli.fw.input.OnapCommandParameterType;
 
 public class OnapCommandResultTest {
 
@@ -37,16 +37,16 @@ public class OnapCommandResultTest {
         res.setIncludeSeparator(true);
         res.setIncludeTitle(true);
         res.setOutput("Output");
-        res.setPrintDirection(PrintDirection.LANDSCAPE);
+        res.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
         res.setRecords(new ArrayList<OnapCommandResultAttribute>());
         res.setScope(OnapCommandResultAttributeScope.LONG);
-        res.setType(ResultType.TABLE);
+        res.setType(OnapCommandResultType.TABLE);
         res.setDebug(true);
 
         assertTrue("debugInfo".equals(res.getDebugInfo()) && res.isIncludeSeparator()
-                && "Output".equals(res.getOutput()) && PrintDirection.LANDSCAPE.equals(res.getPrintDirection())
+                && "Output".equals(res.getOutput()) && OnapCommandPrintDirection.LANDSCAPE.equals(res.getPrintDirection())
                 && res.getRecords().isEmpty() && OnapCommandResultAttributeScope.LONG.equals(res.getScope())
-                && ResultType.TABLE.equals(res.getType()));
+                && OnapCommandResultType.TABLE.equals(res.getType()));
 
         String help = res.print();
 
@@ -61,18 +61,18 @@ public class OnapCommandResultTest {
         res.setIncludeSeparator(true);
         res.setIncludeTitle(true);
         res.setOutput("Output");
-        res.setPrintDirection(PrintDirection.LANDSCAPE);
+        res.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
 
         OnapCommandResultAttribute att = new OnapCommandResultAttribute();
         att.setName("param");
         att.setDescription("description");
-        att.setType(ParameterType.STRING);
+        att.setType(OnapCommandParameterType.STRING);
         att.setValues(new ArrayList<String>(Arrays.asList(new String[] { "value" })));
         List<OnapCommandResultAttribute> list = new ArrayList<OnapCommandResultAttribute>();
         list.add(att);
         res.setRecords(list);
         res.setScope(OnapCommandResultAttributeScope.LONG);
-        res.setType(ResultType.TABLE);
+        res.setType(OnapCommandResultType.TABLE);
         res.getRecordsMap();
         String expRes = "+--------+\n|param   |\n+--------+\n|value   |\n+--------+\n";
         String result = res.print();
@@ -88,19 +88,19 @@ public class OnapCommandResultTest {
         res.setIncludeSeparator(true);
         res.setIncludeTitle(true);
         res.setOutput("Output");
-        res.setPrintDirection(PrintDirection.LANDSCAPE);
+        res.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
 
         OnapCommandResultAttribute att = new OnapCommandResultAttribute();
         att.setName("param");
         att.setDescription("description");
-        att.setType(ParameterType.JSON);
+        att.setType(OnapCommandParameterType.JSON);
         att.setValues(
                 new ArrayList<String>(Arrays.asList(new String[] { "{\"id\": \"0001\",\"value\": \"result\"}" })));
         List<OnapCommandResultAttribute> list = new ArrayList<OnapCommandResultAttribute>();
         list.add(att);
         res.setRecords(list);
         res.setScope(OnapCommandResultAttributeScope.LONG);
-        res.setType(ResultType.JSON);
+        res.setType(OnapCommandResultType.JSON);
 
         // Will be handled after the json print is implemented
         String result = res.print();
@@ -118,25 +118,25 @@ public class OnapCommandResultTest {
         res.setIncludeSeparator(true);
         res.setIncludeTitle(true);
         res.setOutput("Output");
-        res.setPrintDirection(PrintDirection.LANDSCAPE);
+        res.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
 
         OnapCommandResultAttribute att = new OnapCommandResultAttribute();
         att.setName("param");
         att.setDescription("description");
-        att.setType(ParameterType.STRING);
+        att.setType(OnapCommandParameterType.STRING);
         att.setValues(new ArrayList<String>(Arrays.asList(new String[] { "value" })));
         List<OnapCommandResultAttribute> list = new ArrayList<OnapCommandResultAttribute>();
         list.add(att);
         OnapCommandResultAttribute a1 = new OnapCommandResultAttribute();
         a1.setName("param1");
         a1.setDescription("description1");
-        a1.setType(ParameterType.STRING);
+        a1.setType(OnapCommandParameterType.STRING);
         a1.setValues(new ArrayList<String>(Arrays.asList(new String[] { "value1" })));
 
         list.add(a1);
         res.setRecords(list);
         res.setScope(OnapCommandResultAttributeScope.LONG);
-        res.setType(ResultType.CSV);
+        res.setType(OnapCommandResultType.CSV);
 
         String expRes = "param,param1\r\n";
         String result = res.print();
@@ -152,25 +152,25 @@ public class OnapCommandResultTest {
         res.setIncludeSeparator(true);
         res.setIncludeTitle(true);
         res.setOutput("Output");
-        res.setPrintDirection(PrintDirection.PORTRAIT);
+        res.setPrintDirection(OnapCommandPrintDirection.PORTRAIT);
 
         OnapCommandResultAttribute att = new OnapCommandResultAttribute();
         att.setName("param");
         att.setDescription("description");
-        att.setType(ParameterType.STRING);
+        att.setType(OnapCommandParameterType.STRING);
         att.setValues(new ArrayList<String>(Arrays.asList(new String[] { "value" })));
         List<OnapCommandResultAttribute> list = new ArrayList<OnapCommandResultAttribute>();
         list.add(att);
         OnapCommandResultAttribute a1 = new OnapCommandResultAttribute();
         a1.setName("param1");
         a1.setDescription("description1");
-        a1.setType(ParameterType.STRING);
+        a1.setType(OnapCommandParameterType.STRING);
         a1.setValues(new ArrayList<String>(Arrays.asList(new String[] { "value1" })));
 
         list.add(a1);
         res.setRecords(list);
         res.setScope(OnapCommandResultAttributeScope.LONG);
-        res.setType(ResultType.CSV);
+        res.setType(OnapCommandResultType.CSV);
         String expRes = "property,value\r\nparam,value\r\n";
         String result = res.print();
         assertEquals(expRes, result);
@@ -183,19 +183,19 @@ public class OnapCommandResultTest {
         res.setIncludeSeparator(true);
         res.setIncludeTitle(true);
         res.setOutput("Output");
-        res.setPrintDirection(PrintDirection.PORTRAIT);
+        res.setPrintDirection(OnapCommandPrintDirection.PORTRAIT);
 
         OnapCommandResultAttribute att = new OnapCommandResultAttribute();
         att.setName("param");
         att.setDescription("description");
-        att.setType(ParameterType.STRING);
+        att.setType(OnapCommandParameterType.STRING);
         att.setValues(new ArrayList<String>(Arrays.asList(new String[] { "value" })));
 
         List<OnapCommandResultAttribute> list = new ArrayList<OnapCommandResultAttribute>();
         list.add(att);
         res.setRecords(list);
         res.setScope(OnapCommandResultAttributeScope.LONG);
-        res.setType(ResultType.TABLE);
+        res.setType(OnapCommandResultType.TABLE);
         String expRes = "+----------+--------+\n|property  |value   |\n+----------+--------+"
                 + "\n|param     |value   |\n+----------+--------+\n";
 

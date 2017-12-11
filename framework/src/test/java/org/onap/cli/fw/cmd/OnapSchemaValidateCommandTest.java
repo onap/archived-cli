@@ -18,9 +18,8 @@ package org.onap.cli.fw.cmd;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.ValidateSchemaTest;
 
 

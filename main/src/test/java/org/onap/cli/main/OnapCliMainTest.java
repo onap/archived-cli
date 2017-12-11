@@ -18,21 +18,12 @@ package org.onap.cli.main;
 
 import static org.junit.Assert.fail;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
-import org.onap.cli.main.utils.OnapCliArgsParser;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 
 import jline.console.ConsoleReader;
 import mockit.Invocation;
@@ -71,44 +62,6 @@ public class OnapCliMainTest {
     @Test
     public void testHelpSampleCommand() {
         this.handle(new String[] { "sample-test", "--help" });
-    }
-
-    @Ignore
-    @Test
-    public void testHandleProfile() {
-        this.handle(new String[] { "-c", "test" });
-    }
-
-    @Ignore
-    @Test
-    public void testAAICustomerList() {
-        this.handle(new String[] { "customer-list", "-u", "AAI", "-p", "AAI", "-m", "https://192.168.17.12:8443" });
-    }
-
-    @Ignore
-    @Test
-    public void testAAICloudList() {
-        this.handle(new String[] { "cloud-list", "-u", "AAI", "-p", "AAI", "-m", "https://192.168.17.12:8443" });
-    }
-
-    @Test
-    public void testHelpSampleCreateCommand() throws OnapCommandException {
-        ClassLoader cl = ClassLoader.getSystemClassLoader();
-        URL[] urls = ((URLClassLoader) cl).getURLs();
-        for (URL url : urls) {
-            if (url.getPath().contains("main/target/test-classes")) {
-                File file = new File(url.getPath() + "data");
-                if (!file.exists()) {
-                    file.mkdirs();
-                }
-                break;
-            }
-        }
-        this.handle(new String[] { "sample-create", "--help" });
-        OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("sample-create");
-        List<String> args = new ArrayList<>(Arrays.asList(new String[] { "sample-create", "--service-name", "test-service", "-i", "ip1", "-i",
-                "ip2", "-o", "port1=value1", "-o", "port2=value2" }));
-        OnapCliArgsParser.populateParams(cmd.getParameters(), args);
     }
 
     @Test

@@ -16,19 +16,6 @@
 
 package org.onap.cli.main.utils;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import net.minidev.json.JSONObject;
-
-import org.apache.commons.io.FileUtils;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
-import org.onap.cli.fw.input.OnapCommandParameter;
-import org.onap.cli.fw.input.ParameterType;
-import org.onap.cli.main.error.OnapCliArgumentValueMissing;
-import org.onap.cli.main.error.OnapCliInvalidArgument;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +23,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.io.FileUtils;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
+import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.input.OnapCommandParameterType;
+import org.onap.cli.main.error.OnapCliArgumentValueMissing;
+import org.onap.cli.main.error.OnapCliInvalidArgument;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.minidev.json.JSONObject;
 
 /**
  * Oclip CLI utilities.
@@ -65,7 +66,7 @@ public class OnapCliArgsParser {
      * @throws OnapCommandInvalidParameterValue
      *             exception
      */
-    public static void populateParams(List<OnapCommandParameter> params, List<String> args)
+    public static void populateParams(Set<OnapCommandParameter> params, List<String> args)
             throws OnapCommandException {
         Map<String, String> shortOptionMap = new HashMap<>();
         Map<String, String> longOptionMap = new HashMap<>();
@@ -93,35 +94,35 @@ public class OnapCliArgsParser {
         int positionalIdx = 0;
         // Skip the first args oclip cmd name, so start from 1
         for (int i = 1; i < args.size(); i++) {
-        	String paramName = null;
-        	if (shortOptionMap.containsKey(args.get(i))) {
-        		paramName = shortOptionMap.get(args.get(i));
-        	} else if (longOptionMap.containsKey(args.get(i))) {
-        		paramName = longOptionMap.get(args.get(i));
-        	}
-        	
-        	if (paramName != null) {
+            String paramName = null;
+            if (shortOptionMap.containsKey(args.get(i))) {
+                paramName = shortOptionMap.get(args.get(i));
+            } else if (longOptionMap.containsKey(args.get(i))) {
+                paramName = longOptionMap.get(args.get(i));
+            }
+
+            if (paramName != null) {
                 // end of the list or if its option rather than a value
                 if ((i + 1) == args.size() || args.get(i + 1).startsWith("-")) {
-                    if (paramMap.get(paramName).getParameterType().equals(ParameterType.BOOL)) {
+                    if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.BOOL)) {
                         paramMap.get(paramName).setValue("true");
                         continue;
                     }
                     throw new OnapCliArgumentValueMissing(args.get(i));
                 }
 
-                if (paramMap.get(paramName).getParameterType().equals(ParameterType.JSON)) {
+                if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.JSON)) {
                     paramMap.get(paramName).setValue(readJsonStringFromUrl(args.get(i + 1),
                             paramMap.get(paramName).getName()));
                     i++;
                     continue;
-                } if (paramMap.get(paramName).getParameterType().equals(ParameterType.TEXT)) {
+                } if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.TEXT)) {
                     paramMap.get(paramName).setValue(readTextStringFromUrl(args.get(i + 1),
                             paramMap.get(paramName).getName()));
                     i++;
                     continue;
                 } else if (paramMap.get(paramName).getParameterType()
-                        .equals(ParameterType.ARRAY)) {
+                        .equals(OnapCommandParameterType.ARRAY)) {
                     Object value = paramMap.get(paramName).getValue();
                     List<String> list;
                     if (value == "") {
@@ -134,7 +135,7 @@ public class OnapCliArgsParser {
                     paramMap.get(paramName).setValue(list);
                     i++;
                     continue;
-                } else if (paramMap.get(paramName).getParameterType().equals(ParameterType.MAP)) {
+                } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.MAP)) {
                     Object value = paramMap.get(paramName).getValue();
 
                     Map<String, String> map;

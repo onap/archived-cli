@@ -21,11 +21,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandOutputFormatNotsupported;
 import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
-import org.onap.cli.fw.input.ParameterType;
+import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.print.OnapCommandPrint;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
@@ -47,7 +47,7 @@ public class OnapCommandResult {
     /*
      * Type requested by user
      */
-    private ResultType type = ResultType.TABLE;
+    private OnapCommandResultType type = OnapCommandResultType.TABLE;
 
     /*
      * Scope requested by user
@@ -65,7 +65,7 @@ public class OnapCommandResult {
      *
      * loaded from schema file
      */
-    private PrintDirection printDirection = PrintDirection.LANDSCAPE;
+    private OnapCommandPrintDirection printDirection = OnapCommandPrintDirection.LANDSCAPE;
 
     private String debugInfo = "";
 
@@ -84,11 +84,11 @@ public class OnapCommandResult {
      */
     private boolean isDebug = false;
 
-    public PrintDirection getPrintDirection() {
+    public OnapCommandPrintDirection getPrintDirection() {
         return printDirection;
     }
 
-    public void setPrintDirection(PrintDirection printDirection) {
+    public void setPrintDirection(OnapCommandPrintDirection printDirection) {
         this.printDirection = printDirection;
     }
 
@@ -123,11 +123,11 @@ public class OnapCommandResult {
         return recordMap;
     }
 
-    public ResultType getType() {
+    public OnapCommandResultType getType() {
         return type;
     }
 
-    public void setType(ResultType type) {
+    public void setType(OnapCommandResultType type) {
         this.type = type;
     }
 
@@ -189,9 +189,9 @@ public class OnapCommandResult {
 
         OnapCommandPrint print = new OnapCommandPrint();
         print.setPrintTitle(this.isIncludeTitle());
-        if (this.getPrintDirection().equals(PrintDirection.LANDSCAPE)) {
+        if (this.getPrintDirection().equals(OnapCommandPrintDirection.LANDSCAPE)) {
             for (OnapCommandResultAttribute record : this.getScopedRecords()) {
-                if (record.getType().equals(ParameterType.JSON)) {
+                if (record.getType().equals(OnapCommandParameterType.JSON)) {
                     print.addColumn(record.getName(), OnapCommandUtils.jsonFlatten(record.getValues()));
                 } else {
                     print.addColumn(record.getName(), record.getValues());
@@ -200,11 +200,11 @@ public class OnapCommandResult {
         } else {
             // Add property column
             OnapCommandResultAttribute prp = new OnapCommandResultAttribute();
-            prp.setName(Constants.PORTRAINT_COLUMN_NAME_PROPERTY);
+            prp.setName(OnapCommandConstants.PORTRAINT_COLUMN_NAME_PROPERTY);
             prp.setScope(OnapCommandResultAttributeScope.SHORT);
             // Add value column
             OnapCommandResultAttribute val = new OnapCommandResultAttribute();
-            val.setName(Constants.PORTRAINT_COLUMN_NAME_VALUE);
+            val.setName(OnapCommandConstants.PORTRAINT_COLUMN_NAME_VALUE);
             val.setScope(OnapCommandResultAttributeScope.SHORT);
 
             for (OnapCommandResultAttribute record : this.getScopedRecords()) {
@@ -224,11 +224,11 @@ public class OnapCommandResult {
             printOutput = this.getDebugInfo() + "\n";
         }
 
-        if (this.getType().equals(ResultType.JSON)) {
+        if (this.getType().equals(OnapCommandResultType.JSON)) {
             return printOutput + print.printJson();
-        } else if (this.getType().equals(ResultType.TABLE)) {
+        } else if (this.getType().equals(OnapCommandResultType.TABLE)) {
             return printOutput + print.printTable(this.isIncludeSeparator());
-        } else if (this.getType().equals(ResultType.CSV)) {
+        } else if (this.getType().equals(OnapCommandResultType.CSV)) {
             return printOutput + print.printCsv();
         }
 

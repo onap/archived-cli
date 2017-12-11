@@ -1,0 +1,3 @@
+org.onap.cli.cmd.auth.OnapBasicAuthLoginCommand
+org.onap.cli.cmd.auth.OnapBasicAuthLogoutCommand
+org.onap.cli.cmd.auth.OnapSdcBasicAuthLoginCommand

@@ -25,7 +25,7 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
-import org.onap.cli.fw.output.PrintDirection;
+import org.onap.cli.fw.output.OnapCommandPrintDirection;
 
 public class OnapCommandPrintTest {
 
@@ -33,7 +33,7 @@ public class OnapCommandPrintTest {
     @Ignore
     public void printCsvTest() throws OnapCommandOutputPrintingFailed {
         OnapCommandPrint pr = new OnapCommandPrint();
-        pr.setDirection(PrintDirection.LANDSCAPE);
+        pr.setDirection(OnapCommandPrintDirection.LANDSCAPE);
         pr.setPrintTitle(true);
         pr.addColumn("name1", new ArrayList<String>(Arrays.asList(new String[] { "value1" })));
         String exp = "name1\r\n";
@@ -45,7 +45,7 @@ public class OnapCommandPrintTest {
     public void printTableTest() throws OnapCommandOutputPrintingFailed {
         OnapCommandPrint pr = new OnapCommandPrint();
         List<String> getColumnsData = new ArrayList<String>();
-        pr.setDirection(PrintDirection.LANDSCAPE);
+        pr.setDirection(OnapCommandPrintDirection.LANDSCAPE);
         pr.setPrintTitle(true);
         pr.addColumn("name2", new ArrayList<String>(Arrays.asList(new String[] { "value2" })));
         String exp = "+--------+\n|name2   |\n+--------+\n|value2  |\n+--------+\n";
@@ -58,7 +58,7 @@ public class OnapCommandPrintTest {
     public void printTableNullColumnHeaderTest() throws OnapCommandOutputPrintingFailed {
         OnapCommandPrint pr = new OnapCommandPrint();
         List<String> getColumnsData = new ArrayList<String>();
-        pr.setDirection(PrintDirection.LANDSCAPE);
+        pr.setDirection(OnapCommandPrintDirection.LANDSCAPE);
         pr.setPrintTitle(true);
         pr.addColumn("name2", new ArrayList<String>(Arrays.asList(new String[] { "value2" })));
         String exp = "+--------+\n|name2   |\n+--------+\n|value2  |\n+--------+\n";
@@ -71,7 +71,7 @@ public class OnapCommandPrintTest {
     public void printTableEmptyColumnValuesTest() throws OnapCommandOutputPrintingFailed {
         OnapCommandPrint pr = new OnapCommandPrint();
         List<String> getColumnsData = new ArrayList<String>();
-        pr.setDirection(PrintDirection.LANDSCAPE);
+        pr.setDirection(OnapCommandPrintDirection.LANDSCAPE);
         pr.setPrintTitle(true);
         pr.addColumn("name2", new ArrayList<String>(Arrays.asList(new String[] { "" })));
         String exp = "+--------+\n|name2   |\n+--------+\n|        |\n+--------+\n";

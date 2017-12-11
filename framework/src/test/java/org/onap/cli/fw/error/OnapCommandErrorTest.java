@@ -45,12 +45,6 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void oclipCommandHttpHeaderNotFoundTest() {
-        OnapCommandHttpHeaderNotFound failed = new OnapCommandHttpHeaderNotFound("name");
-        assertEquals("0x3003::Http header name is not returned from the service", failed.getMessage());
-    }
-
-    @Test
     public void oclipCommandClientInitialzationFailedTest() {
         OnapCommandClientInitialzationFailed failed = new OnapCommandClientInitialzationFailed("Test",
                 new Exception("Test Command Failed"));
@@ -107,22 +101,6 @@ public class OnapCommandErrorTest {
     }
 
     @Test
-    public void oclipCommandHttpFailureTest1() {
-        OnapCommandHttpFailure failed = new OnapCommandHttpFailure("Failed");
-        assertEquals("0x3001::Failed", failed.getMessage());
-
-        failed = new OnapCommandHttpFailure(new Exception("failed"), 201);
-        assertEquals("201::0x3001::failed", failed.getMessage());
-    }
-
-    @Test
-    public void oclipCommandHttpFailureTest2() {
-        OnapCommandHttpFailure failed = new OnapCommandHttpFailure("Failed", 203);
-
-        assertEquals("203::0x3001::Failed", failed.getMessage());
-    }
-
-    @Test
     public void oclipCommandInvalidParameterTypeTest() {
         OnapCommandInvalidParameterType failed = new OnapCommandInvalidParameterType("Failed");
 
@@ -141,7 +119,7 @@ public class OnapCommandErrorTest {
         OnapCommandInvalidRegistration failed = new OnapCommandInvalidRegistration(OnapCommandErrorTest.class);
 
         assertEquals("0x2001::Invalid commad class org.onap.cli.fw.error.OnapCommandErrorTest registration, "
-                + "it should be derived from org.onap.cli.fw.OnapCommand", failed.getMessage());
+                + "it should be derived from org.onap.cli.fw.cmd.OnapCommand", failed.getMessage());
     }
 
     @Test
@@ -163,29 +141,6 @@ public class OnapCommandErrorTest {
         OnapCommandInvalidSchemaVersion failed = new OnapCommandInvalidSchemaVersion("1.0");
 
         assertEquals("0xb003::Command schema open_cli_schema_version 1.0 is invalid or missing", failed.getMessage());
-    }
-
-    @Test
-    public void oclipCommandLoginFailedTest1() {
-        OnapCommandLoginFailed failed = new OnapCommandLoginFailed(new Exception("Failed"));
-
-        assertEquals("0x4001::Login failed, Failed", failed.getMessage());
-    }
-
-    @Test
-    public void oclipCommandLoginFailedTest2() {
-        OnapCommandLoginFailed failed = new OnapCommandLoginFailed("Failed", 201);
-
-        assertEquals("201::0x4001::Login failed, Failed", failed.getMessage());
-    }
-
-    @Test
-    public void oclipCommandLogoutFailedTest() {
-        OnapCommandLogoutFailed failed = new OnapCommandLogoutFailed(new Exception("Failed"));
-        assertEquals("0x4002::Logout failed, Failed", failed.getMessage());
-
-        failed = new OnapCommandLogoutFailed(200);
-        assertEquals("200::0x4002::Logout failed", failed.getMessage());
     }
 
     @Test
@@ -251,13 +206,6 @@ public class OnapCommandErrorTest {
         OnapCommandSchemaNotFound failed = new OnapCommandSchemaNotFound("Test");
 
         assertEquals("0xb002::Command schema is missing for command Test", failed.getMessage());
-    }
-
-    @Test
-    public void oclipCommandServiceNotFoundTest() {
-        OnapCommandServiceNotFound failed = new OnapCommandServiceNotFound("Service");
-
-        assertEquals("0xd001::Service Service is not found in MSB", failed.getMessage());
     }
 
     @Test

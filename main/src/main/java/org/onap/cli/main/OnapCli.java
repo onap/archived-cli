@@ -22,20 +22,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandRegistrar;
-import org.onap.cli.fw.conf.Constants;
-import org.onap.cli.fw.conf.OnapCommandConfg;
+import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.conf.OnapCommandConfig;
+import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidSample;
 import org.onap.cli.fw.error.OnapCommandWarning;
 import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.output.OnapCommandPrintDirection;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
-import org.onap.cli.fw.output.PrintDirection;
-import org.onap.cli.fw.output.ResultType;
+import org.onap.cli.fw.output.OnapCommandResultType;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliArgsParser;
@@ -147,18 +147,18 @@ public class OnapCli {
 
     public static String getDirectiveHelp() throws OnapCommandHelpFailed {
         OnapCommandResult help = new OnapCommandResult();
-        help.setType(ResultType.TABLE);
-        help.setPrintDirection(PrintDirection.LANDSCAPE);
+        help.setType(OnapCommandResultType.TABLE);
+        help.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
 
         OnapCommandResultAttribute attr = new OnapCommandResultAttribute();
-        attr.setName(Constants.NAME.toUpperCase());
-        attr.setDescription(Constants.DESCRIPTION);
+        attr.setName(OnapCommandConstants.NAME.toUpperCase());
+        attr.setDescription(OnapCommandConstants.DESCRIPTION);
         attr.setScope(OnapCommandResultAttributeScope.SHORT);
         help.getRecords().add(attr);
 
         OnapCommandResultAttribute attrDesc = new OnapCommandResultAttribute();
-        attrDesc.setName(Constants.DESCRIPTION.toUpperCase());
-        attrDesc.setDescription(Constants.DESCRIPTION);
+        attrDesc.setName(OnapCommandConstants.DESCRIPTION.toUpperCase());
+        attrDesc.setDescription(OnapCommandConstants.DESCRIPTION);
         attrDesc.setScope(OnapCommandResultAttributeScope.SHORT);
         help.getRecords().add(attrDesc);
 
@@ -378,11 +378,11 @@ public class OnapCli {
     }
 
     private void generateSmapleYaml(OnapCommand cmd) throws OnapCommandException {
-        if (OnapCommandConfg.isSampleGenerateEnabled() && this.getExitCode() == OnapCliConstants.EXIT_SUCCESS) {
+        if (Boolean.parseBoolean(OnapCommandConfig.getPropertyValue(OnapCommandConstants.SAMPLE_GEN_ENABLED)) && this.getExitCode() == OnapCliConstants.EXIT_SUCCESS) {
             try {
                 SampleYamlGenerator.generateSampleYaml(args, cmd.getResult().print(),
                         OnapCommandRegistrar.getRegistrar().getEnabledProductVersion(),
-                        OnapCommandConfg.getSampleGenerateTargetFolder() + "/" + cmd.getSchemaName().replaceAll(".yaml", "") + "-sample.yaml",
+                        OnapCommandConfig.getPropertyValue(OnapCommandConstants.SAMPLE_GEN_TARGET_FOLDER) + "/" + cmd.getSchemaName().replaceAll(".yaml", "") + "-sample.yaml",
                         cmd.getResult().isDebug());
             } catch (IOException error) {
                 throw new OnapCommandInvalidSample(args.get(0), error);

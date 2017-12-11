@@ -16,15 +16,24 @@
 
 package org.onap.cli.fw.input.cache;
 
+import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_DIRECTORY;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_JSON_PATTERN;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandLoadProfileFailed;
 import org.onap.cli.fw.error.OnapCommandPersistProfileFailed;
-import org.onap.cli.fw.utils.OnapCommandProfileUtils;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
+import org.springframework.core.io.Resource;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OnapCommandParameterCache {
 
@@ -32,7 +41,7 @@ public class OnapCommandParameterCache {
 
     private static OnapCommandParameterCache single = null;
 
-    private String profileName = Constants.PARAM_CACHE_FILE_NAME;
+    private String profileName = OnapCommandConstants.PARAM_CACHE_FILE_NAME;
 
     private OnapCommandParameterCache() {
 
@@ -78,12 +87,12 @@ public class OnapCommandParameterCache {
     }
 
     private void persist() {
-        List<Param> params = new ArrayList<>();
+        List<OnapCommandParamEntity> params = new ArrayList<>();
 
         for (String p: this.paramCache.keySet()) {
             for (String name: this.paramCache.get(p).keySet()) {
 
-                Param param = new Param();
+                OnapCommandParamEntity param = new OnapCommandParamEntity();
                 param.setProduct(p);
                 param.setName(name);
                 param.setValue(this.paramCache.get(p).get(name));
@@ -93,21 +102,21 @@ public class OnapCommandParameterCache {
         }
 
         try {
-            OnapCommandProfileUtils.persistProfile(params, this.profileName);
+            this.persistProfile(params, this.profileName);
         } catch (OnapCommandPersistProfileFailed e) {
             throw new RuntimeException(e);   // NOSONAR
         }
     }
 
     private void load() {
-        List<Param> params= new ArrayList<>();
+        List<OnapCommandParamEntity> params= new ArrayList<>();
         try {
-            params = OnapCommandProfileUtils.loadParamFromCache(this.profileName);
+            params = this.loadParamFromCache(this.profileName);
         } catch (OnapCommandLoadProfileFailed e) {
             throw new RuntimeException(e);   // NOSONAR
         }
 
-        for (Param p : params) {
+        for (OnapCommandParamEntity p : params) {
             this.add(p.getProduct(), p.getName(), p.getValue());
         }
     }
@@ -115,5 +124,40 @@ public class OnapCommandParameterCache {
     public void setProfile(String profileName) {
         this.profileName = profileName;
         this.load();
+    }
+
+    private void persistProfile(List<OnapCommandParamEntity> params, String profileName) throws OnapCommandPersistProfileFailed {
+        if (params != null) {
+            try {
+                Resource[] resources = OnapCommandDiscoveryUtils.findResources(DATA_DIRECTORY);
+                if (resources != null && resources.length == 1) {
+                    String path = resources[0].getURI().getPath();
+                    File file = new File(path + File.separator + profileName + ".json");
+                    ObjectMapper mapper = new ObjectMapper();
+                    mapper.writerWithDefaultPrettyPrinter().writeValue(file, params);
+                }
+            } catch (IOException e1) {
+                throw new OnapCommandPersistProfileFailed(e1);
+            }
+        }
+    }
+
+    private List<OnapCommandParamEntity> loadParamFromCache(String profileName) throws OnapCommandLoadProfileFailed {
+        List<OnapCommandParamEntity> params = new ArrayList<>();
+
+        try {
+            Resource resource = OnapCommandDiscoveryUtils.findResource(profileName + ".json",
+                    DATA_PATH_JSON_PATTERN);
+            if (resource != null) {
+                File file = new File(resource.getURI().getPath());
+                ObjectMapper mapper = new ObjectMapper();
+                OnapCommandParamEntity[] list = mapper.readValue(file, OnapCommandParamEntity[].class);
+                params.addAll(Arrays.asList(list));
+            }
+        } catch (IOException e) {
+            throw new OnapCommandLoadProfileFailed(e);
+        }
+
+        return params;
     }
 }

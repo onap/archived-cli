@@ -27,22 +27,22 @@ public class ParameterTypeTest {
     public void paramTypeGetTest() {
 
         try {
-            assertTrue(ParameterType.JSON.equals(ParameterType.get("json"))
-                    && ParameterType.YAML.equals(ParameterType.get("yaml"))
-                    && ParameterType.STRING.equals(ParameterType.get("string"))
-                    && ParameterType.DIGIT.equals(ParameterType.get("digit"))
-                    && ParameterType.URL.equals(ParameterType.get("url"))
-                    && ParameterType.BOOL.equals(ParameterType.get("bool"))
-                    && ParameterType.MAP.equals(ParameterType.get("map"))
-                    && ParameterType.BINARY.equals(ParameterType.get("binary"))
-                    && ParameterType.TEXT.equals(ParameterType.get("text"))
-                    && ParameterType.ARRAY.equals(ParameterType.get("array")));
+            assertTrue(OnapCommandParameterType.JSON.equals(OnapCommandParameterType.get("json"))
+                    && OnapCommandParameterType.YAML.equals(OnapCommandParameterType.get("yaml"))
+                    && OnapCommandParameterType.STRING.equals(OnapCommandParameterType.get("string"))
+                    && OnapCommandParameterType.DIGIT.equals(OnapCommandParameterType.get("digit"))
+                    && OnapCommandParameterType.URL.equals(OnapCommandParameterType.get("url"))
+                    && OnapCommandParameterType.BOOL.equals(OnapCommandParameterType.get("bool"))
+                    && OnapCommandParameterType.MAP.equals(OnapCommandParameterType.get("map"))
+                    && OnapCommandParameterType.BINARY.equals(OnapCommandParameterType.get("binary"))
+                    && OnapCommandParameterType.TEXT.equals(OnapCommandParameterType.get("text"))
+                    && OnapCommandParameterType.ARRAY.equals(OnapCommandParameterType.get("array")));
         } catch (OnapCommandInvalidParameterType e) {
             fail("Shouldn't have thrown this exception : " + e.getMessage());
         }
 
         try {
-            ParameterType.get("name");
+            OnapCommandParameterType.get("name");
         } catch (OnapCommandInvalidParameterType e) {
             assertTrue("0x7001::Parameter type name is invalid".equals(e.getMessage()));
         }

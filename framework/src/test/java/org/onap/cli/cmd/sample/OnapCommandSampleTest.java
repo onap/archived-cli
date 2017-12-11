@@ -19,20 +19,20 @@ package org.onap.cli.cmd.sample;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import org.junit.Test;
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandRegistrar;
-import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
 import org.onap.cli.fw.error.OnapCommandNotInitialized;
 import org.onap.cli.fw.input.OnapCommandParameter;
-import org.onap.cli.fw.input.ParameterType;
+import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 
 public class OnapCommandSampleTest {
     @Test
@@ -42,13 +42,13 @@ public class OnapCommandSampleTest {
 
             OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
 
-            List<OnapCommandParameter> parameters = new ArrayList();
+            Set<OnapCommandParameter> parameters = new HashSet();
             OnapCommandParameter v = new OnapCommandParameter();
-            v.setName(Constants.DEFAULT_PARAMETER_VERSION);
+            v.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
             v.setValue("true");
             parameters.add(v);
             OnapCommandParameter h = new OnapCommandParameter();
-            h.setName(Constants.DEFAULT_PARAMETER_HELP);
+            h.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
             h.setValue("false");
             parameters.add(h);
             sample.setParameters(parameters);
@@ -61,11 +61,11 @@ public class OnapCommandSampleTest {
     public void sampleTestHelp() {
         OnapCommandSample sample = new OnapCommandSample();
         try {
-            List<OnapCommandParameter> parameters = new ArrayList();
+            Set<OnapCommandParameter> parameters = new HashSet();
             OnapCommandParameter v = new OnapCommandParameter();
-            v.setName(Constants.DEFAULT_PARAMETER_HELP);
+            v.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
             v.setValue("true");
-            v.setParameterType(ParameterType.BOOL);
+            v.setParameterType(OnapCommandParameterType.BOOL);
             parameters.add(v);
             sample.setParameters(parameters);
             sample.execute();
@@ -78,39 +78,32 @@ public class OnapCommandSampleTest {
 
         try {
             OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
-            List<OnapCommandParameter> parameters = new ArrayList();
+            Set<OnapCommandParameter> parameters = new HashSet();
             OnapCommandParameter v = new OnapCommandParameter();
-            v.setName(Constants.DEFAULT_PARAMETER_VERSION);
+            v.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
             v.setValue("false");
             parameters.add(v);
             OnapCommandParameter h = new OnapCommandParameter();
-            h.setName(Constants.DEFAULT_PARAMETER_HELP);
+            h.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
             h.setValue("false");
             parameters.add(h);
             OnapCommandParameter f = new OnapCommandParameter();
-            f.setName(Constants.DEFAULT_PARAMETER_OUTPUT_FORMAT);
+            f.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT);
             f.setValue("table");
             parameters.add(f);
             OnapCommandParameter l = new OnapCommandParameter();
-            l.setName(Constants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG);
+            l.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG);
             l.setValue("true");
             parameters.add(l);
             OnapCommandParameter t = new OnapCommandParameter();
-            t.setName(Constants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE);
+            t.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE);
             t.setValue("true");
             parameters.add(t);
-            OnapCommandParameter a = new OnapCommandParameter();
-            a.setName(Constants.DEFAULT_PARAMETER_NO_AUTH);
-            a.setValue("true");
-            parameters.add(a);
             OnapCommandParameter d = new OnapCommandParameter();
-            d.setName(Constants.DEFAULT_PARAMETER_DEBUG);
+            d.setName(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG);
             d.setValue("true");
             parameters.add(d);
-            OnapCommandParameter m = new OnapCommandParameter();
-            m.setName(Constants.DEAFULT_PARAMETER_HOST_URL);
-            m.setValue("http://localhost");
-            parameters.add(m);
+
             sample.setParameters(parameters);
             sample.execute();
 
@@ -132,39 +125,31 @@ public class OnapCommandSampleTest {
         OnapCommandSample sample = new OnapCommandSample();
         sample.failCase = true;
 
-        List<OnapCommandParameter> parameters = new ArrayList();
+        Set<OnapCommandParameter> parameters = new HashSet();
         OnapCommandParameter v = new OnapCommandParameter();
-        v.setName(Constants.DEFAULT_PARAMETER_VERSION);
+        v.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
         v.setValue("false");
         parameters.add(v);
         OnapCommandParameter h = new OnapCommandParameter();
-        h.setName(Constants.DEFAULT_PARAMETER_HELP);
+        h.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
         h.setValue("false");
         parameters.add(h);
         OnapCommandParameter f = new OnapCommandParameter();
-        f.setName(Constants.DEFAULT_PARAMETER_OUTPUT_FORMAT);
+        f.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT);
         f.setValue("table");
         parameters.add(f);
         OnapCommandParameter l = new OnapCommandParameter();
-        l.setName(Constants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG);
+        l.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG);
         l.setValue("true");
         parameters.add(l);
         OnapCommandParameter t = new OnapCommandParameter();
-        t.setName(Constants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE);
+        t.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE);
         t.setValue("true");
         parameters.add(t);
-        OnapCommandParameter a = new OnapCommandParameter();
-        a.setName(Constants.DEFAULT_PARAMETER_NO_AUTH);
-        a.setValue("true");
-        parameters.add(a);
         OnapCommandParameter d = new OnapCommandParameter();
-        d.setName(Constants.DEFAULT_PARAMETER_DEBUG);
+        d.setName(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG);
         d.setValue("true");
         parameters.add(d);
-        OnapCommandParameter m = new OnapCommandParameter();
-        m.setName(Constants.DEAFULT_PARAMETER_HOST_URL);
-        m.setValue("http://localhost");
-        parameters.add(m);
         sample.setParameters(parameters);
         sample.execute();
     }

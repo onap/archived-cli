@@ -50,37 +50,37 @@
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-sample</artifactId>
+            <artifactId>cli-products-sample</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-amsterdam-catalog</artifactId>
+            <artifactId>cli-products-onap-amsterdam-catalog</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-amsterdam-auth</artifactId>
+            <artifactId>cli-products-onap-amsterdam-auth</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-amsterdam-features-so</artifactId>
+            <artifactId>cli-products-onap-amsterdam-features-so</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-amsterdam-features-sdc</artifactId>
+            <artifactId>cli-products-onap-amsterdam-features-sdc</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-amsterdam-features-msb</artifactId>
+            <artifactId>cli-products-onap-amsterdam-features-msb</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-plugins-onap-amsterdam-features-aai</artifactId>
+            <artifactId>cli-products-onap-amsterdam-features-aai</artifactId>
             <version>${project.version}</version>
         </dependency>
   </dependencies>
