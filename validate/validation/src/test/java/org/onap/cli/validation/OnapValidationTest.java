@@ -27,9 +27,9 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.utils.SchemaInfo;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
+import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.main.OnapCli;
 import org.onap.cli.moco.OnapCommandHttpMocoServer;
 import org.onap.cli.moco.OnapCommandSample;
@@ -49,7 +49,7 @@ public class OnapValidationTest {
             OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(version);
             System.out.println(version);
             System.out.println("==========================\n\n");
-            for (SchemaInfo sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
+            for (OnapCommandSchemaInfo sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
                 if (sch.isIgnore()) {
                     continue;
                 }
@@ -70,7 +70,7 @@ public class OnapValidationTest {
             System.out.println(version);
             System.out.println("==========================\n\n");
             int i = 1;
-            for (SchemaInfo sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
+            for (OnapCommandSchemaInfo sch : OnapCommandRegistrar.getRegistrar().listCommandInfo()) {
                 if (sch.isIgnore()) {
                     continue;
                 }

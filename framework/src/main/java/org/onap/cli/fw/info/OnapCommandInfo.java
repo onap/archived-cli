@@ -16,7 +16,7 @@
 
 package org.onap.cli.fw.info;
 
-import org.onap.cli.fw.cmd.CommandType;
+import org.onap.cli.fw.cmd.OnapCommandType;
 
 /**
  * Oclip Command info like product version, service, contact, etc.
@@ -29,7 +29,7 @@ public class OnapCommandInfo {
 
     private String author;
 
-    private CommandType type = CommandType.CMD;
+    private OnapCommandType type = OnapCommandType.CMD;
 
     private boolean ignore = false;
 
@@ -57,11 +57,11 @@ public class OnapCommandInfo {
         this.author = email;
     }
 
-    public CommandType getCommandType() {
+    public OnapCommandType getCommandType() {
         return type;
     }
 
-    public void setCommandType(CommandType type) {
+    public void setCommandType(OnapCommandType type) {
         this.type = type;
     }
 

@@ -24,19 +24,19 @@ import org.junit.Test;
 public class ResultTypeTest {
     @Test
     public void resultTypeGetTest() {
-        assertTrue(ResultType.TABLE.equals(ResultType.get("table")) && ResultType.CSV.equals(ResultType.get("csv"))
-                && ResultType.JSON.equals(ResultType.get("json")) && ResultType.YAML.equals(ResultType.get("yaml"))
-                && ResultType.TEXT.equals(ResultType.get("text")));
+        assertTrue(OnapCommandResultType.TABLE.equals(OnapCommandResultType.get("table")) && OnapCommandResultType.CSV.equals(OnapCommandResultType.get("csv"))
+                && OnapCommandResultType.JSON.equals(OnapCommandResultType.get("json")) && OnapCommandResultType.YAML.equals(OnapCommandResultType.get("yaml"))
+                && OnapCommandResultType.TEXT.equals(OnapCommandResultType.get("text")));
 
     }
 
     @Test
     public void isTabularFormTest() {
-        assertTrue(ResultType.isTabularForm("table"));
+        assertTrue(OnapCommandResultType.isTabularForm("table"));
     }
 
     @Test
     public void isTabularFormNotTest() {
-        assertFalse(ResultType.isTabularForm("text"));
+        assertFalse(OnapCommandResultType.isTabularForm("text"));
     }
 }

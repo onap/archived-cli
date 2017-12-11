@@ -16,9 +16,9 @@
 
 package org.onap.cli.main;
 
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandSchema;
+import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.schema.OnapCommandSchema;
 
 /**
  * This command helps to test the Command functionalities.

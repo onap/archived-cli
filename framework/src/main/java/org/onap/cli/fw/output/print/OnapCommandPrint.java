@@ -29,7 +29,7 @@ import java.util.StringTokenizer;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
-import org.onap.cli.fw.output.PrintDirection;
+import org.onap.cli.fw.output.OnapCommandPrintDirection;
 
 /**
  * Oclip Command Table print.
@@ -39,17 +39,17 @@ public class OnapCommandPrint {
 
     public static final int MAX_COLUMN_LENGTH = 50;
 
-    private PrintDirection direction;
+    private OnapCommandPrintDirection direction;
 
     private Map<String, List<String>> data = new LinkedHashMap<>();
 
     private boolean printTitle = true;
 
-    public PrintDirection getDirection() {
+    public OnapCommandPrintDirection getDirection() {
         return direction;
     }
 
-    public void setDirection(PrintDirection direction) {
+    public void setDirection(OnapCommandPrintDirection direction) {
         this.direction = direction;
     }
 

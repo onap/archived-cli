@@ -16,7 +16,7 @@
 
 package org.onap.cli.fw.error;
 
-import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.cmd.OnapCommand;
 
 /**
  * Command class invalid.

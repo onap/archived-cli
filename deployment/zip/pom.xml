@@ -75,10 +75,10 @@
                                 }
 
                                 ant.copy(todir: "${deployUnzip}") {
-                                fileset(file: "${basedir}/installer/cli-init.sh")
+                                fileset(file: "${basedir}/installer/install.sh")
                                 }
-                                ant.chmod(file: "${deployUnzip}/bin/onap.sh", perm: "ugo+x")
-                                ant.chmod(file: "${deployUnzip}/cli-init.sh", perm: "ugo+x")
+                                ant.chmod(file: "${deployUnzip}/bin/oclip.sh", perm: "ugo+x")
+                                ant.chmod(file: "${deployUnzip}/install.sh", perm: "ugo+x")
 
                                 ant.copy(todir:
                                 "${deployUnzip}/lib") {
@@ -87,30 +87,26 @@
                                 fileset(dir:
                                 "${project.build.directory}/../../../main/target/lib/")
                                 fileset(dir:
-                                "${project.build.directory}/../../../plugins/target/lib/")
+                                "${project.build.directory}/../../../products/target/lib/")
+                                fileset(dir:
+                                "${project.build.directory}/../../../profiles/target/lib/")
                                 }
                                 ant.copy(todir:
                                 "${deployUnzip}/conf") {
                                 fileset(file:
-                                "${project.build.directory}/../../../framework/src/main/resources/open-cli.properties")
+                                "${basedir}/src/main/release/conf/open-cli.properties")
                                 }
 
-                                ant.copy(todir:
+								ant.copy(todir:
                                 "${deployUnzip}/conf") {
                                 fileset(file:
-                                "${project.build.directory}/../../../framework/src/main/resources/log4j.properties")
+                                "${basedir}/src/main/release/conf/log4j.properties")
                                 }
-
+                                
                                 ant.copy(todir:
                                 "${deployUnzip}/docs") {
                                 fileset(file:
                                 "${project.build.directory}/../../../README.md")
-                                }
-
-                                ant.copy(todir:
-                                "${deployUnzip}") {
-                                fileset(file:
-                                "${project.build.directory}/../installer/install.sh")
                                 }
 
                                 ant.zip(destfile:

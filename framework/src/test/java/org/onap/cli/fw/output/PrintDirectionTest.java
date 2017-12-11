@@ -27,14 +27,14 @@ public class PrintDirectionTest {
     public void printDirectionGetTest() {
 
         try {
-            assertTrue(PrintDirection.LANDSCAPE.equals(PrintDirection.get("landscape"))
-                    && PrintDirection.PORTRAIT.equals(PrintDirection.get("portrait")));
+            assertTrue(OnapCommandPrintDirection.LANDSCAPE.equals(OnapCommandPrintDirection.get("landscape"))
+                    && OnapCommandPrintDirection.PORTRAIT.equals(OnapCommandPrintDirection.get("portrait")));
         } catch (OnapCommandInvalidPrintDirection e) {
             fail("Shouldn't have thrown this exception : " + e.getMessage());
         }
 
         try {
-            PrintDirection.get("name");
+            OnapCommandPrintDirection.get("name");
         } catch (OnapCommandInvalidPrintDirection e) {
             assertTrue("0x8003::Print direction name is invalid".equals(e.getMessage()));
         }

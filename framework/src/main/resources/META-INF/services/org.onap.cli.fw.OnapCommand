@@ -1,6 +1,0 @@
-org.onap.cli.fw.cmd.OnapSchemaValidateCommand
-org.onap.cli.fw.cmd.OnapSchemaRefreshCommand
-org.onap.cli.fw.cmd.BasicAuthLoginCommand
-org.onap.cli.fw.cmd.BasicAuthLogoutCommand
-org.onap.cli.fw.cmd.CatalogCommand
-org.onap.cli.fw.cmd.OnapHttpCommand
