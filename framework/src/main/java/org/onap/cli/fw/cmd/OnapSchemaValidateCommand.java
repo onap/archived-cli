@@ -20,14 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandRegistrar;
-import org.onap.cli.fw.OnapCommandSchema;
-import org.onap.cli.fw.conf.Constants;
+import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
+import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
-import org.onap.cli.fw.utils.OnapCommandSchemaLoaderUtils;
 
 /**
  * Validate schema command.
@@ -52,10 +51,10 @@ public class OnapSchemaValidateCommand extends OnapCommand {
         String ocsVersion = String.valueOf(versionParam.getValue());
 
         String type = OnapCommandDiscoveryUtils.identitySchemaProfileType(
-                OnapCommandSchemaLoaderUtils.validateSchemaVersion(location, ocsVersion));
+                OnapCommandSchemaLoader.validateSchemaVersion(location, ocsVersion));
 
         OnapCommand cmd = null;
-        if (type.equals(Constants.BASIC_SCHEMA_PROFILE)) {
+        if (type.equals(OnapCommandConstants.BASIC_SCHEMA_PROFILE)) {
             cmd = new OnapCommand() {
                 @Override
                 protected void run() throws OnapCommandException {

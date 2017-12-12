@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Collections;
 
 import org.junit.Test;
-import org.onap.cli.fw.input.ParameterType;
+import org.onap.cli.fw.input.OnapCommandParameterType;
 
 public class OnapCommandResultAttributeScopeTest {
     @Test
@@ -31,11 +31,11 @@ public class OnapCommandResultAttributeScopeTest {
         att.setName("name");
         att.setScope(OnapCommandResultAttributeScope.LONG);
         att.setSecured(true);
-        att.setType(ParameterType.DIGIT);
+        att.setType(OnapCommandParameterType.DIGIT);
         att.setValues(Collections.emptyList());
         assertTrue("description".equals(att.getDescription()) && "name".equals(att.getName())
                 && OnapCommandResultAttributeScope.LONG.equals(att.getScope())
-                && ParameterType.DIGIT.equals(att.getType()) && att.getValues().isEmpty());
+                && OnapCommandParameterType.DIGIT.equals(att.getType()) && att.getValues().isEmpty());
     }
 
 }

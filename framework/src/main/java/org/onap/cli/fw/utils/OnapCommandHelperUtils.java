@@ -16,24 +16,24 @@
 
 package org.onap.cli.fw.utils;
 
-import static org.onap.cli.fw.conf.Constants.DESCRIPTION;
-import static org.onap.cli.fw.conf.Constants.NAME;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DESCRIPTION;
+import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
 
 import java.io.IOException;
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 
-import org.onap.cli.fw.OnapCommand;
+import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.input.OnapCommandParameter;
-import org.onap.cli.fw.input.ParameterType;
+import org.onap.cli.fw.input.OnapCommandParameterType;
+import org.onap.cli.fw.output.OnapCommandPrintDirection;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
-import org.onap.cli.fw.output.PrintDirection;
-import org.onap.cli.fw.output.ResultType;
+import org.onap.cli.fw.output.OnapCommandResultType;
 
 public class OnapCommandHelperUtils {
 
@@ -87,8 +87,8 @@ public class OnapCommandHelperUtils {
 
         // Add parameters
         OnapCommandResult paramTable = new OnapCommandResult();
-        paramTable.setPrintDirection(PrintDirection.LANDSCAPE);
-        paramTable.setType(ResultType.TABLE);
+        paramTable.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
+        paramTable.setType(OnapCommandResultType.TABLE);
         paramTable.setIncludeTitle(false);
         paramTable.setIncludeSeparator(false);
 
@@ -137,8 +137,8 @@ public class OnapCommandHelperUtils {
             }
             optSecondCol += " It is of type " + param.getParameterType().name() + ".";
 
-            if (param.getParameterType().equals(ParameterType.JSON)
-                    || param.getParameterType().equals(ParameterType.YAML)) {
+            if (param.getParameterType().equals(OnapCommandParameterType.JSON)
+                    || param.getParameterType().equals(OnapCommandParameterType.YAML)) {
                 optSecondCol += " It's recommended to input the complete path of the file, which is having the value for it.";
             }
             if (param.isOptional()) {
@@ -168,8 +168,8 @@ public class OnapCommandHelperUtils {
 
         // Add results
         OnapCommandResult resultTable = new OnapCommandResult();
-        resultTable.setPrintDirection(PrintDirection.PORTRAIT);
-        resultTable.setType(ResultType.TABLE);
+        resultTable.setPrintDirection(OnapCommandPrintDirection.PORTRAIT);
+        resultTable.setType(OnapCommandResultType.TABLE);
         resultTable.setIncludeTitle(false);
         resultTable.setIncludeSeparator(false);
 
@@ -195,7 +195,7 @@ public class OnapCommandHelperUtils {
         }
 
         // Error
-        help += "\n\nError::\n\n On error, it prints <HTTP STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>\n";
+        help += "\n\nError::\n\n On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>\n";
         return help;
     }
 

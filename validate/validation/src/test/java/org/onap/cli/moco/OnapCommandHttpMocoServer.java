@@ -36,9 +36,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import org.onap.cli.fw.OnapCommandRegistrar;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidSample;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.main.OnapCli;
 import org.slf4j.Logger;

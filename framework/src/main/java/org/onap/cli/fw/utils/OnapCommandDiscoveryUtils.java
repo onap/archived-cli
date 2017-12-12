@@ -16,13 +16,13 @@
 
 package org.onap.cli.fw.utils;
 
-import static org.onap.cli.fw.conf.Constants.DATA_DIRECTORY;
-import static org.onap.cli.fw.conf.Constants.DATA_PATH_JSON_PATTERN;
-import static org.onap.cli.fw.conf.Constants.DISCOVERY_FILE;
-import static org.onap.cli.fw.conf.Constants.NAME;
-import static org.onap.cli.fw.conf.Constants.OPEN_CLI_SCHEMA_VERSION;
-import static org.onap.cli.fw.conf.Constants.SCHEMA_DIRECTORY;
-import static org.onap.cli.fw.conf.Constants.SCHEMA_PATH_PATERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_DIRECTORY;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_JSON_PATTERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DISCOVERY_FILE;
+import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
+import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
+import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_DIRECTORY;
+import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_PATH_PATERN;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,16 +34,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
 
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandRegistrar;
-import org.onap.cli.fw.cmd.OnapHttpCommand;
-import org.onap.cli.fw.conf.Constants;
-import org.onap.cli.fw.conf.OnapCommandConfg;
+import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.conf.OnapCommandConfig;
+import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInstantiationFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
-import org.onap.cli.fw.error.OnapCommandNotFound;
+import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
+import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -64,11 +63,11 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static SchemaInfo getSchemaInfo(String cmd, String version) throws OnapCommandException {
-        List<SchemaInfo> list = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(false);
-        SchemaInfo schemaInfo = null;
+    public static OnapCommandSchemaInfo getSchemaInfo(String cmd, String version) throws OnapCommandException {
+        List<OnapCommandSchemaInfo> list = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(false);
+        OnapCommandSchemaInfo schemaInfo = null;
         if (list != null) {
-            for (SchemaInfo schema : list) {
+            for (OnapCommandSchemaInfo schema : list) {
                 if (cmd.equals(schema.getCmdName()) && version.equals(schema.getProduct())) {
                     schemaInfo = schema;
                     break;
@@ -87,9 +86,10 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static List<SchemaInfo> discoverOrLoadSchemas(boolean forceRefresh) throws OnapCommandException {
-        List<SchemaInfo> schemas = new ArrayList<>();
-        if (forceRefresh || OnapCommandConfg.isDiscoverAlways() || !OnapCommandDiscoveryUtils.isAlreadyDiscovered()) {
+    public static List<OnapCommandSchemaInfo> discoverOrLoadSchemas(boolean forceRefresh) throws OnapCommandException {
+        List<OnapCommandSchemaInfo> schemas = new ArrayList<>();
+        if (forceRefresh || Boolean.parseBoolean(OnapCommandConfig.getPropertyValue(OnapCommandConstants.DISCOVER_ALWAYS))
+                || !OnapCommandDiscoveryUtils.isAlreadyDiscovered()) {
             schemas = OnapCommandDiscoveryUtils.discoverSchemas();
             if (!schemas.isEmpty()) {
                 OnapCommandDiscoveryUtils.persistSchemaInfo(schemas);
@@ -101,7 +101,7 @@ public class OnapCommandDiscoveryUtils {
                 if (resource != null) {
                     File file = new File(resource.getURI().getPath());
                     ObjectMapper mapper = new ObjectMapper();
-                    SchemaInfo[] list = mapper.readValue(file, SchemaInfo[].class);
+                    OnapCommandSchemaInfo[] list = mapper.readValue(file, OnapCommandSchemaInfo[].class);
                     schemas.addAll(Arrays.asList(list));
                 }
             } catch (IOException e) {
@@ -144,7 +144,7 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static void persistSchemaInfo(List<SchemaInfo> schemas) throws OnapCommandDiscoveryFailed {
+    public static void persistSchemaInfo(List<OnapCommandSchemaInfo> schemas) throws OnapCommandDiscoveryFailed {
         if (schemas != null) {
             try {
                 Resource[] resources = OnapCommandDiscoveryUtils.findResources(DATA_DIRECTORY);
@@ -219,13 +219,13 @@ public class OnapCommandDiscoveryUtils {
 
     public static String identitySchemaProfileType(Map<String, ?> schemaYamlMap) {
 
-        for (String schemeType : OnapCommandConfg.getSchemaAttrInfo(Constants.SCHEMA_TYPES_SUPPORTED)) {
+        for (String schemeType : OnapCommandConfig.getCommaSeparatedList(OnapCommandConstants.SCHEMA_TYPES_SUPPORTED)) {
             if (schemaYamlMap.get(schemeType) != null) {
                 return schemeType;
             }
         }
 
-        return Constants.BASIC_SCHEMA_PROFILE;
+        return OnapCommandConstants.BASIC_SCHEMA_PROFILE;
     }
 
     /**
@@ -237,8 +237,8 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static List<SchemaInfo> discoverSchemas() throws OnapCommandException {
-        List<SchemaInfo> extSchemas = new ArrayList<>();
+    public static List<OnapCommandSchemaInfo> discoverSchemas() throws OnapCommandException {
+        List<OnapCommandSchemaInfo> extSchemas = new ArrayList<>();
         try {
             Resource[] res = findResources(SCHEMA_PATH_PATERN);
             if (res != null && res.length > 0) {
@@ -246,21 +246,21 @@ public class OnapCommandDiscoveryUtils {
 
                 for (Resource resource : res) {
                     try {
-                        resourceMap = OnapCommandSchemaLoaderUtils.loadSchema(resource);
+                        resourceMap = OnapCommandSchemaLoader.loadSchema(resource);
                     } catch (OnapCommandException e) {
                         OnapCommandUtils.LOG.error("Ignores invalid schema " + resource.getURI().toString(), e);
                         continue;
                     }
 
                     if (resourceMap != null && resourceMap.size() > 0) {
-                        SchemaInfo schema = new SchemaInfo();
+                        OnapCommandSchemaInfo schema = new OnapCommandSchemaInfo();
 
                         schema.setSchemaURI(resource.getURI().toString());
 
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         schema.setVersion(obj.toString());
 
-                        if (!schema.getVersion().equalsIgnoreCase(Constants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
+                        if (!schema.getVersion().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
                             OnapCommandUtils.LOG.info("Unsupported Schema version found " + schema.getSchemaURI());
                             continue;
                         }
@@ -268,17 +268,17 @@ public class OnapCommandDiscoveryUtils {
                         schema.setSchemaName(resource.getFilename());
                         schema.setCmdName((String) resourceMap.get(NAME));
 
-                        Map<String, ?> infoMap = (Map<String, ?>) resourceMap.get(Constants.INFO);
-                        if (infoMap != null && infoMap.get(Constants.INFO_TYPE) != null) {
-                            schema.setType(infoMap.get(Constants.INFO_TYPE).toString());
+                        Map<String, ?> infoMap = (Map<String, ?>) resourceMap.get(OnapCommandConstants.INFO);
+                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_TYPE) != null) {
+                            schema.setType(infoMap.get(OnapCommandConstants.INFO_TYPE).toString());
                         }
 
-                        if (infoMap != null && infoMap.get(Constants.INFO_PRODUCT) != null) {
-                            schema.setProduct(infoMap.get(Constants.INFO_PRODUCT).toString());
+                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_PRODUCT) != null) {
+                            schema.setProduct(infoMap.get(OnapCommandConstants.INFO_PRODUCT).toString());
                         }
 
-                        if (infoMap != null && infoMap.get(Constants.INFO_IGNORE) != null) {
-                            schema.setIgnore(infoMap.get(Constants.INFO_IGNORE).toString());
+                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_IGNORE) != null) {
+                            schema.setIgnore(infoMap.get(OnapCommandConstants.INFO_IGNORE).toString());
                         }
                         schema.setSchemaProfile(identitySchemaProfileType(resourceMap));
 
@@ -322,27 +322,4 @@ public class OnapCommandDiscoveryUtils {
         }
 
     }
-
-    /**
-    *
-    * @param authAction login/logout
-    * @return
-    * @throws OnapCommandException
-    */
-   public static OnapCommand findAuthCommand(OnapHttpCommand forCmd, String authAction) throws OnapCommandException {
-       OnapCommand auth = null;
-       try {
-           //mrkanag: fix this to discover the auth command by matching info->product & service
-           auth = OnapCommandRegistrar.getRegistrar().get(
-                   forCmd.getInfo().getService() + "-" +
-                   forCmd.getService().getAuthType() + "-" + authAction,
-                   forCmd.getInfo().getProduct());
-       } catch (OnapCommandNotFound e) {
-           auth = OnapCommandRegistrar.getRegistrar().get(
-                   forCmd.getService().getAuthType() + "-" + authAction,
-                   forCmd.getInfo().getProduct());
-       }
-
-       return auth;
-   }
 }

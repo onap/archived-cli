@@ -1,0 +1,90 @@
+/*
+ * Copyright 2017 Huawei Technologies Co., Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.onap.cli.fw.http.conf;
+
+/**
+ * OnapCommandHttpConstants.
+ *
+ */
+public class OnapCommandHttpConstants {
+    public static final String CONF = "open-cli-http.properties";
+    public static final String OPEN_IGNORE_AUTH = "cli.ignore_auth";
+    public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
+    public static final String HTTP_SECTIONS = "cli.schema.http_sections";
+    public static final String HTTP_MANDATORY_SECTIONS = "cli.schema.http_mandatory_sections";
+    public static final String HTTP_REQUEST_PARAMS = "cli.schema.http_request_params";
+    public static final String HTTP_REQUEST_MANDATORY_PARAMS = "cli.schema.http_request_mandatory_params";
+    public static final String HTTP_METHODS = "cli.schema.http_methods";
+    //http connection
+    public static final String SSLCONTEST_TLS = "TLSV1.2";
+    public static final String APPLICATION_JSON = "application/json";
+    public static final String DEFAULT_PARAMETER_HTTP_FILE_NAME = "default_input_parameters_http.yaml";
+    public static final String DEAFULT_PARAMETER_USERNAME = "host-username";
+    public static final String DEAFULT_PARAMETER_PASSWORD = "host-password";
+    public static final String DEAFULT_PARAMETER_HOST_URL = "host-url";
+    public static final String DEFAULT_PARAMETER_NO_AUTH = "no-auth";
+    public static final String HTTP_SCHEMA_PROFILE = "http";
+    //http
+    public static final String HTTP = "http";
+    public static final String METHOD = "method";
+    public static final String SERVICE = "service";
+    public static final String VERSION = "version";
+    public static final String BASE_PATH = "base_path";
+    public static final String AUTH = "auth";
+    public static final String AUTH_NONE = "none";
+    public static final String AUTH_BASIC = "basic";
+    public static final String MODE = "mode";
+    public static final String MODE_DIRECT = "direct";
+    public static final String MODE_CATALOG = "catalog";
+    public static final String REQUEST = "request";
+    public static final String URI = "uri";
+    public static final String BODY = "body";
+    public static final String METHOD_TYPE = "method";
+    public static final String POST = "post";
+    public static final String GET = "get";
+    public static final String DELETE = "delete";
+    public static final String PUT = "put";
+    public static final String HEAD = "delete";
+    public static final String HEADERS = "headers";
+    public static final String QUERIES = "queries";
+    public static final String COOKIES = "cookies";
+    public static final String SUCCESS_CODES = "success_codes";
+    public static final String RESULT_MAP = "result_map";
+    public static final String SAMPLE_RESPONSE = "sample_response";
+    public static final String MULTIPART_ENTITY_NAME = "multipart_entity_name";
+    public static final String HTTP_SECTION_EMPTY = "Http Section cann't be null or empty";
+    public static final String HTTP_BODY_SECTION_EMPTY = "http body section under 'request:' cann't be null or empty";
+    public static final String HTTP_BODY_FAILED_PARSING = "The http body json is failed to parse";
+    public static final String HTTP_BODY_JSON_EMPTY = "The http body json cann't be null or empty";
+    public static final String HTTP_SUCCESS_CODE_INVALID = "Invalid http success code.";
+    public static final String HTTP_SAMPLE_RESPONSE_EMPTY = "Sample response cann't be null or empty";
+    public static final String HTTP_SAMPLE_RESPONSE_FAILED_PARSING = "The http Sample response json is failed to parse.";
+    //auth plugin
+    public static final String AUTH_SERVICE_AUTHORIZATION = "Authorization";
+    //catalog plugin
+    public static final String CATALOG_SERVICE_NAME = "catalog-service-name";
+    public static final String CATALOG_SERVICE_VERSION = "catalog-service-version";
+    public static final String CATALOG_SERVICE_BASE_PATH = "catalog-service-base-path";
+    public static final String CATALOG_SERVICE_HOST_URL = "catalog-service-host-url";
+
+    public static final String AUTH_VALUES = "cli.schema.auth_values";
+    public static final String MODE_VALUES = "cli.schema.mode_values";
+    public static final String SERVICE_PARAMS_LIST = "cli.schema.service_params_list";
+    public static final String SERVICE_PARAMS_MANDATORY_LIST = "cli.schema.service_params_mandatory_list";
+}
+
+

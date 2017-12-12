@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.onap.cli.fw.input.ParameterType;
+import org.onap.cli.fw.input.OnapCommandParameterType;
 
 /**
  * Oclip command output records, helps to define the title and its description while command is defined and during run
@@ -53,7 +53,7 @@ public class OnapCommandResultAttribute {
      */
     private OnapCommandResultAttributeScope outScope = OnapCommandResultAttributeScope.SHORT;
 
-    private ParameterType paramType = ParameterType.STRING;
+    private OnapCommandParameterType paramType = OnapCommandParameterType.STRING;
 
     private boolean isSecured = false;
 
@@ -92,11 +92,11 @@ public class OnapCommandResultAttribute {
         this.outScope = scope;
     }
 
-    public ParameterType getType() {
+    public OnapCommandParameterType getType() {
         return paramType;
     }
 
-    public void setType(ParameterType type) {
+    public void setType(OnapCommandParameterType type) {
         this.paramType = type;
     }
 

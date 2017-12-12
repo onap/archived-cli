@@ -37,7 +37,8 @@
 
   <modules>
         <module>framework</module>
-        <module>plugins</module>
+        <module>profiles</module>
+        <module>products</module>
         <module>main</module>
         <module>deployment</module>
         <module>validate</module>

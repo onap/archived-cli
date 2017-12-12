@@ -16,28 +16,6 @@
 
 package org.onap.cli.fw.conf;
 
-import java.io.IOException;
-import java.util.Properties;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 public class OnapCommandConfgTest {
-
-    @Test
-    public void versionTest() {
-        String str = OnapCommandConfg.getVersion();
-        Assert.assertTrue(str != null);
-    }
-
-    @Test
-    public void isAuthIgnoredTest() throws IOException {
-        Properties prps = new Properties();
-        prps.load(OnapCommandConfg.class.getClassLoader().getResourceAsStream("open-cli.properties"));
-        boolean auth = OnapCommandConfg.isAuthIgnored();
-        Assert.assertTrue(auth == Boolean.valueOf(prps.getProperty("cli.ignore_auth")));
-        Assert.assertTrue(OnapCommandConfg.isCookiesBasedAuth() == Boolean
-                .valueOf(prps.getProperty("cli.http.api_key_use_cookies")));
-    }
 
 }

@@ -36,7 +36,7 @@ public class OnapCommandParameterTest {
         param.setLongOption("longOption");
         param.setName("name");
         param.setOptional(true);
-        param.setParameterType(ParameterType.JSON);
+        param.setParameterType(OnapCommandParameterType.JSON);
         param.setSecured(false);
         param.setShortOption("shortOption");
         param.setValue("value");
@@ -44,15 +44,15 @@ public class OnapCommandParameterTest {
         assertTrue(param.getDefaultValue().equals("defaultValue") && param.getDescription().equals("description")
                 && param.getLongOption().equals("longOption") && param.getName().equals("name")
                 && param.getShortOption().equals("shortOption") && param.getValue().equals("value")
-                && param.isOptional() && !param.isSecured() && param.getParameterType().equals(ParameterType.JSON));
+                && param.isOptional() && !param.isSecured() && param.getParameterType().equals(OnapCommandParameterType.JSON));
 
         assertTrue("value".equals(param.getValue()));
 
-        param.setParameterType(ParameterType.ARRAY);
+        param.setParameterType(OnapCommandParameterType.ARRAY);
         param.setValue(Arrays.asList("1", "2", "3"));
         assertTrue("[\"1\",\"2\",\"3\"]".equals(param.getValue()));
 
-        param.setParameterType(ParameterType.MAP);
+        param.setParameterType(OnapCommandParameterType.MAP);
         Map<String, String> map = new HashMap<>();
         map.put("One", "1");
         map.put("Two", "2");
@@ -82,7 +82,7 @@ public class OnapCommandParameterTest {
         param.setOptional(false);
         param.setValue("");
         param.setDefaultValue("");
-        param.setParameterType(ParameterType.STRING);
+        param.setParameterType(OnapCommandParameterType.STRING);
         try {
             param.validate();
         } catch (OnapCommandException e) {
@@ -94,7 +94,7 @@ public class OnapCommandParameterTest {
     public void oclipCommandInvalidParameterValueArrayExeceptionTest() throws OnapCommandInvalidParameterValue {
         OnapCommandParameter param = new OnapCommandParameter();
         param.setName("name");
-        param.setParameterType(ParameterType.ARRAY);
+        param.setParameterType(OnapCommandParameterType.ARRAY);
         param.setValue("value");
         assertTrue("[\"1\",\"2\",\"3\"]".equals(param.getValue()));
 
@@ -104,7 +104,7 @@ public class OnapCommandParameterTest {
     public void oclipCommandInvalidParameterValueMapExeceptionTest() throws OnapCommandInvalidParameterValue {
         OnapCommandParameter param = new OnapCommandParameter();
         param.setName("name");
-        param.setParameterType(ParameterType.MAP);
+        param.setParameterType(OnapCommandParameterType.MAP);
         param.setValue("value");
         assertTrue("{\"One\":\"1\",\"Two\":\"2\",\"Three\":\"3\"}".equals(param.getValue()));
     }
@@ -113,7 +113,7 @@ public class OnapCommandParameterTest {
     public void oclipCommandInvalidParameterValueBinaryExeceptionTest() throws OnapCommandException {
         OnapCommandParameter param = new OnapCommandParameter();
         param.setName("name");
-        param.setParameterType(ParameterType.BINARY);
+        param.setParameterType(OnapCommandParameterType.BINARY);
         param.setValue("value");
         param.validate();
     }

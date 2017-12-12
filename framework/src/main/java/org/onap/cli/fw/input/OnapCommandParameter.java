@@ -58,7 +58,7 @@ public class OnapCommandParameter {
     /*
      * Parameter type such as int, json, yaml, string, etc
      */
-    private ParameterType parameterType;
+    private OnapCommandParameterType parameterType;
 
     /*
      * Default value
@@ -130,18 +130,18 @@ public class OnapCommandParameter {
         this.longOption = longOption;
     }
 
-    public ParameterType getParameterType() {
+    public OnapCommandParameterType getParameterType() {
         return parameterType;
     }
 
-    public void setParameterType(ParameterType parameterType) {
+    public void setParameterType(OnapCommandParameterType parameterType) {
         this.parameterType = parameterType;
 
         if (this.defaultValue.isEmpty()) {
-            if (this.getParameterType().equals(ParameterType.BOOL)) {
+            if (this.getParameterType().equals(OnapCommandParameterType.BOOL)) {
                 // For bool type always the default param is false
                 this.defaultValue = "false";
-            } else if (this.getParameterType().equals(ParameterType.UUID)) {
+            } else if (this.getParameterType().equals(OnapCommandParameterType.UUID)) {
                 this.defaultValue = UUID.randomUUID().toString();
             }
         }
@@ -197,10 +197,10 @@ public class OnapCommandParameter {
     public void setValue(Object value) throws OnapCommandInvalidParameterValue {
         this.rawValue = value;
 
-        if (ParameterType.URL.equals(parameterType) && !value.toString().isEmpty() && !value.toString().startsWith("http")
+        if (OnapCommandParameterType.URL.equals(parameterType) && !value.toString().isEmpty() && !value.toString().startsWith("http")
                 && !value.toString().startsWith("/")) {
             this.value = "/" + value;
-        } else if (ParameterType.ARRAY.equals(parameterType)) {
+        } else if (OnapCommandParameterType.ARRAY.equals(parameterType)) {
             if (!(value instanceof List)) {
                 throw new OnapCommandInvalidParameterValue(this.getName());
             }
@@ -212,7 +212,7 @@ public class OnapCommandParameter {
             } catch (JsonProcessingException e) {
                 throw new OnapCommandInvalidParameterValue(this.getName(), e);
             }
-        } else if (ParameterType.MAP.equals(parameterType)) {
+        } else if (OnapCommandParameterType.MAP.equals(parameterType)) {
             if (!(value instanceof Map)) {
                 throw new OnapCommandInvalidParameterValue(this.getName());
             }
@@ -275,13 +275,50 @@ public class OnapCommandParameter {
             throw new OnapCommandParameterMissing(this.getName());
         }
 
-        if (!this.isOptional() && ParameterType.BINARY.equals(parameterType)) {
+        if (!this.isOptional() && OnapCommandParameterType.BINARY.equals(parameterType)) {
             File file = new File(value.toString());
             if (!file.isFile()) {
                 throw new OnapCommandInvalidParameterValue(this.getName());
             }
         }
 
-        // (mrkanag) validate for type supported ParameterType using constraints
+        // (mrkanag) validate for type supported OnapCommandParameterType using constraints
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((cmdName == null) ? 0 : cmdName.hashCode());
+        result = prime * result + ((longOption == null) ? 0 : longOption.hashCode());
+        result = prime * result + ((shortOption == null) ? 0 : shortOption.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        OnapCommandParameter other = (OnapCommandParameter) obj;
+        if (cmdName == null) {
+            if (other.cmdName != null)
+                return false;
+        } else if (!cmdName.equals(other.cmdName))
+            return false;
+        if (longOption == null) {
+            if (other.longOption != null)
+                return false;
+        } else if (!longOption.equals(other.longOption))
+            return false;
+        if (shortOption == null) {
+            if (other.shortOption != null)
+                return false;
+        } else if (!shortOption.equals(other.shortOption))
+            return false;
+        return true;
     }
 }

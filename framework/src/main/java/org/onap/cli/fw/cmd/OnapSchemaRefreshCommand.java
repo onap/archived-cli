@@ -18,11 +18,10 @@ package org.onap.cli.fw.cmd;
 
 import java.util.List;
 
-import org.onap.cli.fw.OnapCommand;
-import org.onap.cli.fw.OnapCommandSchema;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
-import org.onap.cli.fw.utils.SchemaInfo;
 
 /**
  * Refresh external schema.
@@ -34,13 +33,13 @@ public class OnapSchemaRefreshCommand extends OnapCommand {
     @Override
     protected void run() throws OnapCommandException {
 
-        List<SchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(true);
+        List<OnapCommandSchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(true);
         int i = 0;
-        for (SchemaInfo schema :  schemas) {
+        for (OnapCommandSchemaInfo schema :  schemas) {
             if (schema.isIgnore()) {
                 continue;
             }
-            
+
             i++;
             this.getResult().getRecordsMap().get("sr.no").getValues().add(String.valueOf(i));
             this.getResult().getRecordsMap().get("command").getValues().add(schema.getCmdName());
