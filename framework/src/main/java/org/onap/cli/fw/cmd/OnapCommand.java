@@ -166,18 +166,16 @@ public abstract class OnapCommand {
 
         // -h or --help is always higher precedence !, user can set this value to get help message
         if (OnapCommandConstants.BOOLEAN_TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
-            OnapCommandResult result = new OnapCommandResult();
-            result.setType(OnapCommandResultType.TEXT);
-            result.setOutput(this.printHelp());
-            return result;
+            this.cmdResult.setType(OnapCommandResultType.TEXT);
+            this.cmdResult.setOutput(this.printHelp());
+            return this.cmdResult;
         }
 
         // -v or --version is next higher precedence !, user can set this value to get help message
         if (OnapCommandConstants.BOOLEAN_TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_VERSION).getValue())) {
-            OnapCommandResult result = new OnapCommandResult();
-            result.setType(OnapCommandResultType.TEXT);
-            result.setOutput(this.printVersion());
-            return result;
+            this.cmdResult.setType(OnapCommandResultType.TEXT);
+            this.cmdResult.setOutput(this.printVersion());
+            return this.cmdResult;
         }
 
         // validate
@@ -225,7 +223,7 @@ public abstract class OnapCommand {
      * @return version
      */
     public String printVersion() {
-        return this.getInfo().getService();
+        return this.getInfo().getProduct() + "::" + this.getInfo().getService();
     }
 
     /**

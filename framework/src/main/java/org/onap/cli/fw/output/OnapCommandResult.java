@@ -181,10 +181,10 @@ public class OnapCommandResult {
      *             exception
      */
     public String print() throws OnapCommandException {
-        String printOutput = "";
-
         if (this.getRecords().isEmpty()) {
-            return printOutput;
+            return "";
+        } else if (this.getType().equals(OnapCommandResultType.TEXT)) {
+            return this.getOutput().toString();
         }
 
         OnapCommandPrint print = new OnapCommandPrint();
@@ -220,16 +220,14 @@ public class OnapCommandResult {
             print.addColumn(val.getName(), val.getValues());
         }
 
-        if (this.isDebug()) {
-            printOutput = this.getDebugInfo() + "\n";
-        }
-
         if (this.getType().equals(OnapCommandResultType.JSON)) {
-            return printOutput + print.printJson();
+            return print.printJson();
         } else if (this.getType().equals(OnapCommandResultType.TABLE)) {
-            return printOutput + print.printTable(this.isIncludeSeparator());
+            return print.printTable(this.isIncludeSeparator());
         } else if (this.getType().equals(OnapCommandResultType.CSV)) {
-            return printOutput + print.printCsv();
+            return print.printCsv();
+        } else if (this.getType().equals(OnapCommandResultType.YAML)) {
+            return print.printYaml();
         }
 
         throw new OnapCommandOutputFormatNotsupported(this.getType().name());

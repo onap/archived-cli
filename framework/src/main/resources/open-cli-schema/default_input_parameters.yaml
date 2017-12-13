@@ -7,13 +7,13 @@ info:
 
 parameters:
   - name: help
-    type: string
+    type: bool
     description: print help message
     short_option: h
     long_option: help
     default_value: false
   - name: version
-    type: string
+    type: bool
     description: print service version
     short_option: v
     long_option: version
