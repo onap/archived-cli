@@ -31,6 +31,9 @@ import org.apache.commons.csv.CSVPrinter;
 import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
 
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
+
 /**
  * Oclip Command Table print.
  *
@@ -241,8 +244,20 @@ public class OnapCommandPrint {
     }
 
     public String printJson() {
-        // (mrkanag) print in json
-        return null;
+        List<List<Object>> rows = this.formRows(false);
+
+        JSONArray array = new JSONArray();
+
+        //skip first row title
+        for (int i=1; i<rows.size(); i++) {
+            JSONObject rowO = new JSONObject();
+            for (Object col: rows.get(0)) {
+                rowO.put(col.toString(), rows.get(i).toString());
+            }
+            array.add(rowO);
+        }
+
+        return array.toJSONString();
     }
 
     public String printYaml() {
