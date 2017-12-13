@@ -113,10 +113,10 @@ public class OnapCommandSchemaLoader {
             throw new OnapCommandSchemaNotFound(schemaName, e);
         }
         if (inputStream == null) {
-            inputStream = OnapCommandSchemaLoader.loadSchemaFromFile(schemaName);
+            inputStream = loadSchemaFromFile(schemaName);
         }
 
-        Map<String, ?> values = OnapCommandSchemaLoader.loadSchema(inputStream, schemaName);
+        Map<String, ?> values = loadSchema(inputStream, schemaName);
         String schemaVersion = "";
         if (values.keySet().contains(OPEN_CLI_SCHEMA_VERSION)) {
             Object obj = values.get(OPEN_CLI_SCHEMA_VERSION);
@@ -151,13 +151,13 @@ public class OnapCommandSchemaLoader {
                     defaultParameterMap.remove(OnapCommandConstants.INFO);
                 }
 
-                errors.addAll(OnapCommandSchemaLoader.parseSchema(cmd, defaultParameterMap, validateSchema));
+                errors.addAll(parseSchema(cmd, defaultParameterMap, validateSchema));
             }
 
             Map<String, List<Map<String, String>>> commandYamlMap =
                     (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
-            errors.addAll(OnapCommandSchemaLoader.parseSchema(cmd, commandYamlMap, validateSchema));
+            errors.addAll(parseSchema(cmd, commandYamlMap, validateSchema));
 
             return errors;
         } catch (OnapCommandException e) {
@@ -521,7 +521,7 @@ public class OnapCommandSchemaLoader {
      */
     public static Map<String, ?> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
         try {
-            return  OnapCommandSchemaLoader.loadSchema(resource.getInputStream(), resource.getFilename());
+            return  loadSchema(resource.getInputStream(), resource.getFilename());
         } catch (IOException e) {
             throw new OnapCommandInvalidSchema(resource.getFilename(), e);
         }

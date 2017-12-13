@@ -28,12 +28,16 @@ import java.util.StringTokenizer;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
-
 /**
  * Oclip Command Table print.
  *
@@ -249,19 +253,30 @@ public class OnapCommandPrint {
         JSONArray array = new JSONArray();
 
         //skip first row title
+        List<Object> titleRow = rows.get(0);
+
         for (int i=1; i<rows.size(); i++) {
             JSONObject rowO = new JSONObject();
-            for (Object col: rows.get(0)) {
-                rowO.put(col.toString(), rows.get(i).toString());
+
+            for (int j=0; j<titleRow.size(); j++) {
+                rowO.put(titleRow.get(j).toString(), rows.get(i).get(j).toString());
             }
+
             array.add(rowO);
         }
 
-        return array.toJSONString();
+        JSONObject json = new JSONObject();
+        json.put(OnapCommandConstants.RESULTS, array);
+        return json.toJSONString();
     }
 
-    public String printYaml() {
-        // (mrkanag) print in yaml
-        return null;
+    public String printYaml() throws OnapCommandOutputPrintingFailed {
+        try {
+            return new YAMLMapper().writeValueAsString(new ObjectMapper().readTree(this.printJson()));
+        } catch (JsonProcessingException e) {
+            throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
+        } catch (IOException e) {
+            throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
+        }
     }
 }
