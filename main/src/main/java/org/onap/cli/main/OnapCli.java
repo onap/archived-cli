@@ -70,7 +70,7 @@ public class OnapCli {
         this.exitCode = OnapCliConstants.EXIT_FAILURE;
     }
 
-    private void print(String msg) {
+    protected void print(String msg) {
         System.out.println(msg);
     }
 
