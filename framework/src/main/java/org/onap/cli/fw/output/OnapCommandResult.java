@@ -171,6 +171,17 @@ public class OnapCommandResult {
         this.isDebug = isDebug;
     }
 
+    public int getNumberOfRows() {
+        int noOfRecords = 0;
+
+        for (OnapCommandResultAttribute cols : this.records) {
+            if (cols != null && noOfRecords < cols.getValues().size()) {
+                noOfRecords = cols.getValues().size();
+            }
+        }
+
+        return noOfRecords;
+    }
     /**
      * Helps to print the result based on the type.
      *

@@ -56,10 +56,17 @@ public class OnapCli {
 
     private List<String> args = new ArrayList<>();
 
+    private String product = null;
+
     private int exitCode = -1;
 
     public OnapCli(String[] args) {
         this.args = Arrays.asList(args);
+    }
+
+    public OnapCli(String product, String[] args) {
+        this(args);
+        this.product = product;
     }
 
     private void exitSuccessfully() {
@@ -323,7 +330,11 @@ public class OnapCli {
         OnapCommand cmd;
         if (!args.isEmpty()) {
             try {
-                cmd = OnapCommandRegistrar.getRegistrar().get(args.get(0));
+                if (this.product != null) {
+                    cmd = OnapCommandRegistrar.getRegistrar().get(args.get(0), this.product);
+                } else {
+                    cmd = OnapCommandRegistrar.getRegistrar().get(args.get(0));
+                }
             } catch (Exception e) {
                 this.print(e);
                 this.exitFailure();
