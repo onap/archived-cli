@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.OnapCommandType;
@@ -122,7 +123,8 @@ public class OnapHttpCommand extends OnapCommand {
     private boolean isAuthRequired() {
         return !this.getService().isNoAuth()
                 && "false".equals(this.getParametersMap().get(OnapCommandHttpConstants.DEFAULT_PARAMETER_NO_AUTH).getValue())
-                && this.getInfo().getCommandType().equals(OnapCommandType.CMD);
+                && (this.getInfo().getCommandType().equals(OnapCommandType.CMD) ||
+                        this.getInfo().getCommandType().equals(OnapCommandType.CATALOG));
     }
 
     @Override
@@ -166,6 +168,13 @@ public class OnapHttpCommand extends OnapCommand {
         this.getResult().setOutput(output);
         if (!this.getSuccessStatusCodes().contains(output.getStatus())) {
             throw new OnapCommandExecutionFailed(this.getName(), output.getBody(), output.getStatus());
+        }
+
+        //pre-process result map for spl entries and input parameters
+        for (Entry<String, String> resultMap : this.getResultMap().entrySet()) {
+            String value = OnapCommandUtils.replaceLineForSpecialValues(resultMap.getValue());
+            value = OnapCommandUtils.replaceLineFromInputParameters(value, this.getParametersMap());
+            this.resultMap.put(resultMap.getKey(), value);
         }
 
         Map<String, ArrayList<String>> results = OnapCommandHttpUtils.populateOutputs(this.getResultMap(), output);

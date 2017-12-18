@@ -75,6 +75,8 @@ public class OnapCommandHttpConstants {
     public static final String HTTP_SAMPLE_RESPONSE_FAILED_PARSING = "The http Sample response json is failed to parse.";
     //auth plugin
     public static final String AUTH_SERVICE_AUTHORIZATION = "Authorization";
+    public static final String AUTH_SERVICE_LOGIN = "login";
+
     //catalog plugin
     public static final String CATALOG_SERVICE_NAME = "catalog-service-name";
     public static final String CATALOG_SERVICE_VERSION = "catalog-service-version";

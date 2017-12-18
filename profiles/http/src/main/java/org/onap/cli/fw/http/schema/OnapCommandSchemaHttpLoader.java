@@ -27,6 +27,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -189,16 +190,7 @@ public class OnapCommandSchemaHttpLoader {
                                         case OnapCommandHttpConstants.AUTH:
                                             Object obj = serviceMap.get(key);
                                             srv.setAuthType(obj.toString());
-
-                                            //On None type, username, password and no_auth are invalid
-                                            if (srv.isNoAuth()) {
-                                                cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_USERNAME).setInclude(false);
-                                                cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_PASSWORD).setInclude(false);
-                                                cmd.getParametersMap().get(OnapCommandHttpConstants.DEFAULT_PARAMETER_NO_AUTH).setInclude(false);
-                                            }
                                             break;
-
-                                            //mrkanag: from auth command, add the parameters to the command's parameters list
 
                                         case OnapCommandHttpConstants.MODE:
                                             Object mode = serviceMap.get(key);
@@ -206,6 +198,7 @@ public class OnapCommandSchemaHttpLoader {
                                             break;
                                     }
                                 }
+
                                 cmd.setService(srv);
                             }
                             break;
@@ -234,10 +227,34 @@ public class OnapCommandSchemaHttpLoader {
             OnapCommandUtils.throwOrCollect(e, errorList, validate);
         }
 
-        //Handle the parameters for auth
+        //Handle the parameters for auth:
+        // for commands, copy params from login command to this command
         if (!cmd.getService().isNoAuth()) {
-            OnapCommand login = OnapCommandSchemaHttpLoader.findAuthCommand(cmd, "login");
-            OnapCommandUtils.copyParamSchemasFrom(login, cmd);
+            if (cmd.getInfo().getCommandType().equals(OnapCommandType.AUTH)) {
+                OnapCommandUtils.throwOrCollect(new OnapCommandInvalidSchema(
+                        cmd.getSchemaName(), "For auth type commands, http->service->auth should be none"),
+                        errorList,
+                        validate);
+            } else {
+                OnapCommand login = OnapCommandSchemaHttpLoader.findAuthCommand(cmd, "login");
+                OnapCommandUtils.copyParamSchemasFrom(login, cmd);
+            }
+        } else {
+            //with service->auth: none,
+            //normal cmd: ignore all auth parms
+            if (!cmd.getInfo().getCommandType().equals(OnapCommandType.AUTH)) {
+                cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_USERNAME).setInclude(false);
+                cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_PASSWORD).setInclude(false);
+                cmd.getParametersMap().get(OnapCommandHttpConstants.DEFAULT_PARAMETER_NO_AUTH).setInclude(false);
+            } else {
+                //auth: login and logout commands, ignore no-auth
+                cmd.getParametersMap().get(OnapCommandHttpConstants.DEFAULT_PARAMETER_NO_AUTH).setInclude(false);
+                //auth: only for logout commands, ignore username and password too
+                if (!cmd.getName().endsWith(OnapCommandHttpConstants.AUTH_SERVICE_LOGIN)) {
+                    cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_USERNAME).setInclude(false);
+                    cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_PASSWORD).setInclude(false);
+                }
+            }
         }
 
         return errorList;

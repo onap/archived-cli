@@ -320,7 +320,7 @@ public class OnapCommandUtils {
     }
 
     public static void copyParamsFrom(OnapCommand from, OnapCommand to) throws OnapCommandInvalidParameterValue {
-        OnapCommandUtils.copyParamsFrom(from, to, new HashMap<String, String>());
+        copyParamsFrom(from, to, new HashMap<String, String>());
     }
 
     /**

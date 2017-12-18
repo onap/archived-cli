@@ -58,7 +58,7 @@ public class OnapCommandResultAttribute {
     private boolean isSecured = false;
 
     public void setValues(List<String> values) {
-        this.values = values;
+        this.values = (values == null) ? new ArrayList<>() : values;
     }
 
     public String getName() {

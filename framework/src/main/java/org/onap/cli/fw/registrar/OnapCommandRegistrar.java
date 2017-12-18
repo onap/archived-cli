@@ -274,6 +274,7 @@ public class OnapCommandRegistrar {
                 continue;
             }
 
+            //First check if there is an specific plugin exist, otherwise check for profile plugin
              if (plugins.containsKey(schema.getSchemaName())) {
                  this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaName()));
              } else if (plugins.containsKey(schema.getSchemaProfile())) {

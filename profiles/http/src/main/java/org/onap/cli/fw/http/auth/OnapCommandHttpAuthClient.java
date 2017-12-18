@@ -44,6 +44,8 @@ public class OnapCommandHttpAuthClient {
 
     private OnapHttpConnection http = null;
 
+    private Map<String, String> loginCache = new HashMap<>();
+
     public OnapCommandHttpAuthClient(OnapHttpCommand cmd, boolean debug) throws OnapCommandHttpFailure, OnapCommandInvalidParameterValue {
         this.cmd = cmd;
         this.http = new OnapHttpConnection(debug);
@@ -68,15 +70,14 @@ public class OnapCommandHttpAuthClient {
         login.execute();
 
         //It is safely assumed that all outputs are considered as common http headers.
-        Map<String, String> headers = new HashMap<>();
         for (OnapCommandResultAttribute    attr: login.getResult().getRecords()) {
             String headerValue = attr.getValues().get(0);
             if (headerValue != null && !headerValue.isEmpty()) {
-                headers.put(attr.getName(), attr.getValues().get(0));
+                this.loginCache.put(attr.getName(), attr.getValues().get(0));
             }
         }
 
-        this.http.setCommonHeaders(headers);
+        this.http.setCommonHeaders(this.loginCache);
     }
 
     /**
@@ -93,7 +94,8 @@ public class OnapCommandHttpAuthClient {
 
         OnapCommand logout = OnapCommandSchemaHttpLoader.findAuthCommand(this.cmd, "logout");
 
-        OnapCommandUtils.copyParamsFrom(this.cmd, logout);
+        //for logout, share the login cache, which would be used for logout such a token
+        OnapCommandUtils.copyParamsFrom(this.cmd, logout, this.loginCache);
 
         logout.execute();
 
