@@ -227,9 +227,13 @@ public class OnapHttpConnection {
 
     private void addCommonHeaders(HttpInput input) {
         if (!input.isBinaryData()) {
-            input.getReqHeaders().put("Content-Type", OnapCommandHttpConstants.APPLICATION_JSON);
+            if (!input.getReqHeaders().containsKey("Content-Type")) {
+                input.getReqHeaders().put("Content-Type", OnapCommandHttpConstants.APPLICATION_JSON);
+            }
         }
-        input.getReqHeaders().put("Accept", OnapCommandHttpConstants.APPLICATION_JSON);
+        if (!input.getReqHeaders().containsKey("Accept")) {
+            input.getReqHeaders().put("Accept", OnapCommandHttpConstants.APPLICATION_JSON);
+        }
 
         for (String headerName : this.mapCommonHeaders.keySet()) {
             input.getReqHeaders().put(headerName, this.mapCommonHeaders.get(headerName));
@@ -328,7 +332,7 @@ public class OnapHttpConnection {
             throw new OnapCommandHttpFailure(e);
         } finally {
             if (this.debug) {
-                this.debugDetails = input + "" + result;
+                this.debugDetails = input + " " + result;
             }
         }
 
