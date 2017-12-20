@@ -97,8 +97,7 @@ public class OnapCommandSchemaHttpLoader {
             if (valMap != null) {
                 if (validate) {
                     OnapCommandUtils.validateTags(errorList, valMap, OnapCommandConfig.getCommaSeparatedList(OnapCommandHttpConstants.HTTP_SECTIONS),
-                            OnapCommandConfig.getCommaSeparatedList(OnapCommandHttpConstants.HTTP_MANDATORY_SECTIONS), OnapCommandConstants.PARAMETERS);
-                    errorList.addAll(validateHttpSchemaSection(values));
+                            OnapCommandConfig.getCommaSeparatedList(OnapCommandHttpConstants.HTTP_MANDATORY_SECTIONS), OnapCommandHttpConstants.HTTP);
                 }
                 for (Map.Entry<String, ?> entry1 : valMap.entrySet()) {
                     String key1 = entry1.getKey();
