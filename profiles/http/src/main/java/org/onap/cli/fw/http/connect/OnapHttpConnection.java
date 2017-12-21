@@ -65,11 +65,15 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
 import org.onap.cli.fw.http.error.OnapCommandHttpFailure;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Helps to make http connection.<br>
  */
 public class OnapHttpConnection {
+
+    private static Logger LOG = LoggerFactory.getLogger(OnapHttpConnection.class);
 
     private HttpClient httpClient = null;
 
@@ -331,8 +335,10 @@ public class OnapHttpConnection {
         } catch (ParseException | IOException e) {
             throw new OnapCommandHttpFailure(e);
         } finally {
+            String info = input + " " + result;
+            LOG.info(info);
             if (this.debug) {
-                this.debugDetails = input + " " + result;
+                this.debugDetails = info;
             }
         }
 

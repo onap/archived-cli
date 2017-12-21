@@ -38,6 +38,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.PathNotFoundException;
 
 import net.minidev.json.JSONArray;
 
@@ -169,21 +170,26 @@ public class OnapCommandHttpUtils {
             int idxE = headerProcessedLine.indexOf("}", idxS);
             String jsonPath = headerProcessedLine.substring(idxS + 3, idxE);
             jsonPath = jsonPath.trim();
+            Object value = new Object();
             try {
                 // JSONArray or String
-                Object value = JsonPath.read(resultHttp.getBody(), jsonPath);
-                if (value instanceof JSONArray) {
-                    JSONArray arr = (JSONArray) value;
-                    if (arr.size() > maxRows) {
-                        maxRows = arr.size();
-                    }
-                }
-                bodyProcessedPattern += headerProcessedLine.substring(currentIdx, idxS) + "%s";
-                values.add(value);
-                currentIdx = idxE + 1;
+                value = JsonPath.read(resultHttp.getBody(), jsonPath);
+            } catch (PathNotFoundException e1) {
+                //set to blank for those entries which are missing from the output json
+                value = "";
             } catch (Exception e) {
                 throw new OnapCommandHttpInvalidResponseBody(jsonPath, e);
             }
+
+            if (value instanceof JSONArray) {
+                JSONArray arr = (JSONArray) value;
+                if (arr.size() > maxRows) {
+                    maxRows = arr.size();
+                }
+            }
+            bodyProcessedPattern += headerProcessedLine.substring(currentIdx, idxS) + "%s";
+            values.add(value);
+            currentIdx = idxE + 1;
         }
 
         if (bodyProcessedPattern.isEmpty()) {

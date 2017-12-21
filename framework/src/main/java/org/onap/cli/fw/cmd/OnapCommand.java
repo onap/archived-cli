@@ -35,12 +35,16 @@ import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Oclip Command.
  *
  */
 public abstract class OnapCommand {
+
+    private static Logger LOG = LoggerFactory.getLogger(OnapCommand.class);
 
     private String cmdDescription;
 
@@ -127,7 +131,7 @@ public abstract class OnapCommand {
         this.setSchemaName(schema);
 
         List<String> errors = OnapCommandSchemaLoader.loadSchema(this, schema, true, validate);
-        errors.addAll(this.initializeProfileSchema());
+        errors.addAll(this.initializeProfileSchema(validate));
         this.isInitialzied = true;
 
         return errors;
@@ -135,7 +139,7 @@ public abstract class OnapCommand {
     /**
      * Any additional profile based such as http schema could be initialized.
      */
-    protected List<String> initializeProfileSchema() throws OnapCommandException {
+    protected List<String> initializeProfileSchema(boolean validate) throws OnapCommandException {
         return new ArrayList<>();
     }
 
@@ -162,7 +166,11 @@ public abstract class OnapCommand {
             throw new OnapCommandNotInitialized(this.getClass().getName());
         }
 
+        LOG.info("CMD: " + this.getName());
+
         Map<String, OnapCommandParameter> paramMap = this.getParametersMap();
+
+        LOG.info("INPUT: " + paramMap);
 
         // -h or --help is always higher precedence !, user can set this value to get help message
         if (OnapCommandConstants.BOOLEAN_TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
@@ -207,6 +215,8 @@ public abstract class OnapCommand {
         }
 
         this.run();
+
+        LOG.info("OUTPUT: " + this.cmdResult.getRecords());
 
         return this.cmdResult;
     }

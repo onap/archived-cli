@@ -36,6 +36,8 @@ import static org.onap.cli.fw.conf.OnapCommandConstants.INPUT_PARAMS_MANDATORY_L
 import static org.onap.cli.fw.conf.OnapCommandConstants.IS_INCLUDE;
 import static org.onap.cli.fw.conf.OnapCommandConstants.IS_OPTIONAL;
 import static org.onap.cli.fw.conf.OnapCommandConstants.IS_SECURED;
+import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_ATTR;
+import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_PARAM;
 import static org.onap.cli.fw.conf.OnapCommandConstants.LONG_OPTION;
 import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
 import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
@@ -384,6 +386,21 @@ public class OnapCommandSchemaLoader {
                                             param.setInclude(false);
                                         }
                                         break;
+
+                                    case IS_DEFAULT_PARAM:
+                                        if (validate) {
+                                            if (!OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
+                                                exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
+                                                        IS_DEFAULT_PARAM, parameter.get(key2)));
+                                            }
+                                        }
+
+                                        if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
+                                            param.setDefaultParam(true);
+                                        } else {
+                                            param.setDefaultParam(false);
+                                        }
+                                        break;
                                 }
                             }
 
@@ -399,14 +416,13 @@ public class OnapCommandSchemaLoader {
                 case RESULTS:
                     Map<String, ?> valueMap = (Map<String, ?>) values.get(key);
                     if (valueMap != null) {
-                        OnapCommandResult result = new OnapCommandResult();
                         for (Map.Entry<String, ?> entry1 : valueMap.entrySet()) {
                             String key3 = entry1.getKey();
 
                             switch (key3) {
                                 case DIRECTION:
                                     try {
-                                        result.setPrintDirection(OnapCommandPrintDirection.get((String) valueMap.get(key3)));
+                                        cmd.getResult().setPrintDirection(OnapCommandPrintDirection.get((String) valueMap.get(key3)));
                                     } catch (OnapCommandException ex) {
                                         OnapCommandUtils.throwOrCollect(ex, exceptionList, validate);
                                     }
@@ -477,15 +493,28 @@ public class OnapCommandSchemaLoader {
                                                         attr.setSecured(false);
                                                     }
                                                     break;
+
+                                                case IS_DEFAULT_ATTR:
+                                                    if (validate) {
+                                                        if (!OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
+                                                            exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(ATTRIBUTES,
+                                                                    IS_DEFAULT_ATTR, map.get(key4)));
+                                                        }
+                                                    }
+                                                    if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
+                                                        attr.setDefaultAttr(true);
+                                                    } else {
+                                                        attr.setDefaultAttr(false);
+                                                    }
+                                                    break;
                                             }
 
                                         }
-                                        result.getRecords().add(attr);
+                                        cmd.getResult().getRecords().add(attr);
                                     }
                                     break;
                             }
                         }
-                        cmd.setResult(result);
                     }
                     break;
             }

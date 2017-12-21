@@ -12,33 +12,39 @@ parameters:
     short_option: h
     long_option: help
     default_value: false
+    is_default_param: true
   - name: version
     type: bool
     description: print service version
     short_option: v
     long_option: version
     default_value: false
+    is_default_param: true
   - name: debug
     type: bool
     description: Enable debug output
     short_option: d
     long_option: debug
     default_value: false
+    is_default_param: true
   - name: format
     type: string
     description: Output formats, supported formats such as table, csv, json, yaml
     short_option: f
     long_option: format
     default_value: table
+    is_default_param: true
   - name: long
     type: bool
     description: whether to print all attributes or only short attributes
     short_option: s
     long_option: long
     default_value: false
+    is_default_param: true
   - name: no-title
     type: bool
     description: whether to print title or not
     short_option: t
     long_option: no-title
     default_value: false
+    is_default_param: true

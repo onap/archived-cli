@@ -98,6 +98,19 @@ public class OnapCommandParameter {
      */
     private boolean isInclude = true;
 
+    /*
+     * This param is from The default input parameters file
+     */
+    private boolean isDefaultParam = false;
+
+    public boolean isDefaultParam() {
+        return isDefaultParam;
+    }
+
+    public void setDefaultParam(boolean isDefaultParam) {
+        this.isDefaultParam = isDefaultParam;
+    }
+
     public String getName() {
         return cmdName;
     }
@@ -320,5 +333,10 @@ public class OnapCommandParameter {
         } else if (!shortOption.equals(other.shortOption))
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName() + ": " + this.getValue();
     }
 }

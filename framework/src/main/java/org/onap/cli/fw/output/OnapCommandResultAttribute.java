@@ -57,6 +57,19 @@ public class OnapCommandResultAttribute {
 
     private boolean isSecured = false;
 
+    /*
+     * This attr is from The default input parameters file
+     */
+    private boolean isDefaultAttr = false;
+
+    public boolean isDefaultAttr() {
+        return isDefaultAttr;
+    }
+
+    public void setDefaultAttr(boolean isDefaultAttr) {
+        this.isDefaultAttr = isDefaultAttr;
+    }
+
     public void setValues(List<String> values) {
         if (values != null) {
             this.values = values;
@@ -84,6 +97,11 @@ public class OnapCommandResultAttribute {
             return Arrays.asList(new String [] {this.defaultValue});
         }
         return values;
+    }
+
+    public void resetValues(String value) {
+        this.values.clear();
+        this.values.add(value);
     }
 
     public OnapCommandResultAttributeScope getScope() {
@@ -118,4 +136,8 @@ public class OnapCommandResultAttribute {
         this.defaultValue = defaultValue;
     }
 
+    @Override
+    public String toString() {
+        return this.getName() + ": " + this.getValues();
+    }
 }

@@ -13,6 +13,7 @@ parameters:
     long_option: host-username
     default_value: $s{env:OPEN_CLI_HOST_USERNAME}
     is_optional: false
+    is_default_param: true
   - name: host-password
     type: string
     description: Host user password
@@ -21,6 +22,7 @@ parameters:
     default_value: $s{env:OPEN_CLI_HOST_PASSWORD}
     is_secured: true
     is_optional: false
+    is_default_param: true
   - name: host-url
     type: url
     description: host url in http(s)
@@ -28,9 +30,11 @@ parameters:
     long_option: host-url
     is_optional: false
     default_value: $s{env:OPEN_CLI_HOST_URL}
+    is_default_param: true
   - name: no-auth
     type: bool
     description: whether to authenticate user or not
     short_option: a
     long_option: no-auth
     default_value: false
+    is_default_param: true

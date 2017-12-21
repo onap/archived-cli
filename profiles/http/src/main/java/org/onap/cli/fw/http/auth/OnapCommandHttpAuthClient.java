@@ -116,7 +116,7 @@ public class OnapCommandHttpAuthClient {
         if (cmd.getService().isModeDirect()){
             return cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL).getValue().toString();
         } else { //Catalog mode
-            OnapCommand catalog = OnapCommandRegistrar.getRegistrar().get("catalog");
+            OnapCommand catalog = OnapCommandRegistrar.getRegistrar().get("catalog", cmd.getInfo().getProduct());
 
             Map<String, String> paramsOverrides = new HashMap<>();
             paramsOverrides.put(OnapCommandHttpConstants.CATALOG_SERVICE_NAME, cmd.getService().getName());

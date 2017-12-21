@@ -67,6 +67,7 @@ public class OnapCommandConstants {
     public static final String DEFAULT_VALUE = "default_value";
     public static final String IS_SECURED = "is_secured";
     public static final String IS_INCLUDE = "is_include";
+    public static final String IS_DEFAULT_PARAM = "is_default_param";
 
     public static final String PARAMETER_TYPE_JSON = "json";
     public static final String PARAMETER_TYPE_YAML = "yaml";
@@ -84,6 +85,7 @@ public class OnapCommandConstants {
     public static final String DEFAULT_PARAMETER_DEBUG = "debug";
     public static final String DEFAULT_PARAMETER_OUTPUT_FORMAT = "format";
     public static final String DEFAULT_PARAMETER_OUTPUT_ATTR_LONG = "long";
+
     public static final String DEFAULT_PARAMETER_OUTPUT_NO_TITLE = "no-title";
 
     //results
@@ -98,6 +100,7 @@ public class OnapCommandConstants {
     public static final String SCOPE = "scope";
     public static final String RESULT_SCOPE_SHORT = "short";
     public static final String RESULT_SCOPE_LONG = "long";
+    public static final String IS_DEFAULT_ATTR = "is_default_attr";
 
     //print
     public static final String PORTRAINT_COLUMN_NAME_PROPERTY = "property";
