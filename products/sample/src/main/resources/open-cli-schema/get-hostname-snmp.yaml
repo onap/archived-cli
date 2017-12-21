@@ -1,0 +1,30 @@
+open_cli_schema_version: 1.0
+name: get-hostname-snmp
+description: Get the hostname
+
+info:
+  product: open-cli
+  service: snmp
+  type: cmd
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: portrait
+  attributes:
+    - name: hostname
+      description: hostname of agent
+      scope: short
+      type: string
+    - name: location
+      description: hostname of agent
+      scope: short
+      type: string
+
+snmp:
+  result_map:
+    - hostname: 1.3.6.1.2.1.1.5.0
+    - location: 1.3.6.1.2.1.1.6.0
+  command: get
+  version: v1
+
+

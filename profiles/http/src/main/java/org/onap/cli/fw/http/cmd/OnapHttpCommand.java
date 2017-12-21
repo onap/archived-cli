@@ -102,8 +102,8 @@ public class OnapHttpCommand extends OnapCommand {
     }
 
     @Override
-    protected List<String> initializeProfileSchema() throws OnapCommandException {
-        return OnapCommandSchemaHttpLoader.loadHttpSchema(this, this.getSchemaName(), true, false);
+    protected List<String> initializeProfileSchema(boolean validate) throws OnapCommandException {
+        return OnapCommandSchemaHttpLoader.loadHttpSchema(this, this.getSchemaName(), true, validate);
     }
 
     @Override

@@ -127,7 +127,7 @@ public abstract class OnapCommand {
         this.setSchemaName(schema);
 
         List<String> errors = OnapCommandSchemaLoader.loadSchema(this, schema, true, validate);
-        errors.addAll(this.initializeProfileSchema());
+        errors.addAll(this.initializeProfileSchema(validate));
         this.isInitialzied = true;
 
         return errors;
@@ -135,7 +135,7 @@ public abstract class OnapCommand {
     /**
      * Any additional profile based such as http schema could be initialized.
      */
-    protected List<String> initializeProfileSchema() throws OnapCommandException {
+    protected List<String> initializeProfileSchema(boolean validate) throws OnapCommandException {
         return new ArrayList<>();
     }
 

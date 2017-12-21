@@ -37,6 +37,11 @@
             <artifactId>cli-profiles-http</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-profiles-snmp</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
     <profiles>
        <profile>

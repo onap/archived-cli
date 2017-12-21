@@ -1,0 +1,14 @@
+open_cli_schema_version: 1.0
+
+info:
+  product: open-cli
+  service: default-param
+  ignore: true
+
+parameters:
+  - name: agent
+    description: agent address (eg. "udp:127.0.0.1/161")
+    type: string
+    short_option: x
+    long_option: agent
+    is_optional: false
