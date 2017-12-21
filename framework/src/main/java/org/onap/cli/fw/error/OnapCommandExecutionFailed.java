@@ -28,12 +28,12 @@ public class OnapCommandExecutionFailed extends OnapCommandException {
     private static final String ERROR_MESSAGE2 = " failed to execute";
     private static final String ERROR_MESSAGE3 = "Failed to retrive service url";
 
-    public OnapCommandExecutionFailed(String cmdName, String  error, long httpStatus) {
-        super(ERROR_CODE, ERROR_MESSAGE1 + cmdName + ERROR_MESSAGE2 + ", " + error, httpStatus);
+    public OnapCommandExecutionFailed(String cmdName, String  error, long status) {
+        super(ERROR_CODE, ERROR_MESSAGE1 + cmdName + ERROR_MESSAGE2 + ", " + error, status);
     }
 
-    public OnapCommandExecutionFailed(String cmdName, Throwable throwable, long httpStatus) {
-        super(ERROR_CODE, ERROR_MESSAGE1 + cmdName + ERROR_MESSAGE2 ,throwable, httpStatus);
+    public OnapCommandExecutionFailed(String cmdName, Throwable throwable, long status) {
+        super(ERROR_CODE, ERROR_MESSAGE1 + cmdName + ERROR_MESSAGE2 ,throwable, status);
     }
 
     public OnapCommandExecutionFailed(String  error) {

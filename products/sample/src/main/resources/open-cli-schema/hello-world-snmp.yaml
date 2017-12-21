@@ -1,0 +1,29 @@
+open_cli_schema_version: 1.0
+name: hello-world-snmp
+description: Sample yaml usin snmp profile
+
+info:
+  product: sample-helloworld
+  service: hello-world
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: portrait
+  attributes:
+    - name: hostname
+      description: hostname of agent
+      scope: short
+      type: string
+    - name: location
+      description: hostname of agent
+      scope: short
+      type: string
+
+snmp:
+  result_map:
+    - hostname: 1.3.6.1.2.1.1.5.0
+    - location: 1.3.6.1.2.1.1.6.0
+  command: get
+  version: v1
+
+
