@@ -33,6 +33,7 @@
 
     <modules>
         <module>http</module>
+        <module>snmp</module>
     </modules>
     <dependencies>
         <dependency>
