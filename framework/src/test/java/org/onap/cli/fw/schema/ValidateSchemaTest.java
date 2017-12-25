@@ -37,6 +37,17 @@ public class ValidateSchemaTest {
         OnapCommandSchemaLoader.loadSchema(cmd, "fdsfds.yaml", true, true);
     }
 
+
+    @Test
+    public void validateTestMerge() throws OnapCommandException {
+
+        OnapCommand cmd = new OnapCommand() {
+            @Override
+            protected void run() throws OnapCommandException {}
+        };
+        cmd.initializeSchema("test-command-to-valdiate-merge.yaml", true);
+    }
+
     @Test(expected = OnapCommandInvalidSchema.class)
     public void invalidateTest2() throws OnapCommandException {
         OnapCommand cmd = new OnapCommand() {

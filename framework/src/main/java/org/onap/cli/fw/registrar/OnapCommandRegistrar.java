@@ -45,6 +45,8 @@ import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -53,6 +55,9 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
  *
  */
 public class OnapCommandRegistrar {
+
+    private static Logger LOG = LoggerFactory.getLogger(OnapCommandRegistrar.class);
+
     private Map<String, Class<? extends OnapCommand>> registry = new HashMap<>();
 
     private Map<String, Class<? extends OnapCommand>> registryProfilePlugins = new HashMap<>();
@@ -271,6 +276,7 @@ public class OnapCommandRegistrar {
 
         for (OnapCommandSchemaInfo schema : schemas) {
             if (schema.isIgnore()) {
+                LOG.info("Ignoring schema " + schema.getSchemaURI());
                 continue;
             }
 
@@ -280,7 +286,7 @@ public class OnapCommandRegistrar {
              } else if (plugins.containsKey(schema.getSchemaProfile())) {
                 this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaProfile()));
             } else {
-                throw new OnapUnsupportedSchemaProfile(schema.getSchemaURI());
+                LOG.info("Ignoring schema " + schema.getSchemaURI());
             }
         }
     }

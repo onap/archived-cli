@@ -33,11 +33,11 @@ import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_SERVICE;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_TYPE;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INPUT_PARAMS_LIST;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INPUT_PARAMS_MANDATORY_LIST;
+import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_ATTR;
+import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_PARAM;
 import static org.onap.cli.fw.conf.OnapCommandConstants.IS_INCLUDE;
 import static org.onap.cli.fw.conf.OnapCommandConstants.IS_OPTIONAL;
 import static org.onap.cli.fw.conf.OnapCommandConstants.IS_SECURED;
-import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_ATTR;
-import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_PARAM;
 import static org.onap.cli.fw.conf.OnapCommandConstants.LONG_OPTION;
 import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
 import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
@@ -81,7 +81,6 @@ import org.onap.cli.fw.info.OnapCommandInfo;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
-import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
@@ -272,20 +271,8 @@ public class OnapCommandSchemaLoader {
                     if (parameters != null) {
                         Set<String> names = new HashSet<>();
 
-                        //To support overriding of the parameters, if command is already
-                        //having the same named parameters, means same parameter is
-                        //Overridden from included template into current template
-                        Set<String> existingParamNames =  cmd.getParametersMap().keySet();
-
                         for (Map<String, String> parameter : parameters) {
-                            boolean isOverriding = false;
                             OnapCommandParameter param = new OnapCommandParameter();
-
-                            //Override the parameters from its base such as default parameters list
-                            if (existingParamNames.contains(parameter.getOrDefault(NAME, ""))) {
-                                param = cmd.getParametersMap().get(parameter.getOrDefault(NAME, ""));
-                                isOverriding = true;
-                            }
 
                             if (validate) {
                                 OnapCommandUtils.validateTags(exceptionList, parameter, OnapCommandConfig.getCommaSeparatedList(INPUT_PARAMS_LIST),
@@ -404,11 +391,7 @@ public class OnapCommandSchemaLoader {
                                 }
                             }
 
-                            if ( !isOverriding) {
-                                cmd.getParameters().add(param);
-                            } else {
-                                cmd.getParametersMap().replace(param.getName(), param);
-                            }
+                            cmd.getParameters().add(param);
                         }
                     }
                     break;
