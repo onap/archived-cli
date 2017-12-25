@@ -1,0 +1,15 @@
+open_cli_schema_version: 1.0
+
+name: test-command-to-valdiate-merge
+
+description: cli catalog command to find the base path for service.
+
+info:
+  product: open-cli
+  service: test
+  type: cmd
+  author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
+
+parameters:
+  - name: help
+    is_include: false

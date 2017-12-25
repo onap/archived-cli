@@ -87,7 +87,7 @@ public class OnapCommandSchemaHttpLoader {
      * @throws OnapCommandException
      *             on error
      */
-    static ArrayList<String> parseHttpSchema(OnapHttpCommand cmd,
+    public static ArrayList<String> parseHttpSchema(OnapHttpCommand cmd,
                                                     final Map<String, ?> values,
                                                     boolean validate) throws OnapCommandException {
         ArrayList<String> errorList = new ArrayList<>();
@@ -98,6 +98,7 @@ public class OnapCommandSchemaHttpLoader {
                 if (validate) {
                     OnapCommandUtils.validateTags(errorList, valMap, OnapCommandConfig.getCommaSeparatedList(OnapCommandHttpConstants.HTTP_SECTIONS),
                             OnapCommandConfig.getCommaSeparatedList(OnapCommandHttpConstants.HTTP_MANDATORY_SECTIONS), OnapCommandHttpConstants.HTTP);
+                    errorList.addAll(validateHttpSchemaSection(values));
                 }
                 for (Map.Entry<String, ?> entry1 : valMap.entrySet()) {
                     String key1 = entry1.getKey();

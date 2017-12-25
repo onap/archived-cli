@@ -53,7 +53,7 @@ public class OnapValidationTest {
                 if (sch.isIgnore()) {
                     continue;
                 }
-                if (sch.getProduct().equals(version)) {
+                if (sch.getProduct() != null && sch.getProduct().equals(version)) {
                     System.out.println(
                     "************************* validate '" + sch.getCmdName() + "' *******************************");
                     OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
@@ -74,7 +74,7 @@ public class OnapValidationTest {
                 if (sch.isIgnore()) {
                     continue;
                 }
-                if (sch.getProduct().equals(version)) {
+                if (sch.getProduct() != null && sch.getProduct().equals(version)) {
                     System.out.println("[" + i++ + "] " + sch.getCmdName());
                     System.out.println("-----------------------------------------------\n\n");
                     this.handle(new String[] { sch.getCmdName(), "-h"});

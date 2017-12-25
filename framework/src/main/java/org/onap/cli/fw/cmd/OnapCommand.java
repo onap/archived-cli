@@ -33,6 +33,7 @@ import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
+import org.onap.cli.fw.schema.OnapCommandSchemaMerger;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
@@ -58,7 +59,20 @@ public abstract class OnapCommand {
 
     private OnapCommandResult cmdResult = new OnapCommandResult();
 
+    private List<String> defaultSchemas = new ArrayList<>();
+
     protected boolean isInitialzied = false;
+
+    protected OnapCommand() {
+        this.addDefaultSchemas(OnapCommandConstants.DEFAULT_PARAMETER_FILE_NAME);
+    }
+
+    public List<String> getSchemas() throws OnapCommandException {
+        List<String> schemas = new ArrayList<>();
+        schemas.addAll(this.defaultSchemas);
+        schemas.add(this.getSchemaName());
+        return schemas;
+    }
 
     public String getSchemaVersion() {
         return OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0;
@@ -116,6 +130,14 @@ public abstract class OnapCommand {
         this.cmdSchemaName = schemaName;
     }
 
+    protected void addDefaultSchemas(String schema) {
+        this.defaultSchemas.add(schema);
+    }
+
+    public List<String> getDefaultSchema() {
+        return this.defaultSchemas;
+    }
+
     /**
      * Initialize this command from command schema and assumes schema is already validated.
      *
@@ -127,11 +149,13 @@ public abstract class OnapCommand {
         return this.initializeSchema(schema, false);
     }
 
+
     public List<String> initializeSchema(String schema, boolean validate) throws OnapCommandException {
         this.setSchemaName(schema);
 
-        List<String> errors = OnapCommandSchemaLoader.loadSchema(this, schema, true, validate);
-        errors.addAll(this.initializeProfileSchema(validate));
+        Map<String, ?> schemaMap = OnapCommandSchemaMerger.mergeSchemas(this);
+        List<String> errors = OnapCommandSchemaLoader.parseSchema(this, schemaMap, validate);
+        errors.addAll(this.initializeProfileSchema(schemaMap, validate));
         this.isInitialzied = true;
 
         return errors;
@@ -139,7 +163,7 @@ public abstract class OnapCommand {
     /**
      * Any additional profile based such as http schema could be initialized.
      */
-    protected List<String> initializeProfileSchema(boolean validate) throws OnapCommandException {
+    protected List<String> initializeProfileSchema(Map<String, ?> schemaMap, boolean validate) throws OnapCommandException {
         return new ArrayList<>();
     }
 

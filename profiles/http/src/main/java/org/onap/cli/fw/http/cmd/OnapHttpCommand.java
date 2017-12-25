@@ -61,6 +61,10 @@ public class OnapHttpCommand extends OnapCommand {
 
     private OnapCommandHttpService oclipService = new OnapCommandHttpService();
 
+    public OnapHttpCommand() {
+        super.addDefaultSchemas(OnapCommandHttpConstants.DEFAULT_PARAMETER_HTTP_FILE_NAME);
+    }
+
     public void setInput(HttpInput input) {
         this.input = input;
     }
@@ -102,8 +106,8 @@ public class OnapHttpCommand extends OnapCommand {
     }
 
     @Override
-    protected List<String> initializeProfileSchema(boolean validate) throws OnapCommandException {
-        return OnapCommandSchemaHttpLoader.loadHttpSchema(this, this.getSchemaName(), true, validate);
+    protected List<String> initializeProfileSchema(Map<String, ?> schemaMap, boolean validate) throws OnapCommandException {
+        return OnapCommandSchemaHttpLoader.parseHttpSchema(this, schemaMap, validate);
     }
 
     @Override
