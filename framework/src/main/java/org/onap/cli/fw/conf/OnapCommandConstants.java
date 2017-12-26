@@ -124,6 +124,10 @@ public class OnapCommandConstants {
     public static final String BOOLEAN_FALSE = "false";
 
     // Error message
+    public static final String ERROR= "error";
+    public static final String ERROR_CODE= "code";
+    public static final String ERROR_MESSAGE= "message";
+
     public static final String SCHEMA_INVALID_DEFAULT_PARAMS_SECTION = "Invalid default_parameter section";
     public static final String SCHEMA_FILE_EMPTY = "The schema file cann't be null or empty";
     public static final String SCHEMA_FILE_WRONG_EXTN = "Schema file should be '.yaml' extension";

@@ -16,6 +16,7 @@
 
 package org.onap.cli.fw.error;
 
+import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -87,6 +88,12 @@ public class OnapCommandException extends Exception {
         }
 
         return message;
+    }
+
+    public String toJsonString() {
+        return "{\""+ OnapCommandConstants.ERROR + "\": {\""+
+                OnapCommandConstants.ERROR_CODE + "\": \"" + this.errorCode + "\", \""+
+                OnapCommandConstants.ERROR_MESSAGE + "\": \"" + this.errorMessage + "\"}}";
     }
 
     public OnapCommandException(String errorCode, String errorMessage, Throwable e) {
