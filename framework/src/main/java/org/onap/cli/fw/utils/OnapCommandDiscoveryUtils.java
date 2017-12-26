@@ -267,6 +267,11 @@ public class OnapCommandDiscoveryUtils {
                             continue;
                         }
 
+                        //There are schema like default input parameters and does not have command name
+                        if (resourceMap.get(NAME) == null) {
+                            continue;
+                        }
+
                         schema.setSchemaName(resource.getFilename());
                         schema.setCmdName((String) resourceMap.get(NAME));
 
