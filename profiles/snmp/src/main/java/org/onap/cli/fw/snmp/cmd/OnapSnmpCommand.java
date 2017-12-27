@@ -52,6 +52,8 @@ public class OnapSnmpCommand extends OnapCommand {
 
     private List<Map<String, String>> resultMap;
 
+    private List<Map<String, String>> oidMap;
+
     private String version;
 
     private String command;
@@ -68,7 +70,31 @@ public class OnapSnmpCommand extends OnapCommand {
     private PDU getPDU(Integer commandType, String[] oids) {
         PDU pdu = new PDU();
         for (String oid: oids) {
-            pdu.add(new VariableBinding(new OID(oid)));
+            switch (commandType) {
+                case PDU.GET:
+                    pdu.add(new VariableBinding(new OID(oid)));
+                    break;
+
+                case PDU.SET:
+                    Optional<OnapCommandParameter> parameterOpt = this.getParameters().stream().filter(
+                            cmd -> cmd.getName().equals(getKeyForValue(oid, oidMap)))
+                            .findFirst();
+                    if (parameterOpt.isPresent()) {
+                        OnapCommandParameter parameter = parameterOpt.get();
+                        switch (parameter.getParameterType()) {
+                            case STRING:
+                                pdu.add(new VariableBinding(new OID(oid), new OctetString((String) parameter.getValue())));
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         pdu.setType(commandType);
@@ -98,6 +124,14 @@ public class OnapSnmpCommand extends OnapCommand {
         return target;
     }
 
+    private String[] getOids(List<Map<String, String>> target) {
+        List<String> oids = new ArrayList<>();
+        for (Map<String, String> map: target) {
+            oids.addAll(map.values());
+        }
+        return oids.toArray(new String[oids.size()]);
+    }
+
     @Override
     protected void run() throws OnapCommandException {
         try {
@@ -109,21 +143,14 @@ public class OnapSnmpCommand extends OnapCommand {
             defaultUdpTransportMapping.listen();
             Snmp snmp = new Snmp(defaultUdpTransportMapping);
 
-            List<String> oids = new ArrayList<>();
-            for (Map<String, String> map: resultMap) {
-                oids.addAll(map.values());
-            }
-
-            String[] oidStrArr = oids.toArray(new String[oids.size()]);
-
             switch (this.command) {
 
                 case OnapCommandSnmpConstants.SNMP_CMD_GET:
-                    ResponseEvent responseEvent = snmp.send(getPDU(PDU.GET, oidStrArr), getTarget(), null);
+                    ResponseEvent responseEvent = snmp.send(getPDU(PDU.GET, getOids(resultMap)), getTarget(), null);
                     if ( responseEvent != null || responseEvent.getResponse().getErrorStatus() == PDU.noError) {
                         Vector<? extends VariableBinding> variableBindings = responseEvent.getResponse().getVariableBindings();
                         variableBindings.stream().forEach(varBinding -> { //NOSONAR
-                            String key = getKeyForValue(varBinding.getOid().toString());
+                            String key = getKeyForValue(varBinding.getOid().toString(), resultMap);
                             if (key != null) {
                                 this.getResult().getRecordsMap().get(key).getValues().add(
                                         varBinding.getVariable().toString());
@@ -132,6 +159,14 @@ public class OnapSnmpCommand extends OnapCommand {
                     } else {
                         throw new OnapSnmpErrorResponse("Error response from SNMP agent",
                                 responseEvent.getResponse().getErrorStatus());
+                    }
+                    break;
+
+                case OnapCommandSnmpConstants.SNMP_CMD_SET:
+                    ResponseEvent responseEvent1 = snmp.send(getPDU(PDU.SET, getOids(oidMap)), getTarget(), null);
+                    if (responseEvent1 == null || responseEvent1.getResponse().getErrorStatus() != PDU.noError) {
+                        throw new OnapSnmpErrorResponse( "Error response from SNMP agent",
+                                responseEvent1.getResponse().getErrorStatus());
                     }
                     break;
 
@@ -144,8 +179,8 @@ public class OnapSnmpCommand extends OnapCommand {
         }
     }
 
-    private String getKeyForValue(String value) {
-        Optional<Map<String, String>> mapOptional = resultMap.stream().filter(map -> map.values().contains(value)).findFirst(); //NOSONAR
+    private String getKeyForValue(String value, List<Map<String, String>> target) {
+        Optional<Map<String, String>> mapOptional = target.stream().filter(map -> map.values().contains(value)).findFirst(); //NOSONAR
         if (!mapOptional.isPresent()) {
             return null;
         }
@@ -180,6 +215,14 @@ public class OnapSnmpCommand extends OnapCommand {
 
     public void setResultMap(List<Map<String, String>> resultMap) {
         this.resultMap = resultMap;
+    }
+
+    public List<Map<String, String>> getOidMap() {
+        return oidMap;
+    }
+
+    public void setOidMap(List<Map<String, String>> oidMap) {
+        this.oidMap = oidMap;
     }
 
 }

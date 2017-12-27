@@ -94,4 +94,54 @@ public class OnapSnmpCommandTest {
         assertEquals("snmp", result.getRecordsMap().get("system-desc")
         .getValues().get(0));
     }
+
+    @Test
+    public void testSnmpSetCommand() throws OnapCommandException {
+
+        new MockUp<Snmp>() {
+            @Mock
+            public ResponseEvent send(PDU pdu, Target target, TransportMapping transport) throws IOException {
+                PDU pdu1 = new PDU();
+                pdu1.setType(-94);
+                VariableBinding variableBinding = new VariableBinding(new OID("1.3.6.1.2.1.1.1.0"));
+                variableBinding.setVariable(new OctetString(new byte[] {'s', 'n', 'm', 'p'}));
+
+                pdu1.setVariableBindings(Arrays.asList(variableBinding));
+                return new ResponseEvent(new Object(), null, pdu, pdu1, null);
+            }
+        };
+
+        OnapSnmpCommand snmpCmd = new OnapSnmpCommand();
+
+        HashMap<String, String> resultMapEntry = new HashMap<>();
+        resultMapEntry.put("system-desc", "1.3.6.1.2.1.1.1.0");
+
+        List<Map<String, String>> oidMap = Arrays.asList(resultMapEntry);
+        snmpCmd.setOidMap(oidMap);
+        snmpCmd.setSnmpVersion("1");
+        snmpCmd.setCommand("set");
+
+        OnapCommandParameter onapCommandParameter = new OnapCommandParameter();
+        onapCommandParameter.setName("agent");
+        onapCommandParameter.setParameterType(OnapCommandParameterType.STRING);
+        onapCommandParameter.setShortOption("x");
+        onapCommandParameter.setOptional(false);
+        onapCommandParameter.setLongOption("agent");
+        onapCommandParameter.setValue("udp:0.0.0.0/161");
+
+        OnapCommandParameter onapCommandParameter1 = new OnapCommandParameter();
+        onapCommandParameter1.setName("system-desc");
+        onapCommandParameter1.setParameterType(OnapCommandParameterType.STRING);
+        onapCommandParameter1.setShortOption("y");
+        onapCommandParameter1.setOptional(false);
+        onapCommandParameter1.setLongOption("system-desc");
+        onapCommandParameter1.setValue("onap");
+
+        Set<OnapCommandParameter> parameters = new HashSet<>();
+        parameters.add(onapCommandParameter);
+        parameters.add(onapCommandParameter1);
+        snmpCmd.setParameters(parameters);
+
+        snmpCmd.run();
+    }
 }
