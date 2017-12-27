@@ -25,6 +25,7 @@ public class OnapCommandSnmpConstants {
     public static final String SNMP = "snmp";
     public static final String SNMP_VERSION = "version";
     public static final String SNMP_RESULTMAP = "result_map";
+    public static final String SNMP_OID_MAP = "oid_map";
     public static final String SNMP_COMMAND = "command";
     public static final String SNMP_AGENT = "agent";
     public static final String SNMP_COMMNUNITY_STRING = "public";
