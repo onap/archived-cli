@@ -58,6 +58,10 @@ public class OnapCommandSchemaSnmpLoader {
                         cmd.setResultMap((List<Map<String, String>>) entry.getValue());
                         break;
 
+                    case OnapCommandSnmpConstants.SNMP_OID_MAP:
+                        cmd.setOidMap((List<Map<String, String>>) entry.getValue());
+                        break;
+
                     case OnapCommandSnmpConstants.SNMP_VERSION:
                         cmd.setSnmpVersion((String) entry.getValue());
                         break;
