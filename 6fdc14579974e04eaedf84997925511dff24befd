@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_e34abd82",
+        "filename": "products/sample/src/main/resources/open-cli-schema/get-hostname-snmp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_80cbaf71",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_00a79fbe",
         "filename": "products/sample/src/main/resources/open-cli-schema/get-hostname-snmp.yaml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-26T05:10:44Z",
       "side": 1,
       "message": "onap-vnf",
+      "range": {
+        "startLine": 6,
+        "startChar": 11,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_03500931",
+        "filename": "products/sample/src/main/resources/open-cli-schema/get-hostname-snmp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "moved product to hello-world",
+      "parentUuid": "5a93c517_00a79fbe",
       "range": {
         "startLine": 6,
         "startChar": 11,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_5e1a686f",
+        "filename": "products/sample/src/main/resources/open-cli-schema/set-hostname-snmp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_c0b0d7f6",
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_209f3b61",
         "filename": "profiles/snmp/pom.xml",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2017-12-26T05:10:44Z",
       "side": 1,
       "message": "/",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_a33b55ea",
+        "filename": "profiles/snmp/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_209f3b61",
       "range": {
         "startLine": 12,
         "startChar": 11,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_031ec970",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_607c6321",
+      "range": {
+        "startLine": 32,
+        "startChar": 21,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_20765b3f",
         "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
         "patchSetId": 1
@@ -122,6 +236,30 @@
       "writtenOn": "2017-12-26T05:10:44Z",
       "side": 1,
       "message": "move to constants class",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 44
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_630c6d43",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_20765b3f",
       "range": {
         "startLine": 51,
         "startChar": 2,
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_3e1d1c67",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_80a08f91",
+      "range": {
+        "startLine": 109,
+        "startChar": 34,
+        "endLine": 109,
+        "endChar": 55
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_c09e9756",
         "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
         "patchSetId": 1
@@ -168,6 +330,30 @@
       "writtenOn": "2017-12-26T05:10:44Z",
       "side": 1,
       "message": "strip off",
+      "range": {
+        "startLine": 120,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 13
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_feffb4ff",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_c09e9756",
       "range": {
         "startLine": 120,
         "startChar": 11,
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_fe4d7473",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "this is used as key to identify the result record. I have added additional null check to avoid null pointer exception.",
+      "parentUuid": "5a93c517_a0990b70",
+      "range": {
+        "startLine": 133,
+        "startChar": 18,
+        "endLine": 133,
+        "endChar": 23
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_20adfb88",
         "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/schema/OnapCommandSchemaSnmpLoader.java",
         "patchSetId": 1
@@ -214,6 +424,30 @@
       "writtenOn": "2017-12-26T05:10:44Z",
       "side": 1,
       "message": "make it SetSnmpVersion to be explicit",
+      "range": {
+        "startLine": 85,
+        "startChar": 24,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_83097933",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/schema/OnapCommandSchemaSnmpLoader.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_20adfb88",
       "range": {
         "startLine": 85,
         "startChar": 24,
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_23066521",
+        "filename": "profiles/snmp/src/main/resources/open-cli-schema/snmp/default_input_parameters_snmp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_40aa8771",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_e0b633dc",
         "filename": "profiles/snmp/src/main/resources/open-cli-snmp.properties",
         "patchSetId": 1
@@ -260,6 +518,30 @@
       "writtenOn": "2017-12-26T05:10:44Z",
       "side": 1,
       "message": "remove it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "6fdc14579974e04eaedf84997925511dff24befd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_4303710f",
+        "filename": "profiles/snmp/src/main/resources/open-cli-snmp.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2017-12-27T06:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_e0b633dc",
       "range": {
         "startLine": 9,
         "startChar": 27,
