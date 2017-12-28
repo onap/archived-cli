@@ -5,23 +5,52 @@
 .. _end_to_end_onap_cli_commands:
 
 
-<style>div {
-  background-color: black;
-  color: white;
-  width: 100%;
-}</style>
-
-
 End-to-End command guide for working with ONAP
 ==============================================
 
-This document demonstrates to use ONAP end to end system using CLI.
+This document demonstrate end to end working with ONAP using cli.
+
+In current state of ONAP, it is getting initialized by robot scritp (`demo.sh init`),
+which requires programming knowledge to modify the scripts as per the requirement.
+Cli provides an interface to communicate with different services in ONAP and it can
+be used to configure ONAP as per requirement without any programming knowledge.
+
+Following operations are involved to deploy a VNF.
+
+CLI communicate with:
+
+- SDC to
+    - Create Vendor License Model (VLM)
+    - Create Vendor Software Product (VSP), VF and Service
+    - Distribute service
+
+- AAI to create
+    - Cloud
+    - Customer
+    - Service-type
+
+- SO to create
+    - Service-instance
+    - VF
+    - VF module (deploy)
+
+
+Creating Vendor License Model (VLM)
+===================================
+
+For creating a VLM we need to define in SDC using CLI:
+- entitlement pool
+- key group
+- feature group
+- license agreement
 
 
 Create license
-==============
-<pre>
-<div>
+--------------
+
+Run following command to create license.
+
+```
 onap>vlm-create -x htipl-vendor -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 +----------+----------------------------------+
@@ -29,14 +58,14 @@ onap>vlm-create -x htipl-vendor -u cs0008 -p demo123456! -m http://192.168.17.5:
 +----------+----------------------------------+
 |ID        |d6da25894a1a470fa8357c15681b7a66  |
 +----------+----------------------------------+
-</div>
-</pre>
+```
 
 Create license entitlement pool
-===============================
+-------------------------------
 
-<pre>
-<div>
+Run following command to create license entitlement pool.
+
+```
 onap>vlm-entitlement-pool-create -x htipl-pool -y d6da25894a1a470fa8357c15681b7a66 -e 0.1 -z htipl-pool -k htipl-vendor -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 +----------+----------------------------------+
@@ -44,14 +73,14 @@ onap>vlm-entitlement-pool-create -x htipl-pool -y d6da25894a1a470fa8357c15681b7a
 +----------+----------------------------------+
 |ID        |44743b88b7254d3aa8829d5fcb5a4b47  |
 +----------+----------------------------------+
-</div>
-</pre>
-
+```
 
 Create license key group
-========================
-<pre>
-<div>
+------------------------
+
+Run following command to crate license key group.
+
+```
 onap>vlm-key-group-create -c d6da25894a1a470fa8357c15681b7a66 -e 0.1 -x htipl-key-grp -y Universal -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 +----------+----------------------------------+
@@ -59,13 +88,14 @@ onap>vlm-key-group-create -c d6da25894a1a470fa8357c15681b7a66 -e 0.1 -x htipl-ke
 +----------+----------------------------------+
 |ID        |c8f9ba23d0414650907099ecbf960f3d  |
 +----------+----------------------------------+
-</div>
-</pre>
+```
 
 Create license feature group
-============================
-<pre>
-<div>
+----------------------------
+
+Run following command to create license feature group.
+
+```
 onap>vlm-feature-group-create -x htipl-feature-grp -y d6da25894a1a470fa8357c15681b7a66 -e 0.1 -z htipl-feature-grp -g c8f9ba23d0414650907099ecbf960f3d -b 44743b88b7254d3aa8829d5fcb5a4b47 -c htipl-part -k htipl-vendor -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 +----------+----------------------------------+
@@ -73,13 +103,14 @@ onap>vlm-feature-group-create -x htipl-feature-grp -y d6da25894a1a470fa8357c1568
 +----------+----------------------------------+
 |ID        |0ef91147b9904568942d4d3f5a8bbc96  |
 +----------+----------------------------------+
-</div>
-</pre>
+```
 
 Create license agreement
-========================
-<pre>
-<div>
+------------------------
+
+Run following command to create license agreement.
+
+```
 onap>vlm-aggreement-create -x htipl-aggrement -y d6da25894a1a470fa8357c15681b7a66 -e 0.1 -z htipl-aggrement -g 0ef91147b9904568942d4d3f5a8bbc96 -u cs0008 -p demo123456\! -m http://192.168.17.5:8080
 vlm-aggreement-create -x htipl-aggrement -y d6da25894a1a470fa8357c15681b7a66 -e 0.1 -z htipl-aggrement -g 0ef91147b9904568942d4d3f5a8bbc96 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
@@ -88,23 +119,38 @@ vlm-aggreement-create -x htipl-aggrement -y d6da25894a1a470fa8357c15681b7a66 -e 
 +----------+----------------------------------+
 |ID        |1909ee429dcd459aa0eb33e812981973  |
 +----------+----------------------------------+
-</div>
-</pre>
+```
+
+Now, VLM is ready to submit.
 
 Checkin and submin vlm
-======================
-<pre>
-<div>
+----------------------
+
+Run following command to check-in and submit created VLM.
+
+```
 vlm-checkin -x d6da25894a1a470fa8357c15681b7a66 -y 0.1 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 vlm-submit -x d6da25894a1a470fa8357c15681b7a66 -y 0.1 -u cs0008 -p demo123456\! -m http://192.168.17.5:8080
-</div>
-</pre>
+```
+
+Now, VLM is available in catalog to be used for VSP.
+
+
+Create and distribute Vendor Software Product (VSP)
+===================================================
+
+Service distribution involves following steps:
+- Create, validate and submit VSP
+- Creation and certificaion of VF
+- Creation and certification of Service
 
 Create VSP
-==========
-<pre>
-<div>
+----------
+
+Run following command to create VSP.
+
+```
 onap>vsp-create -x htipl-vsp -c 0.1 -g d6da25894a1a470fa8357c15681b7a66 -e htipl-vendor  -i 1909ee429dcd459aa0eb33e812981973  -j 0ef91147b9904568942d4d3f5a8bbc96 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 +----------+----------------------------------+
@@ -112,21 +158,23 @@ onap>vsp-create -x htipl-vsp -c 0.1 -g d6da25894a1a470fa8357c15681b7a66 -e htipl
 +----------+----------------------------------+
 |ID        |044e3269503d4579b4bdd60d0231e4e6  |
 +----------+----------------------------------+
-</div>
-</pre>
+```
 
 Add artifact to VSP
-===================
-<pre>
-<div>
+-------------------
+
+This command will associate artifacts to VSP.
+
+```
 onap>vsp-add-artifact -x 044e3269503d4579b4bdd60d0231e4e6 -y 0.1 -z vFW_100_20170608.zip -u cs0008 -p demo123456! -m http://192.168.17.5:8080
-</div>
-</pre>
+```
 
 Validate VSP
-============
-<pre>
-<div>
+------------
+
+After uploading artifacts to VSP you need to validate the VSP using following command.
+
+```
 onap>vsp-validate -x 044e3269503d4579b4bdd60d0231e4e6 -y 0.1 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 +----------+----------------------------------------------------+
@@ -165,14 +213,16 @@ onap>vsp-validate -x 044e3269503d4579b4bdd60d0231e4e6 -y 0.1 -u cs0008 -p demo12
 |          |Resource ID [vsn_private_1_port]. As a result,      |
 |          |VF\/VFC Profile may miss this information"}]}       |
 +----------+----------------------------------------------------+
-</div>
-</pre>
+```
+NOTE: here `warning` is reported for VSP validation which we are ignoring.
 
+Submit and checkin VSP
+----------------------
 
-Submit and checkin VSP for testing
-==================================
-<pre>
-<div>
+After VSP validation it can be checked in and submit. Run following command to
+complete check-in and VSP submission.
+
+```
 onap>vsp-checkin -x 044e3269503d4579b4bdd60d0231e4e6 -y 0.1 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 onap>vsp-submit -x 044e3269503d4579b4bdd60d0231e4e6 -y 0.1 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
@@ -184,21 +234,26 @@ onap>vsp-list -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 +----------------------------------+------------+----------+--------+
 |044e3269503d4579b4bdd60d0231e4e6  |htipl-vsp   |1.0       |Final   |
 +----------------------------------+------------+----------+--------+
-</div>
-</pre>
+```
 
-package the VSP
-===============
-<pre>
-<div>
+package VSP
+-----------
+
+After submitting VSP you require to generate CSAR artifact which can be done using
+following command.
+
+```
 onap>vsp-package -x 044e3269503d4579b4bdd60d0231e4e6 -y 1.0 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
-</div>
-</pre>
+```
+
+Now, you can proceed for defining VF.
 
 Create vf model for VSP
-=======================
-<pre>
-<div>
+-----------------------
+
+Run following command to create VF by specifying correct VSP id.
+
+```
 onap>vf-model-create -x htipl-vf -y htipl-vf-desc -z htipl-vendor -b 044e3269503d4579b4bdd60d0231e4e6  -g 1.0 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 +----------+--------------------------------------+
@@ -206,21 +261,26 @@ onap>vf-model-create -x htipl-vf -y htipl-vf-desc -z htipl-vendor -b 044e3269503
 +----------+--------------------------------------+
 |ID        |f1a75427-1379-4976-abca-91a00f8b118a  |
 +----------+--------------------------------------+
-</div>
-</pre>
+```
 
-Submint VF for certification
-============================
-<pre>
-<div>
+Now, VF is ready for certification.
+
+Submit VF for certification
+---------------------------
+
+Initiate VF certification request using following command.
+
+```
 onap>vf-model-certify-request -b f1a75427-1379-4976-abca-91a00f8b118a -u cs0008 -p demo123456! -m http://192.168.17.5:8080
-</div>
-</pre>
+```
 
 Certify VF
-==========
-<pre>
-<div>
+----------
+
+Certification will be conducted by tester(jm0007), tester can use following command
+to mark VF certification start and complete.
+
+```
 onap>vf-model-certify-start -b f1a75427-1379-4976-abca-91a00f8b118a -u jm0007 -p demo123456! -m http://192.168.17.5:8080
 
 onap>vf-model-certify-complete -b f1a75427-1379-4976-abca-91a00f8b118a -u jm0007 -p demo123456! -m http://192.168.17.5:8080
@@ -247,13 +307,16 @@ onap>vf-model-list -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 +--------------------------------------+--------------------------------------+--------------------------------------+--------------------------+----------+------------+
 |c7131963-1bbf-474d-a773-4f201a3480d3  |cba595e5-3a0f-482b-ba74-078a15d96756  |1a15a0a0-b040-47b5-adbd-e0c3b2e52417  |fe631a9d-99c1-4b7c-8a06   |1.0       |CERTIFIED  |
 +--------------------------------------+--------------------------------------+--------------------------------------+--------------------------+----------+------------+
-</div>
-</pre>
+```
+
+After successful VF creation you can proceed for service model creation.
 
 Create service model
-====================
-<pre>
-<div>
+--------------------
+
+Run following command to create service model.
+
+```
 onap>service-model-create -x htipl-service -y htipl-serv-desc -z htipl-123456 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 +----------+--------------------------------------+
@@ -261,13 +324,14 @@ onap>service-model-create -x htipl-service -y htipl-serv-desc -z htipl-123456 -u
 +----------+--------------------------------------+
 |ID        |3f8ff680-6b71-45e9-8bee-72628d7f443b  |
 +----------+--------------------------------------+
-</div>
-</pre>
+```
 
 Add VF to service model
-=======================
-<pre>
-<div>
+-----------------------
+
+Associate VF to service model using following command.
+
+```
 onap>service-model-add-vf -x 3f8ff680-6b71-45e9-8bee-72628d7f443b -y da9d92e5-ca04-4101-bad0-bdc17cf6f089 -z htipl-vf -b 1.0 -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
 +----------+----------------------------------------------------+
@@ -276,27 +340,29 @@ onap>service-model-add-vf -x 3f8ff680-6b71-45e9-8bee-72628d7f443b -y da9d92e5-ca
 |ID        |3f8ff680-6b71-45e9-8bee-72628d7f443b.da9d92e5-ca04  |
 |          |-4101-bad0-bdc17cf6f089.htiplvf0                    |
 +----------+----------------------------------------------------+
-</div>
-</pre>
-
+```
 
 Submit Service for certification
-================================
-<pre>
-<div>
-onap>service-model-certify-request -b 3f8ff680-6b71-45e9-8bee-72628d7f443b -u cs0008 -p demo123456! -m http://192.168.17.5:8080
+--------------------------------
 
-</div>
-</pre>
+Now, service is ready for initializing certification request. Use following command
+to initiate service certification request.
+
+```
+onap>service-model-certify-request -b 3f8ff680-6b71-45e9-8bee-72628d7f443b -u cs0008 -p demo123456! -m http://192.168.17.5:8080
+```
 
 Certify service
-===============
-<pre>
-<div>
+---------------
+
+Now, tester(jm0007) can see service in his dashboard and he can start with service
+certification. Tester can use following command to mark certification start and
+complete.
+
+```
 onap>service-model-certify-start -b 3f8ff680-6b71-45e9-8bee-72628d7f443b -u jm0007 -p demo123456! -m http://192.168.17.5:8080
 
 onap>service-model-certify-complete -b 3f8ff680-6b71-45e9-8bee-72628d7f443b -u jm0007 -p demo123456! -m http://192.168.17.5:8080
-
 
 onap>service-model-list -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 
@@ -305,15 +371,16 @@ onap>service-model-list -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 +--------------------------------------+--------------------------------------+----------------+----------+------------+----------------------------+
 |fc5e1e81-786d-49e5-acfd-e933e291b1a4  |02258f88-2d84-4503-bd8e-2e3988e65e54  |htipl-service   |1.0       |CERTIFIED   |DISTRIBUTION_NOT_APPROVED   |
 +--------------------------------------+--------------------------------------+----------------+----------+------------+----------------------------+
-</div>
-</pre>
+```
 
 Approve service model
-=====================
-<pre>
-<div>
-onap>service-model-approve -b fc5e1e81-786d-49e5-acfd-e933e291b1a4 -u gv0001 -p demo123456! -m http://192.168.17.5:8080
+---------------------
 
+After successful certification, service will be submitted to governor(gv001) to
+approve service model.
+
+```
+onap>service-model-approve -b fc5e1e81-786d-49e5-acfd-e933e291b1a4 -u gv0001 -p demo123456! -m http://192.168.17.5:8080
 
 onap>service-model-list -u cs0008 -p demo123456\! -m http://192.168.17.5:8080
 service-model-list -u cs0008 -p demo123456! -m http://192.168.17.5:8080
@@ -323,13 +390,14 @@ service-model-list -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 +--------------------------------------+--------------------------------------+----------------+----------+------------+------------------------+
 |fc5e1e81-786d-49e5-acfd-e933e291b1a4  |02258f88-2d84-4503-bd8e-2e3988e65e54  |htipl-service   |1.0       |CERTIFIED   |DISTRIBUTION_APPROVED   |
 +--------------------------------------+--------------------------------------+----------------+----------+------------+------------------------+
-</div>
-</pre>
+```
 
 Distribute service model
-========================
-<pre>
-<div>
+------------------------
+
+Now operator can distribute the service and it will be available in VID dashboard.
+
+```
 onap>service-model-distribute -b fc5e1e81-786d-49e5-acfd-e933e291b1a4 -u op0001 -p demo123456! -m http://192.168.17.5:8080
 
 
@@ -340,14 +408,21 @@ onap>service-model-list -u cs0008 -p demo123456! -m http://192.168.17.5:8080
 +--------------------------------------+--------------------------------------+----------------+----------+------------+----------------------+
 |fc5e1e81-786d-49e5-acfd-e933e291b1a4  |02258f88-2d84-4503-bd8e-2e3988e65e54  |htipl-service   |1.0       |CERTIFIED   |DISTRIBUTED           |
 +--------------------------------------+--------------------------------------+----------------+----------+------------+----------------------+
-</div>
-</pre>
+```
 
+Creating Cloud, Customer and Service-type
+=========================================
+
+It is required to specify the cloud configuration in AAI system before deploying
+the service. Following are the steps to configure cloud and related information
+for service deployment.
 
 Create Cloud
-============
-<pre>
-<div>
+------------
+
+Use following command to create cloud and region in AAI system.
+
+```
 onap>cloud-create -x htipl-cloud -y htipl-region -u AAI -p AAI -m https://192.168.17.13:8447
 
 
@@ -362,29 +437,14 @@ onap>cloud-list -u AAI -p AAI -m https://192.168.17.13:8447
 +--------------+--------------+------------------+
 |pod25         |RegionOne     |1513659266151     |
 +--------------+--------------+------------------+
-</div>
-</pre>
-
-Create Customer
-===============
-<pre>
-<div>
-onap>customer-create -x htipl-customer -y htipl-customer -u AAI -p AAI -m https://192.168.17.13:8447
-
-onap>customer-list -u AAI -p AAI -m https://192.168.17.13:8447
-
-+----------------+------------------+
-|name            |resource-version  |
-+----------------+------------------+
-|htipl-customer  |1514264928457     |
-+----------------+------------------+
-</div>
-</pre>
+```
 
 Create tenant
-=============
-<pre>
-<div>
+-------------
+
+Create tenant within region. Following is command to create tenant.
+
+```
 onap>tenant-create -x htipl-cloud -y htipl-region -z htipl-tenant -r htipl-tenant -u AAI -p AAI -m https://192.168.17.13:8447
 
 onap>tenant-list --cloud htipl-cloud --region htipl-region -u AAI -p AAI -m https://192.168.17.13:8447
@@ -394,13 +454,31 @@ onap>tenant-list --cloud htipl-cloud --region htipl-region -u AAI -p AAI -m http
 +--------------+--------------+------------------+
 |htipl-tenant  |htipl-tenant  |1514265496768     |
 +--------------+--------------+------------------+
-</div>
-</pre>
+```
+
+Create Customer
+---------------
+
+A customer subscribes for the service. Use follwing command to create customer.
+
+```
+onap>customer-create -x htipl-customer -y htipl-customer -u AAI -p AAI -m https://192.168.17.13:8447
+
+onap>customer-list -u AAI -p AAI -m https://192.168.17.13:8447
+
++----------------+------------------+
+|name            |resource-version  |
++----------------+------------------+
+|htipl-customer  |1514264928457     |
++----------------+------------------+
+```
 
 Create service type
-===================
-<pre>
-<div>
+-------------------
+
+Use following command to create service type.
+
+```
 onap>service-type-create -x htipl-service -u AAI -p AAI -m https://192.168.17.13:8447
 
 onap>service-type-list -u AAI -p AAI -m https://192.168.17.13:8447
@@ -410,13 +488,15 @@ onap>service-type-list -u AAI -p AAI -m https://192.168.17.13:8447
 +--------------------------------------+----------------+------------------+
 |f96017b1-9fcb-4d3c-ae17-d9b1fdef4415  |htipl-service   |1514265655713     |
 +--------------------------------------+----------------+------------------+
-</div>
-</pre>
+```
 
 Create subscription
-===================
-<pre>
-<div>
+-------------------
+
+Use following command to create subscription for a customer. It requires cloud
+information and service-type information.
+
+```
 onap>subscription-create -x htipl-customer -z htipl-cloud -r htipl-region -c htipl-tenant -e htipl-service  -u AAI -p AAI -m https://192.168.17.13:8447
 
 onap>subscription-list --customer-name htipl-customer -u AAI -p AAI -m https://192.168.17.13:8447
@@ -426,14 +506,22 @@ onap>subscription-list --customer-name htipl-customer -u AAI -p AAI -m https://1
 +----------------+------------------+
 |htipl-service   |1514265923244     |
 +----------------+------------------+
-</div>
-</pre>
+```
 
+Create Service-instance, VF and deploy VF
+=========================================
+
+Now, all the required configuration and artifacts are available to SO service to
+create service-instance and VF.
 
 Create service instance
-=======================
-<pre>
-<div>
+-----------------------
+
+Using following command you can create service-instance in specified cloud region.
+Command requires service model identifier which can be obtained from previously
+used CLIs for creating and listing service model.
+
+```
 onap>service-create --cloud-region RegionOne --tenant-id 60817ff9baa547d5857a6b7ff0dc567b --model-invariant-id f812e618-3abf-4c7a-901e-f2820a73eb2e --model-uuid 84ad850a-3d0b-451d-b97b-083bbf39890d --model-name demoVLB --model-version 1.0 -c Demonstration --instance-name service-vlb-instance-1 --service-type vLB -u InfraPortalClient -p password1$ -m http://192.168.17.7:8080
 
 +------------+--------------------------------------+
@@ -441,13 +529,16 @@ onap>service-create --cloud-region RegionOne --tenant-id 60817ff9baa547d5857a6b7
 +------------+--------------------------------------+
 |service-id  |1561a325-a64b-47ab-86f4-459e334292f0  |
 +------------+--------------------------------------+
-</div>
-</pre>
+```
 
-Create VNF
-==========
-<pre>
-<div>
+Create VF
+---------
+
+Using following command you can create VF in specified cloud region.
+Command requires VF model identifier which can be obtained from previously
+used CLIs for creating and listing VF model.
+
+```
 onap>vf-create --cloud-region RegionOne --tenant-id onap --product-family vLB --instance-name service-vlb-instance-1-vnf-1 --service-instance-id 1561a325-a64b-47ab-86f4-459e334292f0 --vf-model-invariant-id 4982d10b-09af-46b9-8317-c92d2658ae68 --vf-model-uuid b2a40a03-c85e-4b6c-8ade-f90e5f2ce2d4 --vf-model-name 2932d051-6aad-4c0d-ac2d --vf-model-version 1.0 --vf-model-customization-id 3741acf1-5929-42e6-b234-4b9051d09a54 --service-model-invariant-id f812e618-3abf-4c7a-901e-f2820a73eb2e --service-model-uuid 84ad850a-3d0b-451d-b97b-083bbf39890d --service-model-name demoVLB --service-model-version 1.0 -m http://192.168.17.7:8080 -u InfraPortalClient -p password1$
 
 +----------+--------------------------------------+
@@ -455,8 +546,11 @@ onap>vf-create --cloud-region RegionOne --tenant-id onap --product-family vLB --
 +----------+--------------------------------------+
 |vf-id     |addb80ab-8c95-49b3-a2b7-907a02553319  |
 +----------+--------------------------------------+
+```
 
-</div>
-</pre>
+Create VF-module
+----------------
+
+TBD
 
 
