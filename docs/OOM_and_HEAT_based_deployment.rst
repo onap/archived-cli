@@ -10,7 +10,7 @@ CLI deployment using OOM and HEAT
 ONAP CLI is integrated with OOM and HEAT based ONAP deployment.
 
 HEAT based deployment
-----------------------
+---------------------
 
 As part of HEAT based deployment, ONAL CLI docker image is integrated into ONAP Portal and when portal_vm is
 successfully installed, it will be available at http://portal.api.simpledemo.openecomp.org:8080

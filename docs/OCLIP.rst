@@ -19,7 +19,7 @@ To address these problems, in open-source ONAP community, Open CLI Platform (OCL
 It helps to implement the commands just by writing YAML files for any cloud enabled software products and also provides plug-in mechanism to implement the commands which requires specific implementation.
 
 Advantages
-------------
+----------
 
 * Saves lots of effort, time and money spend by communities and/or vendors, who have been implementing the commands by using some framework or libraries
 * Make it simple, faster and easy to implement
