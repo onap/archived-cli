@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_141841d2",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-12-28T06:10:14Z",
+      "side": 1,
+      "message": "parse",
+      "range": {
+        "startLine": 141,
+        "startChar": 43,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "799c1d3e6045977abc47843ca6cf9c506872eaa6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_b40ced95",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/schema/OnapCommandSchemaSnmpLoader.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-12-28T06:10:14Z",
+      "side": 1,
+      "message": "remove it",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "799c1d3e6045977abc47843ca6cf9c506872eaa6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_d41179ad",
+        "filename": "profiles/snmp/src/main/resources/open-cli-schema/snmp/default_input_parameters_snmp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2017-12-28T06:10:14Z",
+      "side": 1,
+      "message": "is_default_param: true",
+      "revId": "799c1d3e6045977abc47843ca6cf9c506872eaa6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
