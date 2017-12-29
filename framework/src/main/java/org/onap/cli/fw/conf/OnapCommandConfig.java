@@ -16,7 +16,6 @@
 
 package org.onap.cli.fw.conf;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
@@ -52,7 +51,7 @@ public final class OnapCommandConfig {
         }
     }
 
-    private static void addProperties(String fileName) {
+    public static void addProperties(String fileName) {
         Properties ps = new Properties();
         loadProperties(ps, fileName);
 
