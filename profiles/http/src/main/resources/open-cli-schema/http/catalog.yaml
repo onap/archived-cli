@@ -24,10 +24,16 @@ parameters:
     long_option: catalog-service-version
     is_optional: false
   - name: host-username
+    type: string
+    description: username for catalog
     is_include: false
   - name: host-password
+    type: string
+    description: password for catalog
     is_include: false
   - name: no-auth
+    type: bool
+    description: whether to authenticate user or not
     is_include: false
 results:
   direction: portrait
