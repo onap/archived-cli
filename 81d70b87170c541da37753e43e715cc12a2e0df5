@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_d272e87b",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/exception/OnapSnmpErrorResponse.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-01-02T05:44:42Z",
+      "side": 1,
+      "message": "pls change error code to new series",
+      "range": {
+        "startLine": 29,
+        "startChar": 45,
+        "endLine": 29,
+        "endChar": 52
+      },
+      "revId": "81d70b87170c541da37753e43e715cc12a2e0df5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_f26fe490",
+        "filename": "profiles/snmp/src/main/resources/open-cli-snmp.properties",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-01-02T05:44:42Z",
+      "side": 1,
+      "message": "result_map ?",
+      "range": {
+        "startLine": 6,
+        "startChar": 30,
+        "endLine": 6,
+        "endChar": 46
+      },
+      "revId": "81d70b87170c541da37753e43e715cc12a2e0df5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
