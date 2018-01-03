@@ -33,3 +33,11 @@ parameters:
     long_option: no-auth
     default_value: false
     is_default_param: true
+  - name: no-catalog
+    type: bool
+    description: whether to use given host-url directly without looking into catalog, it will overrid the service->mode.
+    short_option: C
+    long_option: no-catalog
+    is_optional: true
+    is_default_param: true
+    default_value: false

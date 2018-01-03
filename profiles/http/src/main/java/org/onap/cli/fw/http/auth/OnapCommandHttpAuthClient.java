@@ -113,7 +113,8 @@ public class OnapCommandHttpAuthClient {
     }
 
     private String getServiceUrl(OnapHttpCommand cmd) throws OnapCommandException {
-        if (cmd.getService().isModeDirect()){
+        if (cmd.getService().isModeDirect() ||
+            Boolean.parseBoolean(cmd.getParametersMap().get(OnapCommandHttpConstants.DEFAULT_PARAMETER_NO_CATALOG).getValue().toString())){
             return cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL).getValue().toString();
         } else { //Catalog mode
             OnapCommand catalog = OnapCommandRegistrar.getRegistrar().get("catalog", cmd.getInfo().getProduct());

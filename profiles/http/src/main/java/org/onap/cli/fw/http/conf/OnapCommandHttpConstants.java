@@ -87,6 +87,8 @@ public class OnapCommandHttpConstants {
     public static final String MODE_VALUES = "cli.schema.mode_values";
     public static final String SERVICE_PARAMS_LIST = "cli.schema.service_params_list";
     public static final String SERVICE_PARAMS_MANDATORY_LIST = "cli.schema.service_params_mandatory_list";
+
+    public static final String DEFAULT_PARAMETER_NO_CATALOG = "no-catalog";
 }
 
 
