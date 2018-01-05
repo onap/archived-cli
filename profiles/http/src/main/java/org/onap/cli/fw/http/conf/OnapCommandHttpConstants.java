@@ -24,11 +24,11 @@ public class OnapCommandHttpConstants {
     public static final String CONF = "open-cli-http.properties";
     public static final String OPEN_IGNORE_AUTH = "cli.ignore_auth";
     public static final String HTTP_API_KEY_USE_COOKIES = "cli.http.api_key_use_cookies";
-    public static final String HTTP_SECTIONS = "cli.schema.http_sections";
-    public static final String HTTP_MANDATORY_SECTIONS = "cli.schema.http_mandatory_sections";
-    public static final String HTTP_REQUEST_PARAMS = "cli.schema.http_request_params";
-    public static final String HTTP_REQUEST_MANDATORY_PARAMS = "cli.schema.http_request_mandatory_params";
-    public static final String HTTP_METHODS = "cli.schema.http_methods";
+    public static final String HTTP_SECTIONS = "cli.schema.http.sections";
+    public static final String HTTP_MANDATORY_SECTIONS = "cli.schema.http.sections.mandatory";
+    public static final String HTTP_REQUEST_PARAMS = "cli.schema.http.request.sections";
+    public static final String HTTP_REQUEST_MANDATORY_PARAMS = "cli.schema.http.request.sections.mandatory";
+    public static final String HTTP_METHODS = "cli.schema.http.request.method.values";
     //http connection
     public static final String SSLCONTEST_TLS = "TLSV1.2";
     public static final String APPLICATION_JSON = "application/json";

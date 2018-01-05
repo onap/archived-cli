@@ -25,22 +25,22 @@ public class OnapCommandConstants {
     //config
     public static final String CONF = "open-cli.properties";
     public static final String OPEN_CLI_VERSION = "cli.version";
-    public static final String TOP_LEVEL_PARAMS_LIST = "cli.schema.top_level_params_list";
-    public static final String TOP_LEVEL_MANDATORY_LIST = "cli.schema.top_level_mandatory_list";
-    public static final String SERVICE_PARAMS_LIST = "cli.schema.service_params_list";
-    public static final String SERVICE_PARAMS_MANDATORY_LIST = "cli.schema.service_params_mandatory_list";
-    public static final String INFO_PARAMS_LIST = "cli.schema.info_params_list";
-    public static final String INFO_PARAMS_MANDATORY_LIST = "cli.schema.info_params_mandatory_list";
-    public static final String INPUT_PARAMS_LIST = "cli.schema.input_params_list";
-    public static final String INPUT_PARAMS_MANDATORY_LIST = "cli.schema.input_params_mandatory_list";
-    public static final String RESULT_PARAMS_LIST = "cli.schema.result_params_list";
-    public static final String RESULT_PARAMS_MANDATORY_LIST = "cli.schema.result_params_mandatory_list";
+    public static final String TOP_LEVEL_PARAMS_LIST = "cli.schema.base.sections";
+    public static final String TOP_LEVEL_MANDATORY_LIST = "cli.schema.base.sections.mandatory";
+    public static final String SERVICE_PARAMS_LIST = "cli.schema.http.service.sections";
+    public static final String SERVICE_PARAMS_MANDATORY_LIST = "cli.schema.http.service.sections.mandatory";
+    public static final String INFO_PARAMS_LIST = "cli.schema.base.info.sections";
+    public static final String INFO_PARAMS_MANDATORY_LIST = "cli.schema.base.info.sections.mandatory";
+    public static final String INPUT_PARAMS_LIST = "cli.schema.base.parameters.sections";
+    public static final String INPUT_PARAMS_MANDATORY_LIST = "cli.schema.base.parameters.sections.mandatory";
+    public static final String RESULT_PARAMS_LIST = "cli.schema.base.results.sections";
+    public static final String RESULT_PARAMS_MANDATORY_LIST = "cli.schema.base.results.sections.mandatory";
     public static final String BOOLEAN_VALUE = "cli.schema.boolean_values";
 
-    public static final String COMMAND_TYPE_VALUES = "cli.command.type";
-    public static final String SCHEMA_TYPES_SUPPORTED = "cli.schema.type.supported";
+    public static final String COMMAND_TYPE_VALUES = "cli.schema.command.type";
+    public static final String SCHEMA_TYPES_SUPPORTED = "cli.schema.profile.available";
     public static final String OPEN_CLI_PRODUCT_NAME = "cli.product_name";
-    public static final String OPEN_CLI_PLUGIN_PRPS = "cli.plugins-prps";
+    public static final String OPEN_CLI_PLUGIN_PRPS = "cli.schema.profile.confs";
 
     //schema
     public static final String OPEN_CLI_SCHEMA_VERSION = "open_cli_schema_version";
