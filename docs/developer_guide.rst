@@ -10,7 +10,7 @@ CLI developer guide
 Develop OCLIP using plug-ins or YAML.
 
 As a Plug-in
--------------
+------------
 The plug-in approach is useful for implementing commands for products that do not support REST APIs.
 It uses this approach to provide the commands for its platform-related operations and provides the following commands as plug-ins:
 

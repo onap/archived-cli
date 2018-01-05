@@ -12,7 +12,7 @@ Please install the CLI by following guidelines provided in :ref:`OOM_and_HEAT_ba
 After installation, ONAP CLI can be used in following form:
 
 Command Shell
---------------
+-------------
 
 .. image:: images/portal-cli-shell.png
 
