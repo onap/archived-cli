@@ -35,7 +35,6 @@ Amsterdam release, it provides commands for following features:
    user_guide.rst
    installation_guide.rst
    OOM_and_HEAT_based_deployment.rst
-   end_to_end_onap_cli_commands.rst
    logging.rst
    release-notes.rst
 
