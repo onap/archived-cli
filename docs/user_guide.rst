@@ -79,3 +79,12 @@ Following document provides the samples for commands supported in this release.
    :maxdepth: 1
 
    cmd_sample.rst
+
+End to end service creation tutorial 
+------------------------------------
+Following document provides the tutorial for service creation using CLI.
+
+.. toctree::
+   :maxdepth: 1
+
+   end_to_end_onap_cli_commands.rst
