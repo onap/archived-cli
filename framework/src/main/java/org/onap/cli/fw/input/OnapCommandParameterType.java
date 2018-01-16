@@ -23,18 +23,12 @@ import org.onap.cli.fw.error.OnapCommandInvalidParameterType;
  *
  */
 public enum OnapCommandParameterType {
-    /**
-     * JSON file.
-     */
-    JSON,
-    /**
-     * YAML file.
-     */
-    YAML, STRING, TEXT, DIGIT,
-    /**
-     * URL location.
-     */
-    URL, BOOL, ARRAY, MAP, BINARY, UUID;
+    STRING, JSON, YAML, TEXT, URL, UUID,
+    DIGIT,
+    BOOL,
+    ARRAY,
+    MAP,
+    BINARY;
 
     /**
      * Get parameter type.

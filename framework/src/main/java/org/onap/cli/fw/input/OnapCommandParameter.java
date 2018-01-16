@@ -58,7 +58,7 @@ public class OnapCommandParameter {
     /*
      * Parameter type such as int, json, yaml, string, etc
      */
-    private OnapCommandParameterType parameterType;
+    private OnapCommandParameterType parameterType = OnapCommandParameterType.STRING;
 
     /*
      * Default value
