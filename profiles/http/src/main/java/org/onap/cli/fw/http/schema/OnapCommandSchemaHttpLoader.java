@@ -332,6 +332,9 @@ public class OnapCommandSchemaHttpLoader {
 
         List<String> invaliResultMapParams = resultMapParams.stream()
                 .filter(p -> !resultAttNames.contains(p)).collect(Collectors.toList());
+        List<String> attributesMissing = resultAttNames.stream()
+                .filter(p -> !resultMapParams.contains(p)).collect(Collectors.toList());
+        invaliResultMapParams.addAll(attributesMissing);
 
         if (!invaliResultMapParams.isEmpty()) {
             OnapCommandUtils.throwOrCollect(new OnapCommandHttpInvalidResultMap(invaliResultMapParams), errorList, true);
