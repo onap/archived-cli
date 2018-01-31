@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
 name: customer-show
-description: Lists the registetred customers in Onap
+description: Retrieves the given registered customer in Onap
 
 info:
   product: onap-amsterdam
