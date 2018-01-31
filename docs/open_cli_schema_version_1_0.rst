@@ -68,9 +68,11 @@ a line or a paragraph as given example here.
         Start the given service. To see the available services in the system
         use the command *service-list*
 
-version
+info
 -------
-*version* entry allows to tag the command template with the software product
+product
+~~~~~~~~
+*product* entry allows to tag the command template with the software product
 name and version, for which command is implemented and is recommended to use
 the following format:
 
@@ -83,112 +85,12 @@ the following format:
     For example, to implement a command for Open Network Automation Platform
     (onap) version amsterdam, set the version as:
 
-    **version** : **onap-amsterdam**
+    **product** : **onap-amsterdam**
 
-*CAUTION*: version should not have any space character in it.
-
-service
--------
-Whether its information technology(IT) domain or communication technology(CT)
-domain, every software product is made of one or more service components. For
-example, onap has different components like aai, msb, etc and these components
-provides different kind of resources/features and functionalities.
-
-*service* entry allows to mention the details of the given software product's
-service. This is an section and is having entries defined in below sections.
-
-name
-~~~~
-*name* entry allows to configure the service name. For example, to configure
-service component 'aai' in onap-amsterdam product,
-
-    service:
-        name: aai
-
-*CAUTION*: This entry is very signification to discover this service from the
-service catalog and name should be matching with the service name registered
-in the catalog.
-
-version
-~~~~~~~
-*version* entry allows to mention the particular version of service for which
-command is implemented. For example, the service 'aai' in the product
-'onap-amsterdam' having versions like v11.
-
-    service:
-        version: v11
-
-*CAUTION*: This entry is very signification to discover this service from the
-service catalog and version should be matching with the service version
-registered in the catalog.
-
-mode
-~~~~
-Some software product provides catalog service , where all service of that
-product could be discovered. While other product does not. OCLIP provides
-support for both kind of these products to implement commands and *mode*
-entry allows to configure this mode of operation.
-
-CLIP supports in two different mode.
-
-In *catalog* mode, OCLIP will discover the service details based on given
-*name* and *version* from the configured *host-url* parameter. For example,
-the product 'onap-amsterdam' provides the service 'msb' as the catalog service where
-all other services will get registered. so OCLIP can discover the given
-service such as 'aai' from the catalog service 'msb'. In this mode, *host-url*
-will be configured with the *msb* service url. In this case:
-
-    service:
-        mode: catalog
-
-*NOTE*: To see the details of *host-url*, refer the section default_parameters
-
-In *direct* mode, OCLIP will not perform the discovery operation and consider
-the given *host-url* as the direct service url. In this case:
-
-    service:
-        mode: direct
-
-*NOTE*: To see the details of *host-url*, refer the section default_parameters
-
---------------------
-
-auth
-~~~~
-There are different kind of authentication and authorization approach exist and
-for OCLIP provides support for following approaches. Based on the approach
-configured in the template, OCLIP will login before executing the command and
-logout afterwards.
-
-none
-^^^^^
-In this approach, no login and logout will be performed. This is useful during
-the development cycle, as well as some services are available in public
-without authentication of user. In this approach, OCLIP ignores the given
-*host-username* and *host-password*. So the none auth is defined by:
-
-    service:
-        auth: none
-
-*NOTE*: To see the details of *host-username* and *host-password*, refer the
-section default_parameters
+*CAUTION*: product should not have any space character in it.
 
 
-basic
-^^^^^
-This is HTTP basic authentication approach and given *host-username* and
-*host-password* values are used to find the hash and use it as Authentication
-value. So the none auth is defined by:
-
-    service:
-        auth: basic
-
-*NOTE*: To see the details of *host-username* and *host-password*, refer the
-section default_parameters
-
---------------------
-
-paramters
+parameters
 ---------
 Every command has set of arguments to provide the input values and *parameters*
 section allows to add the required arguments details such as name, description,
@@ -696,6 +598,106 @@ OCLIP is enhanced to support REST API based products and *http* section is
 provided to capture all required details for performing http operation for the
 given command.
 
+service
+-------
+Whether its information technology(IT) domain or communication technology(CT)
+domain, every software product is made of one or more service components. For
+example, onap has different components like aai, msb, etc and these components
+provides different kind of resources/features and functionalities.
+
+*service* entry allows to mention the details of the given software product's
+service. This is an section and is having entries defined in below sections.
+
+name
+~~~~
+*name* entry allows to configure the service name. For example, to configure
+service component 'aai' in onap-amsterdam product,
+
+    service:
+        name: aai
+
+*CAUTION*: This entry is very signification to discover this service from the
+service catalog and name should be matching with the service name registered
+in the catalog.
+
+version
+~~~~~~~
+*version* entry allows to mention the particular version of service for which
+command is implemented. For example, the service 'aai' in the product
+'onap-amsterdam' having versions like v11.
+
+    service:
+        version: v11
+
+*CAUTION*: This entry is very signification to discover this service from the
+service catalog and version should be matching with the service version
+registered in the catalog.
+
+mode
+~~~~
+Some software product provides catalog service , where all service of that
+product could be discovered. While other product does not. OCLIP provides
+support for both kind of these products to implement commands and *mode*
+entry allows to configure this mode of operation.
+
+CLIP supports in two different mode.
+
+In *catalog* mode, OCLIP will discover the service details based on given
+*name* and *version* from the configured *host-url* parameter. For example,
+the product 'onap-amsterdam' provides the service 'msb' as the catalog service where
+all other services will get registered. so OCLIP can discover the given
+service such as 'aai' from the catalog service 'msb'. In this mode, *host-url*
+will be configured with the *msb* service url. In this case:
+
+    service:
+        mode: catalog
+
+*NOTE*: To see the details of *host-url*, refer the section default_parameters
+
+In *direct* mode, OCLIP will not perform the discovery operation and consider
+the given *host-url* as the direct service url. In this case:
+
+    service:
+        mode: direct
+
+*NOTE*: To see the details of *host-url*, refer the section default_parameters
+
+--------------------
+
+auth
+~~~~
+There are different kind of authentication and authorization approach exist and
+for OCLIP provides support for following approaches. Based on the approach
+configured in the template, OCLIP will login before executing the command and
+logout afterwards.
+
+none
+^^^^^
+In this approach, no login and logout will be performed. This is useful during
+the development cycle, as well as some services are available in public
+without authentication of user. In this approach, OCLIP ignores the given
+*host-username* and *host-password*. So the none auth is defined by:
+
+    service:
+        auth: none
+
+*NOTE*: To see the details of *host-username* and *host-password*, refer the
+section default_parameters
+
+
+basic
+^^^^^
+This is HTTP basic authentication approach and given *host-username* and
+*host-password* values are used to find the hash and use it as Authentication
+value. So the none auth is defined by:
+
+    service:
+        auth: basic
+
+*NOTE*: To see the details of *host-username* and *host-password*, refer the
+section default_parameters
+
+--------------------
 request
 ~~~~~~~
 *request* section captures all HTTP request information as:
