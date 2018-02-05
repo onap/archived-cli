@@ -314,8 +314,8 @@ public class OnapCommandRegistrar {
         String versionInfo = "";
         try {
             versionInfo = IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream(OnapCommandConstants.VERSION_INFO));
-        } catch (IOException e) {
-            //Never occurs  // NOSONAR
+        } catch (IOException e) { // NOSONAR
+            //Never occurs
         }
 
         versionInfo = versionInfo.replaceAll(OnapCommandConstants.VERSION_INFO_PLACE_HOLDER_ENB_PRD_VER, configuredProductVersion);

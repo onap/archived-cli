@@ -431,7 +431,7 @@ public class OnapCommandSchemaHttpLoader {
                        forCmd.getInfo().getService() + "-" +
                        forCmd.getService().getAuthType() + "-" + authAction,
                        forCmd.getInfo().getProduct());
-           } catch (OnapCommandNotFound e) {
+           } catch (OnapCommandNotFound e) {  // NOSONAR
                auth = OnapCommandRegistrar.getRegistrar().get(
                        forCmd.getService().getAuthType() + "-" + authAction,
                        forCmd.getInfo().getProduct());

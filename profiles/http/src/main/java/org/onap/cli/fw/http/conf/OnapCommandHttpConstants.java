@@ -34,7 +34,7 @@ public class OnapCommandHttpConstants {
     public static final String APPLICATION_JSON = "application/json";
     public static final String DEFAULT_PARAMETER_HTTP_FILE_NAME = "default_input_parameters_http.yaml";
     public static final String DEAFULT_PARAMETER_USERNAME = "host-username";
-    public static final String DEAFULT_PARAMETER_PASSWORD = "host-password";
+    public static final String DEAFULT_PARAMETER_PASSWORD = "host-password"; // NOSONAR
     public static final String DEAFULT_PARAMETER_HOST_URL = "host-url";
     public static final String DEFAULT_PARAMETER_NO_AUTH = "no-auth";
     public static final String HTTP_SCHEMA_PROFILE = "http";
