@@ -173,25 +173,25 @@ public class OnapCommandUtils {
      * There are unique values like uuid is supported, so when input, output (default) values has
      * these special entries, then it will get replaced with it's value
      *
-     * @param line
+     * @param lineSpl
      * @return
      */
-    public static String replaceLineForSpecialValues(String line) {
-        String result = "";
+    public static String replaceLineForSpecialValues(String lineSpl) {
+        String resultSpl = "";
 
-        if (!line.contains("$s{")) {
-            return line;
+        if (!lineSpl.contains("$s{")) {
+            return lineSpl;
         }
 
         int currentIdx = 0;
-        while (currentIdx < line.length()) {
-            int idxS = line.indexOf("$s{", currentIdx);
+        while (currentIdx < lineSpl.length()) {
+            int idxS = lineSpl.indexOf("$s{", currentIdx);
             if (idxS == -1) {
-                result += line.substring(currentIdx);
+                resultSpl += lineSpl.substring(currentIdx);
                 break;
             }
-            int idxE = line.indexOf("}", idxS);
-            String splEntry = line.substring(idxS + 3, idxE);
+            int idxE = lineSpl.indexOf("}", idxS);
+            String splEntry = lineSpl.substring(idxS + 3, idxE);
             splEntry = splEntry.trim();
 
             String value = "";
@@ -218,11 +218,11 @@ public class OnapCommandUtils {
                     }
             }
 
-            result += line.substring(currentIdx, idxS) + value;
+            resultSpl += lineSpl.substring(currentIdx, idxS) + value;
             currentIdx = idxE + 1;
         }
 
-        return result;
+        return resultSpl;
     }
 
     public static String replaceLineFromInputParameters(String line, Map<String, OnapCommandParameter> params)
