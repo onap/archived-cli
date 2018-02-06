@@ -145,8 +145,7 @@ public class OnapCommandSchemaLoader {
         try {
             List<String> errors = new ArrayList<>();
             if (includeDefault) {
-                Map<String, ?> defaultParameterMap = includeDefault ?
-                        validateSchemaVersion(DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+                Map<String, ?> defaultParameterMap = validateSchemaVersion(DEFAULT_PARAMETER_FILE_NAME, cmd.getSchemaVersion());
                 //mrkanag default_parameter is supported only for parameters.
                 if (defaultParameterMap.containsKey(INFO)) {
                     defaultParameterMap.remove(OnapCommandConstants.INFO);
@@ -508,7 +507,7 @@ public class OnapCommandSchemaLoader {
     public static InputStream loadSchemaFromFile(String schemaLocation) throws OnapCommandInvalidSchema {
         File schemaFile = new File(schemaLocation);
         try {
-            FileInputStream inputFileStream = new FileInputStream(schemaFile);
+            FileInputStream inputFileStream = new FileInputStream(schemaFile);  // NOSONAR
             if (!schemaFile.isFile()) {
                 throw new OnapCommandInvalidSchema(schemaFile.getName(), SCHEMA_FILE_NOT_EXIST);
             }

@@ -52,8 +52,7 @@ public class OnapCommandSchemaHttpLoader {
         try {
             List<String> errors = new ArrayList<>();
             if (includeDefault) {
-                Map<String, ?> defaultParameterMap = includeDefault ?
-                        OnapCommandSchemaLoader.validateSchemaVersion(OnapCommandHttpConstants.DEFAULT_PARAMETER_HTTP_FILE_NAME, cmd.getSchemaVersion()) : new HashMap<>();
+                Map<String, ?> defaultParameterMap = OnapCommandSchemaLoader.validateSchemaVersion(OnapCommandHttpConstants.DEFAULT_PARAMETER_HTTP_FILE_NAME, cmd.getSchemaVersion());
 
                 //mrkanag default_parameter is supported only for parameters.
                 if (defaultParameterMap.containsKey(OnapCommandConstants.INFO)) {
@@ -434,7 +433,7 @@ public class OnapCommandSchemaHttpLoader {
                        forCmd.getInfo().getService() + "-" +
                        forCmd.getService().getAuthType() + "-" + authAction,
                        forCmd.getInfo().getProduct());
-           } catch (OnapCommandNotFound e) {
+           } catch (OnapCommandNotFound e) {  // NOSONAR
                auth = OnapCommandRegistrar.getRegistrar().get(
                        forCmd.getService().getAuthType() + "-" + authAction,
                        forCmd.getInfo().getProduct());

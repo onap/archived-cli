@@ -107,8 +107,8 @@ public class OnapCommandHttpUtils {
             String key = entry.getKey();
             try {
                 resultsProcessed.put(key, OnapCommandHttpUtils.replaceLineFromOutputResults(resultMap.get(key), resultHttp));
-            } catch(OnapCommandResultEmpty e) {
-                // pass // NOSONAR
+            } catch(OnapCommandResultEmpty e) {  // NOSONAR
+                // pass
             }
         }
 
@@ -174,7 +174,7 @@ public class OnapCommandHttpUtils {
             try {
                 // JSONArray or String
                 value = JsonPath.read(resultHttp.getBody(), jsonPath);
-            } catch (PathNotFoundException e1) {
+            } catch (PathNotFoundException e1) { // NOSONAR
                 //set to blank for those entries which are missing from the output json
                 value = "";
             } catch (Exception e) {

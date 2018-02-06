@@ -53,7 +53,7 @@ public class OnapCommandHelperUtils {
 
             impBuildDate = attributes.getValue("Build-Time");
         }
-        catch (IOException e)
+        catch (IOException e)  // NOSONAR
         {
             //Ignore it as it will never occur
         }

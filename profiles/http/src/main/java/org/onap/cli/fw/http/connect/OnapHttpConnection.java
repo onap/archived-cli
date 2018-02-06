@@ -129,7 +129,7 @@ public class OnapHttpConnection {
                     this.httpClient = HttpClients.custom().setConnectionManager(connManager)
                             .setRedirectStrategy(new LaxRedirectStrategy()).build();
                 } else {
-                    this.httpClient = HttpClients.createDefault();
+                    this.httpClient = HttpClients.createDefault();  // NOSONAR
                 }
             } catch (Exception e) {
                 throw new OnapCommandHttpFailure(e);
