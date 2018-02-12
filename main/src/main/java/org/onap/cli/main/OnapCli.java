@@ -303,24 +303,24 @@ public class OnapCli {
      *             exception
      */
     private ConsoleReader createConsoleReader() throws IOException {
-        ConsoleReader console = new ConsoleReader();
-        try {
-            StringCompleter strCompleter = new StringCompleter(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion());
-            strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
-                    OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
-                    OnapCliConstants.PARAM_INTERACTIVE_USE,
-                    OnapCliConstants.PARAM_INTERACTIVE_HELP,
-                    OnapCliConstants.PARAM_INTERACTIVE_VERSION,
-                    OnapCliConstants.PARAM_INTERACTIVE_SET,
-                    OnapCliConstants.PARAM_INTERACTIVE_UNSET,
-                    OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
-            console.addCompleter(strCompleter);
-            console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT + ":" + OnapCommandRegistrar.getRegistrar().getEnabledProductVersion() + ">");
-        } catch (OnapCommandException e) { // NOSONAR
-            this.print("Failed to load oclip commands," + e.getMessage());
+        try(ConsoleReader console = new ConsoleReader()){
+            try {
+                StringCompleter strCompleter = new StringCompleter(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion());
+                strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
+                        OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
+                        OnapCliConstants.PARAM_INTERACTIVE_USE,
+                        OnapCliConstants.PARAM_INTERACTIVE_HELP,
+                        OnapCliConstants.PARAM_INTERACTIVE_VERSION,
+                        OnapCliConstants.PARAM_INTERACTIVE_SET,
+                        OnapCliConstants.PARAM_INTERACTIVE_UNSET,
+                        OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
+                console.addCompleter(strCompleter);
+                console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT + ":" + OnapCommandRegistrar.getRegistrar().getEnabledProductVersion() + ">");
+            } catch (OnapCommandException e) { // NOSONAR
+                this.print("Failed to load oclip commands," + e.getMessage());
+            }
+            return console;
         }
-
-        return console;
     }
 
     /**
