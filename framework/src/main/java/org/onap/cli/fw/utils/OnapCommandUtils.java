@@ -288,8 +288,8 @@ public class OnapCommandUtils {
             for (String value: entry.getValue()) {
                 try {
                     value = replaceLineFromInputParameters(value, params);
-                } catch(OnapCommandResultEmpty e) {
-                    // pass // NOSONAR
+                } catch(OnapCommandResultEmpty e) {  // NOSONAR
+                    // pass
                 }
                 resultsProcessed.get(key).add(value);
             }

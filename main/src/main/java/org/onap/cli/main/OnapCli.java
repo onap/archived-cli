@@ -376,14 +376,13 @@ public class OnapCli {
                 this.exitSuccessfully();
 
                 generateSmapleYaml(cmd);
-            } catch (Exception e) {
+            } catch (OnapCommandWarning w) {
                 this.print(cmd.getResult().getDebugInfo());
-                if (e instanceof OnapCommandWarning) {
-                    this.exitSuccessfully();
-                } else {
-                    this.print(e);
-                    this.exitFailure();
-                }
+                this.exitSuccessfully();
+            } catch (Exception e) {
+                this.print(e);
+                this.print(cmd.getResult().getDebugInfo());
+                this.exitFailure();
             }
         }
     }
