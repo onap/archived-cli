@@ -42,12 +42,12 @@ public class OnapCommandHelperUtils {
      */
     public static String findLastBuildTime() {
         String impBuildDate = "";
+        JarFile jar = null;
         try
         {
             String path = OnapCommandUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-            JarFile jar = new JarFile(path);
+            jar = new JarFile(path);
             Manifest manifest = jar.getManifest();
-            jar.close();
 
             Attributes attributes = manifest.getMainAttributes();
 
@@ -56,6 +56,14 @@ public class OnapCommandHelperUtils {
         catch (IOException e)  // NOSONAR
         {
             //Ignore it as it will never occur
+        } finally {
+            if (jar != null) {
+                try {
+                    jar.close();
+                } catch (IOException e) { // NOSONAR
+                    //Ignore it as it will never occur
+                }
+            }
         }
 
         return impBuildDate;
