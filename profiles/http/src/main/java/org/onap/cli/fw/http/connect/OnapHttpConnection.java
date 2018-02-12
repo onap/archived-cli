@@ -126,7 +126,7 @@ public class OnapHttpConnection {
                             .register("https", new SSLConnectionSocketFactory(sslContext, hostnameVerifier)).build();
                     HttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
 
-                    this.httpClient = HttpClients.custom().setConnectionManager(connManager)
+                    this.httpClient = HttpClients.custom().setConnectionManager(connManager)  // NOSONAR
                             .setRedirectStrategy(new LaxRedirectStrategy()).build();
                 } else {
                     this.httpClient = HttpClients.createDefault();  // NOSONAR
@@ -345,8 +345,10 @@ public class OnapHttpConnection {
         return result;
     }
 
+    @SuppressWarnings("deprecation")
     public void close() {
         this.mapCommonHeaders.clear();
+        this.httpClient.getConnectionManager().shutdown();
     }
 
     private HttpEntity getMultipartEntity(HttpInput input) {
