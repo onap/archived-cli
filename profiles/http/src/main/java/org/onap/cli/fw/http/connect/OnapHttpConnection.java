@@ -124,9 +124,9 @@ public class OnapHttpConnection {
                     Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder
                             .<ConnectionSocketFactory>create()
                             .register("https", new SSLConnectionSocketFactory(sslContext, hostnameVerifier)).build();
-                    HttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+                    HttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);  // NOSONAR
 
-                    this.httpClient = HttpClients.custom().setConnectionManager(connManager)  // NOSONAR
+                    this.httpClient = HttpClients.custom().setConnectionManager(connManager)
                             .setRedirectStrategy(new LaxRedirectStrategy()).build();
                 } else {
                     this.httpClient = HttpClients.createDefault();  // NOSONAR
