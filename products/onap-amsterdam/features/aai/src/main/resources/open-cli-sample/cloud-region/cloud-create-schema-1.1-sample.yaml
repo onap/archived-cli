@@ -1,0 +1,17 @@
+open_cli_sample_version: 1.0
+name: cloud-create
+version: onap-amsterdam
+samples:
+  sample1:
+    name: cloud-create
+    input: --cloud-name huawei-cloud --region-name bangalore
+    moco: cloud-create-schema-1.1-moco.json
+    output: |
+      +--------------+------------+------------------+
+      |cloud         |region      |resource-version  |
+      +--------------+------------+------------------+
+      |huawei-cloud  |bangalore   |1509027332165     |
+      +--------------+------------+------------------+
+      |Rackspace     |RegionOne   |1508827902543     |
+      +--------------+------------+------------------+
+

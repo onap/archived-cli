@@ -16,11 +16,8 @@
 
 package org.onap.cli.main;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import jline.TerminalFactory;
+import jline.console.ConsoleReader;
 import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -28,6 +25,7 @@ import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidSample;
+import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.error.OnapCommandWarning;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
@@ -36,15 +34,24 @@ import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
+import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliArgsParser;
 import org.onap.cli.sample.yaml.SampleYamlGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
 
-import jline.TerminalFactory;
-import jline.console.ConsoleReader;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Oclip Command Line Interface (CLI).
@@ -54,7 +61,7 @@ public class OnapCli {
 
     private static Logger LOG = LoggerFactory.getLogger(OnapCli.class);
 
-    private List<String> args = new ArrayList<>();
+    private List<String>  args = new ArrayList<>();
 
     private String product = null;
 
@@ -328,6 +335,12 @@ public class OnapCli {
      */
     public void handleCommand() {
         OnapCommand cmd;
+        boolean shouldVerify = false;
+
+        if(args.contains("--verify")) {
+            shouldVerify = true;
+        }
+
         if (!args.isEmpty()) {
             try {
                 if (this.product != null) {
@@ -368,11 +381,33 @@ public class OnapCli {
                     }
                 }
 
+                if (shouldVerify) {
+                   args = getTestArgs(getSampleFileName(cmd), cmd);
+                   args.addAll(Arrays.asList(
+                           OnapCommandConstants.VERIFY_HOST_PARAMETER_OPT,
+                           OnapCommandConfig.getPropertyValue(OnapCommandConstants.VERIFY_MOCO_HOST)
+                                   + ":" + OnapCommandConfig.getPropertyValue(OnapCommandConstants.VERIFY_MOCO_PORT)));
+                   args.add(OnapCommandConfig.getPropertyValue(OnapCommandConstants.VERIFY_NO_AUTH_PARAMETER_OPT));
+                   cmd.preExecute();
+                }
+
                 OnapCliArgsParser.populateParams(cmd.getParameters(), args);
+
                 OnapCommandResult result = cmd.execute();
 
-                this.print(result.getDebugInfo());
-                this.print(result.print());
+                if (shouldVerify) {
+                    cmd.postExecute();
+                    String testOutput = getTestOutput(getSampleFileName(cmd));
+                    if (getTestOutput(getSampleFileName(cmd)).equals(result.print())) {
+                        this.print(result.print());
+                        this.print(cmd.getName() + " verified successfully.");
+                    } else {
+                        this.print(cmd.getName() + "verification failed.");
+                    }
+                } else {
+                    this.print(result.getDebugInfo());
+                    this.print(result.print());
+                }
                 this.exitSuccessfully();
 
                 generateSmapleYaml(cmd);
@@ -385,6 +420,32 @@ public class OnapCli {
                 this.exitFailure();
             }
         }
+    }
+
+    private List<String> getTestArgs(Resource resource, OnapCommand cmd) throws OnapCommandInvalidSchema {
+        Map<String, ?> stringMap = OnapCommandSchemaLoader.loadSchema(resource);
+        Map<String, Map<String, String>> samples = (Map<String, Map<String, String>>) stringMap.get("samples");
+
+        ArrayList<String> args = new ArrayList();
+        args.add(cmd.getName());
+
+        if (samples.get("sample1").get("input") != null) {
+            args.addAll(Arrays.asList(samples.get("sample1").get("input").trim().split(" ")));
+        }
+
+        return args;
+    }
+
+    private String getTestOutput(Resource resource) throws OnapCommandInvalidSchema {
+        Map<String, ?> stringMap = OnapCommandSchemaLoader.loadSchema(resource);
+        Map<String, Map<String, String>> samples = (Map<String, Map<String, String>>) stringMap.get("samples");
+        return samples.get("sample1").get("output");
+    }
+
+    private Resource getSampleFileName(OnapCommand cmd) throws IOException {
+            Resource resource = OnapCommandDiscoveryUtils.findResource(cmd.getName() + "-schema-1.1-sample.yaml",
+                    "open-cli-sample/**/*.yaml");
+            return resource;
     }
 
     private void generateSmapleYaml(OnapCommand cmd) throws OnapCommandException {

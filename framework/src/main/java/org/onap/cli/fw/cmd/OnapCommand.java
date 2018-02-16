@@ -16,11 +16,13 @@
 
 package org.onap.cli.fw.cmd;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -178,6 +180,13 @@ public abstract class OnapCommand {
          }
     }
 
+    public void preExecute() throws OnapCommandException, IOException {
+        LOG.debug("CMD: " + this.getName() + "pre execute.");
+    }
+
+    public void postExecute() throws OnapCommandException {
+        LOG.debug("CMD: " + this.getName() + "post execute.");
+    }
     /**
      * Oclip command execute with given parameters on service. Before calling this method, its mandatory to set all
      * parameters value.

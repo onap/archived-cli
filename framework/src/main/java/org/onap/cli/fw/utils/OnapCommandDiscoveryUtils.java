@@ -297,6 +297,9 @@ public class OnapCommandDiscoveryUtils {
             throw new OnapCommandDiscoveryFailed(SCHEMA_DIRECTORY, e);
         }
 
+        // populate all samples to extschema
+        // in schema add two new field samle and moco-json
+
         return extSchemas;
     }
 

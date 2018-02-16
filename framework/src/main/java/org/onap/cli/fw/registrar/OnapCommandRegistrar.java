@@ -243,6 +243,9 @@ public class OnapCommandRegistrar {
 
         OnapCommand cmd = OnapCommandDiscoveryUtils.loadCommandClass(cls);
         String schemaName = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version).getSchemaName();
+
+        // initialize cmd with use of schemainfo
+        // cmd will hold two new properties, moco-json and sample.
         cmd.initializeSchema(schemaName);
 
         return cmd;

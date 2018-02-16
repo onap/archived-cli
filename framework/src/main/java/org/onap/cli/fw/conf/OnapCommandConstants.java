@@ -146,6 +146,12 @@ public class OnapCommandConstants {
     public static final String SAMPLE_GEN_ENABLED = "cli.sample.gen.enable";
     public static final String SAMPLE_GEN_TARGET_FOLDER = "cli.sample.gen.target";
 
+    public static final String VERIFY_HOST_PARAMETER_OPT="--host-url";
+    public static final String VERIFY_MOCO_HOST="cli.verify.host";
+    public static final String VERIFY_MOCO_PORT="cli.verify.port";
+    public static final String VERIFY_NO_AUTH_PARAMETER_OPT="--no-auth";
+
+
     private OnapCommandConstants() {
     }
 
