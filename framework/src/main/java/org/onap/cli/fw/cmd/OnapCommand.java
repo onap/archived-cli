@@ -16,11 +16,13 @@
 
 package org.onap.cli.fw.cmd;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -32,12 +34,16 @@ import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.OnapCommandResultType;
+import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.schema.OnapCommandSchemaMerger;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 /**
  * Oclip Command.
@@ -149,7 +155,6 @@ public abstract class OnapCommand {
         return this.initializeSchema(schema, false);
     }
 
-
     public List<String> initializeSchema(String schema, boolean validate) throws OnapCommandException {
         this.setSchemaName(schema);
 
@@ -178,6 +183,13 @@ public abstract class OnapCommand {
          }
     }
 
+    protected void preRun() throws OnapCommandException {
+        LOG.debug("CMD: " + this.getName() + "pre run.");
+    }
+
+    protected void postRun() throws OnapCommandException {
+        LOG.debug("CMD: " + this.getName() + "post run.");
+    }
     /**
      * Oclip command execute with given parameters on service. Before calling this method, its mandatory to set all
      * parameters value.
@@ -238,10 +250,13 @@ public abstract class OnapCommand {
             }
         }
 
+        preRun();
+
         this.run();
 
         LOG.info("OUTPUT: " + this.cmdResult.getRecords());
 
+        postRun();
         return this.cmdResult;
     }
 
@@ -270,6 +285,5 @@ public abstract class OnapCommand {
     public String printHelp() throws OnapCommandHelpFailed {
         return OnapCommandHelperUtils.help(this);
     }
-
     // (mrkanag) Add toString for all command, parameter, result, etc objects in JSON format
 }
