@@ -17,6 +17,7 @@
 package org.onap.cli.fw.registrar;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -30,6 +31,7 @@ import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidRegistration;
+import org.onap.cli.fw.error.OnapCommandInvalidSample;
 import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.error.OnapCommandRegistrationProductInfoMissing;
@@ -47,6 +49,7 @@ import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
 
 
 /**
@@ -254,10 +257,15 @@ public class OnapCommandRegistrar {
         }
 
         OnapCommand cmd = OnapCommandDiscoveryUtils.loadCommandClass(cls);
-        String schemaName = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version).getSchemaName();
-        cmd.initializeSchema(schemaName);
+        OnapCommandSchemaInfo schemaInfo = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version);
+
+        cmd.initializeSchema(schemaInfo);
 
         return cmd;
+    }
+
+    public OnapCommandSchemaInfo getSchemaInfo(String cmdName) throws OnapCommandException {
+        return OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, this.enabledProductVersion);
     }
 
     private Map<String, Class<OnapCommand>> autoDiscoverCommandPlugins() throws OnapCommandException {
@@ -408,5 +416,27 @@ public class OnapCommandRegistrar {
         } catch (OnapCommandException e) {
             throw new OnapCommandHelpFailed(e);
         }
+    }
+
+    public static List<Resource> getSampleResources(OnapCommand cmd) throws OnapCommandException {
+
+        List<Resource> resources = new ArrayList();
+        OnapCommandSchemaInfo schemaInfo = OnapCommandRegistrar.getRegistrar().getSchemaInfo(cmd.getName());
+
+        List<String> sampleFiles = new ArrayList();
+        if (schemaInfo != null && !schemaInfo.getSampleFiles().isEmpty()) {
+            sampleFiles.addAll(schemaInfo.getSampleFiles());
+        }
+
+        for (String sampleFile : sampleFiles) {
+            try {
+                Resource resource = OnapCommandDiscoveryUtils.findResource(sampleFile,
+                        OnapCommandConstants.VERIFY_SAMPLES_DIRECTORY + OnapCommandConstants.YAML_PATTERN);
+                resources.add(resource);
+            } catch (IOException e) {
+                throw new OnapCommandInvalidSample("Sample file does not exist", e);
+            }
+        }
+        return resources;
     }
 }

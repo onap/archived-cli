@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: sample-test
+version: open-cli
+samples:
+  sample1:
+    name: sample-test
+    input:
+    moco: sample-test-scheama-1.1-moco.json
+    output: |
+      +----------+--------+
+      |property  |value   |
+      +----------+--------+
+      |output-1  |[]      |
+      +----------+--------+
+      |output-2  |[]      |
+      +----------+--------+

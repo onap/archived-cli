@@ -16,16 +16,7 @@
 
 package org.onap.cli.validation;
 
-import static org.junit.Assert.fail;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.commons.io.FileUtils;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
@@ -33,6 +24,14 @@ import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.main.OnapCli;
 import org.onap.cli.moco.OnapCommandHttpMocoServer;
 import org.onap.cli.moco.OnapCommandSample;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.fail;
 
 public class OnapValidationTest {
 
@@ -82,13 +81,6 @@ public class OnapValidationTest {
                 }
             }
         }
-    }
-
-    @Ignore
-    @Test
-    public void verifyCommandResults() throws OnapCommandException {
-        OnapCommandHttpMocoServer server = new OnapCommandHttpMocoServer();
-        server.verifySamples();
     }
 
     @Test

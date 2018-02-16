@@ -148,6 +148,25 @@ public class OnapCommandConstants {
     public static final String SAMPLE_GEN_ENABLED = "cli.sample.gen.enable";
     public static final String SAMPLE_GEN_TARGET_FOLDER = "cli.sample.gen.target";
 
+    public static final String VERIFY_HOST_PARAMETER_OPT = "--host-url";
+    public static final String VERIFY_MOCO_HOST = "cli.verify.host";
+    public static final String VERIFY_MOCO_PORT = "cli.verify.port";
+    public static final String VERIFY_NO_AUTH_PARAMETER_OPT = "--no-auth";
+    public static final String VERIFY_SAMPLES_DIRECTORY = "open-cli-sample";
+    public static final String VERIFY_SAMPLES = "samples";
+    public static final String VERIFY_SAMPLE_1 = "sample1";
+    public static final String VERIFY_OUPUT = "output";
+    public static final String VERIFY_INPUT = "input";
+    public static final String VERIFY_REQUEST_URI = "uri";
+    public static final String VERIFY_RESPONSE_STATUS = "status";
+    public static final String VERIFY_RESPONSE_JSON = "json";
+    public static final String VERIFY_REQUEST = "request";
+    public static final String VERIFY_RESPONSE = "response";
+    public static final String VERIFY_CONTENT_TYPE = "Content-Type";
+    public static final String VERIFY_CONTENT_TYPE_VALUE = "application/json";
+    public static final String VERIFY_LONG_OPTION = "--verify";
+    public static final String VERIFY_SHORT_OPTION = "-V";
+
     private OnapCommandConstants() {
     }
 
