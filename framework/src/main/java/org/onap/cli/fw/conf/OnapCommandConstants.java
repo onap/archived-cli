@@ -148,6 +148,26 @@ public class OnapCommandConstants {
     public static final String SAMPLE_GEN_ENABLED = "cli.sample.gen.enable";
     public static final String SAMPLE_GEN_TARGET_FOLDER = "cli.sample.gen.target";
 
+    public static final String VERIFY_SAMPLES_DIRECTORY = "open-cli-sample";
+    public static final String VERIFY_SAMPLES_FILE_PATTERN = VERIFY_SAMPLES_DIRECTORY + YAML_PATTERN;
+    public static final String VERIFY_SAMPLES_MOCK_PATTERN = VERIFY_SAMPLES_DIRECTORY + JSON_PATTERN;
+    public static final String VERIFY_SAMPLES = "samples";
+    public static final String VERIFY_CMD_NAME = "name";
+    public static final String VERIFY_CMD_VERSION = "version";
+    public static final String VERIFY_OUPUT = "output";
+    public static final String VERIFY_INPUT = "input";
+    public static final String VERIFY_MOCO = "moco";
+    public static final String VERIFY_SAMPLE_FILE_ID = "samplefileid";
+    public static final String VERIFY_SAMPLE_ID = "sampleid";
+    public static final String VERIFY_RESULT_PASS = "pass";
+    public static final String VERIFY_RESULT_FAIL = "fail";
+    public static final String VERIFY_CONTEXT_PARAM = "context";
+
+
+
+    public static final String VERIFY_LONG_OPTION = "--verify";
+    public static final String VERIFY_SHORT_OPTION = "-V";
+
     private OnapCommandConstants() {
     }
 

@@ -67,6 +67,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -524,26 +525,8 @@ public class OnapCommandSchemaLoader {
     /**
      * Get schema map.
      *
-     * @param resource
-     *            resource obj
-     * @return map
-     * @throws OnapCommandInvalidSchema
-     *             exception
-     */
-    public static Map<String, ?> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
-        try {
-            return  loadSchema(resource.getInputStream(), resource.getFilename());
-        } catch (IOException e) {
-            throw new OnapCommandInvalidSchema(resource.getFilename(), e);
-        }
-
-    }
-
-    /**
-     * Get schema map.
-     *
-     * @param resource
-     *            resource obj
+     * @param stream
+     * @param schemaName
      * @return map
      * @throws OnapCommandInvalidSchema
      *             exception
