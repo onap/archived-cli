@@ -19,10 +19,13 @@ package org.onap.cli.fw.utils;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_DIRECTORY;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_JSON_PATTERN;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DISCOVERY_FILE;
+import static org.onap.cli.fw.conf.OnapCommandConstants.JSON_PATTERN;
 import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
 import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
 import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_DIRECTORY;
 import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_PATH_PATERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.VERIFY_SAMPLES_DIRECTORY;
+import static org.onap.cli.fw.conf.OnapCommandConstants.YAML_PATTERN;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,9 +36,12 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.Map.Entry;
 
+import com.fasterxml.jackson.databind.SerializationConfig;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
@@ -297,7 +303,37 @@ public class OnapCommandDiscoveryUtils {
             throw new OnapCommandDiscoveryFailed(SCHEMA_DIRECTORY, e);
         }
 
+        try {
+            Resource[] samples = findResources(OnapCommandConstants.VERIFY_SAMPLES_DIRECTORY + YAML_PATTERN);
+            for (Resource sample : samples) {
+                updateSchemaInfoWithSampleInfo(sample, extSchemas);
+            }
+        } catch (IOException e) {
+            throw new OnapCommandDiscoveryFailed(VERIFY_SAMPLES_DIRECTORY, e);
+        }
+
         return extSchemas;
+    }
+
+    private static void updateSchemaInfoWithSampleInfo(Resource sampleResourse,
+                                                      List<OnapCommandSchemaInfo> schemaInfos) throws OnapCommandInvalidSchema, IOException {
+        Map<String, ?> infoMap = loadSchema(sampleResourse);
+        String cmdName = (String) infoMap.get("name");
+        String version = (String) infoMap.get("version");
+        Map<String, Map<String, String>> samples = (Map<String, Map<String, String>>) infoMap.get("samples");
+        String mockedFile = samples.get("sample1").get("moco");
+        Resource mockingResource = findResource(mockedFile,
+                OnapCommandConstants.VERIFY_SAMPLES_DIRECTORY + JSON_PATTERN);
+
+        Optional<OnapCommandSchemaInfo> optSchemaInfo = schemaInfos.stream()
+                .filter(e -> e.getCmdName().equals(cmdName) && e.getProduct().equals(version))
+                .findFirst();
+
+        if (optSchemaInfo.isPresent() && mockingResource != null && sampleResourse != null) {
+            OnapCommandSchemaInfo onapCommandSchemaInfo = optSchemaInfo.get();
+            onapCommandSchemaInfo.setMockingFile(mockingResource.getFilename());
+            onapCommandSchemaInfo.setSampleFile(sampleResourse.getFilename());
+        }
     }
 
     /**

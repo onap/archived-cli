@@ -16,19 +16,18 @@
 
 package org.onap.cli.fw.http.cmd;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dreamhead.moco.HttpServer;
+import com.github.dreamhead.moco.Moco;
+import com.github.dreamhead.moco.ResponseHandler;
+import com.github.dreamhead.moco.Runner;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
+import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.http.auth.OnapCommandHttpAuthClient;
 import org.onap.cli.fw.http.auth.OnapCommandHttpService;
 import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
@@ -39,10 +38,28 @@ import org.onap.cli.fw.http.schema.OnapCommandSchemaHttpLoader;
 import org.onap.cli.fw.http.utils.OnapCommandHttpUtils;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.http.mock.MockJsonGenerator;
 import org.onap.cli.http.mock.MockRequest;
 import org.onap.cli.http.mock.MockResponse;
+import org.springframework.core.io.Resource;
+import org.yaml.snakeyaml.Yaml;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import static com.github.dreamhead.moco.Moco.file;
+import static com.github.dreamhead.moco.Moco.json;
+import static com.github.dreamhead.moco.MocoJsonRunner.jsonHttpServer;
+import static com.github.dreamhead.moco.Runner.runner;
+import static com.github.dreamhead.moco.Runner.running;
 
 /**
  * Oclip http Command.
@@ -60,6 +77,9 @@ public class OnapHttpCommand extends OnapCommand {
     protected OnapCommandHttpAuthClient authClient;
 
     private OnapCommandHttpService oclipService = new OnapCommandHttpService();
+
+    // used to run the moco server for verify
+    private  Runner runner;
 
     public OnapHttpCommand() {
         super.addDefaultSchemas(OnapCommandHttpConstants.DEFAULT_PARAMETER_HTTP_FILE_NAME);
@@ -129,6 +149,59 @@ public class OnapHttpCommand extends OnapCommand {
                 && "false".equals(this.getParametersMap().get(OnapCommandHttpConstants.DEFAULT_PARAMETER_NO_AUTH).getValue())
                 && (this.getInfo().getCommandType().equals(OnapCommandType.CMD) ||
                         this.getInfo().getCommandType().equals(OnapCommandType.CATALOG));
+    }
+
+    @Override
+    public void preExecute() throws OnapCommandException {
+
+        Map<String, ?> mocoServerConfigs = null;
+        try {
+            mocoServerConfigs = getMocoServerConfigs(this.getMockedFile());
+        } catch (IOException e) {
+            throw new OnapCommandException("Mocking file is not available in path. ", e);
+        }
+
+        HttpServer server = Moco.httpServer(Integer.parseInt(
+                OnapCommandConfig.getPropertyValue(OnapCommandConstants.VERIFY_MOCO_PORT)));
+
+        List<ResponseHandler> responseHandlers = new ArrayList<>();
+
+        if(mocoServerConfigs.containsKey(OnapCommandConstants.VERIFY_RESPONSE_JSON)) {
+            responseHandlers.add(Moco.with(mocoServerConfigs.get(OnapCommandConstants.VERIFY_RESPONSE_JSON).toString()));
+        }
+        responseHandlers.add(Moco.status((Integer) mocoServerConfigs.get(OnapCommandConstants.VERIFY_RESPONSE_STATUS)));
+
+        server.request(Moco.by(Moco.uri((String) mocoServerConfigs.get(OnapCommandConstants.VERIFY_REQUEST_URI))))
+                .response(Moco.header(OnapCommandConstants.VERIFY_CONTENT_TYPE, OnapCommandConstants.VERIFY_CONTENT_TYPE_VALUE),
+                        responseHandlers.toArray(new ResponseHandler[responseHandlers.size()]));
+
+        runner = runner(server);
+        runner.start();
+    }
+
+    private Map<String, ?> getMocoServerConfigs(Resource resource) throws OnapCommandInvalidSchema, IOException {
+        HashMap<String, Object> serverConfig = new HashMap();
+        List<Map<String, ?>> stringMap = (List<Map<String, ?>>) new Yaml().load(resource.getInputStream());
+
+        if(!stringMap.isEmpty()) {
+            Map<String, ?> jsonConfigs = stringMap.get(0);
+            Map<String, String> request = (Map<String, String>) jsonConfigs.get(OnapCommandConstants.VERIFY_REQUEST);
+            serverConfig.put(OnapCommandConstants.VERIFY_REQUEST_URI, request.get(OnapCommandConstants.VERIFY_REQUEST_URI));
+
+            Map<String, String> response = (Map<String, String>) jsonConfigs.get(OnapCommandConstants.VERIFY_RESPONSE);
+            serverConfig.put(OnapCommandConstants.VERIFY_RESPONSE_STATUS, response.get(OnapCommandConstants.VERIFY_RESPONSE_STATUS));
+
+            if(response.get(OnapCommandConstants.VERIFY_RESPONSE_JSON) != null) {
+                serverConfig.put(OnapCommandConstants.VERIFY_RESPONSE_JSON,
+                        new ObjectMapper().writeValueAsString(response.get(OnapCommandConstants.VERIFY_RESPONSE_JSON)));
+            }
+        }
+        return serverConfig;
+    }
+
+    @Override
+    public void postExecute() throws OnapCommandException {
+        runner.stop();
     }
 
     @Override

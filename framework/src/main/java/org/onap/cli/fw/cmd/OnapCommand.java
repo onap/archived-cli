@@ -16,11 +16,13 @@
 
 package org.onap.cli.fw.cmd;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -32,12 +34,16 @@ import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.OnapCommandResultType;
+import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.schema.OnapCommandSchemaMerger;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 /**
  * Oclip Command.
@@ -52,6 +58,10 @@ public abstract class OnapCommand {
     private String cmdName;
 
     private String cmdSchemaName;
+
+    private Resource sampleOutputFile;
+
+    private Resource mockedFile;
 
     private OnapCommandInfo info = new OnapCommandInfo();
 
@@ -149,6 +159,30 @@ public abstract class OnapCommand {
         return this.initializeSchema(schema, false);
     }
 
+    public List<String> initializeSchema(OnapCommandSchemaInfo onapCommandSchemaInfo) throws OnapCommandException {
+        try {
+
+
+            if (onapCommandSchemaInfo.getMockingFile() != null) {
+                this.setMockedFile(
+                        OnapCommandDiscoveryUtils.findResource(onapCommandSchemaInfo.getMockingFile(),
+                                OnapCommandConstants.VERIFY_SAMPLES_DIRECTORY
+                                        + OnapCommandConstants.JSON_PATTERN));
+            }
+
+            if (onapCommandSchemaInfo.getSampleFile() != null) {
+                this.setSampleOutputFile(
+                        OnapCommandDiscoveryUtils.findResource(onapCommandSchemaInfo.getSampleFile(),
+                                OnapCommandConstants.VERIFY_SAMPLES_DIRECTORY
+                                        + OnapCommandConstants.YAML_PATTERN));
+            }
+        } catch (IOException e) {
+            throw new OnapCommandException("Sample files doesn't exist in path. ", e);
+        }
+
+        return this.initializeSchema(onapCommandSchemaInfo.getSchemaName());
+    }
+
 
     public List<String> initializeSchema(String schema, boolean validate) throws OnapCommandException {
         this.setSchemaName(schema);
@@ -178,6 +212,13 @@ public abstract class OnapCommand {
          }
     }
 
+    public void preExecute() throws OnapCommandException {
+        LOG.debug("CMD: " + this.getName() + "pre execute.");
+    }
+
+    public void postExecute() throws OnapCommandException {
+        LOG.debug("CMD: " + this.getName() + "post execute.");
+    }
     /**
      * Oclip command execute with given parameters on service. Before calling this method, its mandatory to set all
      * parameters value.
@@ -269,6 +310,22 @@ public abstract class OnapCommand {
      */
     public String printHelp() throws OnapCommandHelpFailed {
         return OnapCommandHelperUtils.help(this);
+    }
+
+    public Resource getSampleOutputFile() {
+        return sampleOutputFile;
+    }
+
+    public void setSampleOutputFile(Resource sampleOutputFile) {
+        this.sampleOutputFile = sampleOutputFile;
+    }
+
+    public Resource getMockedFile() {
+        return mockedFile;
+    }
+
+    public void setMockedFile(Resource mockedFile) {
+        this.mockedFile = mockedFile;
     }
 
     // (mrkanag) Add toString for all command, parameter, result, etc objects in JSON format

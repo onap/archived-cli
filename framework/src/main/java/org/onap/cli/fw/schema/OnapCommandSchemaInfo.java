@@ -16,8 +16,10 @@
 
 package org.onap.cli.fw.schema;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConstants;
+import org.springframework.core.io.Resource;
 
 /**
  * OnapCommandSchemaInfo is used in discovery caching.
@@ -38,6 +40,10 @@ public class OnapCommandSchemaInfo {
     private String cmdName;
 
     private String product;
+
+    private String sampleFile;
+
+    private String mockingFile;
 
     /**
      * OCS version
@@ -119,4 +125,19 @@ public class OnapCommandSchemaInfo {
     }
 
 
+    public String getSampleFile() {
+        return sampleFile;
+    }
+
+    public void setSampleFile(String sampleFile) {
+        this.sampleFile = sampleFile;
+    }
+
+    public String getMockingFile() {
+        return mockingFile;
+    }
+
+    public void setMockingFile(String mockingFile) {
+        this.mockingFile = mockingFile;
+    }
 }

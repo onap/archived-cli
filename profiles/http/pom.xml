@@ -59,7 +59,22 @@
             <version>1.19</version>
             <scope>test</scope>
         </dependency>
-   </dependencies>
+      <dependency>
+          <groupId>com.github.dreamhead</groupId>
+          <artifactId>moco-runner</artifactId>
+          <version>0.12.0</version>
+          <exclusions>
+              <exclusion>
+                  <groupId>log4j</groupId>
+                  <artifactId>log4j</artifactId>
+              </exclusion>
+              <exclusion>
+                  <groupId>ch.qos.logback</groupId>
+                  <artifactId>logback-classic</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+  </dependencies>
    <build>
         <plugins>
             <plugin>

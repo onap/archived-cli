@@ -43,3 +43,10 @@ parameters:
     long_option: no-title
     default_value: false
     is_default_param: true
+  - name: verify
+    type: bool
+    description: validate the command
+    short_option: V
+    long_option: verify
+    default_value: false
+    is_default_param: true

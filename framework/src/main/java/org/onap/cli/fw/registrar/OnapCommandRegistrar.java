@@ -242,8 +242,9 @@ public class OnapCommandRegistrar {
         }
 
         OnapCommand cmd = OnapCommandDiscoveryUtils.loadCommandClass(cls);
-        String schemaName = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version).getSchemaName();
-        cmd.initializeSchema(schemaName);
+        OnapCommandSchemaInfo schemaInfo = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version);
+
+        cmd.initializeSchema(schemaInfo);
 
         return cmd;
     }
