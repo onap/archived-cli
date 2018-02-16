@@ -43,3 +43,19 @@ parameters:
     long_option: no-title
     default_value: false
     is_default_param: true
+  - name: verify
+    type: bool
+    description: verify the command
+    short_option: V
+    long_option: verify
+    default_value: false
+    is_default_param: true
+    is_include: false
+    is_optional: true
+  - name: context
+    type: map
+    description: command context
+    short_option: D
+    long_option: context
+    is_default_param: true
+    is_optional: true

@@ -151,7 +151,7 @@ public class OnapCommandUtilsTest {
         }
 
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 15);
+        assertTrue(map.size() == 16);
     }
 
 

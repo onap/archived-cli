@@ -41,3 +41,9 @@ parameters:
     is_optional: true
     is_default_param: true
     default_value: false
+  - name: verify
+    type: bool
+    description: verify the command
+    default_value: false
+    is_include: true
+    is_optional: true

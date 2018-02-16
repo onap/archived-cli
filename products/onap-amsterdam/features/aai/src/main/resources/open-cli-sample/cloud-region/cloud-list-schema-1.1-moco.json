@@ -1,4 +1,4 @@
-[ {
+[{
   "request" : {
     "method" : "get",
     "uri" : "/aai/v11/cloud-infrastructure/cloud-regions",
@@ -31,4 +31,4 @@
       } ]
     }
   }
-} ]
+}]

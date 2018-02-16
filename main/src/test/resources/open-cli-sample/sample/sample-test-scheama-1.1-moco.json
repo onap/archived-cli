@@ -1,0 +1,17 @@
+[{
+  "request" : {
+    "method" : "get",
+    "uri" : "/sample-test",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-77c08aa0-662e-4d32-9206-bd569c3bf61b",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200
+  }
+}]
