@@ -24,6 +24,7 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +44,7 @@ import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
 import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
 import org.onap.cli.fw.info.OnapCommandInfo;
 import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
@@ -147,11 +149,18 @@ public class OnapCommandUtilsTest {
         assertTrue("sample-test".equals(cmd.getName()) && cmd.getParameters().size() > 9);
 
         for (OnapCommandParameter com : cmd.getParameters()) {
-            com.setValue("value");
+            switch (com.getParameterType()) {
+                case STRING:
+                    com.setValue("value");
+                    break;
+                case MAP:
+                    com.setValue(new HashMap<String, String>());
+            }
+
         }
 
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 15);
+        assertTrue(map.size() == 17);
     }
 
 

@@ -16,19 +16,18 @@
 
 package org.onap.cli.main;
 
-import static org.junit.Assert.fail;
-
-import java.io.IOException;
-
+import jline.console.ConsoleReader;
+import mockit.Invocation;
+import mockit.Mock;
+import mockit.MockUp;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 
-import jline.console.ConsoleReader;
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
+import java.io.IOException;
+
+import static org.junit.Assert.fail;
 
 public class OnapCliMainTest {
 
@@ -203,5 +202,14 @@ public class OnapCliMainTest {
         } catch (OnapCommandHelpFailed e) {
              fail("Directive help failed to run");
         }
+    }
+
+    @Test
+    public void testVerify() throws OnapCommandException {
+
+
+        OnapCli onapCli = new OnapCli(new String[]{"sample-test", "--verify"});
+        OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
+        onapCli.handle();
     }
 }

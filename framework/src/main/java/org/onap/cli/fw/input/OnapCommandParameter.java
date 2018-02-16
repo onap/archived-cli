@@ -17,6 +17,7 @@
 package org.onap.cli.fw.input;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
