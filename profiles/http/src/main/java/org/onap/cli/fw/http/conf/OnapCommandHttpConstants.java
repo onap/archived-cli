@@ -89,6 +89,21 @@ public class OnapCommandHttpConstants {
     public static final String SERVICE_PARAMS_MANDATORY_LIST = "cli.schema.http.service.sections.mandatory";
 
     public static final String DEFAULT_PARAMETER_NO_CATALOG = "no-catalog";
+
+    // moco server const
+    public static final String VERIFY_MOCO_HOST = "cli.verify.host";
+    public static final String VERIFY_MOCO_PORT = "cli.verify.port";
+
+    public static final String VERIFY_HOST_PARAMETER_OPT = DEAFULT_PARAMETER_HOST_URL;
+    public static final String VERIFY_NO_AUTH_PARAMETER_OPT = DEFAULT_PARAMETER_NO_AUTH;
+
+    public static final String VERIFY_REQUEST_URI = URI;
+    public static final String VERIFY_RESPONSE_STATUS = "status";
+    public static final String VERIFY_RESPONSE_JSON = "json";
+    public static final String VERIFY_REQUEST = REQUEST;
+    public static final String VERIFY_RESPONSE = "response";
+    public static final String VERIFY_CONTENT_TYPE = "Content-Type";
+    public static final String VERIFY_CONTENT_TYPE_VALUE = APPLICATION_JSON;
 }
 
 

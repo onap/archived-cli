@@ -16,13 +16,6 @@
 
 package org.onap.cli.fw.http.cmd;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -35,14 +28,24 @@ import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
 import org.onap.cli.fw.http.connect.HttpInput;
 import org.onap.cli.fw.http.connect.HttpResult;
 import org.onap.cli.fw.http.error.OnapCommandFailedMocoGenerate;
+import org.onap.cli.fw.http.mock.MocoServer;
 import org.onap.cli.fw.http.schema.OnapCommandSchemaHttpLoader;
 import org.onap.cli.fw.http.utils.OnapCommandHttpUtils;
+import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.http.mock.MockJsonGenerator;
 import org.onap.cli.http.mock.MockRequest;
 import org.onap.cli.http.mock.MockResponse;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
 
 /**
  * Oclip http Command.
@@ -60,6 +63,10 @@ public class OnapHttpCommand extends OnapCommand {
     protected OnapCommandHttpAuthClient authClient;
 
     private OnapCommandHttpService oclipService = new OnapCommandHttpService();
+
+    private MocoServer mocoServer;
+
+    boolean shouldVerify = false;
 
     public OnapHttpCommand() {
         super.addDefaultSchemas(OnapCommandHttpConstants.DEFAULT_PARAMETER_HTTP_FILE_NAME);
@@ -129,6 +136,59 @@ public class OnapHttpCommand extends OnapCommand {
                 && !(Boolean) (this.getParametersMap().get(OnapCommandHttpConstants.DEFAULT_PARAMETER_NO_AUTH).getValue())
                 && (this.getInfo().getCommandType().equals(OnapCommandType.CMD) ||
                         this.getInfo().getCommandType().equals(OnapCommandType.CATALOG));
+    }
+
+    private Optional<OnapCommandParameter> findParameterByName(String parameterName) {
+        return this.getParameters().stream()
+                .filter(e -> e.getName().equals(parameterName))
+                .findFirst();
+    }
+
+    @Override
+    protected void preRun() throws OnapCommandException {
+        Optional<OnapCommandParameter> verifyOpt = this.getParameters().stream()
+                .filter(e -> e.getName().equals("verify"))
+                .findFirst();
+        if(verifyOpt.isPresent()) {
+            shouldVerify = (boolean) verifyOpt.get().getValue();
+        }
+
+        if (shouldVerify) {
+            Optional<OnapCommandParameter> hostUrlParamOpt = findParameterByName(OnapCommandHttpConstants.VERIFY_HOST_PARAMETER_OPT);
+            Optional<OnapCommandParameter> noAuthParamOpt = findParameterByName(OnapCommandHttpConstants.VERIFY_NO_AUTH_PARAMETER_OPT);
+
+            if (hostUrlParamOpt.isPresent()) {
+                OnapCommandParameter onapCommandParameter = hostUrlParamOpt.get();
+                onapCommandParameter.setValue(
+                        OnapCommandConfig.getPropertyValue(OnapCommandHttpConstants.VERIFY_MOCO_HOST)
+                                + ":" + OnapCommandConfig.getPropertyValue(OnapCommandHttpConstants.VERIFY_MOCO_PORT));
+            }
+
+            if (noAuthParamOpt.isPresent()) {
+                OnapCommandParameter onapCommandParameter = noAuthParamOpt.get();
+                onapCommandParameter.setValue(true);
+            }
+
+
+            Optional<OnapCommandParameter> contextOpt = this.getParameters().stream()
+                    .filter(e -> e.getName().equals("context"))
+                    .findFirst();
+
+            if (contextOpt.isPresent()) {
+                OnapCommandParameter context = contextOpt.get();
+                String mockedFile = ((Map<String, String>)context.getValue()).get(OnapCommandConstants.VERIFY_MOCO);
+
+                mocoServer = new MocoServer(mockedFile);
+                mocoServer.start();
+            }
+        }
+    }
+
+    @Override
+    protected void postRun() throws OnapCommandException {
+        if (shouldVerify) {
+            mocoServer.stop();
+        }
     }
 
     @Override

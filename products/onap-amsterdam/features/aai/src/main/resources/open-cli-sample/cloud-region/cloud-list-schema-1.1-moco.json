@@ -1,0 +1,34 @@
+[{
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v11/cloud-infrastructure/cloud-regions",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-77c08aa0-662e-4d32-9206-bd569c3bf61b",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "cloud-region" : [ {
+        "cloud-owner" : "huawei-cloud",
+        "cloud-region-id" : "bangalore",
+        "sriov-automation" : false,
+        "resource-version" : "1509027332165"
+      }, {
+        "cloud-owner" : "Rackspace",
+        "cloud-region-id" : "RegionOne",
+        "cloud-type" : "SharedNode",
+        "owner-defined-type" : "OwnerType",
+        "cloud-region-version" : "v1",
+        "cloud-zone" : "CloudZone",
+        "sriov-automation" : false,
+        "resource-version" : "1508827902543"
+      } ]
+    }
+  }
+}]
