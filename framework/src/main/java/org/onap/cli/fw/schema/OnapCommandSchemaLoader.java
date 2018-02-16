@@ -542,8 +542,8 @@ public class OnapCommandSchemaLoader {
     /**
      * Get schema map.
      *
-     * @param resource
-     *            resource obj
+     * @param stream
+     * @param schemaName
      * @return map
      * @throws OnapCommandInvalidSchema
      *             exception

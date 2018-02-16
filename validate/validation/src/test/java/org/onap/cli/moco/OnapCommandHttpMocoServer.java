@@ -16,9 +16,15 @@
 
 package org.onap.cli.moco;
 
-import static com.github.dreamhead.moco.Moco.pathResource;
-import static com.github.dreamhead.moco.MocoJsonRunner.jsonHttpServer;
-import static com.github.dreamhead.moco.Runner.runner;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandInvalidSample;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
+import org.onap.cli.main.OnapCli;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -35,19 +41,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandInvalidSample;
-import org.onap.cli.fw.registrar.OnapCommandRegistrar;
-import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
-import org.onap.cli.main.OnapCli;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.core.io.Resource;
-import org.yaml.snakeyaml.Yaml;
-
-import com.github.dreamhead.moco.HttpServer;
-import com.github.dreamhead.moco.Runner;
 
 public class OnapCommandHttpMocoServer {
 
@@ -200,22 +193,5 @@ public class OnapCommandHttpMocoServer {
         assert cli.getExitCode() == 0;
 
         assert sample.getOutput().equals(output);
-    }
-
-    public void verifySamples() throws OnapCommandException {
-        for (Resource rsc : this.dicoverSampleYamls()) {
-              for(OnapCommandSample sample: this.loadSamples(rsc)) {
-
-                  if (!sample.getMoco().isEmpty()) {
-                      HttpServer server = jsonHttpServer(this.getPort(), pathResource(sample.getMoco()));
-                      Runner r = runner(server);
-                        r.start();
-
-                        this.verifySample(sample);
-
-                        r.stop();
-                  }
-              }
-        }
     }
 }
