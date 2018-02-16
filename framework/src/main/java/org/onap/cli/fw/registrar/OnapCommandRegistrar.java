@@ -17,6 +17,7 @@
 package org.onap.cli.fw.registrar;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -30,6 +31,7 @@ import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidRegistration;
+import org.onap.cli.fw.error.OnapCommandInvalidSample;
 import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.error.OnapCommandRegistrationProductInfoMissing;
@@ -47,6 +49,7 @@ import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
 
 
 /**
@@ -93,11 +96,11 @@ public class OnapCommandRegistrar {
     public void setProfile(String profileName, List<String> includes, List<String> excludes) {
         this.paramCache.setProfile(profileName);
 
-        for (String profile: includes) {
+        for (String profile : includes) {
             this.paramCache.includeProfile(profile);
         }
 
-        for (String profile: excludes) {
+        for (String profile : excludes) {
             this.paramCache.excludeProfile(profile);
         }
     }
@@ -111,12 +114,9 @@ public class OnapCommandRegistrar {
     /**
      * Register the command into registrar and throws OnapInvalidCommandRegistration for invalid command.
      *
-     * @param name
-     *            Command Name
-     * @param cmd
-     *            Command Class
-     * @throws OnapCommandInvalidRegistration
-     *             Invalid registration exception
+     * @param name Command Name
+     * @param cmd  Command Class
+     * @throws OnapCommandInvalidRegistration            Invalid registration exception
      * @throws OnapCommandRegistrationProductInfoMissing
      */
     private void register(String name, String version, Class<? extends OnapCommand> cmd) throws OnapCommandInvalidRegistration, OnapCommandRegistrationProductInfoMissing {
@@ -135,16 +135,15 @@ public class OnapCommandRegistrar {
 
     private OnapCommandRegistrar() {
         this.enabledProductVersion = System.getenv(OnapCommandConstants.OPEN_CLI_PRODUCT_IN_USE_ENV_NAME);
-        if (this.enabledProductVersion  == null) {
-            this.enabledProductVersion  = OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_PRODUCT_NAME);
+        if (this.enabledProductVersion == null) {
+            this.enabledProductVersion = OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_PRODUCT_NAME);
         }
     }
 
     /**
      * Get global registrar.
      *
-     * @throws OnapCommandException
-     *             exception
+     * @throws OnapCommandException exception
      */
     public static OnapCommandRegistrar getRegistrar() throws OnapCommandException {
         if (registrar == null) {
@@ -177,7 +176,7 @@ public class OnapCommandRegistrar {
             return cmds;
         }
 
-        for (String cmd: this.registry.keySet()) {
+        for (String cmd : this.registry.keySet()) {
             if (cmd.split(":")[1].equalsIgnoreCase(version)) {
                 cmds.add(cmd.split(":")[0]);
             }
@@ -213,8 +212,7 @@ public class OnapCommandRegistrar {
      * Returns command details.
      *
      * @return map
-     * @throws OnapCommandException
-     *             exception
+     * @throws OnapCommandException exception
      */
     public List<OnapCommandSchemaInfo> listCommandInfo() throws OnapCommandException {
         return OnapCommandDiscoveryUtils.discoverSchemas();
@@ -223,11 +221,9 @@ public class OnapCommandRegistrar {
     /**
      * Get the OnapCommand, which CLI main would use to find the command based on the command name.
      *
-     * @param cmdName
-     *            Name of command
+     * @param cmdName Name of command
      * @return OnapCommand
-     * @throws OnapCommandException
-     *             Exception
+     * @throws OnapCommandException Exception
      */
     public OnapCommand get(String cmdName) throws OnapCommandException {
         return this.get(cmdName, this.getEnabledProductVersion());
@@ -236,13 +232,10 @@ public class OnapCommandRegistrar {
     /**
      * Get the OnapCommand, which CLI main would use to find the command based on the command name.
      *
-     * @param cmdName
-     *            Name of command
-     * @param version
-     *            product version
+     * @param cmdName Name of command
+     * @param version product version
      * @return OnapCommand
-     * @throws OnapCommandException
-     *             Exception
+     * @throws OnapCommandException Exception
      */
     public OnapCommand get(String cmdName, String version) throws OnapCommandException {
         Class<? extends OnapCommand> cls = registry.get(cmdName + ":" + version);
@@ -293,9 +286,9 @@ public class OnapCommandRegistrar {
             }
 
             //First check if there is an specific plugin exist, otherwise check for profile plugin
-             if (plugins.containsKey(schema.getSchemaName())) {
-                 this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaName()));
-             } else if (plugins.containsKey(schema.getSchemaProfile())) {
+            if (plugins.containsKey(schema.getSchemaName())) {
+                this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaName()));
+            } else if (plugins.containsKey(schema.getSchemaProfile())) {
                 this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaProfile()));
             } else {
                 LOG.info("Ignoring schema " + schema.getSchemaURI());
@@ -315,7 +308,7 @@ public class OnapCommandRegistrar {
         }
 
         String buildTime = OnapCommandHelperUtils.findLastBuildTime();
-        if (buildTime!= null && !buildTime.isEmpty()) {
+        if (buildTime != null && !buildTime.isEmpty()) {
             buildTime = " [" + buildTime + "]";
         } else {
             buildTime = "";
@@ -341,8 +334,7 @@ public class OnapCommandRegistrar {
      * Provides the help message in tabular format for all commands registered in this registrar.
      *
      * @return string
-     * @throws OnapCommandHelpFailed
-     *             Help cmd failed
+     * @throws OnapCommandHelpFailed Help cmd failed
      */
     public String getHelp() throws OnapCommandHelpFailed {
         return this.getHelp(false);
@@ -387,7 +379,7 @@ public class OnapCommandRegistrar {
             OnapCommand cmd;
             try {
                 if (!isEnabledProductVersionOnly) {
-                    String []cmdVer = cmdName.split(":");
+                    String[] cmdVer = cmdName.split(":");
                     cmd = this.get(cmdVer[0], cmdVer[1]);
                     attr.getValues().add(cmdVer[0]);
                     attrVer.getValues().add(cmdVer[1]);
@@ -408,5 +400,9 @@ public class OnapCommandRegistrar {
         } catch (OnapCommandException e) {
             throw new OnapCommandHelpFailed(e);
         }
+    }
+
+    public List<Resource> getSampleResources(OnapCommand cmd) throws OnapCommandException {
+        return OnapCommandDiscoveryUtils.getSampleResources(cmd, enabledProductVersion);
     }
 }

@@ -16,8 +16,13 @@
 
 package org.onap.cli.fw.schema;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConstants;
+import org.springframework.core.io.Resource;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * OnapCommandSchemaInfo is used in discovery caching.
@@ -38,6 +43,8 @@ public class OnapCommandSchemaInfo {
     private String cmdName;
 
     private String product;
+
+    private List<String> sampleFiles = new ArrayList();
 
     /**
      * OCS version
@@ -118,5 +125,7 @@ public class OnapCommandSchemaInfo {
         this.ignore = ignore;
     }
 
-
+    public List<String> getSampleFiles() {
+        return sampleFiles;
+    }
 }
