@@ -377,6 +377,7 @@ public class OnapCli {
 
                 generateSmapleYaml(cmd);
             } catch (OnapCommandWarning w) {
+                this.print(w);
                 this.print(cmd.getResult().getDebugInfo());
                 this.exitSuccessfully();
             } catch (Exception e) {

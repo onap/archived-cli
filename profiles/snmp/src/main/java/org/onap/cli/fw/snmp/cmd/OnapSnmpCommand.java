@@ -120,7 +120,7 @@ public class OnapSnmpCommand extends OnapCommand {
 
                 case OnapCommandSnmpConstants.SNMP_CMD_GET:
                     ResponseEvent responseEvent = snmp.send(getPDU(PDU.GET, oidStrArr), getTarget(), null);
-                    if ( responseEvent != null || responseEvent.getResponse().getErrorStatus() == PDU.noError) {
+                    if ( responseEvent != null && responseEvent.getResponse().getErrorStatus() == PDU.noError) {
                         Vector<? extends VariableBinding> variableBindings = responseEvent.getResponse().getVariableBindings();
                         variableBindings.stream().forEach(varBinding -> { //NOSONAR
                             String key = getKeyForValue(varBinding.getOid().toString());
