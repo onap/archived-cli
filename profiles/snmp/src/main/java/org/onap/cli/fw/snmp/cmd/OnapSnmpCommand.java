@@ -120,18 +120,23 @@ public class OnapSnmpCommand extends OnapCommand {
 
                 case OnapCommandSnmpConstants.SNMP_CMD_GET:
                     ResponseEvent responseEvent = snmp.send(getPDU(PDU.GET, oidStrArr), getTarget(), null);
-                    if ( responseEvent != null && responseEvent.getResponse().getErrorStatus() == PDU.noError) {
-                        Vector<? extends VariableBinding> variableBindings = responseEvent.getResponse().getVariableBindings();
-                        variableBindings.stream().forEach(varBinding -> { //NOSONAR
-                            String key = getKeyForValue(varBinding.getOid().toString());
-                            if (key != null) {
-                                this.getResult().getRecordsMap().get(key).getValues().add(
-                                        varBinding.getVariable().toString());
-                            }
-                        });
-                    } else {
-                        throw new OnapSnmpErrorResponse("Error response from SNMP agent",
+                    if ( responseEvent != null) {
+                        if (responseEvent.getResponse().getErrorStatus() == PDU.noError) {
+                            Vector<? extends VariableBinding> variableBindings = responseEvent.
+                                    getResponse().getVariableBindings();
+                            variableBindings.stream().forEach(varBinding -> { //NOSONAR
+                                String key = getKeyForValue(varBinding.getOid().toString());
+                                if (key != null) {
+                                    this.getResult().getRecordsMap().get(key).getValues().add(
+                                            varBinding.getVariable().toString());
+                                }
+                            });
+                        } else {
+                            throw new OnapSnmpErrorResponse("Error response from SNMP agent",
                                 responseEvent.getResponse().getErrorStatus());
+                        }
+                    } else {
+                        throw new OnapSnmpErrorResponse("Failed to send SNMP GET command");
                     }
                     break;
 
