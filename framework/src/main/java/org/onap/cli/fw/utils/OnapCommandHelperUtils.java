@@ -157,7 +157,7 @@ public class OnapCommandHelperUtils {
             if (param.isRawDefaultValueAnEnv()) {
                 optSecondCol += defaultMsg + "read from environment variable " + param.getEnvVarNameFromrRawDefaultValue()
                         + ".";
-            } else if (param.getDefaultValue() != null && !((String)param.getDefaultValue()).isEmpty()) {
+            } else if (param.getDefaultValue() != null && param.getDefaultValue().toString().isEmpty()) {
                 optSecondCol += defaultMsg + param.getDefaultValue() + ".";
             }
 

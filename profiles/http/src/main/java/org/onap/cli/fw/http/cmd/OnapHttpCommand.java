@@ -126,7 +126,7 @@ public class OnapHttpCommand extends OnapCommand {
 
     private boolean isAuthRequired() {
         return !this.getService().isNoAuth()
-                && "false".equals(this.getParametersMap().get(OnapCommandHttpConstants.DEFAULT_PARAMETER_NO_AUTH).getValue())
+                && !(Boolean) (this.getParametersMap().get(OnapCommandHttpConstants.DEFAULT_PARAMETER_NO_AUTH).getValue())
                 && (this.getInfo().getCommandType().equals(OnapCommandType.CMD) ||
                         this.getInfo().getCommandType().equals(OnapCommandType.CATALOG));
     }

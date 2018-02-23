@@ -138,14 +138,11 @@ public class OnapCliArgsParser {
                 } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.MAP)) {
                     Object value = paramMap.get(paramName).getValue();
 
-                    Map<String, String> map;
+                    Map<String, String> map = (Map<String, String>) value;
 
-                    if (value == "") {
-                        map = new HashMap<>();
-                    } else {
-                        map = convertJsonToMapString(paramMap.get(paramName).getName(),
-                                value.toString());
-                    }
+//                    if (map == null) {
+//                        map = new HashMap<>();
+//                    }
 
                     String arg = args.get(i + 1);
                     String[] argArr = arg.split("=");
