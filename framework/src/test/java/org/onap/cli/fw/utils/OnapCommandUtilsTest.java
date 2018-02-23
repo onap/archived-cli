@@ -17,18 +17,9 @@
 package org.onap.cli.fw.utils;
 
 
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import mockit.Invocation;
+import mockit.Mock;
+import mockit.MockUp;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -48,9 +39,18 @@ import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnapCommandUtilsTest {
@@ -119,7 +119,7 @@ public class OnapCommandUtilsTest {
     public void loadOnapCommandSchemaWithOutDefaultTest() throws OnapCommandException {
         OnapCommand cmd = new OnapCommandSample();
         OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-schema.yaml", false, false);
-        assertTrue("sample-test".equals(cmd.getName()) && cmd.getParameters().size() == 9);
+        assertTrue("sample-test".equals(cmd.getName()) && cmd.getParameters().size() == 10);
     }
 
     @Test(expected = OnapCommandParameterNameConflict.class)
@@ -147,13 +147,43 @@ public class OnapCommandUtilsTest {
         assertTrue("sample-test".equals(cmd.getName()) && cmd.getParameters().size() > 9);
 
         for (OnapCommandParameter com : cmd.getParameters()) {
-            com.setValue("value");
+            switch (com.getParameterType()) {
+                case STRING:
+                    com.setValue("value");
+                    break;
+
+                case ARRAY:
+                    com.setValue(Collections.EMPTY_LIST);
+                    break;
+
+                case MAP:
+                    com.setValue(new HashMap<String, String>());
+                    break;
+
+                case BOOL:
+                    com.setValue(true);
+                    break;
+
+                case TEXT:
+                    com.setValue("value");
+                    break;
+
+                case URL:
+                    com.setValue("http:localhost/test");
+                    break;
+
+                case JSON:
+                    com.setValue("json");
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 15);
+        assertTrue(map.size() == 17);
     }
-
 
     @Test
     public void helpCommandTest() throws IOException, OnapCommandException {

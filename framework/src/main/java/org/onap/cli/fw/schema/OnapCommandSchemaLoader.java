@@ -318,7 +318,7 @@ public class OnapCommandSchemaLoader {
 
                                     case DEFAULT_VALUE:
                                         Object obj = parameter.get(key2);
-                                        param.setDefaultValue(obj.toString());
+                                        param.setRawDefaultValue(obj.toString());
                                         break;
 
                                     case TYPE:

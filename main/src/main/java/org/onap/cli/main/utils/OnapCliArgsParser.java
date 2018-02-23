@@ -105,7 +105,7 @@ public class OnapCliArgsParser {
                 // end of the list or if its option rather than a value
                 if ((i + 1) == args.size() || args.get(i + 1).startsWith("-")) {
                     if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.BOOL)) {
-                        paramMap.get(paramName).setValue("true");
+                        paramMap.get(paramName).setValue(true);
                         continue;
                     }
                     throw new OnapCliArgumentValueMissing(args.get(i));
@@ -124,13 +124,8 @@ public class OnapCliArgsParser {
                 } else if (paramMap.get(paramName).getParameterType()
                         .equals(OnapCommandParameterType.ARRAY)) {
                     Object value = paramMap.get(paramName).getValue();
-                    List<String> list;
-                    if (value == "") {
-                        list = new ArrayList<>();
-                    } else {
-                        list = convertJsonToListString(paramMap.get(paramName).getName(),
-                                value.toString());
-                    }
+                    List<String> list = (List<String>) value;
+
                     list.add(args.get(i + 1));
                     paramMap.get(paramName).setValue(list);
                     i++;
@@ -138,14 +133,7 @@ public class OnapCliArgsParser {
                 } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.MAP)) {
                     Object value = paramMap.get(paramName).getValue();
 
-                    Map<String, String> map;
-
-                    if (value == "") {
-                        map = new HashMap<>();
-                    } else {
-                        map = convertJsonToMapString(paramMap.get(paramName).getName(),
-                                value.toString());
-                    }
+                    Map<String, String> map = (Map<String, String>) value;
 
                     String arg = args.get(i + 1);
                     String[] argArr = arg.split("=");
