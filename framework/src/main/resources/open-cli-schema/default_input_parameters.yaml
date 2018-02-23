@@ -43,3 +43,10 @@ parameters:
     long_option: no-title
     default_value: false
     is_default_param: true
+  - name: context
+    type: map
+    description: command context
+    short_option: D
+    long_option: context
+    is_default_param: true
+    is_optional: true
