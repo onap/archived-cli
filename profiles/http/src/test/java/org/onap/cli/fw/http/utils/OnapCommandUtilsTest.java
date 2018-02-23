@@ -93,7 +93,7 @@ public class OnapCommandUtilsTest {
         assertTrue("sample-test".equals(cmd.getName()));
 
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 7);
+        assertTrue(map.size() == 8);
     }
 
     @Test(expected = OnapCommandHttpHeaderNotFound.class)
