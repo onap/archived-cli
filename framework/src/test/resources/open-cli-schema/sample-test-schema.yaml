@@ -69,6 +69,12 @@ parameters:
     description: Oclip positional args, if no short option and no long option given for it
     is_optional: true
     default_value: http://localhost:8082/file.txt
+  - name: array-param
+    type: array
+    description: list parameter
+    long_option: list-param
+    short_option: q
+    is_optional: true
 results:
   direction: portrait
   attributes:
