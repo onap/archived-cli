@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_93e4eb3c",
+        "filename": "main/src/main/java/org/onap/cli/main/utils/OnapCliArgsParser.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-02-23T13:32:28Z",
+      "side": 0,
+      "message": "pls change this too\nadd test case also",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "3903891dfe8f9e2488fc9d1bd0858fa4670cff0e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}

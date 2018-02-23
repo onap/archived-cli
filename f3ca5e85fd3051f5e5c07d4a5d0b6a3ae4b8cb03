@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_f3944f8c",
+        "filename": "framework/src/main/java/org/onap/cli/fw/input/OnapCommandParameter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-02-23T13:32:28Z",
+      "side": 1,
+      "message": "map?",
+      "range": {
+        "startLine": 211,
+        "startChar": 80,
+        "endLine": 211,
+        "endChar": 87
+      },
+      "revId": "f3ca5e85fd3051f5e5c07d4a5d0b6a3ae4b8cb03",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_137a1b77",
+        "filename": "framework/src/main/java/org/onap/cli/fw/input/OnapCommandParameter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-02-23T13:32:28Z",
+      "side": 1,
+      "message": "make it appropriate",
+      "range": {
+        "startLine": 213,
+        "startChar": 64,
+        "endLine": 213,
+        "endChar": 94
+      },
+      "revId": "f3ca5e85fd3051f5e5c07d4a5d0b6a3ae4b8cb03",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_337f1768",
+        "filename": "framework/src/main/java/org/onap/cli/fw/input/OnapCommandParameter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-02-23T13:32:28Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 221,
+        "startChar": 63,
+        "endLine": 221,
+        "endChar": 93
+      },
+      "revId": "f3ca5e85fd3051f5e5c07d4a5d0b6a3ae4b8cb03",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_d397d38e",
+        "filename": "framework/src/main/java/org/onap/cli/fw/input/OnapCommandParameter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-02-23T13:32:28Z",
+      "side": 1,
+      "message": "param name, and say default value",
+      "range": {
+        "startLine": 259,
+        "startChar": 56,
+        "endLine": 259,
+        "endChar": 88
+      },
+      "revId": "f3ca5e85fd3051f5e5c07d4a5d0b6a3ae4b8cb03",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_b38a4762",
+        "filename": "framework/src/main/java/org/onap/cli/fw/input/OnapCommandParameter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-02-23T13:32:28Z",
+      "side": 1,
+      "message": "add type check for bool",
+      "range": {
+        "startLine": 295,
+        "startChar": 10,
+        "endLine": 296,
+        "endChar": 10
+      },
+      "revId": "f3ca5e85fd3051f5e5c07d4a5d0b6a3ae4b8cb03",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_73f03ffe",
+        "filename": "framework/src/test/java/org/onap/cli/fw/input/OnapCommandParameterTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-02-23T13:32:28Z",
+      "side": 1,
+      "message": "check for list of raw default value",
+      "range": {
+        "startLine": 54,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "f3ca5e85fd3051f5e5c07d4a5d0b6a3ae4b8cb03",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_f3dbef79",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-02-23T13:32:28Z",
+      "side": 1,
+      "message": "see whether you can add for bool and array",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 157,
+        "endChar": 24
+      },
+      "revId": "f3ca5e85fd3051f5e5c07d4a5d0b6a3ae4b8cb03",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
