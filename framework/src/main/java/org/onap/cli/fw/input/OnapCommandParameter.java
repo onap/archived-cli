@@ -16,18 +16,20 @@
 
 package org.onap.cli.fw.input;
 
-import java.io.File;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandParameterMissing;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Oclip Command's input parameter.
@@ -63,7 +65,7 @@ public class OnapCommandParameter {
     /*
      * Default value
      */
-    private String defaultValue = "";
+    private Object defaultValue;
 
     /*
      * raw default value, stored with out processing it.
@@ -150,12 +152,24 @@ public class OnapCommandParameter {
     public void setParameterType(OnapCommandParameterType parameterType) {
         this.parameterType = parameterType;
 
-        if (this.defaultValue.isEmpty()) {
-            if (this.getParameterType().equals(OnapCommandParameterType.BOOL)) {
-                // For bool type always the default param is false
-                this.defaultValue = "false";
-            } else if (this.getParameterType().equals(OnapCommandParameterType.UUID)) {
-                this.defaultValue = UUID.randomUUID().toString();
+        if (defaultValue == null) {
+
+            switch (getParameterType()) {
+                case MAP:
+                    this.defaultValue = new HashMap<String, String>();
+                    break;
+                case ARRAY:
+                    defaultValue = new ArrayList<String>();
+                    break;
+                case BOOL:
+                    defaultValue = false;
+                    break;
+                case UUID:
+                    this.defaultValue = UUID.randomUUID().toString();
+                    break;
+                default:
+                    this.defaultValue = null;
+                    break;
             }
         }
     }
@@ -165,7 +179,7 @@ public class OnapCommandParameter {
      *
      * @return string
      */
-    public String getDefaultValue() {
+    public Object getDefaultValue() {
         return defaultValue;
     }
 
@@ -187,9 +201,63 @@ public class OnapCommandParameter {
         return this.rawDefaultValue.trim().substring(7, this.rawDefaultValue.length() - 1);
     }
 
-    public void setDefaultValue(String defaultValue) {
-        this.rawDefaultValue = defaultValue;
-        this.defaultValue = OnapCommandUtils.replaceLineForSpecialValues(this.rawDefaultValue);
+    public void setRawDefaultValue(String value) throws OnapCommandInvalidParameterValue {
+        this.rawDefaultValue = value;
+        String processedValue= OnapCommandUtils.replaceLineForSpecialValues(value);
+
+        switch (parameterType) {
+            case MAP:
+                try {
+                    defaultValue = new ObjectMapper().readValue(processedValue, HashMap.class);
+                } catch (IOException e) {
+                    throw new OnapCommandInvalidParameterValue("default value can't be mapped", e);
+                }
+                break;
+
+            case ARRAY:
+                try {
+                    defaultValue = new ObjectMapper().readValue(processedValue, List.class);
+                } catch (IOException e) {
+                    throw new OnapCommandInvalidParameterValue("default value can't be mapped", e);
+                }
+                break;
+
+            case BOOL:
+                defaultValue = processedValue.equalsIgnoreCase("true");
+                break;
+
+            default:
+                defaultValue = processedValue;
+                break;
+        }
+    }
+
+    public void setDefaultValue(Object defaultValue) throws OnapCommandInvalidParameterValue {
+        //check type
+        Class<?> clz;
+        switch (parameterType) {
+            case BOOL:
+                clz = Boolean.class;
+                break;
+
+            case MAP:
+                clz = Map.class;
+                break;
+
+            case ARRAY:
+                clz = Collection.class;
+                break;
+
+            default:
+                clz = String.class;
+                break;
+        }
+
+        if (clz.isInstance(defaultValue)) {
+            this.defaultValue = defaultValue;
+        } else {
+            throw new OnapCommandInvalidParameterValue("invalid type for parameter value");
+        }
     }
 
     /**
@@ -217,26 +285,13 @@ public class OnapCommandParameter {
             if (!(value instanceof List)) {
                 throw new OnapCommandInvalidParameterValue(this.getName());
             }
+            this.value = value;
 
-            List<String> list = (List<String>) value;
-            ObjectMapper mapper = new ObjectMapper();
-            try {
-                this.value = mapper.writeValueAsString(list);
-            } catch (JsonProcessingException e) {
-                throw new OnapCommandInvalidParameterValue(this.getName(), e);
-            }
         } else if (OnapCommandParameterType.MAP.equals(parameterType)) {
             if (!(value instanceof Map)) {
                 throw new OnapCommandInvalidParameterValue(this.getName());
             }
-
-            Map<String, String> map = (Map<String, String>) value;
-            ObjectMapper mapper = new ObjectMapper();
-            try {
-                this.value = mapper.writeValueAsString(map);
-            } catch (JsonProcessingException e) {
-                throw new OnapCommandInvalidParameterValue(this.getName(), e);
-            }
+            this.value = value;
         } else {
             this.value = value;
         }

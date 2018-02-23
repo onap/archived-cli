@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.junit.Assert;
@@ -255,7 +257,7 @@ public class OnapCliUtilsTest {
         OnapCliArgsParser.populateParams(paramslist,
                 Arrays.asList("show", "--map", "param1=value1", "--map", "param2=value2"));
 
-        Assert.assertEquals("{\"param1\":\"value1\",\"param2\":\"value2\"}", paramslist.iterator().next().getValue().toString());
+        Assert.assertEquals("{param1=value1, param2=value2}", paramslist.iterator().next().getValue().toString());
     }
 
     @Test(expected = OnapCliInvalidArgument.class)

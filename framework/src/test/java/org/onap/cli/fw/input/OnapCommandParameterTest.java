@@ -20,6 +20,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -49,8 +50,9 @@ public class OnapCommandParameterTest {
         assertTrue("value".equals(param.getValue()));
 
         param.setParameterType(OnapCommandParameterType.ARRAY);
-        param.setValue(Arrays.asList("1", "2", "3"));
-        assertTrue("[\"1\",\"2\",\"3\"]".equals(param.getValue()));
+        List<String> list = Arrays.asList("1", "2", "3");
+        param.setValue(list);
+        assertTrue(((List)param.getValue()).containsAll(list));
 
         param.setParameterType(OnapCommandParameterType.MAP);
         Map<String, String> map = new HashMap<>();
@@ -58,16 +60,20 @@ public class OnapCommandParameterTest {
         map.put("Two", "2");
         map.put("Three", "3");
         param.setValue(map);
-        assertTrue("{\"One\":\"1\",\"Two\":\"2\",\"Three\":\"3\"}".equals(param.getValue()));
+        HashMap<String, String> value = (HashMap<String, String>) param.getValue();
+        assertTrue(value.keySet().containsAll(Arrays.asList("One", "Two", "Three")));
+        assertTrue(value.values().containsAll(Arrays.asList("1", "2", "3")));
 
-        param.setDefaultValue("$s{env:defaultValue}");
-        assertTrue("env:defaultValue".equals(param.getDefaultValue()));
+        param.setRawDefaultValue("{\"key1\":\"$s{env:defaultValue}\"}");
+        assertTrue(((Map<String, String>)param.getDefaultValue()).values().containsAll(
+                Arrays.asList("env:defaultValue")
+        ));
     }
 
     @Test
-    public void parameterEnvDefaultValueObjTest() {
+    public void parameterEnvDefaultValueObjTest() throws OnapCommandInvalidParameterValue {
         OnapCommandParameter param = new OnapCommandParameter();
-        param.setDefaultValue("$s{env:DAFAULT_VALUE}");
+        param.setRawDefaultValue("$s{env:DAFAULT_VALUE}");
         boolean isDefaultValueAnEnv = param.isRawDefaultValueAnEnv();
         assertTrue(isDefaultValueAnEnv);
 
