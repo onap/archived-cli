@@ -160,7 +160,45 @@ public class OnapCommandUtilsTest {
         }
 
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 15);
+        assertTrue(map.size() == 16);
+    }
+
+    @Test
+    public void contextParameterTest() throws OnapCommandException {
+        OnapCommand cmd = new OnapCommandSample();
+        OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-schema.yaml", true, false);
+        Optional<OnapCommandParameter> contextOpt = cmd.getParameters().stream()
+                .filter(e -> e.getName().equals("context"))
+                .findFirst();
+
+        if (contextOpt.isPresent()) {
+            OnapCommandParameter context = contextOpt.get();
+            assertTrue(context.getDefaultValue() instanceof HashMap);
+        } else {
+            fail("context parameter is not available");
+        }
+    }
+
+    @Test
+    public void contextParameterSetAndGetTest() throws OnapCommandException {
+        OnapCommand cmd = new OnapCommandSample();
+        OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-schema.yaml", true, false);
+        Optional<OnapCommandParameter> contextOpt = cmd.getParameters().stream()
+                .filter(e -> e.getName().equals("context"))
+                .findFirst();
+
+        if (contextOpt.isPresent()) {
+            OnapCommandParameter context = contextOpt.get();
+            HashMap<String, String> map = new HashMap();
+            map.put("a", "b");
+            context.setValue(map);
+
+            map = (HashMap<String, String>) context.getValue();
+            assertTrue(map.keySet().contains("a"));
+            assertTrue(map.values().contains("b"));
+        } else {
+            fail("context parameter is not available");
+        }
     }
 
     @Test
