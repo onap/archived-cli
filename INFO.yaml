@@ -1,0 +1,37 @@
+---
+project: 'cli'
+project_creation_date: '2017-06-22'
+lifecycle_state: 'Incubation'
+project_lead: &onap_releng_ptl
+    name: 'Kanagaraj Manickam'
+    email: 'kanagaraj.manickam@huawei.com'
+    id: 'mkr1481'
+    company: 'Huawei'
+    timezone: 'India/Bangalore'
+primary_contact: *onap_releng_ptl
+issue_tracking:
+    type: 'jira'
+    url: 'https://jira.onap.org/projects/CLI'
+    key: 'CLI'
+meetings:
+    - type: 'zoom'
+        agenda: 'https://wiki.onap.org/display/DW/CLI+meetings'
+        url: 'https://wiki.onap.org/display/DW/CLI+meetings'
+        server: 'n/a'
+        channel: 'n/a'
+        repeats: 'weekly'
+        time: '13:00 UTC'
+committers:
+    - <<: *onap_releng_ptl
+    - name: 'Subhash Kumar'
+        email: 'subhash.kumar.singh@huawei.com'
+        company: 'Huawei'
+        id: 'subhash_singh'
+        timezone: 'India/Bangalore'
+    - name: 'Manoop Talasila'
+        email: 'talasila@research.att.com'
+        company: 'ATT'
+        id: 'talasila'
+        timezone: 'America/New York'
+tsc:
+    approval: 'https://lists.onap.org/pipermail/onap-tsc'
