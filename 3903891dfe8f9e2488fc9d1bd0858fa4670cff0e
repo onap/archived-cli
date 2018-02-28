@@ -22,6 +22,30 @@
       "revId": "3903891dfe8f9e2488fc9d1bd0858fa4670cff0e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_2b6a2eb3",
+        "filename": "main/src/main/java/org/onap/cli/main/utils/OnapCliArgsParser.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-02-28T09:52:37Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "5a93c517_93e4eb3c",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "3903891dfe8f9e2488fc9d1bd0858fa4670cff0e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
