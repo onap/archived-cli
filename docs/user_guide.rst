@@ -18,11 +18,11 @@ Configure the following environment variables, before using it:
 
 To Run a command
 -----------------
-Type **onap <command>** from linux console.
+Type **oclip <command>** from linux console.
 
 To Run in Interactive mode
 --------------------------
-Type **onap** from linux/web console.
+Type **oclip** from linux/web console.
 
 And use the directive set to set the values for following parameters:
 
@@ -39,7 +39,7 @@ time. so to choose the product version, set environment variable
 NOTE: In interactive mode, product version can be selected using
 typing **use <product-version>**
 
-Run *onap [-v|--version]* to see the CLI and available product version details
+Run *oclip [-v|--version]* to see the CLI and available product version details
 
 Profiling arguments
 -------------------
@@ -47,7 +47,7 @@ In interactive mode, user can use profiles for for “set arguments value once a
 
 Please follow the steps given below for setting profiles:
 
-1.    Open the ONAP CLI interactive console
+1.    Open the CLI interactive console
 
 2.    Create the profile, say ‘test:aai’ by running ‘profile test:aai’
 There is no limit in number of profiles. OCLIP will create a profile if not exist already,
@@ -74,8 +74,8 @@ NOTE: Use the directive 'set' for setting the values for parameters and 'unset' 
 
 Help
 ----
-*onap [-h|--help]*
-*onap <command> [-h|--help]*
+*oclip [-h|--help]*
+*oclip <command> [-h|--help]*
 
 Debug Mode
 ----------
