@@ -13,66 +13,24 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
- --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0          http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.onap.cli</groupId>
-        <artifactId>cli</artifactId>
+        <artifactId>cli-products</artifactId>
         <version>2.0.0</version>
     </parent>
 
-    <artifactId>cli-products</artifactId>
-    <name>cli/products</name>
+    <artifactId>cli-products-onap-beijing</artifactId>
+    <name>cli/products/onap-beijing</name>
     <packaging>pom</packaging>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-profiles-http</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-profiles-snmp</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-    </dependencies>
-    <profiles>
-       <profile>
-          <id>oclip</id>
-          <activation>
-            <activeByDefault>true</activeByDefault>
-          </activation>
-          <modules>
-            <module>sample</module>
-          </modules>
-       </profile>
-       <profile>
-          <id>onap</id>
-          <activation>
-            <activeByDefault>true</activeByDefault>
-          </activation>
-          <modules>
-            <module>onap-amsterdam</module>
-            <module>onap-beijing</module>
-          </modules>
-       </profile>
-       <profile>
-          <id>eol</id>
-          <activation>
-            <activeByDefault>false</activeByDefault>
-          </activation>
-          <modules>
-            <module>openecomp</module>
-          </modules>
-       </profile>
-    </profiles>
+
     <build>
          <pluginManagement>
             <plugins>
@@ -95,8 +53,8 @@
                               <type>${project.packaging}</type>
                             </artifactItem>
                         </artifactItems>
-                        <!-- copy to plugin dependencies -->
-                        <outputDirectory>../../products/target/lib</outputDirectory>
+                        <!-- copy to products dependencies -->
+                        <outputDirectory>../../../products/target/lib</outputDirectory>
                       </configuration>
                     </execution>
                   </executions>
