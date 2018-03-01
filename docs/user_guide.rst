@@ -41,9 +41,36 @@ typing **use <product-version>**
 
 Run *onap [-v|--version]* to see the CLI and available product version details
 
-Set the parameter values
-------------------------
-Use the directive 'set' for setting the values for parameters and 'unset' for reseting the values.
+Profiling arguments
+-------------------
+In interactive mode, user can use profiles for for “set arguments value once and use it ever”.
+
+Please follow the steps given below for setting profiles:
+
+1.    Open the ONAP CLI interactive console
+
+2.    Create the profile, say ‘test:aai’ by running ‘profile test:aai’
+There is no limit in number of profiles. OCLIP will create a profile if not exist already,
+otherwise on typing 'profile' on the console, corresponding profiles will be effective.
+So you can switch across profiles by using this directive 'profile'.
+
+3.    For example, to add the credentials, Run following steps:
+a.    set host-url=<aai-url>
+b.    set host-username=AAI
+c.    set host-pasword=AAI
+d.    Type 'set' to print all these arguments stored so far.
+
+NOTE: Profiles are not limited to set only credentials, you can set any frequently using
+common arguments, which are listed in command help.
+
+4.    You can override these stored arguments by providing them as arguments directly while
+running the CLI.
+
+5.    Profile information is persisted, so when you disconnect and connect again the CLI console,
+you can start use the same profile again.
+
+NOTE: Use the directive 'set' for setting the values for parameters and 'unset' for reseting
+ the values.
 
 Help
 ----
