@@ -59,11 +59,19 @@
             <activeByDefault>true</activeByDefault>
           </activation>
           <modules>
-            <module>openecomp</module>
             <module>onap-amsterdam</module>
+            <!-- <module>onap-beijing</module> -->
           </modules>
        </profile>
-
+       <profile>
+          <id>eol</id>
+          <activation>
+            <activeByDefault>false</activeByDefault>
+          </activation>
+          <modules>
+            <module>openecomp</module>
+          </modules>
+       </profile>
     </profiles>
     <build>
          <pluginManagement>
