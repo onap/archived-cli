@@ -55,9 +55,13 @@ otherwise on typing 'profile' on the console, corresponding profiles will be eff
 So you can switch across profiles by using this directive 'profile'.
 
 3.    For example, to add the credentials, Run following steps:
+
 a.    set host-url=<aai-url>
+
 b.    set host-username=AAI
+
 c.    set host-pasword=AAI
+
 d.    Type 'set' to print all these arguments stored so far.
 
 NOTE: Profiles are not limited to set only credentials, you can set any frequently using
@@ -69,8 +73,7 @@ running the CLI.
 5.    Profile information is persisted, so when you disconnect and connect again the CLI console,
 you can start use the same profile again.
 
-NOTE: Use the directive 'set' for setting the values for parameters and 'unset' for reseting
- the values.
+NOTE: Use the directive 'set' for setting the values for parameters and 'unset' for reseting the values.
 
 Help
 ----
