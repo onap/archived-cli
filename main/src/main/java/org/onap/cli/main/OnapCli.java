@@ -243,7 +243,9 @@ public class OnapCli {
                         handleVersion();
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
                         if (args.size() == 1) {
-                            this.print("Please use it in the form of 'profile <profile-name>'");
+                            this.print("Please use it in the form of 'profile <profile-name>'\n");
+                            this.print("Profiles:");
+                            this.print(OnapCommandRegistrar.getRegistrar().getUserProfiles().toString());
                         } else {
                             this.args = Arrays.asList(new String [] {
                                     this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG),
