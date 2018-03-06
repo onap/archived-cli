@@ -94,6 +94,10 @@ public class OnapCommandRegistrar {
         this.paramCache.setProfile(profileName);
     }
 
+    public List<String> getUserProfiles() {
+        return paramCache.getProfiles();
+    }
+
     private static OnapCommandRegistrar registrar = null;
 
     /**

@@ -18,6 +18,8 @@ package org.onap.cli.fw.input.cache;
 
 import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_DIRECTORY;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_JSON_PATTERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_PROFILE_JSON;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_PROFILE_JSON_PATTERN;
 
 import java.io.File;
 import java.io.IOException;
@@ -132,7 +134,7 @@ public class OnapCommandParameterCache {
                 Resource[] resources = OnapCommandDiscoveryUtils.findResources(DATA_DIRECTORY);
                 if (resources != null && resources.length == 1) {
                     String path = resources[0].getURI().getPath();
-                    File file = new File(path + File.separator + profileName + ".json");
+                    File file = new File(path + File.separator + profileName + DATA_PATH_PROFILE_JSON);
                     ObjectMapper mapper = new ObjectMapper();
                     mapper.writerWithDefaultPrettyPrinter().writeValue(file, params);
                 }
@@ -146,7 +148,7 @@ public class OnapCommandParameterCache {
         List<OnapCommandParamEntity> params = new ArrayList<>();
 
         try {
-            Resource resource = OnapCommandDiscoveryUtils.findResource(profileName + ".json",
+            Resource resource = OnapCommandDiscoveryUtils.findResource(profileName + DATA_PATH_PROFILE_JSON,
                     DATA_PATH_JSON_PATTERN);
             if (resource != null) {
                 File file = new File(resource.getURI().getPath());
@@ -159,5 +161,25 @@ public class OnapCommandParameterCache {
         }
 
         return params;
+    }
+
+    public List<String> getProfiles() {
+        List<String> profiles = new ArrayList<>();
+
+        Resource[] resources;
+        try {
+            resources = OnapCommandDiscoveryUtils.findResources(DATA_PATH_PROFILE_JSON_PATTERN);
+        } catch (IOException e) {
+             throw new RuntimeException(e);   // NOSONAR
+        }
+
+        if (resources != null && resources.length > 0) {
+            for (Resource res : resources) {
+                String profile = res.getFilename().substring(0, res.getFilename().indexOf(DATA_PATH_PROFILE_JSON));
+                profiles.add(profile);
+            }
+        }
+
+        return profiles;
     }
 }

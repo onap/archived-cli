@@ -90,7 +90,7 @@ public class OnapCommandRegistrarTest {
     @Test
     public void testProfile() throws OnapCommandException {
         try {
-                OnapCommandRegistrar.getRegistrar().setProfile("test");
+                OnapCommandRegistrar.getRegistrar().setProfile("test12312");
                 OnapCommandRegistrar.getRegistrar().addParamCache("a", "b");
                 OnapCommandRegistrar.getRegistrar().getParamCache();
                 OnapCommandRegistrar.getRegistrar().removeParamCache("a");

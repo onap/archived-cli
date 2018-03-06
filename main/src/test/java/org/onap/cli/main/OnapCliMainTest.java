@@ -152,6 +152,13 @@ public class OnapCliMainTest {
         }
 
         cli = new OnapCli(new String[] {});
+        mockConsole("profile");
+        try {
+            cli.handleInteractive();
+        } catch (Exception e) {
+        }
+
+        cli = new OnapCli(new String[] {});
         mockConsole("version");
         try {
             cli.handleInteractive();

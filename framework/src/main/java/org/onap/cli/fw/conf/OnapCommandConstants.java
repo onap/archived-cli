@@ -114,6 +114,8 @@ public class OnapCommandConstants {
     public static final String DATA_DIRECTORY = "data";
     public static final String DISCOVERY_FILE = "cli-schema.json";
     public static final String DATA_PATH_JSON_PATTERN = DATA_DIRECTORY + JSON_PATTERN;
+    public static final String DATA_PATH_PROFILE_JSON = "-profile.json";
+    public static final String DATA_PATH_PROFILE_JSON_PATTERN = DATA_DIRECTORY + "/**/*" + DATA_PATH_PROFILE_JSON;
     public static final String DISCOVER_ALWAYS = "discover_always";
     public static final String PARAM_CACHE_FILE_NAME = "global-profile";
 
