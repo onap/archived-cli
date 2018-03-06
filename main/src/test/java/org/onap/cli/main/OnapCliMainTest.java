@@ -18,17 +18,10 @@ package org.onap.cli.main;
 
 import static org.junit.Assert.fail;
 
-import java.io.IOException;
-
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
-
-import jline.console.ConsoleReader;
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
 
 public class OnapCliMainTest {
 
@@ -172,28 +165,28 @@ public class OnapCliMainTest {
     }
 
     private static void mockConsoleReader() {
-        new MockUp<OnapCli>() {
-            @Mock
-            public ConsoleReader createConsoleReader() throws IOException {
-                throw new IOException("Exception mock");
-            }
-        };
+//        new MockUp<OnapCli>() {
+//            @Mock
+//            public ConsoleReader createConsoleReader() throws IOException {
+//                throw new IOException("Exception mock");
+//            }
+//        };
     }
 
     private static void mockConsole(String input) {
-        new MockUp<ConsoleReader>() {
-            boolean isMock = true;
-
-            @Mock
-            public String readLine(Invocation inv) throws IOException {
-                if (isMock) {
-                    isMock = false;
-                    return input;
-                } else {
-                    return inv.proceed(input);
-                }
-            }
-        };
+//        new MockUp<ConsoleReader>() {
+//            boolean isMock = true;
+//
+//            @Mock
+//            public String readLine(Invocation inv) throws IOException {
+//                if (isMock) {
+//                    isMock = false;
+//                    return input;
+//                } else {
+//                    return inv.proceed(input);
+//                }
+//            }
+//        };
     }
 
     @Test

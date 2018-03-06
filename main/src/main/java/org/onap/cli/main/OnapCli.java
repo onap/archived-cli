@@ -20,8 +20,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
+import org.jline.reader.Completer;
+import org.jline.reader.LineReader;
+import org.jline.reader.LineReaderBuilder;
+import org.jline.reader.MaskingCallback;
+import org.jline.reader.impl.DefaultParser;
+import org.jline.reader.impl.completer.StringsCompleter;
+import org.jline.terminal.Terminal;
+import org.jline.terminal.TerminalBuilder;
+import org.jline.utils.InfoCmp.Capability;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
@@ -37,14 +47,10 @@ import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.main.conf.OnapCliConstants;
-import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliArgsParser;
 import org.onap.cli.sample.yaml.SampleYamlGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import jline.TerminalFactory;
-import jline.console.ConsoleReader;
 
 /**
  * Oclip Command Line Interface (CLI).
@@ -202,94 +208,123 @@ public class OnapCli {
      * Handles Interactive Mode.
      */
     public void handleInteractive() { // NOSONAR
+        TerminalBuilder builder = TerminalBuilder.builder();
+        Terminal terminal = null;
+
+        java.util.logging.Logger.getLogger("org.jline").setLevel(java.util.logging.Level.OFF);
+
         if (args.isEmpty()) {
-            ConsoleReader console = null;
+            LineReader console = null;
             try {
                 OnapCommandRegistrar.getRegistrar().setInteractiveMode(true);
-                console = createConsoleReader();
-                String line = null;
+                terminal = builder.build();
+                console = createConsoleReader(terminal);
 
-                while ((line = console.readLine()) != null) {
-                    line = line.trim();
-                    if (OnapCliConstants.PARAM_INTERACTIVE_EXIT.equalsIgnoreCase(line)) {
-                        break;
-                    } else if (OnapCliConstants.PARAM_INTERACTIVE_CLEAR.equalsIgnoreCase(line)) {
-                        console.clearScreen();
-                        continue;
-                    }
-                    this.args = Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN));
+                while (true) {
 
-                    if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
-                        if (args.size() == 1) {
-                            this.print("Please input the product version to use, supported versions: " +
-                                    OnapCommandRegistrar.getRegistrar().getAvailableProductVersions());
-                        } else {
-                            try {
-                                OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(args.get(1));
-                                console.close();
-                                console = createConsoleReader();
-                            } catch (OnapCommandException e) {
-                                this.print(e);
-                            }
-                        }
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
-                        try {
-                            this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
-                            this.print(this.getDirectiveHelp());
-                        } catch (OnapCommandException e) {
-                            this.print(e);
-                        }
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
-                        this.args = Arrays.asList(new String [] {this.getLongOption(OnapCliConstants.PARAM_VERSION_LONG)});
-                        handleVersion();
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
-                        if (args.size() == 1) {
-                            this.print("Please use it in the form of 'profile <profile-name>'");
-                        } else {
-                            this.args = Arrays.asList(new String [] {
-                                    this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG),
-                                    this.args.get(1)});
-                            handleProfile();
-                        }
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_SET)) {
-                        if (args.size() > 1) {
-                            String [] paramEntry = args.get(1).trim().split("=");
-                            if (paramEntry.length >= 2) {
-                                OnapCommandRegistrar.getRegistrar().addParamCache(paramEntry[0].trim(), paramEntry[1].trim());
-                            } else {
-                                this.print("Please use it in the form of 'set param-name=param-value'");
-                            }
-                        } else {
-                            this.print(OnapCommandRegistrar.getRegistrar().getParamCache().toString());
-                        }
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_UNSET)) {
-                        if (args.size() > 1) {
-                            for (int i = 1; i <args.size(); i++) {
-                                OnapCommandRegistrar.getRegistrar().removeParamCache(args.get(i));
-                            }
-                        }
-                    } else {
-                        if (args.size() == 1 && args.get(0).trim().isEmpty()) {
-                            //Ignore blanks // NOSONAR
+                    try{
+
+                        String line = console.readLine(
+                                    OnapCliConstants.PARAM_INTERACTIVE_PROMPT + ":" + OnapCommandRegistrar.getRegistrar().getEnabledProductVersion() + ">",
+                                    null, (MaskingCallback) null, null);
+
+                        if (line == null) {
                             continue;
                         }
 
-                        handleCommand();
+                        line = line.trim();
+                        if (OnapCliConstants.PARAM_INTERACTIVE_EXIT.equalsIgnoreCase(line)) {
+                            break;
+                        } else if (OnapCliConstants.PARAM_INTERACTIVE_CLEAR.equalsIgnoreCase(line)) {
+                            terminal.puts(Capability.clear_screen);
+                            terminal.flush();
+
+                            continue;
+                        }
+
+                        this.args = Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN));
+
+                        if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
+                            if (args.size() == 1) {
+                                this.print("Please input the product version to use, supported versions: " +
+                                        OnapCommandRegistrar.getRegistrar().getAvailableProductVersions());
+                            } else {
+                                try {
+                                    OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(args.get(1));
+                                    terminal.flush();
+
+                                    console = createConsoleReader(terminal);
+                                } catch (OnapCommandException e) {
+                                    this.print(e);
+                                }
+                            }
+
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
+                            try {
+                                this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
+                                this.print(this.getDirectiveHelp());
+                            } catch (OnapCommandException e) {
+                                this.print(e);
+                            }
+
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
+                            this.args = Arrays.asList(new String [] {this.getLongOption(OnapCliConstants.PARAM_VERSION_LONG)});
+                            handleVersion();
+
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
+                            if (args.size() == 1) {
+                                this.print("Please use it in the form of 'profile <profile-name>'");
+                            } else {
+                                this.args = Arrays.asList(new String [] {
+                                        this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG),
+                                        this.args.get(1)});
+                                handleProfile();
+                            }
+
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_SET)) {
+                            if (args.size() > 1) {
+                                String [] paramEntry = args.get(1).trim().split("=");
+                                if (paramEntry.length >= 2) {
+                                    OnapCommandRegistrar.getRegistrar().addParamCache(paramEntry[0].trim(), paramEntry[1].trim());
+                                } else {
+                                    this.print("Please use it in the form of 'set param-name=param-value'");
+                                }
+                            } else {
+                                this.print(OnapCommandRegistrar.getRegistrar().getParamCache().toString());
+                            }
+
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_UNSET)) {
+                            if (args.size() > 1) {
+                                for (int i = 1; i <args.size(); i++) {
+                                    OnapCommandRegistrar.getRegistrar().removeParamCache(args.get(i));
+                                }
+                            }
+
+                        } else {
+                            if (args.size() == 1 && args.get(0).trim().isEmpty()) {
+                                //Ignore blanks // NOSONAR
+                                continue;
+                            }
+
+                            handleCommand();
+                        }
+
+                    } catch (Exception e) { // NOSONAR
+                        this.print("Something wrong... Try again !!!");
+                        LOG.error(e.getMessage(), e);
                     }
                 }
-            } catch (IOException e) { // NOSONAR
-                this.print("Failed to read console, " + e.getMessage());
-            } catch (OnapCommandException e) {
+            } catch (Exception e) { // NOSONAR
                 this.print(e);
                 this.exitFailure();
             } finally {
                 try {
-                    TerminalFactory.get().restore();
+                    if (terminal != null) {
+                        terminal.close();
+                    }
                 } catch (Exception e) { // NOSONAR
                 }
-                if (console != null) {
-                    console.close();
-                }
+
                 this.exitSuccessfully();
             }
         }
@@ -301,26 +336,35 @@ public class OnapCli {
      * @return ConsoleReader
      * @throws IOException
      *             exception
+     * @throws OnapCommandException
      */
-    private ConsoleReader createConsoleReader() throws IOException {
-        try(ConsoleReader console = new ConsoleReader()){
-            try {
-                StringCompleter strCompleter = new StringCompleter(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion());
-                strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
+    private LineReader createConsoleReader(Terminal terminal) throws IOException, OnapCommandException {
+
+        Set<String> cmds = OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion();
+
+        for (String directive: new String [] {OnapCliConstants.PARAM_INTERACTIVE_EXIT,
                         OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
                         OnapCliConstants.PARAM_INTERACTIVE_USE,
                         OnapCliConstants.PARAM_INTERACTIVE_HELP,
                         OnapCliConstants.PARAM_INTERACTIVE_VERSION,
                         OnapCliConstants.PARAM_INTERACTIVE_SET,
                         OnapCliConstants.PARAM_INTERACTIVE_UNSET,
-                        OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
-                console.addCompleter(strCompleter);
-                console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT + ":" + OnapCommandRegistrar.getRegistrar().getEnabledProductVersion() + ">");
-            } catch (OnapCommandException e) { // NOSONAR
-                this.print("Failed to load oclip commands," + e.getMessage());
-            }
-            return console;
+                        OnapCliConstants.PARAM_INTERACTIVE_PROFILE}) {
+            cmds.add(directive);
         }
+
+        Completer completer = new StringsCompleter(cmds);
+
+        DefaultParser parser = new DefaultParser();
+
+        LineReader reader = LineReaderBuilder.builder()
+                .terminal(terminal)
+                .completer(completer)
+                .parser(parser)
+                .build();
+
+        return reader;
+
     }
 
     /**

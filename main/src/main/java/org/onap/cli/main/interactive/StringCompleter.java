@@ -16,13 +16,16 @@
 
 package org.onap.cli.main.interactive;
 
-import jline.console.completer.Completer;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
+import org.jline.reader.Candidate;
+import org.jline.reader.Completer;
+import org.jline.reader.LineReader;
+import org.jline.reader.ParsedLine;
 
 /**
  * String completer for autocomplete commands.
@@ -75,5 +78,11 @@ public class StringCompleter implements Completer {
             candidates.set(0, candidates.get(0) + " ");
         }
         return candidates.isEmpty() ? -1 : 0;
+    }
+
+    @Override
+    public void complete(LineReader arg0, ParsedLine arg1, List<Candidate> arg2) {
+        // TODO Auto-generated method stub
+
     }
 }
