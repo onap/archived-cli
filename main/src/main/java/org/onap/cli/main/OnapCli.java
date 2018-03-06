@@ -226,7 +226,6 @@ public class OnapCli {
                         } else {
                             try {
                                 OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(args.get(1));
-                                console.close();
                                 console = createConsoleReader();
                             } catch (OnapCommandException e) {
                                 this.print(e);
@@ -287,9 +286,6 @@ public class OnapCli {
                     TerminalFactory.get().restore();
                 } catch (Exception e) { // NOSONAR
                 }
-                if (console != null) {
-                    console.close();
-                }
                 this.exitSuccessfully();
             }
         }
@@ -303,7 +299,7 @@ public class OnapCli {
      *             exception
      */
     private ConsoleReader createConsoleReader() throws IOException {
-        try(ConsoleReader console = new ConsoleReader()){
+        ConsoleReader console = new ConsoleReader(); // NOSONAR
             try {
                 StringCompleter strCompleter = new StringCompleter(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion());
                 strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
@@ -320,7 +316,6 @@ public class OnapCli {
                 this.print("Failed to load oclip commands," + e.getMessage());
             }
             return console;
-        }
     }
 
     /**
