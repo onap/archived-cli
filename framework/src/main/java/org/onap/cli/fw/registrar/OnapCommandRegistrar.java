@@ -90,8 +90,16 @@ public class OnapCommandRegistrar {
         paramCache.remove(this.getEnabledProductVersion(), paramName);
     }
 
-    public void setProfile(String profileName) {
+    public void setProfile(String profileName, List<String> includes, List<String> excludes) {
         this.paramCache.setProfile(profileName);
+
+        for (String profile: includes) {
+            this.paramCache.includeProfile(profile);
+        }
+
+        for (String profile: excludes) {
+            this.paramCache.excludeProfile(profile);
+        }
     }
 
     public List<String> getUserProfiles() {

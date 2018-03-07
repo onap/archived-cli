@@ -142,7 +142,10 @@ public class OnapCli {
             if ((args.size() == 2) && (this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG).equals(args.get(0))
                         || this.getShortOption(OnapCliConstants.PARAM_PROFILE_SHORT).equals(args.get(0)))) {
 
-                OnapCommandRegistrar.getRegistrar().setProfile(args.get(1));
+                OnapCommandRegistrar.getRegistrar().setProfile(
+                        args.get(1),
+                        new ArrayList<String>(),
+                        new ArrayList<String>());
                 //Make space of interactive mode
                 this.args = new ArrayList<>();
             }

@@ -23,6 +23,7 @@ import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -90,7 +91,7 @@ public class OnapCommandRegistrarTest {
     @Test
     public void testProfile() throws OnapCommandException {
         try {
-                OnapCommandRegistrar.getRegistrar().setProfile("test12312");
+                OnapCommandRegistrar.getRegistrar().setProfile("test234", new ArrayList<String>(), new ArrayList<String>());
                 OnapCommandRegistrar.getRegistrar().addParamCache("a", "b");
                 OnapCommandRegistrar.getRegistrar().getParamCache();
                 OnapCommandRegistrar.getRegistrar().removeParamCache("a");

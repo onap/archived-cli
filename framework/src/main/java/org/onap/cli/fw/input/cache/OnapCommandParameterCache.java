@@ -58,6 +58,13 @@ public class OnapCommandParameterCache {
         return single;
     }
 
+    public void includeProfile(String profile) {
+        this.load(profile, true);
+    }
+
+    public void excludeProfile(String profile) {
+        this.load(profile, false);
+    }
 
     public void add(String productVersion, String paramName, String paramValue) {
 
@@ -111,15 +118,23 @@ public class OnapCommandParameterCache {
     }
 
     private void load() {
+        this.load(this.profileName, true);
+    }
+
+    private void load(String profileName, boolean include) {
         List<OnapCommandParamEntity> params= new ArrayList<>();
         try {
-            params = this.loadParamFromCache(this.profileName);
+            params = this.loadParamFromCache(profileName);
         } catch (OnapCommandLoadProfileFailed e) {
             throw new RuntimeException(e);   // NOSONAR
         }
 
         for (OnapCommandParamEntity p : params) {
-            this.add(p.getProduct(), p.getName(), p.getValue());
+            if (include) {
+                this.add(p.getProduct(), p.getName(), p.getValue());
+            } else {
+                this.remove(p.getProduct(), p.getName());
+            }
         }
     }
 
