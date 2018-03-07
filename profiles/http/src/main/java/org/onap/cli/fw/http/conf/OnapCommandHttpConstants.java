@@ -83,10 +83,10 @@ public class OnapCommandHttpConstants {
     public static final String CATALOG_SERVICE_BASE_PATH = "catalog-service-base-path";
     public static final String CATALOG_SERVICE_HOST_URL = "catalog-service-host-url";
 
-    public static final String AUTH_VALUES = "cli.schema.auth_values";
-    public static final String MODE_VALUES = "cli.schema.mode_values";
-    public static final String SERVICE_PARAMS_LIST = "cli.schema.service_params_list";
-    public static final String SERVICE_PARAMS_MANDATORY_LIST = "cli.schema.service_params_mandatory_list";
+    public static final String AUTH_VALUES = "cli.schema.http.service.auth.values";
+    public static final String MODE_VALUES = "cli.schema.http.service.mode.values";
+    public static final String SERVICE_PARAMS_LIST = "cli.schema.http.service.sections";
+    public static final String SERVICE_PARAMS_MANDATORY_LIST = "cli.schema.http.service.sections.mandatory";
 
     public static final String DEFAULT_PARAMETER_NO_CATALOG = "no-catalog";
 }
