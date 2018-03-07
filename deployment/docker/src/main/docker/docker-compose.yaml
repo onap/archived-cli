@@ -6,8 +6,8 @@ services:
     environment:
       OPEN_CLI_MODE: 'daemon'
     ports:
-      - 8080:80
-      - 9090:8080
+      - 30260:80
+      - 30261:8080
 
   cli:
     stdin_open: true
