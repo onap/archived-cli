@@ -197,14 +197,14 @@ public abstract class OnapCommand {
         LOG.info("INPUT: " + paramMap);
 
         // -h or --help is always higher precedence !, user can set this value to get help message
-        if (OnapCommandConstants.BOOLEAN_TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
+        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
             this.cmdResult.setType(OnapCommandResultType.TEXT);
             this.cmdResult.setOutput(this.printHelp());
             return this.cmdResult;
         }
 
         // -v or --version is next higher precedence !, user can set this value to get help message
-        if (OnapCommandConstants.BOOLEAN_TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_VERSION).getValue())) {
+        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_VERSION).getValue())) {
             this.cmdResult.setType(OnapCommandResultType.TEXT);
             this.cmdResult.setOutput(this.printVersion());
             return this.cmdResult;
@@ -220,12 +220,12 @@ public abstract class OnapCommand {
             this.cmdResult.setScope(OnapCommandResultAttributeScope.LONG);
         }
         // --no-title
-        if (OnapCommandConstants.BOOLEAN_TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE).getValue())) {
+        if ((Boolean)paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE).getValue()) {
             this.cmdResult.setIncludeTitle(false);
         }
 
         // --debug
-        if (OnapCommandConstants.BOOLEAN_TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG).getValue())) {
+        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG).getValue())) {
             this.cmdResult.setDebug(true);
         }
 
