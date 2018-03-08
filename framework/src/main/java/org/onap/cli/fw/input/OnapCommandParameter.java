@@ -168,7 +168,7 @@ public class OnapCommandParameter {
                     this.defaultValue = UUID.randomUUID().toString();
                     break;
                 default:
-                    this.defaultValue = null;
+                    this.defaultValue = new Object();
                     break;
             }
         }
