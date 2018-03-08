@@ -23,18 +23,19 @@
 
     <parent>
         <groupId>org.onap.cli</groupId>
-        <artifactId>cli-products</artifactId>
+        <artifactId>cli-products-onap-beijing</artifactId>
         <version>2.0.0</version>
     </parent>
 
-    <artifactId>cli-products-onap-beijing</artifactId>
-    <name>cli/products/onap-beijing</name>
+    <artifactId>cli-products-onap-beijing-features</artifactId>
+    <name>cli/products/onap-beijing/features</name>
     <packaging>pom</packaging>
 
     <modules>
-        <module>features</module>
+        <module>aai</module>
     </modules>
-    <build>
+
+     <build>
          <pluginManagement>
             <plugins>
                 <plugin>
@@ -57,7 +58,7 @@
                             </artifactItem>
                         </artifactItems>
                         <!-- copy to products dependencies -->
-                        <outputDirectory>../../../products/target/lib</outputDirectory>
+                        <outputDirectory>../../../../products/target/lib</outputDirectory>
                       </configuration>
                     </execution>
                   </executions>
