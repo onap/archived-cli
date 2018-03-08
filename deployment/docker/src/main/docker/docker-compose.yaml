@@ -25,3 +25,15 @@ services:
       OPEN_CLI_DEBUG: "true"
     ports:
       - 5005:5005
+
+  all:
+    image: onap/cli
+    environment:
+      OPEN_CLI_MODE: 'daemon'
+      OPEN_CLI_DEBUG: "true"
+    ports:
+      - 30260:80
+      - 30261:8080
+      - 5005:5005
+
+
