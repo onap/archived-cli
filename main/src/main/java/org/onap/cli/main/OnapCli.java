@@ -139,15 +139,16 @@ public class OnapCli {
      */
     public void handleProfile() {
         try {
-            if ((args.size() == 2) && (this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG).equals(args.get(0))
-                        || this.getShortOption(OnapCliConstants.PARAM_PROFILE_SHORT).equals(args.get(0)))) {
+            if ((this.args.size() == 2) && (this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG).equals(this.args.get(0))
+                        || this.getShortOption(OnapCliConstants.PARAM_PROFILE_SHORT).equals(this.args.get(0)))) {
 
                 OnapCommandRegistrar.getRegistrar().setProfile(
                         args.get(1),
                         new ArrayList<String>(),
                         new ArrayList<String>());
-                //Make space of interactive mode
-                this.args = new ArrayList<>();
+                //Make space of interactive mode/command mode
+                this.args.remove(0); //--profile or -c
+                this.args.remove(1); //profile name
             }
         } catch (Exception e) {
             this.print(e);
@@ -224,7 +225,7 @@ public class OnapCli {
 
                     if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
                         if (args.size() == 1) {
-                            this.print("Please input the product version to use, supported versions: " +
+                            this.print("Please use it in the form of use <product-version>.\nSupported versions: " +
                                     OnapCommandRegistrar.getRegistrar().getAvailableProductVersions());
                         } else {
                             try {
@@ -234,20 +235,23 @@ public class OnapCli {
                                 this.print(e);
                             }
                         }
+
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
                         try {
                             this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
-                            this.print(this.getDirectiveHelp());
+                            this.print(OnapCli.getDirectiveHelp());
                         } catch (OnapCommandException e) {
                             this.print(e);
                         }
+
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
                         this.args = Arrays.asList(new String [] {this.getLongOption(OnapCliConstants.PARAM_VERSION_LONG)});
                         handleVersion();
+
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
                         if (args.size() == 1) {
                             this.print("Please use it in the form of 'profile <profile-name>'\n");
-                            this.print("Profiles:");
+                            this.print("Profiles: ");
                             this.print(OnapCommandRegistrar.getRegistrar().getUserProfiles().toString());
                         } else {
                             this.args = Arrays.asList(new String [] {
@@ -255,17 +259,19 @@ public class OnapCli {
                                     this.args.get(1)});
                             handleProfile();
                         }
+
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_SET)) {
                         if (args.size() > 1) {
-                            String [] paramEntry = args.get(1).trim().split("=");
-                            if (paramEntry.length >= 2) {
+                            String [] paramEntry = args.get(1).trim().split("=", 2);
+                            if (paramEntry.length == 2) {
                                 OnapCommandRegistrar.getRegistrar().addParamCache(paramEntry[0].trim(), paramEntry[1].trim());
                             } else {
-                                this.print("Please use it in the form of 'set param-name=param-value'");
+                                this.print("Please use it in the form of 'set <param-name>=<param-value>'");
                             }
                         } else {
                             this.print(OnapCommandRegistrar.getRegistrar().getParamCache().toString());
                         }
+
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_UNSET)) {
                         if (args.size() > 1) {
                             for (int i = 1; i <args.size(); i++) {
