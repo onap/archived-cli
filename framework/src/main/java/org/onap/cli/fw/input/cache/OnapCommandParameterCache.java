@@ -39,7 +39,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OnapCommandParameterCache {
 
-    public Map<String, Map<String, String>> paramCache = new HashMap<>();
+    private Map<String, Map<String, String>> paramCache = new HashMap<>();
 
     private static OnapCommandParameterCache single = null;
 
