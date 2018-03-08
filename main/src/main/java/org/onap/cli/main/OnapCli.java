@@ -61,7 +61,7 @@ public class OnapCli {
     private int exitCode = -1;
 
     public OnapCli(String[] args) {
-        this.args = Arrays.asList(args);
+        this.args.addAll(Arrays.asList(args));
     }
 
     public OnapCli(String product, String[] args) {
@@ -139,11 +139,11 @@ public class OnapCli {
      */
     public void handleProfile() {
         try {
-            if ((this.args.size() == 2) && (this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG).equals(this.args.get(0))
+            if ((this.args.size() >= 2) && (this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG).equals(this.args.get(0))
                         || this.getShortOption(OnapCliConstants.PARAM_PROFILE_SHORT).equals(this.args.get(0)))) {
 
                 OnapCommandRegistrar.getRegistrar().setProfile(
-                        args.get(1),
+                        this.args.get(1),
                         new ArrayList<String>(),
                         new ArrayList<String>());
                 //Make space of interactive mode/command mode
@@ -221,7 +221,8 @@ public class OnapCli {
                         console.clearScreen();
                         continue;
                     }
-                    this.args = Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN));
+                    this.args.clear();
+                    this.args.addAll(Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN)));
 
                     if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
                         if (args.size() == 1) {
@@ -254,9 +255,7 @@ public class OnapCli {
                             this.print("Available profiles: ");
                             this.print(OnapCommandRegistrar.getRegistrar().getUserProfiles().toString());
                         } else {
-                            this.args = Arrays.asList(new String [] {
-                                    this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG),
-                                    this.args.get(1)});
+                            this.args.set(0, this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG));
                             handleProfile();
                         }
 
@@ -326,6 +325,7 @@ public class OnapCli {
             } catch (OnapCommandException e) { // NOSONAR
                 this.print("Failed to load oclip commands," + e.getMessage());
             }
+
             return console;
     }
 
@@ -364,6 +364,7 @@ public class OnapCli {
                     }
                 }
 
+                //refer params from profile
                 for (OnapCommandParameter param: cmd.getParameters()) {
                     if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(
                             cmd.getInfo().getService() + ":" + param.getLongOption())) {

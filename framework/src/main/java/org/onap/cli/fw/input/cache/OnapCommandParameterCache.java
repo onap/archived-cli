@@ -140,6 +140,7 @@ public class OnapCommandParameterCache {
 
     public void setProfile(String profileName) {
         this.profileName = profileName;
+        this.paramCache.clear();
         this.load();
     }
 
