@@ -162,13 +162,13 @@ public class OnapCommandParameter {
                     defaultValue = new ArrayList<String>();
                     break;
                 case BOOL:
-                    defaultValue = false;
+                    defaultValue = Boolean.FALSE;
                     break;
                 case UUID:
                     this.defaultValue = UUID.randomUUID().toString();
                     break;
                 default:
-                    this.defaultValue = null;
+                    this.defaultValue = new String("");
                     break;
             }
         }
@@ -223,7 +223,7 @@ public class OnapCommandParameter {
                 break;
 
             case BOOL:
-                defaultValue = processedValue.equalsIgnoreCase("true");
+                defaultValue = Boolean.parseBoolean(processedValue);
                 break;
 
             default:
