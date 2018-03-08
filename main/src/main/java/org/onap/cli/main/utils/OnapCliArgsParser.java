@@ -128,7 +128,7 @@ public class OnapCliArgsParser {
                     Object value = paramMap.get(paramName).getValue();
                     List<String> list = (List<String>) value;
 
-                    list.add(args.get(i + 1));
+                    list.add(readTextStringFromUrl(args.get(i + 1), paramMap.get(paramName).getName()));
                     paramMap.get(paramName).setValue(list);
                     i++;
                     continue;
@@ -148,7 +148,8 @@ public class OnapCliArgsParser {
                                 "it should be in the form of <key>=<value>");
                     }
 
-                    map.put(argArr[0], argArr[1]);
+                    //Make sure to read values from file, in case file path is given.
+                    map.put(argArr[0], readTextStringFromUrl(argArr[1], paramMap.get(paramName).getName()));
                     paramMap.get(paramName).setValue(map);
                     i++;
                     continue;
