@@ -1,0 +1,73 @@
+# Copyright 2017-18 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: cloud-list
+description: List the configured clouds and Onap service subscriptions
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: landscape
+  attributes:
+    - name: cloud
+      description: Onap cloud
+      scope: short
+      type: string
+    - name: region
+      description: Onap cloud region
+      scope: short
+      type: string
+    - name: tenant
+      description: Onap cloud tenat
+      scope: long
+      type: string
+    - name: tenant-id
+      description: Onap cloud tenat id
+      scope: long
+      type: string
+    - name: customer
+      description: Onap cloud customer
+      scope: long
+      type: string
+    - name: service
+      description: Onap cloud service
+      scope: long
+      type: string
+    - name: resource-version
+      description: Onap cloud resource version
+      scope: short
+      type: string
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v12/cloud-infrastructure/cloud-regions
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    cloud: $b{cloud-region.[*].cloud-owner}
+    region: $b{cloud-region.[*].cloud-region-id}
+    resource-version: $b{cloud-region.[*].resource-version}
+    tenant: $b{cloud-region.[*].tenants.tenant.[*].tenant-name}
+    tenant-id: $b{cloud-region.[*].tenants.tenant.[*].tenant-id}
+    customer: $b{cloud-region.[*].tenants.tenant.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'customer.global-customer-id')].relationship-value}
+    service: $b{cloud-region.[*].tenants.tenant.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'service-subscription.service-type')].relationship-value}
+  sample_response:
+    body: '{"cloud-region":[{"cloud-owner":"Rackspace","cloud-region-id":"RegionOne","cloud-type":"SharedNode","owner-defined-type":"OwnerType","cloud-region-version":"v1","cloud-zone":"CloudZone","resource-version":"1500729864","tenants":{"tenant":[{"tenant-id":"e69e6d64b44347509c3fc512391f34a6","tenant-name":"onap","resource-version":"1500729865","relationship-list":{"relationship":[{"related-to":"service-subscription","related-link":"https://192.168.17.12:8443/aai/v8/business/customers/customer/Demonstration/service-subscriptions/service-subscription/vFW/","relationship-data":[{"relationship-key":"customer.global-customer-id","relationship-value":"Demonstration"},{"relationship-key":"service-subscription.service-type","relationship-value":"vFW"}]},{"related-to":"service-subscription","related-link":"https://192.168.17.12:8443/aai/v8/business/customers/customer/Demonstration123/service-subscriptions/service-subscription/vFW/","relationship-data":[{"relationship-key":"customer.global-customer-id","relationship-value":"Demonstration123"},{"relationship-key":"service-subscription.service-type","relationship-value":"vFW"}]},{"related-to":"service-subscription","related-link":"https://192.168.17.12:8443/aai/v8/business/customers/customer/u1/service-subscriptions/service-subscription/vFW/","relationship-data":[{"relationship-key":"customer.global-customer-id","relationship-value":"u1"},{"relationship-key":"service-subscription.service-type","relationship-value":"vFW"}]},{"related-to":"service-subscription","related-link":"https://192.168.17.12:8443/aai/v8/business/customers/customer/u2/service-subscriptions/service-subscription/vFW/","relationship-data":[{"relationship-key":"customer.global-customer-id","relationship-value":"u2"},{"relationship-key":"service-subscription.service-type","relationship-value":"vFW"}]},{"related-to":"service-subscription","related-link":"https://192.168.17.12:8443/aai/v8/business/customers/customer/DemoCust_7151e36a-1a57-4993-b513-54134f2b8f19/service-subscriptions/service-subscription/vFW/","relationship-data":[{"relationship-key":"customer.global-customer-id","relationship-value":"DemoCust_7151e36a-1a57-4993-b513-54134f2b8f19"},{"relationship-key":"service-subscription.service-type","relationship-value":"vFW"}]},{"related-to":"service-subscription","related-link":"https://192.168.17.12:8443/aai/v8/business/customers/customer/Demonstration/service-subscriptions/service-subscription/vLB/","relationship-data":[{"relationship-key":"customer.global-customer-id","relationship-value":"Demonstration"},{"relationship-key":"service-subscription.service-type","relationship-value":"vLB"}]},{"related-to":"service-subscription","related-link":"https://192.168.17.12:8443/aai/v8/business/customers/customer/Linan/service-subscriptions/service-subscription/vFW/","relationship-data":[{"relationship-key":"customer.global-customer-id","relationship-value":"Linan"},{"relationship-key":"service-subscription.service-type","relationship-value":"vFW"}]},{"related-to":"service-subscription","related-link":"https://192.168.17.12:8443/aai/v8/business/customers/customer/Linan/service-subscriptions/service-subscription/vLB/","relationship-data":[{"relationship-key":"customer.global-customer-id","relationship-value":"Linan"},{"relationship-key":"service-subscription.service-type","relationship-value":"vLB"}]}]}}]}}]}'
