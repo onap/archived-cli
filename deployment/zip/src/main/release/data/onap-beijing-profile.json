@@ -1,0 +1,52 @@
+[
+    {
+      "product" : "onap-beijing",
+      "name" : "aai:host-url",
+      "value" : ""
+    },
+    {
+      "product" : "onap-beijing",
+      "name" : "aai:host-username",
+      "value" : "AAI"
+    },
+    {
+      "product" : "onap-beijing",
+      "name" : "aai:host-password",
+      "value" : "AAI"
+    },
+    {
+      "product" : "onap-beijing",
+      "name" : "msb:host-url",
+      "value" : ""
+    },
+    {
+      "product" : "onap-beijing",
+      "name" : "sdc:host-url",
+      "value" : ""
+    },
+    {
+      "product" : "onap-beijing",
+      "name" : "sdc:host-username",
+      "value" : "cs_0008"
+    },
+    {
+      "product" : "onap-beijing",
+      "name" : "sdc:host-password",
+      "value" : "demo123456!"
+    },
+    {
+      "product" : "onap-beijing",
+      "name" : "so:host-url",
+      "value" : ""
+    },
+    {
+      "product" : "onap-beijing",
+      "name" : "so:host-username",
+      "value" : ""
+    },
+    {
+      "product" : "onap-beijing",
+      "name" : "so:host-password",
+      "value" : ""
+    }
+]
