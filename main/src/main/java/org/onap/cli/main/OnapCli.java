@@ -148,7 +148,7 @@ public class OnapCli {
                         new ArrayList<String>());
                 //Make space of interactive mode/command mode
                 this.args.remove(0); //--profile or -c
-                this.args.remove(1); //profile name
+                this.args.remove(0); //profile name
             }
         } catch (Exception e) {
             this.print(e);
@@ -251,7 +251,7 @@ public class OnapCli {
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
                         if (args.size() == 1) {
                             this.print("Please use it in the form of 'profile <profile-name>'\n");
-                            this.print("Profiles: ");
+                            this.print("Available profiles: ");
                             this.print(OnapCommandRegistrar.getRegistrar().getUserProfiles().toString());
                         } else {
                             this.args = Arrays.asList(new String [] {
