@@ -116,11 +116,13 @@ public class OnapCliArgsParser {
                             paramMap.get(paramName).getName()));
                     i++;
                     continue;
+
                 } if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.TEXT)) {
                     paramMap.get(paramName).setValue(readTextStringFromUrl(args.get(i + 1),
                             paramMap.get(paramName).getName()));
                     i++;
                     continue;
+
                 } else if (paramMap.get(paramName).getParameterType()
                         .equals(OnapCommandParameterType.ARRAY)) {
                     Object value = paramMap.get(paramName).getValue();
@@ -130,16 +132,20 @@ public class OnapCliArgsParser {
                     paramMap.get(paramName).setValue(list);
                     i++;
                     continue;
-                } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.MAP)) {
+
+                } else if (paramMap.get(paramName).getParameterType()
+                        .equals(OnapCommandParameterType.MAP)) {
                     Object value = paramMap.get(paramName).getValue();
 
                     Map<String, String> map = (Map<String, String>) value;
 
                     String arg = args.get(i + 1);
-                    String[] argArr = arg.split("=");
+                    String[] argArr = arg.split("=", 2);
 
                     if (argArr.length != 2) {
-                        throw new OnapCliInvalidArgument(paramMap.get(paramName).getName());
+                        throw new OnapCliInvalidArgument(
+                                paramMap.get(paramName).getName(),
+                                "it should be in the form of <key>=<value>");
                     }
 
                     map.put(argArr[0], argArr[1]);
@@ -157,7 +163,9 @@ public class OnapCliArgsParser {
             // it is positional option
             // Positional arg is missing from the params
             if (positionalIdx >= positionArgs.size()) {
-                throw new OnapCliInvalidArgument(args.get(i));
+                throw new OnapCliInvalidArgument(
+                        args.get(i),
+                        "No positional argument is defined for this one");
             }
 
             paramMap.get(positionArgs.get(positionalIdx)).setValue(args.get(i));
