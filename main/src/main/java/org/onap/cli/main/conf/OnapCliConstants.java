@@ -27,6 +27,9 @@ public final class OnapCliConstants {
     public static final String PARAM_PROFILE_SHORT = "c";
     public static final String PARAM_PROFILE_LONG = "profile";
 
+    public static final String PARAM_PARAM_FILE_SHORT = "p";
+    public static final String PARAM_PARAM_FILE_LONG = "param-file";
+
     public static final int EXIT_SUCCESS = 0;
     public static final int EXIT_FAILURE = 1;
 

@@ -16,11 +16,16 @@
 
 package org.onap.cli.main;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -28,6 +33,7 @@ import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidSample;
+import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.error.OnapCommandWarning;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
@@ -42,6 +48,7 @@ import org.onap.cli.main.utils.OnapCliArgsParser;
 import org.onap.cli.sample.yaml.SampleYamlGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yaml.snakeyaml.Yaml;
 
 import jline.TerminalFactory;
 import jline.console.ConsoleReader;
@@ -156,52 +163,64 @@ public class OnapCli {
         }
     }
 
-    public static String getDirectiveHelp() throws OnapCommandHelpFailed {
-        OnapCommandResult help = new OnapCommandResult();
-        help.setType(OnapCommandResultType.TABLE);
-        help.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
-
-        OnapCommandResultAttribute attr = new OnapCommandResultAttribute();
-        attr.setName(OnapCommandConstants.NAME.toUpperCase());
-        attr.setDescription(OnapCommandConstants.DESCRIPTION);
-        attr.setScope(OnapCommandResultAttributeScope.SHORT);
-        help.getRecords().add(attr);
-
-        OnapCommandResultAttribute attrDesc = new OnapCommandResultAttribute();
-        attrDesc.setName(OnapCommandConstants.DESCRIPTION.toUpperCase());
-        attrDesc.setDescription(OnapCommandConstants.DESCRIPTION);
-        attrDesc.setScope(OnapCommandResultAttributeScope.SHORT);
-        help.getRecords().add(attrDesc);
-
-        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_CLEAR);
-        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_CLEAR_MSG);
-
-        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_EXIT);
-        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_EXIT_MSG);
-
-        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_VERSION);
-        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_VERSION_MSG);
-
-        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_USE);
-        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_USE_MSG);
-
-        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_SET);
-        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_SET_MSG);
-
-        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_UNSET);
-        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_UNSET_MSG);
-
-        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_HELP);
-        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_HELP_MSG);
-
-        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
-        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_PROFILE_MSG);
+    /**
+     * Handles batch command. --param-file or -p
+     * CAUTION: This option should be passed after --profile always.
+     */
+    public void handleBatchCommand() {
         try {
-            return "\n\nDirectives:\n" + help.print();
-        } catch (OnapCommandException e) {
-            throw new OnapCommandHelpFailed(e);
+            if ((this.args.size() >= 3) && (this.getLongOption(OnapCliConstants.PARAM_PARAM_FILE_LONG).equals(this.args.get(0))
+                        || this.getShortOption(OnapCliConstants.PARAM_PARAM_FILE_SHORT).equals(this.args.get(0)))) {
+
+                String paramFilePath = this.args.get(1);
+
+                //Make space of interactive mode/command mode
+                this.args.remove(0); //--param-file or -p
+                this.args.remove(0); //file name
+
+                //Read YAML and loop thru it
+                // one
+                    // - param-long-option-1: value
+                    // - param-long-option-1: value
+                    // - positional-arg1
+                    // - positional-arg2
+                 // two
+                    // - param-long-option-1: value
+                    // - param-long-option-1: value
+                    // - positional-arg1
+                    // - positional-arg2
+                try {
+                    Map<String, Object> values = (Map<String, Object>) new Yaml().load(FileUtils.readFileToString(new File(paramFilePath)));
+
+                    for (Entry<String, Object> cmdsParam: values.entrySet()) {
+                        List<String> args = new ArrayList<>();
+                        args.add(this.args.get(0));
+                        for (Object param: (List)cmdsParam.getValue()) {
+                            if (param instanceof Map) { //optional args
+                                Map <String, String> paramMap = (Map<String, String>) param;
+                                String paramName = paramMap.keySet().iterator().next();
+                                Object paramValue = paramMap.get(paramName);
+                                args.add("--" + paramName);
+                                args.add(paramValue.toString());
+                            } else { //positional args
+                                args.add(param.toString());
+                            }
+                        }
+
+                        this.handleCommand(args);
+                    }
+
+                } catch (Exception e) { // NOSONAR
+                    this.print("Failed to read param file " + paramFilePath);
+                    this.print(e);
+                }
+            }
+        } catch (Exception e) {
+            this.print(e);
+            this.exitFailure();
         }
     }
+
     /**
      * Handles Interactive Mode.
      */
@@ -283,7 +302,7 @@ public class OnapCli {
                             continue;
                         }
 
-                        handleCommand();
+                        handleCommand(new ArrayList<>());
                     }
                 }
             } catch (IOException e) { // NOSONAR
@@ -301,38 +320,11 @@ public class OnapCli {
         }
     }
 
-    /**
-     * Creates console reader object.
-     *
-     * @return ConsoleReader
-     * @throws IOException
-     *             exception
-     */
-    private ConsoleReader createConsoleReader() throws IOException {
-        ConsoleReader console = new ConsoleReader(); // NOSONAR
-            try {
-                StringCompleter strCompleter = new StringCompleter(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion());
-                strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
-                        OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
-                        OnapCliConstants.PARAM_INTERACTIVE_USE,
-                        OnapCliConstants.PARAM_INTERACTIVE_HELP,
-                        OnapCliConstants.PARAM_INTERACTIVE_VERSION,
-                        OnapCliConstants.PARAM_INTERACTIVE_SET,
-                        OnapCliConstants.PARAM_INTERACTIVE_UNSET,
-                        OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
-                console.addCompleter(strCompleter);
-                console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT + ":" + OnapCommandRegistrar.getRegistrar().getEnabledProductVersion() + ">");
-            } catch (OnapCommandException e) { // NOSONAR
-                this.print("Failed to load oclip commands," + e.getMessage());
-            }
-
-            return console;
-    }
 
     /**
      * Handles command.
      */
-    public void handleCommand() {
+    public void handleCommand(List<String> params) {
         OnapCommand cmd;
         if (!args.isEmpty()) {
             try {
@@ -375,7 +367,13 @@ public class OnapCli {
                     }
                 }
 
+                //load the parameters value from the map read from param-file
+                if (params != null && !params.isEmpty()) {
+                    OnapCliArgsParser.populateParams(cmd.getParameters(), params);
+                }
+
                 OnapCliArgsParser.populateParams(cmd.getParameters(), args);
+
                 OnapCommandResult result = cmd.execute();
 
                 this.print(result.getDebugInfo());
@@ -395,19 +393,6 @@ public class OnapCli {
         }
     }
 
-    private void generateSmapleYaml(OnapCommand cmd) throws OnapCommandException {
-        if (Boolean.parseBoolean(OnapCommandConfig.getPropertyValue(OnapCommandConstants.SAMPLE_GEN_ENABLED)) && this.getExitCode() == OnapCliConstants.EXIT_SUCCESS) {
-            try {
-                SampleYamlGenerator.generateSampleYaml(args, cmd.getResult().print(),
-                        OnapCommandRegistrar.getRegistrar().getEnabledProductVersion(),
-                        OnapCommandConfig.getPropertyValue(OnapCommandConstants.SAMPLE_GEN_TARGET_FOLDER) + "/" + cmd.getSchemaName().replaceAll(".yaml", "") + "-sample.yaml",
-                        cmd.getResult().isDebug());
-            } catch (IOException error) {
-                throw new OnapCommandInvalidSample(args.get(0), error);
-            }
-        }
-    }
-
     /**
      * Handles all client input.
      */
@@ -423,11 +408,104 @@ public class OnapCli {
         }
 
         if (this.exitCode == -1) {
+            this.handleBatchCommand();
+        }
+
+        if (this.exitCode == -1) {
             this.handleInteractive();
         }
 
         if (this.exitCode == -1) {
-            this.handleCommand();
+            this.handleCommand(new ArrayList<>());
+        }
+    }
+
+    public static String getDirectiveHelp() throws OnapCommandHelpFailed {
+        OnapCommandResult help = new OnapCommandResult();
+        help.setType(OnapCommandResultType.TABLE);
+        help.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
+
+        OnapCommandResultAttribute attr = new OnapCommandResultAttribute();
+        attr.setName(OnapCommandConstants.NAME.toUpperCase());
+        attr.setDescription(OnapCommandConstants.DESCRIPTION);
+        attr.setScope(OnapCommandResultAttributeScope.SHORT);
+        help.getRecords().add(attr);
+
+        OnapCommandResultAttribute attrDesc = new OnapCommandResultAttribute();
+        attrDesc.setName(OnapCommandConstants.DESCRIPTION.toUpperCase());
+        attrDesc.setDescription(OnapCommandConstants.DESCRIPTION);
+        attrDesc.setScope(OnapCommandResultAttributeScope.SHORT);
+        help.getRecords().add(attrDesc);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_CLEAR);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_CLEAR_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_EXIT);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_EXIT_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_VERSION);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_VERSION_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_USE);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_USE_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_SET);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_SET_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_UNSET);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_UNSET_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_HELP);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_HELP_MSG);
+
+        attr.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
+        attrDesc.getValues().add(OnapCliConstants.PARAM_INTERACTIVE_PROFILE_MSG);
+        try {
+            return "\n\nDirectives:\n" + help.print();
+        } catch (OnapCommandException e) {
+            throw new OnapCommandHelpFailed(e);
+        }
+    }
+
+    /**
+     * Creates console reader object.
+     *
+     * @return ConsoleReader
+     * @throws IOException
+     *             exception
+     */
+    private ConsoleReader createConsoleReader() throws IOException {
+        ConsoleReader console = new ConsoleReader(); // NOSONAR
+            try {
+                StringCompleter strCompleter = new StringCompleter(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion());
+                strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
+                        OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
+                        OnapCliConstants.PARAM_INTERACTIVE_USE,
+                        OnapCliConstants.PARAM_INTERACTIVE_HELP,
+                        OnapCliConstants.PARAM_INTERACTIVE_VERSION,
+                        OnapCliConstants.PARAM_INTERACTIVE_SET,
+                        OnapCliConstants.PARAM_INTERACTIVE_UNSET,
+                        OnapCliConstants.PARAM_INTERACTIVE_PROFILE);
+                console.addCompleter(strCompleter);
+                console.setPrompt(OnapCliConstants.PARAM_INTERACTIVE_PROMPT + ":" + OnapCommandRegistrar.getRegistrar().getEnabledProductVersion() + ">");
+            } catch (OnapCommandException e) { // NOSONAR
+                this.print("Failed to load oclip commands," + e.getMessage());
+            }
+
+            return console;
+    }
+
+
+    private void generateSmapleYaml(OnapCommand cmd) throws OnapCommandException {
+        if (Boolean.parseBoolean(OnapCommandConfig.getPropertyValue(OnapCommandConstants.SAMPLE_GEN_ENABLED)) && this.getExitCode() == OnapCliConstants.EXIT_SUCCESS) {
+            try {
+                SampleYamlGenerator.generateSampleYaml(args, cmd.getResult().print(),
+                        OnapCommandRegistrar.getRegistrar().getEnabledProductVersion(),
+                        OnapCommandConfig.getPropertyValue(OnapCommandConstants.SAMPLE_GEN_TARGET_FOLDER) + "/" + cmd.getSchemaName().replaceAll(".yaml", "") + "-sample.yaml",
+                        cmd.getResult().isDebug());
+            } catch (IOException error) {
+                throw new OnapCommandInvalidSample(args.get(0), error);
+            }
         }
     }
 

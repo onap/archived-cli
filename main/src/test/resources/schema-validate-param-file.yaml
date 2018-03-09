@@ -1,0 +1,3 @@
+one:
+  - internal-schema: true
+  - schema-location: catalog.yaml
