@@ -33,6 +33,7 @@
 
     <modules>
         <module>features</module>
+        <module>auth</module>
     </modules>
     <build>
          <pluginManagement>
