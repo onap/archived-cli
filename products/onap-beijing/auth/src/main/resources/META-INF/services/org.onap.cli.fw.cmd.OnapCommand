@@ -1,2 +1,3 @@
 org.onap.cli.cmd.auth.OnapBasicAuthLoginCommandBeijing
 org.onap.cli.cmd.auth.OnapSdcBasicAuthLoginCommandBeijing
+org.onap.cli.cmd.auth.OnapBasicAuthLogoutCommandBeijing
