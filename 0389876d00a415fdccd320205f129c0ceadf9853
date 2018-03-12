@@ -1,0 +1,418 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_8f2245a1",
+        "filename": "framework/src/main/java/org/onap/cli/fw/cmd/OnapCommand.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "move this next to init below.",
+      "range": {
+        "startLine": 201,
+        "startChar": 7,
+        "endLine": 201,
+        "endChar": 17
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_4f38bdd2",
+        "filename": "framework/src/main/java/org/onap/cli/fw/registrar/OnapCommandRegistrar.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "is only cmd name sufficient ?",
+      "range": {
+        "startLine": 405,
+        "startChar": 45,
+        "endLine": 405,
+        "endChar": 60
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_af50610b",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaInfo.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "is it used?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_0f2e358c",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaInfo.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "pls strip off it",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_ef32e9f0",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaLoader.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "pls move this to discovery utils\nrename to loadYAML\nbelow one too",
+      "range": {
+        "startLine": 534,
+        "startChar": 37,
+        "endLine": 534,
+        "endChar": 42
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_af29418b",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaLoader.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "pls move this to discovery utils",
+      "range": {
+        "startLine": 571,
+        "startChar": 31,
+        "endLine": 571,
+        "endChar": 41
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_cf536d15",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "use constants pls",
+      "range": {
+        "startLine": 299,
+        "startChar": 46,
+        "endLine": 300,
+        "endChar": 56
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_6f56d907",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "make the exception statement properly.",
+      "range": {
+        "startLine": 358,
+        "startChar": 72,
+        "endLine": 358,
+        "endChar": 94
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_0f45d541",
+        "filename": "framework/src/main/resources/open-cli-schema/default_input_parameters.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "whether to  verify a command using samples in mock or real environment. By default it goes with mock style. To enable the verification in real time, set DISABLE_MOCKING\u003dtrue in the context param.\n\n(pls push a follow up to address real time using the context param)",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 88
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_cf7a8d87",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "can we aviod the direct use of resource in main/registrar.",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_0f171546",
+        "filename": "profiles/http/pom.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "why it depends on main ?",
+      "range": {
+        "startLine": 77,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_0fb3954d",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/cmd/OnapHttpCommand.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "this might get removed , as you have setup new class for handling moco",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 55
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_cf884d73",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/conf/OnapCommandHttpConstants.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "can you assign from the existing constant names",
+      "range": {
+        "startLine": 97,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 72
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_6f7b397b",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/conf/OnapCommandHttpConstants.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_4f943d8a",
+        "filename": "profiles/http/src/main/resources/open-cli-schema/http/default_input_parameters_http.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "pls add same description from the default_input_parameter.yaml",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 88
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_0f8ab563",
+        "filename": "validate/validation/src/test/java/org/onap/cli/validation/OnapValidationTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "not sure are these still used?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_afece12a",
+        "filename": "validate/validation/src/test/java/org/onap/cli/validation/OnapValidationTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "all these already made as features. so pls strip off these if not required",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 39
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_cfefed1c",
+        "filename": "validate/validation/src/test/java/org/onap/cli/validation/OnapValidationTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-12T05:06:09Z",
+      "side": 1,
+      "message": "thesetoo",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 2
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
