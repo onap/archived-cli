@@ -15,36 +15,23 @@
 version: '2.0'
 
 services:
-  occ:
-    image: onap/cli
+  oclip_ftp:
+    image: stilliard/pure-ftpd:hardened
     environment:
-      OPEN_CLI_MODE: 'daemon'
+      PUBLICHOST: localhost
     ports:
-      - 30260:80
-      - 30261:8080
+      - "21:21"
+      - 30000-30009:30000-30009
 
-  cli:
+  oclip_cli:
     stdin_open: true
     tty: true
     image: onap/cli
     environment:
-      OPEN_CLI_MODE: 'console'
-
-  debug:
-    stdin_open: true
-    tty: true
-    image: onap/cli
-    environment:
-      OPEN_CLI_MODE: 'console'
-      OPEN_CLI_DEBUG: "true"
-    ports:
-      - 5005:5005
-
-  all:
-    image: onap/cli
-    environment:
       OPEN_CLI_MODE: 'daemon'
-      OPEN_CLI_DEBUG: "false"
+      OPEN_CLI_DEBUG: 'false'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 30260:80
       - 30261:8080
