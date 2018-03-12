@@ -223,7 +223,7 @@ public class OnapCommandParameter {
                 break;
 
             case BOOL:
-                defaultValue = Boolean.parseBoolean(processedValue);
+                defaultValue = Boolean.valueOf(processedValue);
                 break;
 
             default:

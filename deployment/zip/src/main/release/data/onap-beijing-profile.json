@@ -42,11 +42,11 @@
     {
       "product" : "onap-beijing",
       "name" : "so:host-username",
-      "value" : ""
+      "value" : "InfraPortalClien"
     },
     {
       "product" : "onap-beijing",
       "name" : "so:host-password",
-      "value" : ""
+      "value" : "password1$"
     }
 ]
