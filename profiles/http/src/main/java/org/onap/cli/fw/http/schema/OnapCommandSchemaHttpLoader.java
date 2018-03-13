@@ -133,9 +133,18 @@ public class OnapCommandSchemaHttpLoader {
                                             cmd.getInput().setReqQueries(query);
                                             break;
                                         case OnapCommandHttpConstants.CONTEXT:
-                                            Map<String, String> context = (Map<String, String>) map.get(key2);
+                                            Map<String, Object> context = (Map<String, Object>) map.get(key2);
 
-                                            cmd.getInput().getContext().putAll(context);
+                                            for (String key: context.keySet()) {
+                                                switch (key) {
+                                                    case OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES:
+                                                        Boolean flag = (Boolean) context.get(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES);
+                                                        cmd.getInput().getContext().put(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES, flag.toString());
+                                                        break;
+                                                }
+                                            }
+
+
                                             break;
                                         case OnapCommandHttpConstants.MULTIPART_ENTITY_NAME:
                                             Object multipartEntityName = map.get(key2);
