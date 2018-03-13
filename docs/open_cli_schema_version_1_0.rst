@@ -775,6 +775,21 @@ the sample queries :
 
             q2: value2
 
+
+context
+^^^^^^^
+*context* entry allows to customize the HTTP request and response processing.
+
+Following are the supported customization parameters:
+
+*remove_empty_node* : By default, OCLIP does not remove the empty json entries
+  in request body. Otherwise set this entry to true as below.
+
+    request:
+
+        context:
+            remove_empty_node: true
+
 success_codes
 ~~~~~~~~~~~~~
 Every REST API has set of success codes and OCLIP will treat the HTTP request
