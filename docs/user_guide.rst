@@ -88,6 +88,29 @@ NOTE: Use the directive 'set' for setting the values for parameters and 'unset' 
 In Beijing release, new default profile named as 'onap-beijing' is delivered with all default ONAP service
 credentials. so user could use this profile to avoid setting the credentials every time.
 
+Batching support & Parameter file
+---------------------------------
+For a given scenario where, user wants to run a command with different set of inputs, this feature could be used.
+
+For example, in ONAP, user wants to register multiple clouds at a given time, so user can create a parameter file
+as given below and capture inputs for one or more clouds:
+
+parameter file name: /usr/mrkanag/cloud-list.yaml
+
+cloud-1:
+  - name: cloud-region-1
+  - description: Provides the test cloud environment
+cloud-2:
+  - name: cloud-region-2
+  - description: Provides the production cloud environment
+
+To register all these clouds in ONAP execute the cloud-register command with parameter file in inputs as below:
+
+onap -p  /usr/mrkanag/cloud-list.yaml cloud-register
+
+Now OCLIP will iterate the command cloud-register for every cloud mentioned in the parameter file /usr/mrkanag/cloud-list.yaml.
+When user use this approach to execute the command with multiple entries in parameter file is called as *batching*.
+
 Help
 ----
 *oclip [-h|--help]*
