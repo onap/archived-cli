@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_5e3dcd29",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/pnf/pnf-create-schema.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-13T08:53:13Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 19
+      },
+      "revId": "1be89b51c299328c6f786580b2aa890b6aa759c6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_fe47f9b9",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/pnf/pnf-create-schema.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-13T08:53:13Z",
+      "side": 1,
+      "message": "beijing",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "1be89b51c299328c6f786580b2aa890b6aa759c6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_1e43c5af",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/pnf/pnf-create-schema.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-13T08:53:13Z",
+      "side": 1,
+      "message": "can you please make it single char. thx",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "1be89b51c299328c6f786580b2aa890b6aa759c6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_9e0ef58a",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/pnf/pnf-create-schema.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-13T08:53:13Z",
+      "side": 1,
+      "message": "pls add following section, to skip the empty nodes.\n    context:\n      remove_empty_node: true",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "1be89b51c299328c6f786580b2aa890b6aa759c6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_3e29e1e5",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/pnf/pnf-create-schema.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-13T08:53:13Z",
+      "side": 1,
+      "message": "this can be removed, no more used",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 12
+      },
+      "revId": "1be89b51c299328c6f786580b2aa890b6aa759c6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
