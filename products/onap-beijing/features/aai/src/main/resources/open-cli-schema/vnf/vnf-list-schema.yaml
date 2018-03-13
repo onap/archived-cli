@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: pnf-list
-description: Lists the pnfs
+name: vnf-list
+description: Lists the vnfs
 
 info:
   product: onap-beijing
@@ -24,12 +24,20 @@ info:
 results:
   direction: landscape
   attributes:
-    - name: pnf-name
-      description: Onap pnf name
+    - name: vnf-name
+      description: Onap vnf name
       scope: short
       type: string
-    - name: pnf-id
-      description: Onap pnf id
+    - name: vnf-id
+      description: Onap vnf id
+      scope: short
+      type: string
+    - name: vnf-type
+      description: Onap vnf-type
+      scope: short
+      type: string
+    - name: in-maint
+      description: Onap in-maint
       scope: short
       type: string
     - name: resource-version
@@ -41,11 +49,13 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v11/network/pnfs
+    uri: /aai/v11/network/generic-vnfs
     method: GET
   success_codes:
     - 200
   result_map:
-    pnf-name: $b{pnf.[*].pnf-name}
-    pnf-id: $b{pnf.[*].pnf-id}
-    resource-version: $b{pnf.[*].resource-version}
+    vnf-name: $b{generic-vnf.[*].vnf-name}
+    vnf-id: $b{generic-vnf.[*].vnf-id}
+    vnf-type: $b{generic-vnf.[*].vnf-type}
+    in-maint: $b{generic-vnf.[*].in-maint}
+    resource-version: $b{generic-vnf.[*].resource-version}

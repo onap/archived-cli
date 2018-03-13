@@ -13,39 +13,51 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: pnf-list
-description: Lists the pnfs
+name: type-search
+description: type-search 
+#sample:  https://172.19.44.123:8443/aai/v11/search/nodes-query?search-node-type=customer&filter=global-customer-id:EQUALS:Orange 
 
 info:
   product: onap-beijing
   service: aai
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
+parameters:
+  - name: node-type-name
+    description: node type name
+    type: string
+    short_option: n
+    long_option: node-type-name
+    is_optional: false
+  - name: filter
+    description: filter for earch, like ,global-customer-id:EQUALS:Orange
+    type: string
+    short_option: c
+    long_option: filter
+    is_optional: false
 results:
   direction: landscape
   attributes:
-    - name: pnf-name
-      description: Onap pnf name
+    - name: resource-type
+      description: Onap resource-type
       scope: short
       type: string
-    - name: pnf-id
-      description: Onap pnf id
+    - name: resource-link
+      description: Onap resource-link
       scope: short
       type: string
-    - name: resource-version
-      description: Onap resource-version
-      scope: short
-      type: string
+    
 http:
   service:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v11/network/pnfs
+    uri: /aai/v11/search/nodes-query?search-node-type=${node-type-name}&filter=${filter}
     method: GET
   success_codes:
     - 200
+    - 201
   result_map:
-    pnf-name: $b{pnf.[*].pnf-name}
-    pnf-id: $b{pnf.[*].pnf-id}
-    resource-version: $b{pnf.[*].resource-version}
+    resource-type: $b{result-data.[*].resource-type}
+    resource-link: $b{result-data.[*].resource-link}
+    

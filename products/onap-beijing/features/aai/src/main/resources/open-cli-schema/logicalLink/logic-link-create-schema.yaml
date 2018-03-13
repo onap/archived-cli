@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: pnf-create
-description: Create a pnf
+name: logic-link-create
+description: Create a logic-link
 
 info:
   product: onap-beijing
@@ -22,41 +22,53 @@ info:
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
-  - name: pnf-name
-    description: pnf-name
+  - name: link-name
+    description: logic-link-name
     type: string
     short_option: n
     long_option: name
     is_optional: false
-  - name: pnf-id
-    description: pnf-id
+  - name: link-type
+    description: link-type
     type: string
     short_option: i
-    long_option: pnf-id
+    long_option: link-type
     is_optional: true
-  - name: equip-type
-    description: equip-type
+  - name: speed-value
+    description: speed-value
     type: string
     short_option: q
-    long_option: equipType
+    long_option: speed-value
     is_optional: true
-  - name: equip-vendor
-    description: equip-vendor
+  - name: speed-units
+    description: speed-units
     type: string
     short_option: x
-    long_option: equip-vendor
+    long_option: speed-units
     is_optional: true
   - name: in-maint
     description: Used to indicate whether or not this object is in maintenance mode (maintenance mode = true)
     type: bool
     short_option: w
     long_option: in-maint
-    is_optional: true
+    is_optional: false
   - name: prov-status
     description: Prov Status of this device (not under canopi control) Valid values [PREPROV/NVTPROV/PROV]
     type: string
     short_option: g
     long_option: prov-status
+    is_optional: true
+  - name: link-role
+    description: link-role
+    type: string
+    short_option: j
+    long_option: link-role
+    is_optional: true
+  - name: link-id
+    description: link-id
+    type: string
+    short_option: z
+    long_option: link-id
     is_optional: true
   - name: relationship
     description: relationship
@@ -69,11 +81,11 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v11/network/pnfs/pnf/${pnf-name}
+    uri: /aai/v11/network/logic-links/logic-link/${link-name}
     method: PUT
     context:
       remove_empty_node: true
-    body: '{"pnf-name": "${pnf-name}" ,"pnf-id": "${pnf-id}","equip-type": "${equip-type}","equip-vendor": "${equip-vendor}","in-maint": "${in-maint}","prov-status": "${prov-status}","relationship-list": ["${relationship}"]}'
+    body: '{"link-name": "${link-name}" ,"link-type": "${link-type}","speed-value": "${speed-value}","speed-units": "${speed-units}","in-maint": "${in-maint}","prov-status": "${prov-status}","link-role": "${link-role}","link-id": "${link-id}","relationship-list": ["${relationship}"]}'
   success_codes:
     - 200
     - 201
