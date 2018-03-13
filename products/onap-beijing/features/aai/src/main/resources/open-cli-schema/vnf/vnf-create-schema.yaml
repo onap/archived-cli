@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: pnf-create
-description: Create a pnf
+name: vnf-create
+description: Create a vnf
 
 info:
   product: onap-beijing
@@ -22,41 +22,29 @@ info:
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
-  - name: pnf-name
-    description: pnf-name
+  - name: vnf-name
+    description: vnf-name
     type: string
     short_option: n
     long_option: name
-    is_optional: false
-  - name: pnf-id
-    description: pnf-id
+    is_optional: true
+  - name: vnf-id
+    description: vnf-id
     type: string
     short_option: i
-    long_option: pnf-id
-    is_optional: true
-  - name: equip-type
-    description: equip-type
+    long_option: vnf-id
+    is_optional: false
+  - name: vnf-type
+    description: vnf-type
     type: string
-    short_option: q
-    long_option: equipType
-    is_optional: true
-  - name: equip-vendor
-    description: equip-vendor
-    type: string
-    short_option: x
-    long_option: equip-vendor
+    short_option: z
+    long_option: vnf-type
     is_optional: true
   - name: in-maint
     description: Used to indicate whether or not this object is in maintenance mode (maintenance mode = true)
     type: bool
     short_option: w
     long_option: in-maint
-    is_optional: true
-  - name: prov-status
-    description: Prov Status of this device (not under canopi control) Valid values [PREPROV/NVTPROV/PROV]
-    type: string
-    short_option: g
-    long_option: prov-status
     is_optional: true
   - name: relationship
     description: relationship
@@ -69,11 +57,11 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v11/network/pnfs/pnf/${pnf-name}
+    uri: /aai/v11/network/generic-vnfs/generic-vnf/${vnf-id}
     method: PUT
     context:
       remove_empty_node: true
-    body: '{"pnf-name": "${pnf-name}" ,"pnf-id": "${pnf-id}","equip-type": "${equip-type}","equip-vendor": "${equip-vendor}","in-maint": "${in-maint}","prov-status": "${prov-status}","relationship-list": ["${relationship}"]}'
+    body: '{"vnf-id": "${vnf-id}","vnf-name": "${vnf-name}" ,"vnf-type": "${vnf-type}","in-maint": "${in-maint}","relationship-list": ["${relationship}"]}'
   success_codes:
     - 200
     - 201

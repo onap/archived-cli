@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: pnf-delete
-description: Delete pnf from Onap
+name: vnf-delete
+description: Delete vnf from Onap
 
 info:
   product: onap-beijing
@@ -23,14 +23,14 @@ info:
 
 
 parameters:
-  - name: pnf-name
-    description: Onap pnf name
+  - name: vnf-id
+    description: Onap vnf id
     type: string
-    short_option: n
-    long_option: pnf-name
+    short_option: i
+    long_option: vnf-id
     is_optional: false
   - name: resource-version
-    description: Onap pnf resource version
+    description: Onap vnf resource version
     type: uuid
     short_option: b
     long_option: resource-version
@@ -40,7 +40,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v11/network/pnfs/pnf/${pnf-name}?resource-version=${resource-version}
+    uri: /aai/v11/network/generic-vnfs/generic-vnf/${vnf-id}?resource-version=${resource-version}
     method: DELETE
   success_codes:
     - 204
