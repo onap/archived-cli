@@ -219,6 +219,13 @@ public class OnapCli {
     }
 
     public void verifyCommand(OnapCommand cmd) throws OnapCommandException {
+
+        OnapCliArgsParser.populateParams(cmd.getParameters(), args);
+
+        Optional<OnapCommandParameter> contextOptArg = cmd.getParameters().stream()
+                .filter(e -> e.getName().equals(OnapCommandConstants.VERIFY_CONTEXT_PARAM))
+                .findFirst();
+
         List<Map<String, ?>> testSuite = OnapCommandRegistrar.getRegistrar().getTestSuite(cmd.getName());
 
         OnapCommandResult testSuiteResult = new OnapCommandResult();
@@ -254,6 +261,12 @@ public class OnapCli {
             if (contextOpt.isPresent()) {
                 HashMap map = new HashMap();
                 map.put(OnapCommandConstants.VERIFY_MOCO, sampleTest.get(OnapCommandConstants.VERIFY_MOCO));
+
+                if (contextOptArg.isPresent()) {
+                    OnapCommandParameter contextArg = contextOptArg.get();
+                    map.putAll((Map) contextArg.getValue());
+                }
+
                 contextOpt.get().setValue(map);
             }
 
