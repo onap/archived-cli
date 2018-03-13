@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_23d54ae4",
+        "filename": "framework/src/main/java/org/onap/cli/fw/cmd/OnapCommand.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_8f2245a1",
+      "range": {
+        "startLine": 201,
+        "startChar": 7,
+        "endLine": 201,
+        "endChar": 17
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_4f38bdd2",
         "filename": "framework/src/main/java/org/onap/cli/fw/registrar/OnapCommandRegistrar.java",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-12T05:06:09Z",
       "side": 1,
       "message": "is only cmd name sufficient ?",
+      "range": {
+        "startLine": 405,
+        "startChar": 45,
+        "endLine": 405,
+        "endChar": 60
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_c307c680",
+        "filename": "framework/src/main/java/org/onap/cli/fw/registrar/OnapCommandRegistrar.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_4f38bdd2",
       "range": {
         "startLine": 405,
         "startChar": 45,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_83fd3e70",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaInfo.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_af50610b",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_0f2e358c",
         "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaInfo.java",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2018-03-12T05:06:09Z",
       "side": 1,
       "message": "pls strip off it",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_e30a0289",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaInfo.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_0f2e358c",
       "range": {
         "startLine": 22,
         "startChar": 21,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_a30e3a8a",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaLoader.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_ef32e9f0",
+      "range": {
+        "startLine": 534,
+        "startChar": 37,
+        "endLine": 534,
+        "endChar": 42
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_af29418b",
         "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaLoader.java",
         "patchSetId": 8
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_c32ee6fa",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaLoader.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_af29418b",
+      "range": {
+        "startLine": 571,
+        "startChar": 31,
+        "endLine": 571,
+        "endChar": 41
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_cf536d15",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
         "patchSetId": 8
@@ -151,6 +295,30 @@
       "writtenOn": "2018-03-12T05:06:09Z",
       "side": 1,
       "message": "use constants pls",
+      "range": {
+        "startLine": 299,
+        "startChar": 46,
+        "endLine": 300,
+        "endChar": 56
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_031feeb7",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_cf536d15",
       "range": {
         "startLine": 299,
         "startChar": 46,
@@ -232,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_2371ca0b",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_cf7a8d87",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_0f171546",
         "filename": "profiles/http/pom.xml",
         "patchSetId": 8
@@ -243,6 +435,30 @@
       "writtenOn": "2018-03-12T05:06:09Z",
       "side": 1,
       "message": "why it depends on main ?",
+      "range": {
+        "startLine": 77,
+        "startChar": 6,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_8311be5e",
+        "filename": "profiles/http/pom.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_0f171546",
       "range": {
         "startLine": 77,
         "startChar": 6,
@@ -278,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_c3634640",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/cmd/OnapHttpCommand.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_0fb3954d",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 55
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_cf884d73",
         "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/conf/OnapCommandHttpConstants.java",
         "patchSetId": 8
@@ -301,6 +541,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_63d912f2",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/conf/OnapCommandHttpConstants.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_cf884d73",
+      "range": {
+        "startLine": 97,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 72
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_6f7b397b",
         "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/conf/OnapCommandHttpConstants.java",
         "patchSetId": 8
@@ -312,6 +576,30 @@
       "writtenOn": "2018-03-12T05:06:09Z",
       "side": 1,
       "message": "here too",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_03e4cea9",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/conf/OnapCommandHttpConstants.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_6f7b397b",
       "range": {
         "startLine": 100,
         "startChar": 4,
@@ -370,6 +658,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_bd8bbb1d",
+        "filename": "validate/validation/src/test/java/org/onap/cli/validation/OnapValidationTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "It is getting used.",
+      "parentUuid": "5a93c517_0f8ab563",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_afece12a",
         "filename": "validate/validation/src/test/java/org/onap/cli/validation/OnapValidationTest.java",
         "patchSetId": 8
@@ -381,6 +693,30 @@
       "writtenOn": "2018-03-12T05:06:09Z",
       "side": 1,
       "message": "all these already made as features. so pls strip off these if not required",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 39
+      },
+      "revId": "0389876d00a415fdccd320205f129c0ceadf9853",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_1d998f78",
+        "filename": "validate/validation/src/test/java/org/onap/cli/validation/OnapValidationTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-03-13T07:01:40Z",
+      "side": 1,
+      "message": "it is getting used to generate documentation from all samples.",
+      "parentUuid": "5a93c517_afece12a",
       "range": {
         "startLine": 148,
         "startChar": 4,
