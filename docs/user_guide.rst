@@ -49,7 +49,7 @@ Please follow the steps given below for setting profiles:
 
 1.    Open the CLI interactive console
 
-2.    Create the profile, say ‘test:aai’ by running ‘profile test:aai’
+2.    Create the profile, say ‘onap-deployment-1’ by running ‘profile onap-deployment-1’
 There is no limit in number of profiles. OCLIP will create a profile if not exist already,
 otherwise on typing 'profile' on the console, corresponding profiles will be effective.
 So you can switch across profiles by using this directive 'profile'.
@@ -67,6 +67,16 @@ d.    Type 'set' to print all these arguments stored so far.
 NOTE: Profiles are not limited to set only credentials, you can set any frequently using
 common arguments, which are listed in command help.
 
+NOTE: For setting service specific parameters, use in the form of <service-name>:<param-name>=<param-value>.
+For example, following setting will be used only for aai service:
+
+a.    set aai:host-url=<aai-url>
+
+b.    set aai:host-username=AAI
+
+c.    set aai:host-pasword=AAI
+
+
 4.    You can override these stored arguments by providing them as arguments directly while
 running the CLI.
 
@@ -74,6 +84,9 @@ running the CLI.
 you can start use the same profile again.
 
 NOTE: Use the directive 'set' for setting the values for parameters and 'unset' for reseting the values.
+
+In Beijing release, new default profile named as 'onap-beijing' is delivered with all default ONAP service
+credentials. so user could use this profile to avoid setting the credentials every time.
 
 Help
 ----
