@@ -1,0 +1,73 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: service-instance-relationship-create
+description: Create a service instance relationship for vnf/pnf
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: global-customer-id
+    description: global-customer-id
+    type: string
+    short_option: g
+    long_option: global-customer-id
+    is_optional: false
+  - name: service-type
+    description: service-type 
+    type: string
+    short_option: s
+    long_option: service-type
+    is_optional: false
+  - name: service-instance-id
+    description: service-instance-id
+    type: string
+    short_option: i
+    long_option: service-instance-id
+    is_optional: false
+  - name: relationship
+    description: relationship
+    type: json
+    short_option: r
+    long_option: relationship
+    is_optional: false
+# sample json of relationship
+#            {
+#                "related-to": "logical-link",
+#                "related-link": "/aai/v11/network/logical-links/logical-link/S11-00001",
+#                "relationship-data": [
+#                    {
+#                        "relationship-key": "logical-link.link-name",
+#                        "relationship-value": "S11-00001"
+#                    }
+#                ]
+#            }
+    
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /business/customers/customer/${global-customer-id}/service-subscriptions/service-subscription/${service-type}/service-instances/service-instance/${service-instance-id}/relationship-list/relationship	
+    method: PUT
+    context:
+      remove_empty_node: true
+    body: '"${relationship}"'
+  success_codes:
+    - 200
+    - 201

@@ -13,35 +13,35 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: pnf-delete
-description: Delete pnf from Onap
+name: type-search
+description: type-search 
+#sample:  https://172.19.44.123:8443/aai/v11/search/nodes-query?search-node-type=customer&filter=global-customer-id:EQUALS:Orange 
 
 info:
   product: onap-beijing
   service: aai
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
-
 parameters:
-  - name: pnf-name
-    description: Onap pnf name
+  - name: node-type-name
+    description: node type name
     type: string
     short_option: n
-    long_option: pnf-name
+    long_option: node-type-name
     is_optional: false
-  - name: resource-version
-    description: Onap pnf resource version
-    type: uuid
-    short_option: b
-    long_option: resource-version
+  - name: filter
+    description: filter for earch, like ,global-customer-id:EQUALS:Orange
+    type: string
+    short_option: c
+    long_option: filter
     is_optional: false
 http:
   service:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v11/network/pnfs/pnf/${pnf-name}?resource-version=${resource-version}
-    method: DELETE
+    uri: /aai/v11/search/nodes-query?search-node-type=${node-type-name}&filter=${filter}
+    method: GET
   success_codes:
-    - 204
-    - 404
+    - 200
+    - 201
