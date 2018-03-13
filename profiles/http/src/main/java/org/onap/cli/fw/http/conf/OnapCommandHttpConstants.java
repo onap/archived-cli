@@ -89,6 +89,10 @@ public class OnapCommandHttpConstants {
     public static final String SERVICE_PARAMS_MANDATORY_LIST = "cli.schema.http.service.sections.mandatory";
 
     public static final String DEFAULT_PARAMETER_NO_CATALOG = "no-catalog";
+
+    //context param
+    public static final String CONTEXT = "context";
+    public static final String CONTEXT_REMOVE_EMPTY_JSON_NODES = "remove_empty_node";
 }
 
 

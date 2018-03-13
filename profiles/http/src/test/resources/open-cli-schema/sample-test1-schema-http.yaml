@@ -75,6 +75,8 @@ http:
     method: POST
     body: '{"name":"${name}","vendor":"${vendor}","version":"${vim-version}","description":"${description}","type":"${type}","url":"${url}","userName":"${username}","password":"${password}","domain":"${domain}","tenant":"${tenant}"}'
     headers:
+    context:
+      - remove_empty_node: true
   success_codes:
     - 201
     - 200

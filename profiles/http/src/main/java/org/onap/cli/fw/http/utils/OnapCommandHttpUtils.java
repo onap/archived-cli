@@ -18,6 +18,7 @@ package org.onap.cli.fw.http.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -27,9 +28,11 @@ import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandParameterNotFound;
 import org.onap.cli.fw.error.OnapCommandResultEmpty;
 import org.onap.cli.fw.error.OnapCommandResultMapProcessingFailed;
+import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
 import org.onap.cli.fw.http.connect.HttpInput;
 import org.onap.cli.fw.http.connect.HttpResult;
 import org.onap.cli.fw.http.error.OnapCommandHttpHeaderNotFound;
+import org.onap.cli.fw.http.error.OnapCommandHttpInvalidRequestBody;
 import org.onap.cli.fw.http.error.OnapCommandHttpInvalidResponseBody;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
@@ -37,6 +40,8 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 
@@ -79,6 +84,12 @@ public class OnapCommandHttpUtils {
         for (String h : input.getReqQueries().keySet()) {
             String value = input.getReqQueries().get(h);
             inp.getReqQueries().put(h, OnapCommandUtils.replaceLineFromInputParameters(value, params));
+        }
+
+        boolean isRemoveEmptyNodes = Boolean.parseBoolean(input.getContext().getOrDefault(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES, "false"));
+
+        if (isRemoveEmptyNodes) {
+            input.setBody(OnapCommandHttpUtils.normalizeJson(input.getBody()));
         }
 
         return inp;
@@ -235,5 +246,30 @@ public class OnapCommandHttpUtils {
         }
     }
 
+    public static void normalizeJson(JsonNode node) {
+        Iterator<JsonNode> it = node.iterator();
+        while (it.hasNext()) {
+            JsonNode child = it.next();
+            if (child.isTextual() && child.asText().equals(""))
+                it.remove();
+            else  if (child.isNull())
+                it.remove();
+            else
+                normalizeJson(child);
+        }
+    }
+
+    public static String normalizeJson(String json) throws OnapCommandHttpInvalidRequestBody {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node;
+        try {
+            node = mapper.readTree(json);
+            normalizeJson(node);
+            return mapper.writeValueAsString(node);
+        } catch (Exception e) {  //NOSONAR
+            throw new OnapCommandHttpInvalidRequestBody(e);
+        }
+
+    }
 }
 

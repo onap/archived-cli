@@ -42,6 +42,7 @@ import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
 import org.onap.cli.fw.http.cmd.OnapHttpCommand;
 import org.onap.cli.fw.http.connect.HttpResult;
 import org.onap.cli.fw.http.error.OnapCommandHttpHeaderNotFound;
+import org.onap.cli.fw.http.error.OnapCommandHttpInvalidRequestBody;
 import org.onap.cli.fw.http.error.OnapCommandHttpInvalidResponseBody;
 import org.onap.cli.fw.http.schema.OnapCommandSchemaHttpLoader;
 import org.onap.cli.fw.input.OnapCommandParameter;
@@ -135,5 +136,12 @@ public class OnapCommandUtilsTest {
         @Override
         protected void run() throws OnapCommandException {
         }
+    }
+
+    @Test
+    public void testJsonEmptyCheck() throws OnapCommandHttpInvalidRequestBody {
+        String sample = "{\"request\":{\"method\":\"\",\"uri\":\"/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/2.0/license-agreements\",\"headers\":{\"Authorization\":\"Basic Y3MwMDA4OmRlbW8xMjM0NTYh\",\"X-FromAppId\":\"onap-cli\",\"Accept\":\"application/json\",\"USER_ID\":\"cs0008\",\"X-TransactionId\":\"req-66a37478-d840-44f8-b436-56f4a3b6f640\",\"Content-Type\":\"application/json\"},\"json\":null},\"response\":{\"status\":200,\"json\":{\"listCount\":2,\"results\":[{\"name\":\"sf\",\"description\":\"sdfgdf\",\"licenseTerm\":{\"choice\":\"Fixed_Term\",\"other\":null},\"id\":\"1e2edfccaca847f896070d0fac26667a\",\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]},{\"name\":\"kanag-cli-la\",\"description\":\"kanag cli la\",\"licenseTerm\":{\"choice\":\"Fixed_Term\",\"other\":\"\"},\"id\":\"77e151d0503b45ecb7e40f5f5f1a887e\",\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]}]}}}";
+        String result = "{\"request\":{\"uri\":\"/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/2.0/license-agreements\",\"headers\":{\"Authorization\":\"Basic Y3MwMDA4OmRlbW8xMjM0NTYh\",\"X-FromAppId\":\"onap-cli\",\"Accept\":\"application/json\",\"USER_ID\":\"cs0008\",\"X-TransactionId\":\"req-66a37478-d840-44f8-b436-56f4a3b6f640\",\"Content-Type\":\"application/json\"}},\"response\":{\"status\":200,\"json\":{\"listCount\":2,\"results\":[{\"name\":\"sf\",\"description\":\"sdfgdf\",\"licenseTerm\":{\"choice\":\"Fixed_Term\"},\"id\":\"1e2edfccaca847f896070d0fac26667a\",\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]},{\"name\":\"kanag-cli-la\",\"description\":\"kanag cli la\",\"licenseTerm\":{\"choice\":\"Fixed_Term\"},\"id\":\"77e151d0503b45ecb7e40f5f5f1a887e\",\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]}]}}}";
+        assertEquals(result, OnapCommandHttpUtils.normalizeJson(sample));
     }
 }

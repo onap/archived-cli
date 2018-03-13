@@ -132,6 +132,11 @@ public class OnapCommandSchemaHttpLoader {
 
                                             cmd.getInput().setReqQueries(query);
                                             break;
+                                        case OnapCommandHttpConstants.CONTEXT:
+                                            Map<String, String> context = (Map<String, String>) map.get(key2);
+
+                                            cmd.getInput().getContext().putAll(context);
+                                            break;
                                         case OnapCommandHttpConstants.MULTIPART_ENTITY_NAME:
                                             Object multipartEntityName = map.get(key2);
                                             cmd.getInput().setMultipartEntityName(multipartEntityName.toString());

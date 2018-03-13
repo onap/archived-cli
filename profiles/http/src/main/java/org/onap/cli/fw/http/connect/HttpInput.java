@@ -38,6 +38,8 @@ public class HttpInput {
 
     private Map<String, String> reqCookies = new HashMap<>();
 
+    private Map<String, String> context = new HashMap<>();
+
     private boolean binaryData;
 
     public String getUri() {
@@ -116,6 +118,10 @@ public class HttpInput {
         return reqCookies;
     }
 
+    public Map<String, String> getContext() {
+        return context;
+    }
+
     public HttpInput setReqCookies(Map<String, String> reqCookies) {
         this.reqCookies = reqCookies;
         return this;
@@ -134,6 +140,6 @@ public class HttpInput {
         return "\nURL: " + this.getUri() + "\nMethod: " + this.getMethod() + "\nRequest Queries: "
                 + this.getReqQueries() + "\nRequest Body: " + this.getBody() + "\nRequest Headers: "
                 + this.getReqHeaders().toString() + "\nRequest Cookies: " + this.getReqCookies().toString()
-                + "\nbinaryData=" + this.binaryData;
+                + "\nbinaryData=" + this.binaryData + "\nContext=" + this.context;
     }
 }
