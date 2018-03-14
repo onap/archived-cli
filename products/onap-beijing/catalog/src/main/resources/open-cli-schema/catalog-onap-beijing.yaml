@@ -1,0 +1,69 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+
+name: catalog
+
+description: ONAP catalog command to find the base path for service.
+
+
+info:
+  product: onap-beijing
+  service: msb
+  type: catalog
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: catalog-service-name
+    type: string
+    description: service name registered in catalog service
+    short_option: l
+    long_option: catalog-service-name
+    is_optional: false
+  - name: catalog-service-version
+    type: string
+    description: service version registered in catalog service
+    short_option: i
+    long_option: catalog-service-version
+    is_optional: false
+results:
+  direction: portrait
+  attributes:
+    - name: catalog-service-host-url
+      description: Service connection url
+      scope: short
+      type: string
+      default_value: ${host-url}
+    - name: catalog-service-base-path
+      description: service base path, to append with host-url for connecting the service.
+      scope: short
+      type: string
+      default_value: /
+http:
+  service:
+    mode: direct
+    auth: none
+  request:
+    uri: /services/${catalog-service-name}/version/${catalog-service-version}
+    method: GET
+  success_codes:
+    - 201
+    - 200
+  result_map:
+    catalog-service-base-path: $b{$.url}
+    catalog-service-host-url: ${host-url}
+  sample_response:
+    body: '{"serviceName":"test","version":"v1","url":"/api/test/v1","protocol":"REST","visualRange":"1","lb_policy":"hash","nodes":[{"ip":"127.0.0.1","port":"8012","ttl":0,"nodeId":"test_127.0.0.1_8012","expiration":"2017-02-10T05:33:25Z","created_at":"2017-02-10T05:33:25Z","updated_at":"2017-02-10T05:33:25Z"}],"status":"1"}'
