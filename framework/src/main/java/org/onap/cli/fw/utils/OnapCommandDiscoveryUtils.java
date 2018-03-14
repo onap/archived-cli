@@ -16,33 +16,13 @@
 
 package org.onap.cli.fw.utils;
 
-import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_DIRECTORY;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_JSON_PATTERN;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DISCOVERY_FILE;
-import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
-import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
-import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_DIRECTORY;
-import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_PATH_PATERN;
-
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ServiceLoader;
-import java.util.Map.Entry;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
-import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandInstantiationFailed;
-import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import org.onap.cli.fw.error.*;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.springframework.core.io.Resource;
@@ -50,7 +30,13 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.yaml.snakeyaml.Yaml;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+
+import static org.onap.cli.fw.conf.OnapCommandConstants.*;
 
 public class OnapCommandDiscoveryUtils {
 
@@ -248,7 +234,7 @@ public class OnapCommandDiscoveryUtils {
 
                 for (Resource resource : res) {
                     try {
-                        resourceMap = OnapCommandSchemaLoader.loadSchema(resource);
+                        resourceMap = loadYaml(resource);
                     } catch (OnapCommandException e) {
                         OnapCommandUtils.LOG.error("Ignores invalid schema " + resource.getURI().toString(), e);
                         continue;
@@ -297,7 +283,32 @@ public class OnapCommandDiscoveryUtils {
             throw new OnapCommandDiscoveryFailed(SCHEMA_DIRECTORY, e);
         }
 
+        try {
+            Resource[] samples = findResources(OnapCommandConstants.VERIFY_SAMPLES_FILE_PATTERN);
+            for (Resource sample : samples) {
+                    updateSchemaInfoWithSample(sample, extSchemas);
+            }
+        } catch (IOException e) {
+            throw new OnapCommandDiscoveryFailed(OnapCommandConstants.VERIFY_SAMPLES_DIRECTORY, e);
+        }
+
         return extSchemas;
+    }
+
+    private static void updateSchemaInfoWithSample(Resource sampleResourse,
+                                                      List<OnapCommandSchemaInfo> schemaInfos) throws OnapCommandInvalidSchema, IOException {
+        Map<String, ?> infoMap = loadSchema(sampleResourse);
+        String cmdName = (String) infoMap.get(OnapCommandConstants.VERIFY_CMD_NAME);
+        String version = (String) infoMap.get(OnapCommandConstants.VERIFY_CMD_VERSION);
+
+        Optional<OnapCommandSchemaInfo> optSchemaInfo = schemaInfos.stream()
+                .filter(e -> e.getCmdName().equals(cmdName) && e.getProduct().equals(version))
+                .findFirst();
+
+        if (optSchemaInfo.isPresent()) {
+            OnapCommandSchemaInfo onapCommandSchemaInfo = optSchemaInfo.get();
+            onapCommandSchemaInfo.getSampleFiles().add(sampleResourse.getFilename());
+        }
     }
 
     /**
@@ -328,5 +339,93 @@ public class OnapCommandDiscoveryUtils {
             throw new OnapCommandInstantiationFailed(cls.getName(), e);
         }
 
+    }
+
+    public static List<Map<String, ?>> createTestSuite(String cmd, String version) throws OnapCommandException {
+
+        ArrayList<Map<String, ?>> testSamples = new ArrayList();
+
+        List<Resource> resources = new ArrayList();
+        OnapCommandSchemaInfo schemaInfo =  getSchemaInfo(cmd, version);
+
+        List<String> sampleFiles = new ArrayList();
+        if (schemaInfo != null && !schemaInfo.getSampleFiles().isEmpty()) {
+            sampleFiles.addAll(schemaInfo.getSampleFiles());
+        }
+
+        for (String sampleFile : sampleFiles) {
+            try {
+                Resource resource = OnapCommandDiscoveryUtils.findResource(sampleFile,
+                        OnapCommandConstants.VERIFY_SAMPLES_FILE_PATTERN);
+                resources.add(resource);
+            } catch (IOException e) {
+                throw new OnapCommandInvalidSample("Sample file does not exist : " + sampleFile , e);
+            }
+        }
+
+        for (Resource resource : resources) {
+
+            Map<String, ?> stringMap = OnapCommandDiscoveryUtils.loadYaml(resource);
+            Map<String, Map<String, String>> samples = (Map<String, Map<String, String>>) stringMap
+                    .get(OnapCommandConstants.VERIFY_SAMPLES);
+
+            for (String sampleId : samples.keySet()) {
+
+                Map<String, String> sample = samples.get(sampleId);
+
+                List<String> inputArgs = new ArrayList();
+                inputArgs.add(cmd);
+                if (sample.get(OnapCommandConstants.VERIFY_INPUT) != null) {
+                    inputArgs.addAll(Arrays.asList(sample.get(OnapCommandConstants.VERIFY_INPUT).trim().split(" ")));
+                }
+                inputArgs.add(OnapCommandConstants.VERIFY_LONG_OPTION);
+
+                HashMap map = new HashMap();
+                map.put(OnapCommandConstants.VERIFY_INPUT, inputArgs);
+                map.put(OnapCommandConstants.VERIFY_OUPUT, sample.get(OnapCommandConstants.VERIFY_OUPUT));
+                map.put(OnapCommandConstants.VERIFY_MOCO, sample.get(OnapCommandConstants.VERIFY_MOCO));
+                map.put(OnapCommandConstants.VERIFY_SAMPLE_FILE_ID, resource.getFilename());
+                map.put(OnapCommandConstants.VERIFY_SAMPLE_ID, sampleId);
+                testSamples.add(map);
+            }
+        }
+        return testSamples;
+    }
+
+    /**
+     * Get schema map.
+     *
+     * @param resource
+     *            resource obj
+     * @return map
+     * @throws OnapCommandInvalidSchema
+     *             exception
+     */
+    public static Map<String, ?> loadYaml(Resource resource) throws OnapCommandInvalidSchema {
+        Map<String, ?> values = null;
+        try {
+            values = (Map<String, ?>) new Yaml().load(resource.getInputStream());
+        } catch (Exception e) {
+            throw new OnapCommandInvalidSchema(resource.getFilename(), e);
+        }
+        return values;
+    }
+
+    /**
+     * Get schema map.
+     *
+     * @param filePath
+     * @return map
+     * @throws OnapCommandInvalidSchema
+     *             exception
+     */
+    public static Map<String, ?> loadYaml(String filePath) throws OnapCommandInvalidSchema  {
+        Map<String, ?> values = null;
+        try {
+            values = (Map<String, Object>) new Yaml().load(FileUtils.readFileToString(new File(filePath)));
+        } catch (Exception e) {
+            throw new OnapCommandInvalidSchema(filePath, e);
+        }
+        return values;
     }
 }
