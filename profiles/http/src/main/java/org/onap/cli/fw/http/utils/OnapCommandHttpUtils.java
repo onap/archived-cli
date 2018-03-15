@@ -89,7 +89,7 @@ public class OnapCommandHttpUtils {
         boolean isRemoveEmptyNodes = Boolean.parseBoolean(input.getContext().getOrDefault(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES, "false"));
 
         if (isRemoveEmptyNodes) {
-            inp.setBody(OnapCommandHttpUtils.normalizeJson(input.getBody()));
+            inp.setBody(OnapCommandHttpUtils.normalizeJson(inp.getBody()));
         }
 
         return inp;
