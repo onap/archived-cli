@@ -385,15 +385,17 @@ public class OnapCommandSchemaHttpLoader {
         }
 
         String body = String.valueOf(bodyString);
-        JSONObject obj = null;
-        try {
-            obj = new ObjectMapper().readValue(body, JSONObject.class);
-        } catch (IOException e1) { // NOSONAR
-            errorList.add(OnapCommandHttpConstants.HTTP_BODY_FAILED_PARSING);
-        }
-        if (obj == null || "".equals(obj.toString())) {
+
+        if (body == null || "".equals(body)) {
             errorList.add(OnapCommandHttpConstants.HTTP_BODY_JSON_EMPTY);
+        } else {
+            try {
+                new ObjectMapper().readValue(body, JSONObject.class);
+            } catch (IOException e1) { // NOSONAR
+                errorList.add(OnapCommandHttpConstants.HTTP_BODY_FAILED_PARSING);
+            }
         }
+
         OnapCommandUtils.parseParameters(body, bodyParamNames);
 
         return bodyParamNames;
