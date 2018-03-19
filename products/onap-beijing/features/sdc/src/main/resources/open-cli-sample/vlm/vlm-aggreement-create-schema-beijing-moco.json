@@ -1,0 +1,29 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/1.1/license-agreements",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-4edc751f-3742-4381-b58b-86e6cf50fe78",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "addedFeatureGroupsIds" : [ "3a2fb75b52a54e9c8093e7c154210f9e" ],
+      "description" : "kanag cli la",
+      "licenseTerm" : {
+        "choice" : "Fixed_Term",
+        "other" : ""
+      },
+      "name" : "kanag-cli-la"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "77e151d0503b45ecb7e40f5f5f1a887e"
+    }
+  }
+} ]
