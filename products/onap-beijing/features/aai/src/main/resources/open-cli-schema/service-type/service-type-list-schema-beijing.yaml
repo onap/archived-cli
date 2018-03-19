@@ -1,0 +1,53 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: service-type-list
+description: List the service types configured in Onap
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: landscape
+  attributes:
+    - name: service-type-id
+      description: Onap cloud service
+      scope: short
+      type: string
+    - name: service-type
+      description: Onap cloud service
+      scope: short
+      type: string
+    - name: resource-version
+      description: Onap cloud service resource version
+      scope: short
+      type: string
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/service-design-and-creation/services
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    service-type: $b{service.[*].service-description}
+    service-type-id: $b{service.[*].service-id}
+    resource-version: $b{service.[*].resource-version}
+  sample_response:
+    body: '{"service":[{"service-id":"db3403eb-5c94-4295-bb00-a9dba8964ab3","service-description":"vFW","resource-version":"1500729865"},{"service-id":"33737156-ff09-4b3d-884a-fe9a372afa4e","service-description":"vLB","resource-version":"1500729866"}]}'
