@@ -1,0 +1,28 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: service2vf-model-list
+version: onap-beijing
+samples:
+  sample1:
+    name: service2vf-model-list
+    input: --service-model-id 0f4203a8-a314-47bb-9a7d-28157652cec4
+    moco: service2vf-model-list-schema-1.1-moco.json
+    output: |
+      +--------------------------------------+--------------------------+--------------------------------------+------------+
+      |vf-uuid                               |vf-name                   |vf-customization-uuid                 |vf-version  |
+      +--------------------------------------+--------------------------+--------------------------------------+------------+
+      |047b9ff8-2414-45b7-b753-26342369f160  |847cb26a-59a6-475a-94dd   |cf893f5a-1bb1-4e32-a92b-2456e12178f8  |1.0         |
+      +--------------------------------------+--------------------------+--------------------------------------+------------+
