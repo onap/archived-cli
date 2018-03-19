@@ -33,6 +33,7 @@
 
     <modules>
         <module>aai</module>
+        <module>msb</module>
     </modules>
 
      <build>
