@@ -1,0 +1,84 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf-delete
+description: delete a VF (experimental)
+info:
+  product: onap-beijing
+  service: so
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+- name: vf-id
+  description: id for vnf
+  type: string
+  short_option: x
+  long_option: vf-id
+  is_optional: false
+- name: service-instance-id
+  description: unique id for service instance
+  type: string
+  short_option: y
+  long_option: service-instance-id
+  is_optional: false
+- name: cloud-region
+  description: Cloud region ID
+  type: string
+  short_option: l
+  long_option: cloud-region
+  is_optional: false
+- name: tenant-id
+  description: openstack tenant id (uuid)
+  type: string
+  short_option: z
+  long_option: tenant-id
+  is_optional: false
+- name: model-invariant-id
+  description: model invariant id for service in SDC catalog
+  type: string
+  short_option: b
+  long_option: model-invariant-id
+  is_optional: false
+- name: model-uuid
+  description: model uuid for service in SDC catalog
+  type: string
+  short_option: c
+  long_option: model-uuid
+  is_optional: false
+- name: model-name
+  description: model name available in SDC catalog
+  type: string
+  short_option: e
+  long_option: model-name
+  is_optional: false
+- name: model-version
+  description: model version of service (eg. 1.0)
+  type: string
+  short_option: g
+  long_option: model-version
+  is_optional: false
+http:
+  service:
+    name: so
+    version: v3
+    auth: basic
+    mode: direct
+  request:
+    uri: /ecomp/mso/infra/serviceInstances/v3/${service-instance-id}/vnfs/${vf-id}
+    method: DELETE
+    body: '{"requestDetails": {"modelInfo": {"modelType": "vnf","modelInvariantId":"${model-invariant-id}","modelVersionId": "${model-uuid}","modelName": "${model-name}","modelVersion":"${model-version}"},"cloudConfiguration": {"lcpCloudRegionId": "${cloud-region}","tenantId":"${tenant-id}"},"requestInfo": {"source": "VID"},"requestParameters": {"userParams":[]}}}'
+  success_codes:
+  - 202
