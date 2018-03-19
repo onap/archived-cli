@@ -1,0 +1,44 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/0.1/entitlement-pools",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-381f2f59-c387-4730-a6b5-74a380acf1f3",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "aggregationFunction" : {
+        "choice" : "Peak",
+        "other" : ""
+      },
+      "description" : "kanag vlm ep",
+      "entitlementMetric" : {
+        "choice" : "CPU",
+        "other" : ""
+      },
+      "increments" : "1",
+      "manufacturerReferenceNumber" : "mkr123456",
+      "name" : "kanag-cli-ep",
+      "operationalScope" : {
+        "choices" : [ "Availability_Zone" ],
+        "other" : ""
+      },
+      "thresholdUnits" : "Absolute",
+      "thresholdValue" : "99",
+      "time" : {
+        "choice" : "Hour",
+        "other" : ""
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "aa61080fd965455ba5edbf60f4e375ef"
+    }
+  }
+} ]
