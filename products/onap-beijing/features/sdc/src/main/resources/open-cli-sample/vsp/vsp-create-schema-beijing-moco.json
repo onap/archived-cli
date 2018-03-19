@@ -1,0 +1,38 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-d12d57b4-de08-481f-9235-f524e3b7aa99",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "category" : "resourceNewCategory.generic",
+      "vendorId" : "cf2d907d998e44698ce3b4cded5f66a7",
+      "subCategory" : "resourceNewCategory.generic.abstract",
+      "description" : "VLB created from CLI",
+      "licensingVersion" : {
+        "id" : "2.0",
+        "label" : "2.0"
+      },
+      "licensingData" : {
+        "featureGroups" : [ "3a2fb75b52a54e9c8093e7c154210f9e" ],
+        "licenseAgreement" : "77e151d0503b45ecb7e40f5f5f1a887e"
+      },
+      "icon" : "icon",
+      "onboardingMethod" : "NetworkPackage",
+      "vendorName" : "Kanag-cli",
+      "name" : "kanag-cli-VLB"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "vspId" : "f19cad8343794e93acb9cda2e4126281"
+    }
+  }
+} ]

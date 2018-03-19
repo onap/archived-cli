@@ -1,0 +1,104 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vsp-create
+description: Create Vendor Software Product
+
+info:
+  product: onap-beijing
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: vsp-name
+    description: Onap VSP Name
+    type: string
+    short_option: x
+    long_option: vsp-name
+    is_optional: false
+  - name: vsp-description
+    description: Description for VSP
+    type: string
+    short_option: y
+    long_option: vsp-description
+    is_optional: true
+  - name: vsp-category
+    description: Category of the VSP
+    type: string
+    long_option: vsp-category
+    short_option: z
+    is_optional: true
+    default_value: resourceNewCategory.generic
+  - name: vsp-subcategory
+    description: Sub Category of VSP
+    type: string
+    long_option: vsp-subcategory
+    short_option: b
+    is_optional: true
+    default_value: resourceNewCategory.generic.abstract
+  - name: vlm-version
+    description: License version
+    type: string
+    long_option: vlm-version
+    short_option: c
+    is_optional: true
+    default_value: 1.0
+  - name: vlm-vendor
+    description: License Model vendor
+    type: string
+    long_option: vlm-vendor
+    short_option: e
+    is_optional: false
+  - name: vlm-id
+    description: License Model ID
+    type: string
+    long_option: vlm-id
+    short_option: g
+    is_optional: false
+  - name: vlm-agreement-id
+    description: License Agreement ID
+    type: string
+    long_option: vlm-agreement-id
+    short_option: i
+    is_optional: false
+  - name: vlm-feature-group-id
+    description: Feature Group ID
+    type: string
+    long_option: vlm-feature-group-id
+    short_option: j
+    is_optional: false
+results:
+  direction: portrait
+  attributes:
+    - name: ID
+      description: VSP ID
+      scope: short
+      type: string
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-software-products
+    method: POST
+    body: '{"category": "${vsp-category}", "vendorId": "${vlm-id}", "subCategory": "${vsp-subcategory}", "description": "${vsp-description}", "licensingVersion": {"id": "${vlm-version}", "label": "${vlm-version}"}, "licensingData": {"featureGroups": ["${vlm-feature-group-id}"], "licenseAgreement": "${vlm-agreement-id}"}, "icon": "icon", "onboardingMethod": "NetworkPackage", "vendorName": "${vlm-vendor}", "name": "${vsp-name}"}'
+  success_codes:
+    - 200
+  result_map:
+    ID: $b{$.vspId}
+  sample_response:
+    body: '{"vspId":"2DEB6CB4B082415BB7A697C9CD1273BA"}'
