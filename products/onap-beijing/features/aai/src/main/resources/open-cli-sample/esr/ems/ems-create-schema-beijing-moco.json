@@ -1,0 +1,42 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v11/external-system/esr-ems-list/esr-ems/51a480ed-649c-4c47-a84b-f966dc4f9554",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-8552f11b-5e79-4d98-9e05-ccc4e66c42c0",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "ems-id" : "51a480ed-649c-4c47-a84b-f966dc4f9554",
+      "passive" : true,
+      "remote-path" : "sample",
+      "esr-system-info-list" : {
+        "esr-system-info" : [ {
+          "esr-system-info-id" : "51a480ed-649c-4c47-a84b-f966dc4f9554",
+          "system-name" : "ems1",
+          "type" : "ems",
+          "vendor" : "boco",
+          "version" : "1.0",
+          "service-url" : "http://10.0.0.1",
+          "user-name" : "admin",
+          "password" : "password",
+          "system-type" : "ems",
+          "protocal" : "",
+          "ssl-cacert" : "",
+          "ssl-insecure" : "",
+          "ip-address" : "",
+          "port" : "",
+          "cloud-domain" : "",
+          "default-tenant" : ""
+        } ]
+      }
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]
