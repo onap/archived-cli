@@ -1,0 +1,59 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products/f19cad8343794e93acb9cda2e4126281/versions/0.1/orchestration-template-candidate/process",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-acbc1cac-ef75-4062-b3c9-3d7b52877687",
+      "Content-Type" : "application/json"
+    },
+    "json" : { }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "fileNames" : [ "base_vlb.env", "dnsscaling.yaml", "base_vlb.yaml", "dnsscaling.env" ],
+      "errors" : {
+        "dnsscaling.yaml" : [ {
+          "level" : "WARNING",
+          "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [vlb_private_net_id], Resource ID [vdns_2_private_0_port]. As a result, VF/VFC Profile may miss this information"
+        }, {
+          "level" : "WARNING",
+          "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vdns_2_private_1_port]. As a result, VF/VFC Profile may miss this information"
+        }, {
+          "level" : "WARNING",
+          "message" : "WARNING: Nova Server naming convention in image, flavor and name properties is not consistent, Resource ID [vdns_2]"
+        } ],
+        "base_vlb.yaml" : [ {
+          "level" : "WARNING",
+          "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vlb_private_1_port]. As a result, VF/VFC Profile may miss this information"
+        }, {
+          "level" : "WARNING",
+          "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vdns_private_1_port]. As a result, VF/VFC Profile may miss this information"
+        }, {
+          "level" : "WARNING",
+          "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vpg_private_1_port]. As a result, VF/VFC Profile may miss this information"
+        }, {
+          "level" : "WARNING",
+          "message" : "WARNING: A resource is connected twice to the same network role, Network Role [vdns_0], Resource ID [onap_private]"
+        }, {
+          "level" : "WARNING",
+          "message" : "WARNING: Nova Server naming convention in image, flavor and name properties is not consistent, Resource ID [vdns_0]"
+        }, {
+          "level" : "WARNING",
+          "message" : "WARNING: Missing Nova Server Metadata property, Resource ID [vpg_0]"
+        }, {
+          "level" : "WARNING",
+          "message" : "WARNING: A resource is connected twice to the same network role, Network Role [vpg_0], Resource ID [onap_private]"
+        }, {
+          "level" : "WARNING",
+          "message" : "WARNING: Nova Server naming convention in image, flavor and name properties is not consistent, Resource ID [vpg_0]"
+        } ]
+      },
+      "status" : "Success"
+    }
+  }
+} ]
