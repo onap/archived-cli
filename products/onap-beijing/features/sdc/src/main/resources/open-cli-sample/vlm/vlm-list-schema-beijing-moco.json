@@ -1,0 +1,655 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-2c363ccc-f8be-4fcf-8844-ccd2e44f1651",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "listCount" : 34,
+      "results" : [ {
+        "vendorName" : "ciLicensef008e06a",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "b5ea95a60e3b483da03d0911968cd778",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense5c11752c",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "84352b5d014c4d5382ce856d7597aebf",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicenseaf880546",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "8e13a8b2e1f34374ad578edc9c912f11",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicensecce293bb",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "9f7053ae1aa04b8c9fa3d991f944a49b",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense7d28e221",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "3f47950121bf4e31a058b4870020bc2f",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense02ddba7e",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "6fc132eca87d4e49b56357b9d83843a5",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense9acc959f",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "0094601590ec4e709e560e928c44232a",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicensee5394ee2",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "8f82813eb6304957911955e077d9be6f",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense3eed3665",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "b620898b5e5e4231a30a2ccecd39927e",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense372060ea",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "12cce4998b874d5e8096070f9c5d7395",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense36e962a4",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "78fd596a39534d51953e867adaef78f6",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicensef9a1b52b",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "651180d666c54887880b673884e03481",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense76f62092",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "dd10e18e3af54234a20897ad65bfa311",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "kanag-cli",
+        "description" : "First License created from CLI",
+        "iconRef" : "icon",
+        "id" : "cf2d907d998e44698ce3b4cded5f66a7",
+        "version" : {
+          "id" : "2.0",
+          "label" : "2.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        }, {
+          "id" : "2.0",
+          "label" : "2.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        }, {
+          "id" : "2.0",
+          "label" : "2.0"
+        } ]
+      }, {
+        "vendorName" : "Test",
+        "description" : "test",
+        "iconRef" : "icon",
+        "id" : "144497a1b7924e0fa73004573730e1b8",
+        "version" : {
+          "id" : "0.1",
+          "label" : "0.1"
+        },
+        "status" : "Locked",
+        "lockingUser" : "cs0008",
+        "viewableVersions" : [ {
+          "id" : "0.1",
+          "label" : "0.1"
+        } ]
+      }, {
+        "vendorName" : "4718de22-00d3-4607-b666",
+        "description" : "vendor license model",
+        "iconRef" : "icon",
+        "id" : "9af398f516da4e63b4ec8d344866533b",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "Kanag",
+        "description" : "Kanagaraj M @ HTIPL",
+        "iconRef" : "icon",
+        "id" : "1173c7be5fea4db799b1a5ef9512e57e",
+        "version" : {
+          "id" : "4.0",
+          "label" : "4.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        }, {
+          "id" : "2.0",
+          "label" : "2.0"
+        }, {
+          "id" : "3.0",
+          "label" : "3.0"
+        }, {
+          "id" : "4.0",
+          "label" : "4.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        }, {
+          "id" : "2.0",
+          "label" : "2.0"
+        }, {
+          "id" : "3.0",
+          "label" : "3.0"
+        }, {
+          "id" : "4.0",
+          "label" : "4.0"
+        } ]
+      }, {
+        "vendorName" : "test-vendor",
+        "description" : "test ",
+        "iconRef" : "icon",
+        "id" : "fc0fdcc825a54ca3b08e40f473b72d05",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "0138a2e2-52bf-4f0b-81cd",
+        "description" : "vendor license model",
+        "iconRef" : "icon",
+        "id" : "b66c5e1b4af3432ca2f6cd05adf72340",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "48fa02ef-e79b-4707-895e",
+        "description" : "vendor license model",
+        "iconRef" : "icon",
+        "id" : "34c2c72e992742e3b7ceb78bfcd21ebb",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "1e5d1422-1f5f-42fe-a98e",
+        "description" : "vendor license model",
+        "iconRef" : "icon",
+        "id" : "4bbd11c581ce4bb187a0a37131e5bb60",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "3029be5e-9135-4083-bd2e",
+        "description" : "vendor license model",
+        "iconRef" : "icon",
+        "id" : "1329476d73014587839fd3ede08c3103",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "c6ba2ef6-fe82-4f32-ad50",
+        "description" : "vendor license model",
+        "iconRef" : "icon",
+        "id" : "2ca684a9805b40f9993239e77b82fb52",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "01eb54a1-f1ff-41a2-aafc",
+        "description" : "vendor license model",
+        "iconRef" : "icon",
+        "id" : "1a49df7b78654777a71f64f2c6c2468f",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "a920b10d-c516-4380-835a",
+        "description" : "vendor license model",
+        "iconRef" : "icon",
+        "id" : "5e571e8a25c8404da04f2a0ec179f576",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense7d8bbcab",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "4b1e1efd8bb944bdbc0c3e74a9402967",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense09c55d35",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "816c04fd4ee849f2b80435e0944189fa",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense6bfd9421",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "9408208f5b6d4eb997dff1b901f1fb95",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense81acf730",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "eda4e9d1cae14cad95befc1728629574",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicensef3f5a4fa",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "022140c2dc4e40bbae096aa1fb5cfbe9",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense9fddd8db",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "19f92b345cae423ab4ea6c5527d55ef6",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicense9a46fd22",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "492d9259fc3e493d8fa6afd488054508",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicensed955b6d7",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "a5da3e50ed72483fbfb134bac84b31f6",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      }, {
+        "vendorName" : "ciLicensef21d8db3",
+        "description" : "new vendor license model",
+        "iconRef" : "icon",
+        "id" : "9ff65b0b943141a7b99481bbcaedc294",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "status" : "Final",
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ]
+      } ]
+    }
+  }
+} ]
