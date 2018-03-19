@@ -1,0 +1,35 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v11/business/customers",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-f56d4034-1ee8-469c-848a-8b9cd1afa19b",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "customer" : [ {
+        "global-customer-id" : "test",
+        "subscriber-name" : "test",
+        "subscriber-type" : "INFRA",
+        "resource-version" : "1509029022293"
+      }, {
+        "global-customer-id" : "kanag",
+        "subscriber-name" : "kanag",
+        "subscriber-type" : "INFRA",
+        "resource-version" : "1509029007060"
+      }, {
+        "global-customer-id" : "Demonstration",
+        "subscriber-name" : "Demonstration",
+        "subscriber-type" : "INFRA",
+        "resource-version" : "1508827908763"
+      } ]
+    }
+  }
+} ]
