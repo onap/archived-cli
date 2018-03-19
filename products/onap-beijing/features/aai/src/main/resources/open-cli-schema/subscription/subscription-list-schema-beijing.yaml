@@ -1,0 +1,76 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: subscription-list
+description: Lists the subscription for a given customer in Onap
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: customer-name
+    description: Onap customer name
+    type: string
+    short_option: x
+    long_option: customer-name
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: service-type
+      description: Onap service type
+      scope: short
+      type: string
+    - name: resource-version
+      description: Onap subscription resource version
+      scope: short
+      type: string
+    - name: tenant
+      description: Onap tenant name
+      scope: long
+      type: string
+    - name: region
+      description: Onap region name
+      scope: long
+      type: string
+    - name: cloud
+      description: Onap cloud name
+      scope: long
+      type: string
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/business/customers/customer/${customer-name}/service-subscriptions
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    service-type: $b{$.service-subscription.[*].service-type}
+    resource-version: $b{$.service-subscription.[*].resource-version}
+    tenant: $b{service-subscription.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'tenant.tenant-id')].relationship-value}
+    region: $b{service-subscription.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'cloud-region.cloud-region-id')].relationship-value}
+    cloud: $b{service-subscription.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'cloud-region.cloud-owner')].relationship-value}
+
+  sample_response:
+    body: '{"service-subscription":[{"service-type":"vTest","resource-version":"1504091375183","relationship-list":{"relationship":[{"related-to":"tenant","related-link":"/aai/v11/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/26ab7af6-96cc-4c4e-814a-e533af4ef9f6","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"att-aic"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"AAIAIC25"},{"relationship-key":"tenant.tenant-id","relationship-value":"26ab7af6-96cc-4c4e-814a-e533af4ef9f6"}],"related-to-property":[{"property-key":"tenant.tenant-name","property-value":"test"}]}]}}]}'
+
+
+
+
