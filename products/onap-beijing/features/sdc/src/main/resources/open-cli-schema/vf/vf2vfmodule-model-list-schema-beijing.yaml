@@ -1,0 +1,78 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf2vfmodule-model-list
+description: List the VF modules in a given VF model in SDC
+
+info:
+  product: onap-beijing
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: vf-id
+    description: VF uuid
+    type: string
+    short_option: z
+    long_option: vf-id
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: vsp-uuid
+      description: VSP uuid
+      type: string
+      scope: short
+    - name: vsp-version
+      description: VSP version
+      type: string
+      scope: short
+    - name: module-uuid
+      description: UUID
+      type: string
+      scope: short
+    - name: module-invariant-uuid
+      description: Invariant UUID
+      type: string
+      scope: short
+    - name: module-name
+      description: name
+      type: string
+      scope: short
+    - name: module-version
+      description: version
+      type: string
+      scope: short
+
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/catalog/resources/${vf-id}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    module-uuid: $b{groups.[?(@.type == 'org.openecomp.groups.VfModule')].groupUUID}
+    module-name: $b{groups.[?(@.type == 'org.openecomp.groups.VfModule')].name}
+    module-version: $b{groups.[?(@.type == 'org.openecomp.groups.VfModule')].version}
+    module-invariant-uuid: $b{groups.[?(@.type == 'org.openecomp.groups.VfModule')].invariantUUID}
+    vsp-uuid: $b{$.csarUUID}
+    vsp-version: $b{$.csarVersion}

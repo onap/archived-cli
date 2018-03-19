@@ -1,0 +1,30 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: vf2vfmodule-model-list
+version: onap-beijing
+samples:
+  sample1:
+    name: vf2vfmodule-model-list
+    input: --vf-id 66269482-0b27-40e3-9c4d-6a26fb67d9ff
+    moco: vf2vfmodule-model-list-schema-1.1-moco.json
+    output: |
+      +----------------------------------+--------------+--------------------------------------+--------------------------------------+------------------------------------+----------------+
+      |vsp-uuid                          |vsp-version   |module-uuid                           |module-invariant-uuid                 |module-name                         |module-version  |
+      +----------------------------------+--------------+--------------------------------------+--------------------------------------+------------------------------------+----------------+
+      |f19cad8343794e93acb9cda2e4126281  |2.0           |f2fbc712-7adc-4a62-aa24-485ae076bdc7  |a610a6b9-adfb-4f9f-ada2-c054194092ad  |KanagCliVlb..base_vlb..module-0     |1               |
+      +----------------------------------+--------------+--------------------------------------+--------------------------------------+------------------------------------+----------------+
+      |                                  |              |c420e361-900a-4705-9329-868e7fa6d9a5  |cde91552-bdb8-4cae-b4c2-c63069d77fe1  |KanagCliVlb..dnsscaling..module-1   |1               |
+      +----------------------------------+--------------+--------------------------------------+--------------------------------------+------------------------------------+----------------+
