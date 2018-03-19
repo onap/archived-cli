@@ -1,0 +1,22 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+
+name: vf-module-create
+version: onap-beijing
+samples:
+    sample1:
+        name: Create a vnf
+        input: -h https://locahost:8080 -u InfraPortalClient -p password1$ -l region1 -t 123ABC -v b123-45565678da -s a445678-24da  -m a9a77d5a-123e-4ca2-9eb9-0b015d2ee0fb -r -i instance
