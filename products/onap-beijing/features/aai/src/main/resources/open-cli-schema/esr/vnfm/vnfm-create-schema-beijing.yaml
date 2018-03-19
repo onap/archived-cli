@@ -1,0 +1,100 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+
+name: vnfm-register
+
+description: Register a VNFM in Onap
+
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: vim-id
+    description: Onap VIM unique id
+    type: uuid
+    short_option: x
+    long_option:  vim-id
+    is_optional: false
+  - name: vnfm-id
+    description: Onap VNFM unique id
+    type: uuid
+    short_option: y
+    long_option:  vnfm-id
+    is_optional: false
+  - name: name
+    description: Onap VNFM name
+    type: string
+    short_option: b
+    long_option:  name
+    is_optional: false
+  - name: type
+    description: Onap VNFM type
+    type: string
+    short_option: c
+    long_option:  type
+    is_optional: false
+  - name: vendor
+    description: Onap VNFM vendor
+    type: string
+    short_option: e
+    long_option:  vendor
+    is_optional: false
+  - name: vnfm-version
+    description: Onap VNFM version
+    type: string
+    short_option: q
+    long_option:  vnfm-version
+    is_optional: false
+  - name: url
+    description: Onap VNFM URL
+    type: string
+    short_option: g
+    long_option:  url
+    is_optional: false
+  - name: username
+    description: Onap VNFM username
+    type: string
+    short_option: i
+    long_option:  username
+    is_optional: false
+  - name: password
+    description: Onap VNFM password
+    type: string
+    short_option: j
+    long_option:  password
+    is_optional: false
+  - name: certificate-url
+    description: Onap VNFM certificate-url
+    type: string
+    short_option: z
+    long_option: certificate-url
+    is_optional: true
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/external-system/esr-vnfm-list/esr-vnfm/${vnfm-id}
+    method: PUT
+    body: '{"vnfm-id":"${vnfm-id}","vim-id":"${vim-id}","certificate-url":"${certificate-url}","esr-system-info-list":{"esr-system-info":[{"esr-system-info-id":"${vnfm-id}","system-name":"${name}","type":"${type}","vendor":"${vendor}","version":"${vnfm-version}","service-url":"${url}","user-name":"${username}","password":"${password}","system-type":"vnfm","protocal":"","ssl-cacert":"","ssl-insecure":"","ip-address":"","port":"","cloud-domain":"","default-tenant":""}]}}'
+  success_codes:
+    - 201
+  sample_response:
+    body: ''

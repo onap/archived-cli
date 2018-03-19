@@ -1,0 +1,42 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v11/external-system/esr-vnfm-list/esr-vnfm/c0ecd788-22f4-49a4-a969-68051cd517e7",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-99986f20-ae09-41f7-95a3-a962cda7b24e",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "vnfm-id" : "c0ecd788-22f4-49a4-a969-68051cd517e7",
+      "vim-id" : "acc5e14e-1320-4ab5-97fe-b7cc82ad03f2",
+      "certificate-url" : "",
+      "esr-system-info-list" : {
+        "esr-system-info" : [ {
+          "esr-system-info-id" : "c0ecd788-22f4-49a4-a969-68051cd517e7",
+          "system-name" : "vnfm1",
+          "type" : "OpenStack",
+          "vendor" : "ONAP",
+          "version" : "1.0",
+          "service-url" : "http://10.0.1.1",
+          "user-name" : "admin",
+          "password" : "password",
+          "system-type" : "vnfm",
+          "protocal" : "",
+          "ssl-cacert" : "",
+          "ssl-insecure" : "",
+          "ip-address" : "",
+          "port" : "",
+          "cloud-domain" : "",
+          "default-tenant" : ""
+        } ]
+      }
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]
