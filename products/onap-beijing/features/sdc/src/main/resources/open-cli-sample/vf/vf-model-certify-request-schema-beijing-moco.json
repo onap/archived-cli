@@ -1,0 +1,64 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc2/rest/v1/catalog/resources/66269482-0b27-40e3-9c4d-6a26fb67d9ff/lifecycleState/certificationRequest",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-bdb48dbf-757d-4ca0-afa6-e8cae0dc3a81",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "userRemarks" : "Requesting certification via CLI"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "uniqueId" : "66269482-0b27-40e3-9c4d-6a26fb67d9ff",
+      "name" : "kanag-cli-VLB",
+      "version" : "0.1",
+      "isHighestVersion" : true,
+      "creationDate" : 1509603052084,
+      "lastUpdateDate" : 1509603313829,
+      "description" : "VF created from CLI",
+      "lifecycleState" : "READY_FOR_CERTIFICATION",
+      "tags" : [ "CLI", "kanag-cli-VLB" ],
+      "icon" : "defaulticon",
+      "normalizedName" : "kanagclivlb",
+      "systemName" : "KanagCliVlb",
+      "contactId" : "cs0008",
+      "allVersions" : {
+        "0.1" : "66269482-0b27-40e3-9c4d-6a26fb67d9ff"
+      },
+      "csarUUID" : "f19cad8343794e93acb9cda2e4126281",
+      "csarVersion" : "2.0",
+      "importedToscaChecksum" : "NDQzNmIwOWE1NjQ2NjU2YTNkMWVmNzcxMTczMjRmNDE=",
+      "invariantUUID" : "2d455337-57eb-4edf-a8b9-9f87fd85bc0e",
+      "componentType" : "RESOURCE",
+      "categories" : [ {
+        "name" : "Generic",
+        "normalizedName" : "generic",
+        "uniqueId" : "resourceNewCategory.generic",
+        "subcategories" : [ {
+          "name" : "Abstract",
+          "normalizedName" : "abstract",
+          "uniqueId" : "resourceNewCategory.generic.abstract",
+          "icons" : [ "objectStorage", "compute" ]
+        } ]
+      } ],
+      "creatorUserId" : "cs0008",
+      "creatorFullName" : "Carlos Santana",
+      "lastUpdaterUserId" : "cs0008",
+      "lastUpdaterFullName" : "Carlos Santana",
+      "vendorName" : "Kanag-cli",
+      "vendorRelease" : "1.0",
+      "resourceVendorModelNumber" : "",
+      "resourceType" : "VF",
+      "toscaResourceName" : "org.openecomp.resource.vf.KanagCliVlb",
+      "uuid" : "46c89121-b37f-4192-8841-25c93165b843"
+    }
+  }
+} ]
