@@ -1,0 +1,30 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: vim-list
+version: onap-beijing
+samples:
+  sample1:
+    name: vim-list
+    input: --cloud-name huawei-cloud --region-name bangalore --long
+    moco: vim-list-schema-1.1-moco.json
+    output: |
+      +--------------------------------------+------------+------------+----------+----------+--------------------------------+----------+--------------+----------------+------------------+
+      |vim-id                                |name        |type        |vendor    |version   |url                             |username  |cloud-domain  |default-tenant  |resource-version  |
+      +--------------------------------------+------------+------------+----------+----------+--------------------------------+----------+--------------+----------------+------------------+
+      |acc5e14e-1320-4ab5-97fe-b7cc82ad03f2  |RegionOne   |OpenStack   |Devstack  |newton    |http://192.168.16.149/identity  |onap      |default       |onap            |1509093477505     |
+      +--------------------------------------+------------+------------+----------+----------+--------------------------------+----------+--------------+----------------+------------------+
+      |810edb5a-42e9-462d-9587-96bc9272ac27  |vim1        |OpenStack   |Devstack  |newton    |http://192.168.16.149/identity  |onap      |default       |onap            |1509093590932     |
+      +--------------------------------------+------------+------------+----------+----------+--------------------------------+----------+--------------+----------------+------------------+
