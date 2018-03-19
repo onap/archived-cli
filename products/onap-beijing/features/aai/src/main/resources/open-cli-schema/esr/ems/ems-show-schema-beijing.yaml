@@ -1,0 +1,81 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+
+name: ems-show
+
+description: Show the details of configured ems
+
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: ems-id
+    description: Onap EMS unique id
+    type: uuid
+    short_option: x
+    long_option:  ems-id
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: name
+      description: Onap ems name
+      scope: short
+      type: string
+    - name: type
+      description: Onap ems type
+      scope: short
+      type: string
+    - name: vendor
+      description: Onap ems vendor
+      scope: short
+      type: string
+    - name: version
+      description: Onap ems version
+      scope: short
+      type: string
+    - name: url
+      description: Onap ems url
+      scope: short
+      type: string
+    - name: username
+      description: Onap ems username
+      scope: long
+      type: string
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/external-system/esr-ems-list/esr-ems/${ems-id}/esr-system-info-list/esr-system-info/${ems-id}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    name: $b{$.system-name}
+    type: $b{$.type}
+    vendor: $b{$.vendor}
+    version: $b{$.version}
+    url: $b{$.service-url}
+    username: $b{$.user-name}
+
+  sample_response:
+    body: '{"esr-system-info-id":"example-esr-system-info-id-val-44791","system-name":"example-system-name-val-48687","type":"example-type-val-95885","vendor":"example-vendor-val-41061","version":"example-version-val-38559","service-url":"example-service-url-val-2663","user-name":"example-user-name-val-26126","password":"example-password-val-33838","system-type":"ems","protocal":"","ssl-cacert":"","ssl-insecure":false,"ip-address":"","port":"","cloud-domain":"","default-tenant":""}'
