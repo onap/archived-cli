@@ -1,0 +1,31 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/2.0/feature-groups",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-f2e5f573-d821-4736-96d9-10e634de1743",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "listCount" : 1,
+      "results" : [ {
+        "name" : "kanag-cli-fg",
+        "description" : "Kanag cli feature group",
+        "partNumber" : "123455",
+        "manufacturerReferenceNumber" : "mkr123456",
+        "id" : "3a2fb75b52a54e9c8093e7c154210f9e",
+        "licenseKeyGroupsIds" : [ "c37a1f205f444161a573f55dfec5f170" ],
+        "entitlementPoolsIds" : [ "aa61080fd965455ba5edbf60f4e375ef" ],
+        "referencingLicenseAgreements" : [ "1e2edfccaca847f896070d0fac26667a", "77e151d0503b45ecb7e40f5f5f1a887e" ]
+      } ]
+    }
+  }
+} ]
