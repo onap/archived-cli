@@ -1,0 +1,104 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: ep-create
+description: Create Entitlement Pool
+
+info:
+  product: onap-beijing
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: ep-name
+    description: Entitlement Pool name
+    type: string
+    short_option: x
+    long_option: ep-name
+    is_optional: false
+  - name: license-model-id
+    description: License Model ID
+    type: string
+    short_option: y
+    long_option: license-model-id
+    is_optional: false
+  - name: ep-description
+    description: Description for Entitlement Pool
+    type: string
+    short_option: z
+    long_option: ep-description
+    is_optional: false
+  - name: threshold-value
+    description: threshold
+    type: string
+    short_option: q
+    long_option: threshold-value
+    is_optional: false
+  - name: threshold-unit
+    description: threshold
+    type: string
+    short_option: b
+    long_option: threshold-unit
+    is_optional: false
+  - name: entitlement-metric
+    description: Entitlement Metric
+    type: string
+    short_option: c
+    long_option: entitlement-metric
+    is_optional: false
+  - name: aggregation-function
+    description: Aggregation Function
+    type: string
+    short_option: e
+    long_option: aggregation-function
+    is_optional: false
+  - name: operational-scope
+    description: Operational Scope
+    type: string
+    short_option: g
+    long_option: operational-scope
+    is_optional: false
+  - name: reference-number
+    description: Reference Number
+    type: string
+    short_option: k
+    long_option: reference-number
+    is_optional: false
+
+
+results:
+  direction: portrait
+  attributes:
+    - name: ID
+      description: Entitlement Pool ID
+      scope: short
+      type: string
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-license-models/${license-model-id}/entitlement-pools
+    method: POST
+    body: '{"name": "${ep-name}", "description": "${ep-description}",  "thresholdValue": "${threshold-value}", "thresholdUnits": "${threshold-unit}", "entitlementMetric":{"choice": "${entitlement-metric}","other": ""}, "increments": "robot", "aggregationFunction":{"choice": "${aggregation-function}","other": ""}, "operationalScope":{"choices":["${operational-scope}"], "other":""},"time":{"choice": "Hour", "other":""}, "manufacturerReferenceNumber":"${reference-number}"}'
+  success_codes:
+    - 200
+  result_map:
+    ID: $b{$.value}
+  sample_response:
+    body: '{"value":"2DEB6CB4B082415BB7A697C9CD1273BA"}'
