@@ -1,0 +1,35 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v11/business/customers/customer/kanag/service-subscriptions/service-subscription/vFW-kanag",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-2f281cd8-98da-4cb5-899e-294d9bf7b03d",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "relationship-list" : {
+        "relationship" : [ {
+          "related-to" : "tenant",
+          "relationship-data" : [ {
+            "relationship-key" : "cloud-region.cloud-owner",
+            "relationship-value" : "huawei-cloud"
+          }, {
+            "relationship-key" : "cloud-region.cloud-region-id",
+            "relationship-value" : "bangalore"
+          }, {
+            "relationship-key" : "tenant.tenant-id",
+            "relationship-value" : "e18173e6-6a13-4614-a13c-3859e7321103"
+          } ]
+        } ]
+      },
+      "service-type" : "vFW-kanag"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]
