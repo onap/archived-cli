@@ -1,0 +1,44 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: service-model-list
+version: onap-beijing
+samples:
+  sample1:
+    name: service-model-list
+    input:
+    moco: service-model-list-schema-1.1-moco.json
+    output: |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |uuid                                  |invariant-uuid                        |name                      |version   |status                  |distribution-status         |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |0f4203a8-a314-47bb-9a7d-28157652cec4  |1de901ed-17af-4b03-bc1f-41659cfa27cb  |demoVLB                   |1.0       |CERTIFIED               |DISTRIBUTED                 |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |5ca7c6cb-78dc-4cf5-ab02-52c9ffb8c884  |9288833a-5dd6-4f9d-84ff-b34de06011c6  |kanagVLB                  |0.1       |NOT_CERTIFIED_CHECKOUT  |DISTRIBUTION_NOT_APPROVED   |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |75caf010-9f14-424d-93c4-9f8fe8be7970  |b51013b7-e2bb-4abb-8f45-8e32113264b3  |demoVFW                   |1.0       |CERTIFIED               |DISTRIBUTION_APPROVED       |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |fa9d6078-2d59-4c03-b97e-b57436680513  |5790901b-c109-4fc3-947a-ab71aa064251  |vLB-kanag                 |0.1       |NOT_CERTIFIED_CHECKOUT  |DISTRIBUTION_NOT_APPROVED   |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |ba5a19b1-3219-4f30-bfd3-3b2f700c0157  |c4425f23-fc9a-4cbf-a3b7-12e69054806b  |kanag-cli-VLB             |1.0       |CERTIFIED               |DISTRIBUTION_APPROVED       |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |5b054e09-9cc3-49bd-8962-e014465e295b  |3a6a08c8-9bbe-4650-a1c5-687fb1012b98  |Kanag-vFW-Service         |1.0       |CERTIFIED               |DISTRIBUTED                 |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |c9aa6a9c-dddd-4019-8f7b-70c09de68e96  |dd04c1c2-beb2-4b6c-997d-c94fae54fb57  |demoVCPE                  |1.0       |CERTIFIED               |DISTRIBUTED                 |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |f2a9f7e3-ead9-4585-8f5f-665acc6cff1c  |b51013b7-e2bb-4abb-8f45-8e32113264b3  |demoVFW                   |1.1       |NOT_CERTIFIED_CHECKOUT  |DISTRIBUTION_NOT_APPROVED   |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
+      |d2df45ed-89c1-4d23-a605-bae03ee1f14f  |566c6ab2-f32e-4022-acd3-cf2bf17ae6fc  |a6484bba-671f-49c2-92fc   |0.1       |NOT_CERTIFIED_CHECKOUT  |DISTRIBUTION_NOT_APPROVED   |
+      +--------------------------------------+--------------------------------------+--------------------------+----------+------------------------+----------------------------+
