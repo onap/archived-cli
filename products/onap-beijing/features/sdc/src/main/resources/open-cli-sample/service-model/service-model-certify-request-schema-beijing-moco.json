@@ -1,0 +1,56 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc2/rest/v1/catalog/services/7b427dbf-685b-4ba9-8838-a9b3b3c8e584/lifecycleState/certificationRequest",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-4ebd2f66-a6a6-4bb7-8cae-3038e2e8080d",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "userRemarks" : "Requesting certification via CLI"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "uniqueId" : "7b427dbf-685b-4ba9-8838-a9b3b3c8e584",
+      "name" : "kanag-cli-VLB",
+      "version" : "0.1",
+      "isHighestVersion" : true,
+      "creationDate" : 1509606274213,
+      "lastUpdateDate" : 1509606425492,
+      "description" : "VLB created from CLI",
+      "lifecycleState" : "READY_FOR_CERTIFICATION",
+      "tags" : [ "CLI", "kanag-cli-VLB" ],
+      "icon" : "defaulticon",
+      "normalizedName" : "kanagclivlb",
+      "systemName" : "KanagCliVlb",
+      "contactId" : "cs0008",
+      "allVersions" : {
+        "0.1" : "7b427dbf-685b-4ba9-8838-a9b3b3c8e584"
+      },
+      "projectCode" : "kanag-123456",
+      "invariantUUID" : "c4425f23-fc9a-4cbf-a3b7-12e69054806b",
+      "componentType" : "SERVICE",
+      "categories" : [ {
+        "name" : "Network L1-3",
+        "normalizedName" : "network l1-3",
+        "uniqueId" : "serviceNewCategory.network l1-3"
+      } ],
+      "creatorUserId" : "cs0008",
+      "creatorFullName" : "Carlos Santana",
+      "lastUpdaterUserId" : "cs0008",
+      "lastUpdaterFullName" : "Carlos Santana",
+      "distributionStatus" : "DISTRIBUTION_NOT_APPROVED",
+      "ecompGeneratedNaming" : true,
+      "namingPolicy" : "",
+      "serviceType" : "",
+      "serviceRole" : "",
+      "uuid" : "660c524c-176b-43b1-a85b-1ef18011ca85"
+    }
+  }
+} ]
