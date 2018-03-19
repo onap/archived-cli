@@ -1,0 +1,46 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: vf-list
+version: onap-beijing
+samples:
+  sample1:
+    name: vf-list
+    input: -x Demonstration -y vLB --service-id 2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee
+    moco: vf-list-schema-1.1-moco.json
+    output: |
+      +--------------------------------------+--------------------+
+      |vf-id                                 |vf-name             |
+      +--------------------------------------+--------------------+
+      |1a667ce8-8b8b-4f59-ba5c-b162ae462fef  |vlb-cli-sample-8    |
+      +--------------------------------------+--------------------+
+      |048c2c4a-ee30-41a1-bb55-c4e7fe1a9a0d  |vlb-cli-sample-11   |
+      +--------------------------------------+--------------------+
+      |c37c401f-a839-4b6e-9c65-33e023c412ee  |vlb-cli-sample-10   |
+      +--------------------------------------+--------------------+
+      |b544f164-97c9-483a-98eb-eafd1f808e79  |vlb-cli-sample-5    |
+      +--------------------------------------+--------------------+
+      |5ef95bd9-4d7a-4d06-879e-0c7964f9de65  |vlb-cli-sample-4    |
+      +--------------------------------------+--------------------+
+      |eb29edb5-0a9f-4bc6-a7bf-3211341fffc2  |vlb-cli-sample-9    |
+      +--------------------------------------+--------------------+
+      |2a152730-f6eb-4dc6-9b81-7a6f6f263d71  |vlb-cli-sample-1    |
+      +--------------------------------------+--------------------+
+      |f53cd512-e172-410e-87b4-37064b5b5f8c  |vlb-cli-sample-7    |
+      +--------------------------------------+--------------------+
+      |f4bfcd6a-2ea1-42ab-853a-5d863b150c40  |vlb-cli-sample-3    |
+      +--------------------------------------+--------------------+
+      |4bb4beaa-5b6b-414e-97d8-53949bbb5c5e  |vlb-cli-sample-6    |
+      +--------------------------------------+--------------------+

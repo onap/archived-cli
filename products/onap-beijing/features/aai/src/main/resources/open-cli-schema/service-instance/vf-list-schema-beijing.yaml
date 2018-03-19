@@ -1,0 +1,72 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf-list
+description: List created VF instances for a service instance
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: customer-name
+    description: customer name
+    type: string
+    short_option: x
+    long_option: customer-name
+    is_optional: false
+  - name: service-type
+    description: service subscription type
+    type: string
+    short_option: y
+    long_option: service-type
+    is_optional: false
+  - name: service-id
+    description: service ID
+    type: string
+    short_option: z
+    long_option: service-id
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: vf-id
+      description: VF ID for the given service
+      scope: short
+      type: string
+    - name: vf-name
+      description: VF name
+      scope: short
+      type: string
+
+http:
+  service:
+    name: aai
+    version: v11
+    auth: basic
+    mode: direct
+
+  request:
+    uri: /aai/v11/business/customers/customer/${customer-name}/service-subscriptions/service-subscription/${service-type}/service-instances/service-instance/${service-id}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    vf-id: $b{relationship-list.relationship.[*].relationship-data[?(@.relationship-key=='generic-vnf.vnf-id')].relationship-value}
+    vf-name: $b{relationship-list.relationship.[*].related-to-property.[?(@.property-key == 'generic-vnf.vnf-name')].property-value}
+  sample_response:
+    body: '{"service-instance": [{"service-instance-id": "${service-id}","service-instance-name": "${service-name}","description": "${description}","model-invariant-id": "${model-invariant-id}","model-version-id": "${model-uuid}"}]}'
