@@ -1,0 +1,104 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products/a8cd007fa101470e98516cd4549c568f/versions/1.0",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-4aa5939e-26d4-438a-81f4-4f7f3c68d138",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "name" : "847cb26a-59a6-475a-94dd",
+      "description" : "vendor software product",
+      "category" : "resourceNewCategory.generic",
+      "subCategory" : "resourceNewCategory.generic.abstract",
+      "vendorName" : "01eb54a1-f1ff-41a2-aafc",
+      "vendorId" : "1a49df7b78654777a71f64f2c6c2468f",
+      "licensingVersion" : {
+        "id" : "1.0",
+        "label" : "1.0"
+      },
+      "licensingData" : {
+        "licenseAgreement" : "99e3783033de443db69d05996341e28d",
+        "featureGroups" : [ "3050264504f04ce7afc54861c8ba69ed" ]
+      },
+      "onboardingMethod" : "NetworkPackage",
+      "onboardingOrigin" : "zip",
+      "networkPackageName" : "base_vlb",
+      "id" : "a8cd007fa101470e98516cd4549c568f",
+      "version" : {
+        "id" : "1.0",
+        "label" : "1.0"
+      },
+      "viewableVersions" : [ {
+        "id" : "1.0",
+        "label" : "1.0"
+      } ],
+      "finalVersions" : [ {
+        "id" : "1.0",
+        "label" : "1.0"
+      } ],
+      "status" : "Final",
+      "validationData" : {
+        "importStructure" : {
+          "heat" : [ {
+            "fileName" : "dnsscaling.yaml",
+            "env" : {
+              "fileName" : "dnsscaling.env"
+            },
+            "errors" : [ {
+              "level" : "WARNING",
+              "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [vlb_private_net_id], Resource ID [vdns_2_private_0_port]. As a result, VF/VFC Profile may miss this information"
+            }, {
+              "level" : "WARNING",
+              "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vdns_2_private_1_port]. As a result, VF/VFC Profile may miss this information"
+            }, {
+              "level" : "WARNING",
+              "message" : "WARNING: Nova Server naming convention in image, flavor and name properties is not consistent, Resource ID [vdns_2]"
+            } ],
+            "base" : false
+          }, {
+            "fileName" : "base_vlb.yaml",
+            "env" : {
+              "fileName" : "base_vlb.env"
+            },
+            "errors" : [ {
+              "level" : "WARNING",
+              "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vlb_private_1_port]. As a result, VF/VFC Profile may miss this information"
+            }, {
+              "level" : "WARNING",
+              "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vdns_private_1_port]. As a result, VF/VFC Profile may miss this information"
+            }, {
+              "level" : "WARNING",
+              "message" : "WARNING: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vpg_private_1_port]. As a result, VF/VFC Profile may miss this information"
+            }, {
+              "level" : "WARNING",
+              "message" : "WARNING: A resource is connected twice to the same network role, Network Role [vdns_0], Resource ID [onap_private]"
+            }, {
+              "level" : "WARNING",
+              "message" : "WARNING: Nova Server naming convention in image, flavor and name properties is not consistent, Resource ID [vdns_0]"
+            }, {
+              "level" : "WARNING",
+              "message" : "WARNING: Missing Nova Server Metadata property, Resource ID [vpg_0]"
+            }, {
+              "level" : "WARNING",
+              "message" : "WARNING: A resource is connected twice to the same network role, Network Role [vpg_0], Resource ID [onap_private]"
+            }, {
+              "level" : "WARNING",
+              "message" : "WARNING: Nova Server naming convention in image, flavor and name properties is not consistent, Resource ID [vpg_0]"
+            } ],
+            "base" : true
+          } ]
+        }
+      },
+      "isOldVersion" : "False"
+    }
+  }
+} ]

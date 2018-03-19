@@ -1,0 +1,93 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vsp-show
+description: Details of the Vendor Software Product
+
+info:
+  product: onap-beijing
+  service: sdc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: vsp-id
+    description: Onap VSP ID
+    type: string
+    short_option: x
+    long_option: vsp-id
+    is_optional: false
+  - name: vsp-version
+    description: Onap VSP version
+    type: string
+    short_option: y
+    long_option: vsp-version
+    is_optional: false
+results:
+  direction: portrait
+  attributes:
+    - name: name
+      description: VSP Name
+      scope: short
+      type: string
+    - name: ID
+      description: VSP ID
+      scope: short
+      type: string
+    - name: description
+      description: Description for the VSP
+      scope: short
+      type: string
+    - name: vendor-name
+      description: Vendor name
+      scope: long
+      type: string
+    - name: vendor-id
+      description: Vendor id
+      scope: long
+      type: string
+    - name: version
+      description: Version
+      scope: short
+      type: string
+    - name: status
+      description: status
+      scope: short
+      type: string
+    - name: license-id
+      description: license aggreement
+      scope: long
+      type: string
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-software-products/${vsp-id}/versions/${vsp-version}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    ID: $b{$.id}
+    name: $b{$.name}
+    description: $b{$.description}
+    vendor-name: $b{$.vendorName}
+    vendor-id: $b{$.vendorId}
+    version: $b{$.version.id}
+    status: $b{$.status}
+    license-id: $b{$.licensingData.licenseAgreement}
+  sample_response:
+    body: '{"name":"test-vsp1","description":"vendor software product","category":"resourceNewCategory.generic","subCategory":"resourceNewCategory.generic.abstract","vendorName":"5aa8a88c","vendorId":"DBB202617952486691C1E35C9621CD4E","licensingVersion":"1.0","licensingData":{"licenseAgreement":"E19DBDDB137B494385F9535325BFD585","featureGroups":["94835F096DAF4ED78781A394A4F22AD1"]},"id":"354BF3E32E494EAFBB15037CFAB262FF","version":"0.1","viewableVersions":["0.1"],"status":"Locked","lockingUser":"cs0008"}'
