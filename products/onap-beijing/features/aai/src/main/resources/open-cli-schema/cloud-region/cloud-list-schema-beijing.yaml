@@ -1,4 +1,4 @@
-# Copyright 2017-18 Huawei Technologies Co., Ltd.
+# Copyright 2018 Huawei Technologies Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v12/cloud-infrastructure/cloud-regions
+    uri: /aai/v11/cloud-infrastructure/cloud-regions
     method: GET
   success_codes:
     - 200
