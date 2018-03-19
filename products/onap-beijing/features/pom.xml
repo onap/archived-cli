@@ -34,6 +34,7 @@
     <modules>
         <module>aai</module>
         <module>msb</module>
+        <module>sdc</module>
     </modules>
 
      <build>
