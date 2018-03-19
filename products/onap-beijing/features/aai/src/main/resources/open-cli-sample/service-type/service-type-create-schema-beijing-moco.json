@@ -1,0 +1,21 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v11/service-design-and-creation/services/service/de1fa33f-f676-42e5-b79a-a39825c19b1d",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-db81a881-11a9-4eca-9611-e0abdfa81597",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "service-description" : "test",
+      "service-id" : "de1fa33f-f676-42e5-b79a-a39825c19b1d"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]
