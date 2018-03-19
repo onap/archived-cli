@@ -1,0 +1,66 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: customer-show
+description: Retrieves the given registered customer in Onap
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: customer-name
+    description: Onap customer name
+    type: string
+    short_option: x
+    long_option: customer-name
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: name
+      description: Onap customer name
+      scope: short
+      type: string
+    - name: subscriber-name
+      description: Onap subscriber name
+      scope: short
+      type: string
+    - name: resource-version
+      description: Onap subscriber resource version
+      scope: long
+      type: string
+    - name: subscriber-type
+      description: Onap subscriber type
+      scope: long
+      type: string
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/business/customers/customer/${customer-name}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    name: $b{$.global-customer-id}
+    subscriber-name: $b{$.subscriber-name}
+    subscriber-type: $b{$.subscriber-type}
+    resource-version: $b{$.resource-version}
+  sample_response:
+    body: '{"global-customer-id":"Linan","subscriber-name":"Linan","subscriber-type":"INFRA","resource-version":"1501768482","service-subscriptions":{"service-subscription":[{"service-type":"vFW","resource-version":"1501768482","relationship-list":{"relationship":[{"related-to":"tenant","related-link":"https://192.168.17.12:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/Rackspace/RegionOne/tenants/tenant/e69e6d64b44347509c3fc512391f34a6/","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"Rackspace"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"RegionOne"},{"relationship-key":"tenant.tenant-id","relationship-value":"e69e6d64b44347509c3fc512391f34a6"}],"related-to-property":[{"property-key":"tenant.tenant-name","property-value":"onap"}]}]}},{"service-type":"vLB","resource-version":"1501768482","relationship-list":{"relationship":[{"related-to":"tenant","related-link":"https://192.168.17.12:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/Rackspace/RegionOne/tenants/tenant/e69e6d64b44347509c3fc512391f34a6/","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"Rackspace"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"RegionOne"},{"relationship-key":"tenant.tenant-id","relationship-value":"e69e6d64b44347509c3fc512391f34a6"}],"related-to-property":[{"property-key":"tenant.tenant-name","property-value":"onap"}]}]}}]}}'
