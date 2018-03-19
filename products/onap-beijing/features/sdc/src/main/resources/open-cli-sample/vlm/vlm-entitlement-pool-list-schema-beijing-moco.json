@@ -1,0 +1,46 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/2.0/entitlement-pools",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-f1ba8f39-54be-4390-a3c2-49ff4e11d854",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "listCount" : 2,
+      "results" : [ {
+        "name" : "797153a1-d8f6-4eb0-abfc",
+        "description" : "vendor entitlement pool",
+        "thresholdValue" : 99,
+        "thresholdUnits" : "Absolute",
+        "increments" : "robot",
+        "operationalScope" : {
+          "choices" : [ "Availability_Zone" ],
+          "other" : ""
+        },
+        "id" : "dae0a02f2173444e82bfa765601abcc9",
+        "referencingFeatureGroups" : [ ]
+      }, {
+        "name" : "kanag-cli-ep",
+        "description" : "kanag vlm ep",
+        "thresholdValue" : 99,
+        "thresholdUnits" : "Absolute",
+        "increments" : "1",
+        "operationalScope" : {
+          "choices" : [ "Availability_Zone" ],
+          "other" : ""
+        },
+        "id" : "aa61080fd965455ba5edbf60f4e375ef",
+        "referencingFeatureGroups" : [ "3a2fb75b52a54e9c8093e7c154210f9e" ]
+      } ]
+    }
+  }
+} ]
