@@ -1,0 +1,40 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: vf-show
+version: onap-beijing
+samples:
+  sample1:
+    name: vf-show
+    input: --vf-id 1a667ce8-8b8b-4f59-ba5c-b162ae462fef -m https://192.168.17.111:8443 -u AAI -p AAI
+    moco: vf-show-schema-1.1-moco.json
+    output: |
+      +------------------------+--------------------------------------+
+      |property                |value                                 |
+      +------------------------+--------------------------------------+
+      |vf-id                   |1a667ce8-8b8b-4f59-ba5c-b162ae462fef  |
+      +------------------------+--------------------------------------+
+      |vf-name                 |vlb-cli-sample-8                      |
+      +------------------------+--------------------------------------+
+      |vf-type                 |demoVLB/null                          |
+      +------------------------+--------------------------------------+
+      |model-invariant-id      |cc34cd54-dd7c-44cd-8847-f9577c6f1a49  |
+      +------------------------+--------------------------------------+
+      |model-uuid              |8b1f63f3-e0cc-4c27-8903-fafe2f25bfbe  |
+      +------------------------+--------------------------------------+
+      |model-customization-id  |cf893f5a-1bb1-4e32-a92b-2456e12178f8  |
+      +------------------------+--------------------------------------+
+      |service-id              |2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee  |
+      +------------------------+--------------------------------------+

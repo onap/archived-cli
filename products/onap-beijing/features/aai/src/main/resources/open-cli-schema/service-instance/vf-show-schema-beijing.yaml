@@ -1,0 +1,83 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf-show
+description: Show details for VF
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: vf-id
+    description: VF identifier
+    type: string
+    short_option: x
+    long_option: vf-id
+    is_optional: false
+
+results:
+  direction: portrait
+  attributes:
+    - name: vf-id
+      description: VF ID for the given service
+      scope: short
+      type: string
+    - name: vf-name
+      description: VF name
+      scope: short
+      type: string
+    - name: vf-type
+      description: VF name
+      scope: short
+      type: string
+    - name: model-invariant-id
+      description: VF name
+      scope: short
+      type: string
+    - name: model-uuid
+      description: model uuid
+      scope: short
+      type: string
+    - name: model-customization-id
+      description: Model customization id
+      scope: short
+      type: string
+    - name: service-id
+      description: Service ID of parent service
+      scope: short
+      type: string
+
+http:
+  service:
+    name: aai
+    version: v11
+    auth: basic
+    mode: direct
+
+  request:
+    uri: /aai/v11/network/generic-vnfs/generic-vnf/${vf-id}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    vf-id: $b{vnf-id}
+    vf-name: $b{vnf-name}
+    vf-type: $b{vnf-type}
+    model-invariant-id: $b{model-invariant-id}
+    model-uuid: $b{model-version-id}
+    model-customization-id: $b{model-customization-id}
+    service-id: $b{$.relationship-list.relationship.[*].relationship-data.[?(@.relationship-key=='service-instance.service-instance-id')].relationship-value}
