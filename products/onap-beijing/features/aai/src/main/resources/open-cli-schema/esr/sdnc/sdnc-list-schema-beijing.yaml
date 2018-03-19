@@ -1,0 +1,55 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+
+name: sdnc-list
+
+description: List the configured sdnc
+
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: landscape
+  attributes:
+    - name: sdnc-id
+      description: Onap sdnc id
+      scope: short
+      type: string
+    - name: resource-version
+      description: Onap sdnc resource version
+      scope: short
+      type: string
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/external-system/esr-sdnc-list
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    sdnc-id: $b{$.esr-sdnc.[*].sdnc-id}
+    resource-version: $b{$.esr-sdnc.[*].resource-version}
+
+  sample_response:
+    body: '{"esr-sdnc":[{"sdnc-id":"example-sdnc-id-val-36878","location":"location","product-name":"example-remotepath-val-80493","esr-system-info-list":{"esr-system-info":[{"esr-system-info-id":"example-esr-system-info-id-val-44791","system-name":"example-system-name-val-48687","type":"example-type-val-95885","vendor":"example-vendor-val-41061","version":"example-version-val-38559","service-url":"example-service-url-val-2663","user-name":"example-user-name-val-26126","password":"example-password-val-33838","system-type":"sdnc","protocal":"","ssl-cacert":"","ssl-insecure":false,"ip-address":"","port":"","cloud-domain":"","default-tenant":""}]}}]}'
+
+
