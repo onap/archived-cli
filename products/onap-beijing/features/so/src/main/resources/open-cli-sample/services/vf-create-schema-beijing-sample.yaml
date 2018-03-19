@@ -1,0 +1,28 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: vf-create
+version: onap-beijing
+samples:
+  sample1:
+    name: vf-create
+    input: --cloud-region RegionOne --tenant-id onap --product-family vLB --instance-name vlb-cli-sample-11 --service-instance-id 2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee --vf-model-invariant-id cc34cd54-dd7c-44cd-8847-f9577c6f1a49 --vf-model-uuid 8b1f63f3-e0cc-4c27-8903-fafe2f25bfbe --vf-model-name 847cb26a-59a6-475a-94dd --vf-model-version 1.0 --vf-model-customization-id cf893f5a-1bb1-4e32-a92b-2456e12178f8 --service-model-invariant-id 1de901ed-17af-4b03-bc1f-41659cfa27cb --service-model-uuid ace39141-09ec-4068-b06d-ac6b23bdc6e0 --service-model-name demoVLB --service-model-version 1.0 -m http://192.168.17.121:8080 -u InfraPortalClient -p password1$
+    moco: vf-create-schema-1.1-moco.json
+    output: |
+      +--------------+--------------------------------------+
+      |property      |value                                 |
+      +--------------+--------------------------------------+
+      |vf-id         |048c2c4a-ee30-41a1-bb55-c4e7fe1a9a0d  |
+      +--------------+--------------------------------------+
