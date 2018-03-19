@@ -1,0 +1,1219 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-03806842-69f4-44d9-9b63-72d85cb7adc9",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "listCount" : 36,
+      "results" : [ {
+        "name" : "kanag-cli-VLB",
+        "description" : "VLB created from CLI",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "Kanag-cli",
+        "vendorId" : "cf2d907d998e44698ce3b4cded5f66a7",
+        "licensingVersion" : {
+          "id" : "2.0",
+          "label" : "2.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "77e151d0503b45ecb7e40f5f5f1a887e",
+          "featureGroups" : [ "3a2fb75b52a54e9c8093e7c154210f9e" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vlb",
+        "id" : "f19cad8343794e93acb9cda2e4126281",
+        "version" : {
+          "id" : "2.0",
+          "label" : "2.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        }, {
+          "id" : "2.0",
+          "label" : "2.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        }, {
+          "id" : "2.0",
+          "label" : "2.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "kanagVLB",
+        "description" : "VLB created from CLI",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "Kanag-cli",
+        "vendorId" : "cf2d907d998e44698ce3b4cded5f66a7",
+        "licensingVersion" : {
+          "id" : "2.0",
+          "label" : "2.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "77e151d0503b45ecb7e40f5f5f1a887e",
+          "featureGroups" : [ "3a2fb75b52a54e9c8093e7c154210f9e" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "none",
+        "id" : "ff5bba2672a44654b186d70cf6bc9d95",
+        "version" : {
+          "id" : "0.1",
+          "label" : "0.1"
+        },
+        "viewableVersions" : [ {
+          "id" : "0.1",
+          "label" : "0.1"
+        } ],
+        "status" : "Locked",
+        "lockingUser" : "cs0008",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vCSCF_aligned-08dc1256",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicensef008e06a",
+        "vendorId" : "b5ea95a60e3b483da03d0911968cd778",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "ac631524f0e74f89abb6496665a58ff9",
+          "featureGroups" : [ "92c6bbc0a3c9481c9de869fe857d5ae5" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "csar",
+        "networkPackageName" : "vCSCF_aligned",
+        "id" : "aa1f969cf1ae4897aed5fe08d4d19a5a",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-Huawei_vMME-2b29f653",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense5c11752c",
+        "vendorId" : "84352b5d014c4d5382ce856d7597aebf",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "88fbce08b7f04f04a0b16fb3d2a5f640",
+          "featureGroups" : [ "ab580f48fe354bff967fb3aa24bdb7ea" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "csar",
+        "networkPackageName" : "Huawei_vMME",
+        "id" : "f22e285e6b354033bd9a2c1cf9268a6e",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-Huawei_vPCRF_aligned_fixed-51f1da14",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicenseaf880546",
+        "vendorId" : "8e13a8b2e1f34374ad578edc9c912f11",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "db3a3d3c0a36433c8772494f04c02d0b",
+          "featureGroups" : [ "1874e51f051b4fa181855215b093ed2e" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "csar",
+        "networkPackageName" : "Huawei_vPCRF_aligned_fixed",
+        "id" : "3430c70e504c45d59cd7ccb4a388f26d",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vSBC_aligned-7260da5f",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicensecce293bb",
+        "vendorId" : "9f7053ae1aa04b8c9fa3d991f944a49b",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "42ad516b726f4723a142dd5d3629dd0a",
+          "featureGroups" : [ "e3fd0c11679d40cba5a050674df25f84" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "csar",
+        "networkPackageName" : "vSBC_aligned",
+        "id" : "c1ec9ea4fbd240cd9e69070a7ac17ee8",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-Huawei_vHSS-79402346",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense7d28e221",
+        "vendorId" : "3f47950121bf4e31a058b4870020bc2f",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "0438f48ec8d04ea5b3908910752e820f",
+          "featureGroups" : [ "bd5160fc13cd498fa89e758881f6d319" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "csar",
+        "networkPackageName" : "Huawei_vHSS",
+        "id" : "4668d80cbca64beb98423c924b35d3ac",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vLB-6265cbc3",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense02ddba7e",
+        "vendorId" : "6fc132eca87d4e49b56357b9d83843a5",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "824296ae0b484b049f4e3061a404018f",
+          "featureGroups" : [ "dabc97fb14994a65aa822a9f31795f18" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vLB",
+        "id" : "10e8667c8b3d4e86a406e806430b989e",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-base_vfw-199667fb",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense9acc959f",
+        "vendorId" : "0094601590ec4e709e560e928c44232a",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "fb69b7d933f94771b1961b03877abe86",
+          "featureGroups" : [ "63d1b82d8d3240d5a5cb44a18043d92a" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vfw",
+        "id" : "9de86126015f4349a41e5a5f5e3eacf4",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vgmux-a195f793",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicensee5394ee2",
+        "vendorId" : "8f82813eb6304957911955e077d9be6f",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "087accbb0be14b0eb186bfe2feed8b80",
+          "featureGroups" : [ "7f401e3743a842dfa273d86b3b0d6e10" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vgmux",
+        "id" : "9641f81b61504fa8af6885818b1ee34b",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vgw-abaa9d6d",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense3eed3665",
+        "vendorId" : "b620898b5e5e4231a30a2ccecd39927e",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "d6f8c82f70c846aca75297fbdc257bb3",
+          "featureGroups" : [ "e8f992105a50486797bd8b1ab76be705" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vgw",
+        "id" : "dea92da0ad90419c8f437222680a2333",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-infra-fceb5908",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense372060ea",
+        "vendorId" : "12cce4998b874d5e8096070f9c5d7395",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "1bb7f9e7fc7348edbba4aa3f8285a6d1",
+          "featureGroups" : [ "c85ef0a324e64fe69671d22fe92dfdbe" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "infra",
+        "id" : "9e4654364fe04d9ebe2a2485d67d6676",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vbrgemu-bcfb002c",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense36e962a4",
+        "vendorId" : "78fd596a39534d51953e867adaef78f6",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "dc6b5d4d3f75422d954cbef0f6660f7a",
+          "featureGroups" : [ "dc027462eaca4316b0b9539b457156c6" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vbrgemu",
+        "id" : "93b5df6c2f3d4a7dae362b111b0ed047",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-base_vvg-07839bb9",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicensef9a1b52b",
+        "vendorId" : "651180d666c54887880b673884e03481",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "7162523b6bc84594a00a6b1a1814d8c3",
+          "featureGroups" : [ "9ce4b03941f744daa6d4c9ccf5193900" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vvg",
+        "id" : "9c9a9000fc714e9d8a6baf495418ab96",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vbng-008f4205",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense76f62092",
+        "vendorId" : "dd10e18e3af54234a20897ad65bfa311",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "78cb43095c834b628954fa26094c739f",
+          "featureGroups" : [ "24b1dab60e6d46249cdff1a40d5fd19c" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vbng",
+        "id" : "63898b542cdd46b6b15ac771abda86cb",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "kanag-cli-vfw",
+        "description" : "VSP created from CLI for vFW",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "Kanag",
+        "vendorId" : "b1caa2ec31ba4b738cbe5aab362b35aa",
+        "licensingVersion" : {
+          "id" : "4.0",
+          "label" : "4.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "b373c16f28854c6db9e027929ae5e5ed",
+          "featureGroups" : [ "efea8b9817b344c4b93c45dc141f6703" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "1",
+        "id" : "5ca119e2326045d1857ae3f04a816434",
+        "version" : {
+          "id" : "0.2",
+          "label" : "0.2"
+        },
+        "viewableVersions" : [ {
+          "id" : "0.1",
+          "label" : "0.1"
+        }, {
+          "id" : "0.2",
+          "label" : "0.2"
+        } ],
+        "status" : "Available",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "600a2ebf-1f94-4a4c-b18d",
+        "description" : "vendor software product",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "4718de22-00d3-4607-b666",
+        "vendorId" : "9af398f516da4e63b4ec8d344866533b",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "43ba141c140f41a487e9fb99592cbc58",
+          "featureGroups" : [ "fa7e48a1705342c2b7cc454b15bbe45e" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vfw",
+        "id" : "e65baf44883e4868ba96f9faed9ba97a",
+        "version" : {
+          "id" : "0.3",
+          "label" : "0.3"
+        },
+        "viewableVersions" : [ {
+          "id" : "0.1",
+          "label" : "0.1"
+        }, {
+          "id" : "0.2",
+          "label" : "0.2"
+        }, {
+          "id" : "0.3",
+          "label" : "0.3"
+        } ],
+        "status" : "Available",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "test-vsp-123",
+        "description" : "test",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "Kanag",
+        "vendorId" : "1173c7be5fea4db799b1a5ef9512e57e",
+        "licensingVersion" : {
+          "id" : "4.0",
+          "label" : "4.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "b373c16f28854c6db9e027929ae5e5ed",
+          "featureGroups" : [ "efea8b9817b344c4b93c45dc141f6703" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "none",
+        "networkPackageName" : "Upload File",
+        "id" : "61bad2139ee742cf891ca6ecc5f39972",
+        "version" : {
+          "id" : "0.2",
+          "label" : "0.2"
+        },
+        "viewableVersions" : [ {
+          "id" : "0.1",
+          "label" : "0.1"
+        }, {
+          "id" : "0.2",
+          "label" : "0.2"
+        } ],
+        "status" : "Locked",
+        "lockingUser" : "cs0008",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "05a0dd09-c3d0-4534-93ab",
+        "description" : "vendor software product",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "a920b10d-c516-4380-835a",
+        "vendorId" : "5e571e8a25c8404da04f2a0ec179f576",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "fcbc7806bee446aaa93c5e97348e1bea",
+          "featureGroups" : [ "535bca9f30b44263ae1740f088856a75" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vfw",
+        "id" : "77527347f94947589431cb7c1938da2e",
+        "version" : {
+          "id" : "0.3",
+          "label" : "0.3"
+        },
+        "viewableVersions" : [ {
+          "id" : "0.1",
+          "label" : "0.1"
+        }, {
+          "id" : "0.2",
+          "label" : "0.2"
+        }, {
+          "id" : "0.3",
+          "label" : "0.3"
+        } ],
+        "status" : "Locked",
+        "lockingUser" : "cs0008",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "test-vsp",
+        "description" : "test-vsp",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "test-vendor",
+        "vendorId" : "fc0fdcc825a54ca3b08e40f473b72d05",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "0a12d68750704a54a7e9974595d7e951",
+          "featureGroups" : [ "2c5762b9747f495db8a99cbd73449edd" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vfw",
+        "id" : "8f08a17b9a4c4538b51a3064468baec0",
+        "version" : {
+          "id" : "0.3",
+          "label" : "0.3"
+        },
+        "viewableVersions" : [ {
+          "id" : "0.1",
+          "label" : "0.1"
+        }, {
+          "id" : "0.2",
+          "label" : "0.2"
+        }, {
+          "id" : "0.3",
+          "label" : "0.3"
+        } ],
+        "status" : "Locked",
+        "lockingUser" : "cs0008",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "Kanag-VSP",
+        "description" : "Test VSP created by Kanag",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "Kanag",
+        "vendorId" : "1173c7be5fea4db799b1a5ef9512e57e",
+        "licensingVersion" : {
+          "id" : "4.0",
+          "label" : "4.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "b373c16f28854c6db9e027929ae5e5ed",
+          "featureGroups" : [ "efea8b9817b344c4b93c45dc141f6703" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vfw",
+        "id" : "b1caa2ec31ba4b738cbe5aab362b35aa",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ef35d3c9-a8c6-457c-a115",
+        "description" : "vendor software product",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "0138a2e2-52bf-4f0b-81cd",
+        "vendorId" : "b66c5e1b4af3432ca2f6cd05adf72340",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "babbefaae40744febdd0317670e23c44",
+          "featureGroups" : [ "175b0feec7a44d6c92b6deaf1cda4bf9" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vcpe_vgw",
+        "id" : "03774c7cfcac4054bdab346142214533",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "5d11dda4-fb32-4df6-86eb",
+        "description" : "vendor software product",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "48fa02ef-e79b-4707-895e",
+        "vendorId" : "34c2c72e992742e3b7ceb78bfcd21ebb",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "db826ae7538744f2b4dcc8647433fde3",
+          "featureGroups" : [ "8d44ef5235334172970e1835e9504f39" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vcpe_vgmux",
+        "id" : "54bc478b7a9847db82156edad5d1f79f",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "136ab241-88ff-443a-88e8",
+        "description" : "vendor software product",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "1e5d1422-1f5f-42fe-a98e",
+        "vendorId" : "4bbd11c581ce4bb187a0a37131e5bb60",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "a8911a1e325b491b8e2d26746cc5a5ec",
+          "featureGroups" : [ "c388e00ee0ee4e78a7b75529aa10860d" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vcpe_vbrgemu",
+        "id" : "5f5121f701df4fe588c966002a342fdf",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "8fd2e5c8-981d-4a14-ba77",
+        "description" : "vendor software product",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "3029be5e-9135-4083-bd2e",
+        "vendorId" : "1329476d73014587839fd3ede08c3103",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "7fa43c11d6e94673ad6907ea3984588a",
+          "featureGroups" : [ "f0acfb4c80964f51af1bfd74f1b0c963" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vcpe_vbng",
+        "id" : "0cefd6ef5ad84d2995d66d0a24d2e92e",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "74361ede-ef8c-43f1-9d82",
+        "description" : "vendor software product",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "c6ba2ef6-fe82-4f32-ad50",
+        "vendorId" : "2ca684a9805b40f9993239e77b82fb52",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "962739901fcf41a2a321b50a86183be2",
+          "featureGroups" : [ "d5c1a307505e4f1790ca42c67564c363" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vcpe_infra",
+        "id" : "c212437049004e74b4ef0afb25ba41b8",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "847cb26a-59a6-475a-94dd",
+        "description" : "vendor software product",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.abstract",
+        "vendorName" : "01eb54a1-f1ff-41a2-aafc",
+        "vendorId" : "1a49df7b78654777a71f64f2c6c2468f",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "99e3783033de443db69d05996341e28d",
+          "featureGroups" : [ "3050264504f04ce7afc54861c8ba69ed" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vlb",
+        "id" : "a8cd007fa101470e98516cd4549c568f",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vLB-3fbbe6d0",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense09c55d35",
+        "vendorId" : "816c04fd4ee849f2b80435e0944189fa",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "ccd038278d0d413b8e693ea1547ea340",
+          "featureGroups" : [ "3597e5f0471e4f3fba15fcdba52f4317" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vLB",
+        "id" : "59c07e069c7642e9afbc6117965a6c2f",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vCSCF_aligned-a5e83f2c",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense7d8bbcab",
+        "vendorId" : "4b1e1efd8bb944bdbc0c3e74a9402967",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "52b777f2d6cf4079b4f09fba1470f368",
+          "featureGroups" : [ "ed3949454428409296f78f94bb9c222a" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "csar",
+        "networkPackageName" : "vCSCF_aligned",
+        "id" : "65b7b4b564f34b5689b3786386600e5a",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-base_vfw-548fb561",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense6bfd9421",
+        "vendorId" : "9408208f5b6d4eb997dff1b901f1fb95",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "b491a8a92a06489ca6a8657d34cfe3fa",
+          "featureGroups" : [ "0b64af1d283c423295baea7b26a4a99f" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vfw",
+        "id" : "a75d123c802e465db80ae7c8e5a0b4d0",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vgmux-5e7cab8c",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense81acf730",
+        "vendorId" : "eda4e9d1cae14cad95befc1728629574",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "0a7237320b95403c91c5cd9c68a6f27e",
+          "featureGroups" : [ "d5f7a02bb5fe4bcc99f98bad86354e2e" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vgmux",
+        "id" : "1f33fcc682cb484a952b96326f549aff",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vgw-8b2ea35e",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicensef3f5a4fa",
+        "vendorId" : "022140c2dc4e40bbae096aa1fb5cfbe9",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "15dbaf00e1e84a408dbd53bca5174a0d",
+          "featureGroups" : [ "7cac1ef698dc43ef836f59ee8d7ad4a3" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vgw",
+        "id" : "bafdf7192a73436588044296aa225ed4",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-infra-0766a3d1",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense9fddd8db",
+        "vendorId" : "19f92b345cae423ab4ea6c5527d55ef6",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "8c4dfe75429c47d38ad2dba761e17bce",
+          "featureGroups" : [ "76eb5e9962104a759f3eb21ff798b582" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "infra",
+        "id" : "c34167a92e5c4c3392badd5a2da2a267",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vbrgemu-806fb59e",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicense9a46fd22",
+        "vendorId" : "492d9259fc3e493d8fa6afd488054508",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "428ec00b136741d193d079701dfd0079",
+          "featureGroups" : [ "e80d85a34e084128b055c6c8ae27b5f6" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vbrgemu",
+        "id" : "b160564a4b754a9e8a19d2fa924f3f96",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-vbng-c9fa1c07",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicensed955b6d7",
+        "vendorId" : "a5da3e50ed72483fbfb134bac84b31f6",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "9fed1159021c42e282f53703f00c89e7",
+          "featureGroups" : [ "e39b62b3b7794973b9ba95cbf22a4b61" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "vbng",
+        "id" : "c5ccbc48510240318b698a4f1e1cb620",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      }, {
+        "name" : "ciVFOnboarded-base_vvg-e8b8c6ca",
+        "description" : "new VSP description",
+        "category" : "resourceNewCategory.generic",
+        "subCategory" : "resourceNewCategory.generic.database",
+        "vendorName" : "ciLicensef21d8db3",
+        "vendorId" : "9ff65b0b943141a7b99481bbcaedc294",
+        "licensingVersion" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "licensingData" : {
+          "licenseAgreement" : "9c43f7ab2862474c9fe00a157b48da3f",
+          "featureGroups" : [ "bf348e5448194522a9e2cbaee243e142" ]
+        },
+        "onboardingMethod" : "NetworkPackage",
+        "onboardingOrigin" : "zip",
+        "networkPackageName" : "base_vvg",
+        "id" : "34ac9b3e990f4ce093d2dd1b8e0f73d6",
+        "version" : {
+          "id" : "1.0",
+          "label" : "1.0"
+        },
+        "viewableVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "finalVersions" : [ {
+          "id" : "1.0",
+          "label" : "1.0"
+        } ],
+        "status" : "Final",
+        "isOldVersion" : "False"
+      } ]
+    }
+  }
+} ]
