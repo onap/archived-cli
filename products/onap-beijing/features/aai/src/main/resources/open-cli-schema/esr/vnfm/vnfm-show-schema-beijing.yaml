@@ -1,0 +1,82 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+
+name: vnfm-show
+
+description: Show the VNFM in Onap
+
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: vnfm-id
+    description: Onap VNFM unique id
+    type: uuid
+    short_option: x
+    long_option:  vnfm-id
+    is_optional: false
+
+results:
+  direction: portrait
+  attributes:
+    - name: name
+      description: Onap vnfm name
+      scope: short
+      type: string
+    - name: type
+      description: Onap vnfm type
+      scope: short
+      type: string
+    - name: vendor
+      description: Onap vnfm vendor
+      scope: short
+      type: string
+    - name: version
+      description: Onap vnfm version
+      scope: short
+      type: string
+    - name: url
+      description: Onap vnfm url
+      scope: short
+      type: string
+    - name: username
+      description: Onap vnfm username
+      scope: long
+      type: string
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/external-system/esr-vnfm-list/esr-vnfm/${vnfm-id}/esr-system-info-list/esr-system-info/${vnfm-id}
+    method: GET
+
+  success_codes:
+    - 200
+  result_map:
+    name: $b{$.system-name}
+    type: $b{$.type}
+    vendor: $b{$.vendor}
+    version: $b{$.version}
+    url: $b{$.service-url}
+    username: $b{$.user-name}
+
+  sample_response:
+    body: ''
