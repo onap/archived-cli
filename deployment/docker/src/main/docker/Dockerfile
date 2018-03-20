@@ -16,10 +16,6 @@ ENV OPEN_CLI_DEBUG_PORT 5005
 ENV OPEN_CLI_MODE console
 ENV OPEN_CLI_PRODUCT_IN_USE open-cli
 
-ENV OPEN_CLI_HOST_URL http://localhost:8080
-ENV OPEN_CLI_USERNAME guest
-ENV OPEN_CLI_PASSWORD guest
-
 ENV GOTTY_TITLE_FORMAT {{ .command }}
 
 #Copy CLI into docker
@@ -40,7 +36,7 @@ RUN pandoc -t plain $OPEN_CLI_HOME/docs/README.md > $OPEN_CLI_HOME/docs/oclip-re
 COPY ./STAGE/http/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf
 COPY ./STAGE/http/web /var/www-data/servers/open-cli/
 COPY ./STAGE/http/lighttpd/10-proxy.conf /etc/lighttpd/conf-enabled/
-COPY ./STAGE/installer/cli-*.zip /var/www-data/servers/open-cli/open-cli.zip
+COPY ./STAGE/installer/cli-*.zip /var/www-data/servers/open-cli/oclip.zip
 
 RUN if [ ! -f /var/log/lighttpd/access.log ]; then touch /var/log/lighttpd/access.log; fi
 RUN cp /etc/lighttpd/conf-available/10-accesslog.conf /etc/lighttpd/conf-enabled/
