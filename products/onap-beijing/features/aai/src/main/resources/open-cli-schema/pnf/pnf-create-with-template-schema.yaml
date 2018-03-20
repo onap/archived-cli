@@ -1,0 +1,49 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: pnf-create-with-template
+description: Create a pnf with a template. this is flexible approch to create PNF , all the parameters are in template json file
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: pnf-name
+    description: pnf-name
+    type: string
+    short_option: n
+    long_option: name
+    is_optional: false
+  - name: template
+    description: json template
+    type: json
+    short_option: r
+    long_option: template
+    is_optional: true
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/network/pnfs/pnf/${pnf-name}
+    method: PUT
+    context:
+      remove_empty_node: true
+    body: '"${template}"'
+  success_codes:
+    - 200
+    - 201
