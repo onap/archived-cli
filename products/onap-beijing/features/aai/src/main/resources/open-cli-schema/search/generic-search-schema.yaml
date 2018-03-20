@@ -1,0 +1,75 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: generic-search
+description: generic-search 
+#sample:  https://172.19.44.123:8443/aai/v11/search/generic-query?key=customer.global-customer-id:Orange&include=all&start-node-type=customer&depth=6 
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: key
+    description: key
+    type: string
+    short_option: k
+    long_option: key
+    is_optional: false
+  - name: value
+    description: value
+    type: string
+    short_option: z
+    long_option: value
+    is_optional: false
+  - name: start-node-type
+    description: start-node-type
+    type: string
+    short_option: r
+    long_option: start-node-type
+    is_optional: false
+  - name: depth
+    description: search depth
+    type: digit
+    short_option: e
+    long_option: depth
+    is_optional: false
+results:
+  direction: landscape
+  attributes:
+    - name: resource-type
+      description: Onap result-type
+      scope: short
+      type: string
+    - name: resource-link
+      description: Onap resource-link
+      scope: short
+      type: string
+    
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/search/generic-query?key=${key}:${value}&include=all&start-node-type=${start-node-type}&depth=${depth}
+    method: GET
+  success_codes:
+    - 200
+    - 201
+  result_map:
+    resource-type: $b{result-data.[*].resource-type}
+    resource-link: $b{result-data.[*].resource-link}
+    

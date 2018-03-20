@@ -1,0 +1,63 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: type-search
+description: type-search 
+#sample:  https://172.19.44.123:8443/aai/v11/search/nodes-query?search-node-type=customer&filter=global-customer-id:EQUALS:Orange 
+
+info:
+  product: onap-beijing
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: node-type-name
+    description: node type name
+    type: string
+    short_option: n
+    long_option: node-type-name
+    is_optional: false
+  - name: filter
+    description: filter for earch, like ,global-customer-id:EQUALS:Orange
+    type: string
+    short_option: c
+    long_option: filter
+    is_optional: false
+results:
+  direction: landscape
+  attributes:
+    - name: resource-type
+      description: Onap resource-type
+      scope: short
+      type: string
+    - name: resource-link
+      description: Onap resource-link
+      scope: short
+      type: string
+    
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v11/search/nodes-query?search-node-type=${node-type-name}&filter=${filter}
+    method: GET
+  success_codes:
+    - 200
+    - 201
+  result_map:
+    resource-type: $b{result-data.[*].resource-type}
+    resource-link: $b{result-data.[*].resource-link}
+    
