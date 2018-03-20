@@ -1,61 +1,71 @@
-<!DOCTYPE html><html><head><link rel="icon" href="./open-cli.png">
-<meta charset="utf-8"><title>Open CLI Platform (OCLIP)</title><style></style></head><body id="preview" style="background-color: black; color: #c3c3c3">
+<!DOCTYPE html><html><head><link rel="icon" href="./oclip.png">
+<meta charset="utf-8"><title>OCLIP...industry first open platform for cli</title><style></style>
 <script>
 function redirectToConsole(){
-   window.location.href="http://"+  window.location.hostname + ":9090";
+   window.location.href="http://"+  window.location.hostname + ":30261";
 }
 
 </script>
-<h1 id="open-command-line-interface-platform-oclip">Open Command-line interface Platform (OCLIP)</h1>
-<p>Provides unified commands to operate any cloud enabled software products from Linux/Web console.</p>
-<p>Set the following environment variable, before using OCLIP:</p>
-<p><strong>OPEN_CLI_HOME</strong> - Complete path of directory, where OCLIP is installed.</p>
-<h2 id="to-run-a-command">To Run a command</h2>
-<p>Configure the following environment variables:</p>
-<ol style="list-style-type: decimal">
-<li><strong>OPEN_CLI_HOST_URL</strong> - Catalog service URL or a service URL</li>
-<li><strong>OPEN_CLI_HOST_USERNAME</strong> - Service user name</li>
-<li><strong>OPEN_CLI_HOST_PASSWORD</strong> - Service password</li>
-</ol>
-<p>Run <strong>oclip <command></strong> from Linux console.</p>
-<h2 id="to-run-in-interactive-mode">To Run in Interactive mode</h2>
-<p>Run <strong>oclip</strong> from Linux console.</p>
-<p>And use the directive set to set the values for following parameters:</p>
-<ol style="list-style-type: decimal">
-<li><strong>host-url</strong> - Catalog service URL or a service URL</li>
-<li><strong>host-username</strong> - Service user name</li>
-<li><strong>host-password</strong> - Service password</li>
-</ol>
-<p>NOTE: This mode is available as Web command console when OCLIP is running from docker.</p>
-<h2 id="select-the-product-version">Select the product version</h2>
-<p>CLI framework is enhanced to handle multiple product versions at same time. so to choose the product version, set evironment variable <strong>OPEN_CLI_PROUDCT_IN_USE</strong>.</p>
-<p>NOTE: In interactive mode, product version can be selected using typing <strong>use <product-version></strong></p>
-<p>Run <em>oclip [-v|--version]</em> to see the available product version details.</p>
-<h2 id="set-the-parameter-values">Set the parameter values</h2>
-<p>Use the directive 'set' for setting the values for parameters and 'unset' for un-seting the values.</p>
-<h2 id="help">Help</h2>
-<p><em>oclip [-h|--help]</em> <em>oclip <command> [-h|--help]</em></p>
-<h2 id="debug-mode">Debug Mode</h2>
-<p>To run in debug mode, set following environment variables:</p>
-<ol style="list-style-type: decimal">
-<li>OPEN_CLI_DEBUG - By default its false, otherwise Set to true</li>
-<li>OPEN_CLI_DEBUG_PORT - By default it is 5005, otherwise set to new TCP port number</li>
+<style>
+
+body {
+    margin: 0 1% 0;
+    background-color: black
+}
+
+.readme {
+    display: inline-block;
+    float: left;
+    margin: 3% 3% 0;
+
+}
+
+* {box-sizing:border-box}
+
+.slideshow-container {
+ display: inline-block;
+ float: right;
+ max-width: 700px;
+ position: relative;
+ margin: 6% 3% 0;
+}
+
+.mySlides {
+    display: none;
+}
+
+</style>
+
+</head>
+
+<body onload="showSlides()" style="background-color: white;color: black">
+<div class="readme">
+<h2>Open Command-Line Interface Platform (OCLIP)</h2>
+
+<p>Industry first open platform to orchestrate CLI by using an declarative model <a href="http://onap.readthedocs.io/en/latest/submodules/cli.git/docs/open_cli_schema_version_1_0.html#open-cli-schema-version-1-0" style="color: blue;">Open Command Specification (OCS)</a>.
+<p>And for Cloud and Telco Operators, it provides Linux shell and Web Command Console to use those CLI.
+
+<h3 >Web Command Console (WCC)</h3>
+<p>Helps operator to access the command console over HTTP.
+<a onclick="redirectToConsole();" style="color: blue;cursor: pointer">Click here !</a>
+
+<h3>Linux Shell</h3>
+<p>Helps operator to run CLI locally using Linux command shell.
+
+<ol>
+<li>To download, <a href="./oclip.zip">Click here !</a></li>
+<li>Un-zip into folder /opt/oclip</li>
+<li>Run /opt/oclip/install.sh</li>
 </ol>
 
-<h2>
-<a id="More_details_42"></a>More details
-</h2>
-<p>
-<a href="https://wiki.onap.org">https://wiki.onap.org</a>
-</p>
-<h2>
-<a id="Download_42"></a>To download
-</h2>
-<p>Please download Open CLI Platform <a href="./open-cli.zip">here</a></p>
+<p>For more details, either run <strong>oclip</strong> from Linux console or refer /opt/oclip/docs/README.md
 
-<h2>
-<a id="Console_42"></a>Web Command console
-</h2>
-<p style="color:blue">Click <a onclick="redirectToConsole();">here</a></p>
+<br>
+<br>
+
+<hr>
+<a href="http://onap.readthedocs.io/en/latest/submodules/cli.git/docs/index.html" style="color: blue;">
+<sub style="color: blue;"><strong> Manuals !!</strong></sub></a>
+</div>
 
 </body></html>
