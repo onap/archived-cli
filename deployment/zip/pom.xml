@@ -65,6 +65,9 @@
                                 ant.delete(dir: "${deployUnzip}/open-cli-schema")
                                 ant.mkdir(dir: "${deployUnzip}/open-cli-schema")
 
+                                ant.delete(dir: "${deployUnzip}/open-cli-sample")
+                                ant.mkdir(dir: "${deployUnzip}/open-cli-sample")
+
                                 ant.delete(dir: "${deployUnzip}/data")
                                 ant.mkdir(dir: "${deployUnzip}/data")
 
