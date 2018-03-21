@@ -2,7 +2,7 @@
     {
       "product" : "onap-beijing",
       "name" : "aai:host-url",
-      "value" : ""
+      "value" : "https://192.168.17.35:30233"
     },
     {
       "product" : "onap-beijing",
@@ -17,12 +17,12 @@
     {
       "product" : "onap-beijing",
       "name" : "msb:host-url",
-      "value" : ""
+      "value" : "http://192.168.17.35:30081"
     },
     {
       "product" : "onap-beijing",
       "name" : "sdc:host-url",
-      "value" : ""
+      "value" : "http://192.168.17.35:30206"
     },
     {
       "product" : "onap-beijing",
@@ -37,7 +37,7 @@
     {
       "product" : "onap-beijing",
       "name" : "so:host-url",
-      "value" : ""
+      "value" : "http://192.168.17.35:30223"
     },
     {
       "product" : "onap-beijing",
