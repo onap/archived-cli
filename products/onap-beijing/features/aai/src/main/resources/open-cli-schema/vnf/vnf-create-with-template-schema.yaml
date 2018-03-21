@@ -13,7 +13,7 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vnf-create
+name: vnf-create-with-template
 description: Create a pnf with a template. this is flexible approch to create VNF , all the parameters are in template json file
 
 info:
