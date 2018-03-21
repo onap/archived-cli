@@ -35,10 +35,11 @@ import javax.net.ssl.X509TrustManager;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.ParseException;
+import org.apache.http.annotation.NotThreadSafe;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
@@ -63,6 +64,7 @@ import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
+import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
 import org.onap.cli.fw.http.error.OnapCommandHttpFailure;
 import org.slf4j.Logger;
@@ -294,7 +296,7 @@ public class OnapHttpConnection {
             if (input.isBinaryData()) {
                 httpPost.setEntity(getMultipartEntity(input));
             } else {
-            httpPost.setEntity(this.getStringEntity(input));
+                httpPost.setEntity(this.getStringEntity(input));
             }
             requestBase = httpPost;
         } else if ("put".equals(input.getMethod())) {
@@ -304,7 +306,13 @@ public class OnapHttpConnection {
         } else if ("get".equals(input.getMethod())) {
             requestBase = new HttpGet();
         } else if ("delete".equals(input.getMethod())) {
-            requestBase = new HttpDelete();
+            if (!input.getBody().isEmpty()) {
+                HttpDeleteWithBody httpDelete = new HttpDeleteWithBody();
+                httpDelete.setEntity(this.getStringEntity(input));
+                requestBase = httpDelete;
+            } else {
+                requestBase = new HttpDelete();
+            }
         } else {
             throw new IllegalArgumentException("Invalid HTTP method");
         }
@@ -332,7 +340,7 @@ public class OnapHttpConnection {
             result.setStatus(resp.getStatusLine().getStatusCode());
             result.setRespHeaders(this.getHttpHeaders(resp));
             this.updateResultFromCookies(result, cookieStore.getCookies());
-        } catch (ParseException | IOException e) {
+        } catch (Exception e) {  // NOSONAR
             throw new OnapCommandHttpFailure(e);
         } finally {
             String info = input + " " + result;
@@ -359,5 +367,17 @@ public class OnapHttpConnection {
         String fileName = input.getMultipartEntityName() != "" ? input.getMultipartEntityName() : "upload";
         multipartEntity.addPart(fileName, fileBody);
         return multipartEntity;
+    }
+
+    @NotThreadSafe
+    static class HttpDeleteWithBody extends HttpEntityEnclosingRequestBase {
+
+        public String getMethod() {
+            return OnapCommandHttpConstants.DELETE;
+        }
+
+        public HttpDeleteWithBody() {
+            super();
+        }
     }
 }
