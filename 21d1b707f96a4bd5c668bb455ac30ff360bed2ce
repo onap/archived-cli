@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_c009cade",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/service-instance/service-instance-create-with-template-schema.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-22T05:04:40Z",
+      "side": 1,
+      "message": "pls remove whitespace. thanks",
+      "range": {
+        "startLine": 32,
+        "startChar": 29,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "21d1b707f96a4bd5c668bb455ac30ff360bed2ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
