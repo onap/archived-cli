@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_20718e77",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/service-instance/service-instance-relationship-list-schema.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-22T05:03:30Z",
+      "side": 1,
+      "message": "pls remove whitespace. thanks",
+      "range": {
+        "startLine": 32,
+        "startChar": 29,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "3389e15dff8f8b792f830f3fddc0c488d39938ad",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
