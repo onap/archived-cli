@@ -64,6 +64,7 @@ http:
     mode: direct
   request:
     uri: /aai/v11/business/customers/customer/${global-customer-id}/service-subscriptions/service-subscription/${service-type}/service-instances/service-instance/${service-instance-id}/relationship-list/relationship
+    method: PUT
     context:
       remove_empty_node: true
     body: '"${relationship}"'
