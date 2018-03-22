@@ -29,7 +29,7 @@ parameters:
     long_option: global-customer-id
     is_optional: false
   - name: service-type
-    description: service-type 
+    description: service-type
     type: string
     short_option: z
     long_option: service-type
@@ -57,14 +57,13 @@ parameters:
 #                    }
 #                ]
 #            }
-    
+
 http:
   service:
     auth: basic
     mode: direct
   request:
-    uri: /business/customers/customer/${global-customer-id}/service-subscriptions/service-subscription/${service-type}/service-instances/service-instance/${service-instance-id}/relationship-list/relationship	
-    method: PUT
+    uri: /aai/v11/business/customers/customer/${global-customer-id}/service-subscriptions/service-subscription/${service-type}/service-instances/service-instance/${service-instance-id}/relationship-list/relationship
     context:
       remove_empty_node: true
     body: '"${relationship}"'
