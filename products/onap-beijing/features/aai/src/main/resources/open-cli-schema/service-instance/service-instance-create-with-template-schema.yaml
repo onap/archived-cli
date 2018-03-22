@@ -51,7 +51,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /business/customers/customer/${global-customer-id}/service-subscriptions/service-subscription/${service-type}/service-instances/service-instance/${service-instance-id}
+    uri: /aai/v11/business/customers/customer/${global-customer-id}/service-subscriptions/service-subscription/${service-type}/service-instances/service-instance/${service-instance-id}
     method: PUT
     context:
       remove_empty_node: true
