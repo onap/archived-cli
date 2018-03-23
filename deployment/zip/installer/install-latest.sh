@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #*******************************************************************************
-# Copyright 2017 Huawei Technologies Co., Ltd.
+# Copyright 2017-18 Huawei Technologies Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,10 +17,9 @@
 #*******************************************************************************
 
 CLI_LATEST_BINARY="https://nexus.onap.org/service/local/artifact/maven/redirect?r=snapshots&g=org.onap.cli&a=cli-zip&e=zip&v=LATEST"
-CLI_INSTALL_DIR=/opt/onap/cli
+CLI_INSTALL_DIR=/opt/oclip
 CLI_ZIP=cli.zip
-CLI_BIN=/usr/bin/onap
-export OPEN_CLI_HOME=$CLI_INSTALL_DIR
+CLI_BIN=/usr/bin/oclip
 
 #create install dir
 if [ -d $CLI_INSTALL_DIR ]
@@ -45,14 +44,5 @@ fi
 wget -O $CLI_ZIP $CLI_LATEST_BINARY
 
 unzip $CLI_ZIP
-if [ ! -d ./data ]; then mkdir ./data; fi
-if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
-chmod +x ./bin/oclip.sh
 
-#Make oclip available in path
-ln ./bin/oclip.sh $CLI_BIN
-
-#Print the version
-onap -v
-
-cd -
+source ./install.sh
