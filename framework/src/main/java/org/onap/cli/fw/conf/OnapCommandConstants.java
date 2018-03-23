@@ -45,6 +45,7 @@ public class OnapCommandConstants {
     //schema
     public static final String OPEN_CLI_SCHEMA_VERSION = "open_cli_schema_version";
     public static final String OPEN_CLI_SCHEMA_VERSION_VALUE_1_0 = "1.0";
+
     public static final String NAME = "name";
     public static final String DESCRIPTION = "description";
 
@@ -148,6 +149,8 @@ public class OnapCommandConstants {
     public static final String SAMPLE_GEN_ENABLED = "cli.sample.gen.enable";
     public static final String SAMPLE_GEN_TARGET_FOLDER = "cli.sample.gen.target";
 
+    public static final String OPEN_CLI_SAMPLE_VERSION = "open_cli_sample_version";
+    public static final String OPEN_CLI_SAMPLE_VERSION_VALUE_1_0 = "1.0";
     public static final String VERIFY_SAMPLES_DIRECTORY = "open-cli-sample";
     public static final String VERIFY_SAMPLES_FILE_PATTERN = VERIFY_SAMPLES_DIRECTORY + YAML_PATTERN;
     public static final String VERIFY_SAMPLES_MOCK_PATTERN = VERIFY_SAMPLES_DIRECTORY + JSON_PATTERN;
