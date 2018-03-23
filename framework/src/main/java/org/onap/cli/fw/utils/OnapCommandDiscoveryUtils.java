@@ -246,6 +246,11 @@ public class OnapCommandDiscoveryUtils {
                         schema.setSchemaURI(resource.getURI().toString());
 
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
+                        if (obj == null) {
+                            OnapCommandUtils.LOG.info("Invalid Schema yaml " + schema.getSchemaURI());
+                            continue;
+                        }
+
                         schema.setVersion(obj.toString());
 
                         if (!schema.getVersion().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
