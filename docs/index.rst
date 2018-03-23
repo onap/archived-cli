@@ -29,6 +29,7 @@ Amsterdam release, it provides commands for following features:
 .. toctree::
    :maxdepth: 1
 
+   cookbook.rst
    console.rst
    architecture.rst
    developer_guide.rst
