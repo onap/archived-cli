@@ -303,6 +303,22 @@ public class OnapCommandDiscoveryUtils {
     private static void updateSchemaInfoWithSample(Resource sampleResourse,
                                                       List<OnapCommandSchemaInfo> schemaInfos) throws OnapCommandInvalidSchema, IOException {
         Map<String, ?> infoMap = loadSchema(sampleResourse);
+
+        if (infoMap == null) {
+            return;
+        }
+
+        Object sampleVersion = infoMap.get(OPEN_CLI_SAMPLE_VERSION);
+        if (sampleVersion == null) {
+            OnapCommandUtils.LOG.info("Invalid Sample yaml " + sampleResourse.getURI().toString());
+            return;
+        }
+
+        if (!sampleVersion.toString().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SAMPLE_VERSION_VALUE_1_0)) {
+            OnapCommandUtils.LOG.info("Unsupported Sample version found " + sampleResourse.getURI().toString());
+            return;
+        }
+
         String cmdName = (String) infoMap.get(OnapCommandConstants.VERIFY_CMD_NAME);
         String version = (String) infoMap.get(OnapCommandConstants.VERIFY_CMD_VERSION);
 
