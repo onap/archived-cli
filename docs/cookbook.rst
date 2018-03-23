@@ -4,8 +4,11 @@
 
 .. _cli_cookbook:
 
+Cook-book
+=========
+
 To Run OCLIP on local docker machine
-=======================================
+---------------------------------------
 
 1. Login to docker repository::
 
@@ -15,18 +18,19 @@ To Run OCLIP on local docker machine
 
     docker run -d --name oclip -e CLI_MODE=daemon -p 8080:9090 -p 8080:80 nexus3.onap.org:10001/onap/cli:2.0-STAGING-latest
 
-3. Access the CLI console:
+Access the CLI console
+~~~~~~~~~~~~~~~~~~~~~~
 
-3.1 Web command console::
+1. Web command console::
 
     http://localhost:9090
 
-3.2 Linux console::
+2. Linux console::
 
     docker exec -it oclip oclip
 
 How to run OCLIP on ubuntu server
-=================================
+---------------------------------
 
 1. Download install script::
 
@@ -49,7 +53,7 @@ How to run OCLIP on ubuntu server
     echo $OPEN_CLI_HOME
 
 Setup profile
-=============
+-------------
 
 1. Run oclip console::
 
@@ -84,7 +88,7 @@ Setup profile
     exit
 
 Use the existing profile
-========================
+------------------------
 
 1. In console mode, type::
 
@@ -99,11 +103,12 @@ Use the existing profile
 
 
 How to configure OCLIP to use for given product version
-=======================================================
+-------------------------------------------------------
 
-1. In console mode
+In console mode
+~~~~~~~~~~~~~~~
 
-1.1 Identify the available and current product version, type::
+1. Identify the available and current product version, type::
 
     version
 
@@ -113,17 +118,18 @@ How to configure OCLIP to use for given product version
     Available products: [open-cli, onap-beijing, onap-amsterdam, sample-helloworld]
     Enabled product   : open-cli
 
-1.2 To enable a product say onap-beijing, type::
+2. To enable a product say onap-beijing, type::
 
     use onap-beijing
 
-1.3 List available commands, type::
+3. List available commands, type::
 
     help
 
-2. In scripting mode::
+In scripting mode
+~~~~~~~~~~~~~~~~~
 
-2.1 Identify the available and current product version, type::
+1. Identify the available and current product version, type::
 
     oclip --version
 
@@ -133,10 +139,10 @@ How to configure OCLIP to use for given product version
     Available products: [open-cli, onap-beijing, onap-amsterdam, sample-helloworld]
     Enabled product   : open-cli
 
-2.2 To enable a product say onap-beijing, set environment variable OPEN_CLI_PRODUCT_IN_USE::
+2. To enable a product say onap-beijing, set environment variable OPEN_CLI_PRODUCT_IN_USE::
 
     export OPEN_CLI_PRODUCT_IN_USE=onap-beijing
 
-2.3 List available commands, type::
+3. List available commands, type::
 
     oclip --help
