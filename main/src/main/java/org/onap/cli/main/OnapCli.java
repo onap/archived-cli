@@ -86,7 +86,7 @@ public class OnapCli {
     }
 
     private void print(Throwable throwable) {
-        this.print(throwable.getMessage());
+        this.print(throwable.getMessage() != null ? throwable.getMessage() : "");
         LOG.error(throwable.getMessage(), throwable);
     }
 
