@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_431611f3",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/subscription/subscription-create-schema-beijing.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-26T07:21:42Z",
+      "side": 1,
+      "message": "this also, let us not do.. as the existing one is sufficient and easy to use.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "ab2568a9f80554ceaa1ae4d9c9f4f96fa4c76445",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
