@@ -27,7 +27,7 @@ parameters:
     type: string
     short_option: n
     long_option: name
-    is_optional: true
+    is_optional: false
   - name: vnf-id
     description: vnf-id
     type: string
@@ -39,7 +39,7 @@ parameters:
     type: string
     short_option: z
     long_option: vnf-type
-    is_optional: true
+    is_optional: false
   - name: in-maint
     description: Used to indicate whether or not this object is in maintenance mode (maintenance mode = true)
     type: bool
