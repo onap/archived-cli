@@ -73,7 +73,7 @@ http:
     method: PUT
     context:
       remove_empty_node: true
-    body: '{"pnf-name": "${pnf-name}" ,"pnf-id": "${pnf-id}","equip-type": "${equip-type}","equip-vendor": "${equip-vendor}","in-maint": "${in-maint}","prov-status": "${prov-status}","relationship-list": ["${relationship}"]}'
+    body: '{"pnf-name": "${pnf-name}" ,"pnf-id": "${pnf-id}","equip-type": "${equip-type}","equip-vendor": "${equip-vendor}","in-maint": "${in-maint}","prov-status": "${prov-status}","relationship-list": "${relationship}"}'
   success_codes:
     - 200
     - 201
