@@ -68,6 +68,8 @@ public class OnapHttpCommand extends OnapCommand {
 
     boolean shouldVerify = false;
 
+    boolean mockingEnabled;
+
     public OnapHttpCommand() {
         super.addDefaultSchemas(OnapCommandHttpConstants.DEFAULT_PARAMETER_HTTP_FILE_NAME);
     }
@@ -176,17 +178,23 @@ public class OnapHttpCommand extends OnapCommand {
 
             if (contextOpt.isPresent()) {
                 OnapCommandParameter context = contextOpt.get();
-                String mockedFile = ((Map<String, String>)context.getValue()).get(OnapCommandConstants.VERIFY_MOCO);
+                Map<String, String> map = (Map<String, String>) context.getValue();
 
-                mocoServer = new MocoServer(mockedFile);
-                mocoServer.start();
+                mockingEnabled =  map.containsKey(OnapCommandHttpConstants.VERIFY_DISABLE_MOCKING)
+                        && map.get(OnapCommandHttpConstants.VERIFY_DISABLE_MOCKING).equals("true") ? false : true;
+
+                if (mockingEnabled) {
+                    String mockedFile = ((Map<String, String>) context.getValue()).get(OnapCommandConstants.VERIFY_MOCO);
+                    mocoServer = new MocoServer(mockedFile);
+                    mocoServer.start();
+                }
             }
         }
     }
 
     @Override
     protected void postRun() throws OnapCommandException {
-        if (shouldVerify) {
+        if (shouldVerify && mockingEnabled) {
             mocoServer.stop();
         }
     }

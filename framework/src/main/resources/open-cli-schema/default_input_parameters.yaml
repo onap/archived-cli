@@ -45,7 +45,7 @@ parameters:
     is_default_param: true
   - name: verify
     type: bool
-    description: verify the command using available command sample file and mocking file
+    description: verify the command using available command sample file and mocking file. By default it goes with mock style. To enable the verification in real time, set DISABLE_MOCKING=true in the context param.
     short_option: V
     long_option: verify
     default_value: false
