@@ -28,30 +28,21 @@ parameters:
     short_option: x
     long_option: customer-name
     is_optional: false
-  - name: cloud-name
-    description: Onap cloud name
-    type: string
-    short_option: z
-    long_option: cloud-name
-    is_optional: false
-  - name: cloud-region
-    description: Onap cloud region
-    type: string
-    short_option: r
-    long_option: cloud-region
-    is_optional: false
-  - name: cloud-tenant-id
-    description: Onap cloud tenant id
-    type: string
-    short_option: c
-    long_option: cloud-tenant-id
-    is_optional: false
   - name: service-type
     description: Onap service type
     type: string
     short_option: e
     long_option: service-type
     is_optional: false
+  - name: relationship
+    description: relationship with cloudregion
+    type: json
+    short_option: r
+    long_option: relationship
+    is_optional: true
+# relation-ship json sample:
+# {"relationship":[{"related-to":"tenant","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"${cloud-name}"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"${cloud-region}"},{"relationship-key":"tenant.tenant-id","relationship-value":"${cloud-tenant-id}"}]}]}
+    
 
 http:
   service:
@@ -60,7 +51,10 @@ http:
   request:
     uri: /aai/v11/business/customers/customer/${customer-name}/service-subscriptions/service-subscription/${service-type}
     method: PUT
-    body: '{"relationship-list":{"relationship":[{"related-to":"tenant","relationship-data":[{"relationship-key":"cloud-region.cloud-owner","relationship-value":"${cloud-name}"},{"relationship-key":"cloud-region.cloud-region-id","relationship-value":"${cloud-region}"},{"relationship-key":"tenant.tenant-id","relationship-value":"${cloud-tenant-id}"}]}]},"service-type":"${service-type}"}'
+    context:
+      remove_empty_node: true
+    body: '{"relationship-list":"${relationship}","service-type":"${service-type}"}'
+
   success_codes:
     - 200
     - 201
