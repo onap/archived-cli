@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_0331e9a1",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/customer/service-instance-create-with-template-schema.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2018-03-26T07:21:35Z",
+      "side": 1,
+      "message": "shall we provide the with template option only for pnf and vnf commmands as they are very complicated. for other commands, let us not provide this option, as its not that complicated.",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "d1b2f85fa67375d2eff6ed745254efe77448510d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
