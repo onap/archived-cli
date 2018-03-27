@@ -366,13 +366,22 @@ public class OnapCommandRegistrar {
         attrSrv.setScope(OnapCommandResultAttributeScope.SHORT);
         help.getRecords().add(attrSrv);
 
+        OnapCommandResultAttribute attrState = new OnapCommandResultAttribute();
+        attrState.setName(OnapCommandConstants.INFO_STATE.toUpperCase());
+        attrState.setDescription(OnapCommandConstants.INFO_STATE);
+        attrState.setScope(OnapCommandResultAttributeScope.SHORT);
+        help.getRecords().add(attrState);
+
+
         OnapCommandResultAttribute attrDesc = new OnapCommandResultAttribute();
         attrDesc.setName(OnapCommandConstants.DESCRIPTION.toUpperCase());
         attrDesc.setDescription(OnapCommandConstants.DESCRIPTION);
         attrDesc.setScope(OnapCommandResultAttributeScope.SHORT);
         help.getRecords().add(attrDesc);
 
-        for (String cmdName : isEnabledProductVersionOnly ? OnapCommandUtils.sort(this.listCommandsForEnabledProductVersion()) : OnapCommandUtils.sort(this.listCommands())) {
+        for (String cmdName : isEnabledProductVersionOnly ?
+                OnapCommandUtils.sort(this.listCommandsForEnabledProductVersion()) :
+                    OnapCommandUtils.sort(this.listCommands())) {
             OnapCommand cmd;
             try {
                 if (!isEnabledProductVersionOnly) {
@@ -387,6 +396,7 @@ public class OnapCommandRegistrar {
 
                 attrSrv.getValues().add(cmd.getInfo().getService());
                 attrDesc.getValues().add(cmd.getDescription());
+                attrState.getValues().add(cmd.getInfo().getState().name());
             } catch (OnapCommandException e) {
                 throw new OnapCommandHelpFailed(e);
             }
