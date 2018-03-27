@@ -58,6 +58,7 @@ public class OnapCommandConstants {
     public static final String INFO_TYPE = "type";
     public static final String INFO_AUTHOR = "author";
     public static final String INFO_IGNORE = "ignore";
+    public static final String INFO_STATE = "state";
 
     //parameters
     public static final String PARAMETERS = "parameters";

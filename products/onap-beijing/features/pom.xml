@@ -36,6 +36,7 @@
         <module>msb</module>
         <module>so</module>
         <module>sdc</module>
+        <module>policy</module>
     </modules>
 
      <build>

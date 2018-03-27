@@ -30,6 +30,7 @@ import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_PARAMS_LIST;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_PARAMS_MANDATORY_LIST;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_PRODUCT;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_SERVICE;
+import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_STATE;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_TYPE;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INPUT_PARAMS_LIST;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INPUT_PARAMS_MANDATORY_LIST;
@@ -67,7 +68,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -79,6 +79,7 @@ import org.onap.cli.fw.error.OnapCommandParameterNameConflict;
 import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
 import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
 import org.onap.cli.fw.info.OnapCommandInfo;
+import org.onap.cli.fw.info.OnapCommandState;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
@@ -246,6 +247,11 @@ public class OnapCommandSchemaLoader {
                                 case INFO_TYPE:
                                     Object obj = infoMap.get(key1);
                                     info.setCommandType(OnapCommandType.get(obj.toString()));
+                                    break;
+
+                                case INFO_STATE:
+                                    Object state = infoMap.get(key1);
+                                    info.setState(OnapCommandState.get(state.toString()));
                                     break;
 
                                 case INFO_AUTHOR:

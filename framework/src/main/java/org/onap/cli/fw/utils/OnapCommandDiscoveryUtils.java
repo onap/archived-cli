@@ -278,6 +278,11 @@ public class OnapCommandDiscoveryUtils {
                         if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_IGNORE) != null) {
                             schema.setIgnore(infoMap.get(OnapCommandConstants.INFO_IGNORE).toString());
                         }
+
+                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_STATE) != null) {
+                            schema.setState(infoMap.get(OnapCommandConstants.INFO_STATE).toString());
+                        }
+
                         schema.setSchemaProfile(identitySchemaProfileType(resourceMap));
 
                         extSchemas.add(schema);

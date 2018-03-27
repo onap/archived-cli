@@ -6,6 +6,7 @@ info:
   service: test
   type: cmd
   author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
+  state: experimental
 parameters:
   - name: bool-param
     type: bool
