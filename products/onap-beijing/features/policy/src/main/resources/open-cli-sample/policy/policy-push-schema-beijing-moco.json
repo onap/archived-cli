@@ -1,0 +1,24 @@
+[
+  {
+    "request": {
+      "method": "put",
+      "uri": "/pdp/api/pushPolicy",
+      "headers": {
+        "Authorization": "Basic dGVzdHBkcDphbHBoYTEyMw==",
+        "ClientAuth": "cHl0aG9uOnRlc3Q=",
+        "Environment": "ONAP-CLI",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "json": {
+        "policyName": "com.CSIT_zojumpfzo0zijii_VoLTE",
+        "policyType": "BRMS_PARAM",
+        "pdpGroup": "default"
+        }
+    },
+    "response": {
+      "status": 200,
+      "json": {}
+    }
+  }
+]
