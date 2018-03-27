@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "method": "put",
+      "uri": "/pdp/api/createPolicy",
+      "headers": {
+        "Authorization": "Basic dGVzdHBkcDphbHBoYTEyMw==",
+        "ClientAuth": "cHl0aG9uOnRlc3Q=",
+        "Environment": "ONAP-CLI",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "json": {
+            "configBody": "{}",
+            "policyConfigType": "MicroService",
+            "policyName": "com.MicroServicevFirewall",
+            "onapName": "DCAE"
+        }
+    },
+    "response": {
+      "status": 200,
+      "json": {}
+    }
+  }
+]

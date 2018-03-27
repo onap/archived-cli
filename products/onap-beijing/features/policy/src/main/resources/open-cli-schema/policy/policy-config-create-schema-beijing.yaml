@@ -1,0 +1,68 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: policy-config-create
+description: Create config policy
+
+info:
+  product: onap-beijing
+  service: policy
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+  state: experimental
+
+parameters:
+  - name: policy-name
+    description: Onap policy Name
+    type: string
+    short_option: x
+    long_option: policy-name
+    is_optional: false
+  - name: policy-config
+    description: Configuration of policy
+    type: json
+    short_option: y
+    long_option: policy-config
+    is_optional: false
+  - name: policy-onap-component-name
+    description: ONAP component name
+    type: string
+    long_option: policy-onap-component-name
+    short_option: z
+    is_optional: false
+    default_value: DCAE
+  - name: policy-type
+    description: Policy cofig type
+    type: string
+    long_option: policy-type
+    short_option: b
+    is_optional: false
+
+http:
+  service:
+    name: policy
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /pdp/api/createPolicy
+    method: PUT
+    context:
+      remove_empty_node: true
+    body: '{"configBody": "${policy-config}","policyConfigType": "${policy-type}","policyName": "${ policy-name}","onapName": "${policy-onap-component-name}"}'
+    headers:
+      accept: text/html
+
+  success_codes:
+    - 200
