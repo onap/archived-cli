@@ -385,7 +385,7 @@ public class OnapCommandRegistrar {
                     attr.getValues().add(cmdName);
                 }
 
-                attrSrv.getValues().add(cmd.printVersion());
+                attrSrv.getValues().add(cmd.getInfo().getService());
                 attrDesc.getValues().add(cmd.getDescription());
             } catch (OnapCommandException e) {
                 throw new OnapCommandHelpFailed(e);
