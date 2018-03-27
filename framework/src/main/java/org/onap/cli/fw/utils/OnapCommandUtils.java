@@ -39,6 +39,8 @@ import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 
 /**
@@ -247,18 +249,24 @@ public class OnapCommandUtils {
                 throw new OnapCommandParameterNotFound(paramName);
             }
 
-            String value = params.get(paramName).getValue().toString();
-
             OnapCommandParameter param = params.get(paramName);
             if (OnapCommandParameterType.ARRAY.equals(param.getParameterType())
-                    || OnapCommandParameterType.MAP.equals(param.getParameterType())
                     || OnapCommandParameterType.JSON.equals(param.getParameterType())
                     || OnapCommandParameterType.YAML.equals(param.getParameterType())) {
                 // ignore the front and back double quotes in json body
-                result += line.substring(currentIdx, idxS - 1) + value;
+                result += line.substring(currentIdx, idxS - 1) + params.get(paramName).getValue().toString();
                 currentIdx = idxE + 2;
-            } else {
-                result += line.substring(currentIdx, idxS) + value;
+            } else if (OnapCommandParameterType.MAP.equals(param.getParameterType())) {
+                try {
+                    String value = new ObjectMapper().writeValueAsString(params.get(paramName).getValue());
+                    result += line.substring(currentIdx, idxS - 1) + value;
+                } catch (JsonProcessingException e) {  // NOSONAR
+                    //never occur as map is coverted to json string here
+                }
+
+                currentIdx = idxE + 2;
+            }else {
+                result += line.substring(currentIdx, idxS) + params.get(paramName).getValue().toString();
                 currentIdx = idxE + 1;
             }
         }

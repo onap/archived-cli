@@ -1,0 +1,33 @@
+[
+  {
+    "request": {
+      "method": "put",
+      "uri": "/pdp/api/createPolicy",
+      "headers": {
+        "Authorization": "Basic dGVzdHBkcDphbHBoYTEyMw==",
+        "ClientAuth": "cHl0aG9uOnRlc3Q=",
+        "Environment": "ONAP-CLI",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "json": {
+            "policyConfigType": "BRMS_PARAM",
+            "policyName": "com.BRMSParamvCPE",
+            "policyDescription": "BRMS-policy",
+            "policyScope": "com",
+            "attributes": {
+                "MATCHING": {
+                    "controller" : "amsterdam"
+                },
+                "RULE": {
+                    "templateName": "ClosedLoopControlName"
+                }
+            }
+        }
+    },
+    "response": {
+      "status": 200,
+      "json": {}
+    }
+  }
+]
