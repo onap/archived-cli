@@ -1,0 +1,45 @@
+[
+  {
+    "request": {
+      "method": "post",
+      "uri": "/pdp/api/getConfig",
+      "headers": {
+        "Authorization": "Basic dGVzdHBkcDphbHBoYTEyMw==",
+        "ClientAuth": "cHl0aG9uOnRlc3Q=",
+        "Environment": "ONAP-CLI",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "json": {
+        "configAttributes": {},
+        "unique": false,
+        "ecompName": "DCAE",
+        "configName": ".*",
+        "policyName": ".*vCPE*"
+      }
+    },
+    "response": {
+      "status": 200,
+      "json": [
+        {
+          "policyConfigMessage": "Config Retrieved! ",
+          "policyConfigStatus": "CONFIG_RETRIEVED",
+          "type": "JSON",
+          "config": "{\"service\":\"tca_policy\",\"location\":\"SampleServiceLocation\",\"uuid\":\"test\",\"policyName\":\"MicroServicevCPE\",\"description\":\"MicroService vCPE Policy\",\"configName\":\"SampleConfigName\",\"templateVersion\":\"OpenSource.version.1\",\"version\":\"1.1.0\",\"priority\":\"1\",\"policyScope\":\"resource=SampleResource,service=SampleService,type=SampleType,closedLoopControlName=ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e\",\"riskType\":\"SampleRiskType\",\"riskLevel\":\"1\",\"guard\":\"False\",\"content\":{\"policyVersion\":\"v0.0.1\",\"threshholds\":[{\"severity\":\"MAJOR\",\"fieldPath\":\"$.event.measurementsForVfScalingFields.additionalMeasurements[*].arrayOfFields[0].value\",\"thresholdValue\":\"0\",\"closedLoopEventStatus\":\"ABATED\",\"closedLoopControlName\":\"ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e\",\"version\":\"1.0.2\",\"direction\":\"EQUAL\"},{\"severity\":\"CRITICAL\",\"fieldPath\":\"$.event.measurementsForVfScalingFields.additionalMeasurements[*].arrayOfFields[0].value\",\"thresholdValue\":\"0\",\"closedLoopEventStatus\":\"ONSET\",\"closedLoopControlName\":\"ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e\",\"version\":\"1.0.2\",\"direction\":\"GREATER\"}],\"policyName\":\"DCAE.Config_tca-hi-lo\",\"controlLoopSchemaType\":\"VNF\",\"policyScope\":\"DCAE\",\"eventName\":\"Measurement_vGMUX\"}}",
+          "policyName": "com.Config_MS_CSIT_285k2x28vv6flay_vCPE.1.xml",
+          "policyType": "MicroService",
+          "policyVersion": "1",
+          "matchingConditions": {
+            "ONAPName": "DCAE",
+            "ConfigName": "SampleConfigName",
+            "service": "tca_policy",
+            "uuid": "test",
+            "Location": "SampleServiceLocation"
+          },
+          "responseAttributes": {},
+          "property": null
+        }
+      ]
+    }
+  }
+]
