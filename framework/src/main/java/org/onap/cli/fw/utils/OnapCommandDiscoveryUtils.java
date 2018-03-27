@@ -16,27 +16,43 @@
 
 package org.onap.cli.fw.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
-import org.onap.cli.fw.cmd.OnapCommand;
-import org.onap.cli.fw.conf.OnapCommandConfig;
-import org.onap.cli.fw.conf.OnapCommandConstants;
-import org.onap.cli.fw.error.*;
-import org.onap.cli.fw.registrar.OnapCommandRegistrar;
-import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
-import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
-import org.yaml.snakeyaml.Yaml;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_DIRECTORY;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_JSON_PATTERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DISCOVERY_FILE;
+import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
+import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SAMPLE_VERSION;
+import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
+import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_DIRECTORY;
+import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_PATH_PATERN;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.ServiceLoader;
 
-import static org.onap.cli.fw.conf.OnapCommandConstants.*;
+import org.apache.commons.io.FileUtils;
+import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.conf.OnapCommandConfig;
+import org.onap.cli.fw.conf.OnapCommandConstants;
+import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandInstantiationFailed;
+import org.onap.cli.fw.error.OnapCommandInvalidSample;
+import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
+import org.yaml.snakeyaml.Yaml;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OnapCommandDiscoveryUtils {
 
