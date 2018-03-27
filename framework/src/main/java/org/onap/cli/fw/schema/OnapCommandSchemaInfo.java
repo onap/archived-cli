@@ -18,6 +18,7 @@ package org.onap.cli.fw.schema;
 
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConstants;
+import org.onap.cli.fw.info.OnapCommandState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,8 @@ public class OnapCommandSchemaInfo {
     private String schemaProfile = OnapCommandConstants.BASIC_SCHEMA_PROFILE;
 
     private String ignore = OnapCommandConstants.BOOLEAN_FALSE;
+
+    private String state = OnapCommandState.STABLE.name();
 
     public String getSchemaName() {
         return schemaName;
@@ -126,4 +129,14 @@ public class OnapCommandSchemaInfo {
     public List<String> getSampleFiles() {
         return sampleFiles;
     }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+
 }

@@ -31,6 +31,8 @@ public class OnapCommandInfo {
 
     private OnapCommandType type = OnapCommandType.CMD;
 
+    private OnapCommandState state = OnapCommandState.STABLE;
+
     private boolean ignore = false;
 
     public String getProduct() {
@@ -73,5 +75,12 @@ public class OnapCommandInfo {
         this.ignore = ignore;
     }
 
+    public OnapCommandState getState() {
+        return state;
+    }
+
+    public void setState(OnapCommandState state) {
+        this.state = state;
+    }
 
 }
