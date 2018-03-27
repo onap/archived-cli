@@ -19,7 +19,7 @@ samples:
   sample1:
     name: subscription-list
     input: --customer-name kanag
-    moco: subscription-list-schema-1.1-moco.json
+    moco: subscription-list-schema-beijing-moco.json
     output: |
       +--------------+------------------+
       |service-type  |resource-version  |

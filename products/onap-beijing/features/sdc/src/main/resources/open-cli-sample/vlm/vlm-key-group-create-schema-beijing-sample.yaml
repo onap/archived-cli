@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vlm-key-group-create
     input: --vlm-id cf2d907d998e44698ce3b4cded5f66a7 --name kanag-cli-kg --description Kanag CLI key group -d --vlm-version 0.1
-    moco: vlm-key-group-create-schema-1.1-moco.json
+    moco: vlm-key-group-create-schema-beijing-moco.json
     output: |
       |property  |value                             |
       +----------+----------------------------------+

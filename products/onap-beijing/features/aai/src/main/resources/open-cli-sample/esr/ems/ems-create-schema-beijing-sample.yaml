@@ -19,5 +19,5 @@ samples:
   sample1:
     name: ems-register
     input: --name ems1 --type ems --vendor boco --ems-version 1.0 --url http://10.0.0.1 --username admin --password password --remote-path sample
-    moco: ems-create-schema-1.1-moco.json
+    moco: ems-create-schema-beijing-moco.json
     output:

@@ -19,7 +19,7 @@ samples:
   sample1:
     name: customer-list
     input:
-    moco: customer-list-schema-1.1-moco.json
+    moco: customer-list-schema-beijing-moco.json
     output: |
       +----------------+------------------+
       |name            |resource-version  |

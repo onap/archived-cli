@@ -19,6 +19,6 @@ samples:
   sample1:
     name: cloud-create
     input: --cloud-name huawei-cloud --region-name bangalore
-    moco: cloud-create-schema-1.1-moco.json
+    moco: cloud-create-schema-beijing-moco.json
     output: |
 

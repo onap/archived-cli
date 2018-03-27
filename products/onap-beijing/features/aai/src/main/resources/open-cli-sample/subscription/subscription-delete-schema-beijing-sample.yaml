@@ -19,5 +19,5 @@ samples:
   sample1:
     name: subscription-delete
     input: --customer-name kanag --service-type vFW-kanag --resource-version 1509079144326
-    moco: subscription-delete-schema-1.1-moco.json
+    moco: subscription-delete-schema-beijing-moco.json
     output:

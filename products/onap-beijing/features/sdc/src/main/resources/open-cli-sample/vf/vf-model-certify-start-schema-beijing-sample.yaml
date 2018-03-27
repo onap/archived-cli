@@ -19,5 +19,5 @@ samples:
   sample1:
     name: vf-model-certify-start
     input: --vf-id 66269482-0b27-40e3-9c4d-6a26fb67d9ff
-    moco: vf-model-certify-start-schema-1.1-moco.json
+    moco: vf-model-certify-start-schema-beijing-moco.json
     output:

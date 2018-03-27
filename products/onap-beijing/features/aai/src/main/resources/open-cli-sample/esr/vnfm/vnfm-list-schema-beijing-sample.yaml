@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vnfm-list
     input:
-    moco: vnfm-list-schema-1.1-moco.json
+    moco: vnfm-list-schema-beijing-moco.json
     output: |
       +--------------------------------------+--------------------------------------+------------------+------------------+
       |vnfm-id                               |vim-id                                |certificate-url   |resource-version  |

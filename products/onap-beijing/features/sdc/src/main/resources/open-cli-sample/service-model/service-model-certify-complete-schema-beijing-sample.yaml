@@ -19,5 +19,5 @@ samples:
   sample1:
     name: service-model-certify-complete
     input: --service-model-id 7b427dbf-685b-4ba9-8838-a9b3b3c8e584
-    moco: service-model-certify-complete-schema-1.1-moco.json
+    moco: service-model-certify-complete-schema-beijing-moco.json
     output:

@@ -19,6 +19,6 @@ samples:
   sample1:
     name: cloud-delete
     input: --cloud-name huawei-cloud-test --region-name bangalore-test --resource-version 1509027982352
-    moco: cloud-delete-schema-1.1-moco.json
+    moco: cloud-delete-schema-beijing-moco.json
     output: |
 

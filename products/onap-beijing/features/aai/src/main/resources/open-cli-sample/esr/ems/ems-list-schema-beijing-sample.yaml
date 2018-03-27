@@ -19,7 +19,7 @@ samples:
   sample1:
     name: ems-list
     input:
-    moco: ems-list-schema-1.1-moco.json
+    moco: ems-list-schema-beijing-moco.json
     output: |
       +--------------------------------------+------------------+
       |ems-id                                |resource-version  |

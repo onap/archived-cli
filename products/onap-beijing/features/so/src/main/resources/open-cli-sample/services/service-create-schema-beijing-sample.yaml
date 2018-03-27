@@ -19,7 +19,7 @@ samples:
   sample1:
     name: service-create
     input: --cloud-region RegionOne --tenant-id onap --model-invariant-id 1de901ed-17af-4b03-bc1f-41659cfa27cb --model-uuid ace39141-09ec-4068-b06d-ac6b23bdc6e0 --model-name demoVLB --model-version 1.0 -c Demonstration --instance-name sample-service-onap-cli-13 --service-type vLB
-    moco: service-create-schema-1.1-moco.json
+    moco: service-create-schema-beijing-moco.json
     output: |
       +--------------+--------------------------------------+
       |property      |value                                 |

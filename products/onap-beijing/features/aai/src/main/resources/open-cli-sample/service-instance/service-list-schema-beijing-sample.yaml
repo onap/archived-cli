@@ -19,7 +19,7 @@ samples:
   sample1:
     name: service-list
     input: -x Demonstration -y vLB --long
-    moco: service-list-schema-1.1-moco.json
+    moco: service-list-schema-beijing-moco.json
     output: |
       +--------------------------------------+----------------------------+--------------------------------------+--------------------------------------+--------------+
       |service-id                            |service-name                |model-invariant-id                    |model-uuid                            |description   |

@@ -19,5 +19,5 @@ samples:
   sample1:
     name: vsp-checkin
     input: --vsp-id f19cad8343794e93acb9cda2e4126281 --vsp-version 0.1
-    moco: vsp-checkin-schema-1.1-moco.json
+    moco: vsp-checkin-schema-beijing-moco.json
     output:

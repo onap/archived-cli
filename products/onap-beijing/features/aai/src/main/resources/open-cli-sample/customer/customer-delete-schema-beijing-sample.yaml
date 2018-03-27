@@ -19,6 +19,6 @@ samples:
   sample1:
     name: customer-delete
     input: --customer-name test --resource-version 1509029022293
-    moco: customer-delete-schema-1.1-moco.json
+    moco: customer-delete-schema-beijing-moco.json
     output: |
 

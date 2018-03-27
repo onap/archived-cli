@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vf-model-list
     input:
-    moco: vf-model-list-schema-1.1-moco.json
+    moco: vf-model-list-schema-beijing-moco.json
     output: |
       +--------------------------------------+--------------------------------------+--------------------------------------+--------------------------+----------+------------+
       |uuid                                  |uniqueid                              |invariant-uuid                        |name                      |version   |status      |

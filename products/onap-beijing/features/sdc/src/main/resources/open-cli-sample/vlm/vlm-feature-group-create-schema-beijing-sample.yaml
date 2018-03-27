@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vlm-feature-group-create
     input: --name kanag-cli-fg --description Kanag cli feature group --vlm-id cf2d907d998e44698ce3b4cded5f66a7 --vlm-version 0.1 --vlm-key-group-id c37a1f205f444161a573f55dfec5f170 --vlm-entitle-pool-id aa61080fd965455ba5edbf60f4e375ef --part-number 123455 --manufacture-reference-number mkr123456
-    moco: vlm-feature-group-create-schema-1.1-moco.json
+    moco: vlm-feature-group-create-schema-beijing-moco.json
     output: |
       +----------+----------------------------------+
       |property  |value                             |

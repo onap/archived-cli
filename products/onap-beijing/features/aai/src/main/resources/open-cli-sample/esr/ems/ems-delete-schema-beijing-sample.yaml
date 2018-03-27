@@ -19,5 +19,5 @@ samples:
   sample1:
     name: ems-unregister
     input: --ems-id 51a480ed-649c-4c47-a84b-f966dc4f9554 --resource-version 1509095358658
-    moco: ems-delete-schema-1.1-moco.json
+    moco: ems-delete-schema-beijing-moco.json
     output:

@@ -19,5 +19,5 @@ samples:
   sample1:
     name: service-type-delete
     input: --service-type-id de1fa33f-f676-42e5-b79a-a39825c19b1d --resource-version 1509029708094
-    moco: service-type-delete-schema-1.1-moco.json
+    moco: service-type-delete-schema-beijing-moco.json
     output:

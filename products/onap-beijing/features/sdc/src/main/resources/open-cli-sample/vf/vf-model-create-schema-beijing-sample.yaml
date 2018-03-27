@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vf-model-create
     input: --name kanag-cli-VLB --description VF created from CLI --vendor-name Kanag-cli --vsp-id f19cad8343794e93acb9cda2e4126281 --vsp-version 2.0
-    moco: vf-model-create-schema-1.1-moco.json
+    moco: vf-model-create-schema-beijing-moco.json
     output: |
       +----------+--------------------------------------+
       |property  |value                                 |

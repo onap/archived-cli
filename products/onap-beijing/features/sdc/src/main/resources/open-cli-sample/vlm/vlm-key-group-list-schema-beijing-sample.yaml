@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vlm-key-group-list
     input: --vlm-id cf2d907d998e44698ce3b4cded5f66a7 --vlm-version 2.0
-    moco: vlm-key-group-list-schema-1.1-moco.json
+    moco: vlm-key-group-list-schema-beijing-moco.json
     output: |
       +----------------------------------+----------------------+
       |ID                                |name                  |

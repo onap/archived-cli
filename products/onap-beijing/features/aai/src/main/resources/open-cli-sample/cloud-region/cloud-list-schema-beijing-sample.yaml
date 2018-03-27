@@ -19,7 +19,7 @@ samples:
   sample1:
     name: cloud-list
     input:
-    moco: cloud-list-schema-1.1-moco.json
+    moco: cloud-list-schema-beijing-moco.json
     output: |
       +--------------+------------+------------------+
       |cloud         |region      |resource-version  |

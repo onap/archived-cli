@@ -19,7 +19,7 @@ samples:
   sample1:
     name: service2vf-model-list
     input: --service-model-id 0f4203a8-a314-47bb-9a7d-28157652cec4
-    moco: service2vf-model-list-schema-1.1-moco.json
+    moco: service2vf-model-list-schema-beijing-moco.json
     output: |
       +--------------------------------------+--------------------------+--------------------------------------+------------+
       |vf-uuid                               |vf-name                   |vf-customization-uuid                 |vf-version  |

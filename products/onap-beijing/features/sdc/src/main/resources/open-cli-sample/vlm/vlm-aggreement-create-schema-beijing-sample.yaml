@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vlm-aggreement-create
     input: --name kanag-cli-la --description kanag cli la --vlm-feature-group-id 3a2fb75b52a54e9c8093e7c154210f9e --vlm-id cf2d907d998e44698ce3b4cded5f66a7 --vlm-version 1.1
-    moco: vlm-aggreement-create-schema-1.1-moco.json
+    moco: vlm-aggreement-create-schema-beijing-moco.json
     output: |
       +----------+----------------------------------+
       |property  |value                             |

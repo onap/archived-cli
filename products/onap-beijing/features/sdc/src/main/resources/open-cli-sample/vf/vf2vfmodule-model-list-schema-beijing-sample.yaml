@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vf2vfmodule-model-list
     input: --vf-id 66269482-0b27-40e3-9c4d-6a26fb67d9ff
-    moco: vf2vfmodule-model-list-schema-1.1-moco.json
+    moco: vf2vfmodule-model-list-schema-beijing-moco.json
     output: |
       +----------------------------------+--------------+--------------------------------------+--------------------------------------+------------------------------------+----------------+
       |vsp-uuid                          |vsp-version   |module-uuid                           |module-invariant-uuid                 |module-name                         |module-version  |

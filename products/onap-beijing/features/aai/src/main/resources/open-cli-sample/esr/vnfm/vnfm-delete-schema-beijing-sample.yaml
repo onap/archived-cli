@@ -19,5 +19,5 @@ samples:
   sample1:
     name: vnfm-unregister
     input: --vnfm-id c0ecd788-22f4-49a4-a969-68051cd517e7 --resource-version 1509094328901
-    moco: vnfm-delete-schema-1.1-moco.json
+    moco: vnfm-delete-schema-beijing-moco.json
     output:

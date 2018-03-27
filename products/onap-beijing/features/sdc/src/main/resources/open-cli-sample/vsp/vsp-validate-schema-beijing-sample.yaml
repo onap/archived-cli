@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vsp-validate
     input: --vsp-id f19cad8343794e93acb9cda2e4126281 --vsp-version 0.1
-    moco: vsp-validate-schema-1.1-moco.json
+    moco: vsp-validate-schema-beijing-moco.json
     output: |
       +----------+----------------------------------------------------+
       |property  |value                                               |

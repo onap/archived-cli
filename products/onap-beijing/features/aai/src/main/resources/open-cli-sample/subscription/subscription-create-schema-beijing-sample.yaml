@@ -19,5 +19,5 @@ samples:
   sample1:
     name: subscription-create
     input: --customer-name kanag --cloud-name huawei-cloud --cloud-region bangalore --cloud-tenant-id e18173e6-6a13-4614-a13c-3859e7321103 --service-type vFW-kanag
-    moco: subscription-create-schema-1.1-moco.json
+    moco: subscription-create-schema-beijing-moco.json
     output:

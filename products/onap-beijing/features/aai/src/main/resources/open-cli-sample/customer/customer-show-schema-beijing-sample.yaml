@@ -19,7 +19,7 @@ samples:
   sample1:
     name: customer-show
     input: --customer-name kanag --long
-    moco: customer-show-schema-1.1-moco.json
+    moco: customer-show-schema-beijing-moco.json
     output: |
       +--------+------------------+------------------+------------------+
       |name    |subscriber-name   |resource-version  |subscriber-type   |

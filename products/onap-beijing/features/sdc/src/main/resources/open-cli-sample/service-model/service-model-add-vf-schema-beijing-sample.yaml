@@ -19,7 +19,7 @@ samples:
   sample1:
     name: service-model-add-vf
     input: --service-model-id 7b427dbf-685b-4ba9-8838-a9b3b3c8e584 --vf-id 828be6cf-c11b-4759-ac37-b1b79f86a4b4 --vf-name kanag-cli-VLB --vf-version 1.0 -d
-    moco: service-model-add-vf-schema-1.1-moco.json
+    moco: service-model-add-vf-schema-beijing-moco.json
     output: |
       +----------+----------------------------------------------------+
       |property  |value                                               |

@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vim-list
     input: --cloud-name huawei-cloud --region-name bangalore --long
-    moco: vim-list-schema-1.1-moco.json
+    moco: vim-list-schema-beijing-moco.json
     output: |
       +--------------------------------------+------------+------------+----------+----------+--------------------------------+----------+--------------+----------------+------------------+
       |vim-id                                |name        |type        |vendor    |version   |url                             |username  |cloud-domain  |default-tenant  |resource-version  |

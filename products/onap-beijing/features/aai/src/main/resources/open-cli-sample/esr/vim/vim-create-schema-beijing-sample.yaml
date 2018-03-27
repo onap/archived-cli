@@ -19,5 +19,5 @@ samples:
   sample1:
     name: vim-register
     input: --cloud-name huawei-cloud --region-name bangalore --name vim1 --type OpenStack --vendor Devstack --vim-version newton --url http://192.168.16.149/identity --username onap --password onap --cloud-domain default --default-tenant onap
-    moco: vim-create-schema-1.1-moco.json
+    moco: vim-create-schema-beijing-moco.json
     output:

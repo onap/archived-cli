@@ -19,5 +19,5 @@ samples:
   sample1:
     name: vim-unregister
     input: --vim-id 810edb5a-42e9-462d-9587-96bc9272ac27 --cloud-name huawei-cloud --region-name bangalore --resource-version 1509093590932
-    moco: vim-delete-schema-1.1-moco.json
+    moco: vim-delete-schema-beijing-moco.json
     output:

@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vlm-list
     input: --long
-    moco: vlm-list-schema-1.1-moco.json
+    moco: vlm-list-schema-beijing-moco.json
     output: |
       +----------------------------------+--------------------------+--------------+--------+--------------------------------+
       |id                                |vendor-name               |vlm-version   |status  |description                     |

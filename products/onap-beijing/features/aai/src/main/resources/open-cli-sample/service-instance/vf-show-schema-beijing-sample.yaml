@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vf-show
     input: --vf-id 1a667ce8-8b8b-4f59-ba5c-b162ae462fef -m https://192.168.17.111:8443 -u AAI -p AAI
-    moco: vf-show-schema-1.1-moco.json
+    moco: vf-show-schema-beijing-moco.json
     output: |
       +------------------------+--------------------------------------+
       |property                |value                                 |

@@ -19,5 +19,5 @@ samples:
   sample1:
     name: service-type-create
     input: --service-type test
-    moco: service-type-create-schema-1.1-moco.json
+    moco: service-type-create-schema-beijing-moco.json
     output:

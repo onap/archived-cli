@@ -19,5 +19,5 @@ samples:
   sample1:
     name: vsp-package
     input: --vsp-id f19cad8343794e93acb9cda2e4126281 --vsp-version 0.2
-    moco: vsp-package-schema-1.1-moco.json
+    moco: vsp-package-schema-beijing-moco.json
     output:

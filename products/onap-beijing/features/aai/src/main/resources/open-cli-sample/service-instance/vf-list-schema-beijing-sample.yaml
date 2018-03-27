@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vf-list
     input: -x Demonstration -y vLB --service-id 2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee
-    moco: vf-list-schema-1.1-moco.json
+    moco: vf-list-schema-beijing-moco.json
     output: |
       +--------------------------------------+--------------------+
       |vf-id                                 |vf-name             |

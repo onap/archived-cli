@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vsp-list
     input:
-    moco: vsp-list-schema-1.1-moco.json
+    moco: vsp-list-schema-beijing-moco.json
     output: |
       +----------------------------------+----------------------------------------------------+----------+------------+
       |ID                                |name                                                |version   |status      |

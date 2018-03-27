@@ -19,7 +19,7 @@ samples:
   sample1:
     name: vlm-create
     input: --vendor-name kanag-cli --description First License created from CLI
-    moco: vlm-create-schema-1.1-moco.json
+    moco: vlm-create-schema-beijing-moco.json
     output: |
       +----------+----------------------------------+
       |property  |value                             |
