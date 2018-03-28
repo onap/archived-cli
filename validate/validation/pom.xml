@@ -47,36 +47,7 @@
             <artifactId>cli-products-sample</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-amsterdam-catalog</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-amsterdam-auth</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-amsterdam-features-so</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-amsterdam-features-sdc</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-amsterdam-features-msb</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-amsterdam-features-aai</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
