@@ -4,8 +4,8 @@
 
 .. _cli_cookbook:
 
-Cook-book
-=========
+CLI cook-book
+=============
 
 To Run OCLIP on local docker machine
 ---------------------------------------
