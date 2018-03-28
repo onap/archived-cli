@@ -16,15 +16,17 @@ Interface (CLI) over Graphical user interface (GUI) in many situations
 such as automation, Devops, CI&CD. So CLI is always been as integral part
 of software products and platforms.
 
-ONAP CLI provides the command line interface for ONAP functionalities and in
-Amsterdam release, it provides commands for following features:
+ONAP CLI is built using industry first CLI platform :ref:`OCLIP` and provides
+the commands for following ONAP functionalities:
 
-* ONAP micro-service discovery
-* ONAP external system and VNF cloud on-boarding
-* ONAP customer and subscription management
-* ONAP resource on-boarding
-* ONAP Product and service management
-* ONAP network service life-cycle management
+* Micro-service discovery
+* External system and VNF cloud on-boarding
+* Customer and subscription management
+* Resource on-boarding
+* Product and service management
+* Network service life-cycle management
+* Policy management
+* VNF/PNF management
 
 .. toctree::
    :maxdepth: 1
