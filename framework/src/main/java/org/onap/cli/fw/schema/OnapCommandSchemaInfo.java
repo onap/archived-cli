@@ -16,18 +16,18 @@
 
 package org.onap.cli.fw.schema;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.info.OnapCommandState;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * OnapCommandSchemaInfo is used in discovery caching.
  *
  */
-public class OnapCommandSchemaInfo {
+public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> {
 
     /**
      * Name of the schema file name
@@ -136,6 +136,11 @@ public class OnapCommandSchemaInfo {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    @Override
+    public int compareTo(OnapCommandSchemaInfo o) {
+        return this.cmdName.compareTo(o.getCmdName());
     }
 
 
