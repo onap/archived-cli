@@ -47,7 +47,46 @@
             <artifactId>cli-products-sample</artifactId>
             <version>${project.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-products-onap-beijing-catalog</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-products-onap-beijing-auth</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-products-onap-beijing-features-so</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-products-onap-beijing-features-sdc</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-products-onap-beijing-features-msb</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-products-onap-beijing-features-aai</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-products-onap-beijing-features-appc</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-products-onap-beijing-features-policy</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
