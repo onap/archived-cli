@@ -34,9 +34,10 @@
     <modules>
         <module>aai</module>
         <module>msb</module>
-        <module>so</module>
         <module>sdc</module>
+        <module>so</module>
         <module>policy</module>
+        <module>appc</module>
     </modules>
 
      <build>
