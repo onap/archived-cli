@@ -7,7 +7,7 @@
 CLI developer guide
 ===================
 
-Develop OCLIP using plug-ins or YAML.
+OCLI provides following approaches for developing CLI:
 
 As a Plug-in
 ------------
@@ -106,12 +106,6 @@ Sample hello-world YAML ::
 
     version: sample-1.0
 
-    service:
-        name: sample-service
-        version: 1.0.0
-        auth: none
-        mode: direct
-
     parameters:
         - name: name
           description: name of the person
@@ -133,11 +127,16 @@ Sample hello-world YAML ::
         request:
             uri: /version.json
             method: GET
+
+        service:
+            name: sample-service
+            version: v1
+            auth: none
+            mode: direct
+
         success_codes:
             - 200
             - 201
+
         result_map:
             output: Hello ${name}, You are running on $b{$.name} $b{$.version}
-
-        sample_response:
-            body: {"name": "oclip", "version": "1.0"}

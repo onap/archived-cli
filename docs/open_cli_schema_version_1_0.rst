@@ -12,22 +12,20 @@ Linux Commands for any given software products, by using YAML template
 based on the schematics defined in this document. In version 1.0,
 following aspects of commands are modeled as YAML schematics:
 
-* Basic Command information
+* Software product/service information
 
 * Command line arguments
 
 * Command outputs
 
-* Software product information
+* Command execution details like HTTP, SNMP (profiles)
 
-* REST API details
-
-* Command usage
+* Command usage and samples
 
 open_cli_schema_version
 -----------------------
 OCLIP considers any YAML file with first line having the following entry
-as proper template.
+as OCS template.
 
     open_cli_schema_version: 1.0
 
@@ -592,6 +590,12 @@ A sample attribute for service-status could be:
 
       **scope: short**
 
+default_value
+^^^^^^^^^^^^^
+In some scenarios, author can set the default value to attribute which OCLIP assigns,
+when the value for that attribute is not available from back-end service in product.
+
+
 http
 ----
 OCLIP is enhanced to support REST API based products and *http* section is
@@ -812,26 +816,25 @@ the service status and assign to result *attribute* service_status as :
 Here, $b is detailed in section 'macros' of this document. and
 '$.service_status' is jpath expression.
 
-sample_response
-~~~~~~~~~~~~~~~
-This entry allows to keep the sample HTTP response as reference to understand
-the result_map jpath expressions. OCLIP does not use this entry and is optional.
-
 macros
 -------
 OCLIP platform provides various marcos to fill *http* entries with the value
 of *parameters*, *headers* , etc Every macro is in the form of <macro name>
 followed by {<macro details>}Followings are the supported macros:
 
-+----------------+------------------------------------------------------------+
-|       Macro    |               Definitions                                  |
-+================+============================================================+
-| ${param-name}  | To retrieve the value from parameter named 'param-name'    |
-+----------------+------------------------------------------------------------+
-| $h{header-name}| To retrieve the value from header named 'header-name'      |
-+----------------+------------------------------------------------------------+
-| $q{query-name} | To retrieve the value from query named 'query-name'        |
-+----------------+------------------------------------------------------------+
-| $b{jpath}      | To retrieve the value from response body using the 'jpath' |
-|                | expression.                                                |
-+----------------+------------------------------------------------------------+
++------------------+------------------------------------------------------------+
+|       Macro      |               Definitions                                  |
++==================+============================================================+
+| ${param-name}    | To retrieve the value from parameter named 'param-name'    |
++------------------+------------------------------------------------------------+
+| $s{env:env-name} | To retrieve the value from environment variable 'env-name' |
++------------------+------------------------------------------------------------+
+| $s{uuid}         | To set the value in uuid4 format                           |
++------------------+------------------------------------------------------------+
+| $h{header-name}  | To retrieve the value from header named 'header-name'      |
++------------------+------------------------------------------------------------+
+| $q{query-name}   | To retrieve the value from query named 'query-name'        |
++------------------+------------------------------------------------------------+
+| $b{jpath}        | To retrieve the value from response body using the 'jpath' |
+|                  | expression.                                                |
++------------------+------------------------------------------------------------+
