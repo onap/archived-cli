@@ -154,3 +154,12 @@ Following document provides the tutorial for service creation using CLI.
    :maxdepth: 1
 
    end_to_end_onap_cli_commands.rst
+
+PNF/VNF creation tutorial
+------------------------------------
+Following document provides the tutorial for PNF/VNF creation tutorial using CLI.
+
+.. toctree::
+   :maxdepth: 1
+
+   step_to_import_PNF.rst
