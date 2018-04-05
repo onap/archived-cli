@@ -7317,3 +7317,181 @@ Error::
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
 
+onap-beijing
+==========================
+
+
+[1] basic-login
+-----------------------------------------------
+
+
+usage: oclip basic-login
+
+ONAP basic login auth command
+
+Product: onap-beijing
+Service: basic-auth
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-s | --long]
+ [-D | --context] [-u | --host-username] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      whether to use given host-url directly without
+                        looking into catalog, it will overrid the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          verify the command using available command sample
+                        file and mocking file. By default it goes with
+                        mock style. To enable the verification in real
+                        time, set DISABLE_MOCKING=true in the context
+                        param. It is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ Authorization    Authorization and is of type STRING.
+ X-TransactionId  X-TransactionId and is of type STRING.
+ X-FromAppId      X-FromAppId and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[2] basic-logout
+-----------------------------------------------
+
+
+usage: oclip basic-logout
+
+ONAP basic logout auth command
+
+Product: onap-beijing
+Service: basic-auth
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-s | --long]
+ [-D | --context]
+
+where::
+
+ -m | --host-url    host url in http(s). It is of type URL. By
+                    default, it is read from environment variable
+                    OPEN_CLI_HOST_URL.
+ -C | --no-catalog  whether to use given host-url directly without
+                    looking into catalog, it will overrid the
+                    service->mode. It is of type BOOL. It is
+                    optional.
+ -h | --help        print help message. It is of type BOOL.
+ -f | --format      Output formats, supported formats such as table,
+                    csv, json, yaml. It is of type STRING.
+ -t | --no-title    whether to print title or not. It is of type BOOL.
+ -V | --verify      verify the command using available command sample
+                    file and mocking file. By default it goes with
+                    mock style. To enable the verification in real
+                    time, set DISABLE_MOCKING=true in the context
+                    param. It is of type BOOL. It is optional.
+ -v | --version     print service version. It is of type BOOL.
+ -d | --debug       Enable debug output. It is of type BOOL.
+ -s | --long        whether to print all attributes or only short
+                    attributes. It is of type BOOL.
+ -D | --context     command context. It is of type MAP. It is
+                    optional.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[3] catalog
+-----------------------------------------------
+
+
+usage: oclip catalog
+
+ONAP catalog command to find the base path for service.
+
+Product: onap-beijing
+Service: msb
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-l | --catalog-service-name]
+ [-h | --help] [-f | --format] [-t | --no-title]
+ [-V | --verify] [-v | --version] [-d | --debug]
+ [-s | --long] [-D | --context] [-i | --catalog-service-version]
+
+where::
+
+ -m | --host-url                  host url in http(s). It is of type URL. By
+                                  default, it is read from environment variable
+                                  OPEN_CLI_HOST_URL.
+ -C | --no-catalog                whether to use given host-url directly without
+                                  looking into catalog, it will overrid the
+                                  service->mode. It is of type BOOL. It is
+                                  optional.
+ -l | --catalog-service-name      service name registered in catalog service. It is
+                                  of type STRING. By default, it is .
+ -h | --help                      print help message. It is of type BOOL.
+ -f | --format                    Output formats, supported formats such as table,
+                                  csv, json, yaml. It is of type STRING.
+ -t | --no-title                  whether to print title or not. It is of type BOOL.
+ -V | --verify                    verify the command using available command sample
+                                  file and mocking file. By default it goes with
+                                  mock style. To enable the verification in real
+                                  time, set DISABLE_MOCKING=true in the context
+                                  param. It is of type BOOL. It is optional.
+ -v | --version                   print service version. It is of type BOOL.
+ -d | --debug                     Enable debug output. It is of type BOOL.
+ -s | --long                      whether to print all attributes or only short
+                                  attributes. It is of type BOOL.
+ -D | --context                   command context. It is of type MAP. It is
+                                  optional.
+ -i | --catalog-service-version   service version registered in catalog service. It
+                                  is of type STRING. By default, it is .
+
+
+Results::
+
+ catalog-service-host-url   Service connection url and is of type STRING.
+ catalog-service-base-path  service base path, to append with host-url for
+                            connecting the service. and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
