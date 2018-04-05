@@ -7963,3 +7963,283 @@ Results::
 Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[11] ems-list
+-----------------------------------------------
+
+
+usage: oclip ems-list
+
+List the configured ems
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-s | --long]
+ [-D | --context] [-u | --host-username] [-a | --no-auth]
+ [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      whether to use given host-url directly without
+                        looking into catalog, it will overrid the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          verify the command using available command sample
+                        file and mocking file. By default it goes with
+                        mock style. To enable the verification in real
+                        time, set DISABLE_MOCKING=true in the context
+                        param. It is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ ems-id             Onap ems id and is of type STRING.
+ resource-version   Onap ems resource version and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[12] ems-register
+-----------------------------------------------
+
+
+usage: oclip ems-register
+
+Register a EMS in Onap
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-e | --vendor] [-v | --version] [-d | --debug]
+ [-c | --type] [-s | --long] [-D | --context]
+ [-q | --ems-version] [-b | --name] [-i | --username]
+ [-j | --password] [-u | --host-username] [-g | --url]
+ [-x | --remote-path] [-a | --no-auth] [-z | --ems-id]
+ [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      whether to use given host-url directly without
+                        looking into catalog, it will overrid the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          verify the command using available command sample
+                        file and mocking file. By default it goes with
+                        mock style. To enable the verification in real
+                        time, set DISABLE_MOCKING=true in the context
+                        param. It is of type BOOL. It is optional.
+ -e | --vendor          Onap EMS vendor. It is of type STRING. By
+                        default, it is .
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -c | --type            Onap EMS type. It is of type STRING. By default,
+                        it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -q | --ems-version     Onap EMS version. It is of type STRING. By
+                        default, it is .
+ -b | --name            Onap EMS name. It is of type STRING. By default,
+                        it is .
+ -i | --username        Onap EMS username. It is of type STRING. By
+                        default, it is .
+ -j | --password        Onap EMS password. It is of type STRING. By
+                        default, it is .
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -g | --url             Onap EMS URL. It is of type STRING. By default,
+                        it is .
+ -x | --remote-path     Onap EMS remote-path. It is of type STRING. By
+                        default, it is .
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL.
+ -z | --ems-id          Onap EMS unique id. It is of type UUID.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[13] ems-show
+-----------------------------------------------
+
+
+usage: oclip ems-show
+
+Show the details of configured ems
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --ems-id]
+ [-s | --long] [-D | --context] [-u | --host-username]
+ [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      whether to use given host-url directly without
+                        looking into catalog, it will overrid the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          verify the command using available command sample
+                        file and mocking file. By default it goes with
+                        mock style. To enable the verification in real
+                        time, set DISABLE_MOCKING=true in the context
+                        param. It is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -x | --ems-id          Onap EMS unique id. It is of type UUID.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ name       Onap ems name and is of type STRING.
+ type       Onap ems type and is of type STRING.
+ vendor     Onap ems vendor and is of type STRING.
+ version    Onap ems version and is of type STRING.
+ url        Onap ems url and is of type STRING.
+ username   Onap ems username and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[14] ems-unregister
+-----------------------------------------------
+
+
+usage: oclip ems-unregister
+
+Un-register a EMS in Onap
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-y | --resource-version]
+ [-x | --ems-id] [-s | --long] [-D | --context]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url          host url in http(s). It is of type URL. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_URL.
+ -C | --no-catalog        whether to use given host-url directly without
+                          looking into catalog, it will overrid the
+                          service->mode. It is of type BOOL. It is
+                          optional.
+ -h | --help              print help message. It is of type BOOL.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING.
+ -t | --no-title          whether to print title or not. It is of type BOOL.
+ -V | --verify            verify the command using available command sample
+                          file and mocking file. By default it goes with
+                          mock style. To enable the verification in real
+                          time, set DISABLE_MOCKING=true in the context
+                          param. It is of type BOOL. It is optional.
+ -v | --version           print service version. It is of type BOOL.
+ -d | --debug             Enable debug output. It is of type BOOL.
+ -y | --resource-version  Onap vim resource version. It is of type STRING.
+                          It is optional. By default, it is .
+ -x | --ems-id            Onap EMS unique id. It is of type UUID.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL.
+ -D | --context           command context. It is of type MAP. It is
+                          optional.
+ -u | --host-username     Host user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL.
+ -p | --host-password     Host user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
