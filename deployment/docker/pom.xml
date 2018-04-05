@@ -32,7 +32,7 @@
 
   <properties>
         <docker.image.name>onap/cli</docker.image.name>
-        <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
+        <maven.build.timestamp.format>yyyyMMdd'T'HHmmss'Z'</maven.build.timestamp.format>
         <docker.push.registry></docker.push.registry>
         <skip.docker.build>true</skip.docker.build>
         <skip.docker.tag>true</skip.docker.tag>
