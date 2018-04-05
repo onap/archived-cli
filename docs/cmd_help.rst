@@ -7495,3 +7495,205 @@ Results::
 Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[4] cloud-create
+-----------------------------------------------
+
+
+usage: oclip cloud-create
+
+Create a cloud region in Onap
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --cloud-name]
+ [-s | --long] [-D | --context] [-y | --region-name]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      whether to use given host-url directly without
+                        looking into catalog, it will overrid the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          verify the command using available command sample
+                        file and mocking file. By default it goes with
+                        mock style. To enable the verification in real
+                        time, set DISABLE_MOCKING=true in the context
+                        param. It is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -x | --cloud-name      Onap cloud name. It is of type STRING. By
+                        default, it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -y | --region-name     Onap region name. It is of type STRING. By
+                        default, it is .
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[5] cloud-delete
+-----------------------------------------------
+
+
+usage: oclip cloud-delete
+
+Delete a cloud region from Onap
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --cloud-name]
+ [-z | --resource-version] [-s | --long] [-D | --context]
+ [-y | --region-name] [-u | --host-username] [-a | --no-auth]
+ [-p | --host-password]
+
+where::
+
+ -m | --host-url          host url in http(s). It is of type URL. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_URL.
+ -C | --no-catalog        whether to use given host-url directly without
+                          looking into catalog, it will overrid the
+                          service->mode. It is of type BOOL. It is
+                          optional.
+ -h | --help              print help message. It is of type BOOL.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING.
+ -t | --no-title          whether to print title or not. It is of type BOOL.
+ -V | --verify            verify the command using available command sample
+                          file and mocking file. By default it goes with
+                          mock style. To enable the verification in real
+                          time, set DISABLE_MOCKING=true in the context
+                          param. It is of type BOOL. It is optional.
+ -v | --version           print service version. It is of type BOOL.
+ -d | --debug             Enable debug output. It is of type BOOL.
+ -x | --cloud-name        Onap cloud name. It is of type STRING. By
+                          default, it is .
+ -z | --resource-version  Onap cloud region version. It is of type UUID. It
+                          is optional.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL.
+ -D | --context           command context. It is of type MAP. It is
+                          optional.
+ -y | --region-name       Onap cloud region name. It is of type STRING. By
+                          default, it is .
+ -u | --host-username     Host user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth           whether to authenticate user or not. It is of
+                          type BOOL.
+ -p | --host-password     Host user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+[6] cloud-list
+-----------------------------------------------
+
+
+usage: oclip cloud-list
+
+List the configured clouds and Onap service subscriptions
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-s | --long]
+ [-D | --context] [-u | --host-username] [-a | --no-auth]
+ [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      whether to use given host-url directly without
+                        looking into catalog, it will overrid the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          verify the command using available command sample
+                        file and mocking file. By default it goes with
+                        mock style. To enable the verification in real
+                        time, set DISABLE_MOCKING=true in the context
+                        param. It is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ cloud              Onap cloud and is of type STRING.
+ region             Onap cloud region and is of type STRING.
+ tenant             Onap cloud tenat and is of type STRING.
+ tenant-id          Onap cloud tenat id and is of type STRING.
+ customer           Onap cloud customer and is of type STRING.
+ service            Onap cloud service and is of type STRING.
+ resource-version   Onap cloud resource version and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
