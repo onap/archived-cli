@@ -29,8 +29,6 @@ RUN apt-get update && apt-get install -y lighttpd git curl pandoc vim && \
     cp $OPEN_CLI_HOME/http/web/*.* /var/www-data/servers/open-cli/ && \
     cp $OPEN_CLI_HOME/http/lighttpd/10-proxy.conf /etc/lighttpd/conf-enabled/ && \
     cp $OPEN_CLI_HOME/installer/cli-*.zip /var/www-data/servers/open-cli/oclip.zip
-
-
 EXPOSE 80
 EXPOSE 8080
 
