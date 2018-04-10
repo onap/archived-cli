@@ -13,8 +13,10 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
+
 name: vnf-create
-description: Create a vnf
+
+description: Create a vnf directly into AAI.
 
 info:
   product: onap-beijing
