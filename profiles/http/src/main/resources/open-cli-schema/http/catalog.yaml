@@ -1,4 +1,4 @@
-# Copyright 2018 Huawei Technologies Co., Ltd.
+# Copyright 2017-18 Huawei Technologies Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,10 @@ open_cli_schema_version: 1.0
 
 name: catalog
 
-description: cli catalog command to find the base path for service.
+description: |
+  Provides catalog discovery support to find the base api path for given service from product's catalog service.
+  Any product want to support catalog, it could derive from this command. Currently ONAP uses it and create
+  derived command by using ONAP MSB service.
 
 info:
   product: open-cli

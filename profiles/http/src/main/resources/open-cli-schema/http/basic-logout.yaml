@@ -1,4 +1,4 @@
-# Copyright 2018 Huawei Technologies Co., Ltd.
+# Copyright 2017-18 Huawei Technologies Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,8 @@ open_cli_schema_version: 1.0
 
 name: basic-logout
 
-description: basic logout auth command
+description: |
+  Provides HTTP basic authorization support. As part of logout, it invalidate authoirzation key generated while login.
 
 info:
   product: open-cli

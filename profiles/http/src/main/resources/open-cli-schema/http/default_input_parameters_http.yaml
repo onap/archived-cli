@@ -1,4 +1,4 @@
-# Copyright 2018 Huawei Technologies Co., Ltd.
+# Copyright 2017-18 Huawei Technologies Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,14 +42,14 @@ parameters:
     is_default_param: true
   - name: no-auth
     type: bool
-    description: whether to authenticate user or not
+    description: Whether to authenticate user or not
     short_option: a
     long_option: no-auth
     default_value: false
     is_default_param: true
   - name: no-catalog
     type: bool
-    description: whether to use given host-url directly without looking into catalog, it will override the service->mode.
+    description: Whether to use given host-url directly or discover it from catalog, it will override the service->mode.
     short_option: C
     long_option: no-catalog
     is_optional: true
@@ -57,7 +57,9 @@ parameters:
     default_value: false
   - name: verify
     type: bool
-    description: verify the command using available command sample file and mocking file. By default it goes with mock style. To enable the verification in real time, set DISABLE_MOCKING=true in the context param.
+    description: |
+       Helps to verify the command using samples provides under open-cli-samples directory. By default, it goes with mock.
+       To enable the verification of samples in real time, set DISABLE_MOCKING=true in the context parameter.
     default_value: false
     is_include: true
     is_optional: true
