@@ -69,7 +69,7 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/resources
     method: POST
-    body: '{"contactId": "${onap-username}", "vendorRelease": "1.0", "requirements": {}, "artifacts": {}, "capabilities": {}, "componentInstancesProperties": {}, "deploymentArtifacts": {}, "icon": "defaulticon", "vendorName": "${vendor-name}", "description": "${description}", "tags": ["CLI", "${name}"], "groups": [], "properties": [], "categories": [{"subcategories": [{"normalizedName": "abstract", "name": "Abstract", "uniqueId": "resourceNewCategory.generic.abstract", "icons": ["database"]}], "normalizedName": "generic", "name": "Generic", "uniqueId": "resourceNewCategory.generic"}], "name": "${name}", "toscaArtifacts": {}, "csarUUID": "${vsp-id}", "resourceType": "VF", "csarVersion": "${vsp-version}", "componentType": "RESOURCE", "componentInstancesAttributes": {}, "attributes": [], "componentInstances": []}'
+    body: '{"contactId": "${host-username}", "vendorRelease": "1.0", "requirements": {}, "artifacts": {}, "capabilities": {}, "componentInstancesProperties": {}, "deploymentArtifacts": {}, "icon": "defaulticon", "vendorName": "${vendor-name}", "description": "${description}", "tags": ["CLI", "${name}"], "groups": [], "properties": [], "categories": [{"subcategories": [{"normalizedName": "abstract", "name": "Abstract", "uniqueId": "resourceNewCategory.generic.abstract", "icons": ["database"]}], "normalizedName": "generic", "name": "Generic", "uniqueId": "resourceNewCategory.generic"}], "name": "${name}", "toscaArtifacts": {}, "csarUUID": "${vsp-id}", "resourceType": "VF", "csarVersion": "${vsp-version}", "componentType": "RESOURCE", "componentInstancesAttributes": {}, "attributes": [], "componentInstances": []}'
   success_codes:
     - 201
   result_map:
