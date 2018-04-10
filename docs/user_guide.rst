@@ -136,6 +136,8 @@ Following document provides the help message for commands supported in this rele
    :maxdepth: 1
 
    cmd_help.rst
+   cmd_help_onap_amsterdam.rst
+   cmd_help_onap_beijing.rst
 
 Command Samples
 ---------------
@@ -145,6 +147,7 @@ Following document provides the samples for commands supported in this release.
    :maxdepth: 1
 
    cmd_sample.rst
+   cmd_sample_onap_amsterdam.rst
 
 End to end service creation tutorial
 ------------------------------------
@@ -155,11 +158,11 @@ Following document provides the tutorial for service creation using CLI.
 
    end_to_end_onap_cli_commands.rst
 
-PNF/VNF creation tutorial
+PNF/VNF on-boarding tutorial
 ------------------------------------
-Following document provides the tutorial for PNF/VNF creation tutorial using CLI.
+Following document provides the tutorial for PNF/VNF on-boarding tutorial using CLI.
 
 .. toctree::
    :maxdepth: 1
 
-   step_to_import_PNF.rst
+   pnf_on_boarding.rst
