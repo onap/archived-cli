@@ -9,14 +9,20 @@ CLI Console
 
 Please install the CLI by following guidelines provided in :ref:`OOM_and_HEAT_based_deployment`
 
-After installation, ONAP CLI can be used in following form:
+After installation, CLI can be used in following form:
 
-Command Shell
--------------
+Linux Command Shell
+-------------------
+It is available when user has access to the server where CLI is installed using zip or docker container.
+In this mode, user can use CLI in scripting mode or interactive mode as mentioned in :ref:`user_guide`
 
 .. image:: images/portal-cli-shell.png
 
+
 Web Command Console
 --------------------
+Once CLI is installed using docker container, user could access the web console by using the url http:<<cli-host-server>:30260
+
+Here, <cli-host-server> is the IP address of server where CLI container is installed.
 
 .. image:: images/portal-cli-web-con.png
