@@ -11,8 +11,7 @@
 
 
 onap-beijing
-==========================
-
+==============
 
 [1] basic-login
 -----------------------------------------------
@@ -39,7 +38,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -103,7 +102,7 @@ where::
                     default, it is read from environment variable
                     OPEN_CLI_HOST_URL.
  -C | --no-catalog  whether to use given host-url directly without
-                    looking into catalog, it will overrid the
+                    looking into catalog, it will override the
                     service->mode. It is of type BOOL. It is
                     optional.
  -h | --help        print help message. It is of type BOOL.
@@ -154,7 +153,7 @@ where::
                                   default, it is read from environment variable
                                   OPEN_CLI_HOST_URL.
  -C | --no-catalog                whether to use given host-url directly without
-                                  looking into catalog, it will overrid the
+                                  looking into catalog, it will override the
                                   service->mode. It is of type BOOL. It is
                                   optional.
  -l | --catalog-service-name      service name registered in catalog service. It is
@@ -217,7 +216,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -282,7 +281,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -348,7 +347,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -421,7 +420,7 @@ where::
  -y | --subscriber-name   Onap subscriber name. It is of type STRING. By
                           default, it is .
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -483,7 +482,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -547,7 +546,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -614,7 +613,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -685,7 +684,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -754,7 +753,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -831,7 +830,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -902,7 +901,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -968,7 +967,7 @@ where::
                               default, it is read from environment variable
                               OPEN_CLI_HOST_URL.
  -C | --no-catalog            whether to use given host-url directly without
-                              looking into catalog, it will overrid the
+                              looking into catalog, it will override the
                               service->mode. It is of type BOOL. It is
                               optional.
  -b | --threshold-unit        threshold. It is of type STRING. By default, it
@@ -1051,7 +1050,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1126,7 +1125,7 @@ where::
  -r | --start-node-type   start-node-type. It is of type STRING. By
                           default, it is .
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1197,7 +1196,7 @@ where::
                                     default, it is read from environment variable
                                     OPEN_CLI_HOST_URL.
  -C | --no-catalog                  whether to use given host-url directly without
-                                    looking into catalog, it will overrid the
+                                    looking into catalog, it will override the
                                     service->mode. It is of type BOOL. It is
                                     optional.
  -h | --help                        print help message. It is of type BOOL.
@@ -1268,7 +1267,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1340,7 +1339,7 @@ where::
                                     default, it is read from environment variable
                                     OPEN_CLI_HOST_URL.
  -C | --no-catalog                  whether to use given host-url directly without
-                                    looking into catalog, it will overrid the
+                                    looking into catalog, it will override the
                                     service->mode. It is of type BOOL. It is
                                     optional.
  -h | --help                        print help message. It is of type BOOL.
@@ -1409,7 +1408,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1487,7 +1486,7 @@ where::
                         is of type STRING. It is optional. By default, it
                         is .
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -1566,7 +1565,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1630,7 +1629,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -1704,7 +1703,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
