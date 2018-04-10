@@ -79,7 +79,7 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/services
     method: POST
-    body: '{"componentType": "SERVICE", "properties": [], "requirements": {}, "toscaArtifacts": {}, "tags": ["CLI", "${name}"], "artifacts": {}, "description": "${description}", "serviceApiArtifacts": {}, "capabilities": {}, "name": "${name}", "componentInstancesProperties": {}, "componentInstancesAttributes": {}, "contactId": "${onap-username}", "groups": [], "projectCode": "${project-code}", "deploymentArtifacts": {}, "attributes": [], "componentInstances": [], "categories": [{"normalizedName": "${category}", "name": "${category-display-name}", "uniqueId": "serviceNewCategory.${category}", "icons": ["${icon-id}"]}], "icon": "${icon-id}"}'
+    body: '{"componentType": "SERVICE", "properties": [], "requirements": {}, "toscaArtifacts": {}, "tags": ["CLI", "${name}"], "artifacts": {}, "description": "${description}", "serviceApiArtifacts": {}, "capabilities": {}, "name": "${name}", "componentInstancesProperties": {}, "componentInstancesAttributes": {}, "contactId": "${host-username}", "groups": [], "projectCode": "${project-code}", "deploymentArtifacts": {}, "attributes": [], "componentInstances": [], "categories": [{"normalizedName": "${category}", "name": "${category-display-name}", "uniqueId": "serviceNewCategory.${category}", "icons": ["${icon-id}"]}], "icon": "${icon-id}"}'
   success_codes:
     - 200
     - 201
