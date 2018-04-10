@@ -12,12 +12,15 @@
 onap-amsterdam
 ==========================
 
+ONAP Amsterdam was the first release of ONAP product after merging open-o and open-ecomp together.
+It provides platform to creating and maintaining the network services for VoLTE and vCPE types and
+CLI provides following commands for operating ONAP with this support.
 
 [1] basic-login
 -----------------------------------------------
 
 
-usage: oclip basic-login
+usage: onap basic-login
 
 ONAP basic login auth command
 
@@ -38,7 +41,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will overridee the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -81,7 +84,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip basic-logout
+usage: onap basic-logout
 
 ONAP basic logout auth command
 
@@ -102,7 +105,7 @@ where::
                     default, it is read from environment variable
                     OPEN_CLI_HOST_URL.
  -C | --no-catalog  whether to use given host-url directly without
-                    looking into catalog, it will overrid the
+                    looking into catalog, it will override the
                     service->mode. It is of type BOOL. It is
                     optional.
  -h | --help        print help message. It is of type BOOL.
@@ -132,7 +135,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip catalog
+usage: onap catalog
 
 ONAP catalog command to find the base path for service.
 
@@ -153,7 +156,7 @@ where::
                                   default, it is read from environment variable
                                   OPEN_CLI_HOST_URL.
  -C | --no-catalog                whether to use given host-url directly without
-                                  looking into catalog, it will overrid the
+                                  looking into catalog, it will override the
                                   service->mode. It is of type BOOL. It is
                                   optional.
  -l | --catalog-service-name      service name registered in catalog service. It is
@@ -194,7 +197,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip cloud-create
+usage: onap cloud-create
 
 Create a cloud region in Onap
 
@@ -216,7 +219,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -258,7 +261,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip cloud-delete
+usage: onap cloud-delete
 
 Delete a cloud region from Onap
 
@@ -281,7 +284,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -325,7 +328,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip cloud-list
+usage: onap cloud-list
 
 List the configured clouds and Onap service subscriptions
 
@@ -347,7 +350,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -396,7 +399,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip customer-create
+usage: onap customer-create
 
 Create a customer in Onap
 
@@ -420,7 +423,7 @@ where::
  -y | --subscriber-name   Onap subscriber name. It is of type STRING. By
                           default, it is .
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -460,7 +463,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip customer-delete
+usage: onap customer-delete
 
 Delete a customer from Onap
 
@@ -482,7 +485,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -524,7 +527,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip customer-list
+usage: onap customer-list
 
 Lists the registered customers in Onap
 
@@ -546,7 +549,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -591,7 +594,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip customer-show
+usage: onap customer-show
 
 Retrieves the given registered customer in Onap
 
@@ -613,7 +616,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -662,7 +665,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip ems-list
+usage: onap ems-list
 
 List the configured ems
 
@@ -684,7 +687,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -728,7 +731,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip ems-register
+usage: onap ems-register
 
 Register a EMS in Onap
 
@@ -753,7 +756,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -808,7 +811,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip ems-show
+usage: onap ems-show
 
 Show the details of configured ems
 
@@ -830,7 +833,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -879,7 +882,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip ems-unregister
+usage: onap ems-unregister
 
 Un-register a EMS in Onap
 
@@ -901,7 +904,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -942,7 +945,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip ep-create
+usage: onap ep-create
 
 Create Entitlement Pool
 
@@ -967,7 +970,7 @@ where::
                               default, it is read from environment variable
                               OPEN_CLI_HOST_URL.
  -C | --no-catalog            whether to use given host-url directly without
-                              looking into catalog, it will overrid the
+                              looking into catalog, it will override the
                               service->mode. It is of type BOOL. It is
                               optional.
  -b | --threshold-unit        threshold. It is of type STRING. By default, it
@@ -1028,7 +1031,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip ep-show
+usage: onap ep-show
 
 Details of the Entitlement Pool
 
@@ -1050,7 +1053,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1100,7 +1103,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip license-group-create
+usage: onap license-group-create
 
 Create License Group
 
@@ -1123,7 +1126,7 @@ where::
                                     default, it is read from environment variable
                                     OPEN_CLI_HOST_URL.
  -C | --no-catalog                  whether to use given host-url directly without
-                                    looking into catalog, it will overrid the
+                                    looking into catalog, it will override the
                                     service->mode. It is of type BOOL. It is
                                     optional.
  -h | --help                        print help message. It is of type BOOL.
@@ -1172,7 +1175,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip license-group-show
+usage: onap license-group-show
 
 Details of the License Group
 
@@ -1194,7 +1197,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1244,7 +1247,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip license-model-create
+usage: onap license-model-create
 
 Create License Model
 
@@ -1266,7 +1269,7 @@ where::
                                     default, it is read from environment variable
                                     OPEN_CLI_HOST_URL.
  -C | --no-catalog                  whether to use given host-url directly without
-                                    looking into catalog, it will overrid the
+                                    looking into catalog, it will override the
                                     service->mode. It is of type BOOL. It is
                                     optional.
  -h | --help                        print help message. It is of type BOOL.
@@ -1313,7 +1316,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip license-model-show
+usage: onap license-model-show
 
 Details of the License Model
 
@@ -1335,7 +1338,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1384,7 +1387,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip microservice-create
+usage: onap microservice-create
 
 Register microservice into Onap
 
@@ -1407,7 +1410,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1465,7 +1468,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip microservice-delete
+usage: onap microservice-delete
 
 Deletes the micro service from Onap
 
@@ -1487,7 +1490,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1525,7 +1528,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip microservice-list
+usage: onap microservice-list
 
 Lists the registetred micro services in Onap
 
@@ -1546,7 +1549,7 @@ where::
                     default, it is read from environment variable
                     OPEN_CLI_HOST_URL.
  -C | --no-catalog  whether to use given host-url directly without
-                    looking into catalog, it will overrid the
+                    looking into catalog, it will override the
                     service->mode. It is of type BOOL. It is
                     optional.
  -h | --help        print help message. It is of type BOOL.
@@ -1588,7 +1591,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip microservice-show
+usage: onap microservice-show
 
 Details the registered microservice in Onap
 
@@ -1609,7 +1612,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -1655,7 +1658,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip sdc-basic-login
+usage: onap sdc-basic-login
 
 ONAP basic login auth command
 
@@ -1676,7 +1679,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -1720,7 +1723,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip sdnc-list
+usage: onap sdnc-list
 
 List the configured sdnc
 
@@ -1742,7 +1745,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -1786,7 +1789,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip sdnc-register
+usage: onap sdnc-register
 
 Register a SDNC in Onap
 
@@ -1838,7 +1841,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -d | --debug           Enable debug output. It is of type BOOL.
@@ -1872,7 +1875,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip sdnc-unregister
+usage: onap sdnc-unregister
 
 Un-register a VNFM in Onap
 
@@ -1894,7 +1897,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -1934,7 +1937,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-create
+usage: onap service-create
 
 Create a service instance using MSO
 
@@ -1959,7 +1962,7 @@ where::
                             default, it is read from environment variable
                             OPEN_CLI_HOST_URL.
  -C | --no-catalog          whether to use given host-url directly without
-                            looking into catalog, it will overrid the
+                            looking into catalog, it will override the
                             service->mode. It is of type BOOL. It is
                             optional.
  -e | --model-invariant-id  model invariant id generated by ASDC. It is of
@@ -2023,7 +2026,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-delete
+usage: onap service-delete
 
 Delete service instance (experimental)
 
@@ -2049,7 +2052,7 @@ where::
  -e | --model-name          model name available in SDC catalog. It is of
                             type STRING. By default, it is .
  -C | --no-catalog          whether to use given host-url directly without
-                            looking into catalog, it will overrid the
+                            looking into catalog, it will override the
                             service->mode. It is of type BOOL. It is
                             optional.
  -h | --help                print help message. It is of type BOOL.
@@ -2101,7 +2104,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-list
+usage: onap service-list
 
 List created service instance
 
@@ -2123,7 +2126,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -2176,7 +2179,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-add-vf
+usage: onap service-model-add-vf
 
 Helps to add VF into service models in SDC
 
@@ -2199,7 +2202,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2250,7 +2253,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-approve
+usage: onap service-model-approve
 
 Approves the Service model in SDC
 
@@ -2272,7 +2275,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2312,7 +2315,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-certify-complete
+usage: onap service-model-certify-complete
 
 Completes the certification of Service model in SDC
 
@@ -2334,7 +2337,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2374,7 +2377,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-certify-request
+usage: onap service-model-certify-request
 
 Request the certification of Service model in SDC
 
@@ -2396,7 +2399,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2436,7 +2439,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-certify-start
+usage: onap service-model-certify-start
 
 Starts the certification of Service model in SDC
 
@@ -2458,7 +2461,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2498,7 +2501,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-checkin
+usage: onap service-model-checkin
 
 Checkin Service model in SDC
 
@@ -2520,7 +2523,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2560,7 +2563,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-checkout
+usage: onap service-model-checkout
 
 Checkout Service model in SDC
 
@@ -2582,7 +2585,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2622,7 +2625,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-create
+usage: onap service-model-create
 
 Create Service model in SDC
 
@@ -2646,7 +2649,7 @@ where::
                                 default, it is read from environment variable
                                 OPEN_CLI_HOST_URL.
  -C | --no-catalog              whether to use given host-url directly without
-                                looking into catalog, it will overrid the
+                                looking into catalog, it will override the
                                 service->mode. It is of type BOOL. It is
                                 optional.
  -h | --help                    print help message. It is of type BOOL.
@@ -2701,7 +2704,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-distribute
+usage: onap service-model-distribute
 
 Distributes the Service model in SDC
 
@@ -2723,7 +2726,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2763,7 +2766,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-list
+usage: onap service-model-list
 
 List the service model in SDC
 
@@ -2785,7 +2788,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -2834,7 +2837,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-model-revert
+usage: onap service-model-revert
 
 Checkout Service model in SDC
 
@@ -2856,7 +2859,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2896,7 +2899,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-type-create
+usage: onap service-type-create
 
 Add a service type in Onap
 
@@ -2918,7 +2921,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -2960,7 +2963,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-type-delete
+usage: onap service-type-delete
 
 Delete a service type from Onap
 
@@ -2982,7 +2985,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -3024,7 +3027,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service-type-list
+usage: onap service-type-list
 
 List the service types configured in Onap
 
@@ -3046,7 +3049,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -3092,7 +3095,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip service2vf-model-list
+usage: onap service2vf-model-list
 
 List the VF in a given service model in SDC
 
@@ -3114,7 +3117,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -z | --service-model-id  Service model uuid. It is of type STRING. By
@@ -3162,7 +3165,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip subscription-create
+usage: onap subscription-create
 
 Create a subscription of a customer for given service in specific cloud region in Onap
 
@@ -3185,7 +3188,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -3233,7 +3236,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip subscription-delete
+usage: onap subscription-delete
 
 Delete the subscription for a given customer in Onap
 
@@ -3256,7 +3259,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -3300,7 +3303,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip subscription-list
+usage: onap subscription-list
 
 Lists the subscription for a given customer in Onap
 
@@ -3322,7 +3325,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -3372,7 +3375,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip tenant-create
+usage: onap tenant-create
 
 Create a tenant under given cloud region in Onap
 
@@ -3395,7 +3398,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -3441,7 +3444,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip tenant-delete
+usage: onap tenant-delete
 
 Delete tenant under given cloud region in Onap
 
@@ -3464,7 +3467,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -3510,7 +3513,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip tenant-list
+usage: onap tenant-list
 
 Lists the tenants under given cloud region in Onap
 
@@ -3532,7 +3535,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -3582,7 +3585,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-create
+usage: onap vf-create
 
 Create a VF
 
@@ -3649,7 +3652,7 @@ where::
                                     default, it is read from environment variable
                                     OPEN_CLI_HOST_URL.
  -C | --no-catalog                  whether to use given host-url directly without
-                                    looking into catalog, it will overrid the
+                                    looking into catalog, it will override the
                                     service->mode. It is of type BOOL. It is
                                     optional.
  -i | --vf-model-customization-id   vf model customization id. It is of type STRING.
@@ -3679,7 +3682,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-delete
+usage: onap vf-delete
 
 delete a VF (experimental)
 
@@ -3705,7 +3708,7 @@ where::
  -e | --model-name            model name available in SDC catalog. It is of
                               type STRING. By default, it is .
  -C | --no-catalog            whether to use given host-url directly without
-                              looking into catalog, it will overrid the
+                              looking into catalog, it will override the
                               service->mode. It is of type BOOL. It is
                               optional.
  -h | --help                  print help message. It is of type BOOL.
@@ -3757,7 +3760,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-list
+usage: onap vf-list
 
 List created VF instances for a service instance
 
@@ -3780,7 +3783,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -3830,7 +3833,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-model-certify-complete
+usage: onap vf-model-certify-complete
 
 Complete certifying Virtual function
 
@@ -3852,7 +3855,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -3892,7 +3895,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-model-certify-request
+usage: onap vf-model-certify-request
 
 Request for certifying Virtual function
 
@@ -3914,7 +3917,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -3954,7 +3957,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-model-certify-start
+usage: onap vf-model-certify-start
 
 Start certifying Virtual function
 
@@ -3976,7 +3979,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -4016,7 +4019,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-model-checkin
+usage: onap vf-model-checkin
 
 Checkin Virtual function
 
@@ -4038,7 +4041,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -4078,7 +4081,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-model-create
+usage: onap vf-model-create
 
 Create Virtual function from Vendor Software Product
 
@@ -4101,7 +4104,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -4154,7 +4157,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-model-list
+usage: onap vf-model-list
 
 List the VF resource model in SDC
 
@@ -4176,7 +4179,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -4227,7 +4230,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-module-create
+usage: onap vf-module-create
 
 Create a VF Module
 
@@ -4251,7 +4254,7 @@ where::
                                 default, it is read from environment variable
                                 OPEN_CLI_HOST_URL.
  -C | --no-catalog              whether to use given host-url directly without
-                                looking into catalog, it will overrid the
+                                looking into catalog, it will override the
                                 service->mode. It is of type BOOL. It is
                                 optional.
  -h | --help                    print help message. It is of type BOOL.
@@ -4303,7 +4306,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf-show
+usage: onap vf-show
 
 Show details for VF
 
@@ -4325,7 +4328,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -4377,7 +4380,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vf2vfmodule-model-list
+usage: onap vf2vfmodule-model-list
 
 List the VF modules in a given VF model in SDC
 
@@ -4399,7 +4402,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -4448,7 +4451,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vfmodule-create
+usage: onap vfmodule-create
 
 Create a VF module
 
@@ -4515,7 +4518,7 @@ where::
                                     default, it is read from environment variable
                                     OPEN_CLI_HOST_URL.
  -C | --no-catalog                  whether to use given host-url directly without
-                                    looking into catalog, it will overrid the
+                                    looking into catalog, it will override the
                                     service->mode. It is of type BOOL. It is
                                     optional.
  -d | --debug                       Enable debug output. It is of type BOOL.
@@ -4557,7 +4560,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vfmodule-delete
+usage: onap vfmodule-delete
 
 delete a VF module (experimental)
 
@@ -4581,7 +4584,7 @@ where::
                                 default, it is read from environment variable
                                 OPEN_CLI_HOST_URL.
  -C | --no-catalog              whether to use given host-url directly without
-                                looking into catalog, it will overrid the
+                                looking into catalog, it will override the
                                 service->mode. It is of type BOOL. It is
                                 optional.
  -h | --help                    print help message. It is of type BOOL.
@@ -4635,7 +4638,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vim-list
+usage: onap vim-list
 
 List the configured vims
 
@@ -4657,7 +4660,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -4713,7 +4716,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vim-register
+usage: onap vim-register
 
 Register a VIM under a given cloud region in Onap
 
@@ -4771,7 +4774,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -d | --debug           Enable debug output. It is of type BOOL.
@@ -4804,7 +4807,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vim-unregister
+usage: onap vim-unregister
 
 Un-register a VIM under from cloud region in Onap
 
@@ -4827,7 +4830,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -4872,7 +4875,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-aggreement-create
+usage: onap vlm-aggreement-create
 
 Create license aggreement
 
@@ -4897,7 +4900,7 @@ where::
  -y | --vlm-id                License Model ID. It is of type STRING. By
                               default, it is .
  -C | --no-catalog            whether to use given host-url directly without
-                              looking into catalog, it will overrid the
+                              looking into catalog, it will override the
                               service->mode. It is of type BOOL. It is
                               optional.
  -h | --help                  print help message. It is of type BOOL.
@@ -4948,7 +4951,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-aggreement-list
+usage: onap vlm-aggreement-list
 
 List license aggreement
 
@@ -4970,7 +4973,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -y | --vlm-version     License Model version. It is of type STRING. By
@@ -5018,7 +5021,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-checkin
+usage: onap vlm-checkin
 
 Checkin Vendor License Model
 
@@ -5040,7 +5043,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -y | --vlm-version     VLM version. It is of type STRING. By default, it
@@ -5082,7 +5085,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-checkout
+usage: onap vlm-checkout
 
 Checkout Vendor License Model
 
@@ -5104,7 +5107,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -y | --vlm-version     VLM version. It is of type STRING. By default, it
@@ -5146,7 +5149,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-create
+usage: onap vlm-create
 
 Create License Model
 
@@ -5168,7 +5171,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -5215,7 +5218,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-entitlement-pool-create
+usage: onap vlm-entitlement-pool-create
 
 Create Entitlement Pool
 
@@ -5241,7 +5244,7 @@ where::
  -y | --vlm-id                        License Model ID. It is of type STRING. By
                                       default, it is .
  -C | --no-catalog                    whether to use given host-url directly without
-                                      looking into catalog, it will overrid the
+                                      looking into catalog, it will override the
                                       service->mode. It is of type BOOL. It is
                                       optional.
  -h | --help                          print help message. It is of type BOOL.
@@ -5293,7 +5296,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-entitlement-pool-list
+usage: onap vlm-entitlement-pool-list
 
 entitlement pool list in a license model
 
@@ -5315,7 +5318,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -y | --vlm-version     License Model version. It is of type STRING. By
@@ -5363,7 +5366,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-feature-group-create
+usage: onap vlm-feature-group-create
 
 Create feature group Pool
 
@@ -5389,7 +5392,7 @@ where::
  -y | --vlm-id                        License Model ID. It is of type STRING. By
                                       default, it is .
  -C | --no-catalog                    whether to use given host-url directly without
-                                      looking into catalog, it will overrid the
+                                      looking into catalog, it will override the
                                       service->mode. It is of type BOOL. It is
                                       optional.
  -h | --help                          print help message. It is of type BOOL.
@@ -5446,7 +5449,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-feature-group-list
+usage: onap vlm-feature-group-list
 
 Feature group list in a license model
 
@@ -5468,7 +5471,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -y | --vlm-version     License Model version. It is of type STRING. By
@@ -5516,7 +5519,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-key-group-create
+usage: onap vlm-key-group-create
 
 Create License Key Group
 
@@ -5539,7 +5542,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -5591,7 +5594,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-key-group-list
+usage: onap vlm-key-group-list
 
 key group list in a license model
 
@@ -5613,7 +5616,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -y | --vlm-version     License Model version. It is of type STRING. By
@@ -5661,7 +5664,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-list
+usage: onap vlm-list
 
 List License Model
 
@@ -5683,7 +5686,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -5730,7 +5733,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-revert
+usage: onap vlm-revert
 
 Revert Vendor License Model
 
@@ -5752,7 +5755,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -y | --vlm-version     VLM version. It is of type STRING. By default, it
@@ -5794,7 +5797,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vlm-submit
+usage: onap vlm-submit
 
 Submit Vendor License Model
 
@@ -5816,7 +5819,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -y | --vlm-version     VLM version. It is of type STRING. By default, it
@@ -5858,7 +5861,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vnfm-list
+usage: onap vnfm-list
 
 List the configured vnfm
 
@@ -5880,7 +5883,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -5926,7 +5929,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vnfm-register
+usage: onap vnfm-register
 
 Register a VNFM in Onap
 
@@ -5951,7 +5954,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -6007,7 +6010,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vnfm-show
+usage: onap vnfm-show
 
 Show the VNFM in Onap
 
@@ -6029,7 +6032,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -6078,7 +6081,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vnfm-unregister
+usage: onap vnfm-unregister
 
 Un-register a VNFM in Onap
 
@@ -6100,7 +6103,7 @@ where::
                           default, it is read from environment variable
                           OPEN_CLI_HOST_URL.
  -C | --no-catalog        whether to use given host-url directly without
-                          looking into catalog, it will overrid the
+                          looking into catalog, it will override the
                           service->mode. It is of type BOOL. It is
                           optional.
  -h | --help              print help message. It is of type BOOL.
@@ -6141,7 +6144,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-add-artifact
+usage: onap vsp-add-artifact
 
 Upload the CSAR file to VSP
 
@@ -6163,7 +6166,7 @@ where::
                       default, it is read from environment variable
                       OPEN_CLI_HOST_URL.
  -C | --no-catalog    whether to use given host-url directly without
-                      looking into catalog, it will overrid the
+                      looking into catalog, it will override the
                       service->mode. It is of type BOOL. It is
                       optional.
  -h | --help          print help message. It is of type BOOL.
@@ -6199,7 +6202,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-checkin
+usage: onap vsp-checkin
 
 Checkin Vendor Software Product
 
@@ -6221,7 +6224,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -6263,7 +6266,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-checkout
+usage: onap vsp-checkout
 
 Checkout Vendor Software Product
 
@@ -6285,7 +6288,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -6327,7 +6330,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-create
+usage: onap vsp-create
 
 Create Vendor Software Product
 
@@ -6354,7 +6357,7 @@ where::
  -j | --vlm-feature-group-id  Feature Group ID. It is of type STRING. By
                               default, it is .
  -C | --no-catalog            whether to use given host-url directly without
-                              looking into catalog, it will overrid the
+                              looking into catalog, it will override the
                               service->mode. It is of type BOOL. It is
                               optional.
  -h | --help                  print help message. It is of type BOOL.
@@ -6413,7 +6416,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-list
+usage: onap vsp-list
 
 List of the Vendor Software Products
 
@@ -6435,7 +6438,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -6484,7 +6487,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-package
+usage: onap vsp-package
 
 Package Vendor Software Product
 
@@ -6506,7 +6509,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -6548,7 +6551,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-revert
+usage: onap vsp-revert
 
 Revert Vendor Software Product
 
@@ -6570,7 +6573,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -6612,7 +6615,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-show
+usage: onap vsp-show
 
 Details of the Vendor Software Product
 
@@ -6634,7 +6637,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -6688,7 +6691,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-submit
+usage: onap vsp-submit
 
 Submit Vendor Software Product
 
@@ -6710,7 +6713,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -6752,7 +6755,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip vsp-validate
+usage: onap vsp-validate
 
 Validated the uploaded Vendor Software Product
 
@@ -6774,7 +6777,7 @@ where::
                         default, it is read from environment variable
                         OPEN_CLI_HOST_URL.
  -C | --no-catalog      whether to use given host-url directly without
-                        looking into catalog, it will overrid the
+                        looking into catalog, it will override the
                         service->mode. It is of type BOOL. It is
                         optional.
  -h | --help            print help message. It is of type BOOL.
@@ -6826,7 +6829,7 @@ sample-helloworld
 -----------------------------------------------
 
 
-usage: oclip hello-world
+usage: onap hello-world
 
 First cmd hello world
 
@@ -6870,7 +6873,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip hello-world-http
+usage: onap hello-world-http
 
 First cmd hello world using http runing under
 lighttpd in cli at http://<cli-ip>:8080/version.json
@@ -6893,7 +6896,7 @@ where::
                     default, it is read from environment variable
                     OPEN_CLI_HOST_URL.
  -C | --no-catalog  whether to use given host-url directly without
-                    looking into catalog, it will overrid the
+                    looking into catalog, it will override the
                     service->mode. It is of type BOOL. It is
                     optional.
  -h | --help        print help message. It is of type BOOL.
@@ -6929,7 +6932,7 @@ Error::
 -----------------------------------------------
 
 
-usage: oclip hello-world-snmp
+usage: onap hello-world-snmp
 
 Sample yaml usin snmp profile
 
