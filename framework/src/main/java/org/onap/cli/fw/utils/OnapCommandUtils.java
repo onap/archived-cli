@@ -17,6 +17,8 @@
 package org.onap.cli.fw.utils;
 
 import static org.onap.cli.fw.conf.OnapCommandConstants.BOOLEAN_VALUE;
+import static org.onap.cli.fw.conf.OnapCommandConstants.IS_INCLUDE;
+import static org.onap.cli.fw.conf.OnapCommandConstants.BOOLEAN_TRUE;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,8 +74,9 @@ public class OnapCommandUtils {
         for (String param : totalParams) {
             boolean isMandatory = mandatoryParams.contains(param);
             boolean isYamlContains = yamlMap.containsKey(param);
+            boolean isInclude = yamlMap.containsKey(IS_INCLUDE) && yamlMap.get(IS_INCLUDE).toString().equals(BOOLEAN_TRUE);
             if (isMandatory) {
-                if (!isYamlContains) {
+                if (!isYamlContains && isInclude) {
                     schemaErrors.add("Mandatory attribute '" + param + "' is missing under '" + section + "'");
                 } else {
                     String value = String.valueOf(yamlMap.get(param));
@@ -346,4 +349,6 @@ public class OnapCommandUtils {
     }
 
 }
+
+
 
