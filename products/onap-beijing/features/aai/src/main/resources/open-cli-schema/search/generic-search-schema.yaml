@@ -72,4 +72,7 @@ http:
   result_map:
     resource-type: $b{result-data.[*].resource-type}
     resource-link: $b{result-data.[*].resource-link}
+<<<<<<< ea775e9468fc70786f140362c614ccf312fa5a60
 
+=======
+>>>>>>> Update generic serarch cli docs
