@@ -49,7 +49,7 @@ parameters:
     is_default_param: true
   - name: no-catalog
     type: bool
-    description: whether to use given host-url directly without looking into catalog, it will overrid the service->mode.
+    description: whether to use given host-url directly without looking into catalog, it will override the service->mode.
     short_option: C
     long_option: no-catalog
     is_optional: true
