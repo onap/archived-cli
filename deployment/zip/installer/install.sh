@@ -28,8 +28,11 @@ chmod +x ./bin/oclip.sh
 
 #Make oclip available in path
 ln -sf ./bin/oclip.sh /usr/bin/oclip
+ln -sf ./bin/oclip.sh /usr/bin/onap
 
 #Print the version
 oclip -v
+
+onap -v
 
 cd -
