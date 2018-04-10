@@ -44,11 +44,6 @@
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-sample</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
             <artifactId>cli-products-onap-beijing-catalog</artifactId>
             <version>${project.version}</version>
         </dependency>
