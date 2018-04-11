@@ -10,13 +10,12 @@ RUN cd /tmp && curl -O https://storage.googleapis.com/golang/go1.9.linux-amd64.t
     mv /tmp/gotty/bin/gotty /usr/sbin/
 
 #Environments
-ENV OPEN_CLI_HOME /opt/oclip
-ENV OPEN_CLI_DEBUG false
-ENV OPEN_CLI_DEBUG_PORT 5005
-ENV OPEN_CLI_MODE console
-ENV OPEN_CLI_PRODUCT_IN_USE open-cli
-
-ENV GOTTY_TITLE_FORMAT {{ .command }}
+ENV OPEN_CLI_HOME=/opt/oclip \
+    OPEN_CLI_DEBUG=false \
+    OPEN_CLI_DEBUG_PORT=5005 \
+    OPEN_CLI_MODE=console \
+    OPEN_CLI_PRODUCT_IN_USE=open-cli \
+    GOTTY_TITLE_FORMAT="{{ .command }}"
 
 #Copy CLI into docker
 ADD ./STAGE $OPEN_CLI_HOME
