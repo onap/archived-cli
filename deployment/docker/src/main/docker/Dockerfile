@@ -1,6 +1,5 @@
 FROM openjdk:8-jre-slim
 
-#Environments
 ENV OPEN_CLI_HOME=/opt/oclip \
     OPEN_CLI_DEBUG=false \
     OPEN_CLI_DEBUG_PORT=5005 \
@@ -8,7 +7,6 @@ ENV OPEN_CLI_HOME=/opt/oclip \
     OPEN_CLI_PRODUCT_IN_USE=open-cli \
     GOTTY_TITLE_FORMAT="{{ .command }}"
 
-#Copy CLI into docker
 ADD ./STAGE $OPEN_CLI_HOME
 WORKDIR $OPEN_CLI_HOME
 
@@ -24,7 +22,7 @@ RUN apt-get update && apt-get install -y lighttpd git curl pandoc vim && \
     ln  $OPEN_CLI_HOME/bin/oclip.sh /usr/sbin/onap  && \
     if [ ! -d  $OPEN_CLI_HOME/data ]; then mkdir  $OPEN_CLI_HOME/data; fi  && \
     if [ ! -d  $OPEN_CLI_HOME/open-cli-schema ]; then mkdir  $OPEN_CLI_HOME/open-cli-schema; fi && \
-    if [ ! -f /var/log/lighttpd/access.log ]; then touch /var/log/lighttpd/access.log; fi&& \
+    if [ ! -f /var/log/lighttpd/access.log ]; then touch /var/log/lighttpd/access.log; fi && \
     cp /etc/lighttpd/conf-available/10-accesslog.conf /etc/lighttpd/conf-enabled/ && \
     cp $OPEN_CLI_HOME/http/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf && \
     if [ ! -d  /var/www-data/servers/open-cli/ ]; then mkdir -p /var/www-data/servers/open-cli/; fi  && \
@@ -32,10 +30,8 @@ RUN apt-get update && apt-get install -y lighttpd git curl pandoc vim && \
     cp $OPEN_CLI_HOME/http/lighttpd/10-proxy.conf /etc/lighttpd/conf-enabled/ && \
     cp $OPEN_CLI_HOME/installer/cli-*.zip /var/www-data/servers/open-cli/oclip.zip
 
-EXPOSE 80
 
-#RTE: gotty
+EXPOSE 80
 EXPOSE 8080
 
-#Start
 ENTRYPOINT if [ "$OPEN_CLI_MODE" = "daemon" ]; then service lighttpd start; gotty --permit-write --reconnect oclip; else oclip -v && /bin/bash; fi
