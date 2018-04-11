@@ -13,9 +13,9 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: type-search
-description: type-search 
-#sample:  https://172.19.44.123:8443/aai/v11/search/nodes-query?search-node-type=customer&filter=global-customer-id:EQUALS:Orange 
+name: aai-type-search
+description: type-search
+#sample:  https://172.19.44.123:8443/aai/v11/search/nodes-query?search-node-type=customer&filter=global-customer-id:EQUALS:Orange
 
 info:
   product: onap-beijing
@@ -46,7 +46,7 @@ results:
       description: Onap resource-link
       scope: short
       type: string
-    
+
 http:
   service:
     auth: basic
@@ -60,4 +60,4 @@ http:
   result_map:
     resource-type: $b{result-data.[*].resource-type}
     resource-link: $b{result-data.[*].resource-link}
-    
+
