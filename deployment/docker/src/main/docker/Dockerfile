@@ -24,13 +24,13 @@ RUN apt-get update && apt-get install -y lighttpd git curl pandoc vim && \
     ln  $OPEN_CLI_HOME/bin/oclip.sh /usr/sbin/onap  && \
     if [ ! -d  $OPEN_CLI_HOME/data ]; then mkdir  $OPEN_CLI_HOME/data; fi  && \
     if [ ! -d  $OPEN_CLI_HOME/open-cli-schema ]; then mkdir  $OPEN_CLI_HOME/open-cli-schema; fi && \
-    if [ ! -f /var/log/lighttpd/access.log ]; then touch /var/log/lighttpd/access.log; fi
-
-#RTE: lighttpd
-COPY ./STAGE/http/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf
-COPY ./STAGE/http/web /var/www-data/servers/open-cli/
-COPY ./STAGE/http/lighttpd/10-proxy.conf /etc/lighttpd/conf-enabled/
-COPY ./STAGE/installer/cli-*.zip /var/www-data/servers/open-cli/oclip.zip
+    if [ ! -f /var/log/lighttpd/access.log ]; then touch /var/log/lighttpd/access.log; fi&& \
+    cp /etc/lighttpd/conf-available/10-accesslog.conf /etc/lighttpd/conf-enabled/ && \
+    cp $OPEN_CLI_HOME/http/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf && \
+    if [ ! -d  /var/www-data/servers/open-cli/ ]; then mkdir -p /var/www-data/servers/open-cli/; fi  && \
+    cp $OPEN_CLI_HOME/http/web/*.* /var/www-data/servers/open-cli/ && \
+    cp $OPEN_CLI_HOME/http/lighttpd/10-proxy.conf /etc/lighttpd/conf-enabled/ && \
+    cp $OPEN_CLI_HOME/installer/cli-*.zip /var/www-data/servers/open-cli/oclip.zip
 
 EXPOSE 80
 
