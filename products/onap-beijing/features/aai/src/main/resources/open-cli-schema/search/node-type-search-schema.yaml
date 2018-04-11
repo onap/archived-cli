@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: type-search
-description: type-search 
+name: aai-node-type-search
+description: aai-node-type-search 
 #sample:  https://172.19.44.123:8443/aai/v11/search/nodes-query?search-node-type=customer&filter=global-customer-id:EQUALS:Orange 
 
 info:
@@ -30,7 +30,7 @@ parameters:
     long_option: node-type-name
     is_optional: false
   - name: filter
-    description: filter for earch, like ,global-customer-id:EQUALS:Orange
+    description: filter for search, like ,global-customer-id:EQUALS:Orange
     type: string
     short_option: c
     long_option: filter

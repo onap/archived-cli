@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: generic-search
-description: generic-search 
+name: aai-generic-search
+description: aai-generic-search 
 #sample:  https://172.19.44.123:8443/aai/v11/search/generic-query?key=customer.global-customer-id:Orange&include=all&start-node-type=customer&depth=6 
 
 info:
