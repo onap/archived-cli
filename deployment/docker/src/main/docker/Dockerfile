@@ -10,9 +10,9 @@ ENV OPEN_CLI_HOME=/opt/oclip \
 ADD ./STAGE $OPEN_CLI_HOME
 WORKDIR $OPEN_CLI_HOME
 
-RUN apt-get update && apt-get install -y lighttpd git curl pandoc vim && \
-    cd /tmp && curl -O https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz && \
-    tar -xvf go1.9.linux-amd64.tar.gz && mkdir -p /tmp/gotty && \
+RUN apt-get update && apt-get install -y lighttpd git gcc curl pandoc vim && \
+    cd /tmp && curl -O https://storage.googleapis.com/golang/go1.9.linux-$(dpkg --print-architecture).tar.gz && \
+    tar -xvf go1.9.linux-$(dpkg --print-architecture).tar.gz && mkdir -p /tmp/gotty && \
     GOPATH=/tmp/gotty /tmp/go/bin/go get github.com/yudai/gotty && \
     mv /tmp/gotty/bin/gotty /usr/sbin/ && \
     pandoc -t plain $OPEN_CLI_HOME/docs/README.md > $OPEN_CLI_HOME/docs/oclip-readme.txt && \
