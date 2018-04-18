@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
 name: schema-validate
-description: Oclip command to validate schema
+description: OCLIP command to validate schema
 
 info:
   product: open-cli

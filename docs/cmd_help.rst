@@ -10,7 +10,9 @@
 .. _cli_cmd_help:
 
 open-cli
-==========================
+
+Open CLI is the OCLIP platform facilitates creating the commands from YAMLs. Currently it supports commands
+for refreshing the existing command YAMLs and validating the YAMLs.
 
 [1] schema-refresh
 -----------------------------------------------
@@ -18,7 +20,7 @@ open-cli
 
 usage: oclip schema-refresh
 
-Oclip command to refresh schemas stored in open-cli-schema folders.
+OCLIP command to refresh schemas stored in open-cli-schema folders.
 
 Product: open-cli
 Service: schema
@@ -66,7 +68,7 @@ Error::
 
 usage: oclip schema-validate
 
-Oclip command to validate schema
+OCLIP command to validate schema
 
 Product: open-cli
 Service: schema

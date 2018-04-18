@@ -30,7 +30,7 @@ services:
     image: onap/cli
     environment:
       OPEN_CLI_MODE: 'daemon'
-      OPEN_CLI_DEBUG: "true"
+      OPEN_CLI_DEBUG: "false"
     ports:
       - 30260:80
       - 30261:8080

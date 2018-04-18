@@ -1,6 +1,6 @@
 open_cli_schema_version: 1.0
 name: schema-refresh
-description: Oclip command to refresh schemas stored in open-cli-schema folders.
+description: OCLIP command to refresh schemas stored in open-cli-schema folders.
 
 info:
   product: open-cli
