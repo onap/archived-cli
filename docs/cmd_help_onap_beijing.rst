@@ -7,7 +7,7 @@
    :maxdepth: 2
 
 
-.. _cli_cmd_help:
+.. _cli_cmd_help_onap_beijing:
 
 
 onap-beijing
