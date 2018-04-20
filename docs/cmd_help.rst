@@ -10,6 +10,7 @@
 .. _cli_cmd_help:
 
 open-cli
+=========
 
 Open CLI is the OCLIP platform facilitates creating the commands from YAMLs. Currently it supports commands
 for refreshing the existing command YAMLs and validating the YAMLs.
