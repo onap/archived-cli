@@ -302,7 +302,7 @@ public class OnapCli {
                         console.clearScreen();
                         continue;
                     }
-                    this.args.clear();
+                    this.args = new ArrayList<>();
                     this.args.addAll(Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN)));
 
                     if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
