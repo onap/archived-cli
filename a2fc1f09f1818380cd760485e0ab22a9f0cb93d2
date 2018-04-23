@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_2ea80a8b",
+        "filename": "products/onap-beijing/features/aai/src/main/resources/open-cli-schema/search/generic-search-schema.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-04-23T10:11:18Z",
+      "side": 1,
+      "message": "this came from conflict",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "a2fc1f09f1818380cd760485e0ab22a9f0cb93d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
