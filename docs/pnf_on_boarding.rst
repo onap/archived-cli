@@ -12,8 +12,11 @@ This document describe how to insert existing PNF/VNF to AAI with CLI project.
 
 The main step will include:
 1. create customer and service instance in AAI. This step could be done by UUI or VID, OR user can insert customer/service instance node by CLI cmd.
+
 2. create PNF/VNF
+
 3. create relation-ship between service-instance and created PNF/VNFs
+
 4. check the Topology graph through AAI portal
 
 
