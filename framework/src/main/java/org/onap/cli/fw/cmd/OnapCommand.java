@@ -16,13 +16,11 @@
 
 package org.onap.cli.fw.cmd;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -34,16 +32,12 @@ import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.OnapCommandResultType;
-import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.schema.OnapCommandSchemaMerger;
-import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 /**
  * Oclip Command.
