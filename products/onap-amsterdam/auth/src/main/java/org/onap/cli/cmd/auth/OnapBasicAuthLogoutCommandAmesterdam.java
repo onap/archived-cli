@@ -16,15 +16,9 @@
 
 package org.onap.cli.cmd.auth;
 
-import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.http.cmd.BasicAuthLogoutCommand;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 
 @OnapCommandSchema(schema = "basic-logout-onap-1-1.yaml")
 public class OnapBasicAuthLogoutCommandAmesterdam extends BasicAuthLogoutCommand {
-
-    @Override
-    protected void run() throws OnapCommandException {
-        super.run();
-    }
 }
