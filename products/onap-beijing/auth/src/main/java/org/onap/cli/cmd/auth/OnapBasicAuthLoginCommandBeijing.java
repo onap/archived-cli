@@ -16,15 +16,9 @@
 
 package org.onap.cli.cmd.auth;
 
-import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.http.cmd.BasicAuthLoginCommand;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 
 @OnapCommandSchema(schema = "basic-login-onap-beijing.yaml")
 public class OnapBasicAuthLoginCommandBeijing extends BasicAuthLoginCommand {
-
-    @Override
-    protected void run() throws OnapCommandException {
-        super.run();
-    }
 }
