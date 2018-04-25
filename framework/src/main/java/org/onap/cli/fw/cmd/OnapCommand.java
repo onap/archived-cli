@@ -45,7 +45,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class OnapCommand {
 
-    private static Logger LOG = LoggerFactory.getLogger(OnapCommand.class);
+    private static Logger log = LoggerFactory.getLogger(OnapCommand.class);
 
     private String cmdDescription;
 
@@ -178,11 +178,11 @@ public abstract class OnapCommand {
     }
 
     protected void preRun() throws OnapCommandException {
-        LOG.debug("CMD: " + this.getName() + "pre run.");
+        log.debug("CMD: " + this.getName() + "pre run.");
     }
 
     protected void postRun() throws OnapCommandException {
-        LOG.debug("CMD: " + this.getName() + "post run.");
+        log.debug("CMD: " + this.getName() + "post run.");
     }
     /**
      * Oclip command execute with given parameters on service. Before calling this method, its mandatory to set all
@@ -196,11 +196,11 @@ public abstract class OnapCommand {
             throw new OnapCommandNotInitialized(this.getClass().getName());
         }
 
-        LOG.info("CMD: " + this.getName());
+        log.info("CMD: " + this.getName());
 
         Map<String, OnapCommandParameter> paramMap = this.getParametersMap();
 
-        LOG.info("INPUT: " + paramMap);
+        log.info("INPUT: " + paramMap);
 
         // -h or --help is always higher precedence !, user can set this value to get help message
         if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
@@ -248,7 +248,7 @@ public abstract class OnapCommand {
 
         this.run();
 
-        LOG.info("OUTPUT: " + this.cmdResult.getRecords());
+        log.info("OUTPUT: " + this.cmdResult.getRecords());
 
         postRun();
         return this.cmdResult;
