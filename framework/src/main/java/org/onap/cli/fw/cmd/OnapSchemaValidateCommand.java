@@ -42,7 +42,8 @@ public class OnapSchemaValidateCommand extends OnapCommand {
         String location = String.valueOf(locationParam.getValue());
 
         OnapCommandParameter interSchemaParam = paramMap.get("internal-schema");
-        boolean isInternalSchema = Boolean.valueOf(String.valueOf(interSchemaParam.getValue()));
+        boolean isInternalSchema = Boolean.parseBoolean(String.valueOf(interSchemaParam.getValue()));
+
         if (isInternalSchema && location.startsWith("/")) {
             location = location.substring(1);
         }
