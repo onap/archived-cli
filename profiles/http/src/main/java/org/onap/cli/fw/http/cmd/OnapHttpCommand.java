@@ -149,7 +149,7 @@ public class OnapHttpCommand extends OnapCommand {
     @Override
     protected void preRun() throws OnapCommandException {
         Optional<OnapCommandParameter> verifyOpt = this.getParameters().stream()
-                .filter(e -> e.getName().equals("verify"))
+                .filter(e -> "verify".equals(e.getName()))
                 .findFirst();
         if(verifyOpt.isPresent()) {
             shouldVerify = (boolean) verifyOpt.get().getValue();
@@ -181,7 +181,7 @@ public class OnapHttpCommand extends OnapCommand {
                 Map<String, String> map = (Map<String, String>) context.getValue();
 
                 mockingEnabled =  map.containsKey(OnapCommandHttpConstants.VERIFY_DISABLE_MOCKING)
-                        && map.get(OnapCommandHttpConstants.VERIFY_DISABLE_MOCKING).equals("true") ? false : true;
+                        && "true".equals(map.get(OnapCommandHttpConstants.VERIFY_DISABLE_MOCKING)) ? false : true;
 
                 if (mockingEnabled) {
                     String mockedFile = ((Map<String, String>) context.getValue()).get(OnapCommandConstants.VERIFY_MOCO);
