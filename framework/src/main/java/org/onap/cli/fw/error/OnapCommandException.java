@@ -80,22 +80,6 @@ public class OnapCommandException extends Exception {
         this(errorCode, errorMessage, -1);
     }
 
-    @Override
-    public String getMessage() {
-        String message =  this.errorCode + "::" + this.errorMessage;
-        if (this.httpStatusCode != -1) {
-            message = this.httpStatusCode + "::" + message;
-        }
-
-        return message;
-    }
-
-    public String toJsonString() {
-        return "{\""+ OnapCommandConstants.ERROR + "\": {\""+
-                OnapCommandConstants.ERROR_CODE + "\": \"" + this.errorCode + "\", \""+
-                OnapCommandConstants.ERROR_MESSAGE + "\": \"" + this.errorMessage + "\"}}";
-    }
-
     public OnapCommandException(String errorCode, String errorMessage, Throwable e) {
         this(errorCode, errorMessage + ", " + e.getMessage());
         log.error(this.getMessage(), e);
@@ -114,6 +98,22 @@ public class OnapCommandException extends Exception {
     public OnapCommandException(String errorCode, Throwable e) {
         this(errorCode, e.getMessage(), -1);
         log.error(this.getMessage(), e);
+    }
+
+    @Override
+    public String getMessage() {
+        String message =  this.errorCode + "::" + this.errorMessage;
+        if (this.httpStatusCode != -1) {
+            message = this.httpStatusCode + "::" + message;
+        }
+
+        return message;
+    }
+
+    public String toJsonString() {
+        return "{\""+ OnapCommandConstants.ERROR + "\": {\""+
+                OnapCommandConstants.ERROR_CODE + "\": \"" + this.errorCode + "\", \""+
+                OnapCommandConstants.ERROR_MESSAGE + "\": \"" + this.errorMessage + "\"}}";
     }
 
     public String getErrorCode() {
