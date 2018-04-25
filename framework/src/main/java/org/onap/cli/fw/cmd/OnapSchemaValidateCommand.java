@@ -59,6 +59,7 @@ public class OnapSchemaValidateCommand extends OnapCommand {
             cmd = new OnapCommand() {
                 @Override
                 protected void run() throws OnapCommandException {
+                    //This is used for enabling the validation, so no run implemented
                 }
             };
         } else {
