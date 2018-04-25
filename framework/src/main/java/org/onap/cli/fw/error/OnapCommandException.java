@@ -42,7 +42,7 @@ public class OnapCommandException extends Exception {
 
     private static final long serialVersionUID = 2833124031431731711L;
 
-    private static Logger LOG = LoggerFactory.getLogger(OnapCommandException.class);
+    private static final Logger log = LoggerFactory.getLogger(OnapCommandException.class);
 
     /*
      * Command Error Code
@@ -98,22 +98,22 @@ public class OnapCommandException extends Exception {
 
     public OnapCommandException(String errorCode, String errorMessage, Throwable e) {
         this(errorCode, errorMessage + ", " + e.getMessage());
-        LOG.error(this.getMessage(), e);
+        log.error(this.getMessage(), e);
     }
 
     public OnapCommandException(String errorCode, String errorMessage, Throwable e, long httpStatusCode) {
         this(errorCode, errorMessage + ", " + e.getMessage(), httpStatusCode);
-        LOG.error(this.getMessage(), e);
+        log.error(this.getMessage(), e);
     }
 
     public OnapCommandException(String errorCode, Throwable e, long httpStatusCode) {
         this(errorCode, e.getMessage(), httpStatusCode);
-        LOG.error(this.getMessage(), e);
+        log.error(this.getMessage(), e);
     }
 
     public OnapCommandException(String errorCode, Throwable e) {
         this(errorCode, e.getMessage(), -1);
-        LOG.error(this.getMessage(), e);
+        log.error(this.getMessage(), e);
     }
 
     public String getErrorCode() {
