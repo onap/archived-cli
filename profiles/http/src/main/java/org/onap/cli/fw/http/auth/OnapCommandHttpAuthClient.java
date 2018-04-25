@@ -46,7 +46,7 @@ public class OnapCommandHttpAuthClient {
 
     private Map<String, String> loginCache = new HashMap<>();
 
-    public OnapCommandHttpAuthClient(OnapHttpCommand cmd, boolean debug) throws OnapCommandHttpFailure, OnapCommandInvalidParameterValue {
+    public OnapCommandHttpAuthClient(OnapHttpCommand cmd, boolean debug) throws OnapCommandHttpFailure {
         this.cmd = cmd;
         this.http = new OnapHttpConnection(debug);
     }
