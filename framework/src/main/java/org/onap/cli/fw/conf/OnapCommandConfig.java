@@ -18,6 +18,7 @@ package org.onap.cli.fw.conf;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
@@ -55,8 +56,8 @@ public final class OnapCommandConfig {
         Properties ps = new Properties();
         loadProperties(ps, fileName);
 
-        for (Object key: ps.keySet()) {
-            prps.put(key, ps.get(key));
+        for (Entry<Object, Object> entry: ps.entrySet()) {
+            prps.put(entry.getKey(), entry.getValue());
         }
     }
 
