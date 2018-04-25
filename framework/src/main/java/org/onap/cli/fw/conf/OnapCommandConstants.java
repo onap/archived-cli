@@ -157,7 +157,7 @@ public class OnapCommandConstants {
     public static final String VERIFY_SAMPLES_MOCK_PATTERN = VERIFY_SAMPLES_DIRECTORY + JSON_PATTERN;
     public static final String VERIFY_SAMPLES = "samples";
     public static final String VERIFY_CMD_NAME = "name";
-    public static final String VERIFY_CMD_VERSION = "version";
+    public static final String VERIFY_CMD_VERSION = DEFAULT_PARAMETER_VERSION;
     public static final String VERIFY_OUPUT = "output";
     public static final String VERIFY_INPUT = "input";
     public static final String VERIFY_MOCO = "moco";
