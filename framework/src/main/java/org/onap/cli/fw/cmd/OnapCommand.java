@@ -178,11 +178,11 @@ public abstract class OnapCommand {
     }
 
     protected void preRun() throws OnapCommandException {
-        log.debug("CMD: " + this.getName() + "pre run.");
+        log.debug(this.getName() + " PRE-RUN");
     }
 
     protected void postRun() throws OnapCommandException {
-        log.debug("CMD: " + this.getName() + "post run.");
+        log.debug(this.getName() + " POST-RUN");
     }
     /**
      * Oclip command execute with given parameters on service. Before calling this method, its mandatory to set all
