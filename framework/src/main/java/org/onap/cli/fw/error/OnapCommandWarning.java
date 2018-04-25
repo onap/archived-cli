@@ -21,6 +21,9 @@ package org.onap.cli.fw.error;
  *
  */
 public abstract class OnapCommandWarning extends OnapCommandException {
+
+    private static final long serialVersionUID = -1833571383961748520L;
+
     public OnapCommandWarning(String errorCode, String errorMessage, long httpStatusCode) {
         super(errorCode, errorMessage, httpStatusCode);
     }
@@ -28,6 +31,4 @@ public abstract class OnapCommandWarning extends OnapCommandException {
     public OnapCommandWarning(String errorCode, String errorMessage) {
         super(errorCode, errorMessage);
     }
-
-    private static final long serialVersionUID = -1833571383961748520L;
 }
