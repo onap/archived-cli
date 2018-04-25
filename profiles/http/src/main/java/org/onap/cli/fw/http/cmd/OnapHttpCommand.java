@@ -243,10 +243,10 @@ public class OnapHttpCommand extends OnapCommand {
         }
 
         //pre-process result map for spl entries and input parameters
-        for (Entry<String, String> resultMap : this.getResultMap().entrySet()) {
-            String value = OnapCommandUtils.replaceLineForSpecialValues(resultMap.getValue());
+        for (Entry<String, String> resultMapEntry : this.getResultMap().entrySet()) {
+            String value = OnapCommandUtils.replaceLineForSpecialValues(resultMapEntry.getValue());
             value = OnapCommandUtils.replaceLineFromInputParameters(value, this.getParametersMap());
-            this.resultMap.put(resultMap.getKey(), value);
+            this.resultMap.put(resultMapEntry.getKey(), value);
         }
 
         Map<String, ArrayList<String>> results = OnapCommandHttpUtils.populateOutputs(this.getResultMap(), output);
