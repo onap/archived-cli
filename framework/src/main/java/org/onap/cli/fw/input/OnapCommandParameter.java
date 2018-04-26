@@ -270,12 +270,19 @@ public class OnapCommandParameter {
      * @throws OnapCommandInvalidParameterValue
      *             exception
      */
-    //mrkanag return value in the type format instead of string format
     public Object getValue()  {
         if (value != null) {
             return value;
         }
         return getDefaultValue();
+    }
+
+    /**
+     * Returns the raw value
+     * @return
+     */
+    public Object getRawValue() {
+        return this.rawValue;
     }
 
     public void setValue(Object value) throws OnapCommandInvalidParameterValue {
