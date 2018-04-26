@@ -143,5 +143,8 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
         return this.cmdName.compareTo(o.getCmdName());
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        return this.compareTo((OnapCommandSchemaInfo) obj) == 0;
+    }
 }
