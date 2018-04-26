@@ -47,6 +47,10 @@ import net.minidev.json.JSONObject;
 
 public class OnapCommandSchemaHttpLoader {
 
+    private OnapCommandSchemaHttpLoader() {
+        // to follow standards !
+    }
+
     public static List<String> loadHttpSchema(OnapHttpCommand cmd, String schemaName, boolean includeDefault,
                                           boolean validateSchema) throws OnapCommandException {
         try {
