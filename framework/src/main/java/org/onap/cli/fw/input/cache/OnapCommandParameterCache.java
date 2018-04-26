@@ -91,7 +91,7 @@ public class OnapCommandParameterCache {
         if (paramCache.containsKey(productVersion)) {
             return this.paramCache.get(productVersion);
         } else {
-            return new HashMap<String, String>();
+            return new HashMap<>();
         }
     }
 
