@@ -75,11 +75,11 @@ import org.slf4j.LoggerFactory;
  */
 public class OnapHttpConnection {
 
-    private static Logger LOG = LoggerFactory.getLogger(OnapHttpConnection.class);
+    private static Logger log = LoggerFactory.getLogger(OnapHttpConnection.class);
 
     private HttpClient httpClient = null;
 
-    Map<String, String> mapCommonHeaders = new HashMap<String, String> ();
+    Map<String, String> mapCommonHeaders = new HashMap<> ();
 
     protected boolean debug = false;
 
@@ -344,7 +344,7 @@ public class OnapHttpConnection {
             throw new OnapCommandHttpFailure(e);
         } finally {
             String info = input + " " + result;
-            LOG.info(info);
+            log.info(info);
             if (this.debug) {
                 this.debugDetails = info;
             }
