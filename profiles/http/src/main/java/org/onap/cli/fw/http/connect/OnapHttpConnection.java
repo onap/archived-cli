@@ -240,16 +240,16 @@ public class OnapHttpConnection {
             input.getReqHeaders().put("Accept", OnapCommandHttpConstants.APPLICATION_JSON);
         }
 
-        for (String headerName : this.mapCommonHeaders.keySet()) {
-            input.getReqHeaders().put(headerName, this.mapCommonHeaders.get(headerName));
+        for (Entry<String, String> header : this.mapCommonHeaders.entrySet()) {
+            input.getReqHeaders().put(header.getKey(), header.getValue());
         }
     }
 
     private void addCommonCookies(CookieStore cookieStore) {
-        for (String headerName : this.mapCommonHeaders.keySet()) {
-            Cookie cookie = new BasicClientCookie(headerName, this.mapCommonHeaders.get(headerName));
-            cookieStore.addCookie(cookie);
-        }
+         for (Entry<String, String> header : this.mapCommonHeaders.entrySet()) {
+             Cookie cookie = new BasicClientCookie(header.getKey(), header.getValue());
+             cookieStore.addCookie(cookie);
+         }
     }
 
     private void updateResultFromCookies(HttpResult result, List<Cookie> cookies) {
