@@ -92,6 +92,10 @@ import org.yaml.snakeyaml.Yaml;
 
 public class OnapCommandSchemaLoader {
 
+	private OnapCommandSchemaLoader() {
+		// As per the java guidelines
+	}
+
     /**
      * Validates schema version.
      *
