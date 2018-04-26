@@ -38,6 +38,10 @@ public class OnapCommandSnmpConstants {
     public static final int TIMEOUT = 1500;
     public static final String SNMP_VERSION_V1 = "v1";
     public static final String SNMP_VERSION_V2C = "v2c";
+
+    private OnapCommandSnmpConstants() {
+        // As per standards
+    }
 }
 
 
