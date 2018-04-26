@@ -245,7 +245,7 @@ public class OnapCommandSchemaLoader {
                                     break;
 
                                 case INFO_SERVICE:
-                                    info.setService(infoMap.get(key1).toString());
+                                    info.setService(infoMap.get(key1));
                                     break;
 
                                 case INFO_TYPE:
