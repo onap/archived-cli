@@ -220,11 +220,10 @@ public class OnapCommandPrint {
      *             exception
      */
     public String printCsv() throws OnapCommandOutputPrintingFailed {
-        StringWriter writer = new StringWriter();
-        CSVPrinter printer = null;
-        try {
-            CSVFormat formattor = CSVFormat.DEFAULT.withRecordSeparator(System.getProperty("line.separator"));
-            printer = new CSVPrinter(writer, formattor);
+        CSVFormat formattor = CSVFormat.DEFAULT.withRecordSeparator(System.getProperty("line.separator"));
+
+        try (StringWriter writer = new StringWriter();
+             CSVPrinter printer = new CSVPrinter(writer, formattor);) {
 
             List<List<Object>> rows = this.formRows(false);
 
@@ -235,15 +234,6 @@ public class OnapCommandPrint {
             return writer.toString();
         } catch (IOException e) {
             throw new OnapCommandOutputPrintingFailed(e);
-        } finally {
-            try {
-                if (printer != null) {
-                    printer.close();
-                }
-                writer.close();
-            } catch (IOException e) {
-                throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
-            }
         }
     }
 
