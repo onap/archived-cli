@@ -232,11 +232,10 @@ public class OnapHttpConnection {
     }
 
     private void addCommonHeaders(HttpInput input) {
-        if (!input.isBinaryData()) {
-            if (!input.getReqHeaders().containsKey("Content-Type")) {
-                input.getReqHeaders().put("Content-Type", OnapCommandHttpConstants.APPLICATION_JSON);
-            }
+        if (!input.isBinaryData() && !input.getReqHeaders().containsKey("Content-Type")) {
+            input.getReqHeaders().put("Content-Type", OnapCommandHttpConstants.APPLICATION_JSON);
         }
+
         if (!input.getReqHeaders().containsKey("Accept")) {
             input.getReqHeaders().put("Accept", OnapCommandHttpConstants.APPLICATION_JSON);
         }
