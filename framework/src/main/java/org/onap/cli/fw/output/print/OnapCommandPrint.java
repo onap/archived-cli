@@ -263,9 +263,7 @@ public class OnapCommandPrint {
     public String printYaml() throws OnapCommandOutputPrintingFailed {
         try {
             return new YAMLMapper().writeValueAsString(new ObjectMapper().readTree(this.printJson()));
-        } catch (JsonProcessingException e) {
-            throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
-        } catch (IOException e) {
+        } catch (IOException  e) {
             throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
         }
     }
