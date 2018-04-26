@@ -24,5 +24,6 @@ public class CatalogCommand extends OnapHttpCommand {
 
     @Override
     protected void run() throws OnapCommandException {
+         //do nothing  // NOSONAR
     }
 }
