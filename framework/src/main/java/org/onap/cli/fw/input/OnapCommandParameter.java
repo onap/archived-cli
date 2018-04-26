@@ -301,13 +301,10 @@ public class OnapCommandParameter {
                 throw new OnapCommandInvalidParameterValue(this.getName());
             }
         } else if (OnapCommandParameterType.BOOL.equals(parameterType)) {
-            if (!(value instanceof Boolean)) {
-                if (value instanceof String) {
-                    value = Boolean.valueOf((String)value);
-                } else {
-                    throw new OnapCommandInvalidParameterValue(this.getName());
-                }
-
+            if (value instanceof String) {
+                value = Boolean.valueOf((String)value);
+            } else if (!(value instanceof Boolean)) {
+                throw new OnapCommandInvalidParameterValue(this.getName());
             }
         }
         this.value = value;
