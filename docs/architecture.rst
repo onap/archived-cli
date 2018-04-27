@@ -21,6 +21,8 @@ them into Registrar.
 
 * **HTTP Command** : Plug-in for implementing all Rest based command as YAML without any coding.
 
+* **SNMP Command** : Plug-in for implementing all SNMP based command as YAML without any coding.
+
 * **Command Shell** : Provides the interactive command line console from Linux
 
 * **Web Command Console** : Provides the interactive command line console from web-browser
