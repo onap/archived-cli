@@ -2875,3 +2875,75 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vf-model-list
+----------------------------------------------------
+
+usage: oclip vf-model-list
+
+List the VF resource model in SDC
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-s | --long]
+ [-D | --context] [-u | --host-username] [-a | --no-auth]
+ [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ uuid             UUID and is of type STRING.
+ uniqueid         UUID and is of type STRING.
+ invariant-uuid   Invariant UUID and is of type STRING.
+ name             Name and is of type STRING.
+ version          version and is of type STRING.
+ status           status and is of type STRING.
+ description      description and is of type STRING.
+ vsp-uuid         VSP uuid and is of type STRING.
+ vsp-version      VSP version and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
