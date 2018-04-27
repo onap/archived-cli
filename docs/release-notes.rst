@@ -25,8 +25,9 @@ In addition, it made following changes to OCS 1.0
 
 * http profile is enabled with
 
-** service to capture micro-service catalog and auth information
-** body section could be customized using context
+-- service to capture micro-service catalog and auth information
+
+-- body section could be customized using context
 
 * New default parameters verify and context are added.
 

@@ -109,9 +109,9 @@ public class OnapCommandHttpConstants {
     public static final String VERIFY_CONTENT_TYPE = "Content-Type";
     public static final String VERIFY_CONTENT_TYPE_VALUE = APPLICATION_JSON;
     public static final String VERIFY_DISABLE_MOCKING = "DISABLE_MOCKING";
-    
+
     private OnapCommandHttpConstants() {
-    	//as per coding standard !
+        //as per coding standard !
     }
 }
 
