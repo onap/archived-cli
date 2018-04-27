@@ -130,7 +130,9 @@ https://wiki.onap.org
 
 Command usage guide
 -------------------
-Following document provides the help message for commands supported in this release.
+Following documents provide the usage for each commands supported in different releases.
+
+NOTE: Command marked with EXPERIMENTAL is only for testing purpose. Its not recommeded to use in production environment
 
 .. toctree::
    :maxdepth: 1
@@ -141,7 +143,7 @@ Following document provides the help message for commands supported in this rele
 
 Command Samples
 ---------------
-Following document provides the samples for commands supported in this release.
+Following document provides the samples for every commands supported.
 
 .. toctree::
    :maxdepth: 1
