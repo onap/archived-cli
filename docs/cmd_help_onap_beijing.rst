@@ -4585,3 +4585,83 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vnfm-register
+----------------------------------------------------
+
+usage: oclip vnfm-register
+
+Register a VNFM in Onap
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-e | --vendor] [-v | --version] [-d | --debug]
+ [-y | --vnfm-id] [-c | --type] [-x | --vim-id]
+ [-s | --long] [-D | --context] [-b | --name]
+ [-i | --username] [-j | --password] [-u | --host-username]
+ [-g | --url] [-a | --no-auth] [-q | --vnfm-version]
+ [-p | --host-password] [-z | --certificate-url]
+
+where::
+
+ -m | --host-url          host url in http(s). It is of type URL. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_URL.
+ -C | --no-catalog        Whether to use given host-url directly or
+                          discover it from catalog, it will override the
+                          service->mode. It is of type BOOL. It is
+                          optional.
+ -h | --help              print help message. It is of type BOOL.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING.
+ -t | --no-title          whether to print title or not. It is of type BOOL.
+ -V | --verify            Helps to verify the command using samples
+                          provides under open-cli-samples directory. By
+                          default, it goes with mock.To enable the
+                          verification of samples in real time, set
+                          DISABLE_MOCKING=true in the context parameter. It
+                          is of type BOOL. It is optional.
+ -e | --vendor            Onap VNFM vendor. It is of type STRING. By
+                          default, it is .
+ -v | --version           print service version. It is of type BOOL.
+ -d | --debug             Enable debug output. It is of type BOOL.
+ -y | --vnfm-id           Onap VNFM unique id. It is of type UUID.
+ -c | --type              Onap VNFM type. It is of type STRING. By default,
+                          it is .
+ -x | --vim-id            Onap VIM unique id. It is of type UUID.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL.
+ -D | --context           command context. It is of type MAP. It is
+                          optional.
+ -b | --name              Onap VNFM name. It is of type STRING. By default,
+                          it is .
+ -i | --username          Onap VNFM username. It is of type STRING. By
+                          default, it is .
+ -j | --password          Onap VNFM password. It is of type STRING. By
+                          default, it is .
+ -u | --host-username     Host user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_CLI_HOST_USERNAME.
+ -g | --url               Onap VNFM URL. It is of type STRING. By default,
+                          it is .
+ -a | --no-auth           Whether to authenticate user or not. It is of
+                          type BOOL.
+ -q | --vnfm-version      Onap VNFM version. It is of type STRING. By
+                          default, it is .
+ -p | --host-password     Host user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_PASSWORD. Secured.
+ -z | --certificate-url   Onap VNFM certificate-url. It is of type STRING.
+                          It is optional. By default, it is .
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
