@@ -2059,3 +2059,111 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vfmodule-create
+----------------------------------------------------
+
+usage: oclip vfmodule-create
+
+Create a VF module
+
+Product: onap-beijing
+Service: so
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-h | --help] [-f | --format] [-t | --no-title]
+ [-V | --verify] [-v | --version] [-l | --cloud-region]
+ [-x | --service-model-name] [-j | --service-id] [-z | --service-model-version]
+ [-i | --module-name] [-o | --vf-model-version] [-k | --vf-model-invariant-id]
+ [-s | --long] [-g | --vfmodule-version] [-r | --service-model-invariant-id]
+ [-n | --vf-model-name] [-a | --no-auth] [-w | --service-model-uuid]
+ [-p | --host-password] [-m | --host-url] [-C | --no-catalog]
+ [-d | --debug] [-b | --vfmodule-invariant-id] [-c | --vfmodule-uuid]
+ [-A | --vf-model-uuid] [-y | --vf-id] [-D | --context]
+ [-B | --tenant-id] [-e | --vfmodule-name] [-q | --vf-model-customization-id]
+ [-u | --host-username]
+
+where::
+
+ -h | --help                        print help message. It is of type BOOL.
+ -f | --format                      Output formats, supported formats such as table,
+                                    csv, json, yaml. It is of type STRING.
+ -t | --no-title                    whether to print title or not. It is of type BOOL.
+ -V | --verify                      Helps to verify the command using samples
+                                    provides under open-cli-samples directory. By
+                                    default, it goes with mock.To enable the
+                                    verification of samples in real time, set
+                                    DISABLE_MOCKING=true in the context parameter. It
+                                    is of type BOOL. It is optional.
+ -v | --version                     print service version. It is of type BOOL.
+ -l | --cloud-region                cloud region identifier. It is of type STRING. By
+                                    default, it is .
+ -x | --service-model-name          service model name. It is of type STRING. By
+                                    default, it is .
+ -j | --service-id                  unique id for service. It is of type STRING. By
+                                    default, it is .
+ -z | --service-model-version       service model version. It is of type STRING. By
+                                    default, it is .
+ -i | --module-name                 vfmodule name. It is of type STRING. By default,
+                                    it is .
+ -o | --vf-model-version            vf model version. It is of type STRING. By
+                                    default, it is .
+ -k | --vf-model-invariant-id       vf model invariant id. It is of type STRING. By
+                                    default, it is .
+ -s | --long                        whether to print all attributes or only short
+                                    attributes. It is of type BOOL.
+ -g | --vfmodule-version            vf module version. It is of type STRING. By
+                                    default, it is .
+ -r | --service-model-invariant-id  model invariant id. It is of type STRING. By
+                                    default, it is .
+ -n | --vf-model-name               vf model name. It is of type STRING. By default,
+                                    it is .
+ -a | --no-auth                     Whether to authenticate user or not. It is of
+                                    type BOOL.
+ -w | --service-model-uuid          model name version id. It is of type STRING. By
+                                    default, it is .
+ -p | --host-password               Host user password. It is of type STRING. By
+                                    default, it is read from environment variable
+                                    OPEN_CLI_HOST_PASSWORD. Secured.
+ -m | --host-url                    host url in http(s). It is of type URL. By
+                                    default, it is read from environment variable
+                                    OPEN_CLI_HOST_URL.
+ -C | --no-catalog                  Whether to use given host-url directly or
+                                    discover it from catalog, it will override the
+                                    service->mode. It is of type BOOL. It is
+                                    optional.
+ -d | --debug                       Enable debug output. It is of type BOOL.
+ -b | --vfmodule-invariant-id       vfmodule model invariant id. It is of type
+                                    STRING. By default, it is .
+ -c | --vfmodule-uuid               model uuid for vfmodule. It is of type STRING. By
+                                    default, it is .
+ -A | --vf-model-uuid               model uuid for vf. It is of type STRING. By
+                                    default, it is .
+ -y | --vf-id                       unique id for related VF. It is of type STRING.
+                                    By default, it is .
+ -D | --context                     command context. It is of type MAP. It is
+                                    optional.
+ -B | --tenant-id                   openstack tenant id. It is of type STRING. By
+                                    default, it is .
+ -e | --vfmodule-name               vfmodule model name. It is of type STRING. By
+                                    default, it is .
+ -q | --vf-model-customization-id   vf model customization id. This can be obtained
+                                    using SDC portal (Home -> service:xxx ->
+                                    Composition -> click on VF for customization id).
+                                    It is of type STRING. By default, it is .
+ -u | --host-username               Host user name. It is of type STRING. By default,
+                                    it is read from environment variable
+                                    OPEN_CLI_HOST_USERNAME.
+
+
+Results::
+
+ vfmodule-id  id for the created vnf and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
