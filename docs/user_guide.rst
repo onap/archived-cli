@@ -156,7 +156,7 @@ Following document provides the tutorial for service creation using CLI.
 .. toctree::
    :maxdepth: 1
 
-   end_to_end_onap_cli_commands.rst
+   user_guide_end_to_end_onap_cli_commands.rst
 
 PNF/VNF on-boarding tutorial
 ------------------------------------
@@ -165,4 +165,4 @@ Following document provides the tutorial for PNF/VNF on-boarding tutorial using 
 .. toctree::
    :maxdepth: 1
 
-   pnf_on_boarding.rst
+   user_guide_pnf_on_boarding.rst
