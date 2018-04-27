@@ -1816,3 +1816,99 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vf-create
+----------------------------------------------------
+
+usage: oclip vf-create
+
+Create a VF
+
+Product: onap-beijing
+Service: so
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-j | --service-model-invariant-id] [-k | --service-model-uuid] [-q | --service-model-name]
+ [-h | --help] [-f | --format] [-t | --no-title]
+ [-V | --verify] [-v | --version] [-l | --cloud-region]
+ [-y | --service-instance-id] [-z | --tenant-id] [-c | --vf-model-uuid]
+ [-o | --instance-name] [-s | --long] [-e | --vf-model-name]
+ [-g | --vf-model-version] [-b | --vf-model-invariant-id] [-a | --no-auth]
+ [-n | --service-model-version] [-p | --host-password] [-m | --host-url]
+ [-C | --no-catalog] [-i | --vf-model-customization-id] [-d | --debug]
+ [-D | --context] [-w | --product-family] [-u | --host-username]
+
+where::
+
+ -j | --service-model-invariant-id  model invariant id. It is of type STRING. By
+                                    default, it is .
+ -k | --service-model-uuid          model name version id. It is of type STRING. By
+                                    default, it is .
+ -q | --service-model-name          service model name. It is of type STRING. By
+                                    default, it is .
+ -h | --help                        print help message. It is of type BOOL.
+ -f | --format                      Output formats, supported formats such as table,
+                                    csv, json, yaml. It is of type STRING.
+ -t | --no-title                    whether to print title or not. It is of type BOOL.
+ -V | --verify                      Helps to verify the command using samples
+                                    provides under open-cli-samples directory. By
+                                    default, it goes with mock.To enable the
+                                    verification of samples in real time, set
+                                    DISABLE_MOCKING=true in the context parameter. It
+                                    is of type BOOL. It is optional.
+ -v | --version                     print service version. It is of type BOOL.
+ -l | --cloud-region                cloud region identifier. It is of type STRING. By
+                                    default, it is .
+ -y | --service-instance-id         unique id for service instance. It is of type
+                                    STRING. By default, it is .
+ -z | --tenant-id                   openstack tenant id. It is of type STRING. By
+                                    default, it is .
+ -c | --vf-model-uuid               model uuid for vf. It is of type STRING. By
+                                    default, it is .
+ -o | --instance-name               service instance name. It is of type STRING. By
+                                    default, it is .
+ -s | --long                        whether to print all attributes or only short
+                                    attributes. It is of type BOOL.
+ -e | --vf-model-name               vf model name. It is of type STRING. By default,
+                                    it is .
+ -g | --vf-model-version            vf model version. It is of type STRING. By
+                                    default, it is .
+ -b | --vf-model-invariant-id       vf model invariant id. It is of type STRING. By
+                                    default, it is .
+ -a | --no-auth                     Whether to authenticate user or not. It is of
+                                    type BOOL.
+ -n | --service-model-version       service model version. It is of type STRING. By
+                                    default, it is .
+ -p | --host-password               Host user password. It is of type STRING. By
+                                    default, it is read from environment variable
+                                    OPEN_CLI_HOST_PASSWORD. Secured.
+ -m | --host-url                    host url in http(s). It is of type URL. By
+                                    default, it is read from environment variable
+                                    OPEN_CLI_HOST_URL.
+ -C | --no-catalog                  Whether to use given host-url directly or
+                                    discover it from catalog, it will override the
+                                    service->mode. It is of type BOOL. It is
+                                    optional.
+ -i | --vf-model-customization-id   vf model customization id. It is of type STRING.
+                                    By default, it is .
+ -d | --debug                       Enable debug output. It is of type BOOL.
+ -D | --context                     command context. It is of type MAP. It is
+                                    optional.
+ -w | --product-family              service type for serivce (e.g. vLB). It is of
+                                    type STRING. By default, it is .
+ -u | --host-username               Host user name. It is of type STRING. By default,
+                                    it is read from environment variable
+                                    OPEN_CLI_HOST_USERNAME.
+
+
+Results::
+
+ vf-id  id for the created vnf and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
