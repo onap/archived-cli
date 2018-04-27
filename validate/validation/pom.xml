@@ -41,6 +41,7 @@
             <groupId>org.onap.cli</groupId>
             <artifactId>cli-main</artifactId>
             <version>${project.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
