@@ -2947,3 +2947,80 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vfmodule-delete
+----------------------------------------------------
+
+usage: oclip vfmodule-delete
+
+delete a VF module (experimental)
+
+Product: onap-beijing
+Service: so
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-l | --cloud-region]
+ [-j | --service-id] [-z | --tenant-id] [-y | --vf-id]
+ [-k | --vf-model-invariant-id] [-s | --long] [-D | --context]
+ [-g | --vfmodule-version] [-x | --vfmodule-id] [-e | --vfmodule-name]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url                host url in http(s). It is of type URL. By
+                                default, it is read from environment variable
+                                OPEN_CLI_HOST_URL.
+ -C | --no-catalog              Whether to use given host-url directly or
+                                discover it from catalog, it will override the
+                                service->mode. It is of type BOOL. It is
+                                optional.
+ -h | --help                    print help message. It is of type BOOL.
+ -f | --format                  Output formats, supported formats such as table,
+                                csv, json, yaml. It is of type STRING.
+ -t | --no-title                whether to print title or not. It is of type BOOL.
+ -V | --verify                  Helps to verify the command using samples
+                                provides under open-cli-samples directory. By
+                                default, it goes with mock.To enable the
+                                verification of samples in real time, set
+                                DISABLE_MOCKING=true in the context parameter. It
+                                is of type BOOL. It is optional.
+ -v | --version                 print service version. It is of type BOOL.
+ -d | --debug                   Enable debug output. It is of type BOOL.
+ -l | --cloud-region            cloud region identifier. It is of type STRING. By
+                                default, it is .
+ -j | --service-id              unique id for service. It is of type STRING. By
+                                default, it is .
+ -z | --tenant-id               openstack tenant id. It is of type STRING. By
+                                default, it is .
+ -y | --vf-id                   unique id for related VF. It is of type STRING.
+                                By default, it is .
+ -k | --vf-model-invariant-id   vf model invariant id. It is of type STRING. By
+                                default, it is .
+ -s | --long                    whether to print all attributes or only short
+                                attributes. It is of type BOOL.
+ -D | --context                 command context. It is of type MAP. It is
+                                optional.
+ -g | --vfmodule-version        vf module version. It is of type STRING. By
+                                default, it is .
+ -x | --vfmodule-id             VF module Id. It is of type STRING. By default,
+                                it is .
+ -e | --vfmodule-name           vfmodule model name. It is of type STRING. By
+                                default, it is .
+ -u | --host-username           Host user name. It is of type STRING. By default,
+                                it is read from environment variable
+                                OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth                 Whether to authenticate user or not. It is of
+                                type BOOL.
+ -p | --host-password           Host user password. It is of type STRING. By
+                                default, it is read from environment variable
+                                OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
