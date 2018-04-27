@@ -4304,3 +4304,70 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vim-unregister
+----------------------------------------------------
+
+usage: oclip vim-unregister
+
+Un-register a VIM under from cloud region in Onap
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --cloud-name]
+ [-s | --long] [-D | --context] [-y | --region-name]
+ [-u | --host-username] [-a | --no-auth] [-z | --vim-id]
+ [-p | --host-password] [-b | --resource-version]
+
+where::
+
+ -m | --host-url          host url in http(s). It is of type URL. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_URL.
+ -C | --no-catalog        Whether to use given host-url directly or
+                          discover it from catalog, it will override the
+                          service->mode. It is of type BOOL. It is
+                          optional.
+ -h | --help              print help message. It is of type BOOL.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING.
+ -t | --no-title          whether to print title or not. It is of type BOOL.
+ -V | --verify            Helps to verify the command using samples
+                          provides under open-cli-samples directory. By
+                          default, it goes with mock.To enable the
+                          verification of samples in real time, set
+                          DISABLE_MOCKING=true in the context parameter. It
+                          is of type BOOL. It is optional.
+ -v | --version           print service version. It is of type BOOL.
+ -d | --debug             Enable debug output. It is of type BOOL.
+ -x | --cloud-name        Onap cloud name. It is of type STRING. By
+                          default, it is .
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL.
+ -D | --context           command context. It is of type MAP. It is
+                          optional.
+ -y | --region-name       Onap region name. It is of type STRING. By
+                          default, it is .
+ -u | --host-username     Host user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth           Whether to authenticate user or not. It is of
+                          type BOOL.
+ -z | --vim-id            Onap VIM unique id. It is of type UUID.
+ -p | --host-password     Host user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_PASSWORD. Secured.
+ -b | --resource-version  Onap vim resource version. It is of type STRING.
+                          It is optional. By default, it is .
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
