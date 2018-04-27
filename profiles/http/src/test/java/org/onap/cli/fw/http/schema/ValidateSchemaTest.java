@@ -23,7 +23,9 @@ import java.util.List;
 import org.junit.Test;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
+import org.onap.cli.main.OnapCli;
 
 public class ValidateSchemaTest {
     @Test
@@ -35,5 +37,14 @@ public class ValidateSchemaTest {
         };
         List<String> errorList1 = OnapCommandSchemaLoader.loadSchema(cmd1, "schema-validate-http.yaml", true, true);
         assertTrue(errorList1.size() > 0);
+    }
+
+    @Test
+    public void testVerify() throws OnapCommandException {
+        OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
+        OnapCli onapCli = new OnapCli(new String[]{"sample-test-verify", "--verify"});
+        onapCli.handle();
+
+        //mrkanag though it pass, when ran alone, It fails during mvn test phase, check it
     }
 }
