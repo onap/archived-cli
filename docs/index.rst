@@ -22,7 +22,6 @@ the commands for following ONAP functionalities:
 * Micro-service discovery
 * External system and VNF cloud on-boarding
 * Customer and subscription management
-* Resource on-boarding
 * Product and service management
 * Network service life-cycle management
 * Policy management
