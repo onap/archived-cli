@@ -3840,3 +3840,85 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vlm-feature-group-create
+----------------------------------------------------
+
+usage: oclip vlm-feature-group-create
+
+Create feature group Pool
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-y | --vlm-id] [-C | --no-catalog]
+ [-h | --help] [-f | --format] [-t | --no-title]
+ [-V | --verify] [-c | --part-number] [-v | --version]
+ [-d | --debug] [-z | --description] [-b | --vlm-entitle-pool-id]
+ [-k | --manufacture-reference-number] [-x | --name] [-g | --vlm-key-group-id]
+ [-s | --long] [-D | --context] [-u | --host-username]
+ [-a | --no-auth] [-e | --vlm-version] [-p | --host-password]
+
+where::
+
+ -m | --host-url                      host url in http(s). It is of type URL. By
+                                      default, it is read from environment variable
+                                      OPEN_CLI_HOST_URL.
+ -y | --vlm-id                        License Model ID. It is of type STRING. By
+                                      default, it is .
+ -C | --no-catalog                    Whether to use given host-url directly or
+                                      discover it from catalog, it will override the
+                                      service->mode. It is of type BOOL. It is
+                                      optional.
+ -h | --help                          print help message. It is of type BOOL.
+ -f | --format                        Output formats, supported formats such as table,
+                                      csv, json, yaml. It is of type STRING.
+ -t | --no-title                      whether to print title or not. It is of type BOOL.
+ -V | --verify                        Helps to verify the command using samples
+                                      provides under open-cli-samples directory. By
+                                      default, it goes with mock.To enable the
+                                      verification of samples in real time, set
+                                      DISABLE_MOCKING=true in the context parameter. It
+                                      is of type BOOL. It is optional.
+ -c | --part-number                   Part number. It is of type STRING. By default, it
+                                      is .
+ -v | --version                       print service version. It is of type BOOL.
+ -d | --debug                         Enable debug output. It is of type BOOL.
+ -z | --description                   Description for feature group. It is of type
+                                      STRING. By default, it is .
+ -b | --vlm-entitle-pool-id           VLM Entitlement pool. It is of type STRING. By
+                                      default, it is .
+ -k | --manufacture-reference-number  Manufature Reference Number. It is of type
+                                      STRING. By default, it is .
+ -x | --name                          Feature group name. It is of type STRING. By
+                                      default, it is .
+ -g | --vlm-key-group-id              VLM keygroup. It is of type STRING. By default,
+                                      it is .
+ -s | --long                          whether to print all attributes or only short
+                                      attributes. It is of type BOOL.
+ -D | --context                       command context. It is of type MAP. It is
+                                      optional.
+ -u | --host-username                 Host user name. It is of type STRING. By default,
+                                      it is read from environment variable
+                                      OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth                       Whether to authenticate user or not. It is of
+                                      type BOOL.
+ -e | --vlm-version                   License Model version. It is of type STRING. By
+                                      default, it is .
+ -p | --host-password                 Host user password. It is of type STRING. By
+                                      default, it is read from environment variable
+                                      OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ ID   Feature group ID and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
