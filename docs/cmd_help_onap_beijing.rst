@@ -2521,3 +2521,88 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vsp-create
+----------------------------------------------------
+
+usage: oclip vsp-create
+
+Create Vendor Software Product
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-j | --vlm-feature-group-id] [-C | --no-catalog]
+ [-h | --help] [-f | --format] [-t | --no-title]
+ [-V | --verify] [-v | --version] [-d | --debug]
+ [-e | --vlm-vendor] [-b | --vsp-subcategory] [-z | --vsp-category]
+ [-x | --vsp-name] [-s | --long] [-D | --context]
+ [-y | --vsp-description] [-i | --vlm-agreement-id] [-c | --vlm-version]
+ [-u | --host-username] [-a | --no-auth] [-g | --vlm-id]
+ [-p | --host-password]
+
+where::
+
+ -m | --host-url              host url in http(s). It is of type URL. By
+                              default, it is read from environment variable
+                              OPEN_CLI_HOST_URL.
+ -j | --vlm-feature-group-id  Feature Group ID. It is of type STRING. By
+                              default, it is .
+ -C | --no-catalog            Whether to use given host-url directly or
+                              discover it from catalog, it will override the
+                              service->mode. It is of type BOOL. It is
+                              optional.
+ -h | --help                  print help message. It is of type BOOL.
+ -f | --format                Output formats, supported formats such as table,
+                              csv, json, yaml. It is of type STRING.
+ -t | --no-title              whether to print title or not. It is of type BOOL.
+ -V | --verify                Helps to verify the command using samples
+                              provides under open-cli-samples directory. By
+                              default, it goes with mock.To enable the
+                              verification of samples in real time, set
+                              DISABLE_MOCKING=true in the context parameter. It
+                              is of type BOOL. It is optional.
+ -v | --version               print service version. It is of type BOOL.
+ -d | --debug                 Enable debug output. It is of type BOOL.
+ -e | --vlm-vendor            License Model vendor. It is of type STRING. By
+                              default, it is .
+ -b | --vsp-subcategory       Sub Category of VSP. It is of type STRING. It is
+                              optional.
+ -z | --vsp-category          Category of the VSP. It is of type STRING. It is
+                              optional.
+ -x | --vsp-name              Onap VSP Name. It is of type STRING. By default,
+                              it is .
+ -s | --long                  whether to print all attributes or only short
+                              attributes. It is of type BOOL.
+ -D | --context               command context. It is of type MAP. It is
+                              optional.
+ -y | --vsp-description       Description for VSP. It is of type STRING. It is
+                              optional. By default, it is .
+ -i | --vlm-agreement-id      License Agreement ID. It is of type STRING. By
+                              default, it is .
+ -c | --vlm-version           License version. It is of type STRING. It is
+                              optional.
+ -u | --host-username         Host user name. It is of type STRING. By default,
+                              it is read from environment variable
+                              OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth               Whether to authenticate user or not. It is of
+                              type BOOL.
+ -g | --vlm-id                License Model ID. It is of type STRING. By
+                              default, it is .
+ -p | --host-password         Host user password. It is of type STRING. By
+                              default, it is read from environment variable
+                              OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ ID   VSP ID and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
