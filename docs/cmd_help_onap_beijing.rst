@@ -4053,3 +4053,60 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vsp-add-artifact
+----------------------------------------------------
+
+usage: oclip vsp-add-artifact
+
+Upload the CSAR file to VSP
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --vsp-id]
+ [-s | --long] [-D | --context] [-y | --vsp-version]
+ [-z | --vsp-file]
+
+where::
+
+ -m | --host-url      host url in http(s). It is of type URL. By
+                      default, it is read from environment variable
+                      OPEN_CLI_HOST_URL.
+ -C | --no-catalog    Whether to use given host-url directly or
+                      discover it from catalog, it will override the
+                      service->mode. It is of type BOOL. It is
+                      optional.
+ -h | --help          print help message. It is of type BOOL.
+ -f | --format        Output formats, supported formats such as table,
+                      csv, json, yaml. It is of type STRING.
+ -t | --no-title      whether to print title or not. It is of type BOOL.
+ -V | --verify        Helps to verify the command using samples
+                      provides under open-cli-samples directory. By
+                      default, it goes with mock.To enable the
+                      verification of samples in real time, set
+                      DISABLE_MOCKING=true in the context parameter. It
+                      is of type BOOL. It is optional.
+ -v | --version       print service version. It is of type BOOL.
+ -d | --debug         Enable debug output. It is of type BOOL.
+ -x | --vsp-id        Onap VSP ID. It is of type STRING. By default, it
+                      is .
+ -s | --long          whether to print all attributes or only short
+                      attributes. It is of type BOOL.
+ -D | --context       command context. It is of type MAP. It is
+                      optional.
+ -y | --vsp-version   Onap VSP version. It is of type STRING. By
+                      default, it is .
+ -z | --vsp-file      CSAR File path. It is of type BINARY. By default,
+                      it is .
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
