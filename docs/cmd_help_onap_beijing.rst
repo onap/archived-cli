@@ -1984,3 +1984,78 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vf-model-create
+----------------------------------------------------
+
+usage: oclip vf-model-create
+
+Create Virtual function from Vendor Software Product
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-y | --description]
+ [-g | --vsp-version] [-x | --name] [-s | --long]
+ [-D | --context] [-z | --vendor-name] [-u | --host-username]
+ [-a | --no-auth] [-p | --host-password] [-b | --vsp-id]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -y | --description     Description for VF. It is of type STRING. It is
+                        optional. By default, it is .
+ -g | --vsp-version     VSP version. It is of type STRING. It is
+                        optional. By default, it is .
+ -x | --name            Onap VF Name. It is of type STRING. By default,
+                        it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -z | --vendor-name     Vendor name. It is of type STRING. It is
+                        optional. By default, it is .
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+ -b | --vsp-id          VSP ID. It is of type STRING. It is optional. By
+                        default, it is .
+
+
+Results::
+
+ ID   VF ID and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
