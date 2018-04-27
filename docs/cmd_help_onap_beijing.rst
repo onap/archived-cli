@@ -3625,3 +3625,78 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vf-module-create
+----------------------------------------------------
+
+usage: oclip vf-module-create
+
+Create a VF Module
+
+Product: onap-beijing
+Service: so
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-w | --tenant-id] [-v | --version] [-d | --debug]
+ [-y | --vnf-instace-id] [-z | --parenet-service-model] [-x | --service-instace-id]
+ [-l | --lcp-cloudregion-id] [-s | --long] [-D | --context]
+ [-i | --instance-name] [-u | --host-username] [-r | --supress-rollback]
+ [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url                host url in http(s). It is of type URL. By
+                                default, it is read from environment variable
+                                OPEN_CLI_HOST_URL.
+ -C | --no-catalog              Whether to use given host-url directly or
+                                discover it from catalog, it will override the
+                                service->mode. It is of type BOOL. It is
+                                optional.
+ -h | --help                    print help message. It is of type BOOL.
+ -f | --format                  Output formats, supported formats such as table,
+                                csv, json, yaml. It is of type STRING.
+ -t | --no-title                whether to print title or not. It is of type BOOL.
+ -V | --verify                  Helps to verify the command using samples
+                                provides under open-cli-samples directory. By
+                                default, it goes with mock.To enable the
+                                verification of samples in real time, set
+                                DISABLE_MOCKING=true in the context parameter. It
+                                is of type BOOL. It is optional.
+ -w | --tenant-id               openstack tenant id (uuid). It is of type STRING.
+                                By default, it is .
+ -v | --version                 print service version. It is of type BOOL.
+ -d | --debug                   Enable debug output. It is of type BOOL.
+ -y | --vnf-instace-id          vnf instance id. It is of type STRING. By
+                                default, it is .
+ -z | --parenet-service-model   parent service model name. It is of type STRING.
+                                By default, it is .
+ -x | --service-instace-id      unique id for service instance. It is of type
+                                STRING. By default, it is .
+ -l | --lcp-cloudregion-id      AIC LCP node location identifier. It is of type
+                                STRING. By default, it is .
+ -s | --long                    whether to print all attributes or only short
+                                attributes. It is of type BOOL.
+ -D | --context                 command context. It is of type MAP. It is
+                                optional.
+ -i | --instance-name           service instance name. It is of type STRING. By
+                                default, it is .
+ -u | --host-username           Host user name. It is of type STRING. By default,
+                                it is read from environment variable
+                                OPEN_CLI_HOST_USERNAME.
+ -r | --supress-rollback        rollback changes if instantiation fails. It is of
+                                type BOOL. It is optional.
+ -a | --no-auth                 Whether to authenticate user or not. It is of
+                                type BOOL.
+ -p | --host-password           Host user password. It is of type STRING. By
+                                default, it is read from environment variable
+                                OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
