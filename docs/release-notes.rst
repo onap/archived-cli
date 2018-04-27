@@ -21,6 +21,15 @@ following features are enabled:
 Similar to earlier release, user can perform customer, subscription, cloud and tenant management only
 by using CLI as portal does not support.
 
+In addition, it made following changes to OCS 1.0
+
+* http profile is enabled with
+
+** service to capture micro-service catalog and auth information
+** body section could be customized using context
+
+* New default parameters verify and context are added.
+
 **Bug Fixes**
 
 * CLI-105   Ignore those yamls which does not have open cli schema version
