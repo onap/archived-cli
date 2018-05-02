@@ -22,7 +22,6 @@ import java.util.Map;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.http.cmd.OnapHttpCommand;
 import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
 import org.onap.cli.fw.http.connect.HttpInput;

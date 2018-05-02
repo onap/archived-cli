@@ -64,7 +64,6 @@ import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
-import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
 import org.onap.cli.fw.http.error.OnapCommandHttpFailure;
 import org.slf4j.Logger;
@@ -111,7 +110,7 @@ public class OnapHttpConnection {
      * @throws OnapCommandHttpFailure
      *             exception
      */
-    public OnapHttpConnection(boolean debug) throws OnapCommandHttpFailure {
+    public OnapHttpConnection(boolean debug) {
         this.debug = debug;
     }
 
@@ -371,12 +370,13 @@ public class OnapHttpConnection {
     @NotThreadSafe
     static class HttpDeleteWithBody extends HttpEntityEnclosingRequestBase {
 
+        public HttpDeleteWithBody() {
+            super();
+        }
+
         public String getMethod() {
             return OnapCommandHttpConstants.DELETE;
         }
 
-        public HttpDeleteWithBody() {
-            super();
-        }
     }
 }
