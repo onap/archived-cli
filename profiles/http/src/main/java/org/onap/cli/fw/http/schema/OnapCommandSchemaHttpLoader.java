@@ -47,6 +47,8 @@ import net.minidev.json.JSONObject;
 
 public class OnapCommandSchemaHttpLoader {
 
+    private static final String ATTRIBUTE = "Attribute '";
+
     private OnapCommandSchemaHttpLoader() {
         // to follow standards !
     }
@@ -178,11 +180,11 @@ public class OnapCommandSchemaHttpLoader {
                                         if (serviceMap.containsKey(secKey)) {
                                             Object obj = serviceMap.get(secKey);
                                             if (obj == null) {
-                                                errorList.add("Attribute '" + secKey + "' under '" + OnapCommandHttpConstants.SERVICE + "' is empty");
+                                                errorList.add(ATTRIBUTE + secKey + "' under '" + OnapCommandHttpConstants.SERVICE + "' is empty");
                                             } else {
                                                 String value = String.valueOf(obj);
                                                 if (!OnapCommandConfig.getCommaSeparatedList(validationMap.get(secKey)).contains(value)) {
-                                                    errorList.add("Attribute '" + secKey + "' contains invalid value. Valide values are "
+                                                    errorList.add(ATTRIBUTE + secKey + "' contains invalid value. Valide values are "
                                                             + OnapCommandConfig.getCommaSeparatedList(validationMap.get(key1))); //
                                                 }
                                             }
@@ -288,7 +290,7 @@ public class OnapCommandSchemaHttpLoader {
             String method = (String) requestMap.get(OnapCommandHttpConstants.METHOD);
             if (method != null && !method.isEmpty()) {
                 if (!OnapCommandConfig.getCommaSeparatedList(OnapCommandHttpConstants.HTTP_METHODS).contains(method.toLowerCase())) {
-                    errorList.add("Attribute '" + OnapCommandHttpConstants.METHOD + "' under '" + OnapCommandHttpConstants.REQUEST + "' is invalid, correct types are "
+                    errorList.add(ATTRIBUTE + OnapCommandHttpConstants.METHOD + "' under '" + OnapCommandHttpConstants.REQUEST + "' is invalid, correct types are "
                             + OnapCommandConfig.getCommaSeparatedList(OnapCommandHttpConstants.HTTP_METHODS).toString());
                 }
             } else {
