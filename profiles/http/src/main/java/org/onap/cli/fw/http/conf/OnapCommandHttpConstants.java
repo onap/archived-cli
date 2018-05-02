@@ -53,7 +53,7 @@ public class OnapCommandHttpConstants {
     public static final String REQUEST = "request";
     public static final String URI = "uri";
     public static final String BODY = "body";
-    public static final String METHOD_TYPE = "method";
+    public static final String METHOD_TYPE = METHOD;
     public static final String POST = "post";
     public static final String GET = "get";
     public static final String DELETE = "delete";
