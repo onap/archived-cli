@@ -15,22 +15,7 @@
  */
 package org.onap.cli.fw.http.mock;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.dreamhead.moco.HttpServer;
-import com.github.dreamhead.moco.Moco;
-import com.github.dreamhead.moco.ResponseHandler;
-import com.github.dreamhead.moco.Runner;
-import org.onap.cli.fw.conf.OnapCommandConfig;
-import org.onap.cli.fw.conf.OnapCommandConstants;
-import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandInvalidSchema;
-import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
-import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
-import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
-import org.springframework.core.io.Resource;
-import org.yaml.snakeyaml.Yaml;
+import static com.github.dreamhead.moco.Runner.runner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +23,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.github.dreamhead.moco.Runner.runner;
+import org.onap.cli.fw.conf.OnapCommandConfig;
+import org.onap.cli.fw.conf.OnapCommandConstants;
+import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
+import org.springframework.core.io.Resource;
+import org.yaml.snakeyaml.Yaml;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dreamhead.moco.HttpServer;
+import com.github.dreamhead.moco.Moco;
+import com.github.dreamhead.moco.ResponseHandler;
+import com.github.dreamhead.moco.Runner;
 
 public class MocoServer {
 
