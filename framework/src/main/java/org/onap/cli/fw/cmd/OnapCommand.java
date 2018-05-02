@@ -67,7 +67,7 @@ public abstract class OnapCommand {
         this.addDefaultSchemas(OnapCommandConstants.DEFAULT_PARAMETER_FILE_NAME);
     }
 
-    public List<String> getSchemas() throws OnapCommandException {
+    public List<String> getSchemas() {
         List<String> schemas = new ArrayList<>();
         schemas.addAll(this.defaultSchemas);
         schemas.add(this.getSchemaName());
