@@ -18,6 +18,7 @@ package org.onap.cli.fw.schema;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConstants;
@@ -154,4 +155,9 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
         return this.compareTo((OnapCommandSchemaInfo) obj) == 0;
     }
 
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(this.cmdName);
+    }
 }
