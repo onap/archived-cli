@@ -176,15 +176,15 @@ public class OnapCommandSchemaHttpLoader {
                                     validationMap.put(OnapCommandHttpConstants.AUTH, OnapCommandHttpConstants.AUTH_VALUES);
                                     validationMap.put(OnapCommandHttpConstants.MODE, OnapCommandHttpConstants.MODE_VALUES);
 
-                                    for (String secKey : validationMap.keySet()) {
-                                        if (serviceMap.containsKey(secKey)) {
-                                            Object obj = serviceMap.get(secKey);
+                                    for (Map.Entry<String, String> secKey : validationMap.entrySet()) {
+                                        if (serviceMap.containsKey(secKey.getKey())) {
+                                            Object obj = serviceMap.get(secKey.getKey());
                                             if (obj == null) {
-                                                errorList.add(ATTRIBUTE + secKey + "' under '" + OnapCommandHttpConstants.SERVICE + "' is empty");
+                                                errorList.add(ATTRIBUTE + secKey.getKey() + "' under '" + OnapCommandHttpConstants.SERVICE + "' is empty");
                                             } else {
                                                 String value = String.valueOf(obj);
-                                                if (!OnapCommandConfig.getCommaSeparatedList(validationMap.get(secKey)).contains(value)) {
-                                                    errorList.add(ATTRIBUTE + secKey + "' contains invalid value. Valide values are "
+                                                if (!OnapCommandConfig.getCommaSeparatedList(validationMap.get(secKey.getKey())).contains(value)) {
+                                                    errorList.add(ATTRIBUTE + secKey.getKey() + "' contains invalid value. Valide values are "
                                                             + OnapCommandConfig.getCommaSeparatedList(validationMap.get(key1))); //
                                                 }
                                             }
