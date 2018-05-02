@@ -56,7 +56,7 @@ import java.util.Optional;
  */
 public class OnapCli {
 
-    private static Logger LOG = LoggerFactory.getLogger(OnapCli.class);
+    private static Logger log = LoggerFactory.getLogger(OnapCli.class);
 
     private List<String> args = new ArrayList<>();
 
@@ -87,7 +87,7 @@ public class OnapCli {
 
     private void print(Throwable throwable) {
         this.print(throwable.getMessage() != null ? throwable.getMessage() : "");
-        LOG.error(throwable.getMessage(), throwable);
+        log.error(throwable.getMessage(), throwable);
     }
 
     private String getShortOption(String opt) {
