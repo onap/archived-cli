@@ -16,18 +16,15 @@
 
 package org.onap.cli.fw.snmp.schema;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.onap.cli.fw.conf.OnapCommandConfig;
-import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.snmp.cmd.OnapSnmpCommand;
 import org.onap.cli.fw.snmp.conf.OnapCommandSnmpConstants;
 import org.onap.cli.fw.utils.OnapCommandUtils;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class OnapCommandSchemaSnmpLoader {
 
