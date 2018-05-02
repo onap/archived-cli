@@ -340,7 +340,7 @@ public class OnapCommandUtils {
      * @param to
      * @throws OnapCommandException
      */
-    public static void copyParamSchemasFrom(OnapCommand from, OnapCommand to) throws OnapCommandException {
+    public static void copyParamSchemasFrom(OnapCommand from, OnapCommand to) {
         for (OnapCommandParameter param: from.getParameters()) {
             if (!to.getParametersMap().containsKey(param.getName())) {
                 to.getParameters().add(param);
