@@ -252,7 +252,7 @@ public class OnapCommandDiscoveryUtils {
                     try {
                         resourceMap = loadYaml(resource);
                     } catch (OnapCommandException e) {
-                        OnapCommandUtils.LOG.error("Ignores invalid schema " + resource.getURI().toString(), e);
+                        OnapCommandUtils.log.error("Ignores invalid schema " + resource.getURI().toString(), e);
                         continue;
                     }
 
@@ -263,14 +263,14 @@ public class OnapCommandDiscoveryUtils {
 
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         if (obj == null) {
-                            OnapCommandUtils.LOG.info("Invalid Schema yaml " + schema.getSchemaURI());
+                            OnapCommandUtils.log.info("Invalid Schema yaml " + schema.getSchemaURI());
                             continue;
                         }
 
                         schema.setVersion(obj.toString());
 
                         if (!schema.getVersion().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
-                            OnapCommandUtils.LOG.info("Unsupported Schema version found " + schema.getSchemaURI());
+                            OnapCommandUtils.log.info("Unsupported Schema version found " + schema.getSchemaURI());
                             continue;
                         }
 
@@ -331,12 +331,12 @@ public class OnapCommandDiscoveryUtils {
 
         Object sampleVersion = infoMap.get(OPEN_CLI_SAMPLE_VERSION);
         if (sampleVersion == null) {
-            OnapCommandUtils.LOG.info("Invalid Sample yaml " + sampleResourse.getURI().toString());
+            OnapCommandUtils.log.info("Invalid Sample yaml " + sampleResourse.getURI().toString());
             return;
         }
 
         if (!sampleVersion.toString().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SAMPLE_VERSION_VALUE_1_0)) {
-            OnapCommandUtils.LOG.info("Unsupported Sample version found " + sampleResourse.getURI().toString());
+            OnapCommandUtils.log.info("Unsupported Sample version found " + sampleResourse.getURI().toString());
             return;
         }
 

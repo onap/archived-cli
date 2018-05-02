@@ -51,7 +51,7 @@ import com.jayway.jsonpath.JsonPath;
  */
 public class OnapCommandUtils {
 
-    static Logger LOG = LoggerFactory.getLogger(OnapCommandUtils.class);
+    static Logger log = LoggerFactory.getLogger(OnapCommandUtils.class);
     /**
      * Private constructor.
      */
