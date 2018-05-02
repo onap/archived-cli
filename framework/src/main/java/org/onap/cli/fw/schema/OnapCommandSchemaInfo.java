@@ -145,6 +145,13 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+
+        if (this.getClass() != obj.getClass())
+            return false;
+
         return this.compareTo((OnapCommandSchemaInfo) obj) == 0;
     }
+
 }
