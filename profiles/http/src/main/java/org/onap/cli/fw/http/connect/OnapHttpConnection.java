@@ -64,7 +64,6 @@ import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
-import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
 import org.onap.cli.fw.http.error.OnapCommandHttpFailure;
 import org.slf4j.Logger;
