@@ -370,12 +370,13 @@ public class OnapHttpConnection {
     @NotThreadSafe
     static class HttpDeleteWithBody extends HttpEntityEnclosingRequestBase {
 
+        public HttpDeleteWithBody() {
+            super();
+        }
+
         public String getMethod() {
             return OnapCommandHttpConstants.DELETE;
         }
 
-        public HttpDeleteWithBody() {
-            super();
-        }
     }
 }
