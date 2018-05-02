@@ -56,7 +56,7 @@ import java.util.Set;
  */
 public class OnapCommandRegistrar {
 
-    private static Logger LOG = LoggerFactory.getLogger(OnapCommandRegistrar.class);
+    private static Logger log = LoggerFactory.getLogger(OnapCommandRegistrar.class);
 
     private Map<String, Class<? extends OnapCommand>> registry = new HashMap<>();
 
@@ -277,7 +277,7 @@ public class OnapCommandRegistrar {
 
         for (OnapCommandSchemaInfo schema : schemas) {
             if (schema.isIgnore()) {
-                LOG.info("Ignoring schema " + schema.getSchemaURI());
+                log.info("Ignoring schema " + schema.getSchemaURI());
                 continue;
             }
 
@@ -287,7 +287,7 @@ public class OnapCommandRegistrar {
             } else if (plugins.containsKey(schema.getSchemaProfile())) {
                 this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaProfile()));
             } else {
-                LOG.info("Ignoring schema " + schema.getSchemaURI());
+                log.info("Ignoring schema " + schema.getSchemaURI());
             }
         }
     }
