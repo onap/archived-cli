@@ -60,7 +60,7 @@ public class OnapSnmpCommand extends OnapCommand {
         super.addDefaultSchemas(OnapCommandSnmpConstants.DEFAULT_PARAMETER_SNMP_FILE_NAME);
     }
 
-    private String getAgent() throws OnapCommandException {
+    private String getAgent() {
         OnapCommandParameter onapCommandParameter = this.getParametersMap().get(OnapCommandSnmpConstants.SNMP_AGENT);
         return (String) onapCommandParameter.getValue();
     }
