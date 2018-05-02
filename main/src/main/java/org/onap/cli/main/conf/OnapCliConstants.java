@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Huawei Technologies Co., Ltd.
+ * Copyright 2017-18 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,13 +42,13 @@ public final class OnapCliConstants {
     public static final String PARAM_INTERACTIVE_USE_MSG = "To set the current product version, more details please check version";
     public static final String PARAM_INTERACTIVE_HELP = "help";
     public static final String PARAM_INTERACTIVE_HELP_MSG = "To get the help details of supported commands";
-    public static final String PARAM_INTERACTIVE_VERSION = "version";
+    public static final String PARAM_INTERACTIVE_VERSION = PARAM_VERSION_LONG;
     public static final String PARAM_INTERACTIVE_VERSION_MSG = "To see the version details";
     public static final String PARAM_INTERACTIVE_SET = "set";
     public static final String PARAM_INTERACTIVE_SET_MSG = "To set the parameter values. Once its set, will be available for all commands in current session.";
     public static final String PARAM_INTERACTIVE_UNSET = "unset";
     public static final String PARAM_INTERACTIVE_UNSET_MSG = "To unset the parameter value in current session.";
-    public static final String PARAM_INTERACTIVE_PROFILE = "profile";
+    public static final String PARAM_INTERACTIVE_PROFILE = PARAM_PROFILE_LONG;
     public static final String PARAM_INTERACTIVE_PROFILE_MSG = "Start profiling current settings made of use, set.";
 
     public static final String PARAM_INTERACTIVE_ARG_SPLIT_PATTERN = "\\s+";
