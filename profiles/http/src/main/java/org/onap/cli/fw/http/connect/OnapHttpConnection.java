@@ -110,7 +110,7 @@ public class OnapHttpConnection {
      * @throws OnapCommandHttpFailure
      *             exception
      */
-    public OnapHttpConnection(boolean debug) throws OnapCommandHttpFailure {
+    public OnapHttpConnection(boolean debug) {
         this.debug = debug;
     }
 
