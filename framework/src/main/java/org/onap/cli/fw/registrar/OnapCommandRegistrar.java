@@ -113,10 +113,9 @@ public class OnapCommandRegistrar {
      *
      * @param name Command Name
      * @param cmd  Command Class
-     * @throws OnapCommandInvalidRegistration            Invalid registration exception
      * @throws OnapCommandRegistrationProductInfoMissing
      */
-    private void register(String name, String version, Class<? extends OnapCommand> cmd) throws OnapCommandInvalidRegistration, OnapCommandRegistrationProductInfoMissing {
+    private void register(String name, String version, Class<? extends OnapCommand> cmd) throws OnapCommandRegistrationProductInfoMissing {
         if (version == null || version.isEmpty()) {
             throw new OnapCommandRegistrationProductInfoMissing(name);
         }
