@@ -203,7 +203,7 @@ public class OnapCommandSchemaHttpLoader {
                                             break;
 
                                         case OnapCommandHttpConstants.VERSION:
-                                            srv.setVersion(serviceMap.get(key).toString());
+                                            srv.setVersion(serviceMap.get(key));
                                             break;
 
                                         case OnapCommandHttpConstants.AUTH:
