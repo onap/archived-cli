@@ -18,7 +18,7 @@ version: onap-beijing
 samples:
   sample1:
     name: vf-create
-    input: --cloud-region RegionOne --tenant-id onap --product-family vLB --instance-name vlb-cli-sample-11 --service-instance-id 2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee --vf-model-invariant-id cc34cd54-dd7c-44cd-8847-f9577c6f1a49 --vf-model-uuid 8b1f63f3-e0cc-4c27-8903-fafe2f25bfbe --vf-model-name 847cb26a-59a6-475a-94dd --vf-model-version 1.0 --vf-model-customization-id cf893f5a-1bb1-4e32-a92b-2456e12178f8 --service-model-invariant-id 1de901ed-17af-4b03-bc1f-41659cfa27cb --service-model-uuid ace39141-09ec-4068-b06d-ac6b23bdc6e0 --service-model-name demoVLB --service-model-version 1.0 -m http://192.168.17.121:8080 -u InfraPortalClient -p password1$
+    input: --cloud-region RegionOne --tenant-id onap --product-family vLB --instance-name service-vlb-instance-1-vnf-1 --service-instance-id 1561a325-a64b-47ab-86f4-459e334292f0 --vf-model-invariant-id 4982d10b-09af-46b9-8317-c92d2658ae68 --vf-model-uuid b2a40a03-c85e-4b6c-8ade-f90e5f2ce2d4 --vf-model-name 2932d051-6aad-4c0d-ac2d --vf-model-version 1.0 --vf-model-customization-id 3741acf1-5929-42e6-b234-4b9051d09a54 --service-model-invariant-id f812e618-3abf-4c7a-901e-f2820a73eb2e --service-model-uuid 84ad850a-3d0b-451d-b97b-083bbf39890d --service-model-name demoVLB --service-model-version 1.0 -r 2345
     moco: vf-create-schema-beijing-moco.json
     output: |
       +--------------+--------------------------------------+

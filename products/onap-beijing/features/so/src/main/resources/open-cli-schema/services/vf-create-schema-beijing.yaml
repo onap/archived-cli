@@ -106,6 +106,12 @@ parameters:
     short_option: n
     long_option: service-model-version
     is_optional: false
+  - name: requestor-id
+    description: requestor ID
+    type: string
+    short_option: r
+    long_option: requestor-id
+    is_optional: false
 
 
 results:
@@ -125,7 +131,7 @@ http:
   request:
     uri: /ecomp/mso/infra/serviceInstances/v4/${service-instance-id}/vnfs
     method: POST
-    body: '{"requestDetails": {"modelInfo": {"modelType": "vnf","modelInvariantId": "${vf-model-invariant-id}","modelVersionId": "${vf-model-uuid}","modelName": "${vf-model-name}","modelVersion": "${vf-model-version}","modelCustomizationId": "${vf-model-customization-id}"},"cloudConfiguration": {"lcpCloudRegionId": "${cloud-region}","tenantId": "${tenant-id}"},"requestInfo": {"instanceName": "${instance-name}","source": "VID","productFamilyId": "${product-family}" },"relatedInstanceList": [{"relatedInstance": {"instanceId": "${service-instance-id}","modelInfo": {"modelType": "service","modelInvariantId": "${service-model-invariant-id}","modelVersionId": "${service-model-uuid}","modelName": "${service-model-name}","modelVersion": "${service-model-version}"}}}],"requestParameters": {}}}'
+    body: '{"requestDetails": {"modelInfo": {"modelType": "vnf","modelInvariantId": "${vf-model-invariant-id}","modelVersionId": "${vf-model-uuid}","modelName": "${vf-model-name}","modelVersion": "${vf-model-version}","modelCustomizationId": "${vf-model-customization-id}"},"cloudConfiguration": {"lcpCloudRegionId": "${cloud-region}","tenantId": "${tenant-id}"},"requestInfo": {"requestorId": "${requestor-id}","instanceName": "${instance-name}","source": "VID","productFamilyId": "${product-family}" },"relatedInstanceList": [{"relatedInstance": {"instanceId": "${service-instance-id}","modelInfo": {"modelType": "service","modelInvariantId": "${service-model-invariant-id}","modelVersionId": "${service-model-uuid}","modelName": "${service-model-name}","modelVersion": "${service-model-version}"}}}],"requestParameters": {}}}'
 
   success_codes:
     - 202
