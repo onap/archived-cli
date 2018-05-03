@@ -3354,3 +3354,1314 @@ Error::
 
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
+
+vsp-list
+----------------------------------------------------
+
+usage: oclip vsp-list
+
+List of the Vendor Software Products
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-s | --long]
+ [-D | --context] [-u | --host-username] [-a | --no-auth]
+ [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ ID               VSP ID and is of type STRING.
+ name             VSP Name and is of type STRING.
+ vendor-name      Vendor name and is of type STRING.
+ version          Version and is of type STRING.
+ status           status and is of type STRING.
+ license-id       license aggreement and is of type STRING.
+ license-version  license version and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vsp-validate
+----------------------------------------------------
+
+usage: oclip vsp-validate
+
+Validated the uploaded Vendor Software Product
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --vsp-id]
+ [-s | --long] [-D | --context] [-y | --vsp-version]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -x | --vsp-id          Onap VSP ID. It is of type STRING. By default, it
+                        is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -y | --vsp-version     VSP version. It is of type STRING. By default, it
+                        is .
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ status   Validation status and is of type STRING.
+ errors   Validation messages and is of type JSON.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+tenant-list
+----------------------------------------------------
+
+usage: oclip tenant-list
+
+Lists the tenants under given cloud region in Onap
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --cloud]
+ [-y | --region] [-s | --long] [-D | --context]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -x | --cloud           Onap cloud. It is of type STRING. By default, it
+                        is .
+ -y | --region          Onap cloud region. It is of type STRING. By
+                        default, it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ tenant-id          Onap tenant-id and is of type STRING.
+ tenant-name        Onap tenant name and is of type STRING.
+ resource-version   Onap tenant resource version and is of type
+                    STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vf-model-certify-request
+----------------------------------------------------
+
+usage: oclip vf-model-certify-request
+
+Request for certifying Virtual function
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-b | --vf-id]
+ [-s | --long] [-D | --context] [-u | --host-username]
+ [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -b | --vf-id           VF ID. It is of type STRING. It is optional. By
+                        default, it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vf-module-create
+----------------------------------------------------
+
+usage: oclip vf-module-create
+
+Create a VF Module
+
+Product: onap-beijing
+Service: so
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-w | --tenant-id] [-v | --version] [-d | --debug]
+ [-y | --vnf-instace-id] [-z | --parenet-service-model] [-x | --service-instace-id]
+ [-l | --lcp-cloudregion-id] [-s | --long] [-D | --context]
+ [-i | --instance-name] [-u | --host-username] [-r | --supress-rollback]
+ [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url                host url in http(s). It is of type URL. By
+                                default, it is read from environment variable
+                                OPEN_CLI_HOST_URL.
+ -C | --no-catalog              Whether to use given host-url directly or
+                                discover it from catalog, it will override the
+                                service->mode. It is of type BOOL. It is
+                                optional.
+ -h | --help                    print help message. It is of type BOOL.
+ -f | --format                  Output formats, supported formats such as table,
+                                csv, json, yaml. It is of type STRING.
+ -t | --no-title                whether to print title or not. It is of type BOOL.
+ -V | --verify                  Helps to verify the command using samples
+                                provides under open-cli-samples directory. By
+                                default, it goes with mock.To enable the
+                                verification of samples in real time, set
+                                DISABLE_MOCKING=true in the context parameter. It
+                                is of type BOOL. It is optional.
+ -w | --tenant-id               openstack tenant id (uuid). It is of type STRING.
+                                By default, it is .
+ -v | --version                 print service version. It is of type BOOL.
+ -d | --debug                   Enable debug output. It is of type BOOL.
+ -y | --vnf-instace-id          vnf instance id. It is of type STRING. By
+                                default, it is .
+ -z | --parenet-service-model   parent service model name. It is of type STRING.
+                                By default, it is .
+ -x | --service-instace-id      unique id for service instance. It is of type
+                                STRING. By default, it is .
+ -l | --lcp-cloudregion-id      AIC LCP node location identifier. It is of type
+                                STRING. By default, it is .
+ -s | --long                    whether to print all attributes or only short
+                                attributes. It is of type BOOL.
+ -D | --context                 command context. It is of type MAP. It is
+                                optional.
+ -i | --instance-name           service instance name. It is of type STRING. By
+                                default, it is .
+ -u | --host-username           Host user name. It is of type STRING. By default,
+                                it is read from environment variable
+                                OPEN_CLI_HOST_USERNAME.
+ -r | --supress-rollback        rollback changes if instantiation fails. It is of
+                                type BOOL. It is optional.
+ -a | --no-auth                 Whether to authenticate user or not. It is of
+                                type BOOL.
+ -p | --host-password           Host user password. It is of type STRING. By
+                                default, it is read from environment variable
+                                OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vim-list
+----------------------------------------------------
+
+usage: oclip vim-list
+
+List the configured vims
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --cloud-name]
+ [-s | --long] [-D | --context] [-y | --region-name]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -x | --cloud-name      Onap cloud name. It is of type STRING. By
+                        default, it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -y | --region-name     Onap region name. It is of type STRING. By
+                        default, it is .
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ vim-id             Onap vim id and is of type STRING.
+ name               Onap vim name and is of type STRING.
+ type               Onap vim type and is of type STRING.
+ vendor             Onap vim vendor and is of type STRING.
+ version            Onap vim version and is of type STRING.
+ url                Onap vim url and is of type STRING.
+ username           Onap vim username and is of type STRING.
+ cloud-domain       Onap vim cloud domain and is of type STRING.
+ default-tenant     Onap vim tenant and is of type STRING.
+ resource-version   Onap vim resource version and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vlm-checkin
+----------------------------------------------------
+
+usage: oclip vlm-checkin
+
+Checkin Vendor License Model
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-y | --vlm-version]
+ [-h | --help] [-f | --format] [-t | --no-title]
+ [-V | --verify] [-v | --version] [-d | --debug]
+ [-x | --vlm-id] [-s | --long] [-D | --context]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -y | --vlm-version     VLM version. It is of type STRING. By default, it
+                        is .
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -x | --vlm-id          Onap VLM ID. It is of type STRING. By default, it
+                        is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vlm-feature-group-create
+----------------------------------------------------
+
+usage: oclip vlm-feature-group-create
+
+Create feature group Pool
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-y | --vlm-id] [-C | --no-catalog]
+ [-h | --help] [-f | --format] [-t | --no-title]
+ [-V | --verify] [-c | --part-number] [-v | --version]
+ [-d | --debug] [-z | --description] [-b | --vlm-entitle-pool-id]
+ [-k | --manufacture-reference-number] [-x | --name] [-g | --vlm-key-group-id]
+ [-s | --long] [-D | --context] [-u | --host-username]
+ [-a | --no-auth] [-e | --vlm-version] [-p | --host-password]
+
+where::
+
+ -m | --host-url                      host url in http(s). It is of type URL. By
+                                      default, it is read from environment variable
+                                      OPEN_CLI_HOST_URL.
+ -y | --vlm-id                        License Model ID. It is of type STRING. By
+                                      default, it is .
+ -C | --no-catalog                    Whether to use given host-url directly or
+                                      discover it from catalog, it will override the
+                                      service->mode. It is of type BOOL. It is
+                                      optional.
+ -h | --help                          print help message. It is of type BOOL.
+ -f | --format                        Output formats, supported formats such as table,
+                                      csv, json, yaml. It is of type STRING.
+ -t | --no-title                      whether to print title or not. It is of type BOOL.
+ -V | --verify                        Helps to verify the command using samples
+                                      provides under open-cli-samples directory. By
+                                      default, it goes with mock.To enable the
+                                      verification of samples in real time, set
+                                      DISABLE_MOCKING=true in the context parameter. It
+                                      is of type BOOL. It is optional.
+ -c | --part-number                   Part number. It is of type STRING. By default, it
+                                      is .
+ -v | --version                       print service version. It is of type BOOL.
+ -d | --debug                         Enable debug output. It is of type BOOL.
+ -z | --description                   Description for feature group. It is of type
+                                      STRING. By default, it is .
+ -b | --vlm-entitle-pool-id           VLM Entitlement pool. It is of type STRING. By
+                                      default, it is .
+ -k | --manufacture-reference-number  Manufature Reference Number. It is of type
+                                      STRING. By default, it is .
+ -x | --name                          Feature group name. It is of type STRING. By
+                                      default, it is .
+ -g | --vlm-key-group-id              VLM keygroup. It is of type STRING. By default,
+                                      it is .
+ -s | --long                          whether to print all attributes or only short
+                                      attributes. It is of type BOOL.
+ -D | --context                       command context. It is of type MAP. It is
+                                      optional.
+ -u | --host-username                 Host user name. It is of type STRING. By default,
+                                      it is read from environment variable
+                                      OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth                       Whether to authenticate user or not. It is of
+                                      type BOOL.
+ -e | --vlm-version                   License Model version. It is of type STRING. By
+                                      default, it is .
+ -p | --host-password                 Host user password. It is of type STRING. By
+                                      default, it is read from environment variable
+                                      OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ ID   Feature group ID and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vlm-revert
+----------------------------------------------------
+
+usage: oclip vlm-revert
+
+Revert Vendor License Model
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-y | --vlm-version]
+ [-h | --help] [-f | --format] [-t | --no-title]
+ [-V | --verify] [-v | --version] [-d | --debug]
+ [-x | --vlm-id] [-s | --long] [-D | --context]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -y | --vlm-version     VLM version. It is of type STRING. By default, it
+                        is .
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -x | --vlm-id          Onap VLM ID. It is of type STRING. By default, it
+                        is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vnf-list
+----------------------------------------------------
+
+usage: oclip vnf-list
+
+Lists the vnfs
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-s | --long]
+ [-D | --context] [-u | --host-username] [-a | --no-auth]
+ [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ vnf-name           Onap vnf name and is of type STRING.
+ vnf-id             Onap vnf id and is of type STRING.
+ vnf-type           Onap vnf-type and is of type STRING.
+ in-maint           Onap in-maint and is of type STRING.
+ resource-version   Onap resource-version and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vsp-add-artifact
+----------------------------------------------------
+
+usage: oclip vsp-add-artifact
+
+Upload the CSAR file to VSP
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --vsp-id]
+ [-s | --long] [-D | --context] [-y | --vsp-version]
+ [-z | --vsp-file]
+
+where::
+
+ -m | --host-url      host url in http(s). It is of type URL. By
+                      default, it is read from environment variable
+                      OPEN_CLI_HOST_URL.
+ -C | --no-catalog    Whether to use given host-url directly or
+                      discover it from catalog, it will override the
+                      service->mode. It is of type BOOL. It is
+                      optional.
+ -h | --help          print help message. It is of type BOOL.
+ -f | --format        Output formats, supported formats such as table,
+                      csv, json, yaml. It is of type STRING.
+ -t | --no-title      whether to print title or not. It is of type BOOL.
+ -V | --verify        Helps to verify the command using samples
+                      provides under open-cli-samples directory. By
+                      default, it goes with mock.To enable the
+                      verification of samples in real time, set
+                      DISABLE_MOCKING=true in the context parameter. It
+                      is of type BOOL. It is optional.
+ -v | --version       print service version. It is of type BOOL.
+ -d | --debug         Enable debug output. It is of type BOOL.
+ -x | --vsp-id        Onap VSP ID. It is of type STRING. By default, it
+                      is .
+ -s | --long          whether to print all attributes or only short
+                      attributes. It is of type BOOL.
+ -D | --context       command context. It is of type MAP. It is
+                      optional.
+ -y | --vsp-version   Onap VSP version. It is of type STRING. By
+                      default, it is .
+ -z | --vsp-file      CSAR File path. It is of type BINARY. By default,
+                      it is .
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vsp-package
+----------------------------------------------------
+
+usage: oclip vsp-package
+
+Package Vendor Software Product
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --vsp-id]
+ [-s | --long] [-D | --context] [-y | --vsp-version]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -x | --vsp-id          Onap VSP ID. It is of type STRING. By default, it
+                        is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -y | --vsp-version     VSP version. It is of type STRING. By default, it
+                        is .
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vf-model-checkin
+----------------------------------------------------
+
+usage: oclip vf-model-checkin
+
+Checkin Virtual function
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-b | --vf-id]
+ [-s | --long] [-D | --context] [-u | --host-username]
+ [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -b | --vf-id           VF ID. It is of type STRING. It is optional. By
+                        default, it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vf2vfmodule-model-list
+----------------------------------------------------
+
+usage: oclip vf2vfmodule-model-list
+
+List the VF modules in a given VF model in SDC
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-z | --vf-id]
+ [-s | --long] [-D | --context] [-u | --host-username]
+ [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -z | --vf-id           VF uuid. It is of type STRING. By default, it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ vsp-uuid               VSP uuid and is of type STRING.
+ vsp-version            VSP version and is of type STRING.
+ module-uuid            UUID and is of type STRING.
+ module-invariant-uuid  Invariant UUID and is of type STRING.
+ module-name            name and is of type STRING.
+ module-version         version and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vim-unregister
+----------------------------------------------------
+
+usage: oclip vim-unregister
+
+Un-register a VIM under from cloud region in Onap
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-x | --cloud-name]
+ [-s | --long] [-D | --context] [-y | --region-name]
+ [-u | --host-username] [-a | --no-auth] [-z | --vim-id]
+ [-p | --host-password] [-b | --resource-version]
+
+where::
+
+ -m | --host-url          host url in http(s). It is of type URL. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_URL.
+ -C | --no-catalog        Whether to use given host-url directly or
+                          discover it from catalog, it will override the
+                          service->mode. It is of type BOOL. It is
+                          optional.
+ -h | --help              print help message. It is of type BOOL.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING.
+ -t | --no-title          whether to print title or not. It is of type BOOL.
+ -V | --verify            Helps to verify the command using samples
+                          provides under open-cli-samples directory. By
+                          default, it goes with mock.To enable the
+                          verification of samples in real time, set
+                          DISABLE_MOCKING=true in the context parameter. It
+                          is of type BOOL. It is optional.
+ -v | --version           print service version. It is of type BOOL.
+ -d | --debug             Enable debug output. It is of type BOOL.
+ -x | --cloud-name        Onap cloud name. It is of type STRING. By
+                          default, it is .
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL.
+ -D | --context           command context. It is of type MAP. It is
+                          optional.
+ -y | --region-name       Onap region name. It is of type STRING. By
+                          default, it is .
+ -u | --host-username     Host user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth           Whether to authenticate user or not. It is of
+                          type BOOL.
+ -z | --vim-id            Onap VIM unique id. It is of type UUID.
+ -p | --host-password     Host user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_PASSWORD. Secured.
+ -b | --resource-version  Onap vim resource version. It is of type STRING.
+                          It is optional. By default, it is .
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vlm-create
+----------------------------------------------------
+
+usage: oclip vlm-create
+
+Create License Model
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-y | --description]
+ [-s | --long] [-D | --context] [-x | --vendor-name]
+ [-u | --host-username] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -y | --description     Description for License Model. It is of type
+                        STRING. It is optional. By default, it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -x | --vendor-name     vendor name. It is of type STRING. By default, it
+                        is .
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ ID   License Model ID and is of type UUID.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vlm-key-group-create
+----------------------------------------------------
+
+usage: oclip vlm-key-group-create
+
+Create License Key Group
+
+Product: onap-beijing
+Service: sdc
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-z | --description]
+ [-x | --name] [-s | --long] [-D | --context]
+ [-y | --type] [-c | --vlm-id] [-u | --host-username]
+ [-a | --no-auth] [-e | --vlm-version] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -z | --description     Description for License Key Group. It is of type
+                        STRING. It is optional. By default, it is .
+ -x | --name            name. It is of type STRING. By default, it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -y | --type            type of group (Universal, unique, one-time). It
+                        is of type STRING.
+ -c | --vlm-id          License Model Id. It is of type STRING. By
+                        default, it is .
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -e | --vlm-version     License Model version. It is of type STRING. By
+                        default, it is .
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Results::
+
+ ID   License Model ID and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vnf-create
+----------------------------------------------------
+
+usage: oclip vnf-create
+
+Create a vnf directly into AAI.
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-n | --name] [-C | --no-catalog]
+ [-h | --help] [-f | --format] [-t | --no-title]
+ [-V | --verify] [-v | --version] [-d | --debug]
+ [-w | --in-maint] [-i | --vnf-id] [-s | --long]
+ [-D | --context] [-z | --vnf-type] [-u | --host-username]
+ [-r | --relationship] [-a | --no-auth] [-p | --host-password]
+
+where::
+
+ -m | --host-url        host url in http(s). It is of type URL. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_URL.
+ -n | --name            vnf-name. It is of type STRING. By default, it is
+                        .
+ -C | --no-catalog      Whether to use given host-url directly or
+                        discover it from catalog, it will override the
+                        service->mode. It is of type BOOL. It is
+                        optional.
+ -h | --help            print help message. It is of type BOOL.
+ -f | --format          Output formats, supported formats such as table,
+                        csv, json, yaml. It is of type STRING.
+ -t | --no-title        whether to print title or not. It is of type BOOL.
+ -V | --verify          Helps to verify the command using samples
+                        provides under open-cli-samples directory. By
+                        default, it goes with mock.To enable the
+                        verification of samples in real time, set
+                        DISABLE_MOCKING=true in the context parameter. It
+                        is of type BOOL. It is optional.
+ -v | --version         print service version. It is of type BOOL.
+ -d | --debug           Enable debug output. It is of type BOOL.
+ -w | --in-maint        Used to indicate whether or not this object is in
+                        maintenance mode (maintenance mode = true). It is
+                        of type BOOL. It is optional.
+ -i | --vnf-id          vnf-id. It is of type STRING. By default, it is .
+ -s | --long            whether to print all attributes or only short
+                        attributes. It is of type BOOL.
+ -D | --context         command context. It is of type MAP. It is
+                        optional.
+ -z | --vnf-type        vnf-type. It is of type STRING. By default, it is
+                        .
+ -u | --host-username   Host user name. It is of type STRING. By default,
+                        it is read from environment variable
+                        OPEN_CLI_HOST_USERNAME.
+ -r | --relationship    relationship. It is of type JSON. It's
+                        recommended to input the complete path of the
+                        file, which is having the value for it. It is
+                        optional.
+ -a | --no-auth         Whether to authenticate user or not. It is of
+                        type BOOL.
+ -p | --host-password   Host user password. It is of type STRING. By
+                        default, it is read from environment variable
+                        OPEN_CLI_HOST_PASSWORD. Secured.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+vnfm-register
+----------------------------------------------------
+
+usage: oclip vnfm-register
+
+Register a VNFM in Onap
+
+Product: onap-beijing
+Service: aai
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-e | --vendor] [-v | --version] [-d | --debug]
+ [-y | --vnfm-id] [-c | --type] [-x | --vim-id]
+ [-s | --long] [-D | --context] [-b | --name]
+ [-i | --username] [-j | --password] [-u | --host-username]
+ [-g | --url] [-a | --no-auth] [-q | --vnfm-version]
+ [-p | --host-password] [-z | --certificate-url]
+
+where::
+
+ -m | --host-url          host url in http(s). It is of type URL. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_URL.
+ -C | --no-catalog        Whether to use given host-url directly or
+                          discover it from catalog, it will override the
+                          service->mode. It is of type BOOL. It is
+                          optional.
+ -h | --help              print help message. It is of type BOOL.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING.
+ -t | --no-title          whether to print title or not. It is of type BOOL.
+ -V | --verify            Helps to verify the command using samples
+                          provides under open-cli-samples directory. By
+                          default, it goes with mock.To enable the
+                          verification of samples in real time, set
+                          DISABLE_MOCKING=true in the context parameter. It
+                          is of type BOOL. It is optional.
+ -e | --vendor            Onap VNFM vendor. It is of type STRING. By
+                          default, it is .
+ -v | --version           print service version. It is of type BOOL.
+ -d | --debug             Enable debug output. It is of type BOOL.
+ -y | --vnfm-id           Onap VNFM unique id. It is of type UUID.
+ -c | --type              Onap VNFM type. It is of type STRING. By default,
+                          it is .
+ -x | --vim-id            Onap VIM unique id. It is of type UUID.
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL.
+ -D | --context           command context. It is of type MAP. It is
+                          optional.
+ -b | --name              Onap VNFM name. It is of type STRING. By default,
+                          it is .
+ -i | --username          Onap VNFM username. It is of type STRING. By
+                          default, it is .
+ -j | --password          Onap VNFM password. It is of type STRING. By
+                          default, it is .
+ -u | --host-username     Host user name. It is of type STRING. By default,
+                          it is read from environment variable
+                          OPEN_CLI_HOST_USERNAME.
+ -g | --url               Onap VNFM URL. It is of type STRING. By default,
+                          it is .
+ -a | --no-auth           Whether to authenticate user or not. It is of
+                          type BOOL.
+ -q | --vnfm-version      Onap VNFM version. It is of type STRING. By
+                          default, it is .
+ -p | --host-password     Host user password. It is of type STRING. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_PASSWORD. Secured.
+ -z | --certificate-url   Onap VNFM certificate-url. It is of type STRING.
+                          It is optional. By default, it is .
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
