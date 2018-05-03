@@ -58,11 +58,23 @@ parameters:
     short_option: j
     long_option: model-version
     is_optional: false
+  - name: model-version-id
+    description: model-version-id
+    type: string
+    short_option: n
+    long_option: model-version-id
+    is_optional: false
   - name: customer
     description: unique id for customer
     type: string
     short_option: c
     long_option: customer
+    is_optional: false
+  - name: requestor-id
+    description: requestor ID
+    type: string
+    short_option: q
+    long_option: requestor-id
     is_optional: false
   - name: instance-name
     description: service instance name
@@ -101,7 +113,7 @@ http:
   request:
     uri: /ecomp/mso/infra/serviceInstances/v4
     method: POST
-    body: '{"requestDetails": {"cloudConfiguration" : {"lcpCloudRegionId": "${cloud-region}","tenantId": "${tenant-id}"},"modelInfo": {"modelType": "service","modelInvariantId": "${model-invariant-id}","modelNameVersionId": "${model-uuid}","modelName": "${model-name}","modelVersion": "${model-version}"},"subscriberInfo": {"globalSubscriberId": "${customer}"},"requestInfo": {"instanceName": "${instance-name}","source": "VID","suppressRollback": "${supress-rollback}"},"requestParameters": {"subscriptionServiceType": "${service-type}"}}}'
+    body: '{"requestDetails": {"cloudConfiguration" : {"lcpCloudRegionId": "${cloud-region}","tenantId": "${tenant-id}"},"modelInfo": {"modelType": "service","modelInvariantId": "${model-invariant-id}","modelNameVersionId": "${model-uuid}","modelName": "${model-name}","modelVersion": "${model-version}", "modelVersionId": "$model-version-id"},"subscriberInfo": {"globalSubscriberId": "${customer}"},"requestInfo": {"requestorId": "${requestor-id}","instanceName": "${instance-name}","source": "VID","suppressRollback": "${supress-rollback}"},"requestParameters": {"subscriptionServiceType": "${service-type}","aLaCarte":true}}}'
 
   success_codes:
     - 202
