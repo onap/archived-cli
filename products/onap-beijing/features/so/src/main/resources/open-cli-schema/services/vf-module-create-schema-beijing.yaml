@@ -76,11 +76,11 @@ results:
 http:
   service:
     name: so
-    version: v3
+    version: v4
     auth: basic
     mode: direct
   request:
-    uri: ecomp/mso/infra/serviceInstances/v2/${service-instance-id}/vnfs/${vnf-instance-id}/vfModules
+    uri: ecomp/mso/infra/serviceInstances/v4/${service-instance-id}/vnfs/${vnf-instance-id}/vfModules
     method: PUT
     body: '{"requestDetails":{"modelInfo":{"modelType":"vfModule","modelInvariantId":"ff5256d2-5a33-55df-13ab-12abad84e7ff","modelNameVersionId":"fe6478e5-ea33-3346-ac12-ab121484a3fe","modelName":"vSAMP12..base..module-0","modelVersion":"1"},"cloudConfiguration":{"lcpCloudRegionId":"${lcp-cloudregion-id}","tenantId":"${tenant-id}"},"requestInfo":{"instanceName":"${instance-name}","source":"VID","suppressRollback":"${supress-rollback}"},"relatedInstanceList":[{"relatedInstance":{"instanceId":"${service-instance-id}","modelInfo":{"modelType":"service","modelInvariantId":"ff3514e3-5a33-55df-13ab-12abad84e7ff","modelNameVersionId":"fe6985cd-ea33-3346-ac12-ab121484a3fe","modelName":"${parenet-service-model}","modelVersion":"1.0"}}},{"relatedInstance":{"instanceId":"${vnf-instance-id}","modelInfo":{"modelType":"vnf","modelInvariantId":"ff5256d1-5a33-55df-13ab-12abad84e7ff","modelNameVersionId":"fe6478e4-ea33-3346-ac12-ab121484a3fe","modelName":"vSAMP12","modelVersion":"1.0","modelCustomizationName":"vSAMP12 1"}}}],"requestParameters":{"userParams":[]}}}'
 
