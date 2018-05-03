@@ -18,7 +18,7 @@ version: onap-beijing
 samples:
   sample1:
     name: service-create
-    input: --cloud-region RegionOne --tenant-id onap --model-invariant-id 1de901ed-17af-4b03-bc1f-41659cfa27cb --model-uuid ace39141-09ec-4068-b06d-ac6b23bdc6e0 --model-name demoVLB --model-version 1.0 -c Demonstration --instance-name sample-service-onap-cli-13 --service-type vLB
+    input: service-create --cloud-region RegionOne --tenant-id 60817ff9baa547d5857a6b7ff0dc567b --model-invariant-id f812e618-3abf-4c7a-901e-f2820a73eb2e --model-uuid 84ad850a-3d0b-451d-b97b-083bbf39890d --model-name demoVLB --model-version 1.0 -c Demonstration --instance-name service-vlb-instance-1 --service-type vlb --model-version-id 57a6b7ff0dc567b
     moco: service-create-schema-beijing-moco.json
     output: |
       +--------------+--------------------------------------+
