@@ -143,11 +143,11 @@ results:
 http:
   service:
     name: so
-    version: v3
+    version: v4
     auth: basic
     mode: direct
   request:
-    uri: /ecomp/mso/infra/serviceInstances/v3/${service-id}/vnfs/${vf-id}/vfModules
+    uri: /ecomp/mso/infra/serviceInstances/v4/${service-id}/vnfs/${vf-id}/vfModules
     method: POST
     body: '{"requestDetails": {"modelInfo": {"modelType": "vfModule","modelInvariantId": "${vfmodule-invariant-id}","modelNameVersionId": "${vfmodule-uuid}","modelName": "${vfmodule-name}","modelVersion": "${vfmodule-version}"},"cloudConfiguration": {"lcpCloudRegionId": "${cloud-region}","tenantId": "${tenant-id}"},"requestInfo": {"instanceName": "${module-name}","source": "VID"},"relatedInstanceList": [{"relatedInstance": {"instanceId": "${service-id}","modelInfo": {"modelType": "service","modelInvariantId": "${service-model-invariant-id}","modelNameVersionId": "${service-model-uuid}","modelName": "${service-model-name}","modelVersion": "${service-model-version}"}}},{"relatedInstance": {"instanceId": "${vf-id}","modelInfo": {"modelType": "vnf","modelInvariantId": "${vf-model-invariant-id}","modelNameVersionId": "${vf-model-uuid}","modelName": "${vf-model-name}","modelVersion": "${vf-model-version}","modelCustomizationName": "${vf-model-customization-id}"}}}],"requestParameters": {"userParams": []}}}'
 
