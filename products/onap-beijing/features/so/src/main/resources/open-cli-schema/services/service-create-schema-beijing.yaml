@@ -95,11 +95,11 @@ results:
 http:
   service:
     name: so
-    version: v3
+    version: v4
     auth: basic
     mode: direct
   request:
-    uri: /ecomp/mso/infra/serviceInstances/v3
+    uri: /ecomp/mso/infra/serviceInstances/v4
     method: POST
     body: '{"requestDetails": {"cloudConfiguration" : {"lcpCloudRegionId": "${cloud-region}","tenantId": "${tenant-id}"},"modelInfo": {"modelType": "service","modelInvariantId": "${model-invariant-id}","modelNameVersionId": "${model-uuid}","modelName": "${model-name}","modelVersion": "${model-version}"},"subscriberInfo": {"globalSubscriberId": "${customer}"},"requestInfo": {"instanceName": "${instance-name}","source": "VID","suppressRollback": "${supress-rollback}"},"requestParameters": {"subscriptionServiceType": "${service-type}"}}}'
 
