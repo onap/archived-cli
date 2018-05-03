@@ -75,11 +75,11 @@ parameters:
 http:
   service:
     name: so
-    version: v3
+    version: v4
     auth: basic
     mode: direct
   request:
-    uri: /ecomp/mso/infra/serviceInstances/v3/${service-id}/vnfs/${vf-id}/vfModules/${vfmodule-id}
+    uri: /ecomp/mso/infra/serviceInstances/v4/${service-id}/vnfs/${vf-id}/vfModules/${vfmodule-id}
     method: DELETE
     body: '{"requestDetails":{"modelInfo":{"modelType":"vfModule","modelInvariantId":"${vf-model-invariant-id}","modelName":"${vfmodule-name}","modelVersion":"${vfmodule-version}"},"cloudConfiguration":{"lcpCloudRegionId":"${cloud-region}","tenantId":"${tenant-id}"},"requestInfo":{"source":"VID"}}}'
 
