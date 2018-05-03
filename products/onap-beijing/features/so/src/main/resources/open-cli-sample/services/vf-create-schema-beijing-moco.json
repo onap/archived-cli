@@ -10,37 +10,40 @@
       "Content-Type" : "application/json"
     },
     "json" : {
-      "requestDetails" : {
-        "modelInfo" : {
-          "modelType" : "vnf",
-          "modelInvariantId" : "cc34cd54-dd7c-44cd-8847-f9577c6f1a49",
-          "modelVersionId" : "8b1f63f3-e0cc-4c27-8903-fafe2f25bfbe",
-          "modelName" : "847cb26a-59a6-475a-94dd",
-          "modelVersion" : "1.0",
-          "modelCustomizationId" : "cf893f5a-1bb1-4e32-a92b-2456e12178f8"
+      "requestDetails": {
+        "modelInfo": {
+          "modelType": "vnf",
+          "modelInvariantId": "4982d10b-09af-46b9-8317-c92d2658ae68",
+          "modelVersionId": "b2a40a03-c85e-4b6c-8ade-f90e5f2ce2d4",
+          "modelName": "2932d051-6aad-4c0d-ac2d",
+          "modelVersion": "1.0",
+          "modelCustomizationId": "3741acf1-5929-42e6-b234-4b9051d09a54"
         },
-        "cloudConfiguration" : {
-          "lcpCloudRegionId" : "RegionOne",
-          "tenantId" : "onap"
+        "cloudConfiguration": {
+          "lcpCloudRegionId": "RegionOne",
+          "tenantId": "onap"
         },
-        "requestInfo" : {
-          "instanceName" : "vlb-cli-sample-11",
-          "source" : "VID",
-          "productFamilyId" : "vLB"
+        "requestInfo": {
+          "requestorId": "2345",
+          "instanceName": "service-vlb-instance-1-vnf-1",
+          "source": "VID",
+          "productFamilyId": "vLB"
         },
-        "relatedInstanceList" : [ {
-          "relatedInstance" : {
-            "instanceId" : "2ad87511-4289-4bd7-ab0b-0b29d3d4c8ee",
-            "modelInfo" : {
-              "modelType" : "service",
-              "modelInvariantId" : "1de901ed-17af-4b03-bc1f-41659cfa27cb",
-              "modelVersionId" : "ace39141-09ec-4068-b06d-ac6b23bdc6e0",
-              "modelName" : "demoVLB",
-              "modelVersion" : "1.0"
+        "relatedInstanceList": [
+          {
+            "relatedInstance": {
+              "instanceId": "1561a325-a64b-47ab-86f4-459e334292f0",
+              "modelInfo": {
+                "modelType": "service",
+                "modelInvariantId": "f812e618-3abf-4c7a-901e-f2820a73eb2e",
+                "modelVersionId": "84ad850a-3d0b-451d-b97b-083bbf39890d",
+                "modelName": "demoVLB",
+                "modelVersion": "1.0"
+              }
             }
           }
-        } ],
-        "requestParameters" : { }
+        ],
+        "requestParameters": {}
       }
     }
   },
