@@ -75,11 +75,11 @@ parameters:
 http:
   service:
     name: so
-    version: v3
+    version: v4
     auth: basic
     mode: direct
   request:
-    uri: /ecomp/mso/infra/serviceInstances/v3/${service-id}
+    uri: /ecomp/mso/infra/serviceInstances/v4/${service-id}
     method: DELETE
     body: '{"requestDetails": {"modelInfo": {"modelType": "service","modelInvariantId": "${model-invariant-id}","modelVersionId": "${model-uuid}","modelName": "${model-name}","modelVersion": "${model-version}"},"cloudConfiguration" : {"lcpCloudRegionId": "${cloud-region}","tenantId": "${tenant-id}"},"subscriberInfo": {"globalSubscriberId": "${customer-name}"},"requestInfo": {"source": "VID"}}}'
 
