@@ -279,7 +279,7 @@ public class OnapCommandSchemaHttpLoader {
         return errorList;
     }
 
-    public static ArrayList<String> validateHttpSchemaSection(Map<String, ?> values) {
+    public static List<String> validateHttpSchemaSection(Map<String, ?> values) {
         ArrayList<String> errorList = new ArrayList<>();
         Map<String, ?> map = (Map<String, ?>) values.get(OnapCommandHttpConstants.HTTP);
         Map<String, Object> requestMap = (Map<String, Object>) map.get(OnapCommandHttpConstants.REQUEST);

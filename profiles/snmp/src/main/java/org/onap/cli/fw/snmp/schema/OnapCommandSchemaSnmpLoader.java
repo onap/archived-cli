@@ -38,7 +38,7 @@ public class OnapCommandSchemaSnmpLoader {
         return errorList;
     }
 
-    public static ArrayList<String> parseSnmpSchema(OnapSnmpCommand cmd,
+    public static List<String> parseSnmpSchema(OnapSnmpCommand cmd,
                                                      final Map<String, ?> values,
                                                      boolean validate) throws OnapCommandException {
 
