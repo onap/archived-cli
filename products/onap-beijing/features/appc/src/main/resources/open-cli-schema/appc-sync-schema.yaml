@@ -1,0 +1,162 @@
+open_cli_schema_version: 1.0
+name: vnf-sync
+description: The Sync action updates the current configuration in the APPC store with the running configuration from the device
+
+info:
+  product: onap-beijing
+  service: appc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+  state: experimental
+
+parameters:
+  - name: timestamp
+    description: The time of the request, in ISO 8601 format, ZULU offset 
+    type: string
+    short_option: T
+    long_option: timestamp  
+    is_optional: false
+  - name: api-ver
+    description: Identifies the API version
+    type: string
+    short_option: X
+    long_option: api-ver   
+    is_optional: false
+  - name: originator-id
+    description: An identifier of the calling system limited to a length of 40 characters
+    type: string
+    short_option: O
+    long_option: originator-id    
+    is_optional: false
+  - name: request-id
+    description: The UUID for the request ID, limited to a length of 40 characters
+    type: string
+    short_option: R
+    long_option: request-id      
+    is_optional: false
+  - name: sub-request-id
+    description: Uniquely identifies a specific LCM or control action, limited to a length of 40 characters
+    type: string
+    short_option: W 
+    long_option: sub-request-id      
+    is_optional: true
+  - name: flags-mode
+    description: Generic flags-mode that apply to all LCM actions
+    type: string
+    short_option: F
+    is_optional: true
+  - name: flags-force
+    description: Generic flags-force that apply to all LCM actions
+    type: bool
+    short_option: G
+    is_optional: true
+  - name: flags-ttl
+    description: Generic flags-ttl that apply to all LCM actions
+    type: string
+    short_option: H
+    is_optional: true
+  - name: action
+    description: The action to be taken by APPC
+    type: string
+    short_option: A
+    long_option: action  
+    is_optional: false	
+  - name: service-instance-id 
+    description: Identifies a specific service instance that the command refers to
+    type: string
+    short_option: S
+    long_option: service-instance-id      
+    is_optional: true	
+  - name: vnf-id
+    description: Identifies the VNF instance to which this action is to be applied
+    type: string
+    short_option: J
+    long_option: vnf-id      
+    is_optional: true	    
+    is_optional: false		
+  - name: vnfc-name
+    description: Identifies the VNFC name to which this action is to be applied
+    type: string
+    short_option: N
+    long_option: vnfc-name  
+    is_optional: true			
+  - name: vserver-id
+    description: Identifies a specific VM instance to which this action is to be applied
+    type: string
+    short_option: K
+    long_option: vserver-id
+    is_optional: true			
+  - name: vf-module-id
+    description: Identifies a specific VF module to which this action is to be applied
+    type: string
+    short_option: M
+    long_option: vf-module-id 
+    is_optional: true		
+  - name: payload
+    description: An action-specific open-format field
+    type: string
+    short_option: P
+    long_option: payload     
+    is_optional: true		
+results:
+  direction: portrait
+  attributes:
+    - name: action
+      description: The action to be taken by APPC
+      scope: short
+      type: string
+    - name: api-ver
+      description: Identifies the API version
+      scope: short
+      type: string
+    - name: flags
+      description: Identifies the API version
+      scope: short
+      type: string	  
+    - name: timestamp
+      description: The time of the request, in ISO 8601 format, ZULU offset 
+      scope: short
+      type: string
+    - name: status
+      description: The status describes the outcome of the command processing
+      scope: short
+      type: digit
+    - name: originator-id
+      description: An identifier of the calling system limited to a length of 40 characters
+      scope: short
+      type: string
+    - name: request-id
+      description: The UUID for the request ID, limited to a length of 40 characters
+      scope: short
+      type: string
+    - name: sub-request-id
+      description: Uniquely identifies a specific LCM or control action
+      scope: long
+      type: string
+    - name: payload
+      description: An open-format field
+      scope: long
+      type: string
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /restconf/operations/vnf-provider-lcm:sync
+    method: POST
+    body: '{"input":{"common-header":{"timestamp": "${timestamp}","api-ver": "${api-ver}","originator-id": "${originator-id}","request-id": "${request-id}","sub-request-id": "${sub-request-id}","flags":{"mode":"${flags-mode}","force":"${flags-force}","ttl":"${flags-ttl}"}},"action":"${action}","action-identifiers":{"vnf-id": "${vnf-id}","vnfc-name": "${vnfc-name}","vserver-id": "${vserver-id}"},"payload": "${payload}"}}'
+  success_codes:
+    - 100
+	- 400
+  result_map:
+    action: $b{$.action}
+    api-ver: $b{$.api-ver}
+    flags: $b{$.flags}   
+    originator-id: $b{$.originator-id}
+    request-id: $b{$.request-id}
+    sub-request-id: $b{$.sub-request-id}
+    payload: $b{$.payload}
+    status: $b{$.status}
+    timestamp: $b{$.timestamp}
+
+  sample_response:
+    body: '{"output":{"common-header":{"api-ver": "${api-ver}","flags":"${flags}","originator-id": "${originator-id}","request-id": "${request-id}", "sub-request-id": "${sub-request-id}", "timestamp": "${timestamp}"},"payload": "${payload}","status": "${status}"}}'
