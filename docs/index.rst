@@ -11,6 +11,9 @@ ONAP CLI
 
 :blue:`One Command to command whole ONAP !`
 
+Introduction
+-------------
+
 Both Information and Communication Technology customers prefer Command Line
 Interface (CLI) over Graphical user interface (GUI) in many situations
 such as automation, Devops, CI&CD. So CLI is always been as integral part
@@ -26,6 +29,11 @@ the commands for following ONAP functionalities:
 * Network service life-cycle management
 * Policy management
 * VNF/PNF management
+
+Table of contents
+------------------
+
+Following guidelines provides detailed information about CLI.
 
 .. toctree::
    :maxdepth: 1
