@@ -1,5 +1,5 @@
 open_cli_schema_version: 1.0
-name: vnf-quiescetraffic 
+name: vnf-quiescetraffic
 description: The QuiesceTraffic LCM action gracefully stops the traffic on the VNF. All application processes are assumed to be running but no traffic is being processed.
 
 info:
@@ -10,34 +10,34 @@ info:
 
 parameters:
   - name: timestamp
-    description: The time of the request, in ISO 8601 format, ZULU offset 
+    description: The time of the request, in ISO 8601 format, ZULU offset
     type: string
     short_option: T
-    long_option: timestamp  
+    long_option: timestamp
     is_optional: false
   - name: api-ver
     description: Identifies the API version
     type: string
     short_option: X
-    long_option: api-ver   
+    long_option: api-ver
     is_optional: false
   - name: originator-id
     description: An identifier of the calling system limited to a length of 40 characters
     type: string
     short_option: O
-    long_option: originator-id    
+    long_option: originator-id
     is_optional: false
   - name: request-id
     description: The UUID for the request ID, limited to a length of 40 characters
     type: string
     short_option: R
-    long_option: request-id      
+    long_option: request-id
     is_optional: false
   - name: sub-request-id
     description: Uniquely identifies a specific LCM or control action, limited to a length of 40 characters
     type: string
-    short_option: W 
-    long_option: sub-request-id      
+    short_option: W
+    long_option: sub-request-id
     is_optional: true
   - name: flags-mode
     description: Generic flags-mode that apply to all LCM actions
@@ -58,45 +58,45 @@ parameters:
     description: The action to be taken by APPC
     type: string
     short_option: A
-    long_option: action  
-    is_optional: false	
-  - name: service-instance-id 
+    long_option: action
+    is_optional: false
+  - name: service-instance-id
     description: Identifies a specific service instance that the command refers to
     type: string
     short_option: S
-    long_option: service-instance-id      
-    is_optional: true	
+    long_option: service-instance-id
+    is_optional: true
   - name: vnf-id
     description: Identifies the VNF instance to which this action is to be applied
     type: string
     short_option: J
-    long_option: vnf-id      
-    is_optional: true	    
-    is_optional: false		
+    long_option: vnf-id
+    is_optional: true
+    is_optional: false
   - name: vnfc-name
     description: Identifies the VNFC name to which this action is to be applied
     type: string
     short_option: N
-    long_option: vnfc-name  
-    is_optional: true			
+    long_option: vnfc-name
+    is_optional: true
   - name: vserver-id
     description: Identifies a specific VM instance to which this action is to be applied
     type: string
     short_option: K
     long_option: vserver-id
-    is_optional: true			
+    is_optional: true
   - name: vf-module-id
     description: Identifies a specific VF module to which this action is to be applied
     type: string
     short_option: M
-    long_option: vf-module-id 
-    is_optional: true		
+    long_option: vf-module-id
+    is_optional: true
   - name: payload
     description: An action-specific open-format field
     type: string
     short_option: P
-    long_option: payload     
-    is_optional: true		
+    long_option: payload
+    is_optional: true
 results:
   direction: portrait
   attributes:
@@ -111,9 +111,9 @@ results:
     - name: flags
       description: Identifies the API version
       scope: short
-      type: string	  
+      type: string
     - name: timestamp
-      description: The time of the request, in ISO 8601 format, ZULU offset 
+      description: The time of the request, in ISO 8601 format, ZULU offset
       scope: short
       type: string
     - name: status
@@ -149,7 +149,7 @@ http:
   result_map:
     action: $b{$.action}
     api-ver: $b{$.api-ver}
-    flags: $b{$.flags}   
+    flags: $b{$.flags}
     originator-id: $b{$.originator-id}
     request-id: $b{$.request-id}
     sub-request-id: $b{$.sub-request-id}
