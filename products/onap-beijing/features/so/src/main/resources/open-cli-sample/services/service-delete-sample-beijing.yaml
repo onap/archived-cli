@@ -19,4 +19,4 @@ version: onap-beijing
 samples:
     sample1:
         name: delete a service instance
-        input: -h https://locahost:8080 -u InfraPortalClient -p password1$  -s 56AA445
+        input: --model-name sample-model --model-invariant-id 0561a325-a64b-47ab-86f4-000000000429 --cloud-region Region1 --service-instace-id 0561a325-a64b-47ab-86f4-000000000439 --model-uuid 0561a325-a64b-47ab-86f4-000000000449 --customer-name sample-customer --model-version 1.0 --tenant-id onap -r  0561a325-a64b-47ab-86f4-000000000459
