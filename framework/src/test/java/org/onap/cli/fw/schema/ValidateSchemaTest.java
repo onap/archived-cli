@@ -110,7 +110,8 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        List<String> errorList3 = OnapCommandSchemaLoader.loadSchema(cmd2, "schema-validate-invalidschematype.yaml", true, true);
+        List<String> errorList3 = OnapCommandSchemaLoader.loadSchema(cmd2,
+            "schema-validate-invalidschematype.yaml", true, true);
         assertTrue(errorList3.size() > 0);
 
 
