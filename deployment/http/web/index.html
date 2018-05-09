@@ -24,6 +24,10 @@ function redirectToConsole(){
    window.location.href="http://"+  window.location.hostname + ":9090";
 }
 
+function redirectToConsoleOOM(){
+   window.location.href="http://"+  window.location.hostname + ":30261";
+}
+
 </script>
 <style>
 
@@ -66,7 +70,7 @@ body {
 
 <h3 >Web Command Console (WCC)</h3>
 <p>Helps operator to access the command console over HTTP.
-<a onclick="redirectToConsole();" style="color: blue;cursor: pointer">Click here !</a>
+Click <a onclick="redirectToConsole();" style="color: blue;cursor: pointer">here !</a> OR <a onclick="redirectToConsoleOOM();" style="color: blue;cursor: pointer"> here !</a>
 
 <h3>Linux Shell</h3>
 <p>Helps operator to run CLI locally using Linux command shell.

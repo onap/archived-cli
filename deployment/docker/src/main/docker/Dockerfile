@@ -18,7 +18,7 @@ ENV OPEN_CLI_HOME=/opt/oclip \
     OPEN_CLI_DEBUG=false \
     OPEN_CLI_DEBUG_PORT=5005 \
     OPEN_CLI_MODE=console \
-    OPEN_CLI_PRODUCT_IN_USE=open-cli \
+    OPEN_CLI_PRODUCT_IN_USE=onap-beijing \
     GOTTY_TITLE_FORMAT="{{ .command }}"
 
 ADD ./STAGE $OPEN_CLI_HOME
