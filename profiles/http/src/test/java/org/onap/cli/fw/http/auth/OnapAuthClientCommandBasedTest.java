@@ -33,14 +33,16 @@ public class OnapAuthClientCommandBasedTest {
 
     @Before
     public void setup() throws OnapCommandProductVersionInvalid, OnapCommandException {
-        OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_PRODUCT_NAME));
+        OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(
+            OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_PRODUCT_NAME));
     }
 
     @Test
     public void yesCatalogYesAuthTest() throws OnapCommandException {
         try {
             OnapHttpCommand cmd = getCommand("sample-test-schema-yes-auth-yes-catalog.yaml");
-            cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL).setValue("http://localhost:8080");
+            cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL)
+            .setValue("http://localhost:8080");
             cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_USERNAME).setValue("test");
             cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_PASSWORD).setValue("password");
 
@@ -55,7 +57,8 @@ public class OnapAuthClientCommandBasedTest {
     public void yesCatalogNoAuthTest() throws OnapCommandException {
         try {
             OnapHttpCommand cmd = getCommand("sample-test-schema-no-auth-yes-catalog.yaml");
-            cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL).setValue("http://localhost:8080");
+            cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL)
+            .setValue("http://localhost:8080");
 
             cmd.execute();
         } catch (OnapCommandException e) {
@@ -68,7 +71,8 @@ public class OnapAuthClientCommandBasedTest {
     public void noCatalogYesAuthTest() throws OnapCommandException {
         try {
             OnapHttpCommand cmd = getCommand("sample-test-schema-yes-auth-no-catalog.yaml");
-            cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL).setValue("http://localhost:8080");
+            cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL)
+            .setValue("http://localhost:8080");
             cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_USERNAME).setValue("test");
             cmd.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_PASSWORD).setValue("password");
 
@@ -109,7 +113,8 @@ public class OnapAuthClientCommandBasedTest {
             protected void processRequest() throws OnapCommandException {
                 if (!this.getService().isModeDirect()) {
                     String url = this.authClient.getServiceUrl();
-                    assert url.equals(this.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL).getValue() + "/");
+                    assert url.equals(this.getParametersMap().get(OnapCommandHttpConstants.DEAFULT_PARAMETER_HOST_URL)
+                             .getValue() + "/");
                 }
             }
         };
@@ -118,4 +123,4 @@ public class OnapAuthClientCommandBasedTest {
 
         return cmd;
     }
- }
+}
