@@ -24,10 +24,12 @@ import org.junit.Test;
 public class ResultTypeTest {
     @Test
     public void resultTypeGetTest() {
-        assertTrue(OnapCommandResultType.TABLE.equals(OnapCommandResultType.get("table")) && OnapCommandResultType.CSV.equals(OnapCommandResultType.get("csv"))
-                && OnapCommandResultType.JSON.equals(OnapCommandResultType.get("json")) && OnapCommandResultType.YAML.equals(OnapCommandResultType.get("yaml"))
+        assertTrue(
+                OnapCommandResultType.TABLE.equals(OnapCommandResultType.get("table"))
+                && OnapCommandResultType.CSV.equals(OnapCommandResultType.get("csv"))
+                && OnapCommandResultType.JSON.equals(OnapCommandResultType.get("json"))
+                && OnapCommandResultType.YAML.equals(OnapCommandResultType.get("yaml"))
                 && OnapCommandResultType.TEXT.equals(OnapCommandResultType.get("text")));
-
     }
 
     @Test
