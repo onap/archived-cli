@@ -18,10 +18,10 @@ package org.onap.cli.main.interactive;
 
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import org.junit.Test;
 
 public class StringCompleterTest {
 
