@@ -39,18 +39,17 @@ public class OnapCommandSampleTest {
     public void sampleTestVersion() {
 
         try {
+            Set<OnapCommandParameter> parameters = new HashSet();
+            OnapCommandParameter version = new OnapCommandParameter();
+            version.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
+            version.setValue(true);
+            parameters.add(version);
+            OnapCommandParameter hlp = new OnapCommandParameter();
+            hlp.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
+            hlp.setValue(false);
+            parameters.add(hlp);
 
             OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
-
-            Set<OnapCommandParameter> parameters = new HashSet();
-            OnapCommandParameter v = new OnapCommandParameter();
-            v.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
-            v.setValue(true);
-            parameters.add(v);
-            OnapCommandParameter h = new OnapCommandParameter();
-            h.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
-            h.setValue(false);
-            parameters.add(h);
             sample.setParameters(parameters);
             sample.execute();
         } catch (OnapCommandException e) {
@@ -59,14 +58,16 @@ public class OnapCommandSampleTest {
 
     @Test
     public void sampleTestHelp() {
-        OnapCommandSample sample = new OnapCommandSample();
         try {
+            OnapCommandParameter ver = new OnapCommandParameter();
+            ver.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
+            ver.setValue(true);
+            ver.setParameterType(OnapCommandParameterType.BOOL);
+
             Set<OnapCommandParameter> parameters = new HashSet();
-            OnapCommandParameter v = new OnapCommandParameter();
-            v.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
-            v.setValue(true);
-            v.setParameterType(OnapCommandParameterType.BOOL);
-            parameters.add(v);
+            parameters.add(ver);
+
+            OnapCommandSample sample = new OnapCommandSample();
             sample.setParameters(parameters);
             sample.execute();
         } catch (OnapCommandException e) {
@@ -77,33 +78,33 @@ public class OnapCommandSampleTest {
     public void sampleTest() {
 
         try {
-            OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
             Set<OnapCommandParameter> parameters = new HashSet();
-            OnapCommandParameter v = new OnapCommandParameter();
-            v.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
-            v.setValue(false);
-            parameters.add(v);
-            OnapCommandParameter h = new OnapCommandParameter();
-            h.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
-            h.setValue(false);
-            parameters.add(h);
-            OnapCommandParameter f = new OnapCommandParameter();
-            f.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT);
-            f.setValue("table");
-            parameters.add(f);
-            OnapCommandParameter l = new OnapCommandParameter();
-            l.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG);
-            l.setValue(true);
-            parameters.add(l);
-            OnapCommandParameter t = new OnapCommandParameter();
-            t.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE);
-            t.setValue(true);
-            parameters.add(t);
-            OnapCommandParameter d = new OnapCommandParameter();
-            d.setName(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG);
-            d.setValue(true);
-            parameters.add(d);
+            OnapCommandParameter ver = new OnapCommandParameter();
+            ver.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
+            ver.setValue(false);
+            parameters.add(ver);
+            OnapCommandParameter hlp = new OnapCommandParameter();
+            hlp.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
+            hlp.setValue(false);
+            parameters.add(hlp);
+            OnapCommandParameter fmt = new OnapCommandParameter();
+            fmt.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT);
+            fmt.setValue("table");
+            parameters.add(fmt);
+            OnapCommandParameter lng = new OnapCommandParameter();
+            lng.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG);
+            lng.setValue(true);
+            parameters.add(lng);
+            OnapCommandParameter title = new OnapCommandParameter();
+            title.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE);
+            title.setValue(true);
+            parameters.add(title);
+            OnapCommandParameter denug = new OnapCommandParameter();
+            denug.setName(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG);
+            denug.setValue(true);
+            parameters.add(denug);
 
+            OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
             sample.setParameters(parameters);
             sample.execute();
 
@@ -114,7 +115,7 @@ public class OnapCommandSampleTest {
             attr = sample.getResult().getRecordsMap().get("output-2");
             attrValue = attr.getValues().get(0);
             assertEquals(attrValue, "test");
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             fail("Failed to replace the output default value on output-1");
         } catch (OnapCommandException e) {
         }
@@ -126,30 +127,30 @@ public class OnapCommandSampleTest {
         sample.failCase = true;
 
         Set<OnapCommandParameter> parameters = new HashSet();
-        OnapCommandParameter v = new OnapCommandParameter();
-        v.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
-        v.setValue(false);
-        parameters.add(v);
-        OnapCommandParameter h = new OnapCommandParameter();
-        h.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
-        h.setValue(false);
-        parameters.add(h);
-        OnapCommandParameter f = new OnapCommandParameter();
-        f.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT);
-        f.setValue("table");
-        parameters.add(f);
-        OnapCommandParameter l = new OnapCommandParameter();
-        l.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG);
-        l.setValue(true);
-        parameters.add(l);
-        OnapCommandParameter t = new OnapCommandParameter();
-        t.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE);
-        t.setValue(true);
-        parameters.add(t);
-        OnapCommandParameter d = new OnapCommandParameter();
-        d.setName(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG);
-        d.setValue(true);
-        parameters.add(d);
+        OnapCommandParameter ver = new OnapCommandParameter();
+        ver.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
+        ver.setValue(false);
+        parameters.add(ver);
+        OnapCommandParameter hlp = new OnapCommandParameter();
+        hlp.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
+        hlp.setValue(false);
+        parameters.add(hlp);
+        OnapCommandParameter ffmt = new OnapCommandParameter();
+        ffmt.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT);
+        ffmt.setValue("table");
+        parameters.add(ffmt);
+        OnapCommandParameter lng = new OnapCommandParameter();
+        lng.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG);
+        lng.setValue(true);
+        parameters.add(lng);
+        OnapCommandParameter titl = new OnapCommandParameter();
+        titl.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE);
+        titl.setValue(true);
+        parameters.add(titl);
+        OnapCommandParameter debug = new OnapCommandParameter();
+        debug.setName(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG);
+        debug.setValue(true);
+        parameters.add(debug);
         sample.setParameters(parameters);
         sample.execute();
     }
