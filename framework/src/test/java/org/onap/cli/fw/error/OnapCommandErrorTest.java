@@ -182,8 +182,9 @@ public class OnapCommandErrorTest {
     public void oclipCommandParameterOptionConflictTest() {
         OnapCommandParameterOptionConflict failed = new OnapCommandParameterOptionConflict("test", "option");
 
-        assertEquals("0x7006::In test, Parameter option option is in conflict, only one option is allowed with given name",
-                failed.getMessage());
+        assertEquals("0x7006::In test, Parameter option option is in conflict, "
+            + "only one option is allowed with given name",
+            failed.getMessage());
     }
 
     @Test
