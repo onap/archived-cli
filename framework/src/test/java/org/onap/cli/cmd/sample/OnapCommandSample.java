@@ -40,8 +40,9 @@ public class OnapCommandSample extends OnapCommand {
 
     @Override
     protected void run() throws OnapCommandException {
-        if (this.failCase)
+        if (this.failCase) {
             throw new OnapCommandExecutionFailed("Test case to fail");
+        }
     }
 
 }
