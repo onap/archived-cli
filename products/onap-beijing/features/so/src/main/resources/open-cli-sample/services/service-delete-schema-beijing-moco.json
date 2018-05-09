@@ -1,0 +1,44 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/ecomp/mso/infra/serviceInstances/v4/0561a325-a64b-47ab-86f4-000000000439",
+    "headers" : {
+      "Authorization" : "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA==",
+      "X-FromAppId" : "onap-cli",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-0dc01d80-f629-4ea9-b49f-0bc45b79bfaf",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "requestDetails": {
+        "modelInfo": {
+          "modelType": "service",
+          "modelInvariantId": "0561a325-a64b-47ab-86f4-000000000429",
+          "modelVersionId": "0561a325-a64b-47ab-86f4-000000000449",
+          "modelName": "sample-model",
+          "modelVersion": "1.0"
+        },
+        "cloudConfiguration": {
+          "lcpCloudRegionId": "Region1",
+          "tenantId": "onap"
+        },
+        "subscriberInfo": {
+          "globalSubscriberId": "sample-customer"
+        },
+        "requestInfo": {
+          "requestorId": "0561a325-a64b-47ab-86f4-000000000459",
+          "source": "VID"
+        }
+      }
+    }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "requestReferences" : {
+        "instanceId" : "957949b4-f857-497c-81b0-832ce7bb9434",
+        "requestId" : "d59fc98a-b0fa-4de9-b426-6ef40dfd0812"
+      }
+    }
+  }
+} ]
