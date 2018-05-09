@@ -43,9 +43,9 @@ public class HttpInputOutputTest {
         inp.setReqHeaders(new HashMap<String, String>());
         inp.setReqQueries(new HashMap<String, String>());
 
-        assertTrue(
-                "\nURL: uri\nMethod: method\nRequest Queries: {}\nRequest Body: body\nRequest Headers: {}\nRequest Cookies: {}\nbinaryData=false\nContext={}"
-                        .equals(inp.toString()));
+        String msg = "\nURL: uri\nMethod: method\nRequest Queries: {}\nRequest Body: body\nRequest Headers: "
+                + "{}\nRequest Cookies: {}\nbinaryData=false\nContext={}";
+        assertTrue(msg.equals(inp.toString()));
     }
 
     @Test
