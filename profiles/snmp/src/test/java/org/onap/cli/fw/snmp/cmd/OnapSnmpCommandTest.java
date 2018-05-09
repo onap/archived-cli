@@ -16,11 +16,22 @@
 
 package org.onap.cli.fw.snmp.cmd;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import mockit.Mock;
 import mockit.MockUp;
-import org.junit.*;
+
+import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.OnapCommandResult;
@@ -34,10 +45,6 @@ import org.snmp4j.smi.OID;
 import org.snmp4j.smi.OctetString;
 import org.snmp4j.smi.VariableBinding;
 
-import java.io.IOException;
-import java.util.*;
-
-import static org.junit.Assert.*;
 
 public class OnapSnmpCommandTest {
 
@@ -91,7 +98,6 @@ public class OnapSnmpCommandTest {
         snmpCmd.run();
 
         OnapCommandResult result = snmpCmd.getResult();
-        assertEquals("snmp", result.getRecordsMap().get("system-desc")
-        .getValues().get(0));
+        assertEquals("snmp", result.getRecordsMap().get("system-desc").getValues().get(0));
     }
 }
