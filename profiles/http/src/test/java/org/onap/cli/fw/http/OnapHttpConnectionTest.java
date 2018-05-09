@@ -22,6 +22,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import mockit.Invocation;
+import mockit.Mock;
+import mockit.MockUp;
+
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -34,9 +38,6 @@ import org.onap.cli.fw.http.connect.HttpResult;
 import org.onap.cli.fw.http.connect.OnapHttpConnection;
 import org.onap.cli.fw.http.error.OnapCommandHttpFailure;
 
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
 
 public class OnapHttpConnectionTest {
     HttpInput inp = null;
