@@ -91,20 +91,18 @@ public class OnapCommandRegistrarTest {
     @Test
     public void testProfile() throws OnapCommandException {
         try {
-                OnapCommandRegistrar.getRegistrar().setProfile("test234", new ArrayList<String>(), new ArrayList<String>());
-                OnapCommandRegistrar.getRegistrar().addParamCache("a", "b");
-                OnapCommandRegistrar.getRegistrar().getParamCache();
-                OnapCommandRegistrar.getRegistrar().removeParamCache("a");
-
-                OnapCommandRegistrar.getRegistrar().setInteractiveMode(false);
-                assertTrue(!OnapCommandRegistrar.getRegistrar().isInteractiveMode());
-
-                OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
-                assertEquals("open-cli", OnapCommandRegistrar.getRegistrar().getEnabledProductVersion());
-                OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
-                assertTrue(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion().contains("sample-test"));
-
-                assertTrue(OnapCommandRegistrar.getRegistrar().listCommandInfo().size() > 2);
+            OnapCommandRegistrar.getRegistrar().setProfile("test234", new ArrayList<String>(), new ArrayList<String>());
+            OnapCommandRegistrar.getRegistrar().addParamCache("a", "b");
+            OnapCommandRegistrar.getRegistrar().getParamCache();
+            OnapCommandRegistrar.getRegistrar().removeParamCache("a");
+            OnapCommandRegistrar.getRegistrar().setInteractiveMode(false);
+            assertTrue(!OnapCommandRegistrar.getRegistrar().isInteractiveMode());
+            OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
+            assertEquals("open-cli", OnapCommandRegistrar.getRegistrar().getEnabledProductVersion());
+            OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
+            assertTrue(
+                OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion().contains("sample-test"));
+            assertTrue(OnapCommandRegistrar.getRegistrar().listCommandInfo().size() > 2);
         } catch (Exception e) {
             fail("failed to test the profile");
         }
@@ -121,7 +119,7 @@ public class OnapCommandRegistrarTest {
 }
 
 @OnapCommandSchema(schema = "sample-test-schema.yaml")
-class OnapCommandTest extends OnapCommand {
+final class OnapCommandTest extends OnapCommand {
 
     public OnapCommandTest() {
 
@@ -136,7 +134,7 @@ class OnapCommandTest extends OnapCommand {
 }
 
 @OnapCommandSchema(schema = "test-schema.yaml")
-class OnapCommandTest1 extends OnapCommand {
+final class OnapCommandTest1 extends OnapCommand {
 
     public OnapCommandTest1() {
 
