@@ -15,8 +15,9 @@ following features are enabled:
 
 * Policy management
 * VNF/PNF management
-* OCLIP SNMP profile support
-* OCLIP CLI verification support
+* OCLIP SNMP profile support (get command)
+* OCLIP CLI verification support (--verify)
+* Portal CLI application is enabled for all users.
 
 Similar to earlier release, user can perform customer, subscription, cloud and tenant management only
 by using CLI as portal does not support.
