@@ -12,13 +12,13 @@ parameters:
   - name: timestamp
     description: The time of the request, in ISO 8601 format, ZULU offset
     type: string
-    short_option: t
+    short_option: x
     long_option: timestamp
     is_optional: false
   - name: api-ver
     description: Identifies the API version
     type: string
-    short_option: v
+    short_option: y
     long_option: api-ver
     is_optional: false
   - name: originator-id
@@ -36,19 +36,19 @@ parameters:
   - name: sub-request-id
     description: Uniquely identifies a specific LCM or control action, limited to a length of 40 characters
     type: string
-    short_option: s
+    short_option: z
     long_option: sub-request-id
     is_optional: true
   - name: flags-mode
     description: Generic flags that apply to all LCM actions
     type: string
-    short_option: r
+    short_option: b
     long_option: flags-mode
     is_optional: true
   - name: flags-force
     description: Generic flags that apply to all LCM actions
     type: bool
-    short_option: f
+    short_option: e
     long_option: flags-force
     is_optional: true
   - name: flags-ttl
@@ -60,7 +60,7 @@ parameters:
   - name: action
     description: The action to be taken by APPC
     type: string
-    short_option: a
+    short_option: g
     long_option: action
     is_optional: false
   - name: service-instance-id
@@ -97,7 +97,7 @@ parameters:
   - name: payload
     description: An action-specific open-format field
     type: string
-    short_option: p
+    short_option: w
     long_option: payload
     is_optional: true
 results:
@@ -111,10 +111,10 @@ results:
       description: Identifies the API version
       scope: short
       type: string
-    - name: timpestamp
-      description: The time of the request, in ISO 8601 format, ZULU offset
-      scope: short
-      type: timpestamp
+    - name: flags
+      description: Identifies the API version
+      scope: long
+      type: string
     - name: status
       description: The status describes the outcome of the command processing
       scope: short
@@ -142,7 +142,7 @@ http:
   request:
     uri: /restconf/operations/vnf-provider-lcm:snapshot
     method: POST
-    body: '{"input": {"common-header":{"timestamp": "${timestamp}","api-ver": "${api-version}","originator-id": "${orininator-id}","request-id": "$(request-id}","sub-request-id": "${sub-request-id}","flags":{"mode": "${flags-mode}","force": "${flags-force}","ttl": ${flags-ttl}"}}, "action": "${action}","action-identifiers": {"vnf-id": "${vnf-id}","vnfc-name": "${vnfc-name}","vserver-id": "${vserver-id}"},"payload": "${payload}"}'
+    body: '{"input": {"common-header":{"timestamp": "${timestamp}","api-ver": "${api-ver}","originator-id": "${originator-id}","request-id": "$(request-id}","sub-request-id": "${sub-request-id}","flags":{"mode": "${flags-mode}","force": "${flags-force}","ttl": "${flags-ttl}"}}, "action": "${action}","action-identifiers": {"vnf-id": "${vnf-id}","vnfc-name": "${vnfc-name}","vserver-id": "${vserver-id}"},"payload": "${payload}"}}'
   success_codes:
     - 100
     - 400
