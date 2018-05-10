@@ -98,13 +98,13 @@ public class OnapCommandParameterCache {
     private void persist() {
         List<OnapCommandParamEntity> params = new ArrayList<>();
 
-        for (String p: this.paramCache.keySet()) {
-            for (String name: this.paramCache.get(p).keySet()) {
+        for (Map.Entry<String, Map<String, String>> p: this.paramCache.entrySet()) {
+            for (Map.Entry<String, String> paramEntry: p.getValue().entrySet()) {
 
                 OnapCommandParamEntity param = new OnapCommandParamEntity();
-                param.setProduct(p);
-                param.setName(name);
-                param.setValue(this.paramCache.get(p).get(name));
+                param.setProduct(p.getKey());
+                param.setName(paramEntry.getKey());
+                param.setValue(paramEntry.getValue());
 
                 params.add(param);
              }

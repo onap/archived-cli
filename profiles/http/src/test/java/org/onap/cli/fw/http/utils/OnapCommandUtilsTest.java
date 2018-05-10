@@ -101,7 +101,11 @@ public class OnapCommandUtilsTest {
     public void populateOutputsTest() throws OnapCommandException {
         HttpResult output = new HttpResult();
         output.setBody(
-                "{\"serviceName\":\"test\",\"version\":\"v1\",\"url\":\"/api/test/v1\",\"protocol\":\"REST\",\"visualRange\":\"1\",\"lb_policy\":\"hash\",\"nodes\":[{\"ip\":\"127.0.0.1\",\"port\":\"8012\",\"ttl\":0,\"nodeId\":\"test_127.0.0.1_8012\",\"expiration\":\"2017-02-10T05:33:25Z\",\"created_at\":\"2017-02-10T05:33:25Z\",\"updated_at\":\"2017-02-10T05:33:25Z\"}],\"status\":\"1\"}");
+                "{\"serviceName\":\"test\",\"version\":\"v1\",\"url\":\"/api/test/v1\",\"protocol\":\"REST\","
+                + "\"visualRange\":\"1\",\"lb_policy\":\"hash\",\"nodes\":[{\"ip\":\"127.0.0.1\",\"port\":\"8012\","
+                + "\"ttl\":0,\"nodeId\":\"test_127.0.0.1_8012\",\"expiration\":\"2017-02-10T05:33:25Z\","
+                + "\"created_at\":\"2017-02-10T05:33:25Z\",\"updated_at\":\"2017-02-10T05:33:25Z\"}],"
+                + "\"status\":\"1\"}");
         Map<String, String> mapHead = new HashMap<>();
         mapHead.put("head1", "value1");
         output.setRespHeaders(mapHead);
@@ -120,7 +124,8 @@ public class OnapCommandUtilsTest {
             input1 = OnapCommandHttpUtils.populateOutputs(params, output);
         } catch (OnapCommandHttpInvalidResponseBody e) {
             assertEquals(
-                    "0x3004::Http response body does not have json entry {$.serviceName, Missing property in path $['{$']",
+                    "0x3004::Http response body does not have json entry {$.serviceName, "
+                    + "Missing property in path $['{$']",
                     e.getMessage());
         }
         output.setBody("{}");
@@ -140,8 +145,35 @@ public class OnapCommandUtilsTest {
 
     @Test
     public void testJsonEmptyCheck() throws OnapCommandHttpInvalidRequestBody {
-        String sample = "{\"request\":{\"method\":\"\",\"uri\":\"/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/2.0/license-agreements\",\"headers\":{\"Authorization\":\"Basic Y3MwMDA4OmRlbW8xMjM0NTYh\",\"X-FromAppId\":\"onap-cli\",\"Accept\":\"application/json\",\"USER_ID\":\"cs0008\",\"X-TransactionId\":\"req-66a37478-d840-44f8-b436-56f4a3b6f640\",\"Content-Type\":\"application/json\"},\"json\":null},\"response\":{\"status\":200,\"json\":{\"listCount\":2,\"results\":[{\"name\":\"sf\",\"description\":\"sdfgdf\",\"licenseTerm\":{\"choice\":\"Fixed_Term\",\"other\":null},\"id\":\"1e2edfccaca847f896070d0fac26667a\",\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]},{\"name\":\"kanag-cli-la\",\"description\":\"kanag cli la\",\"licenseTerm\":{\"choice\":\"Fixed_Term\",\"other\":\"\"},\"id\":\"77e151d0503b45ecb7e40f5f5f1a887e\",\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]}]}}}";
-        String result = "{\"request\":{\"uri\":\"/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/2.0/license-agreements\",\"headers\":{\"Authorization\":\"Basic Y3MwMDA4OmRlbW8xMjM0NTYh\",\"X-FromAppId\":\"onap-cli\",\"Accept\":\"application/json\",\"USER_ID\":\"cs0008\",\"X-TransactionId\":\"req-66a37478-d840-44f8-b436-56f4a3b6f640\",\"Content-Type\":\"application/json\"}},\"response\":{\"status\":200,\"json\":{\"listCount\":2,\"results\":[{\"name\":\"sf\",\"description\":\"sdfgdf\",\"licenseTerm\":{\"choice\":\"Fixed_Term\"},\"id\":\"1e2edfccaca847f896070d0fac26667a\",\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]},{\"name\":\"kanag-cli-la\",\"description\":\"kanag cli la\",\"licenseTerm\":{\"choice\":\"Fixed_Term\"},\"id\":\"77e151d0503b45ecb7e40f5f5f1a887e\",\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]}]}}}";
+        String sample = "{\"request\":{\"method\":\"\",\"uri\":\"/onboarding-api/v1.0/"
+                + "vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/versions/2.0/license-agreements\","
+                + "\"headers\":{\"Authorization\":\"Basic Y3MwMDA4OmRlbW8xMjM0NTYh\",\"X-FromAppId\":\"onap-cli\","
+                + "\"Accept\":\"application/json\",\"USER_ID\":\"cs0008\","
+                + "\"X-TransactionId\":\"req-66a37478-d840-44f8-b436-56f4a3b6f640\","
+                + "\"Content-Type\":\"application/json\"},\"json\":null},"
+                + "\"response\":{\"status\":200,\"json\":{\"listCount\":2,"
+                + "\"results\":[{\"name\":\"sf\",\"description\":\"sdfgdf\","
+                + "\"licenseTerm\":{\"choice\":\"Fixed_Term\",\"other\":null},"
+                + "\"id\":\"1e2edfccaca847f896070d0fac26667a\","
+                + "\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]},"
+                + "{\"name\":\"kanag-cli-la\",\"description\":\"kanag cli la\","
+                + "\"licenseTerm\":{\"choice\":\"Fixed_Term\",\"other\":\"\"},"
+                + "\"id\":\"77e151d0503b45ecb7e40f5f5f1a887e\","
+                + "\"featureGroupsIds\":[\"3a2fb75b52a54e9c8093e7c154210f9e\"]}]}}}";
+        String result = "{\"request\":{\"uri\":"
+                + "\"/onboarding-api/v1.0/vendor-license-models/cf2d907d998e44698ce3b4cded5f66a7/"
+                + "versions/2.0/license-agreements\",\"headers\":"
+                + "{\"Authorization\":\"Basic Y3MwMDA4OmRlbW8xMjM0NTYh\","
+                + "\"X-FromAppId\":\"onap-cli\",\"Accept\":\"application/json\","
+                + "\"USER_ID\":\"cs0008\",\"X-TransactionId\":\"req-66a37478-d840-44f8-b436-56f4a3b6f640\","
+                + "\"Content-Type\":\"application/json\"}},\"response\":{\"status\":200,"
+                + "\"json\":{\"listCount\":2,\"results\":[{\"name\":\"sf\","
+                + "\"description\":\"sdfgdf\",\"licenseTerm\":{\"choice\":\"Fixed_Term\"},"
+                + "\"id\":\"1e2edfccaca847f896070d0fac26667a\",\"featureGroupsIds\":"
+                + "[\"3a2fb75b52a54e9c8093e7c154210f9e\"]},{\"name\":\"kanag-cli-la\","
+                + "\"description\":\"kanag cli la\",\"licenseTerm\":{\"choice\":\"Fixed_Term\"},"
+                + "\"id\":\"77e151d0503b45ecb7e40f5f5f1a887e\",\"featureGroupsIds\":"
+                + "[\"3a2fb75b52a54e9c8093e7c154210f9e\"]}]}}}";
         assertEquals(result, OnapCommandHttpUtils.normalizeJson(sample));
     }
 }

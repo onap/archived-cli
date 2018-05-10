@@ -20,7 +20,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -44,39 +43,34 @@ public class OnapCommandPrintTest {
     @Test
     public void printTableTest() throws OnapCommandOutputPrintingFailed {
         OnapCommandPrint pr = new OnapCommandPrint();
-        List<String> getColumnsData = new ArrayList<String>();
+
         pr.setDirection(OnapCommandPrintDirection.LANDSCAPE);
         pr.setPrintTitle(true);
         pr.addColumn("name2", new ArrayList<String>(Arrays.asList(new String[] { "value2" })));
         String exp = "+--------+\n|name2   |\n+--------+\n|value2  |\n+--------+\n";
         String result = pr.printTable(true);
-        getColumnsData = pr.getColumn("name2");
         assertEquals(exp, result);
     }
 
     @Test
     public void printTableNullColumnHeaderTest() throws OnapCommandOutputPrintingFailed {
         OnapCommandPrint pr = new OnapCommandPrint();
-        List<String> getColumnsData = new ArrayList<String>();
         pr.setDirection(OnapCommandPrintDirection.LANDSCAPE);
         pr.setPrintTitle(true);
         pr.addColumn("name2", new ArrayList<String>(Arrays.asList(new String[] { "value2" })));
         String exp = "+--------+\n|name2   |\n+--------+\n|value2  |\n+--------+\n";
         String result = pr.printTable(true);
-        getColumnsData = pr.getColumn(null);
         assertEquals(exp, result);
     }
 
     @Test
     public void printTableEmptyColumnValuesTest() throws OnapCommandOutputPrintingFailed {
         OnapCommandPrint pr = new OnapCommandPrint();
-        List<String> getColumnsData = new ArrayList<String>();
         pr.setDirection(OnapCommandPrintDirection.LANDSCAPE);
         pr.setPrintTitle(true);
         pr.addColumn("name2", new ArrayList<String>(Arrays.asList(new String[] { "" })));
         String exp = "+--------+\n|name2   |\n+--------+\n|        |\n+--------+\n";
         String result = pr.printTable(true);
-        getColumnsData = pr.getColumn("name2");
         assertEquals(exp, result);
     }
 }

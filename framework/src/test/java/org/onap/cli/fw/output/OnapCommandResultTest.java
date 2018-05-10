@@ -44,7 +44,8 @@ public class OnapCommandResultTest {
         res.setDebug(true);
 
         assertTrue("debugInfo".equals(res.getDebugInfo()) && res.isIncludeSeparator()
-                && "Output".equals(res.getOutput()) && OnapCommandPrintDirection.LANDSCAPE.equals(res.getPrintDirection())
+                && "Output".equals(res.getOutput())
+                && OnapCommandPrintDirection.LANDSCAPE.equals(res.getPrintDirection())
                 && res.getRecords().isEmpty() && OnapCommandResultAttributeScope.LONG.equals(res.getScope())
                 && OnapCommandResultType.TABLE.equals(res.getType()));
 

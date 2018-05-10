@@ -17,12 +17,9 @@
 package org.onap.cli.main.utils;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 
 import org.junit.Assert;
@@ -65,8 +62,13 @@ public class OnapCliUtilsTest {
         paramslist.add(param4);
         paramslist.add(param5);
 
-        String[] args = new String[] { "sample-create", "--host-username", "admin", "--host-password", "123",
-                "--host-url", "a@b.com", "--string-param", "blah", "--long-opt", "10" };
+        String[] args = new String[] {
+            "sample-create",
+            "--host-username", "admin",
+            "--host-password", "123",
+            "--host-url", "a@b.com",
+            "--string-param", "blah",
+            "--long-opt", "10" };
         OnapCliArgsParser.populateParams(paramslist, Arrays.asList(args));
         List<String> expectedList = Arrays.asList(args);
 
@@ -214,8 +216,13 @@ public class OnapCliUtilsTest {
         paramslist.add(param4);
         paramslist.add(param5);
 
-        String[] args11 = new String[] { "sample-create", "-u", "admin", "-p", "123", "-r", "a@b.com", "-c", "blah",
-                "-l", "10", };
+        String[] args11 = new String[] {
+            "sample-create",
+            "-u", "admin",
+            "-p", "123",
+            "-r", "a@b.com",
+            "-c", "blah",
+            "-l", "10", };
         OnapCliArgsParser.populateParams(paramslist, Arrays.asList(args11));
 
         List<String> expectedList = Arrays.asList(args11);
@@ -257,7 +264,8 @@ public class OnapCliUtilsTest {
         OnapCliArgsParser.populateParams(paramslist,
                 Arrays.asList("show", "--map", "param1=value1", "--map", "param2=value2"));
 
-        Assert.assertEquals("{param1=value1, param2=value2}", paramslist.iterator().next().getValue().toString());
+        Assert.assertEquals("{param1=value1, param2=value2}",
+            paramslist.iterator().next().getValue().toString());
     }
 
     @Test(expected = OnapCliInvalidArgument.class)
@@ -270,8 +278,10 @@ public class OnapCliUtilsTest {
         paramslist.add(param1);
 
         param1.setParameterType(OnapCommandParameterType.MAP);
-        OnapCliArgsParser.populateParams(paramslist, Arrays.asList("show", "--map", "param1=value1", "--map", "param2"));
-        Assert.assertEquals("{\"param1\":\"value1\",\"param2\"}", paramslist.iterator().next().getValue().toString());
+        OnapCliArgsParser.populateParams(paramslist,
+                Arrays.asList("show", "--map", "param1=value1", "--map", "param2"));
+        Assert.assertEquals("{\"param1\":\"value1\",\"param2\"}",
+                paramslist.iterator().next().getValue().toString());
     }
 
     @Test(expected = OnapCliInvalidArgument.class)
@@ -283,8 +293,10 @@ public class OnapCliUtilsTest {
         Set<OnapCommandParameter> paramslist = new HashSet<>();
         paramslist.add(param1);
         param1.setParameterType(OnapCommandParameterType.MAP);
-        OnapCliArgsParser.populateParams(paramslist, Arrays.asList("show", "-o", "param1=value1", "-o", "param2"));
-        Assert.assertEquals("{\"param1\":\"value1\",\"param2\"}", paramslist.iterator().next().getValue().toString());
+        OnapCliArgsParser.populateParams(paramslist,
+                Arrays.asList("show", "-o", "param1=value1", "-o", "param2"));
+        Assert.assertEquals("{\"param1\":\"value1\",\"param2\"}",
+                paramslist.iterator().next().getValue().toString());
     }
 
     @Test(expected = OnapCliInvalidArgument.class)
@@ -293,12 +305,15 @@ public class OnapCliUtilsTest {
         paramargs.setName("http://localhost:8082/file.txt");
         Set<OnapCommandParameter> paramslist = new HashSet<>();
         paramslist.add(paramargs);
-        String[] args = new String[] { "positional-args", "http://localhost:8082/file.txt",
-                "http://localhost:8082/file.txt" };
+        String[] args = new String[] {
+            "positional-args",
+            "http://localhost:8082/file.txt",
+            "http://localhost:8082/file.txt" };
         paramargs.setParameterType(OnapCommandParameterType.STRING);
         OnapCliArgsParser.populateParams(paramslist, Arrays.asList(args));
         List<String> expectedList = Arrays.asList(args);
-        Assert.assertEquals("positional-args", expectedList.get(1), paramslist.iterator().next().getValue());
+        Assert.assertEquals("positional-args",
+                expectedList.get(1), paramslist.iterator().next().getValue());
     }
 
     @Test(expected = OnapCliInvalidArgument.class)
@@ -339,7 +354,9 @@ public class OnapCliUtilsTest {
         Set<OnapCommandParameter> paramslist = new HashSet<>();
         paramslist.add(jsonparam);
         File resourcesDirectory = new File("src/test/resources/sampletest.json");
-        String[] args = new String[] { "sample-create", "--json-param", "file:" + resourcesDirectory, "--json-param" };
+        String[] args = new String[] {
+            "sample-create", "--json-param",
+            "file:" + resourcesDirectory, "--json-param" };
         jsonparam.setParameterType(OnapCommandParameterType.JSON);
         OnapCliArgsParser.populateParams(paramslist, Arrays.asList(args));
         List<String> expectedList = Arrays.asList(args);
