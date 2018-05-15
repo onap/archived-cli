@@ -64,7 +64,7 @@ public class OnapHttpCommand extends OnapCommand {
 
     private OnapCommandHttpService oclipService = new OnapCommandHttpService();
 
-    private MocoServer mocoServer;
+    private MocoServer mocoServer = null;
 
     boolean shouldVerify = false;
 
@@ -194,7 +194,7 @@ public class OnapHttpCommand extends OnapCommand {
 
     @Override
     protected void postRun() throws OnapCommandException {
-        if (shouldVerify && mockingEnabled) {
+        if (mocoServer != null) {
             mocoServer.stop();
         }
     }
