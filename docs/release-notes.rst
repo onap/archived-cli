@@ -13,6 +13,8 @@ Version: 2.0.0
 In this release, CLI provides all those features supported in previous release. In addition,
 following features are enabled:
 
+* Profile support (like Heat environment file)
+* Batch support to run same command with different set of arguments feed from param-file)
 * Policy management
 * VNF/PNF management
 * OCLIP SNMP profile support (get command)
