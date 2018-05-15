@@ -28,6 +28,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,7 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidSample;
+import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.main.OnapCli;
@@ -59,17 +61,44 @@ public class OnapValidationTest {
     public static final String SAMPLE_OUTPUT = "output";
     public static final String SAMPLE_MOCO = "moco";
 
-    OnapCli cli = null;
+    OnapCli cli = new OnapCli();
 
     private static Logger LOG = LoggerFactory.getLogger(OnapValidationTest.class);
 
     private void handle(String[] args) {
-        cli = new OnapCli(args);
+        cli.resetExitCode();
+        cli.setArgs(args);
         cli.handle();
     }
 
+    /**
+     * Add Test annotation to this method for running the stability and perf testing
+     * @throws OnapCommandProductVersionInvalid
+     * @throws OnapCommandException
+     * @throws InterruptedException
+     */
+    //@Test
+    public void stablitityPerformanceBeijingTest() throws OnapCommandProductVersionInvalid, OnapCommandException {
+        System.out.println(new Date());
+        while (true) {
+            OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("onap-beijing");
+            for (String cmd : OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion()) {
+                System.out.println(cmd + ":");
+                Date start = new Date();
+                this.handle(new String[] { cmd, "-V"});
+                Date end = new Date();
+                System.out.println("[ Total time " + (end.getTime() - start.getTime()) + " ms ]\n");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    System.out.println(new Date());
+                }
+            }
+        }
+    }
+
     @Test
-    public void validateCommandSchemas() throws IOException, OnapCommandException {
+    public void validateCommandSchemas() throws OnapCommandException {
         for (String version: OnapCommandRegistrar.getRegistrar().getAvailableProductVersions()) {
             OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(version);
             System.out.println(version);
