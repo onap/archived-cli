@@ -65,12 +65,28 @@ public class OnapCli {
     private int exitCode = -1;
 
     public OnapCli(String[] args) {
-        this.args.addAll(Arrays.asList(args));
+        this.setArgs(args);
     }
 
     public OnapCli(String product, String[] args) {
         this(args);
-        this.product = product;
+        this.setProduct(product);
+    }
+
+    public OnapCli() {
+    }
+
+    public void resetExitCode() {
+        this.exitCode = -1;
+    }
+
+    public void setArgs(String [] args) {
+        this.args.clear();
+        this.args.addAll(Arrays.asList(args));
+    }
+
+    public void setProduct(String product) {
+         this.product = product;
     }
 
     private void exitSuccessfully() {
@@ -260,7 +276,12 @@ public class OnapCli {
 
             if (contextOpt.isPresent()) {
                 HashMap map = new HashMap();
-                map.put(OnapCommandConstants.VERIFY_MOCO, sampleTest.get(OnapCommandConstants.VERIFY_MOCO));
+
+                Object moco = sampleTest.get(OnapCommandConstants.VERIFY_MOCO);
+                if (moco == null) {
+                    continue;
+                }
+                map.put(OnapCommandConstants.VERIFY_MOCO, moco);
 
                 if (contextOptArg.isPresent()) {
                     OnapCommandParameter contextArg = contextOptArg.get();
