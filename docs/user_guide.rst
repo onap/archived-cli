@@ -168,3 +168,14 @@ Following document provides the tutorial for PNF/VNF on-boarding tutorial using 
    :maxdepth: 1
 
    user_guide_pnf_on_boarding.rst
+
+CLI verification program
+------------------------
+OCLIP provides option to write test suite with set of test cases by authoring required 
+samples and moco templates. Currently HTTP profile is enabled with this program.
+
+
+.. toctree::
+   :maxdepth: 1
+
+   user_guide_verification_program.rst
