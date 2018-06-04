@@ -838,3 +838,9 @@ followed by {<macro details>}Followings are the supported macros:
 | $b{jpath}        | To retrieve the value from response body using the 'jpath' |
 |                  | expression.                                                |
 +------------------+------------------------------------------------------------+
+
+samples
+-------
+
+OCLIP provides way to setup and verify the OCS yaml by using the open_cli_sample_version 1.0 specification,
+which provides options to capture the samples and expected out for the given moco environment.
