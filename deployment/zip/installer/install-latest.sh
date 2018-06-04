@@ -16,7 +16,7 @@
 # limitations under the License.
 #*******************************************************************************
 
-CLI_LATEST_BINARY="https://nexus.onap.org/service/local/artifact/maven/redirect?r=snapshots&g=org.onap.cli&a=cli-zip&e=zip&v=LATEST"
+CLI_LATEST_BINARY="https://nexus.onap.org/service/local/artifact/maven/redirect?r=releases&g=org.onap.cli&a=cli-zip&e=zip&v=LATEST"
 CLI_INSTALL_DIR=/opt/oclip
 CLI_ZIP=cli.zip
 CLI_BIN=/usr/bin/oclip
