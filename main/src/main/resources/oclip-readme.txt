@@ -1,5 +1,5 @@
-OPEN Command-line interface (CLI)
-==================================
+Open Command-line interface Platform(OCLIP)
+===========================================
 
  _____                    _____  _     _____
 |  _  |                  /  __ \| |   |_   _|
