@@ -1890,6 +1890,136 @@ Error::
  On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
 
 
+microservice-list
+-----------------------------------------------
+
+
+usage: oclip microservice-list
+
+Lists the registetred micro services in Onap
+
+Product: onap-beijing
+Service: msb
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-s | --long]
+ [-D | --context]
+
+where::
+
+ -m | --host-url    host url in http(s). It is of type URL. By
+                    default, it is read from environment variable
+                    OPEN_CLI_HOST_URL.
+ -C | --no-catalog  Whether to use given host-url directly or
+                    discover it from catalog, it will override the
+                    service->mode. It is of type BOOL. It is
+                    optional.
+ -h | --help        print help message. It is of type BOOL.
+ -f | --format      Output formats, supported formats such as table,
+                    csv, json, yaml. It is of type STRING.
+ -t | --no-title    whether to print title or not. It is of type BOOL.
+ -V | --verify      Helps to verify the command using samples
+                    provides under open-cli-samples directory. By
+                    default, it goes with mock.To enable the
+                    verification of samples in real time, set
+                    DISABLE_MOCKING=true in the context parameter. It
+                    is of type BOOL. It is optional.
+ -v | --version     print service version. It is of type BOOL.
+ -d | --debug       Enable debug output. It is of type BOOL.
+ -s | --long        whether to print all attributes or only short
+                    attributes. It is of type BOOL.
+ -D | --context     command context. It is of type MAP. It is
+                    optional.
+
+
+Results::
+
+ name         Onap service name and is of type STRING.
+ version      Onap service version and is of type STRING.
+ url          Onap service base url and is of type URL.
+ status       Onap service status and is of type DIGIT.
+ nodes        Onap service running nodes and is of type JSON.
+ enable-ssl   Onap service is enabled with https or not and is
+              of type STRING.
+ path         Onap service path and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
+
+
+microservice-show
+-----------------------------------------------
+
+
+usage: oclip microservice-show
+
+Details the registered microservice in Onap
+
+Product: onap-beijing
+Service: msb
+Author: ONAP CLI Team onap-discuss@lists.onap.org
+
+Options::
+
+ [-m | --host-url] [-C | --no-catalog] [-h | --help]
+ [-f | --format] [-t | --no-title] [-V | --verify]
+ [-v | --version] [-d | --debug] [-y | --service-version]
+ [-s | --long] [-D | --context] [-x | --service-name]
+
+where::
+
+ -m | --host-url          host url in http(s). It is of type URL. By
+                          default, it is read from environment variable
+                          OPEN_CLI_HOST_URL.
+ -C | --no-catalog        Whether to use given host-url directly or
+                          discover it from catalog, it will override the
+                          service->mode. It is of type BOOL. It is
+                          optional.
+ -h | --help              print help message. It is of type BOOL.
+ -f | --format            Output formats, supported formats such as table,
+                          csv, json, yaml. It is of type STRING.
+ -t | --no-title          whether to print title or not. It is of type BOOL.
+ -V | --verify            Helps to verify the command using samples
+                          provides under open-cli-samples directory. By
+                          default, it goes with mock.To enable the
+                          verification of samples in real time, set
+                          DISABLE_MOCKING=true in the context parameter. It
+                          is of type BOOL. It is optional.
+ -v | --version           print service version. It is of type BOOL.
+ -d | --debug             Enable debug output. It is of type BOOL.
+ -y | --service-version   Onap service version. It is of type STRING. By
+                          default, it is .
+ -s | --long              whether to print all attributes or only short
+                          attributes. It is of type BOOL.
+ -D | --context           command context. It is of type MAP. It is
+                          optional.
+ -x | --service-name      Onap service name. It is of type STRING. By
+                          default, it is .
+
+
+Results::
+
+ name         Onap service name and is of type STRING.
+ version      Onap service version and is of type STRING.
+ url          Onap service base url and is of type URL.
+ status       Onap service status and is of type DIGIT.
+ nodes        Onap service running nodes and is of type JSON.
+ enable-ssl   Onap service is enabled with https or not and is
+              of type STRING.
+ path         Onap service path and is of type STRING.
+
+
+Error::
+
+ On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>
+
 
 tenant-create
 ----------------------------------------------------
