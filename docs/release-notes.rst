@@ -46,8 +46,8 @@ and body section could be customized using context.
 **Security Notes**
 
 CLI code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities
- have been addressed, items that remain open have been assessed for risk and determined to be false
- positive. The CLI open Critical security vulnerabilities and their risk assessment have been
+have been addressed, items that remain open have been assessed for risk and determined to be false
+positive. The CLI open Critical security vulnerabilities and their risk assessment have been
 documented as part of the `project <https://wiki.onap.org/pages/viewpage.action?pageId=28377287>`_.
 
 Quick Links:
