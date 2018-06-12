@@ -6,7 +6,7 @@ CLI Release Notes
 Version: 2.0.0
 --------------
 
-:Release Date: 2018-05-24
+:Release Date: 2018-06-07
 
 **New Features**
 
@@ -42,6 +42,20 @@ and body section could be customized using context.
 * CLI-86    Create documentation for end to end cli commands for onap
 * CLI-74    Setup Mock environment for a command
 * CLI-61    Add validation for results section in yaml
+
+**Security Notes**
+
+CLI code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities
+have been addressed, items that remain open have been assessed for risk and determined to be false
+positive. The CLI open Critical security vulnerabilities and their risk assessment have been
+documented as part of the `project <https://wiki.onap.org/pages/viewpage.action?pageId=28377287>`_.
+
+Quick Links:
+    - `CLI project page <https://wiki.onap.org/display/DW/Command+Line+Interface+Project>`_
+
+    - `Passing Badge information for CLI <https://bestpractices.coreinfrastructure.org/en/projects/1540>`_
+
+    - `Project Vulnerability Review Table for CLI <https://wiki.onap.org/pages/viewpage.action?pageId=28377287>`_
 
 Version: 1.1.0
 --------------
