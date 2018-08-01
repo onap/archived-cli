@@ -59,7 +59,6 @@
             <activeByDefault>true</activeByDefault>
           </activation>
           <modules>
-            <module>onap-amsterdam</module>
             <module>onap-beijing</module>
           </modules>
        </profile>
@@ -70,6 +69,7 @@
           </activation>
           <modules>
             <module>openecomp</module>
+            <module>onap-amsterdam</module>
           </modules>
        </profile>
     </profiles>
