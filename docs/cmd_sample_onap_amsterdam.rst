@@ -8,7 +8,7 @@
 onap-amsterdam
 ==============
 
-
+NOTE: EOL 01-Aug-2018
 
 cloud-delete
 ------------

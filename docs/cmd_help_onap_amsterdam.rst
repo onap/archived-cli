@@ -12,6 +12,9 @@
 onap-amsterdam
 ==========================
 
+NOTE: EOL 01-Aug-2018
+
+
 ONAP Amsterdam was the first release of ONAP product after merging open-o and open-ecomp together.
 It provides platform to creating and maintaining the network services for VoLTE and vCPE types and
 CLI provides following commands for operating ONAP with this support.

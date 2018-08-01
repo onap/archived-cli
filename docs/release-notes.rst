@@ -1,7 +1,18 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
+
 CLI Release Notes
 =================
+
+Version: 2.0.2
+--------------
+
+:Release Date: 2018-11-15
+
+**New Features**
+
+- Amsterdam support EOL
+
 
 Version: 2.0.0
 --------------
