@@ -33,7 +33,7 @@ public class OnapCommandSchemaCmdLoader {
         // to follow standards !
     }
 
- 
+
     /**
      * Load the schema.
      *
@@ -50,40 +50,40 @@ public class OnapCommandSchemaCmdLoader {
         ArrayList<String> errorList = new ArrayList<>();
         Map<String, ?> valMap = (Map<String, ?>) values.get(OnapCommandCmdConstants.CMD);
 
-		if (valMap != null) {
-		    if (validate) {
-		        OnapCommandUtils.validateTags(errorList, valMap, OnapCommandConfig.getCommaSeparatedList(OnapCommandCmdConstants.CMD_SECTIONS),
-		                OnapCommandConfig.getCommaSeparatedList(OnapCommandCmdConstants.CMD_MANDATORY_SECTIONS), OnapCommandCmdConstants.CMD);
-		    }
-		    for (Map.Entry<String, ?> entry1 : valMap.entrySet()) {
-		        String key1 = entry1.getKey();
+        if (valMap != null) {
+            if (validate) {
+                OnapCommandUtils.validateTags(errorList, valMap, OnapCommandConfig.getCommaSeparatedList(OnapCommandCmdConstants.CMD_SECTIONS),
+                        OnapCommandConfig.getCommaSeparatedList(OnapCommandCmdConstants.CMD_MANDATORY_SECTIONS), OnapCommandCmdConstants.CMD);
+            }
+            for (Map.Entry<String, ?> entry1 : valMap.entrySet()) {
+                String key1 = entry1.getKey();
 
-		        switch (key1) {
-		            case OnapCommandCmdConstants.COMMAND:
-		                Object o = valMap.get(key1);
-		                if (o instanceof List) {
-		                	cmd.setCommand((List<String>) o);
-		                } else {
-		                	cmd.setCommand(Arrays.asList(new String [] {(String) o}));
-		                }
-		                break;
+                switch (key1) {
+                    case OnapCommandCmdConstants.COMMAND:
+                        Object o = valMap.get(key1);
+                        if (o instanceof List) {
+                            cmd.setCommand((List<String>) o);
+                        } else {
+                            cmd.setCommand(Arrays.asList(new String [] {(String) o}));
+                        }
+                        break;
 
-		            case OnapCommandCmdConstants.ENVIRONMENT:
-		                Map<String, String> envMap = (Map<String, String>) valMap.get(key1);
-		                cmd.setEnvs(envMap);
+                    case OnapCommandCmdConstants.ENVIRONMENT:
+                        Map<String, String> envMap = (Map<String, String>) valMap.get(key1);
+                        cmd.setEnvs(envMap);
 
-		                break;
+                        break;
 
-		            case OnapCommandCmdConstants.WD:
-		            	cmd.setWd((String)valMap.get(key1));
-		                break;
-		                
-		            case OnapCommandCmdConstants.SUCCESS_EXIT_CODE:
-		            	cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
-		                break;
-		        }
-		    }
-		}
+                    case OnapCommandCmdConstants.WD:
+                        cmd.setWd((String)valMap.get(key1));
+                        break;
+
+                    case OnapCommandCmdConstants.SUCCESS_EXIT_CODE:
+                        cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
+                        break;
+                }
+            }
+        }
 
 
         return errorList;

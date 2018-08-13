@@ -38,92 +38,92 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
  */
 @OnapCommandSchema(type = "cmd")
 public class OpenCommandShellCmd extends OnapCommand {
-	
-	public OpenCommandShellCmd() {
+
+    public OpenCommandShellCmd() {
         super.addDefaultSchemas(OnapCommandCmdConstants.DEFAULT_PARAMETER_CMD_FILE_NAME);
     }
 
-	private Map<String, String> resultMap = new HashMap<>();
-	
-	private List<String> command;
-	
-	private Map<String, String> envs;
+    private Map<String, String> resultMap = new HashMap<>();
 
-	private String wd = null;
-	
-	private List<Integer> successStatusCodes = new ArrayList<>();
-	
-	public List<Integer> getSuccessStatusCodes() {
-		return successStatusCodes;
-	}
+    private List<String> command;
 
-	public void setSuccessStatusCodes(ArrayList<Integer> successStatusCodes) {
-		this.successStatusCodes = successStatusCodes;
-	}
+    private Map<String, String> envs;
 
-	public String getWd() {
-		return wd;
-	}
+    private String wd = null;
 
-	public void setWd(String wd) {
-		this.wd = wd;
-	}
+    private List<Integer> successStatusCodes = new ArrayList<>();
 
-	public Map<String, String> getEnvs() {
-		return envs;
-	}
+    public List<Integer> getSuccessStatusCodes() {
+        return successStatusCodes;
+    }
 
-	public void setEnvs(Map<String, String> envs) {
-		this.envs = envs;
-	}
-	
-	
+    public void setSuccessStatusCodes(ArrayList<Integer> successStatusCodes) {
+        this.successStatusCodes = successStatusCodes;
+    }
 
-	public List<String> getCommand() {
-		return command;
-	}
+    public String getWd() {
+        return wd;
+    }
 
-	public void setCommand(List<String> command) {
-		this.command = command;
-	}
+    public void setWd(String wd) {
+        this.wd = wd;
+    }
 
-	public Map<String, String> getResultMap() {
+    public Map<String, String> getEnvs() {
+        return envs;
+    }
+
+    public void setEnvs(Map<String, String> envs) {
+        this.envs = envs;
+    }
+
+
+
+    public List<String> getCommand() {
+        return command;
+    }
+
+    public void setCommand(List<String> command) {
+        this.command = command;
+    }
+
+    public Map<String, String> getResultMap() {
         return resultMap;
     }
-    
+
     public void setResultMap(Map<String, String> resultMap) {
         this.resultMap = resultMap;
     }
-    
+
     @Override
     protected List<String> initializeProfileSchema(Map<String, ?> schemaMap, boolean validate) throws OnapCommandException {
         return OnapCommandSchemaCmdLoader.parseCmdSchema(this, schemaMap, validate);
     }
-    
+
     @Override
     protected void run() throws OnapCommandException {
         //Read the input arguments
         Map<String, OnapCommandParameter> paramMap = this.getParametersMap();
-        
+
         //Process command
         String []cmd = this.getCommand().toArray(new String []{});
         String cwd = this.getWd();
         List <String> envs = new ArrayList<>();
-        
+
         for (String env: this.getEnvs().keySet()) {
-        	envs.add(env + "=" + this.getEnvs().get(env));
+            envs.add(env + "=" + this.getEnvs().get(env));
         }
-        
+
         ProcessRunner pr = new ProcessRunner(
-        		cmd, 
-        		(envs.size() > 0) ? envs.toArray(new String []{}) : null, 
-        		cwd);
+                cmd,
+                (envs.size() > 0) ? envs.toArray(new String []{}) : null,
+                cwd);
         try {
-			pr.run();
-		} catch (InterruptedException | IOException e) {
-			throw new OnapCommandExecutionFailed(this.getName(), e);
-		}
-        
+            pr.run();
+        } catch (InterruptedException | IOException e) {
+            throw new OnapCommandExecutionFailed(this.getName(), e);
+        }
+
         //Populate outputs
         this.getResult().getRecordsMap().get("output").getValues().add(pr.getOutput());
         this.getResult().getRecordsMap().get("error").getValues().add(pr.getError());

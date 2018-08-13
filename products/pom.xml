@@ -60,7 +60,7 @@
           </activation>
           <modules>
             <module>onap-casablanca</module>
-            <module>onap-beijing</module>            
+            <module>onap-beijing</module>
           </modules>
        </profile>
        <profile>

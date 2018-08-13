@@ -54,7 +54,7 @@
             <groupId>org.onap.cli</groupId>
             <artifactId>cli-framework</artifactId>
             <version>${project.version}</version>
-        </dependency>        
+        </dependency>
   </dependencies>
    <build>
         <plugins>
