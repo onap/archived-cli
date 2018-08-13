@@ -34,6 +34,7 @@
     <modules>
         <module>http</module>
         <module>snmp</module>
+        <module>command</module>
     </modules>
     <dependencies>
         <dependency>
