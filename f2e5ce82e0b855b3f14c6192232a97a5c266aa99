@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_cf0ebc34",
+        "filename": "profiles/command/src/main/java/org/onap/cli/fw/cmd/conf/OnapCommandCmdConstants.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-08-13T10:07:49Z",
+      "side": 1,
+      "message": "tab and whitespace",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "f2e5ce82e0b855b3f14c6192232a97a5c266aa99",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
