@@ -222,7 +222,7 @@ public abstract class OnapCommand {
         // -f or --format
         this.cmdResult.setType(
                 OnapCommandResultType.get(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT).getValue().toString()));
-        if (OnapCommandConstants.BOOLEAN_TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG).getValue())) {
+        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG).getValue())) {
             this.cmdResult.setScope(OnapCommandResultAttributeScope.LONG);
         }
         // --no-title
