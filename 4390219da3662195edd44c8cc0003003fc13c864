@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_effff8ff",
+        "filename": "profiles/command/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 879
+      },
+      "writtenOn": "2018-08-13T10:07:21Z",
+      "side": 1,
+      "message": "white space",
+      "range": {
+        "startLine": 57,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "4390219da3662195edd44c8cc0003003fc13c864",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
