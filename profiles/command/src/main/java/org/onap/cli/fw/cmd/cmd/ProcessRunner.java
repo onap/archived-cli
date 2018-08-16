@@ -94,7 +94,9 @@ public class ProcessRunner {
                 sb.append(line + System.getProperty("line.separator"));
             }
         } finally {
-            br.close();
+            if (br != null) {
+                br.close();
+            }
         }
         return sb.toString();
     }
