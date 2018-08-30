@@ -60,9 +60,17 @@
           </activation>
           <modules>
             <module>onap-casablanca</module>
-            <module>onap-beijing</module>
           </modules>
        </profile>
+       <profile>
+          <id>onap-beijing</id>
+          <activation>
+            <activeByDefault>false</activeByDefault>
+          </activation>
+          <modules>
+            <module>onap-beijing</module>
+          </modules>
+       </profile>       
        <profile>
           <id>eol</id>
           <activation>
