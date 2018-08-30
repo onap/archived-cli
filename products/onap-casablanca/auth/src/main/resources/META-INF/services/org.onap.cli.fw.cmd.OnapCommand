@@ -14,3 +14,4 @@
 
 org.onap.cli.cmd.auth.OnapBasicAuthLoginCommandCasablanca
 org.onap.cli.cmd.auth.OnapBasicAuthLogoutCommandCasablanca
+org.onap.cli.cmd.auth.OnapSdcBasicAuthLoginCommandCasablanca
