@@ -83,9 +83,3 @@ http:
     enable-ssl: $b{$.enable_ssl}
     path: $b{$.path}
     nodes: $b{$.nodes[*].ip}:$b{$.nodes[*].port}
-  sample_response:
-    body: '{"serviceName":"test","version":"v1","url":"/api/test/v1","protocol":"REST","visualRange":"1","lb_policy":"hash","nodes":[{"ip":"127.0.0.1","port":"8012","ttl":0,"nodeId":"test_127.0.0.1_8012","expiration":"2017-02-10T05:33:25Z","created_at":"2017-02-10T05:33:25Z","updated_at":"2017-02-10T05:33:25Z"}],"status":"1"}'
-
-
-
-
