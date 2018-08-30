@@ -37,7 +37,7 @@ parameters:
     type: string
     description: service version registered in catalog service
     short_option: i
-    long_option: catalog-service-version
+    long_option: catalog-service-versions
     is_optional: false
 results:
   direction: portrait
@@ -57,7 +57,7 @@ http:
     mode: direct
     auth: none
   request:
-    uri: /services/${catalog-service-name}/version/${catalog-service-version}
+    uri: /api/microservices/v1/services/${catalog-service-name}/version/${catalog-service-version}
     method: GET
   success_codes:
     - 201
