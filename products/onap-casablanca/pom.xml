@@ -33,6 +33,7 @@
 
     <modules>
         <module>auth</module>
+        <module>catalog</module>
     </modules>
     <build>
          <pluginManagement>
