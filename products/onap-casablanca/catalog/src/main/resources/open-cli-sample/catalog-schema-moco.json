@@ -1,0 +1,44 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/api/microservices/v1/services/so/version/v1",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+    	  "serviceName": "so",
+    	  "version": "v1",
+    	  "url": "/ecomp/mso/infra",
+    	  "protocol": "REST",
+    	  "visualRange": "1",
+    	  "lb_policy": "",
+    	  "publish_port": "",
+    	  "namespace": "",
+    	  "network_plane_type": "",
+    	  "host": "",
+    	  "path": "",
+    	  "enable_ssl": false,
+    	  "nodes": [
+    	    {
+    	      "ip": "10.0.5.1",
+    	      "port": "8080",
+    	      "checkType": "",
+    	      "checkUrl": "",
+    	      "tls_skip_verify": true,
+    	      "ha_role": "",
+    	      "nodeId": "_v1_so_10.0.5.1_8080",
+    	      "status": "passing"
+    	    }
+    	  ],
+    	  "metadata": [],
+    	  "labels": [],
+    	  "status": "1",
+    	  "is_manual": false
+    	}
+  }
+} ]
