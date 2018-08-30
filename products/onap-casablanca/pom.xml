@@ -31,7 +31,9 @@
     <name>cli/products/onap-casablanca</name>
     <packaging>pom</packaging>
 
-
+    <modules>
+        <module>auth</module>
+    </modules>
     <build>
          <pluginManagement>
             <plugins>
