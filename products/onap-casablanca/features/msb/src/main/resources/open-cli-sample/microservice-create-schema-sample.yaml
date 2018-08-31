@@ -18,17 +18,17 @@ version: onap-casablanca
 samples:
   sample1:
     name: microservice-create
-    input: --service-name test --service-version v1 --service-url /test --path /test 10.0.0.1 8080
+    input: --service-name test --service-version v1 --service-url /test --path /test true 10.0.0.1 8080
     moco: microservice-create-schema-moco.json
     output: |
-      +----------+--------------+
-      |property  |value         |
-      +----------+--------------+
-      |name      |test          |
-      +----------+--------------+
-      |version   |v1            |
-      +----------+--------------+
-      |url       |/test         |
-      +----------+--------------+
-      |status    |1             |
-      +----------+--------------+
+        +----------+--------+
+        |property  |value   |
+        +----------+--------+
+        |name      |test    |
+        +----------+--------+
+        |version   |v1      |
+        +----------+--------+
+        |url       |/test   |
+        +----------+--------+
+        |status    |1       |
+        +----------+--------+

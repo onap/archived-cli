@@ -19,6 +19,6 @@ version: onap-casablanca
 samples:
     sample1:
         name: microservice-delete
-        input: --service-name test --service-version v1 --host-url http://192.168.17.23:80 --node-ip 23.14.15.156 --node-port 80
+        input: --service-name test --service-version v1 --node-ip 23.14.15.156 --node-port 80
         moco: microservice-delete-schema-moco.json
         output:
