@@ -13,7 +13,7 @@
     "json" : {
       "serviceName" : "test",
       "version" : "v1",
-      "url" : "/C:/Git/test",
+      "url" : "/test",
       "protocol" : "REST",
       "visualRange" : "1",
       "lb_policy" : "ip_hash",
@@ -21,7 +21,7 @@
       "namespace" : "",
       "network_plane_type" : "",
       "host" : "",
-      "path" : "/C:/Git/test",
+      "path" : "/test",
       "enable_ssl" : false,
       "nodes" : [ {
         "ip" : "10.0.0.1",
