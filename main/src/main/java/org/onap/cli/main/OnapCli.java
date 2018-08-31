@@ -268,7 +268,9 @@ public class OnapCli {
 
             cmd = OnapCommandRegistrar.getRegistrar().get(args.get(0));
             OnapCliArgsParser.populateParams(cmd.getParameters(), (List<String>) sampleTest.get(OnapCommandConstants.VERIFY_INPUT));
+            this.print("\n***************Test Command: \n" + sampleTest.get(OnapCommandConstants.VERIFY_INPUT).toString());
 
+            cmd.getParametersMap().get(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG).setValue(Boolean.TRUE);
 
             Optional<OnapCommandParameter> contextOpt = cmd.getParameters().stream()
                     .filter(e -> e.getName().equals(OnapCommandConstants.VERIFY_CONTEXT_PARAM))
@@ -301,7 +303,11 @@ public class OnapCli {
             } else {
                 resultAtt.getValues().add(OnapCommandConstants.VERIFY_RESULT_FAIL);
             }
+            this.print(testResult.getDebugInfo());
+            this.print("\n***************Expected Output: \n" + expectedOutput);
+            this.print("\n***************Actual Output: \n" + actualOutput);
         }
+
         this.print(testSuiteResult.print());
     }
     /**
