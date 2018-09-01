@@ -41,10 +41,9 @@
         <module>profiles</module>
         <module>products</module>
         <module>main</module>
-        <module>deployment</module>
         <module>validate</module>
-
         <module>grpc</module>
+        <module>deployment</module>
   </modules>
 
     <distributionManagement>

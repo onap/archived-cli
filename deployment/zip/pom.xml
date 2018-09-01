@@ -93,6 +93,8 @@
                                 "${project.build.directory}/../../../products/target/lib/")
                                 fileset(dir:
                                 "${project.build.directory}/../../../profiles/target/lib/")
+                                fileset(dir:
+                                "${project.build.directory}/../../../grpc/target/lib/")
                                 }
                                 ant.copy(todir:
                                 "${deployUnzip}/conf") {
