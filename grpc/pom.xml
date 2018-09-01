@@ -27,6 +27,7 @@
   <name>oclip/grpc</name>
   <modules>
     <module>grpc-stub</module>
+    <module>grpc-server</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
