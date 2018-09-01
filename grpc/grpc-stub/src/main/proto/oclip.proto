@@ -1,0 +1,53 @@
+//    Copyright 2018 Huawei Technologies Co., Ltd.
+//
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//        http://www.apache.org/licenses/LICENSE-2.0
+//
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+
+ syntax = "proto3";
+
+option java_package = "org.open.infc.grpc";
+option java_multiple_files = true;
+option java_outer_classname = "Oclip";
+
+package oclip;
+
+service OpenInterface {
+    rpc invoke(Input) returns (Output) {}
+    rpc remoteCli(Args) returns (Result) {}
+}
+
+//Used for java rpc
+message Input {
+    string requestId = 1;
+    string action = 2;
+    map<string, string> params = 3;
+    map<string, string> options = 4;
+}
+
+message Output {
+    bool success = 1;
+    map<string, string> attrs = 2;
+
+    //if backend wants to report back some info like response header
+    map<string, string> addons = 3;
+}
+
+//Used for remote CLI
+message Args{
+    repeated string args = 1;
+    string product = 2;
+}
+
+message Result {
+    int32 exitCode = 1;
+    string output = 2;
+}
