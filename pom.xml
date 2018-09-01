@@ -43,6 +43,8 @@
         <module>main</module>
         <module>deployment</module>
         <module>validate</module>
+
+        <module>grpc</module>
   </modules>
 
     <distributionManagement>
