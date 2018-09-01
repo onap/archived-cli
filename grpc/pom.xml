@@ -26,6 +26,7 @@
   <packaging>pom</packaging>
   <name>oclip/grpc</name>
   <modules>
+    <module>grpc-stub</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
