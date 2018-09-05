@@ -26,7 +26,7 @@ import org.open.infc.grpc.Result;
 
 public class OpenRemoteCli {
     public static final String OCLIP_GRPC_SERVER = "http://localhost:50051";
-    public static final String OCLIP_GRPC_SERVER_ENV = "OCLIP_SERVER";
+    public static final String OCLIP_GRPC_SERVER_ENV = "OCLIP_GRPC_SERVER";
 
     public static Result run (String[] args) throws Exception {
         String oclipHome = System.getenv(OCLIP_GRPC_SERVER_ENV);

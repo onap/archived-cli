@@ -25,10 +25,12 @@ if [ ! -d ./data ]; then mkdir ./data; fi
 if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
 
 chmod +x ./bin/oclip.sh
+chmod +x ./bin/oclip-rcli.sh
 
 #Make oclip available in path
 ln -sf ./bin/oclip.sh /usr/bin/oclip
 ln -sf ./bin/oclip.sh /usr/bin/onap
+ln -sf ./bin/oclip-rcli.sh /usr/bin/roclip
 
 #Print the version
 oclip -v
