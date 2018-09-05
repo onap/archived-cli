@@ -20,7 +20,7 @@ ENV OPEN_CLI_HOME=/opt/oclip \
     OPEN_CLI_MODE=shell \
     OPEN_CLI_PRODUCT_IN_USE=onap-beijing \
     GOTTY_TITLE_FORMAT="{{ .command }}" \
-    OCLIP_GRPC_SERVER="http://oclip_grpc:50051"
+    OCLIP_GRPC_SERVER="http://oclip_ocs_grpc:50051"
 
 ADD ./STAGE $OPEN_CLI_HOME
 WORKDIR $OPEN_CLI_HOME
