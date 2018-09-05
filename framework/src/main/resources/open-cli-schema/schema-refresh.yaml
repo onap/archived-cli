@@ -19,7 +19,7 @@ description: OCLIP command to refresh schemas stored in open-cli-schema folders.
 info:
   product: open-cli
   service: schema
-  type: auth
+  type: cmd
   author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
 
 results:
