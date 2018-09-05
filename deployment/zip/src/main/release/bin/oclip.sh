@@ -29,7 +29,7 @@ else
     SEP=:
 fi
 
-CLASSPATH=${OPEN_CLI_HOME}${SEP}${OPEN_CLI_HOME}/conf${SEP}${OPEN_CLI_HOME}/docs
+CLASSPATH=${OPEN_CLI_HOME}/conf${SEP}${OPEN_CLI_HOME}${SEP}${OPEN_CLI_HOME}/docs
 for entry in "$OPEN_CLI_HOME/lib"/*
 do
   CLASSPATH=${CLASSPATH}${SEP}${entry}
