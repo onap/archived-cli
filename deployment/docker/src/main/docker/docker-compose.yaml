@@ -23,18 +23,57 @@ services:
       - "21:21"
       - 30000-30009:30000-30009
 
+#OCLIP Web Command Center
+  oclip_ocs_web:
+    stdin_open: true
+    tty: true
+    image: onap/cli
+    environment:
+      OPEN_CLI_MODE: 'ocs-web'
+      OPEN_CLI_DEBUG: 'false'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8080:80
+      - 50050:5005
+
+#OCLIP Command Console server
+  oclip_occ:
+    stdin_open: true
+    tty: true
+    image: onap/cli
+    environment:
+      OPEN_CLI_MODE: 'occ'
+      OPEN_CLI_DEBUG: 'false'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8081:8080
+      - 50051:5005
+
+#OCLIP gRPC server
+  oclip_ocs_grpc:
+    stdin_open: true
+    tty: true
+    image: onap/cli
+    environment:
+      OPEN_CLI_MODE: 'ocs-grpc'
+      OPEN_CLI_DEBUG: 'false'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+     - 8082:50051
+     - 50052:5005
+
+#Remote OCLIP CLI and OCLIP CLI
   oclip_cli:
     stdin_open: true
     tty: true
     image: onap/cli
     environment:
-      OPEN_CLI_MODE: 'daemon'
+      OPEN_CLI_MODE: 'console'
       OPEN_CLI_DEBUG: 'false'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - 30260:80
-      - 30261:8080
       - 5005:5005
-
-
