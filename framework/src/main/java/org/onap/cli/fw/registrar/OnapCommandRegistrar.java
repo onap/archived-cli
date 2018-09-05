@@ -121,6 +121,7 @@ public class OnapCommandRegistrar {
         }
 
         this.registry.put(name + ":" + version, cmd);
+        log.info("REGISITER : " + name + ":" + version + " = " + cmd.getCanonicalName());
         this.availableProductVersions.add(version);
 
     }
