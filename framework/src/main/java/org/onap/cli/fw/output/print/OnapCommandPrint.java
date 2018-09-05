@@ -248,7 +248,8 @@ public class OnapCommandPrint {
             JSONObject rowO = new JSONObject();
 
             for (int j=0; j<titleRow.size(); j++) {
-                rowO.put(titleRow.get(j).toString(), rows.get(i).get(j).toString());
+                if (rows.get(i).get(j) != null)
+                    rowO.put(titleRow.get(j).toString(), rows.get(i).get(j).toString());
             }
 
             array.add(rowO);
