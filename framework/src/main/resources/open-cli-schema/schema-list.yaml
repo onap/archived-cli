@@ -13,14 +13,22 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: schema-refresh
-description: OCLIP command to refresh schemas stored in open-cli-schema folders.
+name: schema-list
+description: OCLIP command to list available schema
 
 info:
   product: open-cli
   service: schema
   type: cmd
   author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
+
+parameters:
+  - name: product
+    type: string
+    description: For a given product version
+    short_option: l
+    long_option: product
+    is_optional: false
 
 results:
   direction: landscape
@@ -31,10 +39,6 @@ results:
       type: string
     - name: command
       description: Command name
-      scope: short
-      type: string
-    - name: product
-      description: Command product version
       scope: short
       type: string
     - name: schema
