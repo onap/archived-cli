@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.conf.OnapCommandCmdConstants;
@@ -29,9 +28,7 @@ import org.onap.cli.fw.cmd.schema.OnapCommandSchemaCmdLoader;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
 import org.onap.cli.fw.input.OnapCommandParameter;
-import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.schema.OnapCommandSchema;
-import org.onap.cli.fw.utils.OnapCommandUtils;
 
 /**
  * Hello world.
