@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.onap.cli</groupId>
         <artifactId>cli-validate</artifactId>
-        <version>2.0.2</version>
+        <version>2.0.3</version>
     </parent>
 
     <artifactId>cli-validation</artifactId>
@@ -46,41 +46,6 @@
         <dependency>
             <groupId>org.onap.cli</groupId>
             <artifactId>cli-products-onap-beijing-catalog</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-beijing-auth</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-beijing-features-so</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-beijing-features-sdc</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-beijing-features-msb</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-beijing-features-aai</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-beijing-features-appc</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.onap.cli</groupId>
-            <artifactId>cli-products-onap-beijing-features-policy</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
