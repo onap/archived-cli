@@ -34,10 +34,10 @@ RUN apt-get update && apt-get install -y lighttpd git curl pandoc vim && \
     apt-get purge -y pandoc && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/go /tmp/gotty /tmp/* /var/tmp/* && \
     chmod +x  $OPEN_CLI_HOME/bin/oclip.sh  && \
     chmod +x  $OPEN_CLI_HOME/bin/oclip-rcli.sh  && \
-    chmod +x  $OPEN_CLI_HOME/bin/oclip-cmdflow-server.sh  && \
+    chmod +x  $OPEN_CLI_HOME/bin/oclip-grpc-server.sh  && \
     ln  $OPEN_CLI_HOME/bin/oclip.sh /usr/sbin/oclip  && \
     ln  $OPEN_CLI_HOME/bin/oclip.sh /usr/sbin/onap  && \
-    ln  $OPEN_CLI_HOME/bin/oclip-cmdflow-server.sh /usr/sbin/oclip-grpc  && \
+    ln  $OPEN_CLI_HOME/bin/oclip-grpc-server.sh /usr/sbin/oclip-grpc  && \
     ln  $OPEN_CLI_HOME/bin/oclip-rcli.sh /usr/sbin/oclipr  && \
     if [ ! -d  $OPEN_CLI_HOME/data ]; then mkdir  $OPEN_CLI_HOME/data; fi  && \
     if [ ! -d  $OPEN_CLI_HOME/open-cli-schema ]; then mkdir  $OPEN_CLI_HOME/open-cli-schema; fi && \

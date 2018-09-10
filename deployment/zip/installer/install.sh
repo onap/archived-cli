@@ -26,11 +26,13 @@ if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
 
 chmod +x ./bin/oclip.sh
 chmod +x ./bin/oclip-rcli.sh
+chmod +x ./bin/oclip-cmdflow-server.sh
 
 #Make oclip available in path
 ln -sf ./bin/oclip.sh /usr/bin/oclip
 ln -sf ./bin/oclip.sh /usr/bin/onap
 ln -sf ./bin/oclip-rcli.sh /usr/bin/roclip
+ln -sf ./bin/oclip-grpc-server.sh /usr/bin/oclip-grpc
 
 #Print the version
 oclip -v
