@@ -148,6 +148,7 @@ public class OpenInterfaceGrpcServer {
             OpenRemoteCli cli = new OpenRemoteCli(req.getProduct(), req.getArgsList().toArray(new String [] {}));
             cli.handle();
 
+            logger.info(cli.getResult());
             Result reply = Result.newBuilder().setExitCode(cli.getExitCode()).setOutput(cli.getResult()).build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
