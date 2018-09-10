@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #*******************************************************************************
-# Copyright 2017 Huawei Technologies Co., Ltd.
+# Copyright 2018 Huawei Technologies Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,11 +26,13 @@ if [ ! -d ./open-cli-schema ]; then mkdir ./open-cli-schema; fi
 
 chmod +x ./bin/oclip.sh
 chmod +x ./bin/oclip-rcli.sh
+chmod +x ./bin/oclip-grpc-server.sh
 
 #Make oclip available in path
 ln -sf ./bin/oclip.sh /usr/bin/oclip
 ln -sf ./bin/oclip.sh /usr/bin/onap
 ln -sf ./bin/oclip-rcli.sh /usr/bin/roclip
+ln -sf ./bin/oclip-grpc-server.sh /usr/bin/oclip-grpc
 
 #Print the version
 oclip -v
