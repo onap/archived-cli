@@ -1,0 +1,15 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/vnf-sdk-marketplace/onapapi/vnfsdk-marketplace/v1/PackageResource/csars/a9f9ca7a-5dc9-48c7-9672-a63eb17c3e36",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : null
+  }
+} ]
