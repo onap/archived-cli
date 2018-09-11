@@ -1,0 +1,31 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/vnf-sdk-marketplace/onapapi/vnfsdk-marketplace/v1/PackageResource/csars",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : [ {
+      "csarId" : "a9f9ca7a-5dc9-48c7-9672-a63eb17c3e36",
+      "name" : "VoLTE",
+      "downloadUri" : "http://127.0.0.1:8080/files/catalog-http/CSAR/ChinaMobile/a9f9ca7a-5dc9-48c7-9672-a63eb17c3e36/VoLTE/v1.0/VoLTE.csar",
+      "size" : "52.4 KB",
+      "version" : "v1.0",
+      "provider" : "ChinaMobile",
+      "type" : "CSAR",
+      "format" : "yaml",
+      "deletionPending" : false,
+      "createTime" : "2018-09-10 15:11:29",
+      "modifyTime" : "2018-09-10 15:11:29",
+      "shortDesc" : "descr",
+      "downloadCount" : 0,
+      "details" : "details",
+      "remarks" : "remarks"
+    } ]
+  }
+} ]
