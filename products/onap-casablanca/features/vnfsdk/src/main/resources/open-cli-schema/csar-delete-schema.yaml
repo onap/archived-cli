@@ -18,7 +18,7 @@ description: Delete CSARs in marketplace
 
 info:
   product: onap-casablanca
-  service: vtp
+  service: marketplace
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
