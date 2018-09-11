@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: csar-delete
+version: onap-casablanca
+samples:
+  sample1:
+    name: csar-delete
+    input: -m http://localhost:7070/vnf-sdk-marketplace -x a9f9ca7a-5dc9-48c7-9672-a63eb17c3e36
+    moco: csar-delete-schema-moco.json
+    output:
