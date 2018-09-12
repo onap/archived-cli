@@ -1,0 +1,29 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/vnf-sdk-marketplace/onapapi/vnfsdk-marketplace/v1/PackageResource/vtp/tests",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "results" : [ {
+        "schema" : "vnftest-list.yaml",
+        "ocs-version" : "1.0",
+        "sr.no" : "1",
+        "type" : "http",
+        "command" : "vnftest-list"
+      }, {
+        "schema" : "vtp-validate-csar.yaml",
+        "ocs-version" : "1.0",
+        "sr.no" : "2",
+        "type" : "basic",
+        "command" : "csar-validate"
+      } ]
+    }
+  }
+} ]

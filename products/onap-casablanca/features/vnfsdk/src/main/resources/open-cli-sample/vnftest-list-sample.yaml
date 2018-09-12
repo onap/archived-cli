@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: vnftest-list
+version: onap-vtp
+samples:
+  sample1:
+    name: vnftest-list
+    input: -m http://localhost:7070/vnf-sdk-marketplace
+    moco: vnftest-list-moco.json
+    output: |
+      +----------------+------------------------+
+      |tescase         |yaml                    |
+      +----------------+------------------------+
+      |vnftest-list    |vnftest-list.yaml       |
+      +----------------+------------------------+
+      |csar-validate   |vtp-validate-csar.yaml  |
+      +----------------+------------------------+

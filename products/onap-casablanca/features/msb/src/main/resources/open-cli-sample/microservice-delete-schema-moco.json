@@ -1,0 +1,15 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/api/microservices/v1/services/test/version/v1/nodes/23.14.15.156/80",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : null
+  }
+} ]
