@@ -1,0 +1,19 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/api/vnfsdk/v1/functest/taskmanager/status/4e45e692-0a84-44ef-8404-1816b029137e",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "oResultCode" : "SUCCESS",
+      "operFinished" : true,
+      "operResultMessage" : "test msg"
+    }
+  }
+} ]
