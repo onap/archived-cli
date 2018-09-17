@@ -18,7 +18,7 @@ description: Show details of the CSARs in marketplace
 
 
 info:
-  product: onap-casablanca
+  product: onap-vtp
   service: marketplace
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
