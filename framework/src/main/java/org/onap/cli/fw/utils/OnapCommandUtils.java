@@ -262,7 +262,11 @@ public class OnapCommandUtils {
             } else if (OnapCommandParameterType.MAP.equals(param.getParameterType())) {
                 try {
                     String value = new ObjectMapper().writeValueAsString(params.get(paramName).getValue());
-                    result += line.substring(currentIdx, idxS - 1) + value;
+                    if ((idxS == 0) && (currentIdx == 0)) {
+                        result = value;
+                    } else {
+                        result += line.substring(currentIdx, idxS - 1) + value;
+                    }
                 } catch (JsonProcessingException e) {  // NOSONAR
                     //never occur as map is coverted to json string here
                 }
