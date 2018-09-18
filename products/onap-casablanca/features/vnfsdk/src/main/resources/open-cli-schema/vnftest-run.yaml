@@ -54,5 +54,4 @@ http:
     - 201
     - 200
   result_map:
-    tescase: $b{$.results.[*].command}
-    yaml: $b{$.results.[*].schema}
+    results: $b{$.results}
