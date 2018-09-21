@@ -37,7 +37,7 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /onapapi/vnfsdk-marketplace/v1/PackageResource/vtp/tests
+    uri: /onapapi/vnfsdk-marketplace/v1/vtp/tests
     method: GET
   success_codes:
     - 201

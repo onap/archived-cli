@@ -47,7 +47,7 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /onapapi/vnfsdk-marketplace/v1/PackageResource/vtp/tests/${name}/run
+    uri: /onapapi/vnfsdk-marketplace/v1/vtp/tests/${name}/run
     method: POST
     body: ${param}
   success_codes:
