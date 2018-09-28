@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: service-type-delete
+version: onap-casablanca
+samples:
+  sample1:
+    name: service-type-delete
+    input: --service-type-id a6402d68-0784-4972-aa99-c20caa46f459 --resource-version 1538109817240 -d
+    moco: service-type-delete-schema-casablanca-moco.json
+    output:

@@ -6,7 +6,7 @@
       "Authorization" : "Basic QUFJOkFBSQ==",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
-      "X-TransactionId" : "req-5981353e-e760-4417-9700-181a07661817",
+      "X-TransactionId" : "req-e3ff2ec6-e10b-42a9-8d3e-0a29996b9fa8",
       "Content-Type" : "application/json"
     },
     "json" : null
