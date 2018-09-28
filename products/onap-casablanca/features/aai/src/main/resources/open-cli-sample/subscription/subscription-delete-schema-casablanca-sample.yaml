@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: subscription-delete
+version: onap-casablanca
+samples:
+  sample1:
+    name: subscription-delete
+    input: --customer-name mrkanag --service-type vfw-in --resource-version 1538111525606 -d
+    moco: subscription-delete-schema-casablanca-moco.json
+    output:
