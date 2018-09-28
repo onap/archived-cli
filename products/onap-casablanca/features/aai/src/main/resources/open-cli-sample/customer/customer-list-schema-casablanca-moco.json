@@ -1,0 +1,30 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/business/customers",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-c0c84e34-0ea1-4e2c-b91e-5e12838530bf",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "customer" : [ {
+        "global-customer-id" : "Customer1",
+        "subscriber-name" : "Customer1",
+        "subscriber-type" : "BSS",
+        "resource-version" : "1535520279641"
+      }, {
+        "global-customer-id" : "generic",
+        "subscriber-name" : "generic",
+        "subscriber-type" : "BSS",
+        "resource-version" : "1535628858377"
+      } ]
+    }
+  }
+} ]
