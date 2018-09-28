@@ -41,6 +41,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPatch;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -301,6 +302,10 @@ public class OnapHttpConnection {
             HttpPut httpPut = new HttpPut();
             httpPut.setEntity(this.getStringEntity(input));
             requestBase = httpPut;
+        } else if ("patch".equals(input.getMethod())) {
+            HttpPatch httpPatch = new HttpPatch();
+            httpPatch.setEntity(this.getStringEntity(input));
+            requestBase = httpPatch;
         } else if ("get".equals(input.getMethod())) {
             requestBase = new HttpGet();
         } else if ("delete".equals(input.getMethod())) {
