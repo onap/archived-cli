@@ -13,34 +13,34 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: customer-list
-description: Lists the registered customers in Onap
+name: customer-delete
+description: Delete a customer from Onap
 
 info:
   product: onap-casablanca
   service: aai
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
-results:
-  direction: landscape
-  attributes:
-    - name: name
-      description: Onap customer name
-      scope: short
-      type: string
-    - name: resource-version
-      description: Onap customer resource version
-      scope: short
-      type: string
+parameters:
+  - name: customer-id
+    description: Onap customer id
+    type: string
+    short_option: x
+    long_option: customer-id
+    is_optional: false
+  - name: resource-version
+    description: Onap customer resource version
+    type: uuid
+    short_option: y
+    long_option: resource-version
+    is_optional: false
 http:
   service:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v13/business/customers
-    method: GET
+    uri: /aai/v13/business/customers/customer/${customer-id}?resource-version=${resource-version}
+    method: DELETE
   success_codes:
-    - 200
-  result_map:
-    name: $b{customer.[*].global-customer-id}
-    resource-version: $b{customer.[*].resource-version}
+    - 204
+    - 404

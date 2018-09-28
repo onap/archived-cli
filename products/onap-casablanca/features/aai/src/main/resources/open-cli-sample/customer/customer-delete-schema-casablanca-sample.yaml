@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: customer-delete
+version: onap-casablanca
+samples:
+  sample1:
+    name: customer-delete
+    input: --customer-id mrkanag --resource-version 1538105836430 -d
+    moco: customer-delete-schema-casablanca-moco.json
+    output:
