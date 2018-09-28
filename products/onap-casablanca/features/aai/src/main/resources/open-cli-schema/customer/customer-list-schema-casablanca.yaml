@@ -41,6 +41,7 @@ http:
     method: GET
   success_codes:
     - 200
+    - 404
   result_map:
     name: $b{customer.[*].global-customer-id}
     resource-version: $b{customer.[*].resource-version}

@@ -45,6 +45,7 @@ http:
     method: GET
   success_codes:
     - 200
+    - 404
   result_map:
     service-type: $b{service.[*].service-description}
     service-type-id: $b{service.[*].service-id}
