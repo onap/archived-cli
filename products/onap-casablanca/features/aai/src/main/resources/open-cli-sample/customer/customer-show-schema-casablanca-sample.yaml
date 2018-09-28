@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: customer-show
+version: onap-casablanca
+samples:
+  sample1:
+    name: customer-show
+    input: --customer-name mrkanag --long
+    moco: customer-show-schema-casablanca-moco.json
+    output: |
+      +----------+------------------+------------------+------------------+
+      |name      |subscriber-name   |resource-version  |subscriber-type   |
+      +----------+------------------+------------------+------------------+
+      |mrkanag   |mrkanag           |1538105836430     |INFRA             |
+      +----------+------------------+------------------+------------------+

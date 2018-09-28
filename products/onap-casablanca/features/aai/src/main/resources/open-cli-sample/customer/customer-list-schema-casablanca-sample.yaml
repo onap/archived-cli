@@ -4,6 +4,15 @@ version: onap-casablanca
 samples:
   sample1:
     name: customer-list
-    input: -d
+    input: 
     moco: customer-list-schema-casablanca-moco.json
     output: |
+      +------------+------------------+
+      |name        |resource-version  |
+      +------------+------------------+
+      |Customer1   |1535520279641     |
+      +------------+------------------+
+      |generic     |1535628858377     |
+      +------------+------------------+
+      |mrkanag     |1538105836430     |
+      +------------+------------------+

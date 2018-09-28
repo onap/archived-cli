@@ -1,0 +1,23 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/business/customers/customer/mrkanag",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-04a4060f-b2ac-4cb5-97fb-2ec535599434",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "global-customer-id" : "mrkanag",
+      "subscriber-name" : "mrkanag",
+      "subscriber-type" : "INFRA",
+      "resource-version" : "1538105836430"
+    }
+  }
+} ]
