@@ -32,6 +32,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>aai</module>
         <module>msb</module>
         <module>vnfsdk</module>
     </modules>
