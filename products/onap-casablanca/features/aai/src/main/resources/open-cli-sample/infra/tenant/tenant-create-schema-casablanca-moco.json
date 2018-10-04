@@ -1,0 +1,21 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v13/cloud-infrastructure/cloud-regions/cloud-region/huawei-cloud/bangalore/tenants/tenant/b00fc210-dd12-4b40-be2f-b9ef9153c00c",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-d482dd0b-201c-44c8-af21-20c421550d74",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "tenant-id" : "b00fc210-dd12-4b40-be2f-b9ef9153c00c",
+      "tenant-name" : "onap"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]

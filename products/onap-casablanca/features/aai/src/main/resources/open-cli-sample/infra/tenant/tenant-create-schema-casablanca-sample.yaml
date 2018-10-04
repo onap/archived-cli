@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: tenant-create
+version: onap-casablanca
+samples:
+  sample1:
+    name: tenant-create
+    input: --cloud huawei-cloud --region bangalore --tenant-name onap -d
+    moco: tenant-create-schema-casablanca-moco.json
+    output:
