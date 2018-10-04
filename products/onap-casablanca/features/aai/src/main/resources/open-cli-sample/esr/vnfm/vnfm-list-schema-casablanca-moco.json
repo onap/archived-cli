@@ -1,0 +1,25 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/external-system/esr-vnfm-list",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-3a30a455-1807-42f2-a3c9-2e62b5c42e20",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "esr-vnfm" : [ {
+        "vnfm-id" : "3c96d72b-7fd8-45f7-a9bb-c9d270001eb8",
+        "vim-id" : "6a47cd3d-a24c-4d71-b47d-bfe729acce7b",
+        "certificate-url" : "",
+        "resource-version" : "1538645099584"
+      } ]
+    }
+  }
+} ]
