@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: ems-list
+version: onap-casablanca
+samples:
+  sample1:
+    name: ems-list
+    input: 
+    moco: ems-list-schema-casablanca-moco.json
+    output: |
+      +--------------------------------------+------------------+
+      |ems-id                                |resource-version  |
+      +--------------------------------------+------------------+
+      |bfae89e5-d4d4-46ed-a700-a0a90d961627  |1538645515474     |
+      +--------------------------------------+------------------+
