@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: ems-create
+version: onap-casablanca
+samples:
+  sample1:
+    name: ems-create
+    input: --name ems1 --type ems --vendor boco --ems-version 1.0 --url http://10.0.0.1 --username admin --password password --remote-path sample
+    moco: ems-create-schema-casablanca-moco.json
+    output:
