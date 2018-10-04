@@ -1,0 +1,18 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/aai/v13/cloud-infrastructure/cloud-regions/cloud-region/huawei-cloud/bangalore/tenants/tenant/b00fc210-dd12-4b40-be2f-b9ef9153c00c",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-f9356ea8-6829-454c-b61f-2be4245d2f5d",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 204,
+    "json" : null
+  }
+} ]

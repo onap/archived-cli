@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: tenant-delete
+version: onap-casablanca
+samples:
+  sample1:
+    name: tenant-delete
+    input: --cloud huawei-cloud --region bangalore --tenant-id b00fc210-dd12-4b40-be2f-b9ef9153c00c --resource-version 1538647781315
+    moco: tenant-delete-schema-casablanca-moco.json
+    output:
