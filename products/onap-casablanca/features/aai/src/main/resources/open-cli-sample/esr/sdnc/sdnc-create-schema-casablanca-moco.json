@@ -1,0 +1,42 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v13/external-system/esr-thirdparty-sdnc-list/esr-thirdparty-sdnc/6fbb4251-2eb1-4c41-b01f-4e5b128afabe",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-fa5795ef-76b9-4a4a-8a9c-e12781025b40",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "thirdparty-sdnc-id" : "6fbb4251-2eb1-4c41-b01f-4e5b128afabe",
+      "location" : "core",
+      "product-name" : "SDWAN",
+      "esr-system-info-list" : {
+        "esr-system-info" : [ {
+          "esr-system-info-id" : "6fbb4251-2eb1-4c41-b01f-4e5b128afabe",
+          "system-name" : "SDWANDomain63",
+          "type" : "SDWAN",
+          "vendor" : "huawei",
+          "version" : "V3R1",
+          "service-url" : "",
+          "user-name" : "test",
+          "password" : "password",
+          "system-type" : "sdnc",
+          "protocal" : "RESTCONF",
+          "ssl-cacert" : "",
+          "ssl-insecure" : "",
+          "ip-address" : "172.60.50.63",
+          "port" : "18008",
+          "cloud-domain" : "",
+          "default-tenant" : ""
+        } ]
+      }
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]
