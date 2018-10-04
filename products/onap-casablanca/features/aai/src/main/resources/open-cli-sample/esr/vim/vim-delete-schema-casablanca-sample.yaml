@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vim-delete
+version: onap-casablanca
+samples:
+  sample1:
+    name: vim-delete
+    input: --cloud-name huawei-cloud --region-name bangalore --vim-id 6a47cd3d-a24c-4d71-b47d-bfe729acce7b --resource-version 1538644383786
+    moco: vim-delete-schema-casablanca-moco.json
+    output:
