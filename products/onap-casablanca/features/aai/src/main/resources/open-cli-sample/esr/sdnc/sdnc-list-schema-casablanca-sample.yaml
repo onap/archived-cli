@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: sdnc-list
+version: onap-casablanca
+samples:
+  sample1:
+    name: sdnc-list
+    input: -d
+    moco: sdnc-list-schema-casablanca-moco.json
+    output: |
