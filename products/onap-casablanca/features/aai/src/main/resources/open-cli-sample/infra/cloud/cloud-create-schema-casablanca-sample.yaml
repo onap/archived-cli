@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: cloud-create
+version: onap-casablanca
+samples:
+  sample1:
+    name: cloud-create
+    input: --cloud-name huawei-cloud --region-name bangalore -d
+    moco: cloud-create-schema-casablanca-moco.json
+    output:
