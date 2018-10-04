@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: ems-delete
+version: onap-casablanca
+samples:
+  sample1:
+    name: ems-delete
+    input: --ems-id bfae89e5-d4d4-46ed-a700-a0a90d961627 --resource-version 1538645515474
+    moco: ems-delete-schema-casablanca-moco.json
+    output:
