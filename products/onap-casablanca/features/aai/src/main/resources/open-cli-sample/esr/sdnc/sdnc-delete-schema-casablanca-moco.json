@@ -1,0 +1,26 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/aai/v13/external-system/esr-thirdparty-sdnc-list/esr-thirdparty-sdnc/6fbb4251-2eb1-4c41-b01f-4e5b128afabe",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-7b427aa1-1d6d-4a4f-90a3-264cc42f1ab8",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 404,
+    "json" : {
+      "requestError" : {
+        "serviceException" : {
+          "messageId" : "SVC3001",
+          "text" : "Resource not found for %1 using id %2 (msg=%3) (ec=%4)",
+          "variables" : [ "DELETE", "external-system/esr-thirdparty-sdnc-list/esr-thirdparty-sdnc/6fbb4251-2eb1-4c41-b01f-4e5b128afabe", "Node Not Found:No Node of type esr-thirdparty-sdnc found at: external-system/esr-thirdparty-sdnc-list/esr-thirdparty-sdnc/6fbb4251-2eb1-4c41-b01f-4e5b128afabe", "ERR.5.4.6114" ]
+        }
+      }
+    }
+  }
+} ]
