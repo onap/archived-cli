@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vnfm-create
+version: onap-casablanca
+samples:
+  sample1:
+    name: vnfm-create
+    input: --vim-id 6a47cd3d-a24c-4d71-b47d-bfe729acce7b --name vnfm-hw --type OpenStack --vendor Huawei --vnfm-version 1.0 --url http://10.0.1.1 --username admin --password password -d
+    moco: vnfm-create-schema-casablanca-moco.json
+    output:
