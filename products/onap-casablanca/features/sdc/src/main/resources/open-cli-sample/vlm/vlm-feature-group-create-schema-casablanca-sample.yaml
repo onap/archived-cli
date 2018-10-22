@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vlm-feature-group-create
+version: onap-casablanca
+samples:
+  sample1:
+    name: vlm-feature-group-create
+    input: --vlm-id d8c1362526414b9bbe25cdd972eebf0e --vlm-version 7afd0daa8271470db3b556fdedf074f4 --name Test key group --description Huawei Test license --part-number 654321 --vlm-key-group-id f3fd5a1294694f8590051c2755a4a918 --vlm-entitle-pool-id 3091c5af38bf4fc3b3e17371c9fecbda -d
+    moco: vlm-feature-group-create-schema-casablanca-moco.json
+    output: |
