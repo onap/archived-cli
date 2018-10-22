@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vsp-create
+version: onap-casablanca
+samples:
+  sample1:
+    name: vsp-create
+    input: --vsp-name vFW software --vsp-description vFW sample vsp --vlm-id d8c1362526414b9bbe25cdd972eebf0e --vlm-version 7afd0daa8271470db3b556fdedf074f4 --vlm-feature-group-id e4ba1e16f22f44c59051dead1fa7d1cf --vlm-agreement-id ddfcedccb72241a1b87c63be74896322 --vlm-vendor Huawei IN -d
+    moco: vsp-create-schema-casablanca-moco.json
+    output: |

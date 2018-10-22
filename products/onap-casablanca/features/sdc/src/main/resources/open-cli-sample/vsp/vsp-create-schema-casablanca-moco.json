@@ -1,0 +1,41 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-2d36d422-79f1-4d8e-bada-dee0e32266c2",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "category" : "resourceNewCategory.generic",
+      "vendorId" : "d8c1362526414b9bbe25cdd972eebf0e",
+      "subCategory" : "resourceNewCategory.generic.abstract",
+      "description" : "vFW sample vsp",
+      "licensingVersion" : "7afd0daa8271470db3b556fdedf074f4",
+      "licensingData" : {
+        "featureGroups" : [ "e4ba1e16f22f44c59051dead1fa7d1cf" ],
+        "licenseAgreement" : "ddfcedccb72241a1b87c63be74896322"
+      },
+      "icon" : "icon",
+      "onboardingMethod" : "Manual",
+      "vendorName" : "Huawei IN",
+      "name" : "vFW software"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "itemId" : "5223ac6156ce4a5fb3b33ab205f34c6e",
+      "version" : {
+        "id" : "0732aefa14634e398f16ccfdabc8ed0a",
+        "name" : "1.0",
+        "description" : "Initial version",
+        "status" : "Draft"
+      }
+    }
+  }
+} ]
