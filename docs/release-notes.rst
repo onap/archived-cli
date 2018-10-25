@@ -4,7 +4,7 @@
 CLI Release Notes
 =================
 
-Version: 2.0.2
+Version: 2.0.4
 --------------
 
 :Release Date: 2018-11-15
@@ -12,7 +12,9 @@ Version: 2.0.2
 **New Features**
 
 - Amsterdam support EOL
-
+- Added gRPC to run the ONAP commands over gRPC protocol
+- Added Command profile to support VTP(VNF Test Platform) requirements in VNFSDK and added new commands for supporting it
+- VTP leverages OCLIP for providing the test center (discover the test cases) and test runner (run the test cases)
 
 Version: 2.0.0
 --------------
