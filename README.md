@@ -47,7 +47,7 @@ NOTE: This mode is available as Web command console when OCLIP is running from d
 Select the product version
 --------------------------
 CLI framework is enhanced to handle multiple product versions at same
-time. so to choose the product version, set evironment variable
+time. so to choose the product version, set environment variable
 **OPEN_CLI_PROUDCT_IN_USE**.
 
 NOTE: In interactive mode, product version can be selected using
@@ -57,7 +57,7 @@ Run *oclip [-v|--version]* to see the available product version details.
 
 Set the parameter values
 ------------------------
-Use the directive 'set' for setting the values for parameters and 'unset' for un-seting the values.
+Use the directive 'set' for setting the values for parameters and 'unset' for un-setting the values.
 
 Help
 ----
