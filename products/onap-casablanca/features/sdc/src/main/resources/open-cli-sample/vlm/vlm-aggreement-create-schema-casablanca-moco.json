@@ -1,0 +1,29 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/d8c1362526414b9bbe25cdd972eebf0e/versions/7afd0daa8271470db3b556fdedf074f4/license-agreements",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-84977a57-d8dd-47a9-87fb-6171b3a02db8",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "addedFeatureGroupsIds" : [ "e4ba1e16f22f44c59051dead1fa7d1cf" ],
+      "description" : "Huawei Test license",
+      "licenseTerm" : {
+        "choice" : "Fixed_Term",
+        "other" : ""
+      },
+      "name" : "Test aggrement"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "ddfcedccb72241a1b87c63be74896322"
+    }
+  }
+} ]

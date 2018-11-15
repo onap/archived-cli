@@ -1,0 +1,58 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-373a1f99-8c3a-43b8-8b27-7d2d75dc60bb",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "listCount" : 4,
+      "results" : [ {
+        "name" : "vFW software",
+        "description" : "vFW sample vsp",
+        "vendorName" : "Huawei IN",
+        "vendorId" : "d8c1362526414b9bbe25cdd972eebf0e",
+        "onboardingMethod" : "Manual",
+        "id" : "5223ac6156ce4a5fb3b33ab205f34c6e",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test123",
+        "description" : "test",
+        "vendorName" : "Huawei IN",
+        "vendorId" : "d8c1362526414b9bbe25cdd972eebf0e",
+        "onboardingMethod" : "Manual",
+        "id" : "83f9c5d846044f81b3b94e15aaaafb0b",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test",
+        "description" : "test",
+        "vendorName" : "hw",
+        "vendorId" : "efd7a4cece974be7ad8d7798b17f9621",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "3cf5d987d1d444be8b172b3744bcbe0c",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test1",
+        "description" : "test",
+        "vendorName" : "Huawei IN",
+        "vendorId" : "d8c1362526414b9bbe25cdd972eebf0e",
+        "onboardingMethod" : "Manual",
+        "id" : "3ee1964d46834c0eaa4f9909bf40b961",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      } ]
+    }
+  }
+} ]

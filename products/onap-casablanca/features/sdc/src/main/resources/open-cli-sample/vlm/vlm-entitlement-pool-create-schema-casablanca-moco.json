@@ -1,0 +1,30 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/d8c1362526414b9bbe25cdd972eebf0e/versions/7afd0daa8271470db3b556fdedf074f4/entitlement-pools",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-f141aab8-be09-417a-9363-1ccf1f796280",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "name" : "Test Pool",
+      "time" : {
+        "choice" : "",
+        "other" : ""
+      },
+      "startDate" : "12/12/2018",
+      "expiryDate" : "10/11/2019",
+      "manufacturerReferenceNumber" : "123456"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "3091c5af38bf4fc3b3e17371c9fecbda"
+    }
+  }
+} ]

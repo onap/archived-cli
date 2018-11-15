@@ -13,40 +13,51 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: csar-create
-description: Uploads the CSARs in marketplace
-
+name: vlm-create
+description: Create License Model
 
 info:
-  product: onap-vtp
-  service: marketplace
+  product: onap-casablanca
+  service: sdc
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
-parameters:
-  - name: csar-file
-    description: CSAR File path
-    type: binary
-    short_option: x
-    long_option: csar-file
-    is_optional: false
 
+parameters:
+  - name: vendor-name
+    description: vendor name
+    type: string
+    short_option: x
+    long_option: vendor-name
+    is_optional: false
+  - name: description
+    description: Description for License Model
+    type: string
+    short_option: y
+    long_option: description
+    is_optional: true
 results:
-  direction: landscape
+  direction: portrait
   attributes:
-    - name: csarId
-      description: CSAR id
+    - name: ID
+      description: License Model ID
       scope: short
-      type: string
+      type: uuid
+    - name: version
+      description: License Model version
+      scope: short
+      type: uuid
 http:
   service:
-    auth: none
+    name: sdc
+    version: v1.0
+    auth: basic
     mode: direct
   request:
-    uri: /onapapi/vnfsdk-marketplace/v1/PackageResource/csars
+    uri: /onboarding-api/v1.0/vendor-license-models
     method: POST
-    body: ${csar-file}
-    multipart_entity_name: file
+    body: '{"vendorName": "${vendor-name}", "description": "${description}",  "iconRef": "icon"}'
   success_codes:
     - 200
   result_map:
-    csarId: $b{$.csarId}
+    ID: $b{$.itemId}
+    version: $b{$.version.id}

@@ -1,0 +1,31 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-4692c777-f63e-4e50-a994-b5c208b62a9a",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "vendorName" : "Huawei IN",
+      "description" : "Huawei Test license",
+      "iconRef" : "icon"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "itemId" : "d8c1362526414b9bbe25cdd972eebf0e",
+      "version" : {
+        "id" : "7afd0daa8271470db3b556fdedf074f4",
+        "name" : "1.0",
+        "description" : "Initial version",
+        "status" : "Draft"
+      }
+    }
+  }
+} ]

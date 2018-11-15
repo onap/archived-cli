@@ -1,0 +1,27 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/d8c1362526414b9bbe25cdd972eebf0e/versions/7afd0daa8271470db3b556fdedf074f4/feature-groups",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-aec4e184-23a7-48ac-88fb-96202e971b25",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "name" : "Test key group",
+      "addedLicenseKeyGroupsIds" : [ "f3fd5a1294694f8590051c2755a4a918" ],
+      "addedEntitlementPoolsIds" : [ "3091c5af38bf4fc3b3e17371c9fecbda" ],
+      "partNumber" : "654321",
+      "description" : "Huawei Test license"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "e4ba1e16f22f44c59051dead1fa7d1cf"
+    }
+  }
+} ]
