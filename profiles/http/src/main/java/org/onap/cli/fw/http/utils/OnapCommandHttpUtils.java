@@ -73,6 +73,7 @@ public class OnapCommandHttpUtils {
                 break;
             }
         }
+        inp.setMultipartEntityName(input.getMultipartEntityName());
         inp.setBody(OnapCommandUtils.replaceLineFromInputParameters(input.getBody(), params));
         inp.setUri(OnapCommandUtils.replaceLineFromInputParameters(input.getUri(), params));
         inp.setMethod(input.getMethod().toLowerCase());

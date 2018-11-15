@@ -54,9 +54,9 @@ import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.cookie.Cookie;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
@@ -365,10 +365,12 @@ public class OnapHttpConnection {
     }
 
     private HttpEntity getMultipartEntity(HttpInput input) {
-        FileBody fileBody = new FileBody(new File(input.getBody().trim()));
-        MultipartEntity multipartEntity = new MultipartEntity();
-        String fileName = input.getMultipartEntityName() != "" ? input.getMultipartEntityName() : "upload";
-        multipartEntity.addPart(fileName, fileBody);
+        String fileTag = input.getMultipartEntityName() != "" ? input.getMultipartEntityName() : "file";
+        File file = new File(input.getBody().trim());
+        HttpEntity multipartEntity = MultipartEntityBuilder
+                .create()
+                .addBinaryBody(fileTag, file, ContentType.create("application/octet-stream"), file.getName())
+                .build();
         return multipartEntity;
     }
 

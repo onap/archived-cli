@@ -46,8 +46,6 @@ http:
     method: POST
     body: ${csar-file}
     multipart_entity_name: file
-    headers:
-      Content-Type: multipart/form-data
   success_codes:
     - 200
   result_map:
