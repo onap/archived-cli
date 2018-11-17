@@ -41,7 +41,14 @@ results:
       description: Testcase results
       scope: short
       type: string
-
+    - name: build_tag
+      description: Test Running identifier
+      scope: short
+      type: string
+    - name: criteria
+      description: Testcase is PASS or FAILED
+      scope: short
+      type: string
 http:
   service:
     auth: none
@@ -55,3 +62,5 @@ http:
     - 200
   result_map:
     results: $b{$.results}
+    build_tag: $b{$.build_tag}
+    criteria: $b{$.criteria}
