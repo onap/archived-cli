@@ -45,6 +45,7 @@ results:
       description: Test Running identifier
       scope: short
       type: string
+      default_value: $s{env:BUILD_TAG}
     - name: criteria
       description: Testcase is PASS or FAILED
       scope: short
@@ -62,5 +63,4 @@ http:
     - 200
   result_map:
     results: $b{$.results}
-    build_tag: $b{$.build_tag}
     criteria: $b{$.criteria}
