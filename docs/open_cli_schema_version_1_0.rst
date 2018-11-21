@@ -573,7 +573,7 @@ there are two scopes:
 
 * *short* : attribute configured with this option will always printed by default
 
-* *long* : attriuted configured with this option will get printed only when
+* *long* : attribute configured with this option will get printed only when
   user inputs the default parameter *long*, defined in *default_parameters*
   section. So to print all attributes of a command, user will input parameter:
 

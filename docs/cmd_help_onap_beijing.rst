@@ -1896,7 +1896,7 @@ microservice-list
 
 usage: oclip microservice-list
 
-Lists the registetred micro services in Onap
+Lists the registered micro services in Onap
 
 Product: onap-beijing
 Service: msb

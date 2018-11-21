@@ -1533,7 +1533,7 @@ Error::
 
 usage: onap microservice-list
 
-Lists the registetred micro services in Onap
+Lists the registered micro services in Onap
 
 Product: onap-amsterdam
 Service: msb
