@@ -18,7 +18,7 @@ ENV OPEN_CLI_HOME=/opt/oclip \
     OPEN_CLI_DEBUG=false \
     OPEN_CLI_DEBUG_PORT=5005 \
     OPEN_CLI_MODE=shell \
-    OPEN_CLI_PRODUCT_IN_USE=onap-beijing \
+    OPEN_CLI_PRODUCT_IN_USE=onap-casablanca \
     GOTTY_TITLE_FORMAT="{{ .command }}" \
     OCLIP_GRPC_SERVER="http://oclip_ocs_grpc:50051"
 

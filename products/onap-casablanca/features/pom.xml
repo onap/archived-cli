@@ -35,6 +35,7 @@
         <module>aai</module>
         <module>msb</module>
         <module>vnfsdk</module>
+        <module>sdc</module>
     </modules>
 
      <build>
