@@ -46,15 +46,15 @@ and body section could be customized using context.
 
 **Bug Fixes**
 
-* CLI-105   Ignore those yamls which does not have open cli schema version
-* CLI-103   Support HTTP delete with http body (SO, AAI requires)
-* CLI-101   Add context parameter for ignoring empty json nodes in http body
-* CLI-99    Optional parameter's default value is set to blank
-* CLI-95    Add profile support for multiple sessions
-* CLI-94    EOL openecomp CLIs
-* CLI-86    Create documentation for end to end cli commands for onap
-* CLI-74    Setup Mock environment for a command
-* CLI-61    Add validation for results section in yaml
+* `CLI-105 <https://jira.onap.org/browse/CLI-105>`_   Ignore those yamls which does not have open cli schema version
+* `CLI-103 <https://jira.onap.org/browse/CLI-103>`_   Support HTTP delete with http body (SO, AAI requires)
+* `CLI-101 <https://jira.onap.org/browse/CLI-101>`_   Add context parameter for ignoring empty json nodes in http body
+* `CLI-99 <https://jira.onap.org/browse/CLI-99>`_    Optional parameter's default value is set to blank
+* `CLI-95 <https://jira.onap.org/browse/CLI-95>`_    Add profile support for multiple sessions
+* `CLI-94 <https://jira.onap.org/browse/CLI-94>`_    EOL openecomp CLIs
+* `CLI-86 <https://jira.onap.org/browse/CLI-86>`_    Create documentation for end to end cli commands for onap
+* `CLI-74 <https://jira.onap.org/browse/CLI-74>`_    Setup Mock environment for a command
+* `CLI-61 <https://jira.onap.org/browse/CLI-61>`_    Add validation for results section in yaml
 
 **Security Notes**
 
