@@ -4,17 +4,32 @@
 CLI Release Notes
 =================
 
-Version: 2.0.4
+Version: 2.0.5
 --------------
 
-:Release Date: 2018-11-15
+:Release Date: 2018-11-30
 
 **New Features**
 
 - Amsterdam support EOL
-- Added gRPC to run the ONAP commands over gRPC protocol
-- Added Command profile to support VTP(VNF Test Platform) requirements in VNFSDK and added new commands for supporting it
-- VTP leverages OCLIP for providing the test center (discover the test cases) and test runner (run the test cases)
+- gRPC server is added for remote operation
+- VNFSDK support is introduced.
+- OCLIP is used as Test center and Test runner in VNF Test Platform (VTP) of VNFSDK.
+
+**Security Notes**
+
+CLI code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities
+have been addressed, items that remain open have been assessed for risk and determined to be false
+positive. The CLI open Critical security vulnerabilities and their risk assessment have been
+documented as part of the `project <https://wiki.onap.org/pages/viewpage.action?pageId=45298770>`_.
+
+Quick Links:
+    - `CLI project page <https://wiki.onap.org/display/DW/Command+Line+Interface+Project>`_
+
+    - `Passing Badge information for CLI <https://bestpractices.coreinfrastructure.org/en/projects/1540>`_
+
+    - `Project Vulnerability Review Table for CLI <https://wiki.onap.org/pages/viewpage.action?pageId=45298770>`_
+
 
 Version: 2.0.0
 --------------

@@ -25,7 +25,7 @@
 
     <groupId>org.onap.cli</groupId>
     <artifactId>cli</artifactId>
-    <version>2.0.4</version>
+    <version>2.0.5</version>
 
     <packaging>pom</packaging>
     <name>cli</name>
