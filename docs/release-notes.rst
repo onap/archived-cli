@@ -13,7 +13,7 @@ Version: 2.0.5
 
 - Amsterdam support EOL
 - Added gRPC to run the ONAP commands remotely
-- Added Command profile to support VTP(VNF Test Platform) requirements in VNFSDK and added new commands for supporting it
+- Added Command profile to support VTP (VNF Test Platform) requirements in VNFSDK and added new commands for supporting it
 - VTP leverages OCLIP for providing the test center (discover the test cases) and test runner (run the test cases)
 
 **Security Notes**
