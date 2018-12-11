@@ -83,7 +83,7 @@ running the CLI.
 5.    Profile information is persisted, so when you disconnect and connect again the CLI console,
 you can start use the same profile again.
 
-NOTE: Use the directive 'set' for setting the values for parameters and 'unset' for reseting the values.
+NOTE: Use the directive 'set' for setting the values for parameters and 'unset' for resetting the values.
 
 In Beijing release, new default profile named as 'onap-beijing' is delivered with all default ONAP service
 credentials. so user could use this profile to avoid setting the credentials every time.
@@ -132,7 +132,7 @@ Command usage guide
 -------------------
 Following documents provide the usage for each commands supported in different releases.
 
-NOTE: Command marked with EXPERIMENTAL is only for testing purpose. Its not recommeded to use in production environment
+NOTE: Command marked with EXPERIMENTAL is only for testing purpose. Its not recommended to use in production environment
 
 .. toctree::
    :maxdepth: 1
