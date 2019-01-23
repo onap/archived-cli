@@ -17,11 +17,34 @@
 package org.onap.cli.fw.utils;
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import mockit.Invocation;
+import mockit.Mock;
+import mockit.MockUp;
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.runners.MethodSorters;
+import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandHelpFailed;
+import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import org.onap.cli.fw.error.OnapCommandInvalidSchemaVersion;
+import org.onap.cli.fw.error.OnapCommandParameterNameConflict;
+import org.onap.cli.fw.error.OnapCommandParameterNotFound;
+import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
+import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
+import org.onap.cli.fw.info.OnapCommandInfo;
+import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.input.OnapCommandParameterType;
+import org.onap.cli.fw.output.OnapCommandResult;
+import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
+import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -31,33 +54,186 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
-
-import org.junit.FixMethodOrder;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-
-import org.onap.cli.fw.cmd.OnapCommand;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandHelpFailed;
-import org.onap.cli.fw.error.OnapCommandInvalidSchema;
-import org.onap.cli.fw.error.OnapCommandInvalidSchemaVersion;
-import org.onap.cli.fw.error.OnapCommandParameterNameConflict;
-import org.onap.cli.fw.error.OnapCommandParameterOptionConflict;
-import org.onap.cli.fw.error.OnapCommandSchemaNotFound;
-import org.onap.cli.fw.info.OnapCommandInfo;
-import org.onap.cli.fw.input.OnapCommandParameter;
-import org.onap.cli.fw.output.OnapCommandResult;
-import org.onap.cli.fw.schema.OnapCommandSchema;
-import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
-import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.onap.cli.fw.conf.OnapCommandConstants.IS_INCLUDE;
+import static org.onap.cli.fw.input.OnapCommandParameterType.ARRAY;
+import static org.onap.cli.fw.input.OnapCommandParameterType.BOOL;
+import static org.onap.cli.fw.input.OnapCommandParameterType.JSON;
+import static org.onap.cli.fw.input.OnapCommandParameterType.MAP;
+import static org.onap.cli.fw.input.OnapCommandParameterType.YAML;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnapCommandUtilsTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    private static final String MANDATORY_ATT = "mandatory_attribute";
+    private static final String SECTION_NAME = "section_name";
+    private static final String SIMPLE_JSON = "{\"value\":100,\"messages\":[\"msg 1\"]}";
+    private static final String SIMPLE_YAML = "martin: {name: Martin, job: Developer}";
+
+    @Test
+    public void validateTags_passingValidation() {
+        Map<String, String> yamlMap = new HashMap<>();
+        yamlMap.put(MANDATORY_ATT, "true");
+        List<String> schemaErrors = new ArrayList<>();
+
+        OnapCommandUtils.validateTags(schemaErrors, yamlMap, singletonList(MANDATORY_ATT), singletonList(MANDATORY_ATT), SECTION_NAME);
+
+        assertTrue(schemaErrors.isEmpty());
+    }
+
+    @Test
+    public void validateTags_mandatoryAttributeIsMissingInYamlMap() {
+        Map<String, String> yamlMap = new HashMap<>();
+        yamlMap.put(IS_INCLUDE, "true");
+        List<String> schemaErrors = new ArrayList<>();
+
+        OnapCommandUtils.validateTags(schemaErrors, yamlMap, singletonList(MANDATORY_ATT), singletonList(MANDATORY_ATT), SECTION_NAME);
+
+        assertEquals("Mandatory attribute '" + MANDATORY_ATT + "' is missing under '" + SECTION_NAME + "'",
+                schemaErrors.iterator().next());
+    }
+
+    @Test
+    public void validateTags_mandatoryAttributeIsEmptyInYamlMap() {
+        Map<String, String> yamlMap = new HashMap<>();
+        yamlMap.put(MANDATORY_ATT, "");
+        yamlMap.put(IS_INCLUDE, "true");
+        List<String> schemaErrors = new ArrayList<>();
+
+        OnapCommandUtils.validateTags(schemaErrors, yamlMap, singletonList(MANDATORY_ATT), singletonList(MANDATORY_ATT), SECTION_NAME);
+
+        assertEquals("Mandatory attribute '" + MANDATORY_ATT + "' under '" + SECTION_NAME + "' shouldn't be null or empty",
+                schemaErrors.iterator().next());
+    }
+
+    @Test
+    public void parseParameters_multipleParameters() {
+        Set<String> parsedParamaters = new HashSet<>();
+
+        OnapCommandUtils.parseParameters("line ${paramA} line ${paramB}", parsedParamaters);
+
+        assertTrue(parsedParamaters.contains("paramA"));
+        assertTrue(parsedParamaters.contains("paramB"));
+    }
+
+    @Test
+    public void replaceLineForSpecialValues_noVariables() {
+        String replacedLine = OnapCommandUtils.replaceLineForSpecialValues("line");
+
+        assertEquals("line", replacedLine);
+    }
+
+    @Test
+    public void replaceLineForSpecialValues_replacingUuid() {
+        String replacedLine = OnapCommandUtils.replaceLineForSpecialValues("$s{uuid}");
+
+        assertTrue(replacedLine.matches("[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"));
+    }
+
+    @Test
+    public void replaceLineForSpecialValues_missingEnvVariable() {
+        String replacedLine = OnapCommandUtils.replaceLineForSpecialValues("$s{env:TEST_PROPERTY}");
+
+        assertEquals("env:TEST_PROPERTY", replacedLine);
+    }
+
+    @Test
+    public void replaceLineForSpecialValues_envVariable() {
+        String replacedLine = OnapCommandUtils.replaceLineForSpecialValues("$s{env:USER}");
+
+        assertEquals(System.getenv("USER"), replacedLine);
+    }
+
+    @Test
+    public void replaceLineForSpecialValues_multipleVariables() {
+        String replacedLine = OnapCommandUtils.replaceLineForSpecialValues("$s{A} $s{B}");
+
+        assertEquals("A B", replacedLine);
+    }
+
+    @Test
+    public void replaceLineFromInputParameters_noVariables() throws Exception {
+        String replacedLine = OnapCommandUtils.replaceLineFromInputParameters("line", new HashMap<>());
+
+        assertEquals("line", replacedLine);
+    }
+
+    @Test
+    public void replaceLineFromInputParameters_missingParametert() throws Exception {
+        Map<String, OnapCommandParameter> parameters = new HashMap<>();
+        parameters.put("boolean", createCommandParameter(BOOL, Boolean.FALSE));
+        thrown.expect(OnapCommandParameterNotFound.class);
+
+        OnapCommandUtils.replaceLineFromInputParameters("line ${param}", parameters);
+    }
+
+    @Test
+    public void replaceLineFromInputParameters_booleanParameter() throws Exception {
+        Map<String, OnapCommandParameter> parameters = new HashMap<>();
+        parameters.put("boolean", createCommandParameter(BOOL, Boolean.FALSE));
+
+        String replacedLine = OnapCommandUtils.replaceLineFromInputParameters("line ${boolean}", parameters);
+
+        assertEquals("line false", replacedLine);
+    }
+
+    @Test
+    public void replaceLineFromInputParameters_jsonParameter() throws Exception {
+        Map<String, OnapCommandParameter> parameters = new HashMap<>();
+        parameters.put("json", createCommandParameter(JSON, SIMPLE_JSON));
+
+        String replacedLine = OnapCommandUtils.replaceLineFromInputParameters("line ${json}", parameters);
+
+        assertEquals("line" + SIMPLE_JSON, replacedLine);
+    }
+
+    @Test
+    public void replaceLineFromInputParameters_arrayParameter() throws Exception {
+        Map<String, OnapCommandParameter> parameters = new HashMap<>();
+        parameters.put("array", createCommandParameter(ARRAY, Arrays.asList("1", "2", "3")));
+
+        String replacedLine = OnapCommandUtils.replaceLineFromInputParameters("line ${array}", parameters);
+
+        assertEquals("line" + "[1, 2, 3]", replacedLine);
+    }
+
+    @Test
+    public void replaceLineFromInputParameters_yamlParameter() throws Exception {
+        Map<String, OnapCommandParameter> parameters = new HashMap<>();
+        parameters.put("yaml", createCommandParameter(YAML, SIMPLE_YAML));
+
+        String replacedLine = OnapCommandUtils.replaceLineFromInputParameters("line ${yaml}", parameters);
+
+        assertEquals("line" + SIMPLE_YAML, replacedLine);
+    }
+
+    @Test
+    public void replaceLineFromInputParameters_mapParameter() throws Exception {
+        Map<String, String> mapExample = new HashMap<>();
+        mapExample.put("key1", "value1");
+        mapExample.put("key2", "value2");
+        Map<String, OnapCommandParameter> parameters = new HashMap<>();
+        parameters.put("map", createCommandParameter(MAP, mapExample));
+
+        String replacedLine = OnapCommandUtils.replaceLineFromInputParameters("line ${map}", parameters);
+
+        assertEquals("line{\"key1\":\"value1\",\"key2\":\"value2\"}", replacedLine);
+    }
+
+    private OnapCommandParameter createCommandParameter(OnapCommandParameterType type, Object value) throws Exception  {
+        OnapCommandParameter paramater = new OnapCommandParameter();
+        paramater.setParameterType(type);
+        paramater.setValue(value);
+        return paramater;
+    }
+
     @Test
     public void externalSchemaTest() {
         OnapCommandSchemaInfo schema = new OnapCommandSchemaInfo();
@@ -259,7 +435,7 @@ public class OnapCommandUtilsTest {
 
     @Test
     public void jsonFlattenTest() {
-        List<String> list = Arrays.asList(new String[] { "{\"menu1\": {\"id\": \"file1\",\"value\": \"File1\"}}" });
+        List<String> list = asList(new String[] { "{\"menu1\": {\"id\": \"file1\",\"value\": \"File1\"}}" });
         List<String> list1 = OnapCommandUtils.jsonFlatten(list);
         String expected = "[{\"menu1\":{\"id\":\"file1\",\"value\":\"File1\"}}]";
         assertEquals(expected, list1.toString());
@@ -268,7 +444,7 @@ public class OnapCommandUtilsTest {
 
     @Test
     public void jsonFlattenExceptionTest() {
-        List<String> list = Arrays.asList(new String[] { "{\"menu1\"::{\"id\":\"file1\",\"value\":\"File1\"}}" });
+        List<String> list = asList(new String[] { "{\"menu1\"::{\"id\":\"file1\",\"value\":\"File1\"}}" });
         List<String> list1 = OnapCommandUtils.jsonFlatten(list);
         String expected = "[{\"menu1\"::{\"id\":\"file1\",\"value\":\"File1\"}}]";
         assertEquals(expected, list1.toString());

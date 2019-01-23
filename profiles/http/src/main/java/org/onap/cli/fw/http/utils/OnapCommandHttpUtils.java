@@ -16,12 +16,15 @@
 
 package org.onap.cli.fw.http.utils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
@@ -37,8 +40,6 @@ import org.onap.cli.fw.http.error.OnapCommandHttpInvalidResponseBody;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.utils.OnapCommandUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,8 +49,6 @@ import com.jayway.jsonpath.PathNotFoundException;
 import net.minidev.json.JSONArray;
 
 public class OnapCommandHttpUtils {
-
-    static Logger LOG = LoggerFactory.getLogger(OnapCommandHttpUtils.class);
 
     /**
      * Set argument to param value.
@@ -67,12 +66,11 @@ public class OnapCommandHttpUtils {
     public static HttpInput populateParameters(Map<String, OnapCommandParameter> params, HttpInput input)
             throws OnapCommandException {
         HttpInput inp = new HttpInput();
-        for (OnapCommandParameter param : params.values()) {
-            if (OnapCommandParameterType.BINARY.equals(param.getParameterType())) {
-                inp.setBinaryData(true);
-                break;
-            }
+
+        if (getParameterTypes(params).contains(OnapCommandParameterType.BINARY)) {
+            inp.setBinaryData(true);
         }
+
         inp.setMultipartEntityName(input.getMultipartEntityName());
         inp.setBody(OnapCommandUtils.replaceLineFromInputParameters(input.getBody(), params));
         inp.setUri(OnapCommandUtils.replaceLineFromInputParameters(input.getUri(), params));
@@ -94,6 +92,10 @@ public class OnapCommandHttpUtils {
         }
 
         return inp;
+    }
+
+    private static Set<OnapCommandParameterType> getParameterTypes(Map<String, OnapCommandParameter> params) {
+        return params.values().stream().map(OnapCommandParameter::getParameterType).collect(Collectors.toSet());
     }
 
     /**
@@ -267,10 +269,9 @@ public class OnapCommandHttpUtils {
             node = mapper.readTree(json);
             normalizeJson(node);
             return mapper.writeValueAsString(node);
-        } catch (Exception e) {  //NOSONAR
+        } catch (IOException e) {
             throw new OnapCommandHttpInvalidRequestBody(e);
         }
-
     }
 }
 
