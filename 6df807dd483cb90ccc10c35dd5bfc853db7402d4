@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_2106c31d",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-01-28T14:05:48Z",
+      "side": 1,
+      "message": "not required.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "6df807dd483cb90ccc10c35dd5bfc853db7402d4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_261fb96d",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-01-28T14:05:48Z",
+      "side": 1,
+      "message": "instead, can you add specific test for  $s{env:XXX}. thx",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 5
+      },
+      "revId": "6df807dd483cb90ccc10c35dd5bfc853db7402d4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_e614514e",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-01-28T14:05:48Z",
+      "side": 1,
+      "message": "test with line with more input parameter macro and corresponding values in hash map()",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 5
+      },
+      "revId": "6df807dd483cb90ccc10c35dd5bfc853db7402d4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_a60ac923",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-01-28T14:05:48Z",
+      "side": 1,
+      "message": "nice testing !",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 5
+      },
+      "revId": "6df807dd483cb90ccc10c35dd5bfc853db7402d4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
