@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_17a2ddfc",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 4401
+      },
+      "writtenOn": "2019-01-29T07:01:41Z",
+      "side": 1,
+      "message": "test was removed",
+      "parentUuid": "9adffdf1_2106c31d",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "6df807dd483cb90ccc10c35dd5bfc853db7402d4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_261fb96d",
         "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_57e14528",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 4401
+      },
+      "writtenOn": "2019-01-29T07:01:41Z",
+      "side": 1,
+      "message": "test for checking existing env variable was added (USER)",
+      "parentUuid": "9adffdf1_261fb96d",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 5
+      },
+      "revId": "6df807dd483cb90ccc10c35dd5bfc853db7402d4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_e614514e",
         "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-01-28T14:05:48Z",
       "side": 1,
       "message": "test with line with more input parameter macro and corresponding values in hash map()",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 5
+      },
+      "revId": "6df807dd483cb90ccc10c35dd5bfc853db7402d4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_37b84129",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 4401
+      },
+      "writtenOn": "2019-01-29T07:01:41Z",
+      "side": 1,
+      "message": "tests for ARRAY \u0026 YAML were added",
+      "parentUuid": "9adffdf1_e614514e",
       "range": {
         "startLine": 162,
         "startChar": 0,
