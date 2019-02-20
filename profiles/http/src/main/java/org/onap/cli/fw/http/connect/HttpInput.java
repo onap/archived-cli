@@ -122,6 +122,10 @@ public class HttpInput {
         return context;
     }
 
+    public void setContext(Map<String, String> context) {
+        this.context = context;
+    }
+
     public HttpInput setReqCookies(Map<String, String> reqCookies) {
         this.reqCookies = reqCookies;
         return this;
