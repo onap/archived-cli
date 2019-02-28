@@ -42,7 +42,7 @@ public class OnapCommandResult {
      *
      * if type=TEXT, then it holds the result in text format such as help message
      */
-    private Object output;
+    private Object output = new String("");
 
     /*
      * Type requested by user
@@ -83,6 +83,13 @@ public class OnapCommandResult {
      * Requested by user.
      */
     private boolean isDebug = false;
+
+    /**
+     * Command passed/failed
+     * @return
+     */
+
+    private boolean passed = true;
 
     public OnapCommandPrintDirection getPrintDirection() {
         return printDirection;
@@ -192,43 +199,41 @@ public class OnapCommandResult {
      *             exception
      */
     public String print() throws OnapCommandException {
-        if (this.getRecords().isEmpty()) {
-            return "";
-        } else if (this.getType().equals(OnapCommandResultType.TEXT)) {
-            return this.getOutput().toString();
+        if (this.getType().equals(OnapCommandResultType.TEXT)) {
+             return this.getOutput().toString();
         }
 
         OnapCommandPrint print = new OnapCommandPrint();
         print.setPrintTitle(this.isIncludeTitle());
-        if (this.getPrintDirection().equals(OnapCommandPrintDirection.LANDSCAPE)) {
-            for (OnapCommandResultAttribute record : this.getScopedRecords()) {
-                if (record.getType().equals(OnapCommandParameterType.JSON)) {
-                    print.addColumn(record.getName(), OnapCommandUtils.jsonFlatten(record.getValues()));
-                } else {
+        print.setDirection(this.printDirection);
+
+        if (!this.getRecords().isEmpty()) {
+            if (this.getPrintDirection().equals(OnapCommandPrintDirection.LANDSCAPE)) {
+                for (OnapCommandResultAttribute record : this.getScopedRecords()) {
                     print.addColumn(record.getName(), record.getValues());
                 }
-            }
-        } else {
-            // Add property column
-            OnapCommandResultAttribute prp = new OnapCommandResultAttribute();
-            prp.setName(OnapCommandConstants.PORTRAINT_COLUMN_NAME_PROPERTY);
-            prp.setScope(OnapCommandResultAttributeScope.SHORT);
-            // Add value column
-            OnapCommandResultAttribute val = new OnapCommandResultAttribute();
-            val.setName(OnapCommandConstants.PORTRAINT_COLUMN_NAME_VALUE);
-            val.setScope(OnapCommandResultAttributeScope.SHORT);
+            } else {
+                // Add property column
+                OnapCommandResultAttribute prp = new OnapCommandResultAttribute();
+                prp.setName(OnapCommandConstants.PORTRAINT_COLUMN_NAME_PROPERTY);
+                prp.setScope(OnapCommandResultAttributeScope.SHORT);
+                // Add value column
+                OnapCommandResultAttribute val = new OnapCommandResultAttribute();
+                val.setName(OnapCommandConstants.PORTRAINT_COLUMN_NAME_VALUE);
+                val.setScope(OnapCommandResultAttributeScope.SHORT);
 
-            for (OnapCommandResultAttribute record : this.getScopedRecords()) {
-                prp.getValues().add(record.getName());
-                if (record.getValues().size() == 1) {
-                    val.getValues().add(record.getValues().get(0));
-                } else {
-                    val.getValues().add(record.getValues().toString());
+                for (OnapCommandResultAttribute record : this.getScopedRecords()) {
+                    prp.getValues().add(record.getName());
+                    if (record.getValues().size() == 1) {
+                        val.getValues().add(record.getValues().get(0));
+                    } else {
+                        val.getValues().add(record.getValues().toString());
+                    }
                 }
-            }
 
-            print.addColumn(prp.getName(), prp.getValues());
-            print.addColumn(val.getName(), val.getValues());
+                print.addColumn(prp.getName(), prp.getValues());
+                print.addColumn(val.getName(), val.getValues());
+            }
         }
 
         if (this.getType().equals(OnapCommandResultType.JSON)) {
@@ -254,5 +259,13 @@ public class OnapCommandResult {
         }
 
         return recordList;
+    }
+
+    public boolean isPassed() {
+        return passed;
+    }
+
+    public void setPassed(boolean passed) {
+        this.passed = passed;
     }
 }

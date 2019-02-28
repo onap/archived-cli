@@ -71,15 +71,30 @@ public class OnapCommandSchemaCmdLoader {
                     case OnapCommandCmdConstants.ENVIRONMENT:
                         Map<String, String> envMap = (Map<String, String>) valMap.get(key1);
                         cmd.setEnvs(envMap);
-
                         break;
 
                     case OnapCommandCmdConstants.WD:
                         cmd.setWd((String)valMap.get(key1));
                         break;
 
+                    case OnapCommandCmdConstants.OUTPUT:
+                        cmd.setOutput((String)valMap.get(key1));
+                        break;
+
+                    case OnapCommandCmdConstants.ERROR:
+                        cmd.setError((String)valMap.get(key1));
+                        break;
+
+                    case OnapCommandCmdConstants.RESULT_MAP:
+                        cmd.setResultMap((Map<String, String>) valMap.get(key1));
+                        break;
+
                     case OnapCommandCmdConstants.SUCCESS_EXIT_CODE:
                         cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
+                        break;
+
+                    case OnapCommandCmdConstants.PASS_CODE:
+                        cmd.setPassCodes((ArrayList) valMap.get(key1));
                         break;
                 }
             }

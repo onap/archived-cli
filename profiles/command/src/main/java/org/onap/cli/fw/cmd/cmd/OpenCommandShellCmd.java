@@ -21,14 +21,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.conf.OnapCommandCmdConstants;
+import org.onap.cli.fw.cmd.error.OnapCommandCmdFailure;
 import org.onap.cli.fw.cmd.schema.OnapCommandSchemaCmdLoader;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
+import org.onap.cli.fw.error.OnapCommandResultEmpty;
+import org.onap.cli.fw.error.OnapCommandResultMapProcessingFailed;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.utils.OnapCommandUtils;
+import org.onap.cli.fw.utils.ProcessRunner;
+
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.PathNotFoundException;
+
+import net.minidev.json.JSONArray;
 
 /**
  * Hello world.
@@ -44,11 +55,17 @@ public class OpenCommandShellCmd extends OnapCommand {
 
     private List<String> command;
 
-    private Map<String, String> envs;
+    private Map<String, String> envs = new HashMap<>();
 
     private String wd = null;
 
     private List<Integer> successStatusCodes = new ArrayList<>();
+
+    private List<Integer> passCodes = new ArrayList<>();
+
+    private String output = "$stdout";
+
+    private String error = "$stderr";
 
     public List<Integer> getSuccessStatusCodes() {
         return successStatusCodes;
@@ -73,7 +90,6 @@ public class OpenCommandShellCmd extends OnapCommand {
     public void setEnvs(Map<String, String> envs) {
         this.envs = envs;
     }
-
 
 
     public List<String> getCommand() {
@@ -102,8 +118,13 @@ public class OpenCommandShellCmd extends OnapCommand {
         //Read the input arguments
         Map<String, OnapCommandParameter> paramMap = this.getParametersMap();
 
+        List<String> commandLine = new ArrayList<>();
+        for (String cmdTkn: this.getCommand()) {
+            commandLine.add(OnapCommandUtils.replaceLineFromInputParameters(cmdTkn, paramMap));
+        }
+
         //Process command
-        String []cmd = this.getCommand().toArray(new String []{});
+        String []cmd = commandLine.toArray(new String []{});
         String cwd = this.getWd();
         List <String> envs = new ArrayList<>();
 
@@ -121,9 +142,158 @@ public class OpenCommandShellCmd extends OnapCommand {
             throw new OnapCommandExecutionFailed(this.getName(), e);
         }
 
-        //Populate outputs
-        this.getResult().getRecordsMap().get("output").getValues().add(pr.getOutput());
-        this.getResult().getRecordsMap().get("error").getValues().add(pr.getError());
-        this.getResult().getRecordsMap().get("exitCode").getValues().add("" + pr.getExitCode());
+        if (!this.successStatusCodes.contains(pr.getExitCode())) {
+            throw new OnapCommandExecutionFailed(this.getName(), pr.getError(), pr.getExitCode());
+        }
+
+        String outputValue = "";
+
+        if (this.output.equals("$stdout")) {
+            outputValue = pr.getOutput();
+        } else {
+            outputValue = OnapCommandUtils.replaceLineFromInputParameters(this.output, paramMap);
+            outputValue = OnapCommandUtils.replaceLineForSpecialValues(outputValue);
+        }
+
+        this.getResult().setOutput(outputValue);
+
+        //populate results
+        for (Entry<String, String> resultMapEntry : this.getResultMap().entrySet()) {
+            String value = OnapCommandUtils.replaceLineFromInputParameters(resultMapEntry.getValue(), paramMap);
+            value = OnapCommandUtils.replaceLineForSpecialValues(value);
+            this.getResult().getRecordsMap().get(resultMapEntry.getKey()).setValues(
+                    this.replaceLineFromOutputResults(value, outputValue));
+        }
+
+        //check for pass/failure
+        if (!this.passCodes.contains(pr.getExitCode())) {
+            this.getResult().setPassed(false);
+        }
    }
+
+    public String getOutput() {
+        return output;
+    }
+
+    public void setOutput(String output) {
+        this.output = output;
+    }
+
+   private ArrayList<String> replaceLineFromOutputResults(String line, String output)
+            throws OnapCommandException {
+
+
+        ArrayList<String> result = new ArrayList<>();
+        if (!line.contains("$o{")) {
+            result.add(line);
+            return result;
+        }
+
+        /**
+         * In case of empty output [] or {}
+         **/
+        if (output.length() <= 2) {
+            return result;
+        }
+
+        int currentIdx = 0;
+
+        // Process  jsonpath macros
+        List<Object> values = new ArrayList<>();
+        String processedPattern = "";
+        currentIdx = 0;
+        int maxRows = 1; // in normal case, only one row will be there
+        while (currentIdx < line.length()) {
+            int idxS = line.indexOf("$o{", currentIdx); //check for output stream
+            if (idxS == -1) {
+                idxS = line.indexOf("$e{", currentIdx); //check for error stream
+                if (idxS == -1) {
+                    processedPattern += line.substring(currentIdx);
+                    break;
+                }
+            }
+            int idxE = line.indexOf("}", idxS);
+            String jsonPath = line.substring(idxS + 3, idxE);
+            jsonPath = jsonPath.trim();
+            Object value = new Object();
+            try {
+                // JSONArray or String
+                value = JsonPath.read(output, jsonPath);
+            } catch (PathNotFoundException e1) { // NOSONAR
+                //set to blank for those entries which are missing from the output json
+                value = "";
+            } catch (Exception e) {
+                throw new OnapCommandCmdFailure("Invalid json format in command output");
+            }
+
+            if (value instanceof JSONArray) {
+                JSONArray arr = (JSONArray) value;
+                if (arr.size() > maxRows) {
+                    maxRows = arr.size();
+                }
+            }
+            processedPattern += line.substring(currentIdx, idxS) + "%s";
+            values.add(value);
+            currentIdx = idxE + 1;
+        }
+
+        if (processedPattern.isEmpty()) {
+            result.add(line);
+            return result;
+        } else {
+            for (int i = 0; i < maxRows; i++) {
+                currentIdx = 0;
+                String bodyProcessedLine = "";
+                int positionalIdx = 0; // %s positional idx
+                while (currentIdx < processedPattern.length()) {
+                    int idxS = processedPattern.indexOf("%s", currentIdx);
+                    if (idxS == -1) {
+                        bodyProcessedLine += processedPattern.substring(currentIdx);
+                        break;
+                    }
+                    int idxE = idxS + 2; // %s
+                    try {
+                        Object value = values.get(positionalIdx);
+                        String valueS = String.valueOf(value);
+                        if (value instanceof JSONArray) {
+                            JSONArray arr = (JSONArray) value;
+                            if (!arr.isEmpty()) {
+                                valueS = arr.get(i).toString();
+                            } else {
+                                throw new OnapCommandResultEmpty();
+                            }
+                        }
+
+                        bodyProcessedLine += processedPattern.substring(currentIdx, idxS) + valueS;
+                        currentIdx = idxE;
+                        positionalIdx++;
+                    } catch (OnapCommandResultEmpty e) {
+                        throw e;
+                    } catch (Exception e) {
+                        throw new OnapCommandResultMapProcessingFailed(line, e);
+                    }
+                }
+                result.add(bodyProcessedLine);
+            }
+
+            return result;
+        }
+    }
+
+public String getError() {
+    return error;
+}
+
+public void setError(String error) {
+    this.error = error;
+}
+
+public List<Integer> getPassCodes() {
+    return passCodes;
+}
+
+public void setPassCodes(List<Integer> passCodes) {
+    this.passCodes = passCodes;
+}
+
 }

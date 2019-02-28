@@ -39,7 +39,7 @@ cmd:
   success_codes:
     - 0
   working_directory: .
-
+  output: $stdout
   result_map:
     attr1: NA
     attr2: NA
