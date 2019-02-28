@@ -28,7 +28,11 @@ public class OnapCommandCmdConstants {
     public static final String COMMAND = "command";
     public static final String ENVIRONMENT = "environment";
     public static final String WD = "working_directory";
-    public static final String SUCCESS_EXIT_CODE = "success_code";
+    public static final String RESULT_MAP = "result_map";
+    public static final String OUTPUT = "output";
+    public static final String ERROR = "error";
+    public static final String SUCCESS_EXIT_CODE = "success_codes";
+    public static final String PASS_CODE = "pass_codes";
 
     public static final String CMD_MANDATORY_SECTIONS = "cli.schema.cmd.sections.mandatory";
     public static final String CMD_SECTIONS = "cli.schema.cmd.sections";
