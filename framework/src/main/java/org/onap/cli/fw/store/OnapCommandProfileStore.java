@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-package org.onap.cli.fw.input.cache;
+package org.onap.cli.fw.store;
 
-import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_DIRECTORY;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_JSON_PATTERN;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_PROFILE_JSON;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_PROFILE_JSON_PATTERN;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,40 +27,52 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
-import org.onap.cli.fw.error.OnapCommandLoadProfileFailed;
+import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandPersistProfileFailed;
-import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
-import org.springframework.core.io.Resource;
+import org.onap.cli.fw.error.OnapCommandProfileLoadFailed;
+import org.onap.cli.fw.error.OnapCommandProfileNotFound;
+import org.onap.cli.fw.input.cache.OnapCommandParamEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class OnapCommandParameterCache {
-
+public class OnapCommandProfileStore {
+    private static Logger log = LoggerFactory.getLogger(OnapCommandProfileStore.class);
     private Map<String, Map<String, String>> paramCache = new HashMap<>();
 
-    private static OnapCommandParameterCache single = null;
+    private static OnapCommandProfileStore single = null;
 
     private String profileName = OnapCommandConstants.PARAM_CACHE_FILE_NAME;
 
-    private OnapCommandParameterCache() {
+    static {
+        try {
+            FileUtils.forceMkdir(new File(getDataStorePath()));
+        } catch (IOException e) {
+            log.error("Failed to create the data store profile");
+        }
+    }
+    private OnapCommandProfileStore() {
 
     }
 
-    public static OnapCommandParameterCache getInstance() {
+    public static OnapCommandProfileStore getInstance() {
         if (single == null) {
-            single = new OnapCommandParameterCache();
+            single = new OnapCommandProfileStore();
         }
 
-        single.load();
+        //single.load();
         return single;
     }
 
-    public void includeProfile(String profile) {
+    public void includeProfile(String profile) throws OnapCommandException {
         this.load(profile, true);
     }
 
-    public void excludeProfile(String profile) {
+    public void excludeProfile(String profile) throws OnapCommandException {
         this.load(profile, false);
     }
 
@@ -88,11 +98,18 @@ public class OnapCommandParameterCache {
     }
 
     public Map<String, String> getParams(String productVersion) {
-        if (paramCache.containsKey(productVersion)) {
-            return this.paramCache.get(productVersion);
-        } else {
-            return new HashMap<>();
+        //default profile used across products, set in profile-set command
+        Map<String, String> map = new HashMap<>();
+
+        if (paramCache.containsKey(OnapCommandConstants.OCLIP_GLOBAL_PROFILE)) {
+            map = this.paramCache.get(OnapCommandConstants.OCLIP_GLOBAL_PROFILE);
         }
+
+        if (paramCache.containsKey(productVersion)) {
+            map.putAll(this.paramCache.get(productVersion));
+        }
+
+        return map;
     }
 
     private void persist() {
@@ -117,17 +134,13 @@ public class OnapCommandParameterCache {
         }
     }
 
-    private void load() {
+    private void load() throws OnapCommandException {
         this.load(this.profileName, true);
     }
 
-    private void load(String profileName, boolean include) {
+    private void load(String profileName, boolean include) throws OnapCommandException {
         List<OnapCommandParamEntity> params= new ArrayList<>();
-        try {
-            params = this.loadParamFromCache(profileName);
-        } catch (OnapCommandLoadProfileFailed e) {
-            throw new RuntimeException(e);   // NOSONAR
-        }
+        params = this.loadParamFromCache(profileName);
 
         for (OnapCommandParamEntity p : params) {
             if (include) {
@@ -138,62 +151,69 @@ public class OnapCommandParameterCache {
         }
     }
 
-    public void setProfile(String profileName) {
+    public void setProfile(String profileName) throws OnapCommandException {
         this.profileName = profileName;
         this.paramCache.clear();
         this.load();
     }
 
-    private void persistProfile(List<OnapCommandParamEntity> params, String profileName) throws OnapCommandPersistProfileFailed {
+    public static String getDataStorePath() {
+        return OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_DATA_DIR)
+                + File.separator + "profiles";
+    }
+
+    public void persistProfile(List<OnapCommandParamEntity> params, String profileName) throws OnapCommandPersistProfileFailed {
         if (params != null) {
+            String dataDir = getDataStorePath();
             try {
-                Resource[] resources = OnapCommandDiscoveryUtils.findResources(DATA_DIRECTORY);
-                if (resources != null && resources.length == 1) {
-                    String path = resources[0].getURI().getPath();
-                    File file = new File(path + File.separator + profileName + DATA_PATH_PROFILE_JSON);
-                    ObjectMapper mapper = new ObjectMapper();
-                    mapper.writerWithDefaultPrettyPrinter().writeValue(file, params);
-                }
+                File file = new File(dataDir + File.separator + profileName + DATA_PATH_PROFILE_JSON);
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.writerWithDefaultPrettyPrinter().writeValue(file, params);
             } catch (IOException e1) {
                 throw new OnapCommandPersistProfileFailed(e1);
             }
         }
     }
 
-    private List<OnapCommandParamEntity> loadParamFromCache(String profileName) throws OnapCommandLoadProfileFailed {
+    public List<OnapCommandParamEntity> loadParamFromCache(String profileName) throws OnapCommandException {
         List<OnapCommandParamEntity> params = new ArrayList<>();
-
+        String dataDir = getDataStorePath();
         try {
-            Resource resource = OnapCommandDiscoveryUtils.findResource(profileName + DATA_PATH_PROFILE_JSON,
-                    DATA_PATH_JSON_PATTERN);
-            if (resource != null) {
-                File file = new File(resource.getURI().getPath());
+            File file = new File(dataDir + File.separator + profileName + DATA_PATH_PROFILE_JSON);
+            if (file.exists()) {
                 ObjectMapper mapper = new ObjectMapper();
                 OnapCommandParamEntity[] list = mapper.readValue(file, OnapCommandParamEntity[].class);
                 params.addAll(Arrays.asList(list));
+            } else {
+                throw new OnapCommandProfileNotFound(profileName);
             }
         } catch (IOException e) {
-            throw new OnapCommandLoadProfileFailed(e);
+            throw new OnapCommandProfileLoadFailed(e);
         }
 
         return params;
     }
 
+    public void removeProfile(String profile) {
+         String dataDir = getDataStorePath();
+         File file = new File(dataDir + File.separator + profile + DATA_PATH_PROFILE_JSON);
+         if (file.exists()) {
+            file.delete();
+         }
+    }
+
     public List<String> getProfiles() {
         List<String> profiles = new ArrayList<>();
 
-        Resource[] resources;
-        try {
-            resources = OnapCommandDiscoveryUtils.findResources(DATA_PATH_PROFILE_JSON_PATTERN);
-        } catch (IOException e) {
-             throw new RuntimeException(e);   // NOSONAR
-        }
-
-        if (resources != null && resources.length > 0) {
-            for (Resource res : resources) {
-                String profile = res.getFilename().substring(0, res.getFilename().indexOf(DATA_PATH_PROFILE_JSON));
-                profiles.add(profile);
+        String dataDir = getDataStorePath();
+        for (File file: new File(dataDir).listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(DATA_PATH_PROFILE_JSON);
             }
+        })) {
+            String profile = file.getName().substring(0, file.getName().indexOf(DATA_PATH_PROFILE_JSON));
+            profiles.add(profile);
         }
 
         return profiles;

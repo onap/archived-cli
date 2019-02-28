@@ -16,10 +16,12 @@
 
 package org.onap.cli.fw.utils;
 
+import static org.onap.cli.fw.conf.OnapCommandConstants.BOOLEAN_TRUE;
 import static org.onap.cli.fw.conf.OnapCommandConstants.BOOLEAN_VALUE;
 import static org.onap.cli.fw.conf.OnapCommandConstants.IS_INCLUDE;
-import static org.onap.cli.fw.conf.OnapCommandConstants.BOOLEAN_TRUE;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,6 +31,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
@@ -217,6 +220,17 @@ public class OnapCommandUtils {
                             //so that it will given hit to user that ENV_VAR_NAME to be
                             //defined.
                             value = splEntry;
+                        }
+                    } else if (splEntry.startsWith(OnapCommandConstants.SPL_ENTRY_FILE)) {
+                        //start to read after file:filepath
+                        String fileName = splEntry.substring(5);
+                        try {
+                            value = FileUtils.readFileToString(new File(fileName));
+                        } catch (IOException e) {
+                            //when file is not found, assign the same file:FILE_PATH
+                            //so that it will given hit to user that FILE_PATH to be
+                            //exist.
+                            value = "";
                         }
                     } else {
                         value = splEntry;

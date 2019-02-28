@@ -1,0 +1,74 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: execution-show
+description: Show the complete executions for the given request id
+
+info:
+  product: open-cli
+  service: execution
+  type: cmd
+  author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
+
+parameters:
+  - name: execution-id
+    type: string
+    description: Execution id
+    short_option: l
+    long_option: execution-id
+    is_optional: false
+results:
+  direction: portrait
+  attributes:
+    - name: request-id
+      type: string
+      description: Request id
+      scope: short
+    - name: product
+      description: Product
+      scope: short
+      type: string
+    - name: service
+      description: service
+      scope: short
+      type: string
+    - name: command
+      description: command
+      scope: short
+      type: string
+    - name: profile
+      description: Profile
+      scope: short
+      type: string
+    - name: input
+      description: Input
+      scope: short
+      type: string
+    - name: status
+      description: Execution status
+      scope: short
+      type: string
+    - name: start-time
+      description: Command execution starting Time
+      scope: short
+      type: string
+    - name: end-time
+      description: Command execution finishing Time
+      scope: short
+      type: string
+    - name: output
+      description: Output
+      scope: short
+      type: string

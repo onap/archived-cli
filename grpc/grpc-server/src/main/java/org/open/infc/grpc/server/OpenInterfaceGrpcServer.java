@@ -17,15 +17,22 @@
 package org.open.infc.grpc.server;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
-import java.util.logging.Logger;
+import java.util.Set;
 
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
+import org.onap.cli.fw.store.OnapCommandExecutionStore;
+import org.onap.cli.fw.store.OnapCommandExecutionStore.ExecutionStoreContext;
 import org.onap.cli.main.OnapCli;
 import org.open.infc.grpc.Args;
 import org.open.infc.grpc.Input;
@@ -33,6 +40,10 @@ import org.open.infc.grpc.OpenInterfaceGrpc;
 import org.open.infc.grpc.Output;
 import org.open.infc.grpc.Output.Builder;
 import org.open.infc.grpc.Result;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -40,7 +51,7 @@ import io.grpc.stub.StreamObserver;
 
 public class OpenInterfaceGrpcServer {
 
-      private static final Logger logger = Logger.getLogger(OpenInterfaceGrpcServer.class.getName());
+      private static final Logger logger = LoggerFactory.getLogger(OpenInterfaceGrpcServer.class.getName());
 
       private static final String CONF_FILE = "oclip-grpc-server.properties";
       private static final String CONF_SERVER_PORT = "oclip.grpc_server_port";
@@ -50,14 +61,22 @@ public class OpenInterfaceGrpcServer {
       }
       private Server server;
 
-      private void start() throws IOException {
+      private void start(String portArg) throws IOException {
         /* The port on which the server should run */
-        int port = Integer.parseInt(OnapCommandConfig.getPropertyValue(CONF_SERVER_PORT));
+        int port = Integer.parseInt(portArg == null ? OnapCommandConfig.getPropertyValue(CONF_SERVER_PORT) : portArg);
         server = ServerBuilder.forPort(port)
             .addService(new OpenInterfaceGrpcImpl())
             .build()
             .start();
         logger.info("Server started, listening on " + port);
+
+        try {
+            OnapCommandRegistrar.getRegistrar().setHost(InetAddress.getLocalHost().getHostAddress().trim());
+            OnapCommandRegistrar.getRegistrar().setPort(port);
+        } catch (OnapCommandException e) {
+            //Never Occurs
+        }
+
         Runtime.getRuntime().addShutdownHook(new Thread() {
           @Override
           public void run() {
@@ -89,15 +108,16 @@ public class OpenInterfaceGrpcServer {
        */
       public static void main(String[] args) throws IOException, InterruptedException {
         final OpenInterfaceGrpcServer server = new OpenInterfaceGrpcServer();
-        server.start();
+        server.start(args.length ==1 ? args[0] : null);
         server.blockUntilShutdown();
       }
 
       static class OpenRemoteCli extends OnapCli {
-          private String outputs = "";
-          public OpenRemoteCli(String product, String[] args) {
-            super(product, args);
-          }
+          public OpenRemoteCli(String[] args) {
+            super(args);
+        }
+
+        private String outputs = "";
 
           public void print(String msg) {
               outputs += msg + "\n";
@@ -112,32 +132,126 @@ public class OpenInterfaceGrpcServer {
 
         @Override
         public void invoke(Input req, StreamObserver<Output> responseObserver) {
-            Builder reply = Output.newBuilder();
+            Output output = null;
             logger.info(req.toString());
 
-            String product = req.getOptionsMap().get(OnapCommandConstants.OPEN_CLI_PRODUCT_NAME);
+            String product = req.getOptionsMap().get(OnapCommandConstants.RPC_PRODUCT);
             String format =  req.getOptionsMap().getOrDefault(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT, OnapCommandResultType.JSON.name().toLowerCase());
-            String command = req.getAction();
+            String commandName = req.getAction();
+            String profile = req.getOptionsMap().get(OnapCommandConstants.RPC_PROFILE);
+            OnapCommand cmd = null;
 
+            ExecutionStoreContext executionStoreContext = null;
             try {
-                OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get(command, product);
+                cmd = OnapCommandRegistrar.getRegistrar().get(commandName, product);
                 cmd.getParametersMap().get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT).setValue(format);
-                for (Entry<String, String> arg: req.getParams().entrySet()) {
-                    cmd.getParametersMap().get(arg.getKey()).setValue(arg.getValue());
+
+                if (!cmd.isRpc()) {
+                    if (profile != null) {
+                        //Set the profile to current one
+                        OnapCommandRegistrar.getRegistrar().setProfile(
+                                profile,
+                                new ArrayList<String>(),
+                                new ArrayList<String>());
+
+                        //fill from profile
+                        for (OnapCommandParameter param: cmd.getParameters()) {
+                            Map<String, String> cache= OnapCommandRegistrar.getRegistrar().getParamCache(product);
+                            if (cache.containsKey(
+                                    cmd.getInfo().getService() + ":" + cmd.getName() + ":" + param.getLongOption())) {
+                                param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
+                                        cmd.getInfo().getService() + ":" + cmd.getName() + ":" + param.getLongOption()));
+                            } else if (cache.containsKey(
+                                    cmd.getInfo().getService() + ":" + param.getLongOption())) {
+                                param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
+                                        cmd.getInfo().getService() + ":" + param.getLongOption()));
+                            } else if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(param.getLongOption())) {
+                                param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(param.getLongOption()));
+                            }
+                        }
+                    }
+
+                    Set <String> params = cmd.getParametersMap().keySet();
+                    for (Entry<String, String> arg: req.getParamsMap().entrySet()) {
+                        if (params.contains(arg.getKey()))
+                            cmd.getParametersMap().get(arg.getKey()).setValue(arg.getValue());
+                    }
+                } else {
+                    cmd.getParametersMap().get(OnapCommandConstants.INFO_PRODUCT).setValue(product);
+
+                    if (profile != null)
+                        cmd.getParametersMap().get(OnapCommandConstants.RPC_PROFILE).setValue(profile);
+
+                    cmd.getParametersMap().get(OnapCommandConstants.RPC_CMD).setValue(commandName);
+                    cmd.getParametersMap().get(OnapCommandConstants.RPC_ARGS).setValue(req.getParamsMap());
+                    cmd.getParametersMap().get(OnapCommandConstants.RPC_MODE).setValue(OnapCommandConstants.RPC_MODE_RUN_RPC);
                 }
+
+                if (!cmd.isRpc()) {
+                    //Start the execution
+                    if (req.getRequestId() != null) {
+                        String input = cmd.getArgsJson(true);
+                        executionStoreContext = OnapCommandExecutionStore.getStore().storeExectutionStart(
+                                req.getRequestId(),
+                                cmd.getInfo().getProduct(),
+                                cmd.getInfo().getService(),
+                                cmd.getName(),
+                                profile,
+                                input);
+                    }
+                }
+
                 cmd.execute();
 
-                reply.putAttrs(OnapCommandConstants.RESULTS, cmd.getResult().print());
-                reply.setSuccess(true);
-                reply.putAttrs(OnapCommandConstants.ERROR, "{}");
+                if (!cmd.isRpc()) {
+                    String printOut = cmd.getResult().print();
+                    Builder reply = Output.newBuilder();
+                    reply.setSuccess(true);
+                    reply.putAttrs(OnapCommandConstants.ERROR, "{}");
+                    reply.putAddons("execution-id", executionStoreContext.getExecutionId());
+                    try {
+                        reply.putAttrs(OnapCommandConstants.RESULTS, new ObjectMapper().readTree(printOut).toString());
+                    } catch (IOException e) {
+                        reply.putAttrs(OnapCommandConstants.RESULTS, printOut);
+                    }
+
+                    output = reply.build();
+
+                    if (req.getRequestId() != null) {
+                        //complete the execution recording
+                         OnapCommandExecutionStore.getStore().storeExectutionEnd(
+                                 executionStoreContext,
+                                 printOut,
+                                 null,
+                                 cmd.getResult().isPassed());
+                    }
+                    logger.info(output.toString());
+                } else {
+                    //Rpc command will set the output.
+                    output = (Output) cmd.getResult().getOutput();
+                }
+
             } catch (OnapCommandException e) {
                 logger.info(e.getMessage());
+
+
+                Builder reply = Output.newBuilder();
                 reply.putAttrs(OnapCommandConstants.RESULTS, "{}");
                 reply.setSuccess(false);
                 reply.putAttrs(OnapCommandConstants.ERROR, e.toJsonString());
+                if (executionStoreContext != null) {
+                       OnapCommandExecutionStore.getStore().storeExectutionEnd(
+                                executionStoreContext,
+                                null,
+                                e.getMessage(),
+                                false);
+                      reply.putAddons("execution-id", executionStoreContext.getExecutionId());
+                }
+
+                output = reply.build();
             }
 
-            responseObserver.onNext(reply.build());
+            responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
 
@@ -145,7 +259,14 @@ public class OpenInterfaceGrpcServer {
         public void remoteCli(Args req, StreamObserver<Result> responseObserver) {
             logger.info(req.toString());
 
-            OpenRemoteCli cli = new OpenRemoteCli(req.getProduct(), req.getArgsList().toArray(new String [] {}));
+            List<String> args = new ArrayList<>();
+            if (req.getRequestId() != null) {
+                args.add(OnapCommandParameter.printLongOption(OnapCommandConstants.RPC_REQID));
+                args.add(req.getRequestId());
+            }
+
+            args.addAll(req.getArgsList());
+            OpenRemoteCli cli = new OpenRemoteCli(args.toArray(new String [] {}));
             cli.handle();
             logger.info(cli.getResult());
             Result reply = Result.newBuilder().setExitCode(cli.getExitCode()).setOutput(cli.getResult()).build();

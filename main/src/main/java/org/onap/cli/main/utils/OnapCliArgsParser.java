@@ -92,8 +92,7 @@ public class OnapCliArgsParser {
         }
 
         int positionalIdx = 0;
-        // Skip the first args oclip cmd name, so start from 1
-        for (int i = 1; i < args.size(); i++) {
+        for (int i = 0; i < args.size(); i++) {
             String paramName = null;
             if (shortOptionMap.containsKey(args.get(i))) {
                 paramName = shortOptionMap.get(args.get(i));

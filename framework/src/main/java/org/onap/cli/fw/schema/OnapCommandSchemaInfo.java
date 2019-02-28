@@ -24,10 +24,13 @@ import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.info.OnapCommandState;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * OnapCommandSchemaInfo is used in discovery caching.
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> {
 
     /**
@@ -58,6 +61,54 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
     private String ignore = OnapCommandConstants.BOOLEAN_FALSE;
 
     private String state = OnapCommandState.STABLE.name();
+
+    //deployment info
+    private String rpcHost;
+
+    private String rpcPort;
+
+    private List<Object> inputs = new ArrayList<>();
+
+    private List<Object> outputs = new ArrayList<>();
+
+    private String description;
+
+    private String service;
+
+    private String author;
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    public List<Object> getInputs() {
+        return inputs;
+    }
+
+    public void setInputs(List<Object> inputs) {
+        this.inputs = inputs;
+    }
+
+    public List<Object> getOutputs() {
+        return outputs;
+    }
+
+    public void setOutputs(List<Object> outputs) {
+        this.outputs = outputs;
+    }
 
     public String getSchemaName() {
         return schemaName;
@@ -127,6 +178,10 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
         this.ignore = ignore;
     }
 
+    public void setIgnore(boolean ignore) {
+        this.ignore = Boolean.toString(ignore);
+    }
+
     public List<String> getSampleFiles() {
         return sampleFiles;
     }
@@ -159,5 +214,34 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
     @Override
     public int hashCode() {
         return Objects.hashCode(this.cmdName);
+    }
+
+    public String getRpcHost() {
+        return rpcHost;
+    }
+
+    public void setRpcHost(String rpcHost) {
+        this.rpcHost = rpcHost;
+    }
+
+    public String getRpcPort() {
+        return rpcPort;
+    }
+
+    public void setRpcPort(String rpcPort) {
+        this.rpcPort = rpcPort;
+    }
+
+    public boolean isRpc() {
+        return this.getRpcHost() != null && !this.getRpcHost().isEmpty() &&
+                this.getRpcPort() != null && !this.getRpcPort().isEmpty();
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

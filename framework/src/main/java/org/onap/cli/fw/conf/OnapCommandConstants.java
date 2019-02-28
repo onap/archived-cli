@@ -41,6 +41,8 @@ public class OnapCommandConstants {
     public static final String SCHEMA_TYPES_SUPPORTED = "cli.schema.profile.available";
     public static final String OPEN_CLI_PRODUCT_NAME = "cli.product_name";
     public static final String OPEN_CLI_PLUGIN_PRPS = "cli.schema.profile.confs";
+    public static final String OPEN_CLI_DATA_DIR = "cli.data.dir";
+    public static final String OPEN_CLI_ARTIFACT_DIR = "cli.artifact.dir";
 
     //schema
     public static final String OPEN_CLI_SCHEMA_VERSION = "open_cli_schema_version";
@@ -50,6 +52,7 @@ public class OnapCommandConstants {
     public static final String DESCRIPTION = "description";
 
     //Info
+    public static final String OPEN_CLI = "open-cli";
     public static final String INFO = "info";
     public static final String INFO_PRODUCT = "product";
     public static final String OPEN_CLI_PRODUCT_IN_USE_ENV_NAME = "OPEN_CLI_PRODUCT_IN_USE";
@@ -81,7 +84,8 @@ public class OnapCommandConstants {
     public static final String PARAMETER_TYPE_BINARY = "binary";
     public static final String PARAMETER_TYPE_MAP = "map";
 
-    public static final String DEFAULT_PARAMETER_FILE_NAME = "default_input_parameters.yaml";
+    public static final String DEAFULT_INPUT_PARAMETERS_NAME = "default_input_parameters";
+    public static final String DEFAULT_PARAMETER_FILE_NAME = DEAFULT_INPUT_PARAMETERS_NAME + ".yaml";
     public static final String DEFAULT_PARAMETER_HELP = "help";
     public static final String DEFAULT_PARAMETER_VERSION = "version";
     public static final String DEFAULT_PARAMETER_DEBUG = "debug";
@@ -111,16 +115,20 @@ public class OnapCommandConstants {
     //discovery
     public static final String SCHEMA_DIRECTORY = "open-cli-schema";
     public static final String YAML_PATTERN = "/**/*.yaml";
+    public static final String DEFAULT_YAML_PATTERN = "/**/" + DEAFULT_INPUT_PARAMETERS_NAME + "_*.yaml";
     public static final String JSON_PATTERN = "/**/*.json";
     public static final String SCHEMA_PATH_PATERN = SCHEMA_DIRECTORY + YAML_PATTERN;
+    public static final String DEFAULT_SCHEMA_PATH_PATERN = SCHEMA_DIRECTORY + DEFAULT_YAML_PATTERN;
     public static final String DATA_DIRECTORY = "data";
-    public static final String DISCOVERY_FILE = "cli-schema.json";
+    public static final String DISCOVERY_FILE = "schemas.json";
     public static final String DATA_PATH_JSON_PATTERN = DATA_DIRECTORY + JSON_PATTERN;
     public static final String DATA_PATH_PROFILE_JSON = "-profile.json";
     public static final String DATA_PATH_PROFILE_JSON_PATTERN = DATA_DIRECTORY + "/**/*" + DATA_PATH_PROFILE_JSON;
     public static final String DISCOVER_ALWAYS = "discover_always";
     public static final String PARAM_CACHE_FILE_NAME = "default";
+    public static final String OCLIP_GLOBAL_PROFILE = "OCLIP-GLOBAL-PROFILE";
 
+    public static final String PRODUCT_REGISTRY_YAML = "-registry.yaml";
     //normal
     public static final String BASIC_SCHEMA_PROFILE = "basic";
     public static final String EXCEPTION = "exception";
@@ -141,6 +149,7 @@ public class OnapCommandConstants {
 
     public static final String SPL_ENTRY_UUID = "uuid";
     public static final String SPL_ENTRY_ENV = "env:";
+    public static final String SPL_ENTRY_FILE = "file:";
 
     public static final String VERSION_INFO = "version.info";
     public static final String VERSION_INFO_PLACE_HOLDER_VERSION = "__VERSION__";
@@ -167,7 +176,20 @@ public class OnapCommandConstants {
     public static final String VERIFY_RESULT_FAIL = "fail";
     public static final String VERIFY_CONTEXT_PARAM = "context";
 
-
+    public static final String RPC_HOST = "rpc-host";
+    public static final String RPC_PORT = "rpc-port";
+    public static final String RPC_PORT_DEFAULT = "50051";
+    public static final String RPC_CMD = "command";
+    public static final String RPC_REQID = "request-id";
+    public static final String RPC_ARGS = "arg";
+    public static final String RPC_PRODUCT = "product";
+    public static final String RPC_PROFILE = "profile";
+    public static final String RPC_SCHEMAS = "commands";
+    public static final String RPC_MODE = "mode";
+    public static final String RPC_MODE_RUN_CLI = "cli";
+    public static final String RPC_MODE_RUN_RPC = "rpc";
+    public static final String RPC_MODE_RSYNC_SRC = "rsync_src";
+    public static final String RPC_MODE_RSYNC_DST = "rsync_dst";
 
     public static final String VERIFY_LONG_OPTION = "--verify";
     public static final String VERIFY_SHORT_OPTION = "-V";
@@ -176,5 +198,7 @@ public class OnapCommandConstants {
     }
 
 }
+
+
 
 

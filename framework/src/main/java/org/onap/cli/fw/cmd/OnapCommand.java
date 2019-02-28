@@ -17,6 +17,7 @@
 package org.onap.cli.fw.cmd;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -28,16 +29,23 @@ import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.error.OnapCommandNotInitialized;
 import org.onap.cli.fw.info.OnapCommandInfo;
 import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.OnapCommandResultType;
+import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.schema.OnapCommandSchemaMerger;
+import org.onap.cli.fw.store.OnapCommandArtifactStore;
+import org.onap.cli.fw.store.OnapCommandArtifactStore.Artifact;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Oclip Command.
@@ -62,6 +70,16 @@ public abstract class OnapCommand {
     private List<String> defaultSchemas = new ArrayList<>();
 
     protected boolean isInitialzied = false;
+
+    private  boolean isRpc = false;
+
+    public boolean isRpc() {
+        return isRpc;
+    }
+
+    public void setRpc(boolean isRpc) {
+        this.isRpc = isRpc;
+    }
 
     protected OnapCommand() {
         this.addDefaultSchemas(OnapCommandConstants.DEFAULT_PARAMETER_FILE_NAME);
@@ -138,6 +156,33 @@ public abstract class OnapCommand {
         return this.defaultSchemas;
     }
 
+    public List<String> getArgs() {
+        List <String> args = new ArrayList<>();
+        for (OnapCommandParameter param: this.getParameters()) {
+            args.add(OnapCommandParameter.printLongOption(param.getName()));
+            args.add(param.getValue().toString());
+        }
+
+        return args;
+    }
+
+    public String getArgsJson(boolean ignoreDefaults) {
+        Map <String, String> args = new HashMap<>();
+
+        for (OnapCommandParameter param: this.getParameters()) {
+            if (ignoreDefaults && param.isDefaultParam())
+                continue;
+
+            args.put(param.getName(), param.getValue().toString());
+        }
+
+        try {
+            return new ObjectMapper().writeValueAsString(args);
+        } catch (JsonProcessingException e) {
+            return "{}";
+        }
+    }
+
     /**
      * Initialize this command from command schema and assumes schema is already validated.
      *
@@ -147,6 +192,10 @@ public abstract class OnapCommand {
      */
     public List<String> initializeSchema(String schema) throws OnapCommandException {
         return this.initializeSchema(schema, false);
+    }
+
+    public List<String> initializeSchema(OnapCommandSchemaInfo schema) throws OnapCommandException {
+        return this.initializeSchema(schema.getSchemaName(), false);
     }
 
     public List<String> initializeSchema(String schema, boolean validate) throws OnapCommandException {
@@ -214,6 +263,19 @@ public abstract class OnapCommand {
             this.cmdResult.setType(OnapCommandResultType.TEXT);
             this.cmdResult.setOutput(this.printVersion());
             return this.cmdResult;
+        }
+
+        //set the artifact content path.
+        for (OnapCommandParameter param: this.getParameters()) {
+            if (!param.getParameterType().equals(OnapCommandParameterType.BINARY))
+                continue;
+
+            if (param.getValue().toString().matches("artifact://*:*")) {
+                String categoryAndName = param.getValue().toString().replaceFirst("artifact://", "");
+                String[] categoryAndNameTokens = categoryAndName.split(":");
+                Artifact a = OnapCommandArtifactStore.getStore().getArtifact(categoryAndNameTokens[1], categoryAndNameTokens[0]);
+                param.setValue(a.getPath());
+            }
         }
 
         // validate

@@ -17,25 +17,15 @@
 package org.onap.cli.fw.error;
 
 /**
- * Command profile persistence failed.
+ * Artifact does not exist at given path.
  *
  */
-public class OnapCommandLoadProfileFailed extends OnapCommandException {
+public class OnapCommandArtifactNotFound extends OnapCommandException {
+    private static final long serialVersionUID = 488775545436993019L;
 
-    private static final long serialVersionUID = 8580121615330415123L;
+    private static final String ERROR_CODE = "0x21003";
 
-    private static final String ERROR_CODE = "0xc001";
-
-    private static final String ERROR_MSG = "Failed to load profile details";
-    /**
-     * Command result empty.
-     */
-    public OnapCommandLoadProfileFailed(String error) {
-        super(ERROR_CODE, ERROR_MSG + ", " + error);
+    public OnapCommandArtifactNotFound(String  name, String category) {
+        super(ERROR_CODE, "Artifact does not exists with given name " + name + " under category " + category);
     }
-
-    public OnapCommandLoadProfileFailed(Throwable error) {
-        super(ERROR_CODE, ERROR_MSG, error);
-    }
-
 }

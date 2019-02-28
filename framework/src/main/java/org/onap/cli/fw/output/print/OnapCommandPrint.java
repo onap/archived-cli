@@ -37,6 +37,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
+import net.minidev.json.JSONValue;
 /**
  * Oclip Command Table print.
  *
@@ -236,28 +237,48 @@ public class OnapCommandPrint {
         }
     }
 
+    public Object getJsonNodeOrString(String value) {
+        try {
+            return (JSONObject) JSONValue.parse(value);
+        } catch (Exception e) {
+            return value;
+        }
+    }
+
     public String printJson() {
         List<List<Object>> rows = this.formRows(false);
 
-        JSONArray array = new JSONArray();
+        if (this.direction.equals(OnapCommandPrintDirection.PORTRAIT)) {
+            JSONObject result = new JSONObject();
+            for (int i=1; i<rows.size(); i++) {
+                if (rows.get(i).get(1) != null)
+                    result.put(rows.get(i).get(0).toString(), this.getJsonNodeOrString(rows.get(i).get(1).toString()));
+            }
+            return result.toJSONString();
+        } else {
+            JSONArray array = new JSONArray();
 
-        //skip first row title
-        List<Object> titleRow = rows.get(0);
+            //skip first row title
+            List<Object> titleRow = rows.get(0);
 
-        for (int i=1; i<rows.size(); i++) {
-            JSONObject rowO = new JSONObject();
+            for (int i=1; i<rows.size(); i++) {
+                JSONObject rowO = new JSONObject();
 
-            for (int j=0; j<titleRow.size(); j++) {
-                if (rows.get(i).get(j) != null)
-                    rowO.put(titleRow.get(j).toString(), rows.get(i).get(j).toString());
+                for (int j=0; j<titleRow.size(); j++) {
+                    if (rows.get(i).get(j) != null)
+                        rowO.put(titleRow.get(j).toString(), this.getJsonNodeOrString(rows.get(i).get(j).toString()));
+                }
+
+                array.add(rowO);
+            }
+            try {
+                return new ObjectMapper().readTree(array.toJSONString()).toString();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                return array.toJSONString();
             }
 
-            array.add(rowO);
         }
-
-        JSONObject json = new JSONObject();
-        json.put(OnapCommandConstants.RESULTS, array);
-        return json.toJSONString();
     }
 
     public String printYaml() throws OnapCommandOutputPrintingFailed {

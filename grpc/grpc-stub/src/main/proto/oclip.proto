@@ -43,8 +43,9 @@ message Output {
 
 //Used for remote CLI
 message Args{
-    repeated string args = 1;
-    string product = 2;
+    string requestId = 1;
+    string action = 2;
+    repeated string args = 3;
 }
 
 message Result {

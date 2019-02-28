@@ -73,4 +73,3 @@ parameters:
     long_option: context
     is_default_param: true
     is_optional: true
-    is_optional: true

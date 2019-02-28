@@ -21,6 +21,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.junit.Test;
+import org.onap.cli.fw.cmd.schema.OnapSchemaRefreshCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 

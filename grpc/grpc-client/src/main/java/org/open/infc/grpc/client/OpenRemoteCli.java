@@ -16,71 +16,66 @@
 
 package org.open.infc.grpc.client;
 
-import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
+import java.util.Map;
 
 import org.open.infc.grpc.Args;
+import org.open.infc.grpc.Input;
+import org.open.infc.grpc.Output;
 import org.open.infc.grpc.Result;
 
 public class OpenRemoteCli {
-    public static final String OCLIP_GRPC_SERVER = "http://localhost:50051";
-    public static final String OCLIP_GRPC_SERVER_ENV = "OCLIP_GRPC_SERVER";
-
-    public static Result run (String[] args) throws Exception {
-        String oclipHome = System.getenv(OCLIP_GRPC_SERVER_ENV);
-
-        if (oclipHome == null) {
-            oclipHome = OCLIP_GRPC_SERVER;
-        }
-
-          if (System.getenv("OPEN_CLI_DEBUG") == null) {
-              Logger globalLogger = Logger.getLogger(OpenInterfaceGrpcClient.class.getName());
-              globalLogger.setLevel(java.util.logging.Level.OFF);
-          } else {
-              System.out.println(OCLIP_GRPC_SERVER_ENV + "=" + oclipHome);
-          }
-
-          if (args.length <= 2 || !args[0].equals("-P")) {
-              System.out.println("Usage: oclip -P <product-name> <command-name> <command-arguments");
-              System.out.println("NOTE: Set environment variable " + OCLIP_GRPC_SERVER_ENV + " to OCLIP gRPC server. By default its " + OCLIP_GRPC_SERVER);
-              System.exit(0);
-          }
-
-          List<String> argList = new ArrayList<>();
-
-          for (String arg: args) {
-              argList.add(arg);
-          }
-
-          //-P
-          argList.remove(0);
-
-          //<product-name>
-          String product = argList.remove(0);
-
-          URL oclipUrl = new URL(oclipHome);
+    /**
+     * Runs CLI remotely
+     * @param host
+     * @param port
+     * @param product
+     * @param cmd
+     * @param args
+     * @return
+     * @throws Exception
+     */
+    public static Result run (String host, int port, String reqId, List <String> args) throws Exception {
           OpenInterfaceGrpcClient client = new OpenInterfaceGrpcClient(
-                  oclipUrl.getHost(), oclipUrl.getPort());
+                  host, port);
 
           try {
-              Result result = client.remoteCli(Args.newBuilder().addAllArgs(argList).setProduct(product).build());
+              Result result = client.remoteCli(Args.newBuilder().setRequestId(reqId).addAllArgs(args).build());
               return result;
           } finally {
             client.shutdown();
           }
     }
 
+    /**
+     * Runs commands as remote procedure call :)
+     * @param host
+     * @param port
+     * @param product
+     * @param action
+     * @param reqId
+     * @param params
+     * @return
+     * @throws Exception
+     */
+    public static Output invoke (String host, int port, String product, String profile, String action, String reqId, Map <String, String> params) throws Exception {
+        OpenInterfaceGrpcClient client = new OpenInterfaceGrpcClient(
+                host, port);
 
-    public static void main(String[] args) throws Exception {
-        int exitCode = 1;
         try {
-            Result result = OpenRemoteCli.run(args);
-            System.out.println(result.getOutput());
-            exitCode = result.getExitCode();
+
+            Map <String, String> options = new HashMap<>();
+            options.put("product", product);
+            if (profile != null && !profile.isEmpty())
+                options.put("profile", profile);
+            params.put("format", "json");
+            Input input = Input.newBuilder().setAction(action).setRequestId(reqId).putAllOptions(options).putAllParams(params).build();
+
+            Output output = client.invoke(input);
+            return output;
         } finally {
-            System.exit(exitCode);
-          }
+          client.shutdown();
+        }
     }
 }

@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-package org.onap.cli.fw.cmd;
+package org.onap.cli.fw.cmd.schema;
 
 import java.util.List;
 
+import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 
 /**
- * Refresh external schema.
+ * List available schemas.
  *
  */
 @OnapCommandSchema(schema = "schema-list.yaml")
@@ -34,21 +35,29 @@ public class OnapSchemaListCommand extends OnapCommand {
     protected void run() throws OnapCommandException {
 
         String product = getParametersMap().get("product").getValue().toString();
+        String service = getParametersMap().get("service").getValue().toString();
 
         List<OnapCommandSchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(true);
-        int i = 0;
         for (OnapCommandSchemaInfo schema :  schemas) {
             if (schema.isIgnore()) {
                 continue;
             }
 
             if (schema.getProduct().equalsIgnoreCase(product)) {
-                i++;
-
-                this.getResult().getRecordsMap().get("sr.no").getValues().add(String.valueOf(i));
+                if (service.length() > 0 && !service.equalsIgnoreCase(schema.getService())) {
+                    continue;
+                }
                 this.getResult().getRecordsMap().get("command").getValues().add(schema.getCmdName());
                 this.getResult().getRecordsMap().get("schema").getValues().add(schema.getSchemaName());
+                this.getResult().getRecordsMap().get("service").getValues().add(schema.getService());
                 this.getResult().getRecordsMap().get("ocs-version").getValues().add(schema.getVersion());
+                this.getResult().getRecordsMap().get("enabled").getValues().add("" + !Boolean.parseBoolean(schema.getIgnore()));
+
+                String rpc = "";
+                if (schema.isRpc()) {
+                    rpc = schema.getRpcHost() + ":" + schema.getRpcPort();
+                }
+                this.getResult().getRecordsMap().get("rpc").getValues().add(rpc);
 
                 this.getResult().getRecordsMap().get("type").getValues().add(schema.getSchemaProfile());
             }
