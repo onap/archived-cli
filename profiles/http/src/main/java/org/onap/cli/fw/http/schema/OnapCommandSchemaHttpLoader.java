@@ -36,6 +36,7 @@ import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.http.auth.OnapCommandHttpService;
 import org.onap.cli.fw.http.cmd.OnapHttpCommand;
 import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
+import org.onap.cli.fw.http.connect.HttpInput;
 import org.onap.cli.fw.http.error.OnapCommandHttpInvalidResultMap;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
@@ -127,7 +128,27 @@ public class OnapCommandSchemaHttpLoader {
                                             break;
                                         case OnapCommandHttpConstants.BODY:
                                             Object body = map.get(key2);
-                                            cmd.getInput().setBody(body.toString());
+
+                                            if (body instanceof String) {
+                                                cmd.getInput().setBody(body.toString());
+                                            } else {
+                                                //check for multipart
+                                                Map <String, Object> multipartBody = (Map<String, Object>) body;
+                                                List <Object> multiparts = (List<Object>) multipartBody.get(OnapCommandHttpConstants.MULTIPART);
+
+                                                for (Object part: multiparts ) {
+                                                    HttpInput.Part partO = new HttpInput.Part();
+                                                    Map<String, String> partMap = (Map<String, String>) part;
+                                                    partO.setName((String) partMap.get("name"));
+                                                    partO.setContent((String)partMap.get("content"));
+                                                    if (partMap.get("type") != null && ((String)partMap.get("type")).equalsIgnoreCase("file")) {
+                                                        partO.setBinary(true);
+                                                    }
+
+                                                    cmd.getInput().getMultiparts().add(partO);
+                                                }
+                                            }
+
                                             break;
                                         case OnapCommandHttpConstants.HEADERS:
                                             Map<String, String> head = (Map<String, String>) map.get(key2);

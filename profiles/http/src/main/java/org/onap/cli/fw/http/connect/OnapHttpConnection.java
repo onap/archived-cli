@@ -56,6 +56,7 @@ import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClients;
@@ -292,7 +293,7 @@ public class OnapHttpConnection {
         HttpRequestBase requestBase = null;
         if ("post".equals(input.getMethod())) {
             HttpPost httpPost = new HttpPost();
-            if (input.isBinaryData()) {
+            if (input.isBinaryData() || input.getMultiparts().size() > 0) {
                 httpPost.setEntity(getMultipartEntity(input));
             } else {
                 httpPost.setEntity(this.getStringEntity(input));
@@ -365,13 +366,31 @@ public class OnapHttpConnection {
     }
 
     private HttpEntity getMultipartEntity(HttpInput input) {
-        String fileTag = input.getMultipartEntityName() != "" ? input.getMultipartEntityName() : "file";
-        File file = new File(input.getBody().trim());
-        HttpEntity multipartEntity = MultipartEntityBuilder
-                .create()
-                .addBinaryBody(fileTag, file, ContentType.create("application/octet-stream"), file.getName())
-                .build();
-        return multipartEntity;
+        if (input.getMultiparts().size() > 0) {
+            MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
+            for (HttpInput.Part part: input.getMultiparts()) {
+                if (part.isBinary()) {
+                     File file = new File(part.getContent());
+                     entityBuilder.addBinaryBody(
+                            part.getName(),
+                            file,
+                            ContentType.APPLICATION_OCTET_STREAM,
+                            file.getName());
+                } else {
+                    entityBuilder.addTextBody(part.getName(), part.getContent(), ContentType.APPLICATION_JSON);
+                }
+            }
+
+            return entityBuilder.build();
+        } else {
+            String fileTag = input.getMultipartEntityName() != "" ? input.getMultipartEntityName() : "file";
+            File file = new File(input.getBody().trim());
+            HttpEntity multipartEntity = MultipartEntityBuilder
+                    .create()
+                    .addBinaryBody(fileTag, file, ContentType.create("application/octet-stream"), file.getName())
+                    .build();
+            return multipartEntity;
+        }
     }
 
     @NotThreadSafe

@@ -66,6 +66,7 @@ public class OnapCommandHttpConstants {
     public static final String RESULT_MAP = "result_map";
     public static final String SAMPLE_RESPONSE = "sample_response";
     public static final String MULTIPART_ENTITY_NAME = "multipart_entity_name";
+    public static final String MULTIPART = "multipart";
     public static final String HTTP_SECTION_EMPTY = "Http Section cann't be null or empty";
     public static final String HTTP_BODY_SECTION_EMPTY = "http body section under 'request:' cann't be null or empty";
     public static final String HTTP_BODY_FAILED_PARSING = "The http body json is failed to parse";

@@ -16,7 +16,9 @@
 
 package org.onap.cli.fw.http.connect;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,6 +41,32 @@ public class HttpInput {
     private Map<String, String> reqCookies = new HashMap<>();
 
     private Map<String, String> context = new HashMap<>();
+
+    private List<Part> multiparts = new ArrayList<>();
+
+    public static class Part {
+        private String name;
+        private String content;
+        private boolean binary;
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+        public String getContent() {
+            return content;
+        }
+        public void setContent(String content) {
+            this.content = content;
+        }
+        public boolean isBinary() {
+            return binary;
+        }
+        public void setBinary(boolean binary) {
+            this.binary = binary;
+        }
+    }
 
     private boolean binaryData;
 
@@ -141,5 +169,13 @@ public class HttpInput {
                 + this.getReqQueries() + "\nRequest Body: " + this.getBody() + "\nRequest Headers: "
                 + this.getReqHeaders().toString() + "\nRequest Cookies: " + this.getReqCookies().toString()
                 + "\nbinaryData=" + this.binaryData + "\nContext=" + this.context;
+    }
+
+    public List<Part> getMultiparts() {
+        return multiparts;
+    }
+
+    public void setMultiparts(List<Part> multiparts) {
+        this.multiparts = multiparts;
     }
 }

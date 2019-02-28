@@ -75,6 +75,14 @@ public class OnapCommandHttpUtils {
         }
         inp.setMultipartEntityName(input.getMultipartEntityName());
         inp.setBody(OnapCommandUtils.replaceLineFromInputParameters(input.getBody(), params));
+
+        if (input.getMultiparts().size() > 0) {
+            for (HttpInput.Part part: input.getMultiparts()) {
+                part.setContent(OnapCommandUtils.replaceLineFromInputParameters(part.getContent(), params));
+            }
+        }
+        inp.setMultiparts(input.getMultiparts());
+
         inp.setUri(OnapCommandUtils.replaceLineFromInputParameters(input.getUri(), params));
         inp.setMethod(input.getMethod().toLowerCase());
         for (String h : input.getReqHeaders().keySet()) {
