@@ -13,22 +13,3 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-
-results:
-   direction: portrait
-   attributes:
-     - name: output
-       description: command output
-       scope: long
-       type: string
-       is_default_attr: true
-     - name: error
-       description: command error
-       scope: short
-       type: string
-       is_default_attr: true
-     - name: exitCode
-       description: command exit code
-       scope: short
-       type: string
-       is_default_attr: true
