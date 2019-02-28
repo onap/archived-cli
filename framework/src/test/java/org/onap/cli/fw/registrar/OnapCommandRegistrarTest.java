@@ -89,27 +89,6 @@ public class OnapCommandRegistrarTest {
     }
 
     @Test
-    public void testProfile() throws OnapCommandException {
-        try {
-            OnapCommandRegistrar.getRegistrar().setProfile("test234", new ArrayList<String>(), new ArrayList<String>());
-            OnapCommandRegistrar.getRegistrar().addParamCache("a", "b");
-            OnapCommandRegistrar.getRegistrar().getParamCache();
-            OnapCommandRegistrar.getRegistrar().removeParamCache("a");
-            OnapCommandRegistrar.getRegistrar().setInteractiveMode(false);
-            assertTrue(!OnapCommandRegistrar.getRegistrar().isInteractiveMode());
-            OnapCommandRegistrar.getRegistrar().setEnabledProductVersion("open-cli");
-            assertEquals("open-cli", OnapCommandRegistrar.getRegistrar().getEnabledProductVersion());
-            OnapCommandRegistrar.getRegistrar().getAvailableProductVersions();
-            assertTrue(
-                OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion().contains("sample-test"));
-            assertTrue(OnapCommandRegistrar.getRegistrar().listCommandInfo().size() > 2);
-        } catch (Exception e) {
-            fail("failed to test the profile");
-        }
-    }
-
-
-    @Test
     public void test() throws OnapCommandException {
         OnapCommandRegistrar registrar = OnapCommandRegistrar.getRegistrar();
         OnapCommand cmd = registrar.get("sample-test");

@@ -13,44 +13,23 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: schema-validate
-description: OCLIP command to validate schema
+name: product-list
+description: List available products registered in OCLIP
 
 info:
   product: open-cli
-  service: schema
+  service: product
   type: cmd
   author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
-
-parameters:
-  - name: schema-location
-    type: url
-    description: Schema file location
-    short_option: l
-    long_option: schema-location
-    is_optional: false
-  - name: internal-schema
-    type: bool
-    description: Validate existing schema file
-    short_option: i
-    long_option: internal-schema
-    is_optional: false
-  - name: ocs-version
-    type: string
-    description: OCS version
-    short_option: b
-    long_option: ocs-version
-    is_optional: true
-    default_value: 1.0
 
 results:
   direction: landscape
   attributes:
-    - name: sl-no
-      description: Serial Number of error
+    - name: product
+      description: Product name
       scope: short
       type: string
-    - name: error
-      description: Schema validation error
+    - name: description
+      description: Product description
       scope: short
       type: string

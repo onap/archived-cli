@@ -16,14 +16,19 @@
 
 package org.onap.cli.fw.utils;
 
-import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_DIRECTORY;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_JSON_PATTERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.ATTRIBUTES;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DESCRIPTION;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DISCOVERY_FILE;
 import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
 import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SAMPLE_VERSION;
 import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
+import static org.onap.cli.fw.conf.OnapCommandConstants.PARAMETERS;
+import static org.onap.cli.fw.conf.OnapCommandConstants.RESULTS;
 import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_DIRECTORY;
 import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_PATH_PATERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DEFAULT_SCHEMA_PATH_PATERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DEAFULT_INPUT_PARAMETERS_NAME;
+import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_PARAM;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +51,7 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInstantiationFailed;
 import org.onap.cli.fw.error.OnapCommandInvalidSample;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -78,6 +84,10 @@ public class OnapCommandDiscoveryUtils {
                 }
             }
         }
+
+        if (schemaInfo == null)
+             throw new OnapCommandNotFound(cmd, version);
+
         return schemaInfo;
     }
 
@@ -96,22 +106,55 @@ public class OnapCommandDiscoveryUtils {
                 || !OnapCommandDiscoveryUtils.isAlreadyDiscovered()) {
             schemas = OnapCommandDiscoveryUtils.discoverSchemas();
             if (!schemas.isEmpty()) {
+                //merge the existing RPC schema with discovered ones
+                List<OnapCommandSchemaInfo> schemasExisting = OnapCommandDiscoveryUtils.loadSchemas();
+
+                Map<String, OnapCommandSchemaInfo> rpcCommands = new HashMap<>();
+                for (OnapCommandSchemaInfo info: schemasExisting) {
+                    if (info.isRpc()) {
+                        rpcCommands.put(info.getProduct() + ":" + info.getCmdName(), info);
+                    }
+                }
+
+                //mrkanag: Enable clustering for keeping command in more than one OCLIP engine
+                //Remove if already an same command exists with RPC
+                for (OnapCommandSchemaInfo info: schemas) {
+                    OnapCommandSchemaInfo infoExisting = rpcCommands.get(info.getProduct() + ":" + info.getCmdName());
+                    if (infoExisting != null) {
+                        rpcCommands.remove(info.getProduct() + ":" + info.getCmdName());
+                    }
+                }
+
+                //Add all RPC ones
+                schemas.addAll(rpcCommands.values());
+
                 OnapCommandDiscoveryUtils.persistSchemaInfo(schemas);
             }
         } else {
-            try {
-                Resource resource = OnapCommandDiscoveryUtils.findResource(DISCOVERY_FILE,
-                        DATA_PATH_JSON_PATTERN);
-                if (resource != null) {
-                    File file = new File(resource.getURI().getPath());
-                    ObjectMapper mapper = new ObjectMapper();
-                    OnapCommandSchemaInfo[] list = mapper.readValue(file, OnapCommandSchemaInfo[].class);
-                    schemas.addAll(Arrays.asList(list));
-                }
-            } catch (IOException e) {
-                throw new OnapCommandDiscoveryFailed(DATA_DIRECTORY,
-                        DISCOVERY_FILE, e);
-            }
+            schemas = OnapCommandDiscoveryUtils.loadSchemas();
+        }
+
+        return schemas;
+    }
+
+    public static String getDataStorePath() {
+        return OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_DATA_DIR);
+    }
+
+    public static List<OnapCommandSchemaInfo> loadSchemas() throws OnapCommandException {
+        List<OnapCommandSchemaInfo> schemas = new ArrayList<>();
+
+        if (!OnapCommandDiscoveryUtils.isAlreadyDiscovered()) return schemas;
+
+        String dataDir = OnapCommandDiscoveryUtils.getDataStorePath();
+        try {
+            File file = new File(dataDir + File.separator + DISCOVERY_FILE);
+            ObjectMapper mapper = new ObjectMapper();
+            OnapCommandSchemaInfo[] list = mapper.readValue(file, OnapCommandSchemaInfo[].class);
+            schemas.addAll(Arrays.asList(list));
+        } catch (IOException e) {
+            throw new OnapCommandDiscoveryFailed(dataDir,
+                    DISCOVERY_FILE, e);
         }
 
         return schemas;
@@ -125,19 +168,8 @@ public class OnapCommandDiscoveryUtils {
      *             exception
      */
     public static boolean isAlreadyDiscovered() throws OnapCommandDiscoveryFailed {
-        Resource resource = null;
-        try {
-            resource = OnapCommandDiscoveryUtils.findResource(DISCOVERY_FILE,
-                    DATA_PATH_JSON_PATTERN);
-            if (resource != null) {
-                return true;
-            }
-        } catch (IOException e) {
-            throw new OnapCommandDiscoveryFailed(DATA_DIRECTORY,
-                    DISCOVERY_FILE, e);
-        }
-
-        return false;
+        String dataDir = OnapCommandDiscoveryUtils.getDataStorePath();
+        return new File(dataDir + File.separator + DISCOVERY_FILE).exists();
     }
 
     /**
@@ -150,16 +182,16 @@ public class OnapCommandDiscoveryUtils {
      */
     public static void persistSchemaInfo(List<OnapCommandSchemaInfo> schemas) throws OnapCommandDiscoveryFailed {
         if (schemas != null) {
+            String dataDir = OnapCommandDiscoveryUtils.getDataStorePath();
+
             try {
-                Resource[] resources = OnapCommandDiscoveryUtils.findResources(DATA_DIRECTORY);
-                if (resources != null && resources.length == 1) {
-                    String path = resources[0].getURI().getPath();
-                    File file = new File(path + File.separator + DISCOVERY_FILE);
-                    ObjectMapper mapper = new ObjectMapper();
-                    mapper.writerWithDefaultPrettyPrinter().writeValue(file, schemas);
-                }
+                FileUtils.forceMkdir(new File(dataDir));
+
+                File file = new File(dataDir + File.separator + DISCOVERY_FILE);
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.writerWithDefaultPrettyPrinter().writeValue(file, schemas);
             } catch (IOException e1) {
-                throw new OnapCommandDiscoveryFailed(DATA_DIRECTORY,
+                throw new OnapCommandDiscoveryFailed(dataDir,
                         DISCOVERY_FILE, e1);
             }
         }
@@ -244,11 +276,44 @@ public class OnapCommandDiscoveryUtils {
     public static List<OnapCommandSchemaInfo> discoverSchemas() throws OnapCommandException {
         List<OnapCommandSchemaInfo> extSchemas = new ArrayList<>();
         try {
+            //collect default input parameters for every profile
+            Resource[] deafultRres = findResources(DEFAULT_SCHEMA_PATH_PATERN);
+            Map <String, List<Object>> defaultInputs = new HashMap<>();
+
+            if (deafultRres != null && deafultRres.length > 0) {
+                Map<String, ?> deafultResourceMap;
+
+                for (Resource resource : deafultRres) {
+                    try {
+                        deafultResourceMap = loadYaml(resource);
+                    } catch (OnapCommandException e) {
+                        OnapCommandUtils.log.error("Ignores invalid schema " + resource.getURI().toString(), e);
+                        continue;
+                    }
+
+                    if (deafultResourceMap != null && deafultResourceMap.size() > 0) {
+                        //default_input_parameters_http.yaml
+                        String profileName = resource.getFilename().substring(
+                                DEAFULT_INPUT_PARAMETERS_NAME.length() + 1,
+                                resource.getFilename().indexOf("."));
+                        if (deafultResourceMap.containsKey(PARAMETERS)) {
+                            List<Object> params = new ArrayList<>();
+                            for (Map<String, ?> p: (List<Map<String, ?>>) deafultResourceMap.get(PARAMETERS)) {
+                                if (p.keySet().contains(IS_DEFAULT_PARAM) && (Boolean) p.get(IS_DEFAULT_PARAM)) {
+                                    params.add(p);
+                                }
+                            }
+
+                            defaultInputs.put(profileName, params);
+                        }
+                    }
+                }
+            }
+
             Resource[] res = findResources(SCHEMA_PATH_PATERN);
             if (res != null && res.length > 0) {
-                Map<String, ?> resourceMap;
-
                 for (Resource resource : res) {
+                    Map<String, ?> resourceMap;
                     try {
                         resourceMap = loadYaml(resource);
                     } catch (OnapCommandException e) {
@@ -282,6 +347,8 @@ public class OnapCommandDiscoveryUtils {
                         schema.setSchemaName(resource.getFilename());
                         schema.setCmdName((String) resourceMap.get(NAME));
 
+                        schema.setDescription((String) resourceMap.get(DESCRIPTION));
+
                         Map<String, ?> infoMap = (Map<String, ?>) resourceMap.get(OnapCommandConstants.INFO);
                         if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_TYPE) != null) {
                             schema.setType(infoMap.get(OnapCommandConstants.INFO_TYPE).toString());
@@ -299,7 +366,27 @@ public class OnapCommandDiscoveryUtils {
                             schema.setState(infoMap.get(OnapCommandConstants.INFO_STATE).toString());
                         }
 
+                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_SERVICE) != null) {
+                            schema.setService(infoMap.get(OnapCommandConstants.INFO_SERVICE).toString());
+                        }
+
+                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_AUTHOR) != null) {
+                            schema.setAuthor(infoMap.get(OnapCommandConstants.INFO_AUTHOR).toString());
+                        }
+
+
                         schema.setSchemaProfile(identitySchemaProfileType(resourceMap));
+
+                        if (resourceMap.containsKey(PARAMETERS)) {
+                            schema.setInputs((List<Object>)resourceMap.get(PARAMETERS));
+                            if (defaultInputs.get(schema.getSchemaProfile()) != null) {
+                                schema.getInputs().addAll(defaultInputs.get(schema.getSchemaProfile()));
+                            }
+                        }
+
+                        if (resourceMap.containsKey(RESULTS)) {
+                            schema.setOutputs((List<Object>)((Map<String, Object>)resourceMap.get(RESULTS)).get(ATTRIBUTES));
+                        }
 
                         extSchemas.add(schema);
                     }
@@ -471,3 +558,4 @@ public class OnapCommandDiscoveryUtils {
         return values;
     }
 }
+

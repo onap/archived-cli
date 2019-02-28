@@ -16,18 +16,24 @@
 
 package org.onap.cli.fw.registrar;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.cmd.dummy.OnapCommandDummy;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
-import org.onap.cli.fw.error.OnapCommandInvalidRegistration;
 import org.onap.cli.fw.error.OnapCommandNotFound;
 import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.error.OnapCommandRegistrationProductInfoMissing;
 import org.onap.cli.fw.error.OnapUnsupportedSchemaProfile;
-import org.onap.cli.fw.input.cache.OnapCommandParameterCache;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
 import org.onap.cli.fw.output.OnapCommandResult;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
@@ -35,18 +41,12 @@ import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
+import org.onap.cli.fw.store.OnapCommandProfileStore;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 
 /**
@@ -68,7 +68,11 @@ public class OnapCommandRegistrar {
 
     private boolean isInteractiveMode = false;
 
-    private OnapCommandParameterCache paramCache = OnapCommandParameterCache.getInstance();
+    private String host;
+
+    private int port;
+
+    private OnapCommandProfileStore paramCache = OnapCommandProfileStore.getInstance();
 
     public boolean isInteractiveMode() {
         return isInteractiveMode;
@@ -79,7 +83,11 @@ public class OnapCommandRegistrar {
     }
 
     public Map<String, String> getParamCache() {
-        return paramCache.getParams(this.getEnabledProductVersion());
+        return this.getParamCache(this.getEnabledProductVersion());
+    }
+
+    public Map<String, String> getParamCache(String product) {
+        return paramCache.getParams(product);
     }
 
     public void addParamCache(String paramName, String paramValue) {
@@ -90,7 +98,7 @@ public class OnapCommandRegistrar {
         paramCache.remove(this.getEnabledProductVersion(), paramName);
     }
 
-    public void setProfile(String profileName, List<String> includes, List<String> excludes) {
+    public void setProfile(String profileName, List<String> includes, List<String> excludes) throws OnapCommandException {
         this.paramCache.setProfile(profileName);
 
         for (String profile : includes) {
@@ -145,10 +153,14 @@ public class OnapCommandRegistrar {
     public static OnapCommandRegistrar getRegistrar() throws OnapCommandException {
         if (registrar == null) {
             registrar = new OnapCommandRegistrar();
-            registrar.autoDiscoverSchemas();
+            registrar.autoDiscoverSchemas(true);
         }
 
         return registrar;
+    }
+
+    public void resync() throws OnapCommandException {
+        registrar.autoDiscoverSchemas(false);
     }
 
     /**
@@ -244,8 +256,10 @@ public class OnapCommandRegistrar {
         }
 
         OnapCommand cmd = OnapCommandDiscoveryUtils.loadCommandClass(cls);
-        String schemaName = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version).getSchemaName();
-        cmd.initializeSchema(schemaName);
+
+        OnapCommandSchemaInfo info = OnapCommandDiscoveryUtils.getSchemaInfo(cmdName, version);
+
+        cmd.initializeSchema(info);
 
         return cmd;
     }
@@ -271,8 +285,8 @@ public class OnapCommandRegistrar {
         return map;
     }
 
-    private void autoDiscoverSchemas() throws OnapCommandException {
-        List<OnapCommandSchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(true);
+    private void autoDiscoverSchemas(boolean refresh) throws OnapCommandException {
+        List<OnapCommandSchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(refresh);
 
         Map<String, Class<OnapCommand>> plugins = this.autoDiscoverCommandPlugins();
 
@@ -282,13 +296,16 @@ public class OnapCommandRegistrar {
                 continue;
             }
 
-            //First check if there is an specific plugin exist, otherwise check for profile plugin
-            if (plugins.containsKey(schema.getSchemaName())) {
+            //First check if there is an specific plug-in exist, otherwise check for profile plug-in
+            if (schema.isRpc()) {
+                //proxy the schema by using rpc schema, when the schema is marked with rpc
+                this.register(schema.getCmdName(), schema.getProduct(), plugins.get("schema-rpc.yaml"));
+            } else if (plugins.containsKey(schema.getSchemaName())) {
                 this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaName()));
             } else if (plugins.containsKey(schema.getSchemaProfile())) {
                 this.register(schema.getCmdName(), schema.getProduct(), plugins.get(schema.getSchemaProfile()));
             } else {
-                log.info("Ignoring schema " + schema.getSchemaURI());
+                this.register(schema.getCmdName(), schema.getProduct(), OnapCommandDummy.class);
             }
         }
     }
@@ -394,6 +411,11 @@ public class OnapCommandRegistrar {
                     attr.getValues().add(cmdName);
                 }
 
+                //don't expose system commands for user usage
+                //if (cmd.getInfo().getCommandType().name().equalsIgnoreCase(OnapCommandType.SYSTEM.name())) {
+                //    continue;
+                //}
+
                 attrSrv.getValues().add(cmd.getInfo().getService());
                 attrDesc.getValues().add(cmd.getDescription());
                 attrState.getValues().add(cmd.getInfo().getState().name());
@@ -411,5 +433,21 @@ public class OnapCommandRegistrar {
 
     public List<Map<String, ?>> getTestSuite(String cmd) throws OnapCommandException {
         return OnapCommandDiscoveryUtils.createTestSuite(cmd, enabledProductVersion);
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 }

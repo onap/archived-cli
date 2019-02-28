@@ -29,20 +29,25 @@ parameters:
     short_option: l
     long_option: product
     is_optional: false
-
+  - name: service
+    type: string
+    description: For a given service in a product
+    short_option: n
+    long_option: service
+    is_optional: true
 results:
   direction: landscape
   attributes:
-    - name: sr.no
-      description: Serial Number
-      scope: short
-      type: string
     - name: command
       description: Command name
       scope: short
       type: string
     - name: schema
       description: Schema name
+      scope: long
+      type: string
+    - name: service
+      description: Service name
       scope: short
       type: string
     - name: ocs-version
@@ -51,5 +56,13 @@ results:
       type: string
     - name: type
       description: Command type
+      scope: long
+      type: string
+    - name: enabled
+      description: Command is enabled or not
+      scope: short
+      type: string
+    - name: rpc
+      description: Command is executed remotely
       scope: short
       type: string

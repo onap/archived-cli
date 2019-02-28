@@ -1,6 +1,7 @@
 bin/
 target/
 coverage-report/
+data/
 .project
 .settings
 .classpath

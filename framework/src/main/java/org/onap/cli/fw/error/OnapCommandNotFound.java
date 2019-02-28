@@ -27,4 +27,8 @@ public class OnapCommandNotFound extends OnapCommandException {
     public OnapCommandNotFound(String cmdName, String version) {
         super("0x6003", "Command " + cmdName + " is not available for product version " + version);
     }
+
+    public OnapCommandNotFound(String cmdName, String version, String service) {
+        super("0x6003", "Command " + cmdName + " is not available for product version " + version + "under service " + service);
+    }
 }

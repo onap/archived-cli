@@ -107,33 +107,34 @@ public class OnapCommandSchemaLoader {
      * @throws OnapCommandSchemaNotFound       schema not found
      */
     public static Map<String, ?> validateSchemaVersion(String schemaName, String version) throws OnapCommandException {
-        InputStream inputStream = OnapCommandUtils.class.getClassLoader().getResourceAsStream(schemaName);
-
+        Map<String, ?> values = null;
         try {
+            InputStream inputStream = OnapCommandUtils.class.getClassLoader().getResourceAsStream(schemaName);
+
             Resource resource = OnapCommandDiscoveryUtils.findResource(schemaName, SCHEMA_PATH_PATERN);
 
             if (resource != null) {
                 inputStream = resource.getInputStream();
             }
 
+            if (inputStream == null) {
+                inputStream = loadSchemaFromFile(schemaName);
+            }
+
+            values = loadSchema(inputStream, schemaName);
+            String schemaVersion = "";
+            if (values.keySet().contains(OPEN_CLI_SCHEMA_VERSION)) {
+                Object obj = values.get(OPEN_CLI_SCHEMA_VERSION);
+                schemaVersion = obj.toString();
+            }
+
+            if (!version.equals(schemaVersion)) {
+                throw new OnapCommandInvalidSchemaVersion(schemaVersion);
+            }
+            inputStream.close();
         } catch (IOException e) {
             throw new OnapCommandSchemaNotFound(schemaName, e);
         }
-        if (inputStream == null) {
-            inputStream = loadSchemaFromFile(schemaName);
-        }
-
-        Map<String, ?> values = loadSchema(inputStream, schemaName);
-        String schemaVersion = "";
-        if (values.keySet().contains(OPEN_CLI_SCHEMA_VERSION)) {
-            Object obj = values.get(OPEN_CLI_SCHEMA_VERSION);
-            schemaVersion = obj.toString();
-        }
-
-        if (!version.equals(schemaVersion)) {
-            throw new OnapCommandInvalidSchemaVersion(schemaVersion);
-        }
-
         return values;
     }
 

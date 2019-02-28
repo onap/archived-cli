@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package org.onap.cli.fw.cmd;
+package org.onap.cli.fw.cmd.schema;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameter;
@@ -67,11 +68,7 @@ public class OnapSchemaValidateCommand extends OnapCommand {
         }
 
         List<String> error = cmd.initializeSchema(location, true);
-        List<String> slNumber = new ArrayList<>();
-        for (int i = 1; i <= error.size(); i++) {
-            slNumber.add(String.valueOf(i));
-        }
-        this.getResult().getRecordsMap().get("sl-no").setValues(slNumber);
+
         this.getResult().getRecordsMap().get("error").setValues(error);
     }
 

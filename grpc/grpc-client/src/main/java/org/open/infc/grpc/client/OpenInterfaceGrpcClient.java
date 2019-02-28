@@ -18,8 +18,8 @@
 package org.open.infc.grpc.client;
 
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.open.infc.grpc.Args;
 import org.open.infc.grpc.Input;
@@ -32,7 +32,7 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 
 public class OpenInterfaceGrpcClient {
-      private static final Logger logger = Logger.getLogger(OpenInterfaceGrpcClient.class.getName());
+      private static final Logger logger = LoggerFactory.getLogger(OpenInterfaceGrpcClient.class.getName());
 
       private final ManagedChannel channel;
       private final OpenInterfaceGrpc.OpenInterfaceBlockingStub blockingStub;
@@ -61,7 +61,7 @@ public class OpenInterfaceGrpcClient {
         try {
             result = blockingStub.invoke(input);
         } catch (StatusRuntimeException e) {
-          logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+          logger.warn("RPC failed: {0}", e.getStatus());
         }
         logger.info("Output: " + result.toString());
         return result;
@@ -74,7 +74,7 @@ public class OpenInterfaceGrpcClient {
         try {
             result = blockingStub.remoteCli(args);
         } catch (StatusRuntimeException e) {
-          logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+          logger.warn("RPC failed: {0}", e.getStatus());
         }
 
         logger.info("Result: " + result.toString());

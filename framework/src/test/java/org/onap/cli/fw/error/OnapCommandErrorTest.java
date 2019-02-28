@@ -231,11 +231,11 @@ public class OnapCommandErrorTest {
 
     @Test
     public void oclipProfileLoadTest() {
-        OnapCommandLoadProfileFailed failed = new OnapCommandLoadProfileFailed("error");
+        OnapCommandProfileLoadFailed failed = new OnapCommandProfileLoadFailed("error");
 
         assertEquals("0xc001::Failed to load profile details, error", failed.getMessage());
 
-        failed = new OnapCommandLoadProfileFailed(new Exception("error"));
+        failed = new OnapCommandProfileLoadFailed(new Exception("error"));
 
         assertEquals("0xc001::Failed to load profile details, error", failed.getMessage());
     }

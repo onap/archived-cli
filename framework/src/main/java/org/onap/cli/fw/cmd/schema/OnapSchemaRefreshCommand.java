@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package org.onap.cli.fw.cmd;
+package org.onap.cli.fw.cmd.schema;
 
 import java.util.List;
 
+import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
@@ -34,19 +35,16 @@ public class OnapSchemaRefreshCommand extends OnapCommand {
     protected void run() throws OnapCommandException {
 
         List<OnapCommandSchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(true);
-        int i = 0;
         for (OnapCommandSchemaInfo schema :  schemas) {
-            if (schema.isIgnore()) {
-                continue;
-            }
+            //ignore those RPC schemas, schema-list would provide this information
+            if (schema.isRpc()) continue;
 
-            i++;
-            this.getResult().getRecordsMap().get("sr.no").getValues().add(String.valueOf(i));
             this.getResult().getRecordsMap().get("command").getValues().add(schema.getCmdName());
             this.getResult().getRecordsMap().get("schema").getValues().add(schema.getSchemaName());
             this.getResult().getRecordsMap().get("ocs-version").getValues().add(schema.getVersion());
             this.getResult().getRecordsMap().get("product").getValues().add(schema.getProduct());
             this.getResult().getRecordsMap().get("type").getValues().add(schema.getSchemaProfile());
+            this.getResult().getRecordsMap().get("enabled").getValues().add("" + !Boolean.parseBoolean(schema.getIgnore()));
         }
     }
 

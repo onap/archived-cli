@@ -17,18 +17,13 @@
 package org.onap.cli.fw.input;
 
 import org.junit.Test;
-import org.onap.cli.fw.input.cache.OnapCommandParameterCache;
+import org.onap.cli.fw.store.OnapCommandProfileStore;
 
 public class OnapCommandParameterCacheTest {
 
     @Test
     public void test() {
-        OnapCommandParameterCache cache = OnapCommandParameterCache.getInstance();
-
-        cache.add("1.0", "a", "b");
-        cache.remove("1.0", "a");
-        cache.setProfile("test123");
-        cache.getParams("1.0");
+        OnapCommandProfileStore cache = OnapCommandProfileStore.getInstance();
     }
 
 

@@ -16,8 +16,15 @@
 
 package org.onap.cli.main;
 
-import jline.TerminalFactory;
-import jline.console.ConsoleReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
+
 import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -33,25 +40,22 @@ import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
+import org.onap.cli.fw.store.OnapCommandExecutionStore;
+import org.onap.cli.fw.store.OnapCommandExecutionStore.ExecutionStoreContext;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliArgsParser;
 import org.onap.cli.sample.yaml.SampleYamlGenerator;
+import org.open.infc.grpc.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
+import jline.TerminalFactory;
+import jline.console.ConsoleReader;
 
 /**
- * Oclip Command Line Interface (CLI).
+ * OCLIP Command Line Interface (CLI).
  *
  */
 public class OnapCli {
@@ -60,17 +64,30 @@ public class OnapCli {
 
     private List<String> args = new ArrayList<>();
 
+    private List<String> argsParamFile = new ArrayList<>();
+
     private String product = null;
+
+    private String profile = null;
+
+    private String paramFile = null;
+
+    private String rpcHost = null;
+
+    private String rpcPort = null;
+
+    private boolean printHelp = false;
+
+    private boolean printVersion = false;
+
+    private String requestId = null;
+
+    private String cmdName = null;
 
     private int exitCode = -1;
 
     public OnapCli(String[] args) {
         this.setArgs(args);
-    }
-
-    public OnapCli(String product, String[] args) {
-        this(args);
-        this.setProduct(product);
     }
 
     public OnapCli() {
@@ -81,12 +98,55 @@ public class OnapCli {
     }
 
     public void setArgs(String [] args) {
-        this.args.clear();
-        this.args.addAll(Arrays.asList(args));
-    }
+        //--help --version --requestId --rpc-host xxx --rpc-port xxx --product xxx --profile xxx --param-file xxx CMD blah blah
 
-    public void setProduct(String product) {
-         this.product = product;
+        int cmdIdx = 0; //index of CMD
+        while(args.length > cmdIdx) {
+            //no options given, directly command name invoked
+            if (!args[cmdIdx].startsWith("-")) {
+                break;
+            }
+
+            if (args[cmdIdx].equals(OnapCommandParameter.printLongOption(OnapCommandConstants.RPC_PRODUCT))) {
+                this.product = args[++cmdIdx];
+                cmdIdx++; //move to next option
+            } else if (args[cmdIdx].equals(OnapCommandParameter.printLongOption(OnapCommandConstants.RPC_PROFILE))) {
+                this.profile = args[++cmdIdx];
+                cmdIdx++; //move to next option
+            } else if (args[cmdIdx].equals(OnapCommandParameter.printLongOption(OnapCommandConstants.RPC_HOST))) {
+                this.rpcHost = args[++cmdIdx];
+                cmdIdx++; //move to next option
+            } else if (args[cmdIdx].equals(OnapCommandParameter.printLongOption(OnapCommandConstants.RPC_PORT))) {
+                this.rpcPort = args[++cmdIdx];
+                cmdIdx++; //move to next option
+            } else if (args[cmdIdx].equals(OnapCommandParameter.printLongOption(OnapCliConstants.PARAM_PARAM_FILE_LONG))) {
+                this.paramFile = args[++cmdIdx];
+                cmdIdx++; //move to next option
+            } else if (args[cmdIdx].equals(OnapCommandParameter.printLongOption(OnapCommandConstants.RPC_REQID))) {
+                this.requestId = args[++cmdIdx];
+                cmdIdx++; //move to next option
+            } else if (args[cmdIdx].equals(OnapCommandParameter.printLongOption(OnapCliConstants.PARAM_HELP_LOGN)) ||
+                    args[cmdIdx].equals(OnapCommandParameter.printShortOption(OnapCliConstants.PARAM_HELP_SHORT))) {
+                this.printHelp = true;
+                cmdIdx++; //move to next option
+            } else if (args[cmdIdx].equals(OnapCommandParameter.printLongOption(OnapCliConstants.PARAM_VERSION_LONG)) ||
+                    args[cmdIdx].equals(OnapCommandParameter.printShortOption(OnapCliConstants.PARAM_VERSION_SHORT))) {
+                this.printVersion = true;
+                cmdIdx++; //move to next option
+            }
+        }
+
+        if (args.length > cmdIdx) {
+            this.cmdName = args[cmdIdx];
+            cmdIdx ++;
+        }
+
+        this.args.clear();
+
+        //add all args starting from the command name
+        for (int i=cmdIdx; i<args.length; i++) {
+            this.args.add(args[i]);
+        }
     }
 
     private void exitSuccessfully() {
@@ -123,8 +183,7 @@ public class OnapCli {
      */
     public void handleHelp() {
         try {
-            if ((args.size() == 1) && (this.getLongOption(OnapCliConstants.PARAM_HELP_LOGN).equals(args.get(0))
-                    || this.getShortOption(OnapCliConstants.PARAM_HELP_SHORT).equals(args.get(0)))) {
+            if (this.printHelp) {
                 this.print(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("oclip-readme.txt")));
                 String help = OnapCommandRegistrar.getRegistrar().getHelp();
                 this.print(help);
@@ -141,8 +200,7 @@ public class OnapCli {
      */
     public void handleVersion() {
         try {
-            if ((args.size() == 1) && (this.getLongOption(OnapCliConstants.PARAM_VERSION_LONG).equals(args.get(0))
-                    || this.getShortOption(OnapCliConstants.PARAM_VERSION_SHORT).equals(args.get(0)))) {
+            if (this.printVersion) {
                 String version = OnapCommandRegistrar.getRegistrar().getVersion();
                 this.print(version);
                 this.exitSuccessfully();
@@ -155,20 +213,15 @@ public class OnapCli {
 
 
     /**
-     * Handles profile. --profile or -c
+     * Handles profile. --profile
      */
     public void handleProfile() {
         try {
-            if ((this.args.size() >= 2) && (this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG).equals(this.args.get(0))
-                    || this.getShortOption(OnapCliConstants.PARAM_PROFILE_SHORT).equals(this.args.get(0)))) {
-
+            if (this.profile != null) {
                 OnapCommandRegistrar.getRegistrar().setProfile(
-                        this.args.get(1),
+                        this.profile,
                         new ArrayList<String>(),
                         new ArrayList<String>());
-                //Make space of interactive mode/command mode
-                this.args.remove(0); //--profile or -c
-                this.args.remove(0); //profile name
             }
         } catch (Exception e) {
             this.print(e);
@@ -177,20 +230,11 @@ public class OnapCli {
     }
 
     /**
-     * Handles batch command. --param-file or -p
-     * CAUTION: This option should be passed after --profile always.
+     * Handles batch command. --param-file
      */
     public void handleBatchCommand() {
         try {
-            if ((this.args.size() >= 3) && (this.getLongOption(OnapCliConstants.PARAM_PARAM_FILE_LONG).equals(this.args.get(0))
-                    || this.getShortOption(OnapCliConstants.PARAM_PARAM_FILE_SHORT).equals(this.args.get(0)))) {
-
-                String paramFilePath = this.args.get(1);
-
-                //Make space of interactive mode/command mode
-                this.args.remove(0); //--param-file or -p
-                this.args.remove(0); //file name
-
+            if (this.paramFile != null) {
                 //Read YAML and loop thru it
                 // one
                 // - param-long-option-1: value
@@ -203,28 +247,24 @@ public class OnapCli {
                 // - positional-arg1
                 // - positional-arg2
                 try {
-                    Map<String, Object> values = (Map<String, Object>) OnapCommandDiscoveryUtils.loadYaml(paramFilePath);
+                    Map<String, Object> values = (Map<String, Object>) OnapCommandDiscoveryUtils.loadYaml(this.paramFile);
 
                     for (Entry<String, Object> cmdsParam: values.entrySet()) {
-                        List<String> args = new ArrayList<>();
-                        args.add(this.args.get(0));
                         for (Object param: (List)cmdsParam.getValue()) {
                             if (param instanceof Map) { //optional args
                                 Map <String, String> paramMap = (Map<String, String>) param;
                                 String paramName = paramMap.keySet().iterator().next();
                                 Object paramValue = paramMap.get(paramName);
-                                args.add("--" + paramName);
-                                args.add(paramValue.toString());
+                                argsParamFile.add(this.getLongOption(paramName));
+                                argsParamFile.add(paramValue.toString());
                             } else { //positional args
-                                args.add(param.toString());
+                                argsParamFile.add(param.toString());
                             }
                         }
-
-                        this.handleCommand(args);
                     }
 
                 } catch (Exception e) { // NOSONAR
-                    this.print("Failed to read param file " + paramFilePath);
+                    this.print("Failed to read param file " + this.paramFile);
                     this.print(e);
                 }
             }
@@ -266,8 +306,12 @@ public class OnapCli {
             sampleFileAtt.getValues().add((String) sampleTest.get(OnapCommandConstants.VERIFY_SAMPLE_FILE_ID));
             sampleIdAtt.getValues().add((String) sampleTest.get(OnapCommandConstants.VERIFY_SAMPLE_ID));
 
-            cmd = OnapCommandRegistrar.getRegistrar().get(args.get(0));
-            OnapCliArgsParser.populateParams(cmd.getParameters(), (List<String>) sampleTest.get(OnapCommandConstants.VERIFY_INPUT));
+            cmd = OnapCommandRegistrar.getRegistrar().get(this.cmdName);
+            List<String> arguments = (List<String>) sampleTest.get(OnapCommandConstants.VERIFY_INPUT);
+            if (arguments.size() > 0 && arguments.get(0).equals(this.cmdName)) {
+                arguments.remove(0);
+            }
+            OnapCliArgsParser.populateParams(cmd.getParameters(), arguments);
             this.print("\n***************Test Command: \n" + sampleTest.get(OnapCommandConstants.VERIFY_INPUT).toString());
 
             cmd.getParametersMap().get(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG).setValue(Boolean.TRUE);
@@ -310,11 +354,12 @@ public class OnapCli {
 
         this.print(testSuiteResult.print());
     }
+
     /**
      * Handles Interactive Mode.
      */
     public void handleInteractive() { // NOSONAR
-        if (args.isEmpty()) {
+        if (this.cmdName == null) {
             ConsoleReader console = null;
             try {
                 OnapCommandRegistrar.getRegistrar().setInteractiveMode(true);
@@ -354,7 +399,7 @@ public class OnapCli {
                         }
 
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
-                        this.args = Arrays.asList(new String [] {this.getLongOption(OnapCliConstants.PARAM_VERSION_LONG)});
+                        this.printVersion = true;
                         handleVersion();
 
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
@@ -363,7 +408,7 @@ public class OnapCli {
                             this.print("Available profiles: ");
                             this.print(OnapCommandRegistrar.getRegistrar().getUserProfiles().toString());
                         } else {
-                            this.args.set(0, this.getLongOption(OnapCliConstants.PARAM_PROFILE_LONG));
+                            this.profile = args.get(1);
                             handleProfile();
                         }
 
@@ -391,7 +436,7 @@ public class OnapCli {
                             continue;
                         }
 
-                        handleCommand(new ArrayList<>());
+                        handleCommand();
                     }
                 }
             } catch (IOException e) { // NOSONAR
@@ -412,14 +457,14 @@ public class OnapCli {
     /**
      * Handles command.
      */
-    public void handleCommand(List<String> params) {
-        OnapCommand cmd;
-        if (!args.isEmpty()) {
+    public void handleCommand() {
+        OnapCommand cmd = null;
+        if (this.cmdName != null) {
             try {
                 if (this.product != null) {
-                    cmd = OnapCommandRegistrar.getRegistrar().get(args.get(0), this.product);
+                    cmd = OnapCommandRegistrar.getRegistrar().get(this.cmdName, this.product);
                 } else {
-                    cmd = OnapCommandRegistrar.getRegistrar().get(args.get(0));
+                    cmd = OnapCommandRegistrar.getRegistrar().get(this.cmdName);
                 }
             } catch (Exception e) {
                 this.print(e);
@@ -427,7 +472,14 @@ public class OnapCli {
                 return;
             }
 
+            ExecutionStoreContext executionStoreContext = null;
+
             try {
+                //Registrar identified this command marked with rpc as true and it will make direct RPC command call...
+                if (cmd.isRpc() && !this.cmdName.equals("schema-rpc")) {
+                    this.handleRpcCommand(cmd);
+                    return;
+                }
 
                 // verify
                 if(args.contains(OnapCommandConstants.VERIFY_LONG_OPTION)
@@ -454,35 +506,74 @@ public class OnapCli {
                 }
 
                 //refer params from profile
-                for (OnapCommandParameter param: cmd.getParameters()) {
-                    if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(
-                            cmd.getInfo().getService() + ":" + param.getLongOption())) {
-                        param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
-                                cmd.getInfo().getService() + ":" + param.getLongOption()));
-                    } else if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(param.getLongOption())) {
-                        param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(param.getLongOption()));
+                if (this.profile != null)
+                    for (OnapCommandParameter param: cmd.getParameters()) {
+                        if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(
+                                cmd.getInfo().getService() + ":" + cmd.getName() + ":" + param.getLongOption())) {
+                            param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
+                                    cmd.getInfo().getService() + ":" + cmd.getName() + ":" + param.getLongOption()));
+                        } else if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(
+                                cmd.getInfo().getService() + ":" + param.getLongOption())) {
+                            param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
+                                    cmd.getInfo().getService() + ":" + param.getLongOption()));
+                        } else if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(param.getLongOption())) {
+                            param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(param.getLongOption()));
+                        }
                     }
-                }
 
                 //load the parameters value from the map read from param-file
-                if (params != null && !params.isEmpty()) {
-                    OnapCliArgsParser.populateParams(cmd.getParameters(), params);
+                if (!this.argsParamFile.isEmpty()) {
+                    OnapCliArgsParser.populateParams(cmd.getParameters(), this.argsParamFile);
                 }
 
-                OnapCliArgsParser.populateParams(cmd.getParameters(), args);
+                OnapCliArgsParser.populateParams(cmd.getParameters(), this.args);
+
+                //start the execution
+                if (this.requestId != null) {
+                    String input = cmd.getArgsJson(true);
+                    executionStoreContext = OnapCommandExecutionStore.getStore().storeExectutionStart(
+                            this.requestId,
+                            cmd.getInfo().getProduct(),
+                            cmd.getInfo().getService(),
+                            this.cmdName,
+                            this.profile,
+                            input);
+                }
 
                 OnapCommandResult result = cmd.execute();
 
-                this.print(result.getDebugInfo());
-                this.print(result.print());
-                this.exitSuccessfully();
+                String printOut = result.print();
+                if (this.requestId != null) {
+                    OnapCommandExecutionStore.getStore().storeExectutionEnd(
+                            executionStoreContext,
+                            printOut,
+                            null, result.isPassed());
+                }
 
-                generateSmapleYaml(cmd);
+                this.print(result.getDebugInfo());
+                this.print(printOut);
+
+                if (result.isPassed()) {
+                    this.exitSuccessfully();
+                    generateSmapleYaml(cmd);
+                }
+
+                else this.exitFailure();
+
+
             } catch (OnapCommandWarning w) {
                 this.print(w);
                 this.print(cmd.getResult().getDebugInfo());
                 this.exitSuccessfully();
             } catch (Exception e) {
+                if (executionStoreContext != null) {
+                    OnapCommandExecutionStore.getStore().storeExectutionEnd(
+                            executionStoreContext,
+                            null,
+                            e.getMessage(),
+                            false);
+                }
+
                 this.print(e);
                 this.print(cmd.getResult().getDebugInfo());
                 this.exitFailure();
@@ -491,10 +582,51 @@ public class OnapCli {
     }
 
     /**
+     * When user invokes cli with RPC arguments...
+     */
+    public void handleRpc() {
+        if (!this.args.isEmpty()) {
+            try {
+                if (this.rpcHost != null && this.rpcPort != null && this.product != null) {
+                    OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("schema-rpc", "open-cli");
+                    cmd.getParametersMap().get(OnapCommandConstants.RPC_HOST).setValue(this.rpcHost);
+                    cmd.getParametersMap().get(OnapCommandConstants.RPC_PORT).setValue(this.rpcPort);
+                    cmd.getParametersMap().get(OnapCommandConstants.RPC_PRODUCT).setValue(this.product);
+                    cmd.getParametersMap().get(OnapCommandConstants.RPC_CMD).setValue(this.cmdName);
+
+                    this.handleRpcCommand(cmd);
+                }
+            } catch (Exception e) {
+                this.print(e);
+                this.exitFailure();
+            }
+        }
+    }
+
+    private void handleRpcCommand(OnapCommand cmd) throws OnapCommandException {
+        Map<String, List<String>> argsMap = new HashMap<>();
+        argsMap.put(OnapCommandConstants.RPC_ARGS, this.args);
+        if (this.profile != null )
+            cmd.getParametersMap().get(OnapCommandConstants.RPC_PROFILE).setValue(this.profile);
+        cmd.getParametersMap().get(OnapCommandConstants.RPC_REQID).setValue(this.requestId);
+        cmd.getParametersMap().get(OnapCommandConstants.RPC_MODE).setValue(OnapCommandConstants.RPC_MODE_RUN_CLI);
+        cmd.getParametersMap().get(OnapCommandConstants.RPC_ARGS).setValue(argsMap);
+
+        OnapCommandResult result = cmd.execute();
+        Result output = (Result) result.getOutput();
+
+        this.exitCode = output.getExitCode();
+        this.print(output.getOutput());
+    }
+    /**
      * Handles all client input.
      */
     public void handle() {
-        this.handleHelp();
+        this.handleRpc();
+
+        if (this.exitCode == -1) {
+            this.handleHelp();
+        }
 
         if (this.exitCode == -1) {
             this.handleVersion();
@@ -513,7 +645,7 @@ public class OnapCli {
         }
 
         if (this.exitCode == -1) {
-            this.handleCommand(new ArrayList<>());
+            this.handleCommand();
         }
     }
 
@@ -574,6 +706,7 @@ public class OnapCli {
     private ConsoleReader createConsoleReader() throws IOException {
         ConsoleReader console = new ConsoleReader(); // NOSONAR
         try {
+            //ignore system commands
             StringCompleter strCompleter = new StringCompleter(OnapCommandRegistrar.getRegistrar().listCommandsForEnabledProductVersion());
             strCompleter.add(OnapCliConstants.PARAM_INTERACTIVE_EXIT,
                     OnapCliConstants.PARAM_INTERACTIVE_CLEAR,
@@ -601,7 +734,7 @@ public class OnapCli {
                         OnapCommandConfig.getPropertyValue(OnapCommandConstants.SAMPLE_GEN_TARGET_FOLDER) + "/" + cmd.getSchemaName().replaceAll(".yaml", "") + "-sample.yaml",
                         cmd.getResult().isDebug());
             } catch (IOException error) {
-                throw new OnapCommandInvalidSample(args.get(0), error);
+                throw new OnapCommandInvalidSample(this.cmdName, error);
             }
         }
     }
