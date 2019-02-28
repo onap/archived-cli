@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "affec90d_f69452f5",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/utils/OnapCommandHttpUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 4401
+      },
+      "writtenOn": "2019-02-28T07:48:05Z",
+      "side": 1,
+      "message": "it\u0027s true that is not used anywhere else, but still only for the sake of readability of the code, I\u0027d leave it here",
+      "parentUuid": "e13efb74_7ae055ee",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "2c37211a2cf6f1c5feed472a3ac8c531844c90a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ea8c0dd_6a9b3e00",
         "filename": "profiles/http/src/test/java/org/onap/cli/fw/http/utils/OnapCommandHttpUtilsTest.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-28T06:29:47Z",
       "side": 1,
       "message": "This is an new file\npls change to your company and set the year correctly.",
+      "range": {
+        "startLine": 2,
+        "startChar": 3,
+        "endLine": 2,
+        "endChar": 47
+      },
+      "revId": "2c37211a2cf6f1c5feed472a3ac8c531844c90a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09cc33fc_e82af40b",
+        "filename": "profiles/http/src/test/java/org/onap/cli/fw/http/utils/OnapCommandHttpUtilsTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4401
+      },
+      "writtenOn": "2019-02-28T07:48:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea8c0dd_6a9b3e00",
       "range": {
         "startLine": 2,
         "startChar": 3,
