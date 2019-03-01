@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-   Copyright 2017 Huawei Technologies Co., Ltd.
+   Copyright © Intel Corporation 2019
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -60,6 +60,7 @@
           </activation>
           <modules>
             <module>onap-casablanca</module>
+            <module>onap-dublin</module>
           </modules>
        </profile>
        <profile>
@@ -70,7 +71,7 @@
           <modules>
             <module>onap-beijing</module>
           </modules>
-       </profile>       
+       </profile>
        <profile>
           <id>eol</id>
           <activation>
