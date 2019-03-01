@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e520f790_ea702153",
+        "filename": "products/onap-dublin/auth/src/main/resources/META-INF/services/org.onap.cli.fw.cmd.OnapCommand",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-03-01T04:32:47Z",
+      "side": 1,
+      "message": "this you may want to fix it",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 63
+      },
+      "revId": "23d99a9ff13925d9abf28e9df0ae158b946823ea",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
