@@ -60,6 +60,7 @@
           </activation>
           <modules>
             <module>onap-casablanca</module>
+            <module>onap-dublin</module>
           </modules>
        </profile>
        <profile>
@@ -70,7 +71,7 @@
           <modules>
             <module>onap-beijing</module>
           </modules>
-       </profile>       
+       </profile>
        <profile>
           <id>eol</id>
           <activation>
