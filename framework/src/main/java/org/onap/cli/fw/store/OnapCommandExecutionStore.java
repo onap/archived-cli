@@ -43,11 +43,7 @@ public class OnapCommandExecutionStore {
 
     private static boolean storeReady = false;
 
-    private static SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
-
-    static {
-        dateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-    }
+    private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
     private static String SEPARATOR = "__";
 
@@ -170,7 +166,7 @@ public class OnapCommandExecutionStore {
     private static OnapCommandExecutionStore store = null;
 
     private OnapCommandExecutionStore() {
-
+        this.dateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
     public static OnapCommandExecutionStore getStore() {
@@ -306,9 +302,7 @@ public class OnapCommandExecutionStore {
             for (String dir: dirs) {
                 list.add(this.makeExecution(dir));
             }
-        } catch (IOException e) {
-            throw new OnapCommandExecutionFailed(e, "Failed to search the executions");
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             throw new OnapCommandExecutionFailed(e, "Failed to search the executions");
         }
 

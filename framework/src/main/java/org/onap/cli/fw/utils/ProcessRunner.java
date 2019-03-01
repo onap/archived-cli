@@ -144,23 +144,4 @@ public class ProcessRunner {
     public String getError() {
         return this.error;
     }
-
-    public static void main(String[] args) {
-        try {
-            ProcessRunner pr = new ProcessRunner("dir", null);
-            pr.run();
-            System.out.println(pr.getOutput());
-            System.out.println(pr.getError());
-            System.out.println(pr.getExitCode());
-
-            pr = new ProcessRunner(new String [] {"dir", "c:"}, null);
-            pr.run();
-            System.out.println(pr.getOutput());
-            System.out.println(pr.getError());
-            System.out.println(pr.getExitCode());
-
-        } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

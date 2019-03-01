@@ -50,11 +50,7 @@ public class OnapCommandArtifactStore {
 
     private static boolean storeReady = false;
 
-    private static SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
-
-    static {
-        dateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-    }
+    private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
     private static String SEPARATOR = "__";
 
@@ -138,7 +134,7 @@ public class OnapCommandArtifactStore {
     private static OnapCommandArtifactStore store = null;
 
     private OnapCommandArtifactStore() {
-
+        this.dateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
     public static OnapCommandArtifactStore getStore() {
@@ -222,7 +218,7 @@ public class OnapCommandArtifactStore {
 
         searchPattern += SEPARATOR;
 
-        if (category != null && !namePattern.isEmpty()) {
+        if (category != null && !category.isEmpty()) {
             searchPattern += category;
         } else {
             searchPattern += "*";

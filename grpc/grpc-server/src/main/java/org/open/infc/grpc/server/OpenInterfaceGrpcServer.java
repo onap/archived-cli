@@ -208,7 +208,10 @@ public class OpenInterfaceGrpcServer {
                     Builder reply = Output.newBuilder();
                     reply.setSuccess(true);
                     reply.putAttrs(OnapCommandConstants.ERROR, "{}");
-                    reply.putAddons("execution-id", executionStoreContext.getExecutionId());
+
+                    if (executionStoreContext != null)
+                        reply.putAddons("execution-id", executionStoreContext.getExecutionId());
+
                     try {
                         reply.putAttrs(OnapCommandConstants.RESULTS, new ObjectMapper().readTree(printOut).toString());
                     } catch (IOException e) {

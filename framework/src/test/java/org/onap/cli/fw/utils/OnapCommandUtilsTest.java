@@ -145,13 +145,6 @@ public class OnapCommandUtilsTest {
     }
 
     @Test
-    public void replaceLineForSpecialValues_envVariable() {
-        String replacedLine = OnapCommandUtils.replaceLineForSpecialValues("$s{env:USER}");
-
-        assertEquals(System.getenv("USER"), replacedLine);
-    }
-
-    @Test
     public void replaceLineForSpecialValues_multipleVariables() {
         String replacedLine = OnapCommandUtils.replaceLineForSpecialValues("$s{A} $s{B}");
 
@@ -482,6 +475,26 @@ public class OnapCommandUtilsTest {
     class OnapCommandSample extends OnapCommand {
         @Override
         protected void run() throws OnapCommandException {
+        }
+    }
+
+    @Test
+    public void testProcessRunner() {
+        try {
+            ProcessRunner pr = new ProcessRunner("dir", null);
+            pr.run();
+            System.out.println(pr.getOutput());
+            System.out.println(pr.getError());
+            System.out.println(pr.getExitCode());
+
+            pr = new ProcessRunner(new String [] {"dir", "c:"}, null);
+            pr.run();
+            System.out.println(pr.getOutput());
+            System.out.println(pr.getError());
+            System.out.println(pr.getExitCode());
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -138,7 +138,7 @@ public class OpenCommandShellCmd extends OnapCommand {
                 cwd);
         try {
             pr.run();
-        } catch (InterruptedException | IOException e) {
+        } catch (Exception e) {
             throw new OnapCommandExecutionFailed(this.getName(), e);
         }
 
@@ -251,21 +251,25 @@ public class OpenCommandShellCmd extends OnapCommand {
                         bodyProcessedLine += processedPattern.substring(currentIdx);
                         break;
                     }
-                    int idxE = idxS + 2; // %s
+
+                    int idxEnd = idxS + 2; // %s
+
                     try {
-                        Object value = values.get(positionalIdx);
-                        String valueS = String.valueOf(value);
-                        if (value instanceof JSONArray) {
-                            JSONArray arr = (JSONArray) value;
-                            if (!arr.isEmpty()) {
-                                valueS = arr.get(i).toString();
+                        Object val = values.get(positionalIdx);
+                        String valStr = String.valueOf(val);
+
+                        if (val instanceof JSONArray) {
+                            JSONArray aJson = (JSONArray) val;
+
+                            if (!aJson.isEmpty()) {
+                                valStr = aJson.get(i).toString();
                             } else {
                                 throw new OnapCommandResultEmpty();
                             }
                         }
 
-                        bodyProcessedLine += processedPattern.substring(currentIdx, idxS) + valueS;
-                        currentIdx = idxE;
+                        bodyProcessedLine += processedPattern.substring(currentIdx, idxS) + valStr;
+                        currentIdx = idxEnd;
                         positionalIdx++;
                     } catch (OnapCommandResultEmpty e) {
                         throw e;
