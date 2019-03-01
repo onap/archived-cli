@@ -1,0 +1,22 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v13/business/customers/customer/mrkanag",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-5dc2d328-9cc0-4297-8d6c-2108ee9c9036",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "global-customer-id" : "mrkanag",
+      "subscriber-name" : "mrkanag",
+      "subscriber-type" : "INFRA"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]

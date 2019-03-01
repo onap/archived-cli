@@ -1,0 +1,19 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/api/vnfsdk/v1/functest/taskmanager/onboard",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "packageID" : "12345"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : {
+      "taskID" : "4e45e692-0a84-44ef-8404-1816b029137e"
+    }
+  }
+} ]

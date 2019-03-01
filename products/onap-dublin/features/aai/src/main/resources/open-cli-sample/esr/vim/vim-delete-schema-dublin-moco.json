@@ -1,0 +1,18 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/aai/v13/cloud-infrastructure/cloud-regions/cloud-region/huawei-cloud/bangalore/esr-system-info-list/esr-system-info/6a47cd3d-a24c-4d71-b47d-bfe729acce7b",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-fb8c06d9-12d6-4698-ad1b-3c3615d7c936",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 204,
+    "json" : null
+  }
+} ]

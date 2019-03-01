@@ -1,0 +1,25 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/external-system/esr-thirdparty-sdnc-list",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-4b666ab3-b1a9-4c4d-b150-f9db9e0b053d",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "esr-thirdparty-sdnc" : [ {
+        "thirdparty-sdnc-id" : "6fbb4251-2eb1-4c41-b01f-4e5b128afabe",
+        "location" : "core",
+        "product-name" : "SDWAN",
+        "resource-version" : "1538648650726"
+      } ]
+    }
+  }
+} ]

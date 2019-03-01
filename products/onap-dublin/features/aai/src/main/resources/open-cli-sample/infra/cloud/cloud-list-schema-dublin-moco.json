@@ -1,0 +1,25 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/cloud-infrastructure/cloud-regions",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-8465f051-c389-40ff-9a5c-8c7e1ac01b7c",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "cloud-region" : [ {
+        "cloud-owner" : "huawei-cloud",
+        "cloud-region-id" : "bangalore",
+        "sriov-automation" : "false",
+        "resource-version" : "1538643783460"
+      } ]
+    }
+  }
+} ]

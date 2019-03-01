@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: vnftest-run
+version: onap-vtp
+samples:
+  sample1:
+    name: vnftest-run
+    input: --name csar-validate --param csar=D:\workspace\onap\1.1\vnfsdk\validation\csarvalidation\src\test\resources\USN.csar --format json
+    moco: vnftest-run-moco.json
+    output: |
+      {"results":[{"property":"results","value":"{error=SUCCESS}"},{"property":"build_tag","value":"null"},{"property":"criteria","value":"PASS"}]}

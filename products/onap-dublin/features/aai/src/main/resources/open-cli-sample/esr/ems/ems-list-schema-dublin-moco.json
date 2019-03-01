@@ -1,0 +1,23 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/external-system/esr-ems-list",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-18c05764-8e44-4cb0-af47-7de4f5145159",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "esr-ems" : [ {
+        "ems-id" : "bfae89e5-d4d4-46ed-a700-a0a90d961627",
+        "resource-version" : "1538645515474"
+      } ]
+    }
+  }
+} ]

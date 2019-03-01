@@ -1,0 +1,22 @@
+open_cli_sample_version: 1.0
+name: vnfm-show
+version: onap-dublin
+samples:
+  sample1:
+    name: vnfm-show
+    input: --vnfm-id 3c96d72b-7fd8-45f7-a9bb-c9d270001eb8
+    moco: vnfm-show-schema-dublin-moco.json
+    output: |
+      +----------+------------------+
+      |property  |value             |
+      +----------+------------------+
+      |name      |vnfm-hw           |
+      +----------+------------------+
+      |type      |OpenStack         |
+      +----------+------------------+
+      |vendor    |Huawei            |
+      +----------+------------------+
+      |version   |1.0               |
+      +----------+------------------+
+      |url       |http://10.0.1.1   |
+      +----------+------------------+

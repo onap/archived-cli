@@ -1,0 +1,35 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/external-system/esr-vnfm-list/esr-vnfm/3c96d72b-7fd8-45f7-a9bb-c9d270001eb8/esr-system-info-list/esr-system-info/3c96d72b-7fd8-45f7-a9bb-c9d270001eb8",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-eb87600e-80a4-4a9f-b878-df2de9b44eb4",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "esr-system-info-id" : "3c96d72b-7fd8-45f7-a9bb-c9d270001eb8",
+      "system-name" : "vnfm-hw",
+      "type" : "OpenStack",
+      "vendor" : "Huawei",
+      "version" : "1.0",
+      "service-url" : "http://10.0.1.1",
+      "user-name" : "admin",
+      "password" : "password",
+      "system-type" : "vnfm",
+      "ssl-cacert" : "",
+      "ssl-insecure" : false,
+      "ip-address" : "",
+      "port" : "",
+      "cloud-domain" : "",
+      "default-tenant" : "",
+      "resource-version" : "1538645099620"
+    }
+  }
+} ]

@@ -1,0 +1,24 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/service-design-and-creation/services",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-e3ff2ec6-e10b-42a9-8d3e-0a29996b9fa8",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "service" : [ {
+        "service-id" : "a6402d68-0784-4972-aa99-c20caa46f459",
+        "service-description" : "vfw-in",
+        "resource-version" : "1538109817240"
+      } ]
+    }
+  }
+} ]

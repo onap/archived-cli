@@ -1,0 +1,28 @@
+# Copyright (c) 2018 Intel Corporation Intellectual Property
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+open_cli_sample_version: 1.0
+name: functest-create
+version: onap-dublin
+samples:
+  sample1:
+    name: functest-create
+    input: --packageID 12345
+    moco: functest-create-schema-moco.json
+    output: |
+        +----------+--------------------------------------+
+        |property  |value                                 |
+        +----------+--------------------------------------+
+        |taskID    |4e45e692-0a84-44ef-8404-1816b029137e  |
+        +----------+--------------------------------------+

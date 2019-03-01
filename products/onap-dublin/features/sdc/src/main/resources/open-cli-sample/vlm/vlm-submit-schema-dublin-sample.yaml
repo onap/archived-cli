@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vlm-submit
+version: onap-dublin
+samples:
+  sample1:
+    name: vlm-submit
+    input: --vlm-id d8c1362526414b9bbe25cdd972eebf0e --vlm-version 7afd0daa8271470db3b556fdedf074f4 -d
+    moco: vlm-submit-schema-dublin-moco.json
+    output:

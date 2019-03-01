@@ -1,0 +1,23 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/business/customers/customer/mrkanag/service-subscriptions",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-aa70d08c-0e55-422a-be1e-eede28708f70",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "service-subscription" : [ {
+        "service-type" : "vfw-in",
+        "resource-version" : "1538111525606"
+      } ]
+    }
+  }
+} ]

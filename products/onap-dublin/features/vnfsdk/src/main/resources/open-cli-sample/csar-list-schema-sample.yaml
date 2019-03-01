@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: csar-list
+version: onap-dublin
+samples:
+  sample1:
+    name: csar-list
+    input: -m http://localhost:7070/vnf-sdk-marketplace
+    moco: csar-list-schema-moco.json
+    output: |
+      +--------------------------------------+--------+----------+----------------------------------------------------+--------------+
+      |csarId                                |name    |size      |downloadUri                                         |provider      |
+      +--------------------------------------+--------+----------+----------------------------------------------------+--------------+
+      |a9f9ca7a-5dc9-48c7-9672-a63eb17c3e36  |VoLTE   |52.4 KB   |http://127.0.0.1:8080/files/catalog-http/CSAR/Chin  |ChinaMobile   |
+      |                                      |        |          |aMobile/a9f9ca7a-5dc9-48c7-9672-a63eb17c3e36/VoLTE  |              |
+      |                                      |        |          |/v1.0/VoLTE.csar                                    |              |
+      +--------------------------------------+--------+----------+----------------------------------------------------+--------------+

@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vlm-entitlement-pool-create
+version: onap-dublin
+samples:
+  sample1:
+    name: vlm-entitlement-pool-create
+    input: --vlm-id d8c1362526414b9bbe25cdd972eebf0e --vlm-version 7afd0daa8271470db3b556fdedf074f4 --name Test Pool --description Huawei Test license --manufacture-reference-number 123456 --startDate 12/12/2018 --expiryDate 10/11/2019 -d
+    moco: vlm-entitlement-pool-create-schema-dublin-moco.json
+    output: |

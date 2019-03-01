@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: vim-list
+version: onap-dublin
+samples:
+  sample1:
+    name: vim-list
+    input: --cloud-name huawei-cloud --region-name bangalore
+    moco: vim-list-schema-dublin-moco.json
+    output: |
+      +--------------------------------------+----------+----------+----------------+------------------+
+      |vim-id                                |name      |vendor    |default-tenant  |resource-version  |
+      +--------------------------------------+----------+----------+----------------+------------------+
+      |6a47cd3d-a24c-4d71-b47d-bfe729acce7b  |vim-onap  |Devstack  |onap            |1538644383786     |
+      +--------------------------------------+----------+----------+----------------+------------------+

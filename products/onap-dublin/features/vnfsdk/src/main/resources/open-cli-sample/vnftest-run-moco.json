@@ -1,0 +1,23 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/vnf-sdk-marketplace/onapapi/vnfsdk-marketplace/v1/vtp/tests/csar-validate/run",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "csar" : "D:\\workspace\\onap\\1.1\\vnfsdk\\validation\\csarvalidation\\src\\test\\resources\\USN.csar"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "results" : [ {
+        "error" : "SUCCESS"
+      } ],
+      "build_tag" : null,
+      "criteria" : "PASS"
+    }
+  }
+} ]

@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vlm-key-group-create
+version: onap-dublin
+samples:
+  sample1:
+    name: vlm-key-group-create
+    input: --vlm-id d8c1362526414b9bbe25cdd972eebf0e --vlm-version 7afd0daa8271470db3b556fdedf074f4 --name Test key group --description Huawei Test license -d
+    moco: vlm-key-group-create-schema-dublin-moco.json
+    output: |

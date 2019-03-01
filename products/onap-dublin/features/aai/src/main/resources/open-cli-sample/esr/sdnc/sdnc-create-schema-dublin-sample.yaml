@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: sdnc-create
+version: onap-dublin
+samples:
+  sample1:
+    name: sdnc-create
+    input: --ip-address 172.60.50.63 --vendor huawei --name SDWANDomain63 --password password --sdnc-version V3R1 --protocal RESTCONF --product-name SDWAN --username test --location core --port 18008 --type SDWAN -d
+    moco: sdnc-create-schema-dublin-moco.json
+    output:

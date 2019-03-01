@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: sdnc-delete
+version: onap-dublin
+samples:
+  sample1:
+    name: sdnc-delete
+    input: --sdnc-id 6fbb4251-2eb1-4c41-b01f-4e5b128afabe --resource-version 1538648650726
+    moco: sdnc-delete-schema-dublin-moco.json
+    output:
