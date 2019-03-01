@@ -37,6 +37,25 @@ public class OpenInterfaceGrpcClient {
       private final ManagedChannel channel;
       private final OpenInterfaceGrpc.OpenInterfaceBlockingStub blockingStub;
 
+      public static class OpenInterfaceGrpcExecption extends Exception {
+          private static final long serialVersionUID = -8755636432217894246L;
+
+          private int errorCode = -1;
+
+          public OpenInterfaceGrpcExecption(int errorCode, String message) {
+              super(message);
+              this.errorCode = errorCode;
+          }
+      }
+
+      public static class OpenInterfaceGrpcTimeoutExecption extends OpenInterfaceGrpcExecption {
+          private static int errorCode = 1;
+
+          public OpenInterfaceGrpcTimeoutExecption(String message) {
+              super(errorCode, message);
+          }
+      }
+
       public OpenInterfaceGrpcClient(String host, int port) {
         this(ManagedChannelBuilder.forAddress(host, port)
             // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
@@ -54,27 +73,31 @@ public class OpenInterfaceGrpcClient {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
       }
 
-      public Output invoke(Input input) {
+      public Output invoke(Input input) throws OpenInterfaceGrpcTimeoutExecption {
         logger.info("Input " + input.toString());
 
         Output result = Output.newBuilder().build();
         try {
-            result = blockingStub.invoke(input);
+            result = blockingStub.withDeadlineAfter(10, TimeUnit.SECONDS).invoke(input);
         } catch (StatusRuntimeException e) {
           logger.warn("RPC failed: {0}", e.getStatus());
+          //Status{code=DEADLINE_EXCEEDED}
+          throw new OpenInterfaceGrpcTimeoutExecption(e.getMessage());
         }
         logger.info("Output: " + result.toString());
         return result;
       }
 
-      public Result remoteCli(Args args) {
+      public Result remoteCli(Args args) throws OpenInterfaceGrpcTimeoutExecption {
         logger.info(args.toString());
 
         Result result = Result.newBuilder().setExitCode(1).build();
         try {
-            result = blockingStub.remoteCli(args);
+            result = blockingStub.withDeadlineAfter(10, TimeUnit.SECONDS).remoteCli(args);
         } catch (StatusRuntimeException e) {
           logger.warn("RPC failed: {0}", e.getStatus());
+          //Status{code=DEADLINE_EXCEEDED}
+          throw new OpenInterfaceGrpcTimeoutExecption(e.getMessage());
         }
 
         logger.info("Result: " + result.toString());
