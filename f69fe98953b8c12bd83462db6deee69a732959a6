@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13afeccc_5e7abb4d",
+        "filename": "products/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-03-04T04:46:04Z",
+      "side": 1,
+      "message": "pls make it false.",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "f69fe98953b8c12bd83462db6deee69a732959a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
