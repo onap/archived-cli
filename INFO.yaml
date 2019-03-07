@@ -1,21 +1,8 @@
-# Copyright 2018 Huawei Technologies Co., Ltd.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 ---
 project: 'cli'
 project_creation_date: '2017-06-22'
 lifecycle_state: 'Incubation'
+project_category: ''
 project_lead: &onap_releng_ptl
     name: 'Kanagaraj Manickam'
     email: 'kanagaraj.manickam@huawei.com'
@@ -27,25 +14,32 @@ issue_tracking:
     type: 'jira'
     url: 'https://jira.onap.org/projects/CLI'
     key: 'CLI'
+mailing_list:
+    type: 'groups.io'
+    url: 'lists.onap.org'
+    tag: '<[sub-project_name]>'
+realtime_discussion: ''
 meetings:
     - type: 'zoom'
-        agenda: 'https://wiki.onap.org/display/DW/CLI+meetings'
-        url: 'https://wiki.onap.org/display/DW/CLI+meetings'
-        server: 'n/a'
-        channel: 'n/a'
-        repeats: 'weekly'
-        time: '13:00 UTC'
+      agenda: 'https://wiki.onap.org/display/DW/CLI+meetings'
+      url: 'https://wiki.onap.org/display/DW/CLI+meetings'
+      server: 'n/a'
+      channel: 'n/a'
+      repeats: 'weekly'
+      time: '13:00 UTC'
+repositories:
+    - 'cli'
 committers:
     - <<: *onap_releng_ptl
     - name: 'Subhash Kumar'
-        email: 'subhash.kumar.singh@huawei.com'
-        company: 'Huawei'
-        id: 'subhash_singh'
-        timezone: 'India/Bangalore'
+      email: 'subhash.kumar.singh@huawei.com'
+      company: 'Huawei'
+      id: 'subhash_singh'
+      timezone: 'India/Bangalore'
     - name: 'Manoop Talasila'
-        email: 'talasila@research.att.com'
-        company: 'ATT'
-        id: 'talasila'
-        timezone: 'America/New York'
+      email: 'talasila@research.att.com'
+      company: 'ATT'
+      id: 'talasila'
+      timezone: 'America/New York'
 tsc:
     approval: 'https://lists.onap.org/pipermail/onap-tsc'
