@@ -66,25 +66,20 @@ public class OnapCommandHttpUtils {
      */
     public static HttpInput populateParameters(Map<String, OnapCommandParameter> params, HttpInput input)
             throws OnapCommandException {
+
         HttpInput inp = new HttpInput();
+
         for (OnapCommandParameter param : params.values()) {
             if (OnapCommandParameterType.BINARY.equals(param.getParameterType())) {
                 inp.setBinaryData(true);
                 break;
             }
         }
-        inp.setMultipartEntityName(input.getMultipartEntityName());
-        inp.setBody(OnapCommandUtils.replaceLineFromInputParameters(input.getBody(), params));
-
-        if (input.getMultiparts().size() > 0) {
-            for (HttpInput.Part part: input.getMultiparts()) {
-                part.setContent(OnapCommandUtils.replaceLineFromInputParameters(part.getContent(), params));
-            }
-        }
-        inp.setMultiparts(input.getMultiparts());
 
         inp.setUri(OnapCommandUtils.replaceLineFromInputParameters(input.getUri(), params));
+
         inp.setMethod(input.getMethod().toLowerCase());
+
         for (String h : input.getReqHeaders().keySet()) {
             String value = input.getReqHeaders().get(h);
             inp.getReqHeaders().put(h, OnapCommandUtils.replaceLineFromInputParameters(value, params));
@@ -97,10 +92,22 @@ public class OnapCommandHttpUtils {
 
         boolean isRemoveEmptyNodes = Boolean.parseBoolean(input.getContext().getOrDefault(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES, "false"));
 
-        if (isRemoveEmptyNodes) {
-            inp.setBody(OnapCommandHttpUtils.normalizeJson(inp.getBody()));
-        }
+        if (input.getMultiparts().size() > 0) {
+            for (HttpInput.Part part: input.getMultiparts()) {
+                part.setContent(OnapCommandUtils.replaceLineFromInputParameters(part.getContent(), params));
+                if (isRemoveEmptyNodes) {
+                    part.setContent(OnapCommandHttpUtils.normalizeJson(part.getContent()));
+                }
+            }
 
+            inp.setMultiparts(input.getMultiparts());
+        } else {
+            inp.setMultipartEntityName(input.getMultipartEntityName());
+            inp.setBody(OnapCommandUtils.replaceLineFromInputParameters(input.getBody(), params));
+            if (isRemoveEmptyNodes) {
+                inp.setBody(OnapCommandHttpUtils.normalizeJson(inp.getBody()));
+            }
+        }
         return inp;
     }
 
