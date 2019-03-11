@@ -299,7 +299,7 @@ public class OnapCommandDiscoveryUtils {
                         if (deafultResourceMap.containsKey(PARAMETERS)) {
                             List<Object> params = new ArrayList<>();
                             for (Map<String, ?> p: (List<Map<String, ?>>) deafultResourceMap.get(PARAMETERS)) {
-                                if (p.keySet().contains(IS_DEFAULT_PARAM) && (Boolean) p.get(IS_DEFAULT_PARAM)) {
+                                if (p.keySet().contains(IS_DEFAULT_PARAM) && !((Boolean) p.get(IS_DEFAULT_PARAM))) {
                                     params.add(p);
                                 }
                             }
