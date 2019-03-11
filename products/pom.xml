@@ -60,6 +60,7 @@
           </activation>
           <modules>
             <module>onap-casablanca</module>
+            <module>onap-dublin</module>
           </modules>
        </profile>
        <profile>
