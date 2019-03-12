@@ -1,0 +1,22 @@
+#
+#systemd file: /etc/systemd/system/oclip.service
+#
+[Unit]
+Description=Open CLI Platform gRPC service
+
+[Service]
+#User=ubuntu
+
+#change this to your workspace
+WorkingDirectory=/opt/oclip
+
+#path to executable.
+ExecStart=/opt/oclip/bin/oclip-service.sh
+
+#SuccessExitStatus=143
+#TimeoutStopSec=10
+#Restart=on-failure
+#RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
