@@ -35,6 +35,7 @@ RUN apt-get update && apt-get install -y lighttpd git curl pandoc vim && \
     chmod +x  $OPEN_CLI_HOME/bin/oclip.sh  && \
     chmod +x  $OPEN_CLI_HOME/bin/oclip-rcli.sh  && \
     chmod +x  $OPEN_CLI_HOME/bin/oclip-grpc-server.sh  && \
+    chmod +x  $OPEN_CLI_HOME/bin/oclip-service.sh  && \
     ln  $OPEN_CLI_HOME/bin/oclip.sh /usr/sbin/oclip  && \
     ln  $OPEN_CLI_HOME/bin/oclip.sh /usr/sbin/onap  && \
     ln  $OPEN_CLI_HOME/bin/oclip-grpc-server.sh /usr/sbin/oclip-grpc  && \
@@ -47,7 +48,10 @@ RUN apt-get update && apt-get install -y lighttpd git curl pandoc vim && \
     if [ ! -d  /var/www-data/servers/open-cli/ ]; then mkdir -p /var/www-data/servers/open-cli/; fi  && \
     cp $OPEN_CLI_HOME/http/web/*.* /var/www-data/servers/open-cli/ && \
     cp $OPEN_CLI_HOME/http/lighttpd/10-proxy.conf /etc/lighttpd/conf-enabled/ && \
-    cp $OPEN_CLI_HOME/installer/cli-*.zip /var/www-data/servers/open-cli/oclip.zip
+    cp $OPEN_CLI_HOME/installer/cli-*.zip /var/www-data/servers/open-cli/oclip.zip  && \
+    cp $OPEN_CLI_HOME/conf/oclip.service /etc/systemd/system/oclip.service  && \
+    systemctl daemon-reload
+
 EXPOSE 80
 EXPOSE 8080
 EXPOSE 50051
