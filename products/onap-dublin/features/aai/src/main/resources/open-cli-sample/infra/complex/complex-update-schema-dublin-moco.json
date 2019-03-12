@@ -1,0 +1,36 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v14//aai/v14/cloud-infrastructure/complexes/complex/clli3",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-f54bb608-f004-466b-9668-7c47cb8910bb",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "physical-location-id" : "clli3",
+      "data-center-code" : "code6",
+      "complex-name" : "clli3",
+      "identity-url" : "url",
+      "physical-location-type" : "phy_type",
+      "street1" : "street1",
+      "street2" : "street2",
+      "city" : "HIlls",
+      "state" : "CA",
+      "postal-code" : "88888",
+      "country" : "NIG",
+      "region" : "region_val",
+      "latitude" : "10.2",
+      "longitude" : "30.8",
+      "elevation" : "elev",
+      "lata" : "lata",
+      "resource-version" : "1552414736878"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : null
+  }
+} ]
