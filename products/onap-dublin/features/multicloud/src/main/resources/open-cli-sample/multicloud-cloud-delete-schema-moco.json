@@ -1,0 +1,15 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/api/multicloud-titaniumcloud/v0/CloudOwner_ONAP-POD-01-Rail-07",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 204,
+    "json" : null
+  }
+} ]
