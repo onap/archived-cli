@@ -1,0 +1,9 @@
+      open_cli_sample_version: 1.0
+      name: complex-delete
+      version: onap-dublin
+      samples:
+        sample1:
+          name: complex-delete
+          input: -x clli3 -y 1550771530582
+          moco: complex-delete-schema-dublin-moco.json
+          output:
