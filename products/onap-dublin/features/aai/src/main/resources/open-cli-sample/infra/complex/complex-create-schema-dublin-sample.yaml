@@ -1,0 +1,9 @@
+        open_cli_sample_version: 1.0
+        name: complex-create
+        version: onap-dublin
+        samples:
+          sample1:
+            name: complex-create
+            input: -j street2 -r phy_type -x clli3 -y code6 -lt 10.2 -l region_val -i street1 -lo 30.8 -S CA -la lata -g HIlls -w 88888 -z clli3 -k usa -o elev -q url
+            moco: complex-create-schema-dublin-moco.json
+            output:

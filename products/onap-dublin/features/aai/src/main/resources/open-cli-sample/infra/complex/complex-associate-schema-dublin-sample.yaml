@@ -1,0 +1,9 @@
+  open_cli_sample_version: 1.0
+  name: complex-associate
+  version: onap-dublin
+  samples:
+    sample1:
+      name: complex-associate
+      input: -x clli3 -y ONAP-POD-01-Rail-07 -z CloudOwner
+      moco: complex-associate-schema-dublin-moco.json
+      output:
