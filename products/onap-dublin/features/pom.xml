@@ -36,6 +36,7 @@
         <module>msb</module>
         <module>sdc</module>
         <module>policy</module>
+        <module>multicloud</module>
     </modules>
 
      <build>
