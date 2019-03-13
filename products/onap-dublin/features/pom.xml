@@ -35,6 +35,7 @@
         <module>aai</module>
         <module>msb</module>
         <module>sdc</module>
+        <module>policy</module>
     </modules>
 
      <build>
