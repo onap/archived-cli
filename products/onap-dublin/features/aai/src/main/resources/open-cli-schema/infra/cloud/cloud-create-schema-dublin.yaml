@@ -1,4 +1,4 @@
-# Copyright © Intel Corporation 2019
+#  Copyright © Intel Corporation 2019
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,15 +19,15 @@ description: Create a cloud region in Onap
 info:
   product: onap-dublin
   service: aai
-  author: ONAP CLI Team onap-discuss@lists.onap.org
+  author: Intel ONAP HPA integration team (itohan.ukponmwan@intel.com)
 
 
 parameters:
-  - name: cloud-name
-    description: Onap cloud name
+  - name: cloud-owner
+    description: Onap cloud owner
     type: string
     short_option: x
-    long_option: cloud-name
+    long_option: cloud-owner
     is_optional: false
   - name: region-name
     description: Onap  region name
@@ -35,14 +35,147 @@ parameters:
     short_option: y
     long_option:  region-name
     is_optional: false
+  - name: cloud-type
+    description: Cloud type e.g openstack
+    type: string
+    short_option: q
+    long_option:  cloud-type
+    is_optional: false
+  - name: owner-defined-type
+    description: owner defined type
+    type: string
+    short_option: r
+    long_option: owner-type
+    is_optional: false
+  - name: cloud-region-version
+    description: cloud region version e.g titanium_cloud
+    type: string
+    short_option: w
+    long_option:  cloud-region-version
+    is_optional: false
+  - name: complex-name
+    description: Onap complex-name
+    type: string
+    short_option: n
+    long_option:  complex-name
+    is_optional: false
+  - name: cloud-zone
+    description: Onap cloud zone
+    type: string
+    short_option: g
+    long_option:  cloud-zone
+    is_optional: false
+  - name: region-name
+    description: Onap  region name
+    type: string
+    short_option: y
+    long_option:  region-name
+    is_optional: false
+  - name: sriov-automation
+    description: sriov automation, default is false
+    type: bool
+    short_option: S
+    long_option:  sriov-automation
+    is_optional: true
+    default: false
+  - name: identity-url
+    description: Onap identity-url, updated by multicloud if multicloud is used
+    type: string
+    short_option: i
+    long_option:  identity-url
+    is_optional: false
+  - name: esr-system-info-id
+    description: id for esr system (arbitrary UUID e.g 5c85ce1f-aa78-4ebf-8d6f-4b62773e9bc8)
+    type: uuid
+    short_option: e
+    long_option:  esr-id
+    is_optional: false
+  - name: service-url
+    description: service-url i.e keystone url for openstack
+    type: string
+    short_option: url
+    long_option:  service-url
+    is_optional: false
+  - name: user-name
+    description: cloud user name
+    type: string
+    short_option: b
+    long_option:  user-name
+    is_optional: false
+  - name: password
+    description: cloud password
+    type: string
+    short_option: j
+    long_option:  password
+    is_optional: false
+  - name: system-type
+    description: system type for cloud e.g VIM
+    type: string
+    short_option: Q
+    long_option:  system-type
+    is_optional: false
+  - name: ssl-insecure
+    description: to use ssl insecure or not, default is true
+    type: bool
+    short_option: z
+    long_option:  ssl-insecure
+    is_optional: false
+  - name: cloud-domain
+    description: cloud domain, default is Default
+    type: string
+    short_option: c
+    long_option:  cloud-domain
+    is_optional: false
+  - name: default-tenant
+    description: default cloud tenant to use
+    type: string
+    short_option: l
+    long_option:  default-tenant
+    is_optional: false
+  - name: system-status
+    description: status of the cloud, default is active
+    type: string
+    short_option: k
+    long_option:  system-status
+    is_optional: false
+  - name: cloud-extra-info
+    description: extra info to register cloud , generally string with region id e.g {\"openstack-region-id\":\"region-id\"}, enter as {\\"openstack-region-id\\":\\"ONAP-POD-01-Rail-07\\"} with CLI
+    type: string
+    short_option: I
+    long_option:  extra-info
+    is_optional: false
 
 http:
   service:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v13/cloud-infrastructure/cloud-regions/cloud-region/${cloud-name}/${region-name}
+    uri: /aai/v14/cloud-infrastructure/cloud-regions/cloud-region/${cloud-owner}/${region-name}
     method: PUT
-    body: '{"sriov-automation": false, "cloud-region-id": "${region-name}", "cloud-owner": "${cloud-name}", "new-attribute-for-demo": "blah", "number-attribute-for-demo": 1 }'
+    body: '{
+                "cloud-owner": "${cloud-owner}",
+                "cloud-region-id": "${region-name}",
+                "cloud-type": "${cloud-type}",
+                "owner-defined-type": "${owner-defined-type}",
+                "cloud-region-version": "${cloud-region-version}",
+                "complex-name":"${complex-name}",
+                "cloud-zone": "${cloud-zone}",
+                "sriov-automation": "${sriov-automation}",
+                "identity-url": "${identity-url}",
+                "cloud-extra-info":"${cloud-extra-info}",
+                "esr-system-info-list": {
+ 	        "esr-system-info":[
+                 {
+                      "esr-system-info-id":"${esr-system-info-id}",
+                      "service-url": "${service-url}",
+                      "user-name":"${user-name}",
+                      "password":"${password}",
+                      "system-type": "${system-type}",
+                      "ssl-insecure": "${ssl-insecure}",
+                      "cloud-domain":"${cloud-domain}",
+                      "default-tenant":"${default-tenant}",
+                      "system-status":"${system-status}"
+                   }]}
+                }'
   success_codes:
     - 201
