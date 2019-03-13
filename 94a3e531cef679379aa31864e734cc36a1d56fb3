@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22a9cbc3_0cd39f54",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/utils/OnapCommandHttpUtils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-03-13T02:47:27Z",
+      "side": 1,
+      "message": "can you pls remove this change, as its not required. thx",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "94a3e531cef679379aa31864e734cc36a1d56fb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
