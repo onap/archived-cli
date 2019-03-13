@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dda0642_8ea81078",
+        "filename": "products/onap-dublin/features/vfc/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-03-13T12:55:35Z",
+      "side": 1,
+      "message": "pls fix to vfc. thanks :)",
+      "range": {
+        "startLine": 30,
+        "startChar": 50,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "027cb281700ce2d26968bfda45e20e409d040186",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
