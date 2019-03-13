@@ -55,6 +55,7 @@ public class OpenInterfaceGrpcServer {
 
       private static final String CONF_FILE = "oclip-grpc-server.properties";
       private static final String CONF_SERVER_PORT = "oclip.grpc_server_port";
+      private static final String CONF_SERVER_HOST = "oclip.grpc_server_host";
 
       static {
           OnapCommandConfig.addProperties(CONF_FILE);
@@ -64,6 +65,10 @@ public class OpenInterfaceGrpcServer {
       private void start(String portArg) throws IOException {
         /* The port on which the server should run */
         int port = Integer.parseInt(portArg == null ? OnapCommandConfig.getPropertyValue(CONF_SERVER_PORT) : portArg);
+        String host = OnapCommandConfig.getPropertyValue(CONF_SERVER_HOST);
+        if (host == null) {
+            host = InetAddress.getLocalHost().getHostAddress().trim();
+        }
         server = ServerBuilder.forPort(port)
             .addService(new OpenInterfaceGrpcImpl())
             .build()
@@ -71,7 +76,7 @@ public class OpenInterfaceGrpcServer {
         logger.info("Server started, listening on " + port);
 
         try {
-            OnapCommandRegistrar.getRegistrar().setHost(InetAddress.getLocalHost().getHostAddress().trim());
+            OnapCommandRegistrar.getRegistrar().setHost(host);
             OnapCommandRegistrar.getRegistrar().setPort(port);
         } catch (OnapCommandException e) {
             //Never Occurs
