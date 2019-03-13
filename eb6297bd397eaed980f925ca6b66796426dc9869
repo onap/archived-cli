@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c26b7c1c_245700a0",
+        "filename": "products/onap-dublin/features/aai/src/main/resources/open-cli-schema/infra/complex/complex-associate-schema-dublin.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-03-13T02:45:27Z",
+      "side": 1,
+      "message": "pls add email contact as well",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "eb6297bd397eaed980f925ca6b66796426dc9869",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "336f9f01_694beba2",
+        "filename": "products/onap-dublin/features/aai/src/main/resources/open-cli-schema/infra/complex/complex-associate-schema-dublin.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-03-13T02:45:27Z",
+      "side": 1,
+      "message": "strip off tab char, pls. thanks",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "eb6297bd397eaed980f925ca6b66796426dc9869",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
