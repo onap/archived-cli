@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7692f64a_b3037599",
+        "filename": "products/onap-dublin/features/msb/src/main/resources/open-cli-schema/multicloud-register-cloud-schema.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-03-13T18:26:02Z",
+      "side": 1,
+      "message": "Updated in the new patch",
+      "parentUuid": "48c76e98_c36f9cd1",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "417e16d6411b6cbbb2e29a3bdcfcda4679a371a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "515a1801_65ca4b02",
         "filename": "products/onap-dublin/features/msb/src/main/resources/open-cli-schema/multicloud-register-cloud-schema.yaml",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-13T01:16:32Z",
       "side": 1,
       "message": "is there no POST json?",
+      "range": {
+        "startLine": 44,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "417e16d6411b6cbbb2e29a3bdcfcda4679a371a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e142a31_d8e01b31",
+        "filename": "products/onap-dublin/features/msb/src/main/resources/open-cli-schema/multicloud-register-cloud-schema.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-03-13T18:26:02Z",
+      "side": 1,
+      "message": "There is no POST json. See step3 in https://onap.readthedocs.io/en/latest/submodules/multicloud/framework.git/docs/multicloud-plugin-windriver/UserGuide-MultiCloud-WindRiver-TitaniumCloud.html#tutorial-onboard-instance-of-wind-river-titanium-cloud",
+      "parentUuid": "515a1801_65ca4b02",
       "range": {
         "startLine": 44,
         "startChar": 12,
