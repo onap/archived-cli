@@ -37,6 +37,7 @@
         <module>sdc</module>
         <module>policy</module>
         <module>multicloud</module>
+        <module>vfc</module>
     </modules>
 
      <build>
