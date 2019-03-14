@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: subscription-create
-description: Create a subscription of a customer for given service in specific cloud region in Onap
+name: subscription-cloud-add
+description: Add a new cloud region to a customer subscription
 
 info:
   product: onap-dublin
@@ -64,41 +64,35 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v14/business/customers/customer/${customer-name}/service-subscriptions/service-subscription/${service-type}
+    uri: /aai/v14/business/customers/customer/${customer-name}/service-subscriptions/service-subscription/${service-type}/relationship-list/relationship
     method: PUT
     context:
       remove_empty_node: true    
     body: '{
-            "service-type": "${service-type}",
-            "relationship-list": {
-               "relationship": [
-                  {
-                    "related-to": "tenant",
-                    "relationship-label": "org.onap.relationships.inventory.Uses",
-                    "related-link": "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/${cloud-owner}/${cloud-region}/tenants/tenant/${cloud-tenant-id}",
-                    "relationship-data": [
-                       {
-                          "relationship-key": "cloud-region.cloud-owner",
-                          "relationship-value": "${cloud-owner}"
-                       },
-                       {
-                          "relationship-key": "cloud-region.cloud-region-id",
-                          "relationship-value": "${cloud-region}"
-                       },
-                       {
-                          "relationship-key": "tenant.tenant-id",
-                          "relationship-value": "${cloud-tenant-id}"
-                       }
-                    ],
-                    "related-to-property": [
-                      {
+                "related-to": "tenant",
+                "relationship-label": "org.onap.relationships.inventory.Uses",
+                "related-link": "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/${cloud-owner}/${cloud-region}/tenants/tenant/${cloud-tenant-id}",
+                "relationship-data": [
+                    {
+                        "relationship-key": "cloud-region.cloud-owner",
+                        "relationship-value": "${cloud-owner}"
+                    },
+                    {
+                        "relationship-key": "cloud-region.cloud-region-id",
+                        "relationship-value": "${cloud-region}"
+                    },
+                    {
+                        "relationship-key": "tenant.tenant-id",
+                        "relationship-value": "${cloud-tenant-id}"
+                    }
+                ],
+                "related-to-property": [
+                    {
                         "property-key": "tenant.tenant-name",
                         "property-value": "${tenant-name}"
-                      }
-                    ]
-              }
-              ]
-              } }'
+                    }
+                ]
+            }' 
   success_codes:
     - 200
     - 201
