@@ -28,10 +28,14 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.IOUtils;
+import org.onap.cli.fw.cmd.OnapCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ProcessRunner {
+    private static Logger log = LoggerFactory.getLogger(ProcessRunner.class);
     public static final String WIN_SHELL = "cmd.exe /c ";
-    public static final String UNIX_SHELL = "sh -c ";
+    public static final String UNIX_SHELL = "";
     private String []cmd = null;
     private String shell = System.getProperty("os.name").toLowerCase().startsWith("windows") ? WIN_SHELL : UNIX_SHELL;
     private String cwd = System.getProperty("user.home");
@@ -80,6 +84,7 @@ public class ProcessRunner {
         Process p = null;
         final StringWriter writerOutput = new StringWriter();
         final StringWriter writerError = new StringWriter();
+
         if (this.cmd.length == 1) {
             p = Runtime.getRuntime().exec(this.shell + this.cmd[0], this.env, null);
         } else {
@@ -113,6 +118,9 @@ public class ProcessRunner {
         this.exitCode = p.exitValue();
         this.output = writerOutput.toString();
         this.error = writerError.toString();
+        log.debug("CMD: " + Arrays.asList(this.cmd).toString() + "\nWORKING_DIR: " + this.cwd + "\nENV: " +
+        ((this.env == null) ? this.env : Arrays.asList(this.env).toString()) +
+                "\nOUTPUT: " + this.output + "\nERROR: " + this.error + "\nEXIT_CODE: " + this.exitCode);
         p.destroy();
     }
 
