@@ -1,0 +1,15 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/api/multicloud/v0/CloudOwner_ONAP-POD-01-Rail-07/registry",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 202,
+    "json" : null
+  }
+} ]
