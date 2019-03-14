@@ -1,0 +1,42 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-07",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-a0eb1dc2-626d-4b89-8c46-a6cb341d2810",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "cloud-owner" : "CloudOwner",
+      "cloud-region-id" : "ONAP-POD-01-Rail-07",
+      "cloud-type" : "openstack",
+      "owner-defined-type" : "t1",
+      "cloud-region-version" : "titanium_cloud",
+      "complex-name" : "clli3",
+      "cloud-zone" : "CloudZone",
+      "sriov-automation" : "false",
+      "identity-url" : "url",
+      "cloud-extra-info" : "{\"openstack-region-id\":\"ONAP-POD-01-Rail-07\"}",
+      "esr-system-info-list" : {
+        "esr-system-info" : [ {
+          "esr-system-info-id" : "5c85ce1f-aa78-4ebf-8d6f-4b62773e9bce",
+          "service-url" : "http://10.12.11.1:5000/v3",
+          "user-name" : "cloud_username",
+          "password" : "cloud_password",
+          "system-type" : "VIM",
+          "ssl-insecure" : "true",
+          "cloud-domain" : "Default",
+          "default-tenant" : "Integration-HPA",
+          "system-status" : "active"
+        } ]
+      }
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]
