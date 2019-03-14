@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c670d43d_a5f64fac",
+        "filename": "products/onap-dublin/features/policy/src/main/resources/open-cli-schema/policy/policy-pap-delete-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2019-03-14T05:51:45Z",
+      "side": 1,
+      "message": "Please delete the blank.",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "ff1b0f9270e112e144461ae3066cc4f661b23ea2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
