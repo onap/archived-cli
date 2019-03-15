@@ -16,6 +16,9 @@
 
 package org.onap.cli.fw.info;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.onap.cli.fw.cmd.OnapCommandType;
 
 /**
@@ -32,6 +35,8 @@ public class OnapCommandInfo {
     private OnapCommandType type = OnapCommandType.CMD;
 
     private OnapCommandState state = OnapCommandState.STABLE;
+
+    private Map<String, String> metadata = new HashMap<>();
 
     private boolean ignore = false;
 
@@ -81,6 +86,14 @@ public class OnapCommandInfo {
 
     public void setState(OnapCommandState state) {
         this.state = state;
+    }
+
+    public Map<String, String> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Map<String, String> metadata) {
+        this.metadata = metadata;
     }
 
 }
