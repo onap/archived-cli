@@ -17,7 +17,9 @@
 package org.onap.cli.fw.schema;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.onap.cli.fw.cmd.OnapCommandType;
@@ -70,6 +72,8 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
     private List<Object> inputs = new ArrayList<>();
 
     private List<Object> outputs = new ArrayList<>();
+
+    private Map<String, String> metadata = new HashMap();
 
     private String description;
 
@@ -243,5 +247,13 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Map<String, String> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Map<String, String> metadata) {
+        this.metadata = metadata;
     }
 }

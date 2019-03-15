@@ -17,8 +17,11 @@
 package org.onap.cli.fw.utils;
 
 import static org.onap.cli.fw.conf.OnapCommandConstants.ATTRIBUTES;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DEAFULT_INPUT_PARAMETERS_NAME;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DEFAULT_SCHEMA_PATH_PATERN;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DESCRIPTION;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DISCOVERY_FILE;
+import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_PARAM;
 import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
 import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SAMPLE_VERSION;
 import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
@@ -26,9 +29,6 @@ import static org.onap.cli.fw.conf.OnapCommandConstants.PARAMETERS;
 import static org.onap.cli.fw.conf.OnapCommandConstants.RESULTS;
 import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_DIRECTORY;
 import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_PATH_PATERN;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DEFAULT_SCHEMA_PATH_PATERN;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DEAFULT_INPUT_PARAMETERS_NAME;
-import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_PARAM;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,6 +59,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.yaml.snakeyaml.Yaml;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class OnapCommandDiscoveryUtils {
 
@@ -189,6 +190,7 @@ public class OnapCommandDiscoveryUtils {
 
                 File file = new File(dataDir + File.separator + DISCOVERY_FILE);
                 ObjectMapper mapper = new ObjectMapper();
+                mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
                 mapper.writerWithDefaultPrettyPrinter().writeValue(file, schemas);
             } catch (IOException e1) {
                 throw new OnapCommandDiscoveryFailed(dataDir,
@@ -374,6 +376,9 @@ public class OnapCommandDiscoveryUtils {
                             schema.setAuthor(infoMap.get(OnapCommandConstants.INFO_AUTHOR).toString());
                         }
 
+                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_METADATA) != null) {
+                            schema.setMetadata((Map<String, String>)infoMap.get(OnapCommandConstants.INFO_METADATA));
+                        }
 
                         schema.setSchemaProfile(identitySchemaProfileType(resourceMap));
 
