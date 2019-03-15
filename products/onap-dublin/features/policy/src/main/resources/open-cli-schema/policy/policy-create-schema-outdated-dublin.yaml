@@ -32,13 +32,13 @@ parameters:
     description: Policy config type
     type: string
     long_option: policy--config-type
-    short_option: t
+    short_option: T
     is_optional: false
   - name: policy-scope
     description: Policy scope
     type: string
     long_option: policy-scope
-    short_option: s
+    short_option: S
     is_optional: false
   - name: onap-name
     description: Onap name
