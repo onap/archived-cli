@@ -1,0 +1,25 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/6b33c26b3a924b2789fa17fabd4a292d/versions/2b683bedebeb4874a9c2a82939c77f0d/license-key-groups",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-5b5c1feb-062f-42d2-876d-0d748f460015",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "description" : "",
+      "name" : "philip-key-grp",
+      "type" : "Universal"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "51466fa44cb346eda6881176440eee5d"
+    }
+  }
+} ]

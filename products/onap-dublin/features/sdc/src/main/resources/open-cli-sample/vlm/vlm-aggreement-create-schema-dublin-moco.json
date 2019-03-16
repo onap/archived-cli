@@ -1,0 +1,29 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/6b33c26b3a924b2789fa17fabd4a292d/versions/2b683bedebeb4874a9c2a82939c77f0d/license-agreements",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-43cc944d-8da7-41f3-95c7-59baf629cbd4",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "addedFeatureGroupsIds" : [ "457e9905f32544cca5351e86cc2e7958" ],
+      "description" : "philip-aggrement",
+      "licenseTerm" : {
+        "choice" : "Fixed_Term",
+        "other" : ""
+      },
+      "name" : "philip-agreement"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "ad7e38cbd8d94b0a8705b58a461e6b70"
+    }
+  }
+} ]

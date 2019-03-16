@@ -1,0 +1,21 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/6b33c26b3a924b2789fa17fabd4a292d/versions/2b683bedebeb4874a9c2a82939c77f0d/actions",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-877570c7-18d7-478f-b6dd-09eabb2c0182",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "action" : "Submit"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : { }
+  }
+} ]

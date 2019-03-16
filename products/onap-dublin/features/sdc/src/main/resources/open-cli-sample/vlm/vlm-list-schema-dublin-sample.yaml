@@ -1,0 +1,55 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+open_cli_sample_version: 1.0
+name: -m
+version: onap-dublin
+samples:
+  sample1:
+    name: -m
+    input: http://10.43.107.110:8081
+    moco: vlm-list-schema-dublin-moco.json
+    output: |
+      +--------------------------+----------------------------------+
+      |vlm-name                  |vlm-id                            |
+      +--------------------------+----------------------------------+
+      |philip-vendor             |6b33c26b3a924b2789fa17fabd4a292d  |
+      +--------------------------+----------------------------------+
+      |itohan-vendor             |126f7efb8d294aceac7fb0e2735ff2a4  |
+      +--------------------------+----------------------------------+
+      |3ec04b77-2696-4b6e-92da   |9ed3aebe891246dc80d5f184bcc029c5  |
+      +--------------------------+----------------------------------+
+      |onap_hpa                  |67fd025b398e45c3b11e2e7c55e79c34  |
+      +--------------------------+----------------------------------+
+      |6d5a6c71-3222-4cf4-a4f2   |c883fc163b834996908f9547ba6fd6ce  |
+      +--------------------------+----------------------------------+
+      |6519e766-b68f-4861-b0b5   |ffccf84ea0ab44558912697ed0e90ea3  |
+      +--------------------------+----------------------------------+
+      |ad7af32c-e5f6-4c7b-8e20   |e8c711a8b0b948a0835ccc7f4e35d6a6  |
+      +--------------------------+----------------------------------+
+      |14bb164a-194d-43c7-8316   |e6f808c8ee9040d098d652084c5eda57  |
+      +--------------------------+----------------------------------+
+      |793af38e-3448-46fc-afa5   |395c397dd9974bc29a0605f346f9d76b  |
+      +--------------------------+----------------------------------+
+      |354c419d-b63b-4ff9-bc03   |9eee1fe60434468bbe63dc718bcdd2d2  |
+      +--------------------------+----------------------------------+
+      |5a58e574-e97f-4874-a7bd   |4d01ca9dd43549a9964664b2270f6a99  |
+      +--------------------------+----------------------------------+
+      |1d97c202-997e-4f71-a740   |09517ab1da3b4587a766ecdeb70462d5  |
+      +--------------------------+----------------------------------+
+      |6bd17f5a-e397-484c-af52   |5e5bc4627e414f8fa0cf0d2612c00eaa  |
+      +--------------------------+----------------------------------+
+      |3a07540f-4f15-43fe-ac79   |c2d912cafb83496ea135b5df26cad759  |
+      +--------------------------+----------------------------------+
+      |4a719c24-3ce8-431d-aee7   |af0cee7f0f25496eb6c3bbe867298127  |
+      +--------------------------+----------------------------------+
