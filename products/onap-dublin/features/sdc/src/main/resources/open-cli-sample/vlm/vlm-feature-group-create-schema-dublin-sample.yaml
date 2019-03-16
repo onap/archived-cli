@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: -x
+version: onap-dublin
+samples:
+  sample1:
+    name: -x
+    input: philip-feature-grp -y 6b33c26b3a924b2789fa17fabd4a292d -e 2b683bedebeb4874a9c2a82939c77f0d -z philip-feature-grp -g 51466fa44cb346eda6881176440eee5d -b 8c70182a9c4641e79477708ef6ed6984 -c itohan-part -u cs0008 -p demo123456! -m http://10.43.107.110:8081
+    moco: vlm-feature-group-create-schema-dublin-moco.json
+    output: |
+      +----------+----------------------------------+
+      |property  |value                             |
+      +----------+----------------------------------+
+      |ID        |457e9905f32544cca5351e86cc2e7958  |
+      +----------+----------------------------------+

@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: -x
+version: onap-dublin
+samples:
+  sample1:
+    name: -x
+    input: philip-vendor -u cs0008 -p demo123456! -m http://10.43.107.110:8081
+    moco: vlm-create-schema-dublin-moco.json
+    output: |
+      +----------+----------------------------------+
+      |property  |value                             |
+      +----------+----------------------------------+
+      |ID        |6b33c26b3a924b2789fa17fabd4a292d  |
+      +----------+----------------------------------+
+      |version   |2b683bedebeb4874a9c2a82939c77f0d  |
+      +----------+----------------------------------+
