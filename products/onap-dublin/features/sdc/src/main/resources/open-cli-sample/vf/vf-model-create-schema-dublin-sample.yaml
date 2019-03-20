@@ -1,0 +1,27 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+open_cli_sample_version: 1.0
+name: -y
+version: onap-dublin
+samples:
+  sample1:
+    name: -y
+    input: cli-vf-3 -g 1.0 -x cli-vf-3 -z itohan-vendor -u cs0008 -p demo123456! -b b45a4ac88b274c179744e4a2d2d93767 -m http://10.12.6.129:30205
+    moco: vf-model-create-schema-dublin-moco.json
+    output: |
+      +----------+--------------------------------------+
+      |property  |value                                 |
+      +----------+--------------------------------------+
+      |ID        |b3e0f162-5356-4b43-a9c0-3ab7e66638d2  |
+      +----------+--------------------------------------+
