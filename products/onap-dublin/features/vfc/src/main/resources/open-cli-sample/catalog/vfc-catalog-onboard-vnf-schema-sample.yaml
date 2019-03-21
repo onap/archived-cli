@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: vfc-catalog-onboard-vnf
+version: onap-dublin
+samples:
+  sample1:
+    name: vfc-catalog-onboard-vnf
+    input: -m http://10.12.5.155:30280 -c c1cec675-1069-487d-b1a9-c256b17c3291
+    moco: vfc-catalog-onboard-vnf-schema-moco.json
+    output: |
+      +--------------------------------------+
+      |job-id                                |
+      +--------------------------------------+
+      |1d871fc4-380c-4699-8f7f-77e508f9734d  |
+      +--------------------------------------+
