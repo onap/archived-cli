@@ -1,0 +1,64 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc2/rest/v1/catalog/services/2d488818-2e62-46fd-a627-df8677ac4d74/lifecycleState/CHECKIN",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-07d4f4d0-67e1-4d1c-ae22-8e19c7599659",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "userRemarks" : "cli checkin"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "uniqueId" : "2d488818-2e62-46fd-a627-df8677ac4d74",
+      "name" : "cli-service-mod",
+      "version" : "1.2",
+      "isHighestVersion" : true,
+      "creationDate" : 1553196125569,
+      "lastUpdateDate" : 1553196641441,
+      "description" : "create service model with cli",
+      "lifecycleState" : "NOT_CERTIFIED_CHECKIN",
+      "tags" : [ "cli-service-mod" ],
+      "icon" : "defaulticon",
+      "normalizedName" : "cliservicemod",
+      "systemName" : "CliServiceMod",
+      "contactId" : "cs0008",
+      "allVersions" : {
+        "1.0" : "054425a1-5580-4758-ac33-ce817c8c7903",
+        "1.1" : "116edb11-9707-45d2-af5d-a7de858e1938",
+        "1.2" : "2d488818-2e62-46fd-a627-df8677ac4d74"
+      },
+      "projectCode" : "000000",
+      "invariantUUID" : "36a18432-57d2-4d67-b67a-19b219cc0113",
+      "componentType" : "SERVICE",
+      "categories" : [ {
+        "name" : "Network L1-3",
+        "normalizedName" : "network l1-3",
+        "uniqueId" : "serviceNewCategory.network l1-3",
+        "empty" : false
+      } ],
+      "creatorUserId" : "cs0008",
+      "creatorFullName" : "Carlos Santana",
+      "lastUpdaterUserId" : "cs0008",
+      "lastUpdaterFullName" : "Carlos Santana",
+      "archiveTime" : 0,
+      "distributionStatus" : "DISTRIBUTION_NOT_APPROVED",
+      "ecompGeneratedNaming" : true,
+      "namingPolicy" : "",
+      "serviceType" : "",
+      "serviceRole" : "",
+      "environmentContext" : "General_Revenue-Bearing",
+      "instantiationType" : "A-la-carte",
+      "vspArchived" : false,
+      "archived" : false,
+      "uuid" : "32110371-0b6e-4146-813d-2505008a82d4"
+    }
+  }
+} ]

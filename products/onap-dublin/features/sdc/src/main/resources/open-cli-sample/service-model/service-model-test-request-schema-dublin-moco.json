@@ -1,0 +1,62 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc2/rest/v1/catalog/services/fb8ffb35-a8e3-493f-9b9b-b31321b68dfa/lifecycleState/certificationRequest",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-d49e86c7-c5fb-43ba-8bc4-5069c37f4635",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "userRemarks" : "Requesting certification via CLI"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "uniqueId" : "fb8ffb35-a8e3-493f-9b9b-b31321b68dfa",
+      "name" : "cli-service",
+      "version" : "0.1",
+      "isHighestVersion" : true,
+      "creationDate" : 1553192910482,
+      "lastUpdateDate" : 1553193141863,
+      "description" : "create service model with cli",
+      "lifecycleState" : "READY_FOR_CERTIFICATION",
+      "tags" : [ "cli-service" ],
+      "icon" : "defaulticon",
+      "normalizedName" : "cliservice",
+      "systemName" : "CliService",
+      "contactId" : "cs0008",
+      "allVersions" : {
+        "0.1" : "fb8ffb35-a8e3-493f-9b9b-b31321b68dfa"
+      },
+      "projectCode" : "000000",
+      "invariantUUID" : "4dd682d8-4c3c-4f6c-96b1-9e19eed5987c",
+      "componentType" : "SERVICE",
+      "categories" : [ {
+        "name" : "Network L1-3",
+        "normalizedName" : "network l1-3",
+        "uniqueId" : "serviceNewCategory.network l1-3",
+        "empty" : false
+      } ],
+      "creatorUserId" : "cs0008",
+      "creatorFullName" : "Carlos Santana",
+      "lastUpdaterUserId" : "cs0008",
+      "lastUpdaterFullName" : "Carlos Santana",
+      "archiveTime" : 0,
+      "distributionStatus" : "DISTRIBUTION_NOT_APPROVED",
+      "ecompGeneratedNaming" : true,
+      "namingPolicy" : "",
+      "serviceType" : "",
+      "serviceRole" : "",
+      "environmentContext" : "General_Revenue-Bearing",
+      "instantiationType" : "A-la-carte",
+      "vspArchived" : false,
+      "archived" : false,
+      "uuid" : "788289e1-161a-42b8-89ed-14adde63c600"
+    }
+  }
+} ]
