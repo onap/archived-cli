@@ -1,0 +1,23 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/13b1845d31504fa18ee4d2a593dd5274",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-633d70c8-1bee-48a3-a01c-263ce9b5d996",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "vendorName" : "res-vendor",
+      "description" : "vendor license model",
+      "iconRef" : "icon"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : { }
+  }
+} ]
