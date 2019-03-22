@@ -1,0 +1,41 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-a5095ef3-5afc-4305-945b-26fbdaf0b6b0",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "category" : "resourceNewCategory.generic",
+      "vendorId" : "74b43ab85f3d49948c1513a27adfaba7",
+      "subCategory" : "resourceNewCategory.generic.abstract",
+      "description" : "cli-test-vsp",
+      "licensingVersion" : "eb65c2fbbaee4a8dbd0b60e697e98fb7",
+      "licensingData" : {
+        "featureGroups" : [ "292d56e87f274ef385b0dfd41f41a066" ],
+        "licenseAgreement" : "92bcbe53b6724ae78c7c13e4269cb90f"
+      },
+      "icon" : "icon",
+      "onboardingMethod" : "NetworkPackage",
+      "vendorName" : "Itohan-vendor",
+      "name" : "cli-vsp-v2"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "itemId" : "a9928e0e8b124f4d87a9e0654c4b1d60",
+      "version" : {
+        "id" : "b087302e50374ab28e5a8d4b32aa3abe",
+        "name" : "1.0",
+        "description" : "Initial version",
+        "status" : "Draft"
+      }
+    }
+  }
+} ]
