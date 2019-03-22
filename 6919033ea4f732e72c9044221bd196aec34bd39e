@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "118e8b17_c551d032",
+        "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-03-22T16:29:38Z",
+      "side": 1,
+      "message": "I am on ONAP HPA Team and I created the file, that is why I put the author as ONAP HPA Team",
+      "parentUuid": "18647d13_f4c13b53",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "6919033ea4f732e72c9044221bd196aec34bd39e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce92021e_5d6e0165",
         "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-22T07:37:32Z",
       "side": 1,
       "message": "Where do you define \"host-username\"?",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 39
+      },
+      "revId": "6919033ea4f732e72c9044221bd196aec34bd39e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deb9d9f5_24a412eb",
+        "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-03-22T16:29:38Z",
+      "side": 1,
+      "message": "\"host-username\" is a CLI system parameter. Anytime you put the -u option in the CLI, the system automatically uses that as \"host-username\"",
+      "parentUuid": "ce92021e_5d6e0165",
       "range": {
         "startLine": 76,
         "startChar": 26,
