@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18647d13_f4c13b53",
+        "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2019-03-22T07:37:32Z",
+      "side": 1,
+      "message": "the author is not right.",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "6919033ea4f732e72c9044221bd196aec34bd39e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce92021e_5d6e0165",
+        "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2019-03-22T07:37:32Z",
+      "side": 1,
+      "message": "Where do you define \"host-username\"?",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 39
+      },
+      "revId": "6919033ea4f732e72c9044221bd196aec34bd39e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6cc9105_2f4336bc",
+        "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2019-03-22T07:37:32Z",
+      "side": 1,
+      "message": "Please delete blank.",
+      "range": {
+        "startLine": 85,
+        "startChar": 69,
+        "endLine": 85,
+        "endChar": 70
+      },
+      "revId": "6919033ea4f732e72c9044221bd196aec34bd39e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc0cea83_4d0e614c",
+        "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2019-03-22T07:37:32Z",
+      "side": 1,
+      "message": "Please also delete blank.",
+      "range": {
+        "startLine": 89,
+        "startChar": 40,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "6919033ea4f732e72c9044221bd196aec34bd39e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
