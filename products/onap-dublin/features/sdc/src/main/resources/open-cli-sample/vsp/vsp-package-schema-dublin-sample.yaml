@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: -x
+version: onap-dublin
+samples:
+  sample1:
+    name: -x
+    input: 0afed170432e471e9dafb662f78a8277 -y a6a78a511fd74524889f8095e12b9aac -u cs0008 -p demo123456! -m http://10.43.107.110:8081
+    moco: vsp-package-schema-dublin-moco.json
+    output:

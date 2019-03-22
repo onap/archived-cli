@@ -1,0 +1,274 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-d7e12432-7aec-4002-a95f-f95ec1a6427f",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "listCount" : 28,
+      "results" : [ {
+        "name" : "vsp-cli-v1",
+        "description" : "aaaa",
+        "vendorName" : "itohan-vendor",
+        "vendorId" : "126f7efb8d294aceac7fb0e2735ff2a4",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "0afed170432e471e9dafb662f78a8277",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test2",
+        "description" : "aasdfasda",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "4065fc6500f74926b0f9e052a071da6f",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test-vsp",
+        "description" : "cccc",
+        "vendorName" : "itohan-vendor",
+        "vendorId" : "126f7efb8d294aceac7fb0e2735ff2a4",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "2d126593c4c84741a441aa0ae5bbb6be",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "cli-test-3",
+        "description" : "cli test 3",
+        "vendorName" : "itohan-vendor",
+        "vendorId" : "126f7efb8d294aceac7fb0e2735ff2a4",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "b45a4ac88b274c179744e4a2d2d93767",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "cli-vsp-abs",
+        "description" : "test cli",
+        "vendorName" : "itohan-vendor",
+        "vendorId" : "126f7efb8d294aceac7fb0e2735ff2a4",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "54c4c2f26b974f169b362cc20ca434ff",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test-cli",
+        "description" : "description",
+        "vendorName" : "itohan-vendor",
+        "vendorId" : "126f7efb8d294aceac7fb0e2735ff2a4",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "ab365698f8f948cbb358ca4fd72923c3",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "new-cli-vsp",
+        "description" : "cli-test-vsp",
+        "vendorName" : "Itohan-vendor",
+        "vendorId" : "74b43ab85f3d49948c1513a27adfaba7",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "8d5974a45c014ed6ad1b8bcace4a3609",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test3",
+        "description" : "test dummy package",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "984cdff3ec9e48539d36371c4d9367db",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test4",
+        "description" : "test4",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "0063e08cd03a4012b381b376e537ebb1",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test6",
+        "description" : "test6",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "18460421f5ee4eda893dd661c41ff5bd",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "test5",
+        "description" : "test5",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "5db09293ff384c738ad5754350630973",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "vlbhpa_sriov",
+        "description" : "vlbhpa sriov",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "9b3ae4aa686c4aa2be524ce6f6c95842",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "vlbhpa_1",
+        "description" : "vlbhpa test1",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "62e221a2489d480fa291aeaa2bea9c52",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "vfwhpa_sriov",
+        "description" : "vfwhpa sriov",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "d10cac28981c4396b7b3636b0a69786f",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "06357cff-760a-4c48-aa35",
+        "description" : "vendor software product",
+        "vendorName" : "3ec04b77-2696-4b6e-92da",
+        "vendorId" : "9ed3aebe891246dc80d5f184bcc029c5",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "978a677077cd4632b6b85820a30a0e91",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "vfwhpa_test1_v2",
+        "description" : "vfwhpa test1",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "ab143b9d132c45e980c6237cb79b6a2c",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "vfwhpa_test1",
+        "description" : "vfwhpa test1",
+        "vendorName" : "onap_hpa",
+        "vendorId" : "67fd025b398e45c3b11e2e7c55e79c34",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "38a21a8bb73e4107b3b727f08153bce7",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "c60aed4e-dce4-44fd-a89c",
+        "description" : "vendor software product",
+        "vendorName" : "6d5a6c71-3222-4cf4-a4f2",
+        "vendorId" : "c883fc163b834996908f9547ba6fd6ce",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "729a07cd8a3c4142836555a315305a22",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "ef858a2c-2397-481f-b82a",
+        "description" : "vendor software product",
+        "vendorName" : "6519e766-b68f-4861-b0b5",
+        "vendorId" : "ffccf84ea0ab44558912697ed0e90ea3",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "37959c2841e244fc805a14fc57220a0c",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "ad55252e-b8bf-44c7-84f7",
+        "description" : "vendor software product",
+        "vendorName" : "ad7af32c-e5f6-4c7b-8e20",
+        "vendorId" : "e8c711a8b0b948a0835ccc7f4e35d6a6",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "3f9aa74f65574a299cbd6f81448846ac",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "38a68c2a-aa6a-4088-bb2b",
+        "description" : "vendor software product",
+        "vendorName" : "14bb164a-194d-43c7-8316",
+        "vendorId" : "e6f808c8ee9040d098d652084c5eda57",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "47cb2a42991548a09b377a3aa9703397",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "46f8da66-75c2-4786-87dc",
+        "description" : "vendor software product",
+        "vendorName" : "793af38e-3448-46fc-afa5",
+        "vendorId" : "395c397dd9974bc29a0605f346f9d76b",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "21116b5c438b4949b24fda554d2ff555",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "53cfef18-7743-4b35-bd89",
+        "description" : "vendor software product",
+        "vendorName" : "354c419d-b63b-4ff9-bc03",
+        "vendorId" : "9eee1fe60434468bbe63dc718bcdd2d2",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "b3b170ffa1e54f6880b61817aebdbdca",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "c46e4d8b-6451-4428-a0cf",
+        "description" : "vendor software product",
+        "vendorName" : "5a58e574-e97f-4874-a7bd",
+        "vendorId" : "4d01ca9dd43549a9964664b2270f6a99",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "6ee2299702ec46cd80c83eab3cb182f9",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "68a79a72-03be-4180-b981",
+        "description" : "vendor software product",
+        "vendorName" : "1d97c202-997e-4f71-a740",
+        "vendorId" : "09517ab1da3b4587a766ecdeb70462d5",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "0ef9544b18154e27862f40457c36bfc7",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "0da72c3b-1abf-4bcb-bf12",
+        "description" : "vendor software product",
+        "vendorName" : "6bd17f5a-e397-484c-af52",
+        "vendorId" : "5e5bc4627e414f8fa0cf0d2612c00eaa",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "911ab62d97034a31b5e6219ff32c93a2",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "4e9883c1-d06c-4554-bdf3",
+        "description" : "vendor software product",
+        "vendorName" : "3a07540f-4f15-43fe-ac79",
+        "vendorId" : "c2d912cafb83496ea135b5df26cad759",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "a0440d85e9c24f9486e37e42aef206d1",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      }, {
+        "name" : "8dc447f7-9a65-4b88-8193",
+        "description" : "vendor software product",
+        "vendorName" : "4a719c24-3ce8-431d-aee7",
+        "vendorId" : "af0cee7f0f25496eb6c3bbe867298127",
+        "onboardingMethod" : "NetworkPackage",
+        "id" : "bc9dfa3d21c1455ea42759d3f045ad28",
+        "owner" : "cs0008",
+        "status" : "ACTIVE"
+      } ]
+    }
+  }
+} ]
