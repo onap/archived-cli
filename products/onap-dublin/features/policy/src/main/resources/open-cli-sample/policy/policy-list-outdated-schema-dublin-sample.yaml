@@ -1,0 +1,25 @@
+open_cli_sample_version: 1.0
+name: policy-list-outdated
+version: onap-dublin
+samples:
+ sample1:
+  name: policy-list-outdated
+  input: -m https://10.12.6.129:30694 -u testpdp -p alpha123
+  moco: policy-list-outdated-schema-dublin-moco.json
+  output: |
+    +----------------------------------------------------+--------------+----------------------------------------------------+
+    |name                                                |type          |config                                              |
+    +----------------------------------------------------+--------------+----------------------------------------------------+
+    |OSDF_CASABLANCA.Config_MS_Distance_vLBHPA_SRIOV_1.  |MicroService  |{"service":"distancePolicy","guard":"False","conte  |
+    |1.xml                                               |              |nt":{"policyType":"distance_to_location","applicab  |
+    |                                                    |              |leResources":"any","identity":"distance-vLB","poli  |
+    |                                                    |              |cyScope":["vlb","us","international","ip"],"distan  |
+    |                                                    |              |ceProperties":{"distance":{"value":"100","unit":"k  |
+    |                                                    |              |m","operator":"<"},"locationInfo":"customer_loc"},  |
+    |                                                    |              |"resources":["vLB","VlbhpaSriov"]},"priority":"3",  |
+    |                                                    |              |"templateVersion":"OpenSource.version.1","riskLeve  |
+    |                                                    |              |l":"2","description":"Distance Policy for vLB","po  |
+    |                                                    |              |licyName":"OSDF_CASABLANCA.Distance_vLBHPA_SRIOV_1  |
+    |                                                    |              |","version":"test1","riskType":"test"}              |
+    +----------------------------------------------------+--------------+----------------------------------------------------+
+

@@ -1,0 +1,40 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/pdp/api/getConfig",
+    "headers" : {
+      "Authorization" : "Basic dGVzdHBkcDphbHBoYTEyMw==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "Environment" : "TEST",
+      "X-TransactionId" : "req-6daad440-515a-4134-94bb-4fdf99cdc92e",
+      "ClientAuth" : "cHl0aG9uOnRlc3Q=",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "configAttributes" : { },
+      "policyName" : ".*"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : [ {
+      "policyConfigMessage" : "Config Retrieved! ",
+      "policyConfigStatus" : "CONFIG_RETRIEVED",
+      "type" : "JSON",
+      "config" : "{\"service\":\"distancePolicy\",\"guard\":\"False\",\"content\":{\"policyType\":\"distance_to_location\",\"applicableResources\":\"any\",\"identity\":\"distance-vLB\",\"policyScope\":[\"vlb\",\"us\",\"international\",\"ip\"],\"distanceProperties\":{\"distance\":{\"value\":\"100\",\"unit\":\"km\",\"operator\":\"<\"},\"locationInfo\":\"customer_loc\"},\"resources\":[\"vLB\",\"VlbhpaSriov\"]},\"priority\":\"3\",\"templateVersion\":\"OpenSource.version.1\",\"riskLevel\":\"2\",\"description\":\"Distance Policy for vLB\",\"policyName\":\"OSDF_CASABLANCA.Distance_vLBHPA_SRIOV_1\",\"version\":\"test1\",\"riskType\":\"test\"}",
+      "policyName" : "OSDF_CASABLANCA.Config_MS_Distance_vLBHPA_SRIOV_1.1.xml",
+      "policyType" : "MicroService",
+      "policyVersion" : "1",
+      "matchingConditions" : {
+        "ECOMPName" : "SampleDemo",
+        "ONAPName" : "SampleDemo",
+        "service" : "distancePolicy",
+        "policyScope" : "vlb,us,international,ip",
+        "policyType" : "distance_to_location"
+      },
+      "responseAttributes" : { },
+      "property" : null
+    } ]
+  }
+} ]
