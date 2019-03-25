@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ce07dc07_6e9dbb88",
+        "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2019-03-25T03:23:36Z",
+      "side": 1,
+      "message": "I means that the email address should be itohan.ukponmwan@intel.com instead of onap-discuss@lists.onap.org \n. It just likes the patch which you submitted.\nhttps://gerrit.onap.org/r/#/c/82739/3/products/onap-dublin/features/sdnc/src/main/resources/open-cli-schema/vf-preload-schema-dublin.yaml",
+      "parentUuid": "118e8b17_c551d032",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "6919033ea4f732e72c9044221bd196aec34bd39e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce92021e_5d6e0165",
         "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "\"host-username\" is a CLI system parameter. Anytime you put the -u option in the CLI, the system automatically uses that as \"host-username\"",
       "parentUuid": "ce92021e_5d6e0165",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 39
+      },
+      "revId": "6919033ea4f732e72c9044221bd196aec34bd39e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17a291a0_c20168d7",
+        "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-create-schema-dublin.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2019-03-25T03:23:36Z",
+      "side": 1,
+      "message": "Ok, I see, Thank you very much!",
+      "parentUuid": "deb9d9f5_24a412eb",
       "range": {
         "startLine": 76,
         "startChar": 26,
