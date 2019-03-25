@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f0547da_6cf98dfa",
+        "filename": "products/onap-dublin/features/policy/src/main/resources/open-cli-schema/policy/policy-list-outdated-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 2977
+      },
+      "writtenOn": "2019-03-25T05:35:38Z",
+      "side": 1,
+      "message": "I agree to have ONAP HPA team here but still have the onap-discuss email here for maintenance.",
+      "parentUuid": "50918a02_92b39c90",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "928c6b9fde9014f339ca936c215e951302b7ab16",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a5da439_2db9c08d",
         "filename": "products/onap-dublin/features/policy/src/main/resources/open-cli-schema/policy/policy-list-outdated-schema-dublin.yaml",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-25T03:27:47Z",
       "side": 1,
       "message": "What is that mean?",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "928c6b9fde9014f339ca936c215e951302b7ab16",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "134f1e2e_e702c5b5",
+        "filename": "products/onap-dublin/features/policy/src/main/resources/open-cli-schema/policy/policy-list-outdated-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 2977
+      },
+      "writtenOn": "2019-03-25T05:35:38Z",
+      "side": 1,
+      "message": "It means all the policies.",
+      "parentUuid": "7a5da439_2db9c08d",
       "range": {
         "startLine": 31,
         "startChar": 19,
