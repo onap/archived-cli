@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50918a02_92b39c90",
+        "filename": "products/onap-dublin/features/policy/src/main/resources/open-cli-schema/policy/policy-list-outdated-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2019-03-25T03:27:47Z",
+      "side": 1,
+      "message": "I think you should put here your email address.\nONAP HPA Team ruoyu.ying@intel.com",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "928c6b9fde9014f339ca936c215e951302b7ab16",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a5da439_2db9c08d",
+        "filename": "products/onap-dublin/features/policy/src/main/resources/open-cli-schema/policy/policy-list-outdated-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2019-03-25T03:27:47Z",
+      "side": 1,
+      "message": "What is that mean?",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "928c6b9fde9014f339ca936c215e951302b7ab16",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
