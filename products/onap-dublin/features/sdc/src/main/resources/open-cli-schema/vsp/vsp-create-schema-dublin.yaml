@@ -34,20 +34,6 @@ parameters:
     short_option: y
     long_option: vsp-description
     is_optional: true
-  - name: vsp-category
-    description: Category of the VSP
-    type: string
-    long_option: vsp-category
-    short_option: z
-    is_optional: true
-    default_value: resourceNewCategory.generic
-  - name: vsp-subcategory
-    description: Sub Category of VSP
-    type: string
-    long_option: vsp-subcategory
-    short_option: b
-    is_optional: true
-    default_value: resourceNewCategory.generic.abstract
   - name: vlm-version
     description: License version
     type: string
@@ -79,6 +65,13 @@ parameters:
     long_option: vlm-feature-group-id
     short_option: j
     is_optional: false
+  - name: onboarding-method
+    description: Method to be used for onboarding (Manual or NetworkPackage)
+    type: string
+    long_option: onboarding-method
+    short_option: o
+    is_optional: false
+
 results:
   direction: portrait
   attributes:
@@ -99,9 +92,20 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-software-products
     method: POST
-    body: '{"category": "${vsp-category}", "vendorId": "${vlm-id}", "subCategory": "${vsp-subcategory}", "description": "${vsp-description}", "licensingVersion": "${vlm-version}", "licensingData": {"featureGroups": ["${vlm-feature-group-id}"], "licenseAgreement": "${vlm-agreement-id}"}, "icon": "icon", "onboardingMethod": "Manual", "vendorName": "${vlm-vendor}", "name": "${vsp-name}"}'
+    body: '{
+            "category": "resourceNewCategory.generic",
+            "vendorId": "${vlm-id}",
+            "subCategory": "resourceNewCategory.generic.abstract",
+            "description": "${vsp-description}",
+            "licensingVersion": "${vlm-version}",
+            "licensingData": {"featureGroups": ["${vlm-feature-group-id}"], "licenseAgreement": "${vlm-agreement-id}"},
+            "icon": "icon",
+            "onboardingMethod": "${onboarding-method}",
+            "vendorName": "${vlm-vendor}",
+            "name": "${vsp-name}"
+           }'
   success_codes:
     - 200
   result_map:
-    ID: $b{$.vspId}
+    ID: $b{$.itemId}
     version: $b{$.version.id}
