@@ -1,0 +1,378 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-05/flavors",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-7bfa57a0-e098-4865-992b-5c0edfac75d1",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "flavor" : [ {
+        "flavor-id" : "30",
+        "flavor-name" : "m1.large",
+        "flavor-vcpus" : 4,
+        "flavor-ram" : 4096,
+        "flavor-disk" : 30,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/30",
+        "flavor-disabled" : false,
+        "resource-version" : "1547857642890"
+      }, {
+        "flavor-id" : "221",
+        "flavor-name" : "onap.hpa.flavor21",
+        "flavor-vcpus" : 2,
+        "flavor-ram" : 512,
+        "flavor-disk" : 20,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/221",
+        "flavor-disabled" : false,
+        "hpa-capabilities" : {
+          "hpa-capability" : [ {
+            "hpa-capability-id" : "3201b939-6fd3-4185-b36c-b9e2b89e699c",
+            "hpa-feature" : "hugePages",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857634013",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "memoryPageSize",
+              "hpa-attribute-value" : "{\"value\":\"2048\",\"unit\":\"KB\"}",
+              "resource-version" : "1547857634077"
+            } ]
+          }, {
+            "hpa-capability-id" : "d6d28707-88af-48e0-9f72-2669dd47879e",
+            "hpa-feature" : "localStorage",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857634122",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "swapMemSize",
+              "hpa-attribute-value" : "{\"value\":\"0\",\"unit\":\"MB\"}",
+              "resource-version" : "1547857634266"
+            }, {
+              "hpa-attribute-key" : "diskSize",
+              "hpa-attribute-value" : "{\"value\":\"20\",\"unit\":\"GB\"}",
+              "resource-version" : "1547857634208"
+            }, {
+              "hpa-attribute-key" : "ephemeralDiskSize",
+              "hpa-attribute-value" : "{\"value\":\"0\",\"unit\":\"GB\"}",
+              "resource-version" : "1547857634287"
+            } ]
+          }, {
+            "hpa-capability-id" : "d4911790-fe3d-468c-9f14-3243720ceecf",
+            "hpa-feature" : "cpuPinning",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857633656",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "logicalCpuPinningPolicy",
+              "hpa-attribute-value" : "{\"value\":\"dedicated\"}",
+              "resource-version" : "1547857633850"
+            }, {
+              "hpa-attribute-key" : "logicalCpuThreadPinningPolicy",
+              "hpa-attribute-value" : "{\"value\":\"isolate\"}",
+              "resource-version" : "1547857633702"
+            } ]
+          }, {
+            "hpa-capability-id" : "debc454e-ea09-4a80-ba26-2097d2edd398",
+            "hpa-feature" : "ovsDpdk",
+            "hpa-version" : "v1",
+            "architecture" : "Intel64",
+            "resource-version" : "1547857634393",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "dataProcessingAccelerationLibrary",
+              "hpa-attribute-value" : "{\"value\":\"v17.02\"}",
+              "resource-version" : "1547857634418"
+            } ]
+          }, {
+            "hpa-capability-id" : "62c138b5-290b-40fa-99cb-d58d8a76a93c",
+            "hpa-feature" : "basicCapabilities",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857633289",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "virtualMemSize",
+              "hpa-attribute-value" : "{\"value\":\"512\",\"unit\":\"MB\"}",
+              "resource-version" : "1547857633571"
+            }, {
+              "hpa-attribute-key" : "numVirtualCpu",
+              "hpa-attribute-value" : "{\"value\":\"2\"}",
+              "resource-version" : "1547857633401"
+            } ]
+          } ]
+        },
+        "resource-version" : "1547857633230"
+      }, {
+        "flavor-id" : "10",
+        "flavor-name" : "m1.small",
+        "flavor-vcpus" : 1,
+        "flavor-ram" : 1024,
+        "flavor-disk" : 10,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/10",
+        "flavor-disabled" : false,
+        "resource-version" : "1547857628647"
+      }, {
+        "flavor-id" : "222",
+        "flavor-name" : "onap.hpa.flavor22",
+        "flavor-vcpus" : 2,
+        "flavor-ram" : 2048,
+        "flavor-disk" : 20,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/222",
+        "flavor-disabled" : false,
+        "hpa-capabilities" : {
+          "hpa-capability" : [ {
+            "hpa-capability-id" : "737e7791-af11-4b82-8b0c-2834f3315134",
+            "hpa-feature" : "hugePages",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857636101",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "memoryPageSize",
+              "hpa-attribute-value" : "{\"value\":\"2048\",\"unit\":\"KB\"}",
+              "resource-version" : "1547857636231"
+            } ]
+          }, {
+            "hpa-capability-id" : "0e96b6f2-2080-4537-8af7-07ca2e51c740",
+            "hpa-feature" : "ovsDpdk",
+            "hpa-version" : "v1",
+            "architecture" : "Intel64",
+            "resource-version" : "1547857636818",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "dataProcessingAccelerationLibrary",
+              "hpa-attribute-value" : "{\"value\":\"v17.02\"}",
+              "resource-version" : "1547857636856"
+            } ]
+          }, {
+            "hpa-capability-id" : "8a7e4141-e192-487b-b31a-da886899c5cb",
+            "hpa-feature" : "localStorage",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857636258",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "swapMemSize",
+              "hpa-attribute-value" : "{\"value\":\"0\",\"unit\":\"MB\"}",
+              "resource-version" : "1547857636439"
+            }, {
+              "hpa-attribute-key" : "diskSize",
+              "hpa-attribute-value" : "{\"value\":\"20\",\"unit\":\"GB\"}",
+              "resource-version" : "1547857636336"
+            }, {
+              "hpa-attribute-key" : "ephemeralDiskSize",
+              "hpa-attribute-value" : "{\"value\":\"0\",\"unit\":\"GB\"}",
+              "resource-version" : "1547857636542"
+            } ]
+          }, {
+            "hpa-capability-id" : "20811e74-fc45-42a5-a1eb-f1a45bfa0833",
+            "hpa-feature" : "basicCapabilities",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857635842",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "numVirtualCpu",
+              "hpa-attribute-value" : "{\"value\":\"2\"}",
+              "resource-version" : "1547857635908"
+            }, {
+              "hpa-attribute-key" : "virtualMemSize",
+              "hpa-attribute-value" : "{\"value\":\"2048\",\"unit\":\"MB\"}",
+              "resource-version" : "1547857635970"
+            } ]
+          }, {
+            "hpa-capability-id" : "8a52f119-0143-4e00-b726-c28ba370d0d1",
+            "hpa-feature" : "sriovNICNetwork",
+            "hpa-version" : "v1",
+            "architecture" : "intel",
+            "resource-version" : "1547857636622",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "pciCount",
+              "hpa-attribute-value" : "{\"value\":\"2\"}",
+              "resource-version" : "1547857636655"
+            }, {
+              "hpa-attribute-key" : "physicalNetwork",
+              "hpa-attribute-value" : "{\"value\":\"private-1\"}",
+              "resource-version" : "1547857636803"
+            }, {
+              "hpa-attribute-key" : "pciVendorId",
+              "hpa-attribute-value" : "{\"value\":\"8086\"}",
+              "resource-version" : "1547857636690"
+            }, {
+              "hpa-attribute-key" : "pciDeviceId",
+              "hpa-attribute-value" : "{\"value\":\"154C\"}",
+              "resource-version" : "1547857636789"
+            } ]
+          } ]
+        },
+        "resource-version" : "1547857635807"
+      }, {
+        "flavor-id" : "0",
+        "flavor-name" : "m1.tiny",
+        "flavor-vcpus" : 1,
+        "flavor-ram" : 512,
+        "flavor-disk" : 1,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/0",
+        "flavor-disabled" : false,
+        "resource-version" : "1547857626877"
+      }, {
+        "flavor-id" : "50",
+        "flavor-name" : "m1.xxlarge",
+        "flavor-vcpus" : 12,
+        "flavor-ram" : 24567,
+        "flavor-disk" : 50,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/50",
+        "flavor-disabled" : false,
+        "resource-version" : "1547857647065"
+      }, {
+        "flavor-id" : "40",
+        "flavor-name" : "m1.xlarge",
+        "flavor-vcpus" : 8,
+        "flavor-ram" : 8192,
+        "flavor-disk" : 40,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/40",
+        "flavor-disabled" : false,
+        "resource-version" : "1547857645715"
+      }, {
+        "flavor-id" : "20",
+        "flavor-name" : "m1.medium",
+        "flavor-vcpus" : 2,
+        "flavor-ram" : 2048,
+        "flavor-disk" : 20,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/20",
+        "flavor-disabled" : false,
+        "resource-version" : "1547857630702"
+      }, {
+        "flavor-id" : "223",
+        "flavor-name" : "onap.hpa.flavor23",
+        "flavor-vcpus" : 2,
+        "flavor-ram" : 2048,
+        "flavor-disk" : 20,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/223",
+        "flavor-disabled" : false,
+        "hpa-capabilities" : {
+          "hpa-capability" : [ {
+            "hpa-capability-id" : "d7c40459-b36d-4910-a07f-ff67b8ef2b0c",
+            "hpa-feature" : "sriovNICNetwork",
+            "hpa-version" : "v1",
+            "architecture" : "intel",
+            "resource-version" : "1547857640758",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "pciCount",
+              "hpa-attribute-value" : "{\"value\":\"2\"}",
+              "resource-version" : "1547857640835"
+            }, {
+              "hpa-attribute-key" : "pciDeviceId",
+              "hpa-attribute-value" : "{\"value\":\"154C\"}",
+              "resource-version" : "1547857640944"
+            }, {
+              "hpa-attribute-key" : "pciVendorId",
+              "hpa-attribute-value" : "{\"value\":\"8086\"}",
+              "resource-version" : "1547857640890"
+            }, {
+              "hpa-attribute-key" : "physicalNetwork",
+              "hpa-attribute-value" : "{\"value\":\"shared-1\"}",
+              "resource-version" : "1547857641061"
+            } ]
+          }, {
+            "hpa-capability-id" : "f46537e2-48c1-4b19-8cd2-568bde2673a7",
+            "hpa-feature" : "ovsDpdk",
+            "hpa-version" : "v1",
+            "architecture" : "Intel64",
+            "resource-version" : "1547857641290",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "dataProcessingAccelerationLibrary",
+              "hpa-attribute-value" : "{\"value\":\"v17.02\"}",
+              "resource-version" : "1547857641373"
+            } ]
+          }, {
+            "hpa-capability-id" : "3dccccdc-7d0a-45e0-b474-3c942abb10dd",
+            "hpa-feature" : "basicCapabilities",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857639564",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "numVirtualCpu",
+              "hpa-attribute-value" : "{\"value\":\"2\"}",
+              "resource-version" : "1547857639774"
+            }, {
+              "hpa-attribute-key" : "virtualMemSize",
+              "hpa-attribute-value" : "{\"value\":\"2048\",\"unit\":\"MB\"}",
+              "resource-version" : "1547857639913"
+            } ]
+          }, {
+            "hpa-capability-id" : "61470e69-c1c1-41be-9877-f82737ec5acd",
+            "hpa-feature" : "hugePages",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857640048",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "memoryPageSize",
+              "hpa-attribute-value" : "{\"value\":\"2048\",\"unit\":\"KB\"}",
+              "resource-version" : "1547857640117"
+            } ]
+          }, {
+            "hpa-capability-id" : "7b009f9c-7e99-4420-b756-b7d448d53633",
+            "hpa-feature" : "localStorage",
+            "hpa-version" : "v1",
+            "architecture" : "generic",
+            "resource-version" : "1547857640407",
+            "hpa-feature-attributes" : [ {
+              "hpa-attribute-key" : "ephemeralDiskSize",
+              "hpa-attribute-value" : "{\"value\":\"0\",\"unit\":\"GB\"}",
+              "resource-version" : "1547857640694"
+            }, {
+              "hpa-attribute-key" : "diskSize",
+              "hpa-attribute-value" : "{\"value\":\"20\",\"unit\":\"GB\"}",
+              "resource-version" : "1547857640550"
+            }, {
+              "hpa-attribute-key" : "swapMemSize",
+              "hpa-attribute-value" : "{\"value\":\"0\",\"unit\":\"MB\"}",
+              "resource-version" : "1547857640652"
+            } ]
+          } ]
+        },
+        "resource-version" : "1547857639343"
+      }, {
+        "flavor-id" : "309",
+        "flavor-name" : "rt",
+        "flavor-vcpus" : 4,
+        "flavor-ram" : 1024,
+        "flavor-disk" : 2,
+        "flavor-ephemeral" : 0,
+        "flavor-swap" : "",
+        "flavor-is-public" : true,
+        "flavor-selflink" : "http://10.12.11.5:8774/v2.1/709ba629fe194f8699b12f9d6ffd86a0/flavors/309",
+        "flavor-disabled" : false,
+        "resource-version" : "1547857644692"
+      } ]
+    }
+  }
+} ]
