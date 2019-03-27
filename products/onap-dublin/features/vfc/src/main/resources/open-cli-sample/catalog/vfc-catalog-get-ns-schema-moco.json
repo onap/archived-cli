@@ -1,0 +1,27 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/api/catalog/v1/nspackages/a3394090-c5b4-49b4-974c-00a6eac755ab",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : { }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "csarId" : "a3394090-c5b4-49b4-974c-00a6eac755ab",
+      "packageInfo" : {
+        "nsdInvariantId" : "c3887fb3-d1b2-477f-86c4-fd641ee9a7cf",
+        "csarName" : "/service/vfc/nfvo/catalog/static/catalog/a3394090-c5b4-49b4-974c-00a6eac755ab/Artifacts/Deployment/OTHER/ns.csar",
+        "nsdProvider" : "ONAP",
+        "nsdId" : "ffdddc5d-a44b-45ae-8fc3-e6551cce350f",
+        "nsPackageId" : "a3394090-c5b4-49b4-974c-00a6eac755ab",
+        "downloadUrl" : "http://10.42.43.172:8806/static/catalog/a3394090-c5b4-49b4-974c-00a6eac755ab//service/vfc/nfvo/catalog/static/catalog/a3394090-c5b4-49b4-974c-00a6eac755ab/Artifacts/Deployment/OTHER/ns.csar",
+        "nsdModel" : "{\"vnffgs\": [], \"inputs\": {}, \"pnfs\": [], \"description\": \"VCPE Network Service\", \"graph\": {\"vgw\": [], \"vcpe_public_net\": [\"vgw\"]}, \"basepath\": \"/tmp/tmpaDLGbM\", \"vnfs\": [{\"networks\": [{\"key_name\": \"virtual_link\", \"vl_id\": \"vcpe_public_net\"}], \"dependencies\": [{\"key_name\": \"virtual_link\", \"vl_id\": \"vcpe_public_net\"}], \"vnf_id\": \"vgw\", \"description\": \"\", \"properties\": {\"descriptor_id\": \"3fca3543-07f5-492f-812c-ed462e4f94f4\", \"vnfm_info\": [\"gvnfmdriver\"], \"software_version\": \"1.0.0\", \"flavour_description\": \"simple\", \"descriptor_version\": \"1.0.0\", \"provider\": \"onap\", \"id\": \"3fca3543-07f5-492f-812c-ed462e4f94f4\", \"flavour_id\": \"simple\", \"product_name\": \"vcpe_vgw\"}}], \"ns_exposed\": {\"external_cps\": [], \"forward_cps\": []}, \"fps\": [], \"vls\": [{\"vl_id\": \"vcpe_public_net\", \"description\": \"\", \"properties\": {\"connectivity_type\": {\"layer_protocol\": \"ipv4\"}, \"vl_profile\": {\"cidr\": \"172.30.23.0/24\", \"max_bit_rate_requirements\": {\"root\": 10000000, \"leaf\": 10000000}, \"networkName\": \"oam-zte\", \"min_bit_rate_requirements\": {\"root\": 10000000, \"leaf\": 10000000}, \"dhcpEnabled\": false}, \"version\": \"1.0.0\"}}], \"ns\": {\"type\": \"tosca.nodes.nfv.NS\", \"requirements\": {}, \"properties\": {\"descriptor_id\": \"ffdddc5d-a44b-45ae-8fc3-e6551cce350f\", \"designer\": \"ONAP\", \"invariant_id\": \"c3887fb3-d1b2-477f-86c4-fd641ee9a7cf\", \"name\": \"vcpe\", \"verison\": \"1.0.0\", \"version\": \"1.0.0\"}, \"capabilities\": {}, \"metadata\": {\"nsd_designer\": \"ONAP\", \"nsd_name\": \"vcpe\", \"nsd_release_date_time\": \"2018-11-05 12:00:00\", \"nsd_invariant_id\": \"c3887fb3-d1b2-477f-86c4-fd641ee9a7cf\", \"nsd_file_structure_version\": \"1.0.0\"}}, \"nested_ns\": [], \"metadata\": {\"nsd_designer\": \"ONAP\", \"nsd_name\": \"vcpe\", \"nsd_release_date_time\": \"2018-11-05 12:00:00\", \"nsd_invariant_id\": \"c3887fb3-d1b2-477f-86c4-fd641ee9a7cf\", \"nsd_file_structure_version\": \"1.0.0\"}}",
+        "nsdVersion" : "1.0.0"
+      }
+    }
+  }
+} ]

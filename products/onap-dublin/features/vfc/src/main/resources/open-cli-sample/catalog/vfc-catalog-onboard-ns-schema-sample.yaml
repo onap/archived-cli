@@ -1,0 +1,15 @@
+open_cli_sample_version: 1.0
+name: vfc-catalog-onboard-ns
+version: onap-dublin
+samples:
+  sample1:
+    name: vfc-catalog-onboard-ns
+    input: -m http://10.12.5.155:30280 -c a3394090-c5b4-49b4-974c-00a6eac755ab
+    moco: vfc-catalog-onboard-ns-schema-moco.json
+    output: |
+      +----------+----------------------------------------------+
+      |status    |status-desc                                   |
+      +----------+----------------------------------------------+
+      |success   |CSAR(a3394090-c5b4-49b4-974c-00a6eac755ab)    |
+      |          |distributed successfully.                     |
+      +----------+----------------------------------------------+

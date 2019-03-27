@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: vfc-nslcm-create
+version: onap-dublin
+samples:
+  sample1:
+    name: vfc-nslcm-create
+    input: -m http://10.12.5.155:30280 -c a3394090-c5b4-49b4-974c-00a6eac755ab -n vcpe1
+    moco: vfc-nslcm-create-schema-moco.json
+    output: |
+      +--------------------------------------+
+      |ns-instance-id                        |
+      +--------------------------------------+
+      |25f3159c-ff2d-4ad0-ac66-3270941bfa52  |
+      +--------------------------------------+
