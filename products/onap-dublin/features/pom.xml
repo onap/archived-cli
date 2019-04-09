@@ -39,6 +39,7 @@
         <module>multicloud</module>
         <module>vfc</module>
         <module>sdnc</module>
+        <module>so</module>
     </modules>
 
      <build>
