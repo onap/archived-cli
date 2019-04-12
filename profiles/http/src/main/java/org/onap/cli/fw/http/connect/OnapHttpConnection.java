@@ -312,7 +312,7 @@ public class OnapHttpConnection {
         } else if ("delete".equals(input.getMethod())) {
             if (!input.getBody().isEmpty()) {
                 HttpDeleteWithBody httpDelete = new HttpDeleteWithBody();
-                httpDelete.setEntity(this.getStringEntity(input));
+                httpDelete.setEntity(new StringEntity(input.getBody(), ContentType.APPLICATION_JSON));
                 requestBase = httpDelete;
             } else {
                 requestBase = new HttpDelete();
@@ -401,7 +401,7 @@ public class OnapHttpConnection {
         }
 
         public String getMethod() {
-            return OnapCommandHttpConstants.DELETE;
+            return OnapCommandHttpConstants.DELETE.toUpperCase();
         }
 
     }
