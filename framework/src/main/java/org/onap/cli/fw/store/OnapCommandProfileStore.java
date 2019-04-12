@@ -184,8 +184,8 @@ public class OnapCommandProfileStore {
                 ObjectMapper mapper = new ObjectMapper();
                 OnapCommandParamEntity[] list = mapper.readValue(file, OnapCommandParamEntity[].class);
                 params.addAll(Arrays.asList(list));
-            } else {
-                throw new OnapCommandProfileNotFound(profileName);
+//            } else {
+//                throw new OnapCommandProfileNotFound(profileName);
             }
         } catch (IOException e) {
             throw new OnapCommandProfileLoadFailed(e);

@@ -436,6 +436,7 @@ public class OnapCli {
                             continue;
                         }
 
+                        this.setArgs(this.args.toArray(new String [] {}));
                         handleCommand();
                     }
                 }
