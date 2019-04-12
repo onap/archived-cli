@@ -17,7 +17,7 @@ name: vnftest-run
 description: Runs the VNF test cases in VNF Test Platform (VTP)
 
 info:
-  product: onap-casablanca
+  product: onap-dublin
   service: vtp
   author: ONAP CLI Team onap-discuss@lists.onap.org
 parameters:
@@ -37,17 +37,21 @@ parameters:
 results:
   direction: portrait
   attributes:
-    - name: results
-      description: Testcase results
+    - name: executionId
+      description: Testcase execution Id
       scope: short
       type: string
-    - name: build_tag
-      description: Test Running identifier
+    - name: status
+      description: Test status
       scope: short
       type: string
       default_value: $s{env:BUILD_TAG}
-    - name: criteria
-      description: Testcase is PASS or FAILED
+    - name: startTime
+      description: Testcase startTime
+      scope: short
+      type: string
+    - name: endTime
+      description: Testcase endTime
       scope: short
       type: string
 http:
@@ -55,12 +59,21 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /onapapi/vnfsdk-marketplace/v1/vtp/tests/${name}/run
+    uri: /onapapi/vnfsdk-marketplace/v1/vtp/executions
     method: POST
-    body: ${param}
+    body:
+      multipart:
+        - name: executions
+          content: '[{
+                  "scenario": "onap-vtp",
+                  "testSuiteName": "${testsuite-name}",
+                  "testCaseName": "${testcase-name}",
+                  "parameters": ${param}]'
   success_codes:
     - 201
     - 200
   result_map:
-    results: $b{$.results}
-    criteria: $b{$.criteria}
+    executionId: $b{$.[0].executionId}
+    status: $b{$.[0].status}
+    startTime: $b{$.[0].startTime}
+    endTime: $b{$.[0].endTime}

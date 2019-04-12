@@ -18,7 +18,7 @@ description: Check Function Test Status
 
 
 info:
-  product: onap-vtp
+  product: onap-casablanca
   service: functest
   author: ONAP CLI Team onap-discuss@lists.onap.org
 

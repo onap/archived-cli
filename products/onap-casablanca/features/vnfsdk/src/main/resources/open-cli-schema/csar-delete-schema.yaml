@@ -17,7 +17,7 @@ name: csar-delete
 description: Delete CSARs in marketplace
 
 info:
-  product: onap-vtp
+  product: onap-casablanca
   service: marketplace
   author: ONAP CLI Team onap-discuss@lists.onap.org
 

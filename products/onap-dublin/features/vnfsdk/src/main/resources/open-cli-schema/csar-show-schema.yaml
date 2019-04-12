@@ -13,22 +13,26 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: csar-list
-description: Lists the CSARs in marketplace
+name: csar-show
+description: Show details of the CSARs in marketplace
 
 
 info:
-  product: onap-casablanca
+  product: onap-dublin
   service: marketplace
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
+parameters:
+  - name: csar-id
+    description: Onap CSAR id
+    type: string
+    short_option: x
+    long_option: csar-id
+    is_optional: false
+
 results:
-  direction: landscape
+  direction: portrait
   attributes:
-    - name: csarId
-      description: CSAR Id
-      scope: short
-      type: string
     - name: name
       description: CSAR Name
       scope: short
@@ -50,14 +54,13 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /onapapi/vnfsdk-marketplace/v1/PackageResource/csars
+    uri: /onapapi/vnfsdk-marketplace/v1/PackageResource/csars/${csar-id}
     method: GET
   success_codes:
     - 201
     - 200
   result_map:
-    csarId: $b{$.[*].csarId}
-    name: $b{$.[*].name}
-    size: $b{$.[*].size}
-    downloadUri: $b{$.[*].downloadUri}
-    provider: $b{$.[*].provider}
+    name: $b{$.name}
+    size: $b{$.size}
+    downloadUri: $b{$.downloadUri}
+    provider: $b{$.provider}

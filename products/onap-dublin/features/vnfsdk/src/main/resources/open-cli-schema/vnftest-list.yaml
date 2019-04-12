@@ -13,36 +13,23 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: csar-list
-description: Lists the CSARs in marketplace
-
+name: vnftest-list
+description: Lists the VNF test cases in VNF Test Platform (VTP)
 
 info:
-  product: onap-casablanca
-  service: marketplace
+  product: onap-dublin
+  service: vtp
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 results:
   direction: landscape
   attributes:
-    - name: csarId
-      description: CSAR Id
+    - name: tescase
+      description: Testcase name
       scope: short
       type: string
-    - name: name
-      description: CSAR Name
-      scope: short
-      type: string
-    - name: size
-      description: CSAR size
-      scope: short
-      type: url
-    - name: downloadUri
-      description: CSAR download URL
-      scope: short
-      type: url
-    - name: provider
-      description: CSAR Provider
+    - name: testsuite
+      description: Test suite name
       scope: short
       type: string
 http:
@@ -50,14 +37,11 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /onapapi/vnfsdk-marketplace/v1/PackageResource/csars
+    uri: /onapapi/vnfsdk-marketplace/v1/vtp/scenarios/onap-vtp/testcases
     method: GET
   success_codes:
     - 201
     - 200
   result_map:
-    csarId: $b{$.[*].csarId}
-    name: $b{$.[*].name}
-    size: $b{$.[*].size}
-    downloadUri: $b{$.[*].downloadUri}
-    provider: $b{$.[*].provider}
+    tescase: $b{$.[*].testCaseName}
+    testsuite: $b{$.[*].testSuiteName}
