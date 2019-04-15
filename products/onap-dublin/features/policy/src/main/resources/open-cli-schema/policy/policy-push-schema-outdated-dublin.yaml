@@ -59,7 +59,7 @@ http:
       Environment: TEST
       ClientAuth: cHl0aG9uOnRlc3Q=
 
- success_codes:
+  success_codes:
     - 200
     - 201
 

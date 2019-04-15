@@ -33,7 +33,6 @@ results:
       description: Authorization
       scope: short
       type: string
-      default_value: Basic dGVzdHBkcDphbHBoYTEyMw==
     - name: Environment
       description: Environment
       scope: short
