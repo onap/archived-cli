@@ -53,11 +53,6 @@ http:
     context:
       remove_empty_node: true
     body: '{"policyName": "${policy-name}", "policyType": "${policy-type}", "pdpGroup": "${policy-group}"}'
-    headers:
-      Content-Type: applicaton/json
-      Accept: text/plain
-      Environment: TEST
-      ClientAuth: cHl0aG9uOnRlc3Q=
 
   success_codes:
     - 200
