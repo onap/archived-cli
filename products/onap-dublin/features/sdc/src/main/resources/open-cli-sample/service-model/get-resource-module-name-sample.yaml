@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: -u
+version: onap-dublin
+samples:
+  sample1:
+    name: -u
+    input: cs0008 -p demo123456! -m http://192.168.1.147:30205 -s
+    moco: get-resource-module-name-moco.json
+    output: |
+      +--------------------------+----------------------+
+      |service-model-vsp         |resource-module-name  |
+      +--------------------------+----------------------+
+      |b6e67bfd-a216-4168-a16e   |B6e67bfdA2164168A16e  |
+      +--------------------------+----------------------+
+      |vfw-hpa-sriov_v2          |VfwHpaSriovV2         |
+      +--------------------------+----------------------+
