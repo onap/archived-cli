@@ -1,0 +1,62 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onap/so/infra/serviceInstances/v6/43143a2c-f0e1-499d-b042-97fb0c05166b/vnfs",
+    "headers" : {
+      "Authorization" : "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA==",
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "requestDetails" : {
+        "modelInfo" : {
+          "modelType" : "vnf",
+          "modelInvariantId" : "b7d993a3-3870-4096-a16c-90110d402349",
+          "modelVersionId" : "04ffd583-5625-4471-b20b-38394b513efd",
+          "modelName" : "vfw-hpa-sriov_v2",
+          "modelVersion" : "1.0",
+          "modelCustomizationId" : "123f896f-c6a4-4560-8786-7607e832bb6f",
+          "modelCustomizationName" : "vfw-hpa-sriov_v2 0"
+        },
+        "cloudConfiguration" : {
+          "lcpCloudRegionId" : "cloud-two",
+          "tenantId" : "a0ea4cfd751e40e0a093848dd9e03e6c"
+        },
+        "requestInfo" : {
+          "requestorId" : "demo",
+          "instanceName" : "cli-vnf-7",
+          "source" : "VID",
+          "productFamilyId" : "vFW"
+        },
+        "platform" : {
+          "platformName" : "Platform-Demonstration"
+        },
+        "lineOfBusiness" : {
+          "lineOfBusinessName" : "LOB-Demonstration"
+        },
+        "relatedInstanceList" : [ {
+          "relatedInstance" : {
+            "instanceId" : "43143a2c-f0e1-499d-b042-97fb0c05166b",
+            "modelInfo" : {
+              "modelType" : "service",
+              "modelInvariantId" : "41d0ebba-4b89-4437-9b22-4d83d2183aaa",
+              "modelVersionId" : "545bca3c-8cc0-4dac-b464-1720894e0213",
+              "modelName" : "vfw-demo-service",
+              "modelVersion" : "1.0"
+            }
+          }
+        } ],
+        "requestParameters" : { }
+      }
+    }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "requestReferences" : {
+        "requestId" : "d8590530-37d9-4e86-878e-6c1daff4628b",
+        "instanceId" : "f8ec748e-0e26-4edf-bff6-1af3516534bb"
+      }
+    }
+  }
+} ]
