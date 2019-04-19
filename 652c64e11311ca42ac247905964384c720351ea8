@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e9e3976c_fa65b460",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-04-19T22:56:46Z",
+      "side": 1,
+      "message": "When creating a service instance (with or without HPA) cloud-region and tenant-id are not needed. Also if these parameters are left blank, the command fails. I commented them out incase they are needed in future but i would delete them",
+      "parentUuid": "3f666cc9_f04b894e",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "652c64e11311ca42ac247905964384c720351ea8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05a220f2_367f18dc",
         "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-19T22:50:06Z",
       "side": 1,
       "message": "duplicate?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 36
+      },
+      "revId": "652c64e11311ca42ac247905964384c720351ea8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c939f7c9_7634023c",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-04-19T22:56:46Z",
+      "side": 1,
+      "message": "This is not a duplicate, the default Authorization header sent by the CLI fails so I removed the options that tell it to send an authorization header and manually specified the right ones in the header",
+      "parentUuid": "05a220f2_367f18dc",
       "range": {
         "startLine": 176,
         "startChar": 0,
