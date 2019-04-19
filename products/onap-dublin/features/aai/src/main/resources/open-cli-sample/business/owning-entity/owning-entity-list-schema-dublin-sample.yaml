@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: -u
+version: onap-dublin
+samples:
+  sample1:
+    name: -u
+    input: AAI -p AAI -m https://192.168.1.147:30233 -s
+    moco: owning-entity-list-schema-dublin-moco.json
+    output: |
+      +------------------+--------------------------------------+------------------+
+      |name              |Id                                    |resource-version  |
+      +------------------+--------------------------------------+------------------+
+      |OE-Demonstration  |d005274f-d295-4538-a6b0-a090a7807dae  |1555610846350     |
+      +------------------+--------------------------------------+------------------+

@@ -1,0 +1,99 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v14/business/owning-entities",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-a3f28812-cfc3-4b65-a050-4875125bd199",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "owning-entity" : [ {
+        "owning-entity-id" : "d005274f-d295-4538-a6b0-a090a7807dae",
+        "owning-entity-name" : "OE-Demonstration",
+        "resource-version" : "1555610846350",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.BelongsTo",
+            "related-link" : "/aai/v14/business/customers/customer/Demonstration/service-subscriptions/service-subscription/vFW/service-instances/service-instance/1ed934d4-b2b7-48bb-9878-b06d9024be75",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "Demonstration"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFW"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "1ed934d4-b2b7-48bb-9878-b06d9024be75"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "test-instance"
+            } ]
+          }, {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.BelongsTo",
+            "related-link" : "/aai/v14/business/customers/customer/Demonstration/service-subscriptions/service-subscription/vFW/service-instances/service-instance/946db590-a80a-48ff-b9f6-c5cd6eb670b7",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "Demonstration"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFW"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "946db590-a80a-48ff-b9f6-c5cd6eb670b7"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "vfw-demo"
+            } ]
+          }, {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.BelongsTo",
+            "related-link" : "/aai/v14/business/customers/customer/Demonstration/service-subscriptions/service-subscription/vFW/service-instances/service-instance/70e66244-d4b8-4dcf-985a-490599ce90ef",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "Demonstration"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFW"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "70e66244-d4b8-4dcf-985a-490599ce90ef"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "vfw-sriov"
+            } ]
+          }, {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.BelongsTo",
+            "related-link" : "/aai/v14/business/customers/customer/Demonstration/service-subscriptions/service-subscription/vFW/service-instances/service-instance/06e28fa2-7f75-46d0-a944-c6a1aca9f171",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "Demonstration"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFW"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "06e28fa2-7f75-46d0-a944-c6a1aca9f171"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "vfw-basic-1"
+            } ]
+          } ]
+        }
+      } ]
+    }
+  }
+} ]
