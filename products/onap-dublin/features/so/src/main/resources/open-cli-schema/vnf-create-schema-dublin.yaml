@@ -13,7 +13,7 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vfn-create
+name: vnf-create
 description: Create a VNF
 
 info:
@@ -42,7 +42,7 @@ parameters:
     long_option: product-family
     is_optional: false
   - name: instance-name
-    description: service instance name
+    description: name of vnf instance to be created
     type: string
     short_option: o
     long_option: instance-name
@@ -83,6 +83,12 @@ parameters:
     short_option: i
     long_option: vf-model-customization-id
     is_optional: false
+  - name: vf-model-customization-name
+    description: vf model customization name
+    type: string
+    short_option: vn
+    long_option: vf-model-customization-name
+    is_optional: false
   - name: service-model-invariant-id
     description: model invariant id
     type: string
@@ -113,6 +119,20 @@ parameters:
     short_option: r
     long_option: requestor-id
     is_optional: false
+  - name: platform-name
+    description: platform name
+    type: string
+    short_option: pn
+    long_option: platform-name
+    is_optional: false
+  - name: lob-name
+    description: libe of business name
+    type: string
+    short_option: lob
+    long_option: lob-name
+    is_optional: false
+
+
 
 
 results:
@@ -124,14 +144,12 @@ results:
       scope: short
 
 http:
-  service:
-    name: so
-    version: v6
-    auth: basic
-    mode: direct
   request:
     uri: /onap/so/infra/serviceInstances/v6/${service-instance-id}/vnfs
     method: POST
+    headers:
+        Authorization: "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA=="
+        Content-Type: "application/json"
     body: '{
               "requestDetails":{
                  "modelInfo":{
@@ -140,7 +158,8 @@ http:
                     "modelVersionId":"${vf-model-uuid}",
                     "modelName":"${vf-model-name}",
                     "modelVersion":"${vf-model-version}",
-                    "modelCustomizationId":"${vf-model-customization-id}"
+                    "modelCustomizationId": "${vf-model-customization-id}",
+                    "modelCustomizationName": "${vf-model-customization-name}"
                  },
                  "cloudConfiguration":{
                     "lcpCloudRegionId":"${cloud-region}",
@@ -151,6 +170,12 @@ http:
                     "instanceName":"${instance-name}",
                     "source":"VID",
                     "productFamilyId":"${product-family}"
+                 },
+                 "platform": {
+                 "platformName": "${platform-name}"
+                 },
+                 "lineOfBusiness": {
+                 "lineOfBusinessName": "${lob-name}"
                  },
                  "relatedInstanceList":[
                     {

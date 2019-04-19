@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: -w
+version: onap-dublin
+samples:
+  sample1:
+    name: -w
+    input: vFW -la 32.897480 -lo 97.040443 -o multicloud -A true -i vfw-demo-service -y some_company -x Project-Demonstration -q demo -O OE-Demonstration -k cli-instance -P VNF_API -H oof -n 545bca3c-8cc0-4dac-b464-1720894e0213 -e 41d0ebba-4b89-4437-9b22-4d83d2183aaa -j 1.0 -S Demonstration -g 545bca3c-8cc0-4dac-b464-1720894e0213 -z d005274f-d295-4538-a6b0-a090a7807dae -c Demonstration -m http://192.168.1.147:30277
+    moco: service-create-schema-dublin-moco.json
+    output: |
+      +------------+--------------------------------------+
+      |property    |value                                 |
+      +------------+--------------------------------------+
+      |service-id  |ddd4f59f-7c17-4a10-888c-9409b3daa482  |
+      +------------+--------------------------------------+
