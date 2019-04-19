@@ -1,0 +1,69 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onap/so/infra/serviceInstances/v6",
+    "headers" : {
+      "Authorization" : "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA==",
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "requestDetails" : {
+        "modelInfo" : {
+          "modelType" : "service",
+          "modelInvariantId" : "41d0ebba-4b89-4437-9b22-4d83d2183aaa",
+          "modelUuid" : "545bca3c-8cc0-4dac-b464-1720894e0213",
+          "modelName" : "vfw-demo-service",
+          "modelVersion" : "1.0",
+          "modelVersionId" : "545bca3c-8cc0-4dac-b464-1720894e0213",
+          "modelInvariantUuid" : "41d0ebba-4b89-4437-9b22-4d83d2183aaa"
+        },
+        "subscriberInfo" : {
+          "globalSubscriberId" : "Demonstration",
+          "subscriberName" : "Demonstration"
+        },
+        "requestInfo" : {
+          "requestorId" : "demo",
+          "instanceName" : "cli-instance-new",
+          "source" : "CLI",
+          "suppressRollback" : "false"
+        },
+        "requestParameters" : {
+          "subscriptionServiceType" : "vFW",
+          "aLaCarte" : "true",
+          "testApi" : "VNF_API",
+          "userParams" : [ {
+            "name" : "Customer_Location",
+            "value" : {
+              "customerLatitude" : "32.897480",
+              "customerLongitude" : "97.040443",
+              "customerName" : "some_company"
+            }
+          }, {
+            "name" : "Homing_Solution",
+            "value" : "oof"
+          }, {
+            "name" : "orchestrator",
+            "value" : "multicloud"
+          } ]
+        },
+        "project" : {
+          "projectName" : "Project-Demonstration"
+        },
+        "owningEntity" : {
+          "owningEntityId" : "d005274f-d295-4538-a6b0-a090a7807dae",
+          "owningEntityName" : "OE-Demonstration"
+        }
+      }
+    }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "requestReferences" : {
+        "requestId" : "5abf49d4-3a5b-42aa-bb3a-53682de37533",
+        "instanceId" : "43143a2c-f0e1-499d-b042-97fb0c05166b"
+      }
+    }
+  }
+} ]
