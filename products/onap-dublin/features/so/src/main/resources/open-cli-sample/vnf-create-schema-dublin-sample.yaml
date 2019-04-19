@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: -j
+version: onap-dublin
+samples:
+  sample1:
+    name: -j
+    input: 41d0ebba-4b89-4437-9b22-4d83d2183aaa -q vfw-demo-service -k 545bca3c-8cc0-4dac-b464-1720894e0213 -l cloud-two -y 43143a2c-f0e1-499d-b042-97fb0c05166b -z a0ea4cfd751e40e0a093848dd9e03e6c -r demo -c 04ffd583-5625-4471-b20b-38394b513efd -o cli-vnf-7 -e vfw-hpa-sriov_v2 -g 1.0 -b b7d993a3-3870-4096-a16c-90110d402349 -n 1.0 -i 123f896f-c6a4-4560-8786-7607e832bb6f -vn vfw-hpa-sriov_v2 0 -w vFW -pn Platform-Demonstration -lob LOB-Demonstration -m http://192.168.1.147:30277
+    moco: vnf-create-schema-dublin-moco.json
+    output: |
+      +----------+--------------------------------------+
+      |property  |value                                 |
+      +----------+--------------------------------------+
+      |vf-id     |f8ec748e-0e26-4edf-bff6-1af3516534bb  |
+      +----------+--------------------------------------+

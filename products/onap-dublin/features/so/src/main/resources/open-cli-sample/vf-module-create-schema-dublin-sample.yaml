@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: -w
+version: onap-dublin
+samples:
+  sample1:
+    name: -w
+    input: a0ea4cfd751e40e0a093848dd9e03e6c -mn vfw-hpa-sriov_v2 0 -x d353ace3-52e9-4c79-b3c8-63c97e15cc29 -l cloud-two -sv 1.0 -vc 0f837829-0dbb-4768-88d4-3cdf01e073f6 -vm 1 -mv 1.0 -i vfw-sriov-cli -vf vfw-hpa-sriov_v2 -vi 8d3071e4-0d4e-4520-aa92-c01b9a019142 -r false -mc 123f896f-c6a4-4560-8786-7607e832bb6f -api VNF_API -mi b7d993a3-3870-4096-a16c-90110d402349 -vid 04ffd583-5625-4471-b20b-38394b513efd -y dad645a3-7e01-47cd-8e70-cdc8b5e880ec -R demo -si 545bca3c-8cc0-4dac-b464-1720894e0213 -up true -sd 41d0ebba-4b89-4437-9b22-4d83d2183aaa -z vfw-demo-service -vn VfwHpaSriovV2..base_vfw..module-0 -vv d5c83591-0f22-4543-ada2-24197847b7d2 -m http://192.168.1.147:30277 --debug
+    moco: vf-module-create-schema-dublin-moco.json
+    output:

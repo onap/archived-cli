@@ -1,0 +1,73 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onap/so/infra/serviceInstances/v6/d353ace3-52e9-4c79-b3c8-63c97e15cc29/vnfs/dad645a3-7e01-47cd-8e70-cdc8b5e880ec/vfModules",
+    "headers" : {
+      "Authorization" : "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA==",
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "requestDetails" : {
+        "modelInfo" : {
+          "modelType" : "vfModule",
+          "modelInvariantId" : "8d3071e4-0d4e-4520-aa92-c01b9a019142",
+          "modelVersionId" : "d5c83591-0f22-4543-ada2-24197847b7d2",
+          "modelName" : "VfwHpaSriovV2..base_vfw..module-0",
+          "modelVersion" : "1",
+          "modelCustomizationId" : "0f837829-0dbb-4768-88d4-3cdf01e073f6",
+          "modelCustomizationName" : "VfwHpaSriovV2..base_vfw..module-0"
+        },
+        "cloudConfiguration" : {
+          "lcpCloudRegionId" : "cloud-two",
+          "tenantId" : "a0ea4cfd751e40e0a093848dd9e03e6c"
+        },
+        "requestInfo" : {
+          "instanceName" : "vfw-sriov-cli",
+          "source" : "VID",
+          "suppressRollback" : "false",
+          "requestorId" : "demo"
+        },
+        "relatedInstanceList" : [ {
+          "relatedInstance" : {
+            "instanceId" : "d353ace3-52e9-4c79-b3c8-63c97e15cc29",
+            "modelInfo" : {
+              "modelType" : "service",
+              "modelInvariantId" : "41d0ebba-4b89-4437-9b22-4d83d2183aaa",
+              "modelVersionId" : "545bca3c-8cc0-4dac-b464-1720894e0213",
+              "modelName" : "vfw-demo-service",
+              "modelVersion" : "1.0"
+            }
+          }
+        }, {
+          "relatedInstance" : {
+            "instanceId" : "dad645a3-7e01-47cd-8e70-cdc8b5e880ec",
+            "modelInfo" : {
+              "modelType" : "vnf",
+              "modelInvariantId" : "b7d993a3-3870-4096-a16c-90110d402349",
+              "modelVersionId" : "04ffd583-5625-4471-b20b-38394b513efd",
+              "modelName" : "vfw-hpa-sriov_v2",
+              "modelVersion" : "1.0",
+              "modelCustomizationId" : "123f896f-c6a4-4560-8786-7607e832bb6f",
+              "modelCustomizationName" : "vfw-hpa-sriov_v2 0"
+            }
+          }
+        } ],
+        "requestParameters" : {
+          "userParams" : [ ],
+          "testApi" : "VNF_API",
+          "usePreload" : true
+        }
+      }
+    }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "requestReferences" : {
+        "requestId" : "ac8c6da2-7992-4b98-82e7-83095a4e207c",
+        "instanceId" : "00d6a9b7-12e1-460b-b236-724cd6ea21e2"
+      }
+    }
+  }
+} ]
