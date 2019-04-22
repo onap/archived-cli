@@ -13,46 +13,26 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: service-model-list
-description: List the service model in SDC
+name: get-resource-module-name
+description: Get resource module name
 
 info:
   product: onap-dublin
   service: sdc
-  author: ONAP CLI Team onap-discuss@lists.onap.org
+  author: ONAP HPA Team onap-discuss@lists.onap.org
 
 
 results:
   direction: landscape
   attributes:
-    - name: uuid
-      description: UUID
+    - name: service-model-vsp
+      description: name of vsp in service model
       type: string
       scope: short
-    - name: invariant-uuid
-      description: Invariant UUID
+    - name: resource-module-name
+      description: system name of vsp
       type: string
       scope: short
-    - name: name
-      description: Name
-      type: string
-      scope: short
-    - name: version
-      description: version
-      type: string
-      scope: short
-    - name: status
-      description: status
-      type: string
-      scope: short
-    - name: distribution-status
-      description: status
-      type: string
-      scope: short
-    - name: description
-      description: description
-      type: string
-      scope: long
 
 http:
   service:
@@ -66,10 +46,5 @@ http:
   success_codes:
     - 200
   result_map:
-    uuid: $b{services.[*].uuid}
-    invariant-uuid: $b{services.[*].invariantUUID}
-    version: $b{services.[*].version}
-    name: $b{services.[*].name}
-    status: $b{services.[*].lifecycleState}
-    description: $b{services.[*].description}
-    distribution-status: $b{services.[*].distributionStatus}
+    service-model-vsp: $b{resources.[*].name}
+    resource-module-name: $b{resources.[*].systemName}
