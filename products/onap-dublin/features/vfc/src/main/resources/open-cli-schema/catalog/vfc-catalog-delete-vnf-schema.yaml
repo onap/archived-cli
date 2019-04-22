@@ -51,6 +51,6 @@ http:
       Content-Type: application/json
       Accept: application/json
   success_codes:
-    - 200
+    - 202
   result_map:
     job-id: $b{$.jobId}
