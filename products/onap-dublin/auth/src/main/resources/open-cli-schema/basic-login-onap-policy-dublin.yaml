@@ -37,7 +37,7 @@ results:
       description: Environment
       scope: short
       type: string
-      default_value: ONAP-CLI
+      default_value: TEST
     - name: ClientAuth
       description: Client Auth
       scope: short
