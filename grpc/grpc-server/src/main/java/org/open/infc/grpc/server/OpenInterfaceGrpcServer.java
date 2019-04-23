@@ -211,11 +211,13 @@ public class OpenInterfaceGrpcServer {
                 if (!cmd.isRpc()) {
                     String printOut = cmd.getResult().print();
                     Builder reply = Output.newBuilder();
-                    reply.setSuccess(true);
                     reply.putAttrs(OnapCommandConstants.ERROR, "{}");
 
                     if (executionStoreContext != null)
                         reply.putAddons("execution-id", executionStoreContext.getExecutionId());
+
+                    // use the status from the plugin.
+                    reply.setSuccess(cmd.getResult().isPassed());
 
                     try {
                         reply.putAttrs(OnapCommandConstants.RESULTS, new ObjectMapper().readTree(printOut).toString());
