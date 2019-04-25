@@ -22,6 +22,30 @@
       "revId": "34605c95ea7a9af4c4b86a4b5dee81a40d60686f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a30f47f7_84b520b7",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-04-25T16:48:07Z",
+      "side": 0,
+      "message": "The authorization header that is automatically sent with CLI when the basic auth is specified does not work so I took it out and put in the right auth header. I tested without this bit and it worked fine so I took it off.",
+      "parentUuid": "91d1f626_ec5625ee",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "34605c95ea7a9af4c4b86a4b5dee81a40d60686f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }

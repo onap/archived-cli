@@ -22,6 +22,30 @@
       "revId": "dd09459a778bb9668a96881e9040880310635120",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "010fc5ac_60443e27",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/vnf-create-schema-dublin.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-04-25T16:48:07Z",
+      "side": 1,
+      "message": "When an auth method of basic is specified, CLI sends the wrong authorization header with Basic, there is an authentication failure when this is not there and the command fails, so I put in the right one that works with SO.",
+      "parentUuid": "616e3b2f_132d87b8",
+      "range": {
+        "startLine": 151,
+        "startChar": 23,
+        "endLine": 151,
+        "endChar": 71
+      },
+      "revId": "dd09459a778bb9668a96881e9040880310635120",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
