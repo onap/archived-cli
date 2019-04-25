@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91d1f626_ec5625ee",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-04-25T08:39:03Z",
+      "side": 0,
+      "message": "why this is completely removed ?",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "34605c95ea7a9af4c4b86a4b5dee81a40d60686f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
