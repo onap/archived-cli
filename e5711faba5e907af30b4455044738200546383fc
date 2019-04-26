@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d00a5e2c_44c7908c",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-04-26T01:16:26Z",
+      "side": 1,
+      "message": "i think this should be, instead  auth: basic",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 15
+      },
+      "revId": "e5711faba5e907af30b4455044738200546383fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6a85f0_67bc9bad",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/vnf-create-schema-dublin.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-04-26T01:16:26Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 15
+      },
+      "revId": "e5711faba5e907af30b4455044738200546383fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
