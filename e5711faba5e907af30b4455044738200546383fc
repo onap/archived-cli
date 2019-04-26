@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33fd6585_35de3499",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-04-26T17:45:35Z",
+      "side": 1,
+      "message": "When I put in auth: basic, it uses the wrong credentials and so fails. I see the error \"status\":401,\"error\":\"Unauthorized\",\"message\":\"Bad credentials\",\"path\":\"/onap/so/infra/serviceInstances/v6\". It only works when I remove auth:basic and manually specify the authorization header.",
+      "parentUuid": "d00a5e2c_44c7908c",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 15
+      },
+      "revId": "e5711faba5e907af30b4455044738200546383fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe6a85f0_67bc9bad",
         "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/vnf-create-schema-dublin.yaml",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-26T01:16:26Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 15
+      },
+      "revId": "e5711faba5e907af30b4455044738200546383fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddc8575f_d2753a95",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/vnf-create-schema-dublin.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-04-26T17:45:35Z",
+      "side": 1,
+      "message": "When I put in auth: basic, it uses the wrong credentials and so fails. I see the error \"status\":401,\"error\":\"Unauthorized\",\"message\":\"Bad credentials\",\"path\":\"/onap/so/infra/serviceInstances/v6\". It only works when I remove auth:basic and manually specify the authorization header.",
+      "parentUuid": "fe6a85f0_67bc9bad",
       "range": {
         "startLine": 148,
         "startChar": 3,
