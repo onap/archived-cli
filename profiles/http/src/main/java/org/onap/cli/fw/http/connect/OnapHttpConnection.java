@@ -242,7 +242,8 @@ public class OnapHttpConnection {
         }
 
         for (Entry<String, String> header : this.mapCommonHeaders.entrySet()) {
-            input.getReqHeaders().put(header.getKey(), header.getValue());
+            if (!input.getReqHeaders().containsKey(header.getKey()))
+                input.getReqHeaders().put(header.getKey(), header.getValue());
         }
     }
 
