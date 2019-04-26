@@ -97,6 +97,54 @@
     },
     {
       "key": {
+        "uuid": "60ff81b7_02879ea0",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-04-26T18:14:17Z",
+      "side": 1,
+      "message": "The cloud region are usually specified when creating the VNF instance and the VF module. It is not specified when creating the service instance even without homing. I have tested both cases and confirmed that it works. I also looked through the request sent when the ONAP GUI is used to create a service instance, no cloud details are specified",
+      "parentUuid": "388ae77e_9540a66d",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "652c64e11311ca42ac247905964384c720351ea8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d314da88_77f76fc9",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2395
+      },
+      "writtenOn": "2019-04-26T18:14:17Z",
+      "side": 1,
+      "message": "Yes I tested it without homing and confirmed that it works. I also looked Through the request sent by VID when you create a service instance via GUI. No cloud region or tenant is specified. The cloud region and tenant are usually specified when creating the VNF instance and the VF module not when creating the service instance.",
+      "parentUuid": "f47235d3_abe8ae1f",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "652c64e11311ca42ac247905964384c720351ea8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05a220f2_367f18dc",
         "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
         "patchSetId": 2
