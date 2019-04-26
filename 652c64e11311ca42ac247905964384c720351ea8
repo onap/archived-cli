@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "388ae77e_9540a66d",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2019-04-26T17:58:48Z",
+      "side": 1,
+      "message": "Homing is the reason it\u0027s optional, not everyone is using homing, even some of the test cases doe not use homing.\n\nHPA always uses homing. That\u0027s what I meant, with or without HPA, also with or without homing.",
+      "parentUuid": "f47235d3_abe8ae1f",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "652c64e11311ca42ac247905964384c720351ea8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05a220f2_367f18dc",
         "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
         "patchSetId": 2
