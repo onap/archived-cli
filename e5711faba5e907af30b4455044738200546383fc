@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "b174a782_073de0db",
+        "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/service-create-schema-dublin.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-04-30T04:32:01Z",
+      "side": 1,
+      "message": "is O command is passing thru now?",
+      "parentUuid": "8bdb062b_bbf88c73",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 15
+      },
+      "revId": "e5711faba5e907af30b4455044738200546383fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe6a85f0_67bc9bad",
         "filename": "products/onap-dublin/features/so/src/main/resources/open-cli-schema/vnf-create-schema-dublin.yaml",
         "patchSetId": 12
