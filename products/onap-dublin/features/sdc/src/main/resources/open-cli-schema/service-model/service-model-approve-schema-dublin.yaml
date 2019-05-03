@@ -23,10 +23,10 @@ info:
 
 
 parameters:
-  - name: service-model-uuid
-    description: Service model UUID (can be found by running service-model-list)
+  - name: service-model-uniqueId
+    description: Service model UniqueId (can be found by running service-model-list)
     type: string
-    long_option: service-model-uuid
+    long_option: service-model-uniqueId
     short_option: b
     is_optional: false
   - name: remarks
@@ -43,7 +43,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-uuid}/distribution-state/approve
+    uri: /sdc2/rest/v1/catalog/services/${service-model-uniqueId}/distribution-state/approve
     method: POST
     body: '{"userRemarks": "${remarks}"}'
   success_codes:

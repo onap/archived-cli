@@ -29,6 +29,10 @@ results:
       description: UUID
       type: string
       scope: short
+    - name: uniqueId
+      description: uniqueId
+      type: string
+      scope: short
     - name: invariant-uuid
       description: Invariant UUID
       type: string
@@ -67,6 +71,7 @@ http:
     - 200
   result_map:
     uuid: $b{services.[*].uuid}
+    uniqueId: $b{services.[*].uniqueId}
     invariant-uuid: $b{services.[*].invariantUUID}
     version: $b{services.[*].version}
     name: $b{services.[*].name}

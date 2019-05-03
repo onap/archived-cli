@@ -23,10 +23,10 @@ info:
 
 
 parameters:
-  - name: vf-id
-    description: VF ID
+  - name: vf-uniqueId
+    description: VF UniqueId
     type: string
-    long_option: vf-id
+    long_option: vf-uniqueId
     short_option: b
     is_optional: false
   - name: remarks
@@ -43,7 +43,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/resources/${vf-id}/lifecycleState/certify
+    uri: /sdc2/rest/v1/catalog/resources/${vf-uniqueId}/lifecycleState/certify
     method: POST
     body: '{"userRemarks":"${remarks}"}'
   success_codes:

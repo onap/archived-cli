@@ -29,14 +29,14 @@ parameters:
     short_option: x
     long_option: service-model-id
     is_optional: false
-  - name: vf-id
-    description: VF ID
+  - name: vf-uniqueId
+    description: VF Unique ID
     type: string
     short_option: y
-    long_option: vf-id
+    long_option: vf-uniqueId
     is_optional: true
   - name: vf-name
-    description: VF ID
+    description: VF Name
     type: string
     short_option: z
     long_option: vf-name
@@ -64,7 +64,7 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/services/${service-model-id}/resourceInstance
     method: POST
-    body: '{"name": "${vf-name}", "componentVersion": "${vf-version}", "posY": 248, "posX": 406, "uniqueId": "${service-model-id}-${vf-id}", "originType": "VF", "componentUid": "${vf-id}", "icon": "defaulticon"}'
+    body: '{"name": "${vf-name}", "componentVersion": "${vf-version}", "posY": 248, "posX": 406, "uniqueId": "${service-model-id}-${vf-uniqueId}", "originType": "VF", "componentUid": "${vf-uniqueId}", "icon": "defaulticon"}'
   success_codes:
     - 201
   result_map:
