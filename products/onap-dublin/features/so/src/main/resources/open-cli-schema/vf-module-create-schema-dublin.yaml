@@ -28,6 +28,12 @@ parameters:
     short_option: l
     long_option: lcp-cloudregion-id
     is_optional: false
+  - name: cloud-owner
+    description: cloud region cloud owner
+    type: string
+    short_option: co
+    long_option: cloud-owner
+    is_optional: false
   - name: tenant-id
     description: openstack tenant id (uuid)
     type: string
@@ -197,7 +203,8 @@ http:
                  },
                  "cloudConfiguration":{
                     "lcpCloudRegionId":"${lcp-cloudregion-id}",
-                    "tenantId":"${tenant-id}"
+                    "tenantId":"${tenant-id}",
+                    "cloudOwner":"${cloud-owner}"
                  },
                  "requestInfo":{
                     "instanceName":"${instance-name}",
@@ -243,7 +250,7 @@ http:
 
   success_codes:
     - 202
-  result_mpa:
+  result_map:
     vf-instance-id: $b{$.vfInstanceId}
   sample_response:
     body: '{ "vfInstanceId" : "234567AB" }'
