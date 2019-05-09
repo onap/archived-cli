@@ -138,8 +138,7 @@ NOTE: Command marked with EXPERIMENTAL is only for testing purpose. Its not reco
    :maxdepth: 1
 
    cmd_help.rst
-   cmd_help_onap_amsterdam.rst
-   cmd_help_onap_beijing.rst
+   cmd_help_onap_dublin.rst
 
 Command Samples
 ---------------
@@ -149,7 +148,7 @@ Following document provides the samples for every commands supported.
    :maxdepth: 1
 
    cmd_sample.rst
-   cmd_sample_onap_amsterdam.rst
+   cmd_sample_onap_dublin.rst
 
 End to end service creation tutorial
 ------------------------------------
