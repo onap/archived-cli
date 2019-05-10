@@ -21,19 +21,24 @@ info:
   service: vtp
   author: ONAP CLI Team onap-discuss@lists.onap.org
 parameters:
-  - name: name
-    description: VNFtest case name
+  - name: testcase-name
+    description: VNF test case name
     type: string
     short_option: x
-    long_option: name
+    long_option: testcase-name
     is_optional: false
   - name: param
-    description: VNFtest case name params, and can be repeated.
+    description: VNF test case name params, and can be repeated.
     type: map
     short_option: y
     long_option: param
     is_optional: true
-
+  - name: testsuite-name
+    description: VNF test suite name
+    type: string
+    short_option: z
+    long_option: testsuite-name
+    is_optional: false
 results:
   direction: portrait
   attributes:
@@ -68,7 +73,7 @@ http:
                   "scenario": "onap-vtp",
                   "testSuiteName": "${testsuite-name}",
                   "testCaseName": "${testcase-name}",
-                  "parameters": ${param}]'
+                  "parameters": ${param}}]'
   success_codes:
     - 201
     - 200
