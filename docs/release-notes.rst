@@ -4,6 +4,21 @@
 CLI Release Notes
 =================
 
+
+Version: 3.0.0
+--------------
+
+:Release Date: 2019-05-31
+
+**New Features**
+
+- Beijing support EOL
+- Enhanced schema management
+- Added execution support for capturing the details of every execution includes parameters, results.
+- End-end service creation using ONAP commands are provided.
+-
+
+
 Version: 2.0.5
 --------------
 
