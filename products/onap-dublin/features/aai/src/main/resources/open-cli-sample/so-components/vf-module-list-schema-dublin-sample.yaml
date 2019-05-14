@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: -x
+version: onap-dublin
+samples:
+  sample1:
+    name: -x
+    input: 822103de-eef7-4dbb-a903-ee63d1d6c828 -u AAI -p AAI -m https://10.12.6.48:30233 -s
+    moco: vf-module-list-schema-dublin-moco.json
+    output: |
+      +--------------------------------------+--------------------------------------+------------------+
+      |vf-module-name                        |vf-module-id                          |resource-version  |
+      +--------------------------------------+--------------------------------------+------------------+
+      |Vfmodule_Ete_vFWDTvFWSNK_97f314d9_2   |92c1841f-d53b-4fb8-ab6a-28e3cba57732  |1557871047301     |
+      +--------------------------------------+--------------------------------------+------------------+

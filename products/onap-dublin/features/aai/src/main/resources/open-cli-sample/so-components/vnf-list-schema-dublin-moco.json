@@ -1,0 +1,419 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v14/network/generic-vnfs/",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-4c90b45f-6bc5-4a36-82ca-56d5fba93537",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "generic-vnf" : [ {
+        "vnf-id" : "822103de-eef7-4dbb-a903-ee63d1d6c828",
+        "vnf-name" : "Ete_vFWDTvFWSNK_97f314d9_2",
+        "vnf-type" : "vFWDT 2019-05-14 21:39:/vFWDT_vFWSNK f6f516d5-df46 1",
+        "service-id" : "4ac68777-580d-4c77-be9e-715af194eff2",
+        "prov-status" : "ACTIVE",
+        "orchestration-status" : "Active",
+        "in-maint" : false,
+        "is-closed-loop-disabled" : false,
+        "resource-version" : "1557871053443",
+        "model-invariant-id" : "b4a756f2-abc3-4abb-ad72-bb1c74ead69b",
+        "model-version-id" : "9decac39-dc36-4d75-a163-4cac545962da",
+        "model-customization-id" : "3290f4d7-3067-4182-9882-a2874d24210e",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/business/customers/customer/DemoCust_97f314d9-ae80-4161-bc60-2263544dd5cf/service-subscriptions/service-subscription/vFWDT/service-instances/service-instance/70c30689-ed46-4ea9-8c9e-d3d4edd01c9a",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "DemoCust_97f314d9-ae80-4161-bc60-2263544dd5cf"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFWDT"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "70c30689-ed46-4ea9-8c9e-d3d4edd01c9a"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "Service_Ete_Name97f314d9-ae80-4161-bc60-2263544dd5cf"
+            } ]
+          }, {
+            "related-to" : "platform",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/platforms/platform/Platform-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "platform.platform-name",
+              "relationship-value" : "Platform-Demonstration"
+            } ]
+          }, {
+            "related-to" : "vserver",
+            "relationship-label" : "tosca.relationships.HostedOn",
+            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/RegionOne/tenants/tenant/09d8566ea45e43aa974cf447ed591d77/vservers/vserver/67c0297b-a520-4dee-9c95-a2b98e27b397",
+            "relationship-data" : [ {
+              "relationship-key" : "cloud-region.cloud-owner",
+              "relationship-value" : "CloudOwner"
+            }, {
+              "relationship-key" : "cloud-region.cloud-region-id",
+              "relationship-value" : "RegionOne"
+            }, {
+              "relationship-key" : "tenant.tenant-id",
+              "relationship-value" : "09d8566ea45e43aa974cf447ed591d77"
+            }, {
+              "relationship-key" : "vserver.vserver-id",
+              "relationship-value" : "67c0297b-a520-4dee-9c95-a2b98e27b397"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "vserver.vserver-name",
+              "property-value" : "vofwl01snk14d9"
+            } ]
+          }, {
+            "related-to" : "vserver",
+            "relationship-label" : "tosca.relationships.HostedOn",
+            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/RegionOne/tenants/tenant/09d8566ea45e43aa974cf447ed591d77/vservers/vserver/d5a477eb-6241-47d9-9ca0-a692940c048e",
+            "relationship-data" : [ {
+              "relationship-key" : "cloud-region.cloud-owner",
+              "relationship-value" : "CloudOwner"
+            }, {
+              "relationship-key" : "cloud-region.cloud-region-id",
+              "relationship-value" : "RegionOne"
+            }, {
+              "relationship-key" : "tenant.tenant-id",
+              "relationship-value" : "09d8566ea45e43aa974cf447ed591d77"
+            }, {
+              "relationship-key" : "vserver.vserver-id",
+              "relationship-value" : "d5a477eb-6241-47d9-9ca0-a692940c048e"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "vserver.vserver-name",
+              "property-value" : "vofwl01vfw14d9"
+            } ]
+          } ]
+        }
+      }, {
+        "vnf-id" : "52a4b034-828e-4a5c-9895-000aaf6cc05f",
+        "vnf-name" : "Ete_vFWCLvFWSNK_36e8ed23_0",
+        "vnf-type" : "vFWCL 2019-05-14 19:51:/vFWCL_vFWSNK 585f812d-2d8b 0",
+        "service-id" : "6ecb22b8-9198-4188-a81a-2926eaf3d413",
+        "prov-status" : "PREPROV",
+        "orchestration-status" : "Created",
+        "in-maint" : false,
+        "is-closed-loop-disabled" : false,
+        "resource-version" : "1557864105199",
+        "model-invariant-id" : "505c7e39-4355-4f6b-8add-38e28f13fbc5",
+        "model-version-id" : "d068ba61-84e3-47ee-837f-62740f59498e",
+        "model-customization-id" : "466da017-be2f-4764-a3ed-0a838597542b",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/business/customers/customer/DemoCust_36e8ed23-b928-4cea-ad8a-e9709e721ed8/service-subscriptions/service-subscription/vFWCL/service-instances/service-instance/aa521249-0c8d-4765-8d19-0335847c9c7f",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "DemoCust_36e8ed23-b928-4cea-ad8a-e9709e721ed8"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFWCL"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "aa521249-0c8d-4765-8d19-0335847c9c7f"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "Service_Ete_Name36e8ed23-b928-4cea-ad8a-e9709e721ed8"
+            } ]
+          }, {
+            "related-to" : "platform",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/platforms/platform/Platform-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "platform.platform-name",
+              "relationship-value" : "Platform-Demonstration"
+            } ]
+          } ]
+        }
+      }, {
+        "vnf-id" : "08e98ea9-e945-4ce2-b520-76ca11ff7c5f",
+        "vnf-name" : "Ete_vFWCLvFWSNK_d3e7a9ba_0",
+        "vnf-type" : "vFWCL 2019-05-14 19:35:/vFWCL_vFWSNK fd3acb2c-c0f5 0",
+        "service-id" : "6ecb22b8-9198-4188-a81a-2926eaf3d413",
+        "prov-status" : "PREPROV",
+        "orchestration-status" : "Created",
+        "in-maint" : false,
+        "is-closed-loop-disabled" : false,
+        "resource-version" : "1557863204408",
+        "model-invariant-id" : "24b21516-72dd-4569-a6c6-040b463de068",
+        "model-version-id" : "db870ede-6df9-4995-bbcb-aa579352043f",
+        "model-customization-id" : "9edda94c-e1db-43c9-82b9-651330b4f744",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/business/customers/customer/DemoCust_d3e7a9ba-d88a-43dc-9b0c-7999659f85d9/service-subscriptions/service-subscription/vFWCL/service-instances/service-instance/7e63e1d0-9a4d-456a-8870-ed7229b88fae",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "DemoCust_d3e7a9ba-d88a-43dc-9b0c-7999659f85d9"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFWCL"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "7e63e1d0-9a4d-456a-8870-ed7229b88fae"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "Service_Ete_Named3e7a9ba-d88a-43dc-9b0c-7999659f85d9"
+            } ]
+          }, {
+            "related-to" : "platform",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/platforms/platform/Platform-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "platform.platform-name",
+              "relationship-value" : "Platform-Demonstration"
+            } ]
+          } ]
+        }
+      }, {
+        "vnf-id" : "0957e4f3-109a-4937-898d-295f58ba2fc6",
+        "vnf-name" : "Ete_vFWDTvFWSNK_97f314d9_1",
+        "vnf-type" : "vFWDT 2019-05-14 21:39:/vFWDT_vFWSNK f6f516d5-df46 1",
+        "service-id" : "4ac68777-580d-4c77-be9e-715af194eff2",
+        "prov-status" : "ACTIVE",
+        "orchestration-status" : "Active",
+        "in-maint" : false,
+        "is-closed-loop-disabled" : false,
+        "resource-version" : "1557870869928",
+        "model-invariant-id" : "b4a756f2-abc3-4abb-ad72-bb1c74ead69b",
+        "model-version-id" : "9decac39-dc36-4d75-a163-4cac545962da",
+        "model-customization-id" : "3290f4d7-3067-4182-9882-a2874d24210e",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/business/customers/customer/DemoCust_97f314d9-ae80-4161-bc60-2263544dd5cf/service-subscriptions/service-subscription/vFWDT/service-instances/service-instance/70c30689-ed46-4ea9-8c9e-d3d4edd01c9a",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "DemoCust_97f314d9-ae80-4161-bc60-2263544dd5cf"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFWDT"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "70c30689-ed46-4ea9-8c9e-d3d4edd01c9a"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "Service_Ete_Name97f314d9-ae80-4161-bc60-2263544dd5cf"
+            } ]
+          }, {
+            "related-to" : "platform",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/platforms/platform/Platform-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "platform.platform-name",
+              "relationship-value" : "Platform-Demonstration"
+            } ]
+          }, {
+            "related-to" : "vserver",
+            "relationship-label" : "tosca.relationships.HostedOn",
+            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/RegionOne/tenants/tenant/09d8566ea45e43aa974cf447ed591d77/vservers/vserver/b77a17fe-11a5-4724-951a-7fb1dba9d667",
+            "relationship-data" : [ {
+              "relationship-key" : "cloud-region.cloud-owner",
+              "relationship-value" : "CloudOwner"
+            }, {
+              "relationship-key" : "cloud-region.cloud-region-id",
+              "relationship-value" : "RegionOne"
+            }, {
+              "relationship-key" : "tenant.tenant-id",
+              "relationship-value" : "09d8566ea45e43aa974cf447ed591d77"
+            }, {
+              "relationship-key" : "vserver.vserver-id",
+              "relationship-value" : "b77a17fe-11a5-4724-951a-7fb1dba9d667"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "vserver.vserver-name",
+              "property-value" : "vofwl01snk14d9"
+            } ]
+          }, {
+            "related-to" : "vserver",
+            "relationship-label" : "tosca.relationships.HostedOn",
+            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/RegionOne/tenants/tenant/09d8566ea45e43aa974cf447ed591d77/vservers/vserver/e41480f9-182c-42ad-bc5a-281b10d43229",
+            "relationship-data" : [ {
+              "relationship-key" : "cloud-region.cloud-owner",
+              "relationship-value" : "CloudOwner"
+            }, {
+              "relationship-key" : "cloud-region.cloud-region-id",
+              "relationship-value" : "RegionOne"
+            }, {
+              "relationship-key" : "tenant.tenant-id",
+              "relationship-value" : "09d8566ea45e43aa974cf447ed591d77"
+            }, {
+              "relationship-key" : "vserver.vserver-id",
+              "relationship-value" : "e41480f9-182c-42ad-bc5a-281b10d43229"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "vserver.vserver-name",
+              "property-value" : "vofwl01vfw14d9"
+            } ]
+          } ]
+        }
+      }, {
+        "vnf-id" : "3c44cd16-bb4b-407f-8b44-49cd4c53562e",
+        "vnf-name" : "Ete_vFWCLvFWSNK_d3e7a9ba_0",
+        "vnf-type" : "vFWCL 2019-05-14 19:35:/vFWCL_vFWSNK fd3acb2c-c0f5 0",
+        "service-id" : "6ecb22b8-9198-4188-a81a-2926eaf3d413",
+        "prov-status" : "PREPROV",
+        "orchestration-status" : "Created",
+        "in-maint" : false,
+        "is-closed-loop-disabled" : false,
+        "resource-version" : "1557863091272",
+        "model-invariant-id" : "24b21516-72dd-4569-a6c6-040b463de068",
+        "model-version-id" : "db870ede-6df9-4995-bbcb-aa579352043f",
+        "model-customization-id" : "9edda94c-e1db-43c9-82b9-651330b4f744",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/business/customers/customer/DemoCust_d3e7a9ba-d88a-43dc-9b0c-7999659f85d9/service-subscriptions/service-subscription/vFWCL/service-instances/service-instance/7e63e1d0-9a4d-456a-8870-ed7229b88fae",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "DemoCust_d3e7a9ba-d88a-43dc-9b0c-7999659f85d9"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFWCL"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "7e63e1d0-9a4d-456a-8870-ed7229b88fae"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "Service_Ete_Named3e7a9ba-d88a-43dc-9b0c-7999659f85d9"
+            } ]
+          }, {
+            "related-to" : "platform",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/platforms/platform/Platform-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "platform.platform-name",
+              "relationship-value" : "Platform-Demonstration"
+            } ]
+          } ]
+        }
+      }, {
+        "vnf-id" : "d6e21697-1195-4512-a44a-c9c914378eda",
+        "vnf-name" : "Ete_vFW_dc5d3d44_0",
+        "vnf-type" : "vFW 2019-05-14 21:11:13/vFW b709db2f-0039 0",
+        "service-id" : "b7fd205d-8c62-4701-9448-9dc55532d0e2",
+        "prov-status" : "PREPROV",
+        "orchestration-status" : "Created",
+        "in-maint" : false,
+        "is-closed-loop-disabled" : false,
+        "resource-version" : "1557868764828",
+        "model-invariant-id" : "f04950b2-765c-4c42-ac7c-cb05aacc4a26",
+        "model-version-id" : "6775ea75-1237-436c-a51a-b7dd1aa0f0df",
+        "model-customization-id" : "f222bbde-7d37-4f59-b00b-92125025d1ef",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/business/customers/customer/DemoCust_dc5d3d44-62ef-49ff-a8c9-c0108c68c456/service-subscriptions/service-subscription/vFW/service-instances/service-instance/b1928ef8-fd57-41db-a7f4-f3507efc44a4",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "DemoCust_dc5d3d44-62ef-49ff-a8c9-c0108c68c456"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFW"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "b1928ef8-fd57-41db-a7f4-f3507efc44a4"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "Service_Ete_Namedc5d3d44-62ef-49ff-a8c9-c0108c68c456"
+            } ]
+          }, {
+            "related-to" : "platform",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/platforms/platform/Platform-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "platform.platform-name",
+              "relationship-value" : "Platform-Demonstration"
+            } ]
+          } ]
+        }
+      }, {
+        "vnf-id" : "01d4ae85-04ca-4eb0-a636-76f690103067",
+        "vnf-name" : "Ete_vFWDTvPKG_97f314d9_0",
+        "vnf-type" : "vFWDT 2019-05-14 21:39:/vFWDT_vPKG f9ca4e08-2039 0",
+        "service-id" : "4ac68777-580d-4c77-be9e-715af194eff2",
+        "prov-status" : "ACTIVE",
+        "orchestration-status" : "Active",
+        "in-maint" : false,
+        "is-closed-loop-disabled" : false,
+        "resource-version" : "1557870680000",
+        "model-invariant-id" : "49fa29d6-0785-4841-b866-2a0ec1b58e42",
+        "model-version-id" : "3b4c7a67-869e-4ad4-a5c0-94292648411b",
+        "model-customization-id" : "6489a540-0179-4fb3-8a22-77459a89d02b",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "service-instance",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/business/customers/customer/DemoCust_97f314d9-ae80-4161-bc60-2263544dd5cf/service-subscriptions/service-subscription/vFWDT/service-instances/service-instance/70c30689-ed46-4ea9-8c9e-d3d4edd01c9a",
+            "relationship-data" : [ {
+              "relationship-key" : "customer.global-customer-id",
+              "relationship-value" : "DemoCust_97f314d9-ae80-4161-bc60-2263544dd5cf"
+            }, {
+              "relationship-key" : "service-subscription.service-type",
+              "relationship-value" : "vFWDT"
+            }, {
+              "relationship-key" : "service-instance.service-instance-id",
+              "relationship-value" : "70c30689-ed46-4ea9-8c9e-d3d4edd01c9a"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "service-instance.service-instance-name",
+              "property-value" : "Service_Ete_Name97f314d9-ae80-4161-bc60-2263544dd5cf"
+            } ]
+          }, {
+            "related-to" : "platform",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/platforms/platform/Platform-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "platform.platform-name",
+              "relationship-value" : "Platform-Demonstration"
+            } ]
+          }, {
+            "related-to" : "vserver",
+            "relationship-label" : "tosca.relationships.HostedOn",
+            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/RegionOne/tenants/tenant/09d8566ea45e43aa974cf447ed591d77/vservers/vserver/47df73c0-e35d-488d-864e-53bf103a0c83",
+            "relationship-data" : [ {
+              "relationship-key" : "cloud-region.cloud-owner",
+              "relationship-value" : "CloudOwner"
+            }, {
+              "relationship-key" : "cloud-region.cloud-region-id",
+              "relationship-value" : "RegionOne"
+            }, {
+              "relationship-key" : "tenant.tenant-id",
+              "relationship-value" : "09d8566ea45e43aa974cf447ed591d77"
+            }, {
+              "relationship-key" : "vserver.vserver-id",
+              "relationship-value" : "47df73c0-e35d-488d-864e-53bf103a0c83"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "vserver.vserver-name",
+              "property-value" : "vofwl01pgn14d9"
+            } ]
+          } ]
+        }
+      } ]
+    }
+  }
+} ]

@@ -1,0 +1,77 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v14/network/generic-vnfs/generic-vnf/822103de-eef7-4dbb-a903-ee63d1d6c828/vf-modules",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-bafcc585-f462-44a4-b17e-a1d78e330fc2",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "vf-module" : [ {
+        "vf-module-id" : "92c1841f-d53b-4fb8-ab6a-28e3cba57732",
+        "vf-module-name" : "Vfmodule_Ete_vFWDTvFWSNK_97f314d9_2",
+        "heat-stack-id" : "Vfmodule_Ete_vFWDTvFWSNK_97f314d9_2/5bd73ba3-bc2c-4aa9-b2a8-a0b2040d9cbf",
+        "orchestration-status" : "active",
+        "is-base-vf-module" : true,
+        "automated-assignment" : false,
+        "resource-version" : "1557871047301",
+        "model-invariant-id" : "87c70139-91bd-4f2d-abba-527140526a13",
+        "model-version-id" : "4364c106-8031-4d9d-9c23-a47471b929a8",
+        "model-customization-id" : "6cf93ce9-c0d2-4a56-8df1-80942f83de60",
+        "module-index" : 0,
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "vserver",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/RegionOne/tenants/tenant/09d8566ea45e43aa974cf447ed591d77/vservers/vserver/67c0297b-a520-4dee-9c95-a2b98e27b397",
+            "relationship-data" : [ {
+              "relationship-key" : "cloud-region.cloud-owner",
+              "relationship-value" : "CloudOwner"
+            }, {
+              "relationship-key" : "cloud-region.cloud-region-id",
+              "relationship-value" : "RegionOne"
+            }, {
+              "relationship-key" : "tenant.tenant-id",
+              "relationship-value" : "09d8566ea45e43aa974cf447ed591d77"
+            }, {
+              "relationship-key" : "vserver.vserver-id",
+              "relationship-value" : "67c0297b-a520-4dee-9c95-a2b98e27b397"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "vserver.vserver-name",
+              "property-value" : "vofwl01snk14d9"
+            } ]
+          }, {
+            "related-to" : "vserver",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/RegionOne/tenants/tenant/09d8566ea45e43aa974cf447ed591d77/vservers/vserver/d5a477eb-6241-47d9-9ca0-a692940c048e",
+            "relationship-data" : [ {
+              "relationship-key" : "cloud-region.cloud-owner",
+              "relationship-value" : "CloudOwner"
+            }, {
+              "relationship-key" : "cloud-region.cloud-region-id",
+              "relationship-value" : "RegionOne"
+            }, {
+              "relationship-key" : "tenant.tenant-id",
+              "relationship-value" : "09d8566ea45e43aa974cf447ed591d77"
+            }, {
+              "relationship-key" : "vserver.vserver-id",
+              "relationship-value" : "d5a477eb-6241-47d9-9ca0-a692940c048e"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "vserver.vserver-name",
+              "property-value" : "vofwl01vfw14d9"
+            } ]
+          } ]
+        }
+      } ]
+    }
+  }
+} ]
