@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vfc-nslcm-instantiate
-description: vfc nslcm instantiate ns
+name: vfc-catalog-create-vnf
+description: vfc create vnf
 
 info:
   product: onap-dublin
@@ -22,30 +22,28 @@ info:
   author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
 parameters:
-  - name: ns-instance-id
-    description: ns's instance id
+  - name: user-key
+    description: user defined data key eg:"key2"
     type: string
-    short_option: i
-    long_option: ns-instance-id
-    is_optional: false
-  - name: location
-    description: localtion(vimid)
-    type: json
     short_option: c
-    long_option: location
+    long_option: user-key
     is_optional: false
-  - name: sdn-controller-id
-    description: sdn controller id
+  - name: user-value
+    description: user defined data value eg:"value2"
     type: string
-    short_option: n
-    long_option: sdn-controller-id
+    short_option: e
+    long_option: user-value
     is_optional: false
 
 results:
   direction: landscape
   attributes:
-    - name: job-id
-      description: job id
+    - name: id
+      description: id
+      scope: short
+      type: string
+    - name: state
+      description: state
       scope: short
       type: string
 
@@ -54,21 +52,18 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /api/nslcm/v1/ns/${ns-instance-id}/instantiate
+    uri: /api/vnfpkgm/v1/vnf_packages
     method: POST
     context:
       remove_empty_node: true
     body: '{
-             "additionalParamForNs":
-               {
-                 "sdncontroller": "${sdn-controller-id}",
-                 "location": "${location}"
-               }
+             "userDefinedData": {"${user-key}": "${user-value}"}
            }'
     headers:
       Content-Type: application/json
       Accept: application/json
   success_codes:
-    - 200
+    - 201
   result_map:
-    job-id: $b{$.jobId}
+    id: $b{$.id}
+    state: $b{$.onboardingState}

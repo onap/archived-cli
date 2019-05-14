@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vfc-nslcm-instantiate
-description: vfc nslcm instantiate ns
+name: vfc-catalog-upload-ns
+description: vfc upload ns
 
 info:
   product: onap-dublin
@@ -22,53 +22,32 @@ info:
   author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
 parameters:
-  - name: ns-instance-id
-    description: ns's instance id
+  - name: ns-csar-id
+    description: ns csar id which from ns create
     type: string
-    short_option: i
-    long_option: ns-instance-id
-    is_optional: false
-  - name: location
-    description: localtion(vimid)
-    type: json
     short_option: c
-    long_option: location
+    long_option: ns-csar-id
     is_optional: false
-  - name: sdn-controller-id
-    description: sdn controller id
+  - name: file-content
+    description: file content
     type: string
-    short_option: n
-    long_option: sdn-controller-id
+    short_option: e
+    long_option: file-content
     is_optional: false
-
-results:
-  direction: landscape
-  attributes:
-    - name: job-id
-      description: job id
-      scope: short
-      type: string
 
 http:
   service:
     auth: none
     mode: direct
   request:
-    uri: /api/nslcm/v1/ns/${ns-instance-id}/instantiate
-    method: POST
+    uri: /api/nsd/v1/ns_descriptors/${ns-csar-id}/nsd_content
+    method: PUT
+    files:
+      file: ${file-content}
     context:
       remove_empty_node: true
-    body: '{
-             "additionalParamForNs":
-               {
-                 "sdncontroller": "${sdn-controller-id}",
-                 "location": "${location}"
-               }
-           }'
     headers:
       Content-Type: application/json
       Accept: application/json
   success_codes:
-    - 200
-  result_map:
-    job-id: $b{$.jobId}
+    - 204

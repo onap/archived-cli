@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vfc-nslcm-instantiate
-description: vfc nslcm instantiate ns
+name: vfc-register-vnfm
+description: vfc register vnfm
 
 info:
   product: onap-dublin
@@ -22,30 +22,48 @@ info:
   author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
 parameters:
-  - name: ns-instance-id
-    description: ns's instance id
-    type: string
-    short_option: i
-    long_option: ns-instance-id
-    is_optional: false
-  - name: location
-    description: localtion(vimid)
-    type: json
-    short_option: c
-    long_option: location
-    is_optional: false
-  - name: sdn-controller-id
-    description: sdn controller id
+  - name: vnfm-name
+    description: vnfm name
     type: string
     short_option: n
-    long_option: sdn-controller-id
+    long_option: vnfm-name
+    is_optional: false
+  - name: type
+    description: vnfm type
+    type: string
+    short_option: y
+    long_option: type
+    is_optional: false
+  - name: vimid
+    description: vim id
+    type: string
+    short_option: i
+    long_option: vimid
+    is_optional: false
+  - name: version
+    description: vnfm version
+    type: string
+    short_option: v
+    long_option: version
+    is_optional: false
+  - name: url
+    description: vnfm url
+    type: string
+    short_option: l
+    long_option: url
+    is_optional: false
+  - name: vendor
+    description: vnfm vendor
+    type: string
+    short_option: e
+    long_option: vendor
     is_optional: false
 
 results:
   direction: landscape
   attributes:
-    - name: job-id
-      description: job id
+    - name: vnfm-id
+      description: vnfm id
       scope: short
       type: string
 
@@ -54,16 +72,20 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /api/nslcm/v1/ns/${ns-instance-id}/instantiate
+    uri: /api/vnfpkgm/v1/vnf_packages
     method: POST
     context:
       remove_empty_node: true
     body: '{
-             "additionalParamForNs":
-               {
-                 "sdncontroller": "${sdn-controller-id}",
-                 "location": "${location}"
-               }
+             "name": "${vnfm-name}",
+             "type": "${type}",
+             "version": "${version}",
+             "vimId": "${vimid}",
+             "url": "${url}",
+             "vendor": "${vendor}",
+             "userName": "admin",
+             "password": "admin",
+             "certificateUrl": ""
            }'
     headers:
       Content-Type: application/json
@@ -71,4 +93,4 @@ http:
   success_codes:
     - 200
   result_map:
-    job-id: $b{$.jobId}
+    vnfm-id: $b{$.vnfmId}
