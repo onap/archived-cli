@@ -28,11 +28,11 @@ parameters:
     short_option: i
     long_option: ns-instance-id
     is_optional: false
-  - name: location-constraints
-    description: localtion constraints
-    type: json
+  - name: location
+    description: localtion(vimid)
+    type: string
     short_option: c
-    long_option: location-constraints
+    long_option: location
     is_optional: false
   - name: sdn-controller-id
     description: sdn controller id
@@ -58,8 +58,13 @@ http:
     method: POST
     context:
       remove_empty_node: true
-    body: '{"additionalParamForNs": {"sdnControllerId": "${sdn-controller-id}"},
-            "locationConstraints": "${location-constraints}"}'
+    body: '{
+             "additionalParamForNs":
+               {
+                 "sdncontroller": "${sdn-controller-id}",
+                 "location": "${location}"
+               }
+           }'
     headers:
       Content-Type: application/json
       Accept: application/json
