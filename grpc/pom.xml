@@ -20,7 +20,7 @@
         <artifactId>cli</artifactId>
         <version>3.0.0</version>
     </parent>
-  <version>1.0.3</version>
+  <version>3.0.0</version>
   <artifactId>oclip-grpc</artifactId>
   <packaging>pom</packaging>
   <name>oclip/grpc</name>
