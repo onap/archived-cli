@@ -1,0 +1,152 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v14/nodes/service-instances/",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-0bee3e0a-fa8a-43b4-965c-a1e91fd0dd8b",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "service-instance" : [ {
+        "service-instance-id" : "11efdfa0-b4ef-43ac-901d-5f4195ad0c50",
+        "service-instance-name" : "vlb_si_ewm_1",
+        "environment-context" : "General_Revenue-Bearing",
+        "workload-context" : "Production",
+        "model-invariant-id" : "a1786c0b-c864-4202-a79d-babeb2af2924",
+        "model-version-id" : "1d71f3c1-863c-48ca-92ce-3c1cb6cc5a06",
+        "resource-version" : "1556780580114",
+        "orchestration-status" : "Active",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "project",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/projects/project/Project-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "project.project-name",
+              "relationship-value" : "Project-Demonstration"
+            } ]
+          }, {
+            "related-to" : "owning-entity",
+            "relationship-label" : "org.onap.relationships.inventory.BelongsTo",
+            "related-link" : "/aai/v14/business/owning-entities/owning-entity/35945688-7855-421e-a235-290e65b6eb13",
+            "relationship-data" : [ {
+              "relationship-key" : "owning-entity.owning-entity-id",
+              "relationship-value" : "35945688-7855-421e-a235-290e65b6eb13"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/network/generic-vnfs/generic-vnf/10cc4a6e-05d4-47de-94a3-f9e6fa88272e",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "10cc4a6e-05d4-47de-94a3-f9e6fa88272e"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vlb_vnf_ewm_1"
+            } ]
+          } ]
+        }
+      }, {
+        "service-instance-id" : "1a221a01-1f49-475c-90c1-bcc161bf3046",
+        "service-instance-name" : "test-instance",
+        "environment-context" : "General_Revenue-Bearing",
+        "workload-context" : "Production",
+        "model-invariant-id" : "db2affd2-28b5-486f-9193-70698675e6fb",
+        "model-version-id" : "a4c5c1ef-6d78-4fd3-907d-bfe51d0e5bda",
+        "resource-version" : "1557173769891",
+        "orchestration-status" : "Active",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "project",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/projects/project/Project-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "project.project-name",
+              "relationship-value" : "Project-Demonstration"
+            } ]
+          }, {
+            "related-to" : "owning-entity",
+            "relationship-label" : "org.onap.relationships.inventory.BelongsTo",
+            "related-link" : "/aai/v14/business/owning-entities/owning-entity/35945688-7855-421e-a235-290e65b6eb13",
+            "relationship-data" : [ {
+              "relationship-key" : "owning-entity.owning-entity-id",
+              "relationship-value" : "35945688-7855-421e-a235-290e65b6eb13"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/network/generic-vnfs/generic-vnf/082db047-3a89-4bf4-8236-63d6ad77cf2a",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "082db047-3a89-4bf4-8236-63d6ad77cf2a"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vfw-hpa-vnf"
+            } ]
+          } ]
+        }
+      }, {
+        "service-instance-id" : "d1eec0a8-394a-4ac2-a315-24c324139fb6",
+        "service-instance-name" : "test",
+        "environment-context" : "General_Revenue-Bearing",
+        "workload-context" : "Production",
+        "model-invariant-id" : "cc7d51eb-d8c1-478d-a6b2-8aebd87ee682",
+        "model-version-id" : "411e4ce9-e316-4df1-a3d9-4a717d8aafdb",
+        "resource-version" : "1556906296686",
+        "orchestration-status" : "Active",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "project",
+            "relationship-label" : "org.onap.relationships.inventory.Uses",
+            "related-link" : "/aai/v14/business/projects/project/Project-Demonstration",
+            "relationship-data" : [ {
+              "relationship-key" : "project.project-name",
+              "relationship-value" : "Project-Demonstration"
+            } ]
+          }, {
+            "related-to" : "owning-entity",
+            "relationship-label" : "org.onap.relationships.inventory.BelongsTo",
+            "related-link" : "/aai/v14/business/owning-entities/owning-entity/35945688-7855-421e-a235-290e65b6eb13",
+            "relationship-data" : [ {
+              "relationship-key" : "owning-entity.owning-entity-id",
+              "relationship-value" : "35945688-7855-421e-a235-290e65b6eb13"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/network/generic-vnfs/generic-vnf/ab0516f2-c8ba-4a2e-8d6e-f6d7a4cd89a0",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "ab0516f2-c8ba-4a2e-8d6e-f6d7a4cd89a0"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vfw-hpa-vnf"
+            } ]
+          }, {
+            "related-to" : "generic-vnf",
+            "relationship-label" : "org.onap.relationships.inventory.ComposedOf",
+            "related-link" : "/aai/v14/network/generic-vnfs/generic-vnf/6ed28cda-43ba-49b6-8237-78d6c19acbc7",
+            "relationship-data" : [ {
+              "relationship-key" : "generic-vnf.vnf-id",
+              "relationship-value" : "6ed28cda-43ba-49b6-8237-78d6c19acbc7"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "generic-vnf.vnf-name",
+              "property-value" : "vnf-2"
+            } ]
+          } ]
+        }
+      } ]
+    }
+  }
+} ]
