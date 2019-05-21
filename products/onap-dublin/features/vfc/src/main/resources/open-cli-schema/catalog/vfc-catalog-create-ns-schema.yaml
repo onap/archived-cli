@@ -13,19 +13,38 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vfc-catalog-get-vnf
-description: vfc get onboard vnf status
+name: vfc-catalog-create-ns
+description: vfc create ns
 
 info:
   product: onap-dublin
   service: vfc
   author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
+parameters:
+  - name: user-key
+    description: user defined data key eg:"key1"
+    type: string
+    short_option: c
+    long_option: user-key
+    is_optional: false
+  - name: user-value
+    description: user defined data value eg:"value1"
+    type: string
+    short_option: e
+    long_option: user-value
+    is_optional: false
+
+
 results:
   direction: landscape
   attributes:
-    - name: csar-id
-      description: csar-id
+    - name: id
+      description: id
+      scope: short
+      type: string
+    - name: state
+      description: state
       scope: short
       type: string
 
@@ -34,15 +53,18 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /api/catalog/v1/vnfpackages
-    method: GET
+    uri: /api/nsd/v1/ns_descriptors
+    method: POST
     context:
       remove_empty_node: true
-    body: '{}'
+    body: '{
+             "userDefinedData": {"${user-key}": "${user-value}"}
+           }'
     headers:
       Content-Type: application/json
       Accept: application/json
   success_codes:
-    - 200
+    - 201
   result_map:
-    csar-id: $b{$.[*].csarId}
+    id: $b{$.id}
+    state: $b{$.nsdOnboardingState}

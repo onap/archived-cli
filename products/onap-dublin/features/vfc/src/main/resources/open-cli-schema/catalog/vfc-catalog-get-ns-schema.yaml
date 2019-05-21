@@ -21,39 +21,15 @@ info:
   service: vfc
   author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
-parameters:
-  - name: ns-csar-uuid
-    description: ns's uuid of csar file
-    type: string
-    short_option: c
-    long_option: ns-csar-uuid
-    is_optional: false
-
 results:
   direction: landscape
   attributes:
-    - name: nsd-invariant-id
-      description: nsd-invariant-id
+    - name: csar-id
+      description: csar-id
       scope: short
       type: string
-    - name: ns-package-id
-      description: ns-package-id
-      scope: short
-      type: string
-    - name: nsd-provider
-      description: nsd-provider
-      scope: short
-      type: string
-    - name: nsd-id
-      description: nsd-id
-      scope: short
-      type: string
-    - name: download-url
-      description: download-url
-      scope: long
-      type: string
-    - name: csar-name
-      description: csar-name
+    - name: package-info
+      description: package-info
       scope: short
       type: string
 
@@ -62,7 +38,7 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /api/catalog/v1/nspackages/${ns-csar-uuid}
+    uri: /api/catalog/v1/nspackages
     method: GET
     context:
       remove_empty_node: true
@@ -73,9 +49,5 @@ http:
   success_codes:
     - 200
   result_map:
-    nsd-id: $b{$.packageInfo.nsdId}
-    ns-package-id: $b{$.packageInfo.nsPackageId}
-    nsd-provider: $b{$.packageInfo.nsdProvider}
-    nsd-invariant-id: $b{$.packageInfo.nsdInvariantId}
-    download-url: $b{$.packageInfo.downloadUrl}
-    csar-name: $b{$.packageInfo.csarName}
+    csar-id: $b{$.[*].csarId}
+    package-info: $b{$.[*].packageInfo}
