@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: -x
+version: onap-dublin
+samples:
+  sample1:
+    name: -x
+    input: cc4b6782-4c65-4d42-b015-513a7eb1af4c -y 1558558004300 -u AAI -p AAI -m https://10.12.5.23:30233
+    moco: vnf-delete-schema-dublin-moco.json
+    output:
