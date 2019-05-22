@@ -25,12 +25,12 @@ info:
 results:
   direction: landscape
   attributes:
-    - name: service-model-name
-      description: name of vsp in service model
+    - name: vf-model-name
+      description: name of vf model in service model
       type: string
       scope: short
     - name: resource-module-name
-      description: system name of vsp
+      description: system name of vf-model
       type: string
       scope: short
 
@@ -46,5 +46,5 @@ http:
   success_codes:
     - 200
   result_map:
-    service-model-name: $b{services.[*].name}
-    resource-module-name: $b{services.[*].systemName}
+    vf-model-name: $b{resources.[*].name}
+    resource-module-name: $b{resources.[*].systemName}
