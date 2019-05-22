@@ -1,0 +1,18 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/aai/v14/network/generic-vnfs/generic-vnf/9c003710-73f8-4df9-b63b-2c42af20059f/vf-modules/vf-module/bd45e41e-5190-48d7-87f4-81d53da87452",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-7f7f246d-0b15-4954-8f59-547f78563463",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 204,
+    "json" : null
+  }
+} ]
