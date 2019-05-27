@@ -24,6 +24,8 @@ Version: 3.0.0
 
 *Known Security Issues*
 
+- In default deployment CLI (cli) exposes HTTP port 30260 outside of cluster. [`OJSI-129 <https://jira.onap.org/browse/OJSI-129>`_]
+
 *Known Vulnerabilities in Used Modules*
 
 Version: 2.0.5
