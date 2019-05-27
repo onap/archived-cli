@@ -18,6 +18,13 @@ Version: 3.0.0
 - End-end service creation using ONAP commands are provided.
 -
 
+**Security Notes**
+
+*Fixed Security Issues*
+
+*Known Security Issues*
+
+*Known Vulnerabilities in Used Modules*
 
 Version: 2.0.5
 --------------
