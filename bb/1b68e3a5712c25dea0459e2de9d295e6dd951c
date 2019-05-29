@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Code-Review+1: Pawel Pawlak <pawel.pawlak3@orange.com>
+Code-Review+1: Amy Zwarico <az9121@att.com>
+Submitted-by: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Submitted-at: Wed, 29 May 2019 05:17:03 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/cli/+/88583
+Project: cli
+Branch: refs/heads/master
