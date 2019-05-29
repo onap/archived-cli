@@ -41,5 +41,10 @@ committers:
       company: 'ATT'
       id: 'talasila'
       timezone: 'America/New York'
+    - name: 'Itohan Ukponmwan'
+      email: 'itohan.ukponmwan@intel.com'
+      company: 'Intel'
+      id: 'itohan'
+      timezone: 'America/Pacific'
 tsc:
     approval: 'https://lists.onap.org/pipermail/onap-tsc'
