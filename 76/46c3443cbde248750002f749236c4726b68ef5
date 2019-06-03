@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Marcus Williams <marcus.williams@intel.com>
+Code-Review+2: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Submitted-by: Itohan Ukponmwan <itohan.ukponmwan@intel.com>
+Submitted-at: Mon, 03 Jun 2019 19:04:44 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/cli/+/88569
+Project: cli
+Branch: refs/heads/master
