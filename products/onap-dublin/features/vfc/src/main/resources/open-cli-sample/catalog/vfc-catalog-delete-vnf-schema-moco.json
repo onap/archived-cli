@@ -1,0 +1,17 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/api/catalog/v1/vnfpackages/a8571488-d72d-4d9f-b534-4e7380390175",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : { }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "jobId" : "97eef170-174d-406d-b3c6-0516e21fbaf7"
+    }
+  }
+} ]

@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: -m
+version: onap-dublin
+samples:
+  sample1:
+    name: -m
+    input: http://10.12.5.155:30280 -c key2 -e value2
+    moco: vfc-catalog-create-vnf-schema-moco.json
+    output: |
+      +--------------------------------------+----------+
+      |id                                    |state     |
+      +--------------------------------------+----------+
+      |763fc4d2-cc90-4534-9c27-460ca30754ff  |CREATED   |
+      +--------------------------------------+----------+

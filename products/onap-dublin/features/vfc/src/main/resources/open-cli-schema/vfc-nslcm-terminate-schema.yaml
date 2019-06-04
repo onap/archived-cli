@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vfc-nslcm-create
-description: vfc nslcm create ns
+name: vfc-nslcm-terminate
+description: vfc nslcm terminate ns
 
 info:
   product: onap-dublin
@@ -22,36 +22,18 @@ info:
   author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
 parameters:
-  - name: ns-csar-uuid
-    description: ns's uuid of csar file
+  - name: ns-instance-id
+    description: ns's instance id
     type: string
-    short_option: c
-    long_option: ns-csar-uuid
-    is_optional: false
-  - name: ns-csar-name
-    description: ns's name of csar
-    type: string
-    short_option: n
-    long_option: ns-csar-name
-    is_optional: false
-  - name: customer-name
-    description: customer name
-    type: string
-    short_option: q
-    long_option: customer-name
-    is_optional: false
-  - name: service-type
-    description: service type
-    type: string
-    short_option: S
-    long_option: service-type
+    short_option: i
+    long_option: ns-instance-id
     is_optional: false
 
 results:
   direction: landscape
   attributes:
-    - name: ns-instance-id
-      description: ns-instance-id
+    - name: job-id
+      description: job id
       scope: short
       type: string
 
@@ -60,16 +42,15 @@ http:
     auth: none
     mode: direct
   request:
-    uri: /api/nslcm/v1/ns
+    uri: /api/nslcm/v1/ns/${ns-instance-id}/terminate
     method: POST
     context:
       remove_empty_node: true
-      body: '{"content": {"globalCustomerId": ${customer-name}, "serviceType": ${service-type}},
-              "csarId": "${ns-csar-uuid}", "nsName": "${ns-csar-name}"}'
+    body: '{}'
     headers:
       Content-Type: application/json
       Accept: application/json
   success_codes:
-    - 201
+    - 202
   result_map:
-    ns-instance-id: $b{$.nsInstanceId}
+    job-id: $b{$.jobId}

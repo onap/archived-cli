@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: -m
+version: onap-dublin
+samples:
+  sample1:
+    name: -m
+    input: http://10.12.5.155:30280 -c a8571488-d72d-4d9f-b534-4e7380390175
+    moco: vfc-catalog-delete-vnf-schema-moco.json
+    output: |
+      +--------------------------------------+
+      |job-id                                |
+      +--------------------------------------+
+      |97eef170-174d-406d-b3c6-0516e21fbaf7  |
+      +--------------------------------------+

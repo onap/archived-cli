@@ -1,0 +1,19 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/api/catalog/v1/nspackages/0480ba69-7904-4099-b2c3-b8167b4889b1",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : { }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "status" : "success",
+      "errorCode" : "",
+      "statusDescription" : "Delete CSAR(0480ba69-7904-4099-b2c3-b8167b4889b1) successfully."
+    }
+  }
+} ]

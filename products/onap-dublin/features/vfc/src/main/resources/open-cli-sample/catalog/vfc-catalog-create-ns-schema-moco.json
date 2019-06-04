@@ -1,0 +1,28 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/api/nsd/v1/ns_descriptors",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "userDefinedData" : {
+        "key1" : "value1"
+      }
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : {
+      "id" : "cb847c7f-8c35-4b11-a42d-9535c512e08e",
+      "nsdOnboardingState" : "CREATED",
+      "nsdOperationalState" : "DISABLED",
+      "nsdUsageState" : "NOT_IN_USE",
+      "userDefinedData" : {
+        "key1" : "value1"
+      },
+      "_links" : null
+    }
+  }
+} ]
