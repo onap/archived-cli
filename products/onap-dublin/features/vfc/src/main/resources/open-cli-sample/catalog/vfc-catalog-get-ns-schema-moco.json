@@ -1,7 +1,7 @@
 [ {
   "request" : {
     "method" : "get",
-    "uri" : "/api/catalog/v1/nspackages/a3394090-c5b4-49b4-974c-00a6eac755ab",
+    "uri" : "/api/catalog/v1/nspackages",
     "headers" : {
       "Accept" : "application/json",
       "Content-Type" : "application/json"
@@ -10,18 +10,114 @@
   },
   "response" : {
     "status" : 200,
-    "json" : {
-      "csarId" : "a3394090-c5b4-49b4-974c-00a6eac755ab",
+    "json" : [ {
+      "csarId" : "0480ba69-7904-4099-b2c3-b8167b4889b1",
+      "packageInfo" : {
+        "nsdInvariantId" : null,
+        "csarName" : null,
+        "nsdProvider" : null,
+        "nsdId" : null,
+        "nsPackageId" : "0480ba69-7904-4099-b2c3-b8167b4889b1",
+        "downloadUrl" : "http://10.42.3.30:8806/static/catalog/0480ba69-7904-4099-b2c3-b8167b4889b1/None",
+        "nsdModel" : null,
+        "nsdVersion" : null
+      }
+    }, {
+      "csarId" : "3d9874ac-8a52-48ef-bdf2-bd463a5b394a",
       "packageInfo" : {
         "nsdInvariantId" : "c3887fb3-d1b2-477f-86c4-fd641ee9a7cf",
-        "csarName" : "/service/vfc/nfvo/catalog/static/catalog/a3394090-c5b4-49b4-974c-00a6eac755ab/Artifacts/Deployment/OTHER/ns.csar",
+        "csarName" : "/service/vfc/nfvo/catalog/static/catalog/3d9874ac-8a52-48ef-bdf2-bd463a5b394a/ns_vgw.csar",
         "nsdProvider" : "ONAP",
         "nsdId" : "ffdddc5d-a44b-45ae-8fc3-e6551cce350f",
-        "nsPackageId" : "a3394090-c5b4-49b4-974c-00a6eac755ab",
-        "downloadUrl" : "http://10.42.43.172:8806/static/catalog/a3394090-c5b4-49b4-974c-00a6eac755ab//service/vfc/nfvo/catalog/static/catalog/a3394090-c5b4-49b4-974c-00a6eac755ab/Artifacts/Deployment/OTHER/ns.csar",
-        "nsdModel" : "{\"vnffgs\": [], \"inputs\": {}, \"pnfs\": [], \"description\": \"VCPE Network Service\", \"graph\": {\"vgw\": [], \"vcpe_public_net\": [\"vgw\"]}, \"basepath\": \"/tmp/tmpaDLGbM\", \"vnfs\": [{\"networks\": [{\"key_name\": \"virtual_link\", \"vl_id\": \"vcpe_public_net\"}], \"dependencies\": [{\"key_name\": \"virtual_link\", \"vl_id\": \"vcpe_public_net\"}], \"vnf_id\": \"vgw\", \"description\": \"\", \"properties\": {\"descriptor_id\": \"3fca3543-07f5-492f-812c-ed462e4f94f4\", \"vnfm_info\": [\"gvnfmdriver\"], \"software_version\": \"1.0.0\", \"flavour_description\": \"simple\", \"descriptor_version\": \"1.0.0\", \"provider\": \"onap\", \"id\": \"3fca3543-07f5-492f-812c-ed462e4f94f4\", \"flavour_id\": \"simple\", \"product_name\": \"vcpe_vgw\"}}], \"ns_exposed\": {\"external_cps\": [], \"forward_cps\": []}, \"fps\": [], \"vls\": [{\"vl_id\": \"vcpe_public_net\", \"description\": \"\", \"properties\": {\"connectivity_type\": {\"layer_protocol\": \"ipv4\"}, \"vl_profile\": {\"cidr\": \"172.30.23.0/24\", \"max_bit_rate_requirements\": {\"root\": 10000000, \"leaf\": 10000000}, \"networkName\": \"oam-zte\", \"min_bit_rate_requirements\": {\"root\": 10000000, \"leaf\": 10000000}, \"dhcpEnabled\": false}, \"version\": \"1.0.0\"}}], \"ns\": {\"type\": \"tosca.nodes.nfv.NS\", \"requirements\": {}, \"properties\": {\"descriptor_id\": \"ffdddc5d-a44b-45ae-8fc3-e6551cce350f\", \"designer\": \"ONAP\", \"invariant_id\": \"c3887fb3-d1b2-477f-86c4-fd641ee9a7cf\", \"name\": \"vcpe\", \"verison\": \"1.0.0\", \"version\": \"1.0.0\"}, \"capabilities\": {}, \"metadata\": {\"nsd_designer\": \"ONAP\", \"nsd_name\": \"vcpe\", \"nsd_release_date_time\": \"2018-11-05 12:00:00\", \"nsd_invariant_id\": \"c3887fb3-d1b2-477f-86c4-fd641ee9a7cf\", \"nsd_file_structure_version\": \"1.0.0\"}}, \"nested_ns\": [], \"metadata\": {\"nsd_designer\": \"ONAP\", \"nsd_name\": \"vcpe\", \"nsd_release_date_time\": \"2018-11-05 12:00:00\", \"nsd_invariant_id\": \"c3887fb3-d1b2-477f-86c4-fd641ee9a7cf\", \"nsd_file_structure_version\": \"1.0.0\"}}",
+        "nsPackageId" : "3d9874ac-8a52-48ef-bdf2-bd463a5b394a",
+        "downloadUrl" : "http://10.42.3.30:8806/static/catalog/3d9874ac-8a52-48ef-bdf2-bd463a5b394a//service/vfc/nfvo/catalog/static/catalog/3d9874ac-8a52-48ef-bdf2-bd463a5b394a/ns_vgw.csar",
+        "nsdModel" : "{\"vnffgs\": [], \"inputs\": {}, \"pnfs\": [], \"description\": \"VCPE Network Service\", \"graph\": {\"vgw\": [], \"vcpe_public_net\": [\"vgw\"]}, \"basepath\": \"/tmp/tmpy7hg0X\", \"vnfs\": [{\"networks\": [{\"key_name\": \"virtual_link\", \"vl_id\": \"vcpe_public_net\"}], \"dependencies\": [{\"key_name\": \"virtual_link\", \"vl_id\": \"vcpe_public_net\"}], \"vnf_id\": \"vgw\", \"description\": \"\", \"properties\": {\"descriptor_id\": \"b1bb0ce7-2222-4fa7-95ed-4840d70a1177\", \"vnfm_info\": [\"gvnfmdriver\"], \"software_version\": \"1.0.0\", \"flavour_description\": \"simple\", \"descriptor_version\": \"1.0.0\", \"provider\": \"onap\", \"id\": \"b1bb0ce7-2222-4fa7-95ed-4840d70a1177\", \"flavour_id\": \"simple\", \"product_name\": \"vcpe_vgw\"}}], \"ns_exposed\": {\"external_cps\": [], \"forward_cps\": []}, \"fps\": [], \"vls\": [{\"vl_id\": \"vcpe_public_net\", \"description\": \"\", \"properties\": {\"connectivity_type\": {\"layer_protocol\": \"ipv4\"}, \"vl_profile\": {\"cidr\": \"172.30.23.0/24\", \"max_bit_rate_requirements\": {\"root\": 10000000, \"leaf\": 10000000}, \"networkName\": \"oam-zte\", \"min_bit_rate_requirements\": {\"root\": 10000000, \"leaf\": 10000000}, \"dhcpEnabled\": false}, \"version\": \"1.0.0\"}}], \"ns\": {\"type\": \"tosca.nodes.nfv.NS\", \"requirements\": {}, \"properties\": {\"descriptor_id\": \"ffdddc5d-a44b-45ae-8fc3-e6551cce350f\", \"designer\": \"ONAP\", \"invariant_id\": \"c3887fb3-d1b2-477f-86c4-fd641ee9a7cf\", \"name\": \"vcpe\", \"verison\": \"1.0.0\", \"version\": \"1.0.0\"}, \"capabilities\": {}, \"metadata\": {\"nsd_designer\": \"ONAP\", \"nsd_name\": \"vcpe\", \"nsd_release_date_time\": \"2018-11-05 12:00:00\", \"nsd_invariant_id\": \"c3887fb3-d1b2-477f-86c4-fd641ee9a7cf\", \"nsd_file_structure_version\": \"1.0.0\"}}, \"nested_ns\": [], \"metadata\": {\"nsd_designer\": \"ONAP\", \"nsd_name\": \"vcpe\", \"nsd_release_date_time\": \"2018-11-05 12:00:00\", \"nsd_invariant_id\": \"c3887fb3-d1b2-477f-86c4-fd641ee9a7cf\", \"nsd_file_structure_version\": \"1.0.0\"}}",
         "nsdVersion" : "1.0.0"
       }
-    }
+    }, {
+      "csarId" : "46cc23a4-4f6f-4ac1-9e05-d072cda548de",
+      "packageInfo" : {
+        "nsdInvariantId" : null,
+        "csarName" : null,
+        "nsdProvider" : null,
+        "nsdId" : null,
+        "nsPackageId" : "46cc23a4-4f6f-4ac1-9e05-d072cda548de",
+        "downloadUrl" : "http://10.42.3.30:8806/static/catalog/46cc23a4-4f6f-4ac1-9e05-d072cda548de/None",
+        "nsdModel" : null,
+        "nsdVersion" : null
+      }
+    }, {
+      "csarId" : "48a85bff-f520-45f2-9ac6-dc5c7ac47bb9",
+      "packageInfo" : {
+        "nsdInvariantId" : null,
+        "csarName" : null,
+        "nsdProvider" : null,
+        "nsdId" : null,
+        "nsPackageId" : "48a85bff-f520-45f2-9ac6-dc5c7ac47bb9",
+        "downloadUrl" : "http://10.42.3.30:8806/static/catalog/48a85bff-f520-45f2-9ac6-dc5c7ac47bb9/None",
+        "nsdModel" : null,
+        "nsdVersion" : null
+      }
+    }, {
+      "csarId" : "5f0baa1b-963b-4e47-83ec-7c49153cd6d8",
+      "packageInfo" : {
+        "nsdInvariantId" : null,
+        "csarName" : null,
+        "nsdProvider" : null,
+        "nsdId" : null,
+        "nsPackageId" : "5f0baa1b-963b-4e47-83ec-7c49153cd6d8",
+        "downloadUrl" : "http://10.42.3.30:8806/static/catalog/5f0baa1b-963b-4e47-83ec-7c49153cd6d8/None",
+        "nsdModel" : null,
+        "nsdVersion" : null
+      }
+    }, {
+      "csarId" : "93499e0a-2542-4446-a1f2-67724fc31e77",
+      "packageInfo" : {
+        "nsdInvariantId" : null,
+        "csarName" : null,
+        "nsdProvider" : null,
+        "nsdId" : null,
+        "nsPackageId" : "93499e0a-2542-4446-a1f2-67724fc31e77",
+        "downloadUrl" : "http://10.42.3.30:8806/static/catalog/93499e0a-2542-4446-a1f2-67724fc31e77/None",
+        "nsdModel" : null,
+        "nsdVersion" : null
+      }
+    }, {
+      "csarId" : "a87c1f13-d76e-46eb-a17a-70a54a0fd6d8",
+      "packageInfo" : {
+        "nsdInvariantId" : null,
+        "csarName" : null,
+        "nsdProvider" : null,
+        "nsdId" : null,
+        "nsPackageId" : "a87c1f13-d76e-46eb-a17a-70a54a0fd6d8",
+        "downloadUrl" : "http://10.42.3.30:8806/static/catalog/a87c1f13-d76e-46eb-a17a-70a54a0fd6d8/None",
+        "nsdModel" : null,
+        "nsdVersion" : null
+      }
+    }, {
+      "csarId" : "f648ff9c-7074-40ca-bf4c-cc8ff732ef52",
+      "packageInfo" : {
+        "nsdInvariantId" : null,
+        "csarName" : null,
+        "nsdProvider" : null,
+        "nsdId" : null,
+        "nsPackageId" : "f648ff9c-7074-40ca-bf4c-cc8ff732ef52",
+        "downloadUrl" : "http://10.42.3.30:8806/static/catalog/f648ff9c-7074-40ca-bf4c-cc8ff732ef52/None",
+        "nsdModel" : null,
+        "nsdVersion" : null
+      }
+    }, {
+      "csarId" : "f767178c-ea77-4488-b9ea-c2b03aa108d5",
+      "packageInfo" : {
+        "nsdInvariantId" : null,
+        "csarName" : null,
+        "nsdProvider" : null,
+        "nsdId" : null,
+        "nsPackageId" : "f767178c-ea77-4488-b9ea-c2b03aa108d5",
+        "downloadUrl" : "http://10.42.3.30:8806/static/catalog/f767178c-ea77-4488-b9ea-c2b03aa108d5/None",
+        "nsdModel" : null,
+        "nsdVersion" : null
+      }
+    } ]
   }
 } ]

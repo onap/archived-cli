@@ -1,0 +1,28 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/api/vnfpkgm/v1/vnf_packages",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "userDefinedData" : {
+        "key2" : "value2"
+      }
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : {
+      "id" : "763fc4d2-cc90-4534-9c27-460ca30754ff",
+      "onboardingState" : "CREATED",
+      "operationalState" : "DISABLED",
+      "usageState" : "NOT_IN_USE",
+      "userDefinedData" : {
+        "key2" : "value2"
+      },
+      "_links" : null
+    }
+  }
+} ]

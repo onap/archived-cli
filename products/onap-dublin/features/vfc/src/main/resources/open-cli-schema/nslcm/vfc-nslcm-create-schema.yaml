@@ -34,6 +34,18 @@ parameters:
     short_option: n
     long_option: ns-csar-name
     is_optional: false
+  - name: customer-name
+    description: customer name
+    type: string
+    short_option: q
+    long_option: customer-name
+    is_optional: false
+  - name: service-type
+    description: service type
+    type: string
+    short_option: S
+    long_option: service-type
+    is_optional: false
 
 results:
   direction: landscape
@@ -52,7 +64,8 @@ http:
     method: POST
     context:
       remove_empty_node: true
-    body: '{"csarId": "${ns-csar-uuid}", "nsName": "${ns-csar-name}"}'
+      body: '{"context": {"globalCustomerId": ${customer-name}, "serviceType": ${service-type}},
+              "csarId": "${ns-csar-uuid}", "nsName": "${ns-csar-name}"}'
     headers:
       Content-Type: application/json
       Accept: application/json
