@@ -14,9 +14,8 @@ Version: 3.0.0
 
 - Beijing support EOL
 - Enhanced schema management
-- Added execution support for capturing the details of every execution includes parameters, results.
-- End-end service creation using ONAP commands are provided.
--
+- Added execution support for capturing the details of every execution includes parameters, results. This feature is used in VTP.
+- End-end service creation using ONAP commands are provided. [`More details <https://github.com/onap/integration/tree/master/test/hpa_automation>`_]
 
 **Security Notes**
 
