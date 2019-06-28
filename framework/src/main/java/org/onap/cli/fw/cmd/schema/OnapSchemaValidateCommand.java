@@ -16,10 +16,8 @@
 
 package org.onap.cli.fw.cmd.schema;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;

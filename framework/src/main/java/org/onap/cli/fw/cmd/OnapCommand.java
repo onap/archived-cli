@@ -179,6 +179,7 @@ public abstract class OnapCommand {
         try {
             return new ObjectMapper().writeValueAsString(args);
         } catch (JsonProcessingException e) {
+            log.error("exception occured {}", e.getMessage());
             return "{}";
         }
     }

@@ -27,11 +27,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -56,7 +54,6 @@ import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClients;
@@ -294,7 +291,7 @@ public class OnapHttpConnection {
         HttpRequestBase requestBase = null;
         if ("post".equals(input.getMethod())) {
             HttpPost httpPost = new HttpPost();
-            if (input.isBinaryData() || input.getMultiparts().size() > 0) {
+            if (input.isBinaryData() || !(input.getMultiparts().isEmpty())) {
                 httpPost.setEntity(getMultipartEntity(input));
             } else {
                 httpPost.setEntity(this.getStringEntity(input));
@@ -367,7 +364,7 @@ public class OnapHttpConnection {
     }
 
     private HttpEntity getMultipartEntity(HttpInput input) {
-        if (input.getMultiparts().size() > 0) {
+        if (!input.getMultiparts().isEmpty()) {
             MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
             for (HttpInput.Part part: input.getMultiparts()) {
                 if (part.isBinary()) {
