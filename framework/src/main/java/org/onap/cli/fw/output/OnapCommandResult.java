@@ -20,14 +20,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandOutputFormatNotsupported;
 import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
-import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.print.OnapCommandPrint;
-import org.onap.cli.fw.utils.OnapCommandUtils;
 
 /**
  * Oclip Command result holds the final output of the command.
