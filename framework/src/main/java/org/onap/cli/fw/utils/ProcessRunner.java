@@ -153,18 +153,12 @@ public class ProcessRunner {
 
     public String streamToString(InputStream stream) throws IOException {
         StringBuilder sb = new StringBuilder();
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new InputStreamReader(stream));
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(stream))){
             String line = null;
             while ((line = br.readLine()) != null) {
                 sb.append(line + System.getProperty("line.separator"));
             }
-        } finally {
-            if (br != null) {
-                br.close();
-            }
-        }
+        } 
         return sb.toString();
     }
 
