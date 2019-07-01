@@ -24,11 +24,8 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.io.IOUtils;
-import org.onap.cli.fw.cmd.OnapCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +40,6 @@ public class ProcessRunner {
     private int exitCode = -1;
     private String output;
     private String error;
-    private Map<String, Object> results;
 
     public ProcessRunner(String []cmd, String []env, String cwd) {
         this.cmd = cmd;
@@ -126,16 +122,10 @@ public class ProcessRunner {
 
     public String streamToString(InputStream stream) throws IOException {
         StringBuilder sb = new StringBuilder();
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new InputStreamReader(stream));
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(stream));) {
             String line = null;
             while ((line = br.readLine()) != null) {
                 sb.append(line + System.getProperty("line.separator"));
-            }
-        } finally {
-            if (br != null) {
-                br.close();
             }
         }
         return sb.toString();
