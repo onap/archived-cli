@@ -28,6 +28,7 @@
 
     <artifactId>cli-docker</artifactId>
     <name>cli/deployment/docker</name>
+    <version>3.0.0</version>
     <packaging>pom</packaging>
 
   <properties>
