@@ -38,9 +38,13 @@ public class MockResponse {
     }
 
     public void setJson(String json) throws IOException {
-        if (json != null && !json.isEmpty()) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            this.json = objectMapper.readTree(json);
+        if (!json.isEmpty()) {
+            try {
+                ObjectMapper objectMapper = new ObjectMapper();
+                this.json = objectMapper.readTree(json);
+            } catch (Exception e) {
+                this.json = new ObjectMapper().readTree("{}");
+            }
         }
     }
 }

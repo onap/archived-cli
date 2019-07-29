@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: --host-url
+version: open-cli
+samples:
+  sample1:
+    name: --host-url
+    input: https://159.138.32.178:30204 --host-username cs0008 --host-password demo123456! --service-uniqueId 66bc211e-27a1-4a1c-aee3-75952617b7fe --resource-uuid 3694ef05-56e3-44d0-9103-7805ef8d2929 --resource-uniqueId ff654717-85e1-4458-a9ce-7dedca7be552.3694ef05-56e3-44d0-9103-7805ef8d2929.extztecp0 --property-name ip_address --property-value 1.1.1.2 --debug
+    moco: ns-model-set-property-moco.json
+    output:

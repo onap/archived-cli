@@ -38,6 +38,14 @@ parameters:
 results:
   direction: landscape
   attributes:
+    - name: product
+      description: Product name
+      scope: short
+      type: string
+    - name: service
+      description: Service name
+      scope: short
+      type: string
     - name: command
       description: Command name
       scope: short
@@ -45,10 +53,6 @@ results:
     - name: schema
       description: Schema name
       scope: long
-      type: string
-    - name: service
-      description: Service name
-      scope: short
       type: string
     - name: ocs-version
       description: Schema version

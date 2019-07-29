@@ -19,7 +19,6 @@ package org.onap.cli.fw.store;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +28,6 @@ import java.util.Map;
 import java.util.TimeZone;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
@@ -54,7 +52,7 @@ public class OnapCommandExecutionStore {
     private static SearchMode SEARCH_MODE = SearchMode.file;
 
     public static class ExecutionStoreContext {
-
+        private String requestId;
         private String executionId;
         private String storePath;
         public String getExecutionId() {
@@ -70,6 +68,13 @@ public class OnapCommandExecutionStore {
         public ExecutionStoreContext setStorePath(String storePath) {
             this.storePath = storePath;
             return this;
+        }
+        public String getRequestId() {
+            return requestId;
+        }
+        public ExecutionStoreContext setRequestId(String requestId) {
+            this.requestId = requestId;
+             return this;
         }
     }
 
@@ -185,63 +190,113 @@ public class OnapCommandExecutionStore {
     public ExecutionStoreContext storeExectutionStart(
             String requestId, String product, String service, String cmd, String profile, String input) {
 
+        ExecutionStoreContext context = new ExecutionStoreContext();
+        context.setRequestId(requestId);
+
         String executionId = requestId + "-" + System.currentTimeMillis();
+        context.setExecutionId(executionId);
 
         String storePath = getBasePath() + File.separator + executionId + SEPARATOR + product +
                 SEPARATOR + service +
                 SEPARATOR + cmd +
                 (profile != null ? (SEPARATOR + profile) : "" );
+
         try {
             File dir = new File(storePath);
             FileUtils.forceMkdir(dir);
+            context.setStorePath(dir.getAbsolutePath());
 
             if (product != null)
-                FileUtils.writeStringToFile(new File(dir.getAbsolutePath() + File.separator + "product"), product);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "product"), product);
             if (service != null)
-                FileUtils.writeStringToFile(new File(dir.getAbsolutePath() + File.separator + "service"), service);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "service"), service);
             if (cmd != null)
-                FileUtils.writeStringToFile(new File(dir.getAbsolutePath() + File.separator + "command"), cmd);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "command"), cmd);
 
-            FileUtils.writeStringToFile(new File(dir.getAbsolutePath() + File.separator + "requestId"), requestId);
+            FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "requestId"), requestId);
 
-            FileUtils.writeStringToFile(new File(dir.getAbsolutePath() + File.separator + "executionId"), executionId);
+            FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "executionId"), executionId);
 
             if (input != null)
-                FileUtils.writeStringToFile(new File(dir.getAbsolutePath() + File.separator + "input"), input);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "input"), input);
             if (profile != null)
-                FileUtils.writeStringToFile(new File(dir.getAbsolutePath() + File.separator + "profile"), profile);
-            FileUtils.touch(new File(dir.getAbsolutePath() + File.separator + "in-progress"));
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "profile"), profile);
+
+            FileUtils.touch(new File(context.getStorePath() + File.separator + "stdout"));
+            FileUtils.touch(new File(context.getStorePath() + File.separator + "stderr"));
+            FileUtils.touch(new File(context.getStorePath() + File.separator + "debug"));
+
+            FileUtils.touch(new File(context.getStorePath() + File.separator + "in-progress"));
         } catch (IOException e) {
             log.error("Failed to store the execution start details " + storePath);
         }
 
-        return new ExecutionStoreContext().setExecutionId(executionId).setStorePath(storePath);
+        return context;
     }
 
     public void storeExectutionEnd(
-            ExecutionStoreContext execContext,
-            String output, String error, boolean passed) {
+            ExecutionStoreContext context,
+            String output, String error, String debug, boolean passed) {
 
         try {
-            File dir = new File(execContext.getStorePath());
-            FileUtils.forceMkdir(dir);
-
             if (output != null)
-                FileUtils.writeStringToFile(new File(dir.getAbsolutePath() + File.separator + "output"), output);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "output"), output);
             if (error != null)
-                FileUtils.writeStringToFile(new File(dir.getAbsolutePath() + File.separator + "error"), error);
-
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "error"), error);
+            if (debug != null)
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "debug"), debug);
             if (passed)
-                FileUtils.touch(new File(dir.getAbsolutePath() + File.separator + "completed"));
+                FileUtils.touch(new File(context.getStorePath() + File.separator + "completed"));
             else
-                FileUtils.touch(new File(dir.getAbsolutePath() + File.separator + "failed"));
+                FileUtils.touch(new File(context.getStorePath() + File.separator + "failed"));
 
-            new File(dir.getAbsolutePath() + File.separator + "in-progress").delete();
+            new File(context.getStorePath() + File.separator + "in-progress").delete();
         } catch (IOException e) {
-            log.error("Failed to store the execution end details " + execContext.storePath);
+            log.error("Failed to store the execution end details " + context.storePath);
         }
     }
 
+    public void storeExectutionProgress(
+            ExecutionStoreContext context,
+            String output, String error, String debug) {
+
+        try {
+            if (output != null)
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "output"), output);
+            if (error != null)
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "error"), error);
+            if (debug != null)
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "debug"), debug);
+        } catch (IOException e) {
+            log.error("Failed to store the execution end details " + context.storePath);
+        }
+    }
+
+    public void storeExectutionDebug(
+            ExecutionStoreContext context,
+            String debug) {
+
+        try {
+            if (debug != null) {
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "debug"), debug);
+            }
+        } catch (IOException e) {
+            log.error("Failed to store the execution debug details " + context.storePath);
+        }
+    }
+
+    public void storeExectutionOutput(
+            ExecutionStoreContext context,
+            String output) {
+
+        try {
+            if (output != null) {
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "output"), output);
+            }
+        } catch (IOException e) {
+            log.error("Failed to store the execution output details " + context.storePath);
+        }
+    }
     public List<OnapCommandExecutionStore.Execution> listExecutions(Map<String, String> search) throws OnapCommandExecutionFailed {
         List <OnapCommandExecutionStore.Execution> list = new ArrayList<>();
 
@@ -342,7 +397,8 @@ public class OnapCommandExecutionStore {
 
         return exectuion;
     }
-    public Execution getExecution(String executionId) throws OnapCommandExecutionNotFound, OnapCommandExecutionFailed {
+
+    private File getExecutionDir(String executionId) throws OnapCommandExecutionNotFound {
         File []f =  new File(getBasePath()).listFiles(new FilenameFilter() {
 
             @Override
@@ -356,8 +412,35 @@ public class OnapCommandExecutionStore {
             throw new OnapCommandExecutionNotFound(executionId);
         }
 
+        return f[0];
+    }
+
+    public String showExecutionOut(String executionId) throws OnapCommandExecutionNotFound {
         try {
-            return this.makeExecution(f[0].getAbsolutePath());
+            return FileUtils.readFileToString(new File (this.getExecutionDir(executionId).getAbsolutePath() + File.separator + "stdout"));
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    public String showExecutionErr(String executionId) throws OnapCommandExecutionNotFound {
+        try {
+            return FileUtils.readFileToString(new File (this.getExecutionDir(executionId).getAbsolutePath() + File.separator + "stderr"));
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    public String showExecutionDebug(String executionId) throws OnapCommandExecutionNotFound {
+        try {
+            return FileUtils.readFileToString(new File (this.getExecutionDir(executionId).getAbsolutePath() + File.separator + "debug"));
+        } catch (IOException e) {
+            return "";
+        }
+    }
+    public Execution getExecution(String executionId) throws OnapCommandExecutionNotFound, OnapCommandExecutionFailed {
+        try {
+            return this.makeExecution(this.getExecutionDir(executionId).getAbsolutePath());
         } catch (IOException e) {
             throw new OnapCommandExecutionFailed(e, "Failed to retrieve the execution");
         }

@@ -1,0 +1,27 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/sdc2/rest/v1/consumers/mrkanag",
+    "headers" : {
+      "Accept" : "application/json",
+      "USER_ID" : "jh0003",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "consumerName" : "mrkanag",
+      "consumerPassword" : "7fa005e6e478ee677053a2c4a5c2f11190e2aa8be227a037291ea4cbc074ecb6",
+      "consumerSalt" : "ab2987754f0c6293174865e86c47035d",
+      "consumerLastAuthenticationTime" : 0,
+      "consumerDetailsLastupdatedtime" : 1564379189744,
+      "lastModfierAtuid" : "jh0003",
+      "version" : null,
+      "ownerId" : null,
+      "empty" : false,
+      "type" : null
+    }
+  }
+} ]

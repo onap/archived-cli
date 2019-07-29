@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.onap.cli</groupId>
         <artifactId>cli-products-onap-dublin</artifactId>
-        <version>3.0.0</version>
+        <version>4.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>cli-products-onap-dublin-features</artifactId>
@@ -41,11 +41,57 @@
         <module>sdnc</module>
         <module>so</module>
         <module>vnfsdk</module>
+        <module>integration</module>
     </modules>
 
      <build>
          <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <executions>
+                        <execution>
+                            <id>copy-resource-script</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+
+                            <configuration>
+                                <outputDirectory>../../../../products/target/script</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>${project.basedir}/src/main/resources/script</directory>
+                                        <includes>
+                                            <include>*.*</include>
+                                        </includes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>copy-resource-conf</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+
+                            <configuration>
+                                <outputDirectory>../../../../products/target/conf</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>${project.basedir}/src/main/resources/conf</directory>
+                                        <includes>
+                                            <include>*.*</include>
+                                        </includes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                   </executions>
+                </plugin>
                 <plugin>
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-dependency-plugin</artifactId>

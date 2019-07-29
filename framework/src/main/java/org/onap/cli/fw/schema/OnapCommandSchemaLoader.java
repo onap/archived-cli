@@ -510,6 +510,7 @@ public class OnapCommandSchemaLoader {
                     break;
             }
         }
+
         return exceptionList;
     }
 

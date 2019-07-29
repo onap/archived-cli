@@ -1,62 +1,64 @@
-# Copyright 2017-18 Huawei Technologies Co., Ltd.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 open_cli_schema_version: 1.0
-
-name: hello-world-http
-
+name: weather-report
 description: |
-   First cmd hello world using http runing under
-   lighttpd in cli at http://<cli-ip>:8080/version.json
+    Place this OCS YAML under $OPEN_CLI_HOME/open-cli-schema folder. Then run the commands
+    oclip schema-refresh
+
+    It is used to display the temparature and wind speed details from https://openweathermap.org.
+    Try to add new commands to display different weather details by exploring this site.
+
+    Sample usage:
+    oclip --product tutorial weather-report --host-url http://api.openweathermap.org --zip-code 637301 --country-code in
 
 info:
-  product: sample-helloworld
-  service: hello-world
-  author: ONAP CLI Team onap-discuss@lists.onap.org
+  product: tutorial
+  service: learning
+  author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
 
 parameters:
-    - name: name
-      description: name of the person
-      long_option: name
-      short_option: b
-      default_value: ${DEMO_NAME}
-      type: string
-      is_optional: false
+  - name: zip-code
+    description: zip-code
+    type: string
+    short_option: x
+    long_option: zip-code
+    is_optional: true
+    default_value: 637301
+  - name: country-code
+    description: country-code
+    type: string
+    short_option: y
+    long_option: country-code
+    is_optional: true
+    default_value: in
+  - name: api-code
+    description: api-code
+    type: string
+    short_option: z
+    long_option: api-code
+    is_optional: true
+    default_value: 13cf06b1b379a4b7501c34c2d67a625c
 
 results:
-    direction: landscape
-    attributes:
-      - name: output
-        description: hello world output
-        type: string
-        scope: short
-
+  direction: landscape
+  attributes:
+    - name: temperature
+      description: temperature at city
+      scope: short
+      type: string
+    - name: wind
+      description: wind speed
+      scope: short
+      type: string
 http:
-    service:
-        name: sample-service
-        version: 1.0.0
-        auth: none
-        mode: direct
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: /data/2.5/weather?zip=${zip-code},${country-code}&appid=${api-code}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    temperature: $b{$.main.temp}
+    wind: $b{$.wind.speed}
 
-    request:
-        uri: /version.json
-        method: GET
-    success_codes:
-        - 200
-        - 201
-    result_map:
-        output: Hello ${name}, You are running on $b{$.name} $b{$.version}
-
-    sample_response:
-        body: {"name": "oclip", "version": "1.0"}

@@ -47,6 +47,7 @@ public class OnapSchemaListCommand extends OnapCommand {
                 if (service.length() > 0 && !service.equalsIgnoreCase(schema.getService())) {
                     continue;
                 }
+                this.getResult().getRecordsMap().get("product").getValues().add(schema.getProduct());
                 this.getResult().getRecordsMap().get("command").getValues().add(schema.getCmdName());
                 this.getResult().getRecordsMap().get("schema").getValues().add(schema.getSchemaName());
                 this.getResult().getRecordsMap().get("service").getValues().add(schema.getService());

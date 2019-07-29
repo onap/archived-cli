@@ -431,8 +431,8 @@ public class OnapCommandRegistrar {
         }
     }
 
-    public List<Map<String, ?>> getTestSuite(String cmd) throws OnapCommandException {
-        return OnapCommandDiscoveryUtils.createTestSuite(cmd, enabledProductVersion);
+    public List<Map<String, ?>> getTestSuite(String cmd, String product) throws OnapCommandException {
+        return OnapCommandDiscoveryUtils.createTestSuite(cmd, product);
     }
 
     public String getHost() {
