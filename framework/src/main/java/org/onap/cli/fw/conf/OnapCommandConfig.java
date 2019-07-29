@@ -22,6 +22,8 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
+import org.onap.cli.fw.utils.OnapCommandUtils;
+
 /**
  * Oclip command constants.
  *
@@ -38,7 +40,8 @@ public final class OnapCommandConfig {
     }
 
     static {
-        loadProperties(prps, OnapCommandConstants.CONF);
+        addProperties(OnapCommandConstants.CONF);
+
         for (String prpFile: getCommaSeparatedList(OnapCommandConstants.OPEN_CLI_PLUGIN_PRPS)) {
             addProperties(prpFile);
         }
@@ -57,7 +60,7 @@ public final class OnapCommandConfig {
         loadProperties(ps, fileName);
 
         for (Entry<Object, Object> entry: ps.entrySet()) {
-            prps.put(entry.getKey(), entry.getValue());
+            prps.put(entry.getKey(), OnapCommandUtils.replaceLineForSpecialValues(entry.getValue().toString()));
         }
     }
 
