@@ -23,7 +23,7 @@ import org.onap.cli.fw.error.OnapCommandInvalidParameterType;
  *
  */
 public enum OnapCommandParameterType {
-    STRING, JSON, YAML, TEXT, URL, UUID,
+    STRING, BYTE, JSON, YAML, TEXT, URL, UUID,
     DIGIT,
     BOOL,
     ARRAY,
@@ -42,6 +42,8 @@ public enum OnapCommandParameterType {
     public static OnapCommandParameterType get(String name) throws OnapCommandInvalidParameterType {
         if (JSON.name().equalsIgnoreCase(name)) {
             return JSON;
+        } else if (BYTE.name().equalsIgnoreCase(name)) {
+            return BYTE;
         } else if (YAML.name().equalsIgnoreCase(name)) {
             return YAML;
         } else if (STRING.name().equalsIgnoreCase(name)) {

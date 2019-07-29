@@ -29,11 +29,13 @@ import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.store.OnapCommandExecutionStore;
 import org.onap.cli.fw.store.OnapCommandExecutionStore.ExecutionStoreContext;
 import org.onap.cli.main.OnapCli;
+import org.onap.cli.main.utils.OnapCliArgsParser;
 import org.open.infc.grpc.Args;
 import org.open.infc.grpc.Input;
 import org.open.infc.grpc.OpenInterfaceGrpc;
@@ -181,6 +183,24 @@ public class OpenInterfaceGrpcServer {
                         if (params.contains(arg.getKey()))
                             cmd.getParametersMap().get(arg.getKey()).setValue(arg.getValue());
                     }
+
+                    //fill values from the file, if needed
+                    for (OnapCommandParameter param: cmd.getParameters()) {
+                        if (param.getParameterType().equals(OnapCommandParameterType.JSON)) {
+                            param.setValue(OnapCliArgsParser.readJsonStringFromUrl(param.getValue().toString(), param.getName()));
+
+                        } else if (param.getParameterType().equals(OnapCommandParameterType.TEXT)) {
+                            param.setValue(OnapCliArgsParser.readTextStringFromUrl(param.getValue().toString(), param.getName()));
+
+                        } else if (param.getParameterType().equals(OnapCommandParameterType.BYTE)) {
+                            param.setValue(OnapCliArgsParser.readBytesFromUrl(param.getValue().toString(), param.getName()));
+
+                        } else if (param.getParameterType().equals(OnapCommandParameterType.YAML)) {
+                            param.setValue(OnapCliArgsParser.readYamlStringFromUrl(param.getValue().toString(), param.getName()));
+
+                        }
+                    }
+
                 } else {
                     cmd.getParametersMap().get(OnapCommandConstants.INFO_PRODUCT).setValue(product);
 
@@ -194,7 +214,9 @@ public class OpenInterfaceGrpcServer {
 
                 if (!cmd.isRpc()) {
                     //Start the execution
-                    if (req.getRequestId() != null) {
+                    if (req.getRequestId() != null && !req.getRequestId().isEmpty()) {
+                        if (!(cmd.getInfo().getProduct().equalsIgnoreCase("open-cli") &&
+                                cmd.getName().equalsIgnoreCase("execution-list"))) {
                         String input = cmd.getArgsJson(true);
                         executionStoreContext = OnapCommandExecutionStore.getStore().storeExectutionStart(
                                 req.getRequestId(),
@@ -203,12 +225,16 @@ public class OpenInterfaceGrpcServer {
                                 cmd.getName(),
                                 profile,
                                 input);
+                        }
                     }
                 }
-
+                cmd.setExecutionContext(executionStoreContext);
                 cmd.execute();
 
                 if (!cmd.isRpc()) {
+                    //Track and/or persist the execution context
+                    new OnapCli().handleTracking(cmd);
+
                     String printOut = cmd.getResult().print();
                     Builder reply = Output.newBuilder();
                     reply.putAttrs(OnapCommandConstants.ERROR, "{}");
@@ -226,15 +252,6 @@ public class OpenInterfaceGrpcServer {
                     }
 
                     output = reply.build();
-
-                    if (req.getRequestId() != null) {
-                        //complete the execution recording
-                         OnapCommandExecutionStore.getStore().storeExectutionEnd(
-                                 executionStoreContext,
-                                 printOut,
-                                 null,
-                                 cmd.getResult().isPassed());
-                    }
                     logger.info(output.toString());
                 } else {
                     //Rpc command will set the output.
@@ -254,6 +271,7 @@ public class OpenInterfaceGrpcServer {
                                 executionStoreContext,
                                 null,
                                 e.getMessage(),
+                                cmd.getResult().getDebugInfo(),
                                 false);
                       reply.putAddons("execution-id", executionStoreContext.getExecutionId());
                 }

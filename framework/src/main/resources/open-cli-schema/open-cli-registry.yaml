@@ -30,11 +30,5 @@ services:
     description: Product and service searching abilities
   - name: schema
     description: OCS schema management
-  - name: profile
-    description: Profile management
-  - name: artifact
-    description: Artifact management
   - name: execution
     description: Execution management
-  - name: rpc
-    description: RPC management across OCLIP

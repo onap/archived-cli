@@ -16,8 +16,13 @@ org.onap.cli.fw.cmd.schema.OnapSchemaValidateCommand
 org.onap.cli.fw.cmd.schema.OnapSchemaRefreshCommand
 org.onap.cli.fw.cmd.schema.OnapSchemaListCommand
 org.onap.cli.fw.cmd.schema.OnapSchemaShowCommand
-#org.onap.cli.fw.cmd.schema.OnapSchemaSwitchCommand
+org.onap.cli.fw.cmd.schema.OnapSchemaSwitchCommand
+
 org.onap.cli.fw.cmd.product.OnapProductsListCommand
 org.onap.cli.fw.cmd.product.OnapServiceListCommand
+
 org.onap.cli.fw.cmd.execution.OnapCommandExceutionListCommand
 org.onap.cli.fw.cmd.execution.OnapCommandExceutionShowCommand
+org.onap.cli.fw.cmd.execution.OnapCommandExceutionShowDebugCommand
+org.onap.cli.fw.cmd.execution.OnapCommandExceutionShowOutCommand
+org.onap.cli.fw.cmd.execution.OnapCommandExceutionShowErrCommand

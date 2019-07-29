@@ -1,0 +1,67 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: service-model-set-property
+description: Set property to a service model
+
+info:
+  product: onap-dublin
+  service: sdc
+  author: ONAP HPA Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: service-uniqueId
+    description: service UniqueId
+    type: string
+    long_option: service-uniqueId
+    short_option: x
+    is_optional: false
+  - name: resource-uuid
+    description: resource uuid
+    type: string
+    long_option: resource-uuid
+    short_option: y
+    is_optional: false
+  - name: resource-uniqueId
+    description: resource UniqueId
+    type: string
+    long_option: resource-uniqueId
+    short_option: z
+    is_optional: false
+  - name: property-name
+    description: property name
+    type: string
+    long_option: property-name
+    short_option: b
+    is_optional: false
+  - name: property-value
+    description: property value
+    type: string
+    long_option: property-value
+    short_option: r
+    is_optional: false
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/catalog/services/${service-uniqueId}/resourceInstance/${resource-uniqueId}/properties
+    method: POST
+    body: '[{"constraints":null,"defaultValue":null,"description":null,"name":"${property-name}","parentUniqueId":null,"password":false,"required":false,"schema":{"property":{}},"schemaType":null,"type":"string","uniqueId":"${resource-uuid}.${property-name}","value":"${property-value}","definition":false,"getInputValues":null,"parentPropertyType":null,"subPropertyInputPath":null,"toscaPresentation":{"ownerId":null},"getPolicyValues":null,"inputPath":null}]'
+  success_codes:
+    - 200

@@ -43,6 +43,7 @@ import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.store.OnapCommandExecutionStore;
 import org.onap.cli.fw.store.OnapCommandExecutionStore.ExecutionStoreContext;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
+import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliArgsParser;
@@ -162,8 +163,9 @@ public class OnapCli {
     }
 
     private void print(Throwable throwable) {
-        this.print(throwable.getMessage() != null ? throwable.getMessage() : "");
-        log.error(throwable.getMessage(), throwable);
+        String error = throwable.getMessage() != null ? throwable.getMessage() : "";
+        this.print(error);
+        log.error(error, throwable);
     }
 
     private String getShortOption(String opt) {
@@ -530,38 +532,31 @@ public class OnapCli {
                 OnapCliArgsParser.populateParams(cmd.getParameters(), this.args);
 
                 //start the execution
-                if (this.requestId != null) {
-                    String input = cmd.getArgsJson(true);
-                    executionStoreContext = OnapCommandExecutionStore.getStore().storeExectutionStart(
-                            this.requestId,
-                            cmd.getInfo().getProduct(),
-                            cmd.getInfo().getService(),
-                            this.cmdName,
-                            this.profile,
-                            input);
+                if (this.requestId != null && !this.requestId.isEmpty()) {
+                    if (!(this.product.equalsIgnoreCase("open-cli") &&
+                            this.cmdName.equalsIgnoreCase("execution-list"))) {
+                        String input = cmd.getArgsJson(true);
+                        executionStoreContext = OnapCommandExecutionStore.getStore().storeExectutionStart(
+                                this.requestId,
+                                cmd.getInfo().getProduct(),
+                                cmd.getInfo().getService(),
+                                this.cmdName,
+                                this.profile,
+                                input);
+                    }
                 }
 
+                cmd.setExecutionContext(executionStoreContext);
                 OnapCommandResult result = cmd.execute();
 
-                String printOut = result.print();
-                if (this.requestId != null) {
-                    OnapCommandExecutionStore.getStore().storeExectutionEnd(
-                            executionStoreContext,
-                            printOut,
-                            null, result.isPassed());
-                }
-
-                this.print(result.getDebugInfo());
-                this.print(printOut);
+                this.handleTracking(cmd);
 
                 if (result.isPassed()) {
                     this.exitSuccessfully();
                     generateSmapleYaml(cmd);
+                } else {
+                    this.exitFailure();
                 }
-
-                else this.exitFailure();
-
-
             } catch (OnapCommandWarning w) {
                 this.print(w);
                 this.print(cmd.getResult().getDebugInfo());
@@ -572,6 +567,7 @@ public class OnapCli {
                             executionStoreContext,
                             null,
                             e.getMessage(),
+                            cmd.getResult().getDebugInfo(),
                             false);
                 }
 
@@ -582,21 +578,35 @@ public class OnapCli {
         }
     }
 
+    public void handleTracking(OnapCommand cmd) throws OnapCommandException {
+        if (cmd.getResult().isDebug())
+            this.print(cmd.getResult().getDebugInfo());
+
+        String printOut = cmd.getResult().print();
+        this.print(printOut);
+
+        if (cmd.getExecutionContext() != null) {
+            OnapCommandExecutionStore.getStore().storeExectutionEnd(
+                    cmd.getExecutionContext(),
+                    printOut,
+                    null,
+                    cmd.getResult().getDebugInfo(),
+                    cmd.getResult().isPassed());
+        }
+    }
     /**
      * When user invokes cli with RPC arguments...
      */
     public void handleRpc() {
-        if (!this.args.isEmpty()) {
+        if (this.rpcHost != null && this.rpcPort != null && this.product != null) {
             try {
-                if (this.rpcHost != null && this.rpcPort != null && this.product != null) {
-                    OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("schema-rpc", "open-cli");
-                    cmd.getParametersMap().get(OnapCommandConstants.RPC_HOST).setValue(this.rpcHost);
-                    cmd.getParametersMap().get(OnapCommandConstants.RPC_PORT).setValue(this.rpcPort);
-                    cmd.getParametersMap().get(OnapCommandConstants.RPC_PRODUCT).setValue(this.product);
-                    cmd.getParametersMap().get(OnapCommandConstants.RPC_CMD).setValue(this.cmdName);
+                OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("schema-rpc", "open-cli");
+                cmd.getParametersMap().get(OnapCommandConstants.RPC_HOST).setValue(this.rpcHost);
+                cmd.getParametersMap().get(OnapCommandConstants.RPC_PORT).setValue(this.rpcPort);
+                cmd.getParametersMap().get(OnapCommandConstants.RPC_PRODUCT).setValue(this.product);
+                cmd.getParametersMap().get(OnapCommandConstants.RPC_CMD).setValue(this.cmdName);
 
-                    this.handleRpcCommand(cmd);
-                }
+                this.handleRpcCommand(cmd);
             } catch (Exception e) {
                 this.print(e);
                 this.exitFailure();

@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: --host-url
+version: open-cli
+samples:
+  sample1:
+    name: --host-url
+    input: https://159.138.32.178:30204 --consumer-name mrkanag --debug
+    moco: sdc-consumer-create-schema-dublin-moco.json
+    output:

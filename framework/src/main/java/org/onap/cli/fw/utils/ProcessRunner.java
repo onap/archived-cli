@@ -17,18 +17,18 @@
 package org.onap.cli.fw.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.IOUtils;
-import org.onap.cli.fw.cmd.OnapCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,8 +43,9 @@ public class ProcessRunner {
     private int exitCode = -1;
     private String output;
     private String error;
-    private Map<String, Object> results;
-
+    private long timeout = 0;
+    private OutputStream stdout;
+    private OutputStream stderr;
     public ProcessRunner(String []cmd, String []env, String cwd) {
         this.cmd = cmd;
 
@@ -53,6 +54,14 @@ public class ProcessRunner {
         }
 
         this.env = env;
+    }
+
+    public void setTimeout(long timeout) {
+        this.timeout = timeout;
+    }
+
+    public long getTimeout() {
+        return this.timeout;
     }
 
     public void overrideToUnix() {
@@ -82,8 +91,12 @@ public class ProcessRunner {
     @SuppressWarnings("unchecked")
     public void run() throws InterruptedException, IOException {
         Process p = null;
+
         final StringWriter writerOutput = new StringWriter();
         final StringWriter writerError = new StringWriter();
+
+        final OutputStream stdout = this.getStdout();
+        final OutputStream stderr = this.getStderr();
 
         if (this.cmd.length == 1) {
             p = Runtime.getRuntime().exec(this.shell + this.cmd[0], this.env, null);
@@ -98,7 +111,10 @@ public class ProcessRunner {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    IOUtils.copy(p1.getInputStream(), writerOutput);
+                    if (stdout != null) {
+                        IOUtils.copy(p1.getInputStream(), stdout);
+                    }
+                    else IOUtils.copy(p1.getInputStream(), writerOutput);
                 } catch (IOException e) {
                 }
             }
@@ -107,21 +123,32 @@ public class ProcessRunner {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    IOUtils.copy(p1.getErrorStream(), writerError);
+                    if (stderr != null) {
+                        IOUtils.copy(p1.getErrorStream(), stderr);
+                    }
+                    else IOUtils.copy(p1.getErrorStream(), writerError);
                 } catch (IOException e) {
                 }
             }
         }).start();
 
-        //mrkanag: handle the case if the given cmd does not exist
-        p.waitFor(1, TimeUnit.MINUTES);
-        this.exitCode = p.exitValue();
+        boolean completed = p.waitFor(this.getTimeout(), TimeUnit.MILLISECONDS);
+        if (completed) {
+            this.exitCode = p.exitValue();
+        }
+
         this.output = writerOutput.toString();
         this.error = writerError.toString();
         log.debug("CMD: " + Arrays.asList(this.cmd).toString() + "\nWORKING_DIR: " + this.cwd + "\nENV: " +
         ((this.env == null) ? this.env : Arrays.asList(this.env).toString()) +
                 "\nOUTPUT: " + this.output + "\nERROR: " + this.error + "\nEXIT_CODE: " + this.exitCode);
         p.destroy();
+
+        if (!completed) {
+            throw new RuntimeException("TIMEOUT:: cmd:" + Arrays.asList(this.cmd).toString());
+        } else {
+
+        }
     }
 
     public String streamToString(InputStream stream) throws IOException {
@@ -151,5 +178,33 @@ public class ProcessRunner {
 
     public String getError() {
         return this.error;
+    }
+
+    public OutputStream getStdout() {
+        return stdout;
+    }
+
+    public void setStdout(OutputStream stdout) {
+        this.stdout = stdout;
+    }
+
+    public OutputStream getStderr() {
+        return stderr;
+    }
+
+    public void setStderr(OutputStream stderr) {
+        this.stderr = stderr;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("COMMAND: " + this.shell + " " + Arrays.asList(this.cmd));
+        sb.append("\nCWD: " + new File(this.cwd).getAbsolutePath());
+        sb.append("\nTIMEOUT: " + this.timeout);
+        sb.append("\nEXIT-CODE: " + this.getExitCode());
+        sb.append("\nENVIRONMENTS: " + Arrays.asList(this.env));
+
+        return sb.toString();
     }
 }
