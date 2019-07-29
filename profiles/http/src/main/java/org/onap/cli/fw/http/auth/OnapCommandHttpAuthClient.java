@@ -45,9 +45,9 @@ public class OnapCommandHttpAuthClient {
 
     private Map<String, String> loginCache = new HashMap<>();
 
-    public OnapCommandHttpAuthClient(OnapHttpCommand cmd, boolean debug) throws OnapCommandHttpFailure {
+    public OnapCommandHttpAuthClient(OnapHttpCommand cmd) {
         this.cmd = cmd;
-        this.http = new OnapHttpConnection(debug);
+        this.http = new OnapHttpConnection();
     }
 
     /**
@@ -140,11 +140,6 @@ public class OnapCommandHttpAuthClient {
 
             return hostUrl + "/" + basePath;
         }
-    }
-
-
-    public String getDebugInfo() {
-        return this.http.getDebugInfo();
     }
 
     /**

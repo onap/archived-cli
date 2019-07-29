@@ -36,14 +36,13 @@ public class OnapCommandConstants {
     public static final String RESULT_PARAMS_LIST = "cli.schema.base.results.sections";
     public static final String RESULT_PARAMS_MANDATORY_LIST = "cli.schema.base.results.sections.mandatory";
     public static final String BOOLEAN_VALUE = "cli.schema.boolean_values";
-
     public static final String COMMAND_TYPE_VALUES = "cli.schema.command.type";
     public static final String SCHEMA_TYPES_SUPPORTED = "cli.schema.profile.available";
     public static final String OPEN_CLI_PRODUCT_NAME = "cli.product_name";
     public static final String OPEN_CLI_PLUGIN_PRPS = "cli.schema.profile.confs";
     public static final String OPEN_CLI_DATA_DIR = "cli.data.dir";
     public static final String OPEN_CLI_ARTIFACT_DIR = "cli.artifact.dir";
-
+    public static final String OPEN_CLI_GRPC_CLIENT_TIMEOUT = "cli.grpc.client.timeout";
     //schema
     public static final String OPEN_CLI_SCHEMA_VERSION = "open_cli_schema_version";
     public static final String OPEN_CLI_SCHEMA_VERSION_VALUE_1_0 = "1.0";
@@ -151,6 +150,7 @@ public class OnapCommandConstants {
     public static final String SPL_ENTRY_UUID = "uuid";
     public static final String SPL_ENTRY_ENV = "env:";
     public static final String SPL_ENTRY_FILE = "file:";
+    public static final String SPL_ENTRY_MD5 = "md5:";
 
     public static final String VERSION_INFO = "version.info";
     public static final String VERSION_INFO_PLACE_HOLDER_VERSION = "__VERSION__";

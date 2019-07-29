@@ -14,7 +14,7 @@
 
 open_cli_schema_version: 1.0
 name: execution-show
-description: Show the complete executions for the given request id
+description: Show the complete executions for the given execution id
 
 info:
   product: open-cli

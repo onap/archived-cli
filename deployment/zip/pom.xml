@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.onap.cli</groupId>
         <artifactId>cli-deployment</artifactId>
-        <version>3.0.0</version>
+        <version>4.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>cli-zip</artifactId>
@@ -71,6 +71,12 @@
                                 ant.delete(dir: "${deployUnzip}/data")
                                 ant.mkdir(dir: "${deployUnzip}/data")
 
+                                ant.delete(dir: "${deployUnzip}/data/tmp")
+                                ant.mkdir(dir: "${deployUnzip}/data/tmp")
+
+                                ant.delete(dir: "${deployUnzip}/script")
+                                ant.mkdir(dir: "${deployUnzip}/script")
+
                                 ant.copy(todir: "${deployUnzip}") {
                                 fileset(dir: "${basedir}/src/main/release"){
                                 exclude(name: "**/.gitignore")
@@ -96,16 +102,21 @@
                                 fileset(dir:
                                 "${project.build.directory}/../../../grpc/target/lib/")
                                 }
-                                ant.copy(todir:
-                                "${deployUnzip}/conf") {
-                                fileset(file:
-                                "${basedir}/src/main/release/conf/open-cli.properties")
-                                }
 
                                 ant.copy(todir:
                                 "${deployUnzip}/conf") {
+                                fileset(dir:
+                                "${project.build.directory}/../../../products/target/conf/")
+                                fileset(dir:
+                                "${project.build.directory}/../../../profiles/target/conf/")
                                 fileset(file:
-                                "${basedir}/src/main/release/conf/log4j.properties")
+                                "${basedir}/src/main/release/conf/*.properties")
+                                }
+
+                                ant.copy(todir:
+                                "${deployUnzip}/script") {
+                                fileset(dir:
+                                "${project.build.directory}/../../../products/target/script/")
                                 }
 
                                 ant.copy(todir:

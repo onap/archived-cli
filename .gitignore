@@ -2,6 +2,9 @@ bin/
 target/
 coverage-report/
 data/
+build/
+dist/
+ocomp.egg-info/
 .project
 .settings
 .classpath
@@ -10,3 +13,5 @@ data/
 *.iml
 *.log
 .idea
+*.pyc
+

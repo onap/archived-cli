@@ -16,9 +16,13 @@
 
 package org.onap.cli.fw.cmd.cmd;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -27,19 +31,26 @@ import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.conf.OnapCommandCmdConstants;
 import org.onap.cli.fw.cmd.error.OnapCommandCmdFailure;
 import org.onap.cli.fw.cmd.schema.OnapCommandSchemaCmdLoader;
+import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
 import org.onap.cli.fw.error.OnapCommandResultEmpty;
 import org.onap.cli.fw.error.OnapCommandResultMapProcessingFailed;
 import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.output.OnapCommandResultAttribute;
+import org.onap.cli.fw.output.OnapCommandResultType;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.store.OnapCommandExecutionStore;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.fw.utils.ProcessRunner;
 
+import com.google.gson.Gson;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 
 import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 
 /**
  * Hello world.
@@ -108,6 +119,25 @@ public class OpenCommandShellCmd extends OnapCommand {
         this.resultMap = resultMap;
     }
 
+    private String getStdoutPath() {
+        String storePath = this.getExecutionContext().getStorePath();
+        storePath = storePath + File.separator + "stdout";
+        return storePath;
+    }
+
+    private String getStderrPath() {
+        String storePath = this.getExecutionContext().getStorePath();
+        storePath = storePath + File.separator + "stderr";
+        return storePath;
+    }
+
+    private String getOutputAttributeFilePath(String attrName, boolean temp) {
+        String storePath = (!temp) ? this.getExecutionContext().getStorePath() : OnapCommandConfig.getPropertyValue("cli.tmp.dir");
+        String randomId = (this.getExecutionContext() != null) ? this.getExecutionContext().getExecutionId() : ("" + System.currentTimeMillis());
+        storePath = storePath + File.separator + randomId + "_" + attrName;
+        return storePath;
+    }
+
     @Override
     protected List<String> initializeProfileSchema(Map<String, ?> schemaMap, boolean validate) throws OnapCommandException {
         return OnapCommandSchemaCmdLoader.parseCmdSchema(this, schemaMap, validate);
@@ -118,15 +148,39 @@ public class OpenCommandShellCmd extends OnapCommand {
         //Read the input arguments
         Map<String, OnapCommandParameter> paramMap = this.getParametersMap();
 
+        //process command section
+        Map<String, String> tmpFiles = new HashMap<>();
         List<String> commandLine = new ArrayList<>();
         for (String cmdTkn: this.getCommand()) {
-            commandLine.add(OnapCommandUtils.replaceLineFromInputParameters(cmdTkn, paramMap));
+            tmpFiles.putAll(this.formTmpFiles(cmdTkn));
+            String commandLine1 = OnapCommandUtils.replaceLineForSpecialValues(
+                    OnapCommandUtils.replaceLineFromInputParameters(cmdTkn, paramMap),
+                    tmpFiles);
+
+            commandLine.add(commandLine1);
         }
+
+        long timeout = Long.parseLong(this.getParametersMap().get(OnapCommandCmdConstants.TIMEOUT).getValue().toString());
 
         //Process command
         String []cmd = commandLine.toArray(new String []{});
         String cwd = this.getWd();
         List <String> envs = new ArrayList<>();
+
+        //add current process environments to sub process
+        for (Map.Entry<String, String> env: System.getenv().entrySet()) {
+            envs.add(env.getKey() + "=" + env.getValue());
+        }
+
+        //add oclip specific environment variables
+        if (this.getExecutionContext() != null) {
+            envs.add("OPEN_CLI_REQUEST_ID=" + this.getExecutionContext().getRequestId());
+            if (OnapCommandRegistrar.getRegistrar().getHost() != null) {
+                envs.add("OPEN_CLI_RPC_HOST=" + OnapCommandRegistrar.getRegistrar().getHost());
+                envs.add("OPEN_CLI_RPC_PORT=" + OnapCommandRegistrar.getRegistrar().getPort());
+            }
+            //mrkanag set the profile OPEN_CLI_PROFILE
+        }
 
         for (String env: this.getEnvs().keySet()) {
             envs.add(env + "=" + this.getEnvs().get(env));
@@ -136,38 +190,102 @@ public class OpenCommandShellCmd extends OnapCommand {
                 cmd,
                 (envs.size() > 0) ? envs.toArray(new String []{}) : null,
                 cwd);
+        FileOutputStream stdoutStream = null;
+        FileOutputStream stderrStream = null;
+        String outputValue = "";
+
         try {
+            pr.setTimeout(timeout);
+
+            if (this.getExecutionContext() != null) {
+
+                stdoutStream = new FileOutputStream(this.getStdoutPath());
+                stderrStream = new FileOutputStream(this.getStderrPath());
+
+                pr.setStdout(stdoutStream);
+                pr.setStderr(stderrStream);
+
+                OnapCommandExecutionStore.getStore().storeExectutionDebug(this.getExecutionContext(), pr.toString());
+            } else {
+                this.getResult().setDebugInfo(pr.toString());
+            }
+
             pr.run();
         } catch (Exception e) {
             throw new OnapCommandExecutionFailed(this.getName(), e);
+        } finally {
+            if (stdoutStream != null) {
+                try {
+                    stdoutStream.close();
+                } catch (IOException e) {
+                    //never occurs  // NOSONAR
+                }
+            }
+            if (stderrStream != null) {
+                try {
+                    stderrStream.close();
+                } catch (IOException e) {
+                    //never occurs  // NOSONAR
+                }
+            }
         }
 
         if (!this.successStatusCodes.contains(pr.getExitCode())) {
             throw new OnapCommandExecutionFailed(this.getName(), pr.getError(), pr.getExitCode());
         }
 
-        String outputValue = "";
-
         if (this.output.equals("$stdout")) {
-            outputValue = pr.getOutput();
+            if (pr.getStdout() != null) {
+                try (FileInputStream is = new FileInputStream(this.getStdoutPath())){
+                    outputValue = pr.streamToString(is);
+                } catch (IOException e) {
+                    //never occurs  // NOSONAR
+                }
+            } else
+                outputValue = pr.getOutput();
+
+        } else if (this.output.equals("$stderr")) {
+            if (pr.getStderr() != null) {
+                try (FileInputStream is = new FileInputStream(this.getStderrPath())) {
+                    outputValue = pr.streamToString(is);
+                } catch (IOException e) {
+                    //never occurs  // NOSONAR
+                }
+            } else
+                outputValue = pr.getError();
+
         } else {
-            outputValue = OnapCommandUtils.replaceLineFromInputParameters(this.output, paramMap);
-            outputValue = OnapCommandUtils.replaceLineForSpecialValues(outputValue);
+            //remove ${tmp: and closing }
+            String tmpName = this.output.substring(7, this.output.length()-1);
+            String tmpFile = tmpFiles.get("tmp:" + tmpName);
+            if (tmpFile != null) {
+                try (FileInputStream is = new FileInputStream(tmpFile)) {
+                    outputValue = pr.streamToString(is);
+                } catch (IOException e) {
+                    //never occurs  // NOSONAR
+                }
+            }
         }
 
+        this.getResult().setDebugInfo(pr.toString() + "\n" + outputValue);
         this.getResult().setOutput(outputValue);
 
         //populate results
-        for (Entry<String, String> resultMapEntry : this.getResultMap().entrySet()) {
-            String value = OnapCommandUtils.replaceLineFromInputParameters(resultMapEntry.getValue(), paramMap);
-            value = OnapCommandUtils.replaceLineForSpecialValues(value);
-            this.getResult().getRecordsMap().get(resultMapEntry.getKey()).setValues(
-                    this.replaceLineFromOutputResults(value, outputValue));
-        }
+        if (!this.getResult().getType().name().equalsIgnoreCase(OnapCommandResultType.TEXT.name()))
+            for (Entry<String, String> resultMapEntry : this.getResultMap().entrySet()) {
+                String attrName = resultMapEntry.getKey();
+                OnapCommandResultAttribute attr = this.getResult().getRecordsMap().get(attrName);
+
+                String value = OnapCommandUtils.replaceLineFromInputParameters(resultMapEntry.getValue(), paramMap);
+                value = OnapCommandUtils.replaceLineForSpecialValues(value);
+                attr.setValues(this.replaceLineFromOutputResults(value, outputValue));
+            }
 
         //check for pass/failure
-        if (!this.passCodes.contains(pr.getExitCode())) {
+        if (!this.passCodes.isEmpty() && !this.passCodes.contains(pr.getExitCode())) {
             this.getResult().setPassed(false);
+        } else {
+            this.getResult().setPassed(true);
         }
    }
 
@@ -177,6 +295,30 @@ public class OpenCommandShellCmd extends OnapCommand {
 
     public void setOutput(String output) {
         this.output = output;
+    }
+
+    private Map<String, String> formTmpFiles(String line){
+
+        Map<String, String> result = new HashMap<>();
+
+        if (!line.contains("$s{tmp")) {
+            return result;
+        }
+
+        int currentIdx = 0;
+        while (currentIdx < line.length()) {
+            int idxS = line.indexOf("$s{tmp:", currentIdx); //check for output stream
+            if (idxS == -1) {
+                break;
+            }
+
+            int idxE = line.indexOf("}", idxS);
+            String tmpName = line.substring(idxS + 7, idxE);
+            tmpName = tmpName.trim();
+            result.put("tmp:" + tmpName, this.getOutputAttributeFilePath(tmpName, true));
+            currentIdx = idxE + 1;
+        }
+        return result;
     }
 
    private ArrayList<String> replaceLineFromOutputResults(String line, String output)
@@ -217,8 +359,11 @@ public class OpenCommandShellCmd extends OnapCommand {
             jsonPath = jsonPath.trim();
             Object value = new Object();
             try {
-                // JSONArray or String
-                value = JsonPath.read(output, jsonPath);
+                // Instead of parsing, just assign the json as it is
+                if (!jsonPath.equals("$"))
+                    value = JsonPath.read(output, jsonPath);
+                else
+                    value = output;
             } catch (PathNotFoundException e1) { // NOSONAR
                 //set to blank for those entries which are missing from the output json
                 value = "";

@@ -25,7 +25,7 @@ public class SampleYamlGeneratorTest {
 
     @Test
     public void testGenerateSampleYaml() throws IOException {
-        SampleYamlGenerator.generateSampleYaml(Arrays.asList("testcmd", "-a", "argument"),
+        SampleYamlGenerator.generateSampleYaml("testcmd", Arrays.asList("-a", "argument"),
                 "+--------+\n+val     +\n+argument+", "test-version-1.0", "target/test.yaml", false);
     }
 

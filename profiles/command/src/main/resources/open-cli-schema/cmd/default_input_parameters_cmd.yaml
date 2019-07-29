@@ -13,3 +13,13 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
+
+parameters:
+  - name: timeout
+    type: string
+    description: timeout for command to complete the given task in milliseconds
+    short_option: u
+    long_option: timeout
+    default_value: 60000
+    is_optional: true
+    is_default_param: false
