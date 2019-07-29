@@ -1,4 +1,4 @@
-CLI version       : __VERSION__
+Version           : __VERSION__
 Available products: __AVAILABLE_PRODUCT_VERSIONS__
 Enabled product   : __ENABLED_PRODUCT_VERSIONS__
 

@@ -26,7 +26,7 @@ import org.onap.cli.fw.schema.OnapCommandSchema;
 /**
  * Hello world.
  */
-@OnapCommandSchema(schema = "hello-world.yaml")
+@OnapCommandSchema(schema = "hello-world-basic.yaml")
 public class OnapHelloWorldCommand extends OnapCommand {
 
     @Override

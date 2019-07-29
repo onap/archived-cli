@@ -1,0 +1,70 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc2/rest/v1/catalog/resources/168c1a0d-82d8-4a86-a934-9e685389516f/lifecycleState/CHECKOUT",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-4616b1ae-ca5f-4a74-97de-144647202745",
+      "Content-Type" : "application/json"
+    },
+    "json" : { }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "uniqueId" : "c5d9a74a-c617-4542-8b83-31c4d8a7269b",
+      "name" : "ovp-test",
+      "version" : "1.4",
+      "isHighestVersion" : true,
+      "creationDate" : 1564379661410,
+      "lastUpdateDate" : 1564379661410,
+      "description" : "ovp-test",
+      "lifecycleState" : "NOT_CERTIFIED_CHECKOUT",
+      "tags" : [ "ovp-test" ],
+      "icon" : "defaulticon",
+      "normalizedName" : "ovptest",
+      "systemName" : "OvpTest",
+      "contactId" : "cs0008",
+      "allVersions" : {
+        "1.0" : "3f0de55b-90be-459d-a30f-a24553baacaa",
+        "1.1" : "53235bc8-2619-4d23-b1f6-e41e64d0af47",
+        "1.2" : "ef2ce8c3-af1c-480a-a12f-6bd1fe0384f4",
+        "1.3" : "168c1a0d-82d8-4a86-a934-9e685389516f",
+        "1.4" : "c5d9a74a-c617-4542-8b83-31c4d8a7269b"
+      },
+      "csarUUID" : "aa92c8177d754587b621a951a522a942",
+      "csarVersion" : "1.0",
+      "invariantUUID" : "c918f6b2-5067-4c10-91a8-672964f3fd10",
+      "componentType" : "RESOURCE",
+      "categories" : [ {
+        "name" : "Generic",
+        "normalizedName" : "generic",
+        "uniqueId" : "resourceNewCategory.generic",
+        "subcategories" : [ {
+          "name" : "Network Elements",
+          "normalizedName" : "network elements",
+          "uniqueId" : "resourceNewCategory.generic.network elements",
+          "icons" : [ "network", "connector" ],
+          "empty" : false
+        } ],
+        "empty" : false
+      } ],
+      "creatorUserId" : "cs0008",
+      "creatorFullName" : "Carlos Santana",
+      "lastUpdaterUserId" : "cs0008",
+      "lastUpdaterFullName" : "Carlos Santana",
+      "archiveTime" : 0,
+      "vendorName" : "onap",
+      "vendorRelease" : "1.0",
+      "resourceVendorModelNumber" : "",
+      "resourceType" : "VF",
+      "toscaResourceName" : "org.openecomp.resource.vf.OvpTest",
+      "vspArchived" : false,
+      "archived" : false,
+      "uuid" : "24d20439-1d8c-44dc-acaf-cb0929a6a5f3"
+    }
+  }
+} ]

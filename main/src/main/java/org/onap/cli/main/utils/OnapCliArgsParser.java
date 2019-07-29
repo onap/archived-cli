@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
@@ -32,6 +33,7 @@ import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.main.error.OnapCliArgumentValueMissing;
 import org.onap.cli.main.error.OnapCliInvalidArgument;
+import org.yaml.snakeyaml.Yaml;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -116,8 +118,21 @@ public class OnapCliArgsParser {
                     i++;
                     continue;
 
-                } if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.TEXT)) {
+                } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.TEXT)) {
                     paramMap.get(paramName).setValue(readTextStringFromUrl(args.get(i + 1),
+                            paramMap.get(paramName).getName()));
+                    i++;
+                    continue;
+
+                } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.YAML)) {
+                    String value = readYamlStringFromUrl(args.get(i + 1),
+                            paramMap.get(paramName).getName());
+                    paramMap.get(paramName).setValue(value);
+                    i++;
+                    continue;
+
+                } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.BYTE)) {
+                    paramMap.get(paramName).setValue(readBytesFromUrl(args.get(i + 1),
                             paramMap.get(paramName).getName()));
                     i++;
                     continue;
@@ -177,7 +192,7 @@ public class OnapCliArgsParser {
         params.addAll(paramMap.values());
     }
 
-    private static String readJsonStringFromUrl(String input, String argName) throws OnapCliInvalidArgument {
+    public static String readJsonStringFromUrl(String input, String argName) throws OnapCliInvalidArgument {
         ObjectMapper mapper = new ObjectMapper();
         try {
             File file = new File(input);
@@ -194,7 +209,7 @@ public class OnapCliArgsParser {
         }
     }
 
-    private static String readTextStringFromUrl(String input, String argName) throws OnapCliInvalidArgument {
+    public static String readTextStringFromUrl(String input, String argName) throws OnapCliInvalidArgument {
         try {
             File file = new File(input);
             if (file.isFile()) {
@@ -208,7 +223,38 @@ public class OnapCliArgsParser {
         }
     }
 
-    private static List<String> convertJsonToListString(String arg, String json) throws OnapCliInvalidArgument {
+    public static String readYamlStringFromUrl(String input, String argName) throws OnapCliInvalidArgument {
+        try {
+            File file = new File(input);
+            if (file.isFile()) {
+                String value = FileUtils.readFileToString(file);
+                new Yaml().load(value);
+                return value;
+            } else {
+                return input;
+            }
+
+        } catch (IOException e) {
+            throw new OnapCliInvalidArgument(argName, e);
+        }
+    }
+
+    public static String readBytesFromUrl(String input, String argName) throws OnapCliInvalidArgument {
+        try {
+            File file = new File(input);
+            if (file.isFile()) {
+                byte[] encodeBase64 = Base64.encodeBase64(FileUtils.readFileToByteArray(file));
+                return new String(encodeBase64);
+            } else {
+                byte[] encodeBase64 = Base64.encodeBase64(input.getBytes());
+                return new String(encodeBase64);
+            }
+        } catch (IOException e) {
+            throw new OnapCliInvalidArgument(argName, e);
+        }
+    }
+
+    public static List<String> convertJsonToListString(String arg, String json) throws OnapCliInvalidArgument {
         TypeReference<List<String>> mapType = new TypeReference<List<String>>() {
         };
         try {
@@ -218,7 +264,7 @@ public class OnapCliArgsParser {
         }
     }
 
-    private static Map<String, String> convertJsonToMapString(String arg, String json) throws OnapCliInvalidArgument {
+    public static Map<String, String> convertJsonToMapString(String arg, String json) throws OnapCliInvalidArgument {
         TypeReference<Map<String, String>> mapType = new TypeReference<Map<String, String>>() {
         };
         try {

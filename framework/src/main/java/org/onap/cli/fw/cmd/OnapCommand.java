@@ -39,6 +39,7 @@ import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.schema.OnapCommandSchemaMerger;
 import org.onap.cli.fw.store.OnapCommandArtifactStore;
 import org.onap.cli.fw.store.OnapCommandArtifactStore.Artifact;
+import org.onap.cli.fw.store.OnapCommandExecutionStore.ExecutionStoreContext;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
@@ -72,6 +73,8 @@ public abstract class OnapCommand {
     protected boolean isInitialzied = false;
 
     private  boolean isRpc = false;
+
+    private ExecutionStoreContext executionStoreContext;
 
     public boolean isRpc() {
         return isRpc;
@@ -234,6 +237,7 @@ public abstract class OnapCommand {
     protected void postRun() throws OnapCommandException {
         log.debug(this.getName() + " POST-RUN");
     }
+
     /**
      * Oclip command execute with given parameters on service. Before calling this method, its mandatory to set all
      * parameters value.
@@ -314,6 +318,8 @@ public abstract class OnapCommand {
         log.info("OUTPUT: " + this.cmdResult.getRecords());
 
         postRun();
+
+
         return this.cmdResult;
     }
 
@@ -343,4 +349,12 @@ public abstract class OnapCommand {
         return OnapCommandHelperUtils.help(this);
     }
     // (mrkanag) Add toString for all command, parameter, result, etc objects in JSON format
+
+    public void setExecutionContext(ExecutionStoreContext executionStoreContext) {
+        this.executionStoreContext = executionStoreContext;
+    }
+
+    public ExecutionStoreContext getExecutionContext() {
+        return this.executionStoreContext;
+    }
 }

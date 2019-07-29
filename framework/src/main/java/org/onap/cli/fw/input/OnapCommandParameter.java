@@ -288,7 +288,12 @@ public class OnapCommandParameter {
     public void setValue(Object value) throws OnapCommandInvalidParameterValue {
         this.rawValue = value;
 
-        if (OnapCommandParameterType.URL.equals(parameterType) && !value.toString().isEmpty() && !value.toString().startsWith("http")
+        if (OnapCommandParameterType.URL.equals(parameterType) &&
+                !value.toString().isEmpty() &&
+                !value.toString().startsWith("http") &&
+                !value.toString().startsWith("ftp") &&
+                !value.toString().startsWith("mqtt") &&
+                !value.toString().startsWith("tcp")
                 && !value.toString().startsWith("/")) {
             value = "/" + value;
         } else if (OnapCommandParameterType.ARRAY.equals(parameterType)) {

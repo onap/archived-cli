@@ -76,24 +76,22 @@ public class OnapCommandHttpUtils {
             }
         }
 
+        inp.setUri(OnapCommandUtils.replaceLineForSpecialValues(input.getUri()));
         inp.setUri(OnapCommandUtils.replaceLineFromInputParameters(input.getUri(), params));
 
         inp.setMethod(input.getMethod().toLowerCase());
 
-        for (String h : input.getReqHeaders().keySet()) {
-            String value = input.getReqHeaders().get(h);
-            inp.getReqHeaders().put(h, OnapCommandUtils.replaceLineFromInputParameters(value, params));
-        }
-
-        for (String h : input.getReqQueries().keySet()) {
-            String value = input.getReqQueries().get(h);
-            inp.getReqQueries().put(h, OnapCommandUtils.replaceLineFromInputParameters(value, params));
-        }
-
         boolean isRemoveEmptyNodes = Boolean.parseBoolean(input.getContext().getOrDefault(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES, "false"));
+
+        //Process for md5
+        Map <String, String> values = new HashMap<>();
+        for (Map.Entry<String, OnapCommandParameter> param: params.entrySet()) {
+            values.put(param.getKey(), param.getValue().getValue().toString());
+        }
 
         if (input.getMultiparts().size() > 0) {
             for (HttpInput.Part part: input.getMultiparts()) {
+                part.setContent(OnapCommandUtils.replaceLineForSpecialValues(part.getContent(), values));
                 part.setContent(OnapCommandUtils.replaceLineFromInputParameters(part.getContent(), params));
                 if (isRemoveEmptyNodes) {
                     part.setContent(OnapCommandHttpUtils.normalizeJson(part.getContent()));
@@ -103,11 +101,28 @@ public class OnapCommandHttpUtils {
             inp.setMultiparts(input.getMultiparts());
         } else {
             inp.setMultipartEntityName(input.getMultipartEntityName());
-            inp.setBody(OnapCommandUtils.replaceLineFromInputParameters(input.getBody(), params));
+            inp.setBody(OnapCommandUtils.replaceLineForSpecialValues(input.getBody(), values));
+            inp.setBody(OnapCommandUtils.replaceLineFromInputParameters(inp.getBody(), params));
             if (isRemoveEmptyNodes) {
                 inp.setBody(OnapCommandHttpUtils.normalizeJson(inp.getBody()));
             }
         }
+
+        //consider __body__ spl entry
+        values.put(OnapCommandHttpConstants.__BODY__, inp.getBody());
+
+        for (String h : input.getReqHeaders().keySet()) {
+            String value = input.getReqHeaders().get(h);
+            value = OnapCommandUtils.replaceLineForSpecialValues(value, values);
+            inp.getReqHeaders().put(h, OnapCommandUtils.replaceLineFromInputParameters(value, params));
+        }
+
+        for (String h : input.getReqQueries().keySet()) {
+            String value = input.getReqQueries().get(h);
+            value = OnapCommandUtils.replaceLineForSpecialValues(value, values);
+            inp.getReqQueries().put(h, OnapCommandUtils.replaceLineFromInputParameters(value, params));
+        }
+
         return inp;
     }
 

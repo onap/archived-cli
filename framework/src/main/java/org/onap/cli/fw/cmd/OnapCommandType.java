@@ -27,8 +27,7 @@ public enum OnapCommandType {
 
     AUTH,
     CATALOG,
-    CMD,
-    SYSTEM;
+    CMD;
 
     /**
      * Get parameter type.
@@ -46,8 +45,6 @@ public enum OnapCommandType {
             return CATALOG;
         } else if (CMD.name().equalsIgnoreCase(name)) {
             return CMD;
-        } else if (SYSTEM.name().equalsIgnoreCase(name)) {
-            return SYSTEM;
         } else {
             throw new OnapCommandInvalidCommandType(name);
         }
