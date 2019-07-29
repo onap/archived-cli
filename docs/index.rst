@@ -47,6 +47,7 @@ Following guidelines provides detailed information about CLI.
    OOM_and_HEAT_based_deployment.rst
    logging.rst
    release-notes.rst
+   trouble_shooting_guide.rst
 
 
 ==========================
