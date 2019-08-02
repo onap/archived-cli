@@ -31,6 +31,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -185,6 +187,49 @@ public class OnapCommandUtils {
      * @return
      */
     public static String replaceLineForSpecialValues(String lineSpl) {
+        return replaceLineForSpecialValues(lineSpl, new HashMap<String, String>());
+    }
+
+    /**
+     *
+     * @param lineSpl
+     * @param values Value for the given entry already known by the caller.
+     * @return
+     */
+    public static String replaceLineFromResults(String line, Map <String, String> values) {
+        String resultLine = "";
+
+        if (!line.contains("$r{")) {
+            return line;
+        }
+
+        int currentIdx = 0;
+        while (currentIdx < line.length()) {
+            int idxS = line.indexOf("$r{", currentIdx);
+            if (idxS == -1) {
+                resultLine += line.substring(currentIdx);
+                break;
+            }
+            int idxE = line.indexOf("}", idxS);
+            String attr = line.substring(idxS + 3, idxE);
+            attr = attr.trim();
+
+            String value = "";
+
+            if (values.get(attr) != null) {
+                value = values.get(attr);
+            } else {
+                value = attr;
+            }
+
+            resultLine += line.substring(currentIdx, idxS) + value;
+            currentIdx = idxE + 1;
+        }
+
+        return resultLine;
+    }
+
+    public static String replaceLineForSpecialValues(String lineSpl, Map <String, String> values) {
         String resultSpl = "";
 
         if (!lineSpl.contains("$s{")) {
@@ -232,8 +277,20 @@ public class OnapCommandUtils {
                             //exist.
                             value = "";
                         }
+                    } else if (splEntry.startsWith(OnapCommandConstants.SPL_ENTRY_MD5)) {
+                            //start to read after md5:entryname
+                            String entryName = splEntry.substring(4);
+                            String content = values.get(entryName);
+                            if (content != null)
+                                value = OnapCommandUtils.md5(content);
+                            else
+                                value = splEntry;
                     } else {
-                        value = splEntry;
+                        if (values.get(splEntry) != null) {
+                            value = values.get(splEntry);
+                        } else {
+                            value = splEntry;
+                        }
                     }
             }
 
@@ -271,7 +328,11 @@ public class OnapCommandUtils {
                     || OnapCommandParameterType.JSON.equals(param.getParameterType())
                     || OnapCommandParameterType.YAML.equals(param.getParameterType())) {
                 // ignore the front and back double quotes in json body
-                result += line.substring(currentIdx, idxS - 1) + params.get(paramName).getValue().toString();
+                String va_ = params.get(paramName).getValue().toString();
+                if (idxS > 0)
+                    result += line.substring(currentIdx, idxS - 1) + va_;
+                else
+                    result += va_;
                 currentIdx = idxE + 2;
             } else if (OnapCommandParameterType.MAP.equals(param.getParameterType())) {
                 try {
@@ -366,6 +427,12 @@ public class OnapCommandUtils {
         }
     }
 
+    public static String md5(String content) {
+        String md5 = DigestUtils.md5Hex(content);
+
+        byte[] encodeBase64 = Base64.encodeBase64(md5.getBytes());
+        return new String(encodeBase64);
+    }
 }
 
 

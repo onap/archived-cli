@@ -26,6 +26,51 @@ import org.open.infc.grpc.Output;
 import org.open.infc.grpc.Result;
 
 public class OpenRemoteCli {
+
+    private String host;
+    private int port;
+    private int timeout;
+    private String requestId;
+
+    public OpenRemoteCli(String host, int port, int timeout, String requestId) {
+        this.host = host;
+        this.port = port;
+        this.timeout = timeout;
+        this.requestId = requestId;
+
+    }
+
+    public Result run (List <String> args) throws Exception {
+        OpenInterfaceGrpcClient client = new OpenInterfaceGrpcClient(
+                host, port, timeout);
+        try {
+            Result result = client.remoteCli(Args.newBuilder().setRequestId(this.requestId).addAllArgs(args).build());
+            return result;
+        } finally {
+          client.shutdown();
+        }
+    }
+
+    public Output invoke (String product, String profile, String action, Map <String, String> params) throws Exception {
+        OpenInterfaceGrpcClient client = new OpenInterfaceGrpcClient(
+                host, port, timeout);
+        try {
+
+            Map <String, String> options = new HashMap<>();
+            options.put("product", product);
+            if (profile != null && !profile.isEmpty())
+                options.put("profile", profile);
+            params.put("format", "json");
+            Input input = Input.newBuilder().setAction(action).setRequestId(requestId).putAllOptions(options).putAllParams(params).build();
+
+            Output output = client.invoke(input);
+            return output;
+        } finally {
+          client.shutdown();
+        }
+    }
+
+    //Absolute the static methods
     /**
      * Runs CLI remotely
      * @param host
@@ -48,7 +93,7 @@ public class OpenRemoteCli {
           }
     }
 
-    /**
+        /**
      * Runs commands as remote procedure call :)
      * @param host
      * @param port

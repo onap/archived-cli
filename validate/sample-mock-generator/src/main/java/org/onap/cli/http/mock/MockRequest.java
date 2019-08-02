@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -61,8 +62,12 @@ public class MockRequest {
 
     public void setJson(String json) throws IOException {
         if (!json.isEmpty()) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            this.json = objectMapper.readTree(json);
+            try {
+                ObjectMapper objectMapper = new ObjectMapper();
+                this.json = objectMapper.readTree(json);
+            } catch (Exception e) {
+                this.json = new ObjectMapper().readTree("{}");
+            }
         }
 
     }

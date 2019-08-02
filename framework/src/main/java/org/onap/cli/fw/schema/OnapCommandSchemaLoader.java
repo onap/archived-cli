@@ -344,7 +344,7 @@ public class OnapCommandSchemaLoader {
                                     case IS_OPTIONAL:
                                         if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
                                             exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
-                                                    IS_SECURED, parameter.get(key2)));
+                                                    IS_OPTIONAL, parameter.get(key2)));
                                         }
 
                                         if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
@@ -510,6 +510,7 @@ public class OnapCommandSchemaLoader {
                     break;
             }
         }
+
         return exceptionList;
     }
 

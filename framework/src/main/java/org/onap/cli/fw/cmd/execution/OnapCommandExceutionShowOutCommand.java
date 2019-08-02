@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Huawei Technologies Co., Ltd.
+ * Copyright 2019 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,33 +14,19 @@
  * limitations under the License.
  */
 
-package org.onap.cli.sample;
-
-import java.util.Map;
+package org.onap.cli.fw.cmd.execution;
 
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.store.OnapCommandExecutionStore;
 
-/**
- * Hello world.
- */
-@OnapCommandSchema(schema = "hello-world-basic.yaml")
-public class OnapHelloWorldCommand extends OnapCommand {
+@OnapCommandSchema(schema = "execution-show-out.yaml")
+public class OnapCommandExceutionShowOutCommand extends OnapCommand {
 
     @Override
     protected void run() throws OnapCommandException {
-        //Read the input arguments
-        Map<String, OnapCommandParameter> paramMap = getParametersMap();
-        OnapCommandParameter nameP = paramMap.get("name");
-        String name = String.valueOf(nameP.getValue());
-
-        //Process command
-        String output = "Hello " + name;
-
-        //Populate outputs
-        this.getResult().getRecordsMap().get("output").getValues().add(output);
-   }
-
+        String executionId = getParametersMap().get("execution-id").getValue().toString();
+        this.getResult().setOutput(OnapCommandExecutionStore.getStore().showExecutionOut(executionId));
+    }
 }

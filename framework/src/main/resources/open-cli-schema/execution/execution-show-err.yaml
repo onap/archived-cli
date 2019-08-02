@@ -13,13 +13,26 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
+name: execution-show-err
+description: Show the command execution console error information
+
+info:
+  product: open-cli
+  service: execution
+  type: cmd
+  author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
 
 parameters:
-  - name: timeout
+  - name: execution-id
     type: string
-    description: timeout for command to complete the given task in milliseconds
-    short_option: u
-    long_option: timeout
-    default_value: 60000
-    is_optional: true
-    is_default_param: false
+    description: Execution id
+    short_option: l
+    long_option: execution-id
+    is_optional: false
+  - name: format
+    type: string
+    description: Output formats, supported formats such as table, csv, json, yaml
+    short_option: f
+    long_option: format
+    default_value: text
+    is_default_param: true
