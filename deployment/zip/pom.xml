@@ -102,16 +102,21 @@
                                 fileset(dir:
                                 "${project.build.directory}/../../../grpc/target/lib/")
                                 }
-                                ant.copy(todir:
-                                "${deployUnzip}/conf") {
-                                fileset(file:
-                                "${basedir}/src/main/release/conf/open-cli.properties")
-                                }
 
                                 ant.copy(todir:
                                 "${deployUnzip}/conf") {
+                                fileset(dir:
+                                "${project.build.directory}/../../../products/target/conf/")
+                                fileset(dir:
+                                "${project.build.directory}/../../../profiles/target/conf/")
                                 fileset(file:
-                                "${basedir}/src/main/release/conf/log4j.properties")
+                                "${basedir}/src/main/release/conf/*.properties")
+                                }
+
+                                ant.copy(todir:
+                                "${deployUnzip}/script") {
+                                fileset(dir:
+                                "${project.build.directory}/../../../products/target/script/")
                                 }
 
                                 ant.copy(todir:
