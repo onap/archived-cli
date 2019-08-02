@@ -1,4 +1,4 @@
-# Copyright 2017-18 Huawei Technologies Co., Ltd.
+# Copyright 2018 Huawei Technologies Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,31 +13,26 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: hostname
-description: Sample yaml using snmp profile for hostname
-
+name: dir
+description: Oclip sample command to do dir
 info:
   product: tutorial
   service: learning
   author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
 
-results:
-  direction: portrait
-  attributes:
-    - name: hostname
-      description: hostname of agent
-      scope: short
-      type: string
-    - name: location
-      description: hostname of agent
-      scope: short
-      type: string
+parameters:
+  - name: format
+    type: string
+    description: Output formats, supported formats such as table, csv, json, yaml
+    short_option: f
+    long_option: format
+    default_value: text
+    is_default_param: true
 
-snmp:
-  result_map:
-    - hostname: 1.3.6.1.2.1.1.5.0
-    - location: 1.3.6.1.2.1.1.6.0
-  command: get
-  version: v1
-
-
+cmd:
+  command:
+    - dir
+  success_codes:
+    - 0
+  working_directory: .
+  output: $stdout
