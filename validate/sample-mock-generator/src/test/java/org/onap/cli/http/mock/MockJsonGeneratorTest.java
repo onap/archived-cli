@@ -34,32 +34,4 @@ public class MockJsonGeneratorTest {
 
         MockJsonGenerator.generateMocking(mockRequest, mockResponse, "target/test");
     }
-
-    @Test(expected=IOException.class)
-    public void mocoGenerateFailedInvalidBodyTest() throws IOException {
-        MockRequest mockRequest = new MockRequest();
-        mockRequest.setJson("{\"value\" : \"234sdf-345\"");
-        mockRequest.setMethod("get");
-        mockRequest.setUri("http://1.1.1.1:80/getResource");
-
-        MockResponse mockResponse = new MockResponse();
-        mockResponse.setStatus(200);
-        mockResponse.setJson("{\"value\" : \"234sdf-345\"");
-
-        MockJsonGenerator.generateMocking(mockRequest, mockResponse, "target/test");
-    }
-
-    @Test(expected=IOException.class)
-    public void mocoGenerateFailedInvalidUrlTest() throws IOException {
-        MockRequest mockRequest = new MockRequest();
-        mockRequest.setJson("{\"value\" : \"234sdf-345\"");
-        mockRequest.setMethod("get");
-        mockRequest.setUri("http://1.1.1.1:80:invalid");
-
-        MockResponse mockResponse = new MockResponse();
-        mockResponse.setStatus(200);
-        mockResponse.setJson("{\"value\" : \"234sdf-345\"");
-
-        MockJsonGenerator.generateMocking(mockRequest, mockResponse, "target/test");
-    }
 }

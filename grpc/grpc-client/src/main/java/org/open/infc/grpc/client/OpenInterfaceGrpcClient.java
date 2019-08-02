@@ -37,6 +37,9 @@ public class OpenInterfaceGrpcClient {
       private final ManagedChannel channel;
       private final OpenInterfaceGrpc.OpenInterfaceBlockingStub blockingStub;
 
+      //10 seconds
+      private int timeout = 60000;
+
       public static class OpenInterfaceGrpcExecption extends Exception {
           private static final long serialVersionUID = -8755636432217894246L;
 
@@ -64,6 +67,11 @@ public class OpenInterfaceGrpcClient {
             .build());
       }
 
+      public OpenInterfaceGrpcClient(String host, int port, int timeout) {
+          this(host, port);
+          this.timeout = timeout;
+
+      }
       OpenInterfaceGrpcClient(ManagedChannel channel) {
         this.channel = channel;
         blockingStub = OpenInterfaceGrpc.newBlockingStub(channel);
@@ -78,7 +86,7 @@ public class OpenInterfaceGrpcClient {
 
         Output result = Output.newBuilder().build();
         try {
-            result = blockingStub.withDeadlineAfter(10, TimeUnit.SECONDS).invoke(input);
+            result = blockingStub.withDeadlineAfter(timeout, TimeUnit.MILLISECONDS).invoke(input);
         } catch (StatusRuntimeException e) {
           logger.warn("RPC failed: {0}", e.getStatus());
           //Status{code=DEADLINE_EXCEEDED}
@@ -93,7 +101,7 @@ public class OpenInterfaceGrpcClient {
 
         Result result = Result.newBuilder().setExitCode(1).build();
         try {
-            result = blockingStub.withDeadlineAfter(10, TimeUnit.SECONDS).remoteCli(args);
+            result = blockingStub.withDeadlineAfter(timeout, TimeUnit.MILLISECONDS).remoteCli(args);
         } catch (StatusRuntimeException e) {
           logger.warn("RPC failed: {0}", e.getStatus());
           //Status{code=DEADLINE_EXCEEDED}

@@ -16,6 +16,14 @@
 
 package org.onap.cli.fw.http.cmd;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
+
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -34,18 +42,11 @@ import org.onap.cli.fw.http.utils.OnapCommandHttpUtils;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.store.OnapCommandExecutionStore;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.http.mock.MockJsonGenerator;
 import org.onap.cli.http.mock.MockRequest;
 import org.onap.cli.http.mock.MockResponse;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
 
 /**
  * Oclip http Command.
@@ -55,6 +56,8 @@ import java.util.Optional;
 public class OnapHttpCommand extends OnapCommand {
 
     private HttpInput input = new HttpInput();
+
+    private HttpResult output = new HttpResult();
 
     private List<Integer> successStatusCodes = new ArrayList<>();
 
@@ -201,14 +204,11 @@ public class OnapHttpCommand extends OnapCommand {
 
     @Override
     protected void run() throws OnapCommandException {
+        this.authClient = new OnapCommandHttpAuthClient(this);
+
         try {
             // For auth/catalog type commands, login and logout logic is not required
             boolean isAuthRequired = this.isAuthRequired();
-
-            this.authClient = new OnapCommandHttpAuthClient(
-                    this,
-                    this.getResult().isDebug());
-
             if (isAuthRequired) {
                 this.authClient.login();
             }
@@ -218,24 +218,28 @@ public class OnapHttpCommand extends OnapCommand {
             if (isAuthRequired) {
                 this.authClient.logout();
             }
-
-            if (this.getResult().isDebug() && authClient != null) {
-                this.getResult().setDebugInfo(this.authClient.getDebugInfo());
-            }
         } catch (OnapCommandException e) {
-            if (this.getResult().isDebug() && authClient != null) {
-                this.getResult().setDebugInfo(this.authClient.getDebugInfo());
-            }
             throw e;
+        } finally {
+            this.getResult().setDebugInfo(this.input.toString() + "\n" + this.output.toString());
         }
     }
 
     protected void processRequest() throws OnapCommandException {
 
         HttpInput httpInput = OnapCommandHttpUtils.populateParameters(this.getParametersMap(), this.getInput());
-        httpInput.setUri(this.authClient.getServiceUrl() + httpInput.getUri());
+        if (!httpInput.getUri().startsWith("http")) {
+            httpInput.setUri(this.authClient.getServiceUrl() + httpInput.getUri());
+        }
 
-        HttpResult output = this.authClient.run(httpInput);
+        this.setInput(httpInput);
+
+        if (this.getExecutionContext() != null) {
+            OnapCommandExecutionStore.getStore().storeExectutionDebug(this.getExecutionContext(), this.getInput().toString());
+        } else {
+            this.getResult().setDebugInfo(this.getInput().toString());
+        }
+        this.output = this.authClient.run(this.getInput());
 
         this.getResult().setOutput(output);
         if (!this.getSuccessStatusCodes().contains(output.getStatus())) {
@@ -250,12 +254,17 @@ public class OnapHttpCommand extends OnapCommand {
         }
 
         Map<String, ArrayList<String>> results = OnapCommandHttpUtils.populateOutputs(this.getResultMap(), output);
-        results = OnapCommandUtils.populateOutputsFromInputParameters(results, this.getParametersMap());
+        //results = OnapCommandUtils.populateOutputsFromInputParameters(results, this.getParametersMap());
 
         for (OnapCommandResultAttribute attr : this.getResult().getRecords()) {
             attr.setValues(results.get(attr.getName()));
         }
-        generateJsonMock(httpInput, output, this.getSchemaName());
+
+        try{
+            generateJsonMock(this.getInput(), output, this.getSchemaName());
+        } catch (OnapCommandFailedMocoGenerate e) {
+            //NO SONAR ignore it
+        }
     }
 
     private void generateJsonMock(HttpInput httpInput, HttpResult httpResult, String schemaName)
