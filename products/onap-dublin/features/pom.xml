@@ -41,6 +41,7 @@
         <module>sdnc</module>
         <module>so</module>
         <module>vnfsdk</module>
+        <module>integration</module>
     </modules>
 
      <build>
