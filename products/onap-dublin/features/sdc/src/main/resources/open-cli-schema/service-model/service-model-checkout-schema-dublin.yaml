@@ -30,6 +30,13 @@ parameters:
     short_option: b
     is_optional: true
 
+results:
+  direction: portrait
+  attributes:
+    - name: ID
+      description: NS checked out version unique ID
+      scope: short
+      type: string
 http:
   service:
     name: sdc
@@ -42,3 +49,5 @@ http:
     body: '{}'
   success_codes:
     - 200
+  result_map:
+    ID: $b{$.uniqueId}
