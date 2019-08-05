@@ -72,8 +72,7 @@ public class OnapHttpConnectionTest {
             }
         };
         inp.setMethod("get");
-        con = new OnapHttpConnection(true);
-        con.getDebugInfo();
+        con = new OnapHttpConnection();
         con.get(inp);
 
     }
@@ -90,7 +89,7 @@ public class OnapHttpConnectionTest {
         };
 
         inp.setMethod("post");
-        con = new OnapHttpConnection(true);
+        con = new OnapHttpConnection();
         con.post(inp);
     }
 
@@ -108,7 +107,7 @@ public class OnapHttpConnectionTest {
 
         inp.setMethod("post");
         inp.setBinaryData(true);
-        con = new OnapHttpConnection(true);
+        con = new OnapHttpConnection();
         con.post(inp);
     }
 
@@ -123,7 +122,7 @@ public class OnapHttpConnectionTest {
             }
         };
         inp.setMethod("put");
-        con = new OnapHttpConnection(true);
+        con = new OnapHttpConnection();
         con.put(inp);
     }
 
@@ -138,7 +137,7 @@ public class OnapHttpConnectionTest {
             }
         };
         inp.setMethod("delete");
-        con = new OnapHttpConnection(true);
+        con = new OnapHttpConnection();
         con.delete(inp);
     }
 
@@ -153,14 +152,14 @@ public class OnapHttpConnectionTest {
             }
         };
         inp.setMethod("other");
-        con = new OnapHttpConnection(true);
+        con = new OnapHttpConnection();
         con.request(inp);
     }
 
     @Test()
     public void httpUnSecuredCloseExceptionTest() throws OnapCommandHttpFailure {
         inp.setMethod("other");
-        con = new OnapHttpConnection(true);
+        con = new OnapHttpConnection();
         con.close();
     }
 
@@ -185,7 +184,7 @@ public class OnapHttpConnectionTest {
             inp.setReqHeaders(new HashMap<String, String>());
             inp.setReqQueries(new HashMap<String, String>());
             inp.setUri("https://192.168.99.10:80");
-            OnapHttpConnection con = new OnapHttpConnection(false);
+            OnapHttpConnection con = new OnapHttpConnection();
             con.get(inp);
         } catch (OnapCommandHttpFailure e) {
             assertEquals("0x3001::IO Exception", e.getMessage());

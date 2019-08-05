@@ -27,10 +27,8 @@ public class SampleYamlGenerator {
 
     static int nTab;
 
-    public static void generateSampleYaml(List<String> input, String output, String version,
+    public static void generateSampleYaml(String cmdName, List<String> input, String output, String version,
             String targetPath, boolean debug) throws IOException {
-
-        String cmdName = input.get(0);
 
         PrintWriter writer = new PrintWriter(targetPath, "UTF-8");
         writeKeyValuePair(writer, "open_cli_sample_version", "1.0");
@@ -41,7 +39,7 @@ public class SampleYamlGenerator {
         writeKey(writer, "sample1");
 
         writeKeyValuePair(writer, "name", cmdName);
-        writeKeyValuePair(writer, "input", input.stream().skip(1).collect(Collectors.joining(" ")).trim());
+        writeKeyValuePair(writer, "input", input.stream().collect(Collectors.joining(" ")).trim());
         writeKeyValuePair(writer, "moco", new File(targetPath).getName().replaceAll("-sample.yaml", "-moco.json"));
         writeMultilineKeyValue(writer, "output", output.trim(), debug);
 
@@ -60,7 +58,7 @@ public class SampleYamlGenerator {
         writer.write(" |\n");
         nTab++;
         String[] lines = value.split("\n");
-        long skipLines = debug ? 11 : 0;
+        long skipLines = debug ? 0 : 0;
         Arrays.stream(lines).skip(skipLines ).forEach(line -> writer.write(printTabs() + line + "\n")); // NOSONAR
     }
 

@@ -38,6 +38,7 @@ public class OnapCommandCmdConstants {
     public static final String CMD_SECTIONS = "cli.schema.cmd.sections";
 
     public static final String DEFAULT_PARAMETER_CMD_FILE_NAME = "default_input_parameters_cmd.yaml";
+    public static final String TIMEOUT = "timeout";
     private OnapCommandCmdConstants() {
         //as per coding standard !
     }

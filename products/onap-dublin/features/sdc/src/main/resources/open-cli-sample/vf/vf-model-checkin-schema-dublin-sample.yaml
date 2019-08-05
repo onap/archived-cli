@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: --host-url
+version: open-cli
+samples:
+  sample1:
+    name: --host-url
+    input: https://159.138.32.178:30204 --host-username cs0008 --host-password demo123456! --vf-model-uuid c5d9a74a-c617-4542-8b83-31c4d8a7269b --debug
+    moco: vf-model-checkin-schema-dublin-moco.json
+    output:

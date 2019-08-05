@@ -27,15 +27,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.annotation.NotThreadSafe;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpGet;
@@ -79,10 +82,6 @@ public class OnapHttpConnection {
 
     Map<String, String> mapCommonHeaders = new HashMap<> ();
 
-    protected boolean debug = false;
-
-    private String debugDetails = "";
-
     public static class TrustAllX509TrustManager implements X509TrustManager {
 
         @Override
@@ -99,18 +98,6 @@ public class OnapHttpConnection {
         public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
             // No need to implement.
         }
-    }
-
-    /**
-     * OnapHttpConnection Constructor.
-     *
-     * @param debug
-     *            boolean
-     * @throws OnapCommandHttpFailure
-     *             exception
-     */
-    public OnapHttpConnection(boolean debug) {
-        this.debug = debug;
     }
 
     private void initHttpClient(boolean isSecured) throws OnapCommandHttpFailure {
@@ -135,10 +122,6 @@ public class OnapHttpConnection {
                 throw new OnapCommandHttpFailure(e);
             }
         }
-    }
-
-    public String getDebugInfo() {
-        return this.debugDetails;
     }
 
     private Map<String, String> getHttpHeaders(HttpResponse resp) {
@@ -244,9 +227,12 @@ public class OnapHttpConnection {
         }
     }
 
-    private void addCommonCookies(CookieStore cookieStore) {
+    private void addCommonCookies(HttpInput input, CookieStore cookieStore) {
          for (Entry<String, String> header : this.mapCommonHeaders.entrySet()) {
-             Cookie cookie = new BasicClientCookie(header.getKey(), header.getValue());
+             //take care of overriden headers in OCS YAML
+                String value = input.getReqHeaders().getOrDefault(header.getKey(),
+                         header.getValue());
+             Cookie cookie = new BasicClientCookie(header.getKey(), value);
              cookieStore.addCookie(cookie);
          }
     }
@@ -267,7 +253,7 @@ public class OnapHttpConnection {
     }
 
     private void updateInputFromCookies(HttpInput input, CookieStore cookieStore) {
-        addCommonCookies(cookieStore);
+        addCommonCookies(input, cookieStore);
         for (String cookieName : input.getReqCookies().keySet()) {
             BasicClientCookie cookie = new BasicClientCookie(cookieName, input.getReqCookies().get(cookieName));
             cookie.setDomain(this.getDomain(input.getUri()));
@@ -320,6 +306,8 @@ public class OnapHttpConnection {
         }
 
         requestBase.setURI(URI.create(input.getUri()));
+        requestBase.setConfig(RequestConfig.custom()
+                .setSocketTimeout(30000).setConnectTimeout(50000).build());
 
         for (Entry<String, String> h : input.getReqHeaders().entrySet()) {
             requestBase.addHeader(h.getKey(), h.getValue());
@@ -328,7 +316,6 @@ public class OnapHttpConnection {
         HttpResult result = new HttpResult();
 
         try {
-            this.debugDetails = "";
             CookieStore cookieStore = new BasicCookieStore();
             updateInputFromCookies(input, cookieStore);
             HttpContext localContext = new BasicHttpContext();
@@ -344,12 +331,6 @@ public class OnapHttpConnection {
             this.updateResultFromCookies(result, cookieStore.getCookies());
         } catch (Exception e) {  // NOSONAR
             throw new OnapCommandHttpFailure(e);
-        } finally {
-            String info = input + " " + result;
-            log.info(info);
-            if (this.debug) {
-                this.debugDetails = info;
-            }
         }
 
         return result;

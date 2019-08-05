@@ -508,7 +508,6 @@ public class OnapCommandDiscoveryUtils {
                 Map<String, String> sample = samples.get(sampleId);
 
                 List<String> inputArgs = new ArrayList();
-                inputArgs.add(cmd);
                 if (sample.get(OnapCommandConstants.VERIFY_INPUT) != null) {
                     inputArgs.addAll(Arrays.asList(sample.get(OnapCommandConstants.VERIFY_INPUT).trim().split(" ")));
                 }

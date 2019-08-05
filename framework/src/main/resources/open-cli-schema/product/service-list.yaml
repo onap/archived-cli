@@ -33,6 +33,10 @@ parameters:
 results:
   direction: landscape
   attributes:
+    - name: product
+      description: Product name
+      scope: short
+      type: string
     - name: service
       description: Service name
       scope: short
