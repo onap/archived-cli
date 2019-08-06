@@ -43,7 +43,6 @@ import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.store.OnapCommandExecutionStore;
 import org.onap.cli.fw.store.OnapCommandExecutionStore.ExecutionStoreContext;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
-import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.main.interactive.StringCompleter;
 import org.onap.cli.main.utils.OnapCliArgsParser;
