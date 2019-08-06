@@ -85,7 +85,7 @@ Error::
 
 usage: oclip basic-logout
 
-Provides HTTP basic authorization support. As part of logout, it invalidate authoirzation key generated while login.
+Provides HTTP basic authorization support. As part of logout, it invalidates authorization key generated while login.
 
 
 Product: open-cli
@@ -140,7 +140,7 @@ Error::
 usage: oclip catalog
 
 Provides catalog discovery support to find the base api path for given service from product's catalog service.
-Any product want to support catalog, it could derive from this command. Currently ONAP uses it and create
+If any product wants to support catalog, it could derive from this command. Currently ONAP uses it and creates
 derived command by using ONAP MSB service.
 
 
