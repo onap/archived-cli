@@ -302,16 +302,20 @@ def create_ns(parameters, csar_id):
     ns = parameters["ns"]
     ns_create_string = 'oclip vfc-nslcm-create -m {} -c {} -n {} -q {} -S {}'.format(parameters["vfc-url"], \
        csar_id, ns.get("name"), parameters["customer_name"], parameters["service_name"])
-    print ns_create_string
+    print (ns_create_string)
+
     ns_create_out = (os.popen(ns_create_string)).read()
-    print ns_create_out
+
+    print (ns_create_out)
+
     ns_instance_id = (get_out_helper_2(ns_create_out))[3]
+
     return ns_instance_id
 
 def instantiate_ns(parameters, ns_instance_id):
     ns_instantiate_string = 'oclip vfc-nslcm-instantiate -m {} -i {} -c {} -n {}'.format(parameters["vfc-url"], \
         ns_instance_id, parameters["location"], parameters["sdc-controller-id"])
-    print ns_instantiate_string
+    print (ns_instantiate_string)
 
     ns_instantiate_out = (os.popen(ns_instantiate_string)).read()
     return ns_instantiate_out
@@ -340,8 +344,8 @@ def create_vnf_package(parameters):
 def upload_ns_package(parameters, ns_package_output):
     ns = parameters["ns"]
     ns_upload_string = '{}/api/nsd/v1/ns_descriptors/{}/nsd_content'.format(parameters["vfc-url"], ns_package_output)
-    print ns_upload_string
-    print ns.get("path")
+    print (ns_upload_string)
+    print (ns.get("path"))
     resp = requests.put(ns_upload_string, files={'file': open(ns.get("path"), 'rb')})
     return resp
 

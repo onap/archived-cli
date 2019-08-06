@@ -17,6 +17,7 @@ name: tosca-vnf-provision
 description: |
  Provision TOSCA based VNF using ONAP.
  More details: https://wiki.lfnetworking.org/display/LN/TOSCA+VNF+Validation+Planning
+ NOTE: Before using this command, configure the $OPEN_CLI_HOME/conf/ovp-tosca-vnf-provision.json
 
 info:
   product: onap-dublin
