@@ -76,6 +76,10 @@ results:
       description: Onap NS status
       scope: short
       type: string
+    - name: vnfm-driver
+      description: VNFM driver used
+      type: string
+      scope: short
 cmd:
   command:
     -  python $s{env:OPEN_CLI_HOME}/script/ovp-tosca-vnf-provision.py --result-json $s{tmp:result.json} --config-json ${config-json} --vsp ${vsp} --vnf-csar ${vnf-csar} --ns-csar ${ns-csar} --vnfm-driver ${vnfm-driver}
@@ -88,3 +92,4 @@ cmd:
     vnf-status: $o{$.vnf_status}
     ns-id: $o{$.ns_id}
     ns-status: $o{$.vnf_status}
+    vnfm-driver: ${vnfm-driver}
