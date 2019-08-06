@@ -72,6 +72,15 @@
           </modules>
        </profile>
        <profile>
+          <id>onap-elalto</id>
+          <activation>
+            <activeByDefault>false</activeByDefault>
+          </activation>
+          <modules>
+            <module>onap-elalto</module>
+          </modules>
+       </profile>
+       <profile>
           <id>eol</id>
           <activation>
             <activeByDefault>false</activeByDefault>
