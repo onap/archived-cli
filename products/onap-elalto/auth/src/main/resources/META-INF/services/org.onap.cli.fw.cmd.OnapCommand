@@ -14,3 +14,4 @@
 
 org.onap.cli.cmd.auth.OnapBasicAuthLoginCommandElalto
 org.onap.cli.cmd.auth.OnapBasicAuthLogoutCommandElalto
+org.onap.cli.cmd.auth.OnapSdcBasicAuthLoginCommandElalto
