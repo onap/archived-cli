@@ -344,7 +344,7 @@ public class OnapCommandSchemaLoader {
                                     case IS_OPTIONAL:
                                         if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
                                             exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
-                                                    IS_OPTIONAL, parameter.get(key2)));
+                                                    IS_OPTIONAL, String.valueOf(parameter.get(key2))));
                                         }
 
                                         if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
@@ -358,7 +358,7 @@ public class OnapCommandSchemaLoader {
                                         if (validate) {
                                             if (!OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
                                                 exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
-                                                        IS_SECURED, parameter.get(key2)));
+                                                        IS_SECURED, String.valueOf(parameter.get(key2))));
                                             }
                                         }
 
@@ -372,7 +372,7 @@ public class OnapCommandSchemaLoader {
                                     case IS_INCLUDE:
                                         if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
                                             exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
-                                                    IS_INCLUDE, parameter.get(key2)));
+                                                    IS_INCLUDE, String.valueOf(parameter.get(key2))));
                                         }
 
                                         if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
@@ -386,7 +386,7 @@ public class OnapCommandSchemaLoader {
                                         if (validate) {
                                             if (!OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
                                                 exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
-                                                        IS_DEFAULT_PARAM, parameter.get(key2)));
+                                                        IS_DEFAULT_PARAM, String.valueOf(parameter.get(key2))));
                                             }
                                         }
 
@@ -475,7 +475,7 @@ public class OnapCommandSchemaLoader {
                                                     if (validate) {
                                                         if (!OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
                                                             exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(ATTRIBUTES,
-                                                                    IS_SECURED, map.get(key4)));
+                                                                    IS_SECURED, String.valueOf(map.get(key4))));
                                                         }
                                                     }
                                                     if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
@@ -489,7 +489,7 @@ public class OnapCommandSchemaLoader {
                                                     if (validate) {
                                                         if (!OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
                                                             exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(ATTRIBUTES,
-                                                                    IS_DEFAULT_ATTR, map.get(key4)));
+                                                                    IS_DEFAULT_ATTR, String.valueOf(map.get(key4))));
                                                         }
                                                     }
                                                     if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
