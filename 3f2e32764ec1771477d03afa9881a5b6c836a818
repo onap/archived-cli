@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8085579_7150676c",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/ProcessRunner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-08-07T06:23:38Z",
+      "side": 1,
+      "message": "pls strip off\nalso add ut for this code change. thanks",
+      "range": {
+        "startLine": 161,
+        "startChar": 9,
+        "endLine": 161,
+        "endChar": 10
+      },
+      "revId": "3f2e32764ec1771477d03afa9881a5b6c836a818",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
