@@ -12,5 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-org.onap.cli.cmd.auth.OnapBasicAuthLoginCommandElalto
-org.onap.cli.cmd.auth.OnapBasicAuthLogoutCommandElalto
+open_cli_schema_version: 1.0
+
+name: basic-logout
+
+description: ONAP basic logout auth command
+
+info:
+  product: onap-elalto
+  service: basic-auth
+  type: auth
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: host-username
+    is_include: false
+  - name: host-password
+    is_include: false
+  - name: no-auth
+    is_include: false
