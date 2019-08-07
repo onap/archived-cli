@@ -106,9 +106,11 @@
                                 ant.copy(todir:
                                 "${deployUnzip}/conf") {
                                 fileset(dir:
-                                "${project.build.directory}/../../../products/target/conf/")
+                                "${project.build.directory}/../../../products/target/conf/",
+                                erroronmissingdir: false)
                                 fileset(dir:
-                                "${project.build.directory}/../../../profiles/target/conf/")
+                                "${project.build.directory}/../../../profiles/target/conf/",
+                                erroronmissingdir: false)
                                 fileset(file:
                                 "${basedir}/src/main/release/conf/*.properties")
                                 }
@@ -116,7 +118,8 @@
                                 ant.copy(todir:
                                 "${deployUnzip}/script") {
                                 fileset(dir:
-                                "${project.build.directory}/../../../products/target/script/")
+                                "${project.build.directory}/../../../products/target/script/",
+                                erroronmissingdir: false)
                                 }
 
                                 ant.copy(todir:
