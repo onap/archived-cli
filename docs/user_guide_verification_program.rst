@@ -13,9 +13,9 @@ in future it could be extended to other profile) for authoring the testing the C
 
 It provides the model based test environment where author needs to setup following aspects:
 
-# Write the moco json which capture the HTTP request and response in moco style
+# Write the moco JSON which captures the HTTP request and response in moco style
 
-# Write the sample YAML which capture the one or more functional test case(s)
+# Write the sample YAML which captures the one or more functional test case(s)
 
 # Place them under open-cli-sample directory under OPEN_CLI_HOME
 
@@ -23,4 +23,4 @@ Once this setup is done, author can verify the OCS YAML by running the following
 
  oclip <command name> --verify | -V
 
-It will list out the success/failure of each test cases written in sample YAML.
+It will list out the success/failure of each test case written in sample YAML.
