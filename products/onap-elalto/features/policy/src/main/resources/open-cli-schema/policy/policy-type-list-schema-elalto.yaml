@@ -1,4 +1,4 @@
-# Copyright © Intel Corporation 2019
+# Copyright 2019 Huawei Technologies Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,13 +13,13 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: policy-type-list-with-version
-description: Retrieve one particular version of a policy type
+name: policy-type-list
+description: Retrieve existing policy types
 
 info:
-  product: onap-dublin
+  product: onap-elalto
   service: policy
-  author: ONAP HPA Team onap-discuss@lists.onap.org
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
   - name: policy-type-id
@@ -27,12 +27,6 @@ parameters:
     type: string
     long_option: policy-type-id
     short_option: x
-    is_optional: false
-  - name: version-id
-    description: Policy type version ID
-    type: string
-    long_option: version-id
-    short_option: y
     is_optional: false
 
 results:
@@ -50,11 +44,10 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /policy/api/v1/policytypes/${policy-type-id}/versions/${version-id}
+    uri: /policy/api/v1/policytypes/${policy-type-id}
     method: GET
     headers:
       Accept: application/json
-      ClientAuth: cHl0aG9uOnRlc3Q=
       Environment: TEST
 
 

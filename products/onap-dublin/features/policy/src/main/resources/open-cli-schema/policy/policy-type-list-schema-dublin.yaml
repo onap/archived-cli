@@ -25,8 +25,8 @@ parameters:
   - name: policy-type-id
     description: Policy type ID
     type: string
-    long-option: policy-type-id
-    short-option: x
+    long_option: policy-type-id
+    short_option: x
     is_optional: false
 
 results:
