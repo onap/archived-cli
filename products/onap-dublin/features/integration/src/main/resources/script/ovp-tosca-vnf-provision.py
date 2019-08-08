@@ -366,51 +366,54 @@ def provision_vnf():
     result_json['ns_id'] = ''
     result_json['ns_status'] = ''
 
-    # 1.Setup cloud and service
-    #setup cloud and region
-    create_complex(parameters)
-    register_all_clouds(parameters)
+    def _provision():
+        # 1.Setup cloud and service
+        #setup cloud and region
+        create_complex(parameters)
+        register_all_clouds(parameters)
 
-    # setup subscription and customer
-    create_service_type(parameters)
-    create_customer(parameters)
-    add_customer_subscription(parameters)
+        # setup subscription and customer
+        create_service_type(parameters)
+        create_customer(parameters)
+        add_customer_subscription(parameters)
 
-    # setup vnfm
-    register_vnfm(parameters)
+        # setup vnfm
+        register_vnfm(parameters)
 
-    # Setup License
-    vlm_output = create_vlm(parameters)
-    print "vlm parameters={}".format(vlm_output)
+        # Setup License
+        vlm_output = create_vlm(parameters)
+        print "vlm parameters={}".format(vlm_output)
 
-    # 2. on-board VSP
-    vsp_id = create_vsp(parameters, vlm_output)
-    print "vsp id={}".format(vsp_id)
+        # 2. on-board VSP
+        vsp_id = create_vsp(parameters, vlm_output)
+        print "vsp id={}".format(vsp_id)
 
-    # 3. model VF
-    vf_model_dict = create_vf_model(parameters, vsp_id)
-    print "vf model parameters={}".format(vf_model_dict)
-    vf_id = vf_model_dict["vf_id"]
-    vf_unique_id = vf_model_dict["vf_unique_id"]
+        # 3. model VF
+        vf_model_dict = create_vf_model(parameters, vsp_id)
+        print "vf model parameters={}".format(vf_model_dict)
+        vf_id = vf_model_dict["vf_id"]
+        vf_unique_id = vf_model_dict["vf_unique_id"]
 
-    # 4. model NS and 5. Approve and distribute
-    service_model_list = create_service_model(parameters, vf_unique_id)
-    print "service model parameters={}".format(service_model_list)
+        # 4. model NS and 5. Approve and distribute
+        service_model_list = create_service_model(parameters, vf_unique_id)
+        print "service model parameters={}".format(service_model_list)
 
-    # 6. onboard VNF
-    vnf_onboard_output = onboard_vnf(parameters)
-    print vnf_onboard_output
+        # 6. onboard VNF
+        vnf_onboard_output = onboard_vnf(parameters)
+        print vnf_onboard_output
 
-    # 7. onboard NS
-    ns_onboard_out = onboard_ns(parameters)
-    print ns_onboard_out
+        # 7. onboard NS
+        ns_onboard_out = onboard_ns(parameters)
+        print ns_onboard_out
 
-    # 8. create NS
-    ns_instance_id = create_ns(parameters, ns_package_output)
-    print ns_instance_id
+        # 8. create NS
+        ns_instance_id = create_ns(parameters, ns_package_output)
+        print ns_instance_id
 
-    instantiate_ns_output = instantiate_ns(parameters, ns_instance_id)
-    print instantiate_ns_output
+        instantiate_ns_output = instantiate_ns(parameters, ns_instance_id)
+        print instantiate_ns_output
+
+    _provision()
 
     return result_json
 
