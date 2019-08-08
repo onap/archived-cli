@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "726b5593_2c55d09e",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/ProcessRunnerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-08-08T05:39:23Z",
+      "side": 1,
+      "message": "9",
+      "range": {
+        "startLine": 2,
+        "startChar": 16,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "0aa566639422e9a18c7b4e602ad718a79ae20177",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
