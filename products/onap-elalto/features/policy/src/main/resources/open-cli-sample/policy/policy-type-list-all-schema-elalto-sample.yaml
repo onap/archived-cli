@@ -1,0 +1,291 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: policy-type-list-all
+version: onap-elalto
+samples:
+  sample1:
+    name: policy-type-list-all
+    input: -m https://172.16.0.82:6969 -u healthcheck -p zb!XztG34
+    moco: policy-type-list-all-schema-elalto-moco.json
+    output: |
+      +----------------------------------------------------+
+      |Type properties                                     |
+      +----------------------------------------------------+
+      |tosca_simple_yaml_1_0_0                             |
+      +----------------------------------------------------+
+      |[{"onap.policies.Monitoring":{"properties":{},"nam  |
+      |e":"onap.policies.Monitoring","version":"1.0.0","d  |
+      |erived_from":"tosca.policies.Root:0.0.0","metadata  |
+      |":{},"description":"a base policy type for all      |
+      |policies that govern monitoring provision"},"onap.  |
+      |policies.Optimization":{"properties":{},"name":"on  |
+      |ap.policies.Optimization","version":"1.0.0","deriv  |
+      |ed_from":"tosca.policies.Root:0.0.0","metadata":{}  |
+      |,"description":"a base policy type for all          |
+      |policies that govern optimization"},"onap.policies  |
+      |.controlloop.Guard":{"properties":{},"name":"onap.  |
+      |policies.controlloop.Guard","version":"1.0.0","der  |
+      |ived_from":"tosca.policies.Root:0.0.0","metadata":  |
+      |{},"description":"Guard Policies for Control Loop   |
+      |Operational Policies"},"onap.policies.controlloop.  |
+      |Operational":{"properties":{},"name":"onap.policie  |
+      |s.controlloop.Operational","version":"1.0.0","deri  |
+      |ved_from":"tosca.policies.Root:0.0.0","metadata":{  |
+      |},"description":"Operational Policy for Control Lo  |
+      |ops"},"onap.policies.controlloop.guard.Blacklist":  |
+      |{"properties":{"blacklist_policy":{"name":"blackli  |
+      |st_policy","type":"map","typeVersion":"0.0.0","req  |
+      |uired":false,"entry_schema":{"type":"onap.datatype  |
+      |s.guard.Blacklist","typeVersion":"0.0.0"}}},"name"  |
+      |:"onap.policies.controlloop.guard.Blacklist","vers  |
+      |ion":"1.0.0","derived_from":"onap.policies.control  |
+      |loop.Guard:0.0.0","metadata":{},"description":"Sup  |
+      |ports blacklist of VNF's from performing control    |
+      |loop actions on."},"onap.policies.controlloop.guar  |
+      |d.FrequencyLimiter":{"properties":{"frequency_poli  |
+      |cy":{"name":"frequency_policy","type":"map","typeV  |
+      |ersion":"0.0.0","required":false,"entry_schema":{"  |
+      |type":"onap.datatypes.guard.FrequencyLimiter","typ  |
+      |eVersion":"0.0.0"}}},"name":"onap.policies.control  |
+      |loop.guard.FrequencyLimiter","version":"1.0.0","de  |
+      |rived_from":"onap.policies.controlloop.Guard:0.0.0  |
+      |","metadata":{},"description":"Supports limiting    |
+      |the frequency of actions being taken by a Actor."}  |
+      |,"onap.policies.controlloop.guard.MinMax":{"proper  |
+      |ties":{"minmax_policy":{"name":"minmax_policy","ty  |
+      |pe":"map","typeVersion":"0.0.0","required":false,"  |
+      |entry_schema":{"type":"onap.datatypes.guard.MinMax  |
+      |","typeVersion":"0.0.0"}}},"name":"onap.policies.c  |
+      |ontrolloop.guard.MinMax","version":"1.0.0","derive  |
+      |d_from":"onap.policies.controlloop.Guard:0.0.0","m  |
+      |etadata":{},"description":"Supports Min\/Max        |
+      |number of VF Modules"},"onap.policies.monitoring.c  |
+      |dap.tca.hi.lo.app":{"properties":{"tca_policy":{"n  |
+      |ame":"tca_policy","type":"map","typeVersion":"0.0.  |
+      |0","description":"TCA Policy JSON","required":fals  |
+      |e,"entry_schema":{"type":"onap.datatypes.monitorin  |
+      |g.tca_policy","typeVersion":"0.0.0"}}},"name":"ona  |
+      |p.policies.monitoring.cdap.tca.hi.lo.app","version  |
+      |":"1.0.0","derived_from":"onap.policies.Monitoring  |
+      |:0.0.0","metadata":{}},"onap.policies.monitoring.d  |
+      |caegen2.collectors.datafile.datafile-app-server":{  |
+      |"properties":{"datafile.policy":{"name":"datafile.  |
+      |policy","type":"string","typeVersion":"0.0.0","des  |
+      |cription":"datafile Policy JSON as string","requir  |
+      |ed":false},"buscontroller_feed_publishing_endpoint  |
+      |":{"name":"buscontroller_feed_publishing_endpoint"  |
+      |,"type":"string","typeVersion":"0.0.0","descriptio  |
+      |n":"DMAAP Bus Controller feed endpoint","required"  |
+      |:false}},"name":"onap.policies.monitoring.dcaegen2  |
+      |.collectors.datafile.datafile-app-server","version  |
+      |":"1.0.0","derived_from":"policy.nodes.Root:0.0.0"  |
+      |,"metadata":{}},"onap.policies.optimization.Affini  |
+      |tyPolicy":{"properties":{"identity":{"name":"ident  |
+      |ity","type":"string","typeVersion":"0.0.0","requir  |
+      |ed":true},"policyScope":{"name":"policyScope","typ  |
+      |e":"list","typeVersion":"0.0.0","description":"sco  |
+      |pe where the policy is applicable","required":true  |
+      |,"entry_schema":{"type":"string","typeVersion":"0.  |
+      |0.0"}},"affinityProperties":{"name":"affinityPrope  |
+      |rties","type":"policy.data.affinityProperties_prop  |
+      |erties","typeVersion":"0.0.0","required":true},"re  |
+      |sources":{"name":"resources","type":"list","typeVe  |
+      |rsion":"0.0.0","required":true,"entry_schema":{"ty  |
+      |pe":"string","typeVersion":"0.0.0"}},"applicableRe  |
+      |sources":{"name":"applicableResources","type":"lis  |
+      |t","typeVersion":"0.0.0","required":true,"entry_sc  |
+      |hema":{"type":"string","typeVersion":"0.0.0","cons  |
+      |traints":[{"valid_values":["any","all"]}]}},"polic  |
+      |yType":{"name":"policyType","type":"list","typeVer  |
+      |sion":"0.0.0","description":"type of a policy","re  |
+      |quired":true,"entry_schema":{"type":"string","type  |
+      |Version":"0.0.0","constraints":[{"valid_values":["  |
+      |zone"]}]}}},"name":"onap.policies.optimization.Aff  |
+      |inityPolicy","version":"1.0.0","derived_from":"ona  |
+      |p.policies.Optimization:0.0.0","metadata":{}},"ona  |
+      |p.policies.optimization.DistancePolicy":{"properti  |
+      |es":{"identity":{"name":"identity","type":"string"  |
+      |,"typeVersion":"0.0.0","required":true},"policySco  |
+      |pe":{"name":"policyScope","type":"list","typeVersi  |
+      |on":"0.0.0","description":"scope where the policy   |
+      |is applicable","required":true,"entry_schema":{"ty  |
+      |pe":"string","typeVersion":"0.0.0"}},"distanceProp  |
+      |erties":{"name":"distanceProperties","type":"polic  |
+      |y.data.distanceProperties_properties","typeVersion  |
+      |":"0.0.0","required":true},"applicableResources":{  |
+      |"name":"applicableResources","type":"list","typeVe  |
+      |rsion":"0.0.0","required":true,"entry_schema":{"ty  |
+      |pe":"string","typeVersion":"0.0.0","constraints":[  |
+      |{"valid_values":["any","all"]}]}},"policyType":{"n  |
+      |ame":"policyType","type":"list","typeVersion":"0.0  |
+      |.0","description":"type of a policy","required":tr  |
+      |ue,"entry_schema":{"type":"string","typeVersion":"  |
+      |0.0.0","constraints":[{"valid_values":["distance_t  |
+      |o_location"]}]}},"resources":{"name":"resources","  |
+      |type":"list","typeVersion":"0.0.0","required":true  |
+      |,"entry_schema":{"type":"string","typeVersion":"0.  |
+      |0.0"}}},"name":"onap.policies.optimization.Distanc  |
+      |ePolicy","version":"1.0.0","derived_from":"onap.po  |
+      |licies.Optimization:0.0.0","metadata":{}},"onap.po  |
+      |licies.optimization.HpaPolicy":{"properties":{"pol  |
+      |icyType":{"name":"policyType","type":"list","typeV  |
+      |ersion":"0.0.0","description":"type of a policy","  |
+      |required":true,"entry_schema":{"type":"string","ty  |
+      |peVersion":"0.0.0","constraints":[{"valid_values":  |
+      |["hpa"]}]}},"identity":{"name":"identity","type":"  |
+      |string","typeVersion":"0.0.0","required":true},"fl  |
+      |avorFeatures":{"name":"flavorFeatures","type":"lis  |
+      |t","typeVersion":"0.0.0","required":true,"entry_sc  |
+      |hema":{"type":"policy.data.flavorFeatures_properti  |
+      |es","typeVersion":"0.0.0"}},"policyScope":{"name":  |
+      |"policyScope","type":"list","typeVersion":"0.0.0",  |
+      |"description":"scope where the policy is applicabl  |
+      |e","required":true,"entry_schema":{"type":"string"  |
+      |,"typeVersion":"0.0.0"}},"resources":{"name":"reso  |
+      |urces","type":"list","typeVersion":"0.0.0","requir  |
+      |ed":true,"entry_schema":{"type":"string","typeVers  |
+      |ion":"0.0.0"}}},"name":"onap.policies.optimization  |
+      |.HpaPolicy","version":"1.0.0","derived_from":"onap  |
+      |.policies.Optimization:0.0.0","metadata":{}},"onap  |
+      |.policies.optimization.OptimizationPolicy":{"prope  |
+      |rties":{"policyType":{"name":"policyType","type":"  |
+      |list","typeVersion":"0.0.0","description":"type     |
+      |of a policy","required":true,"entry_schema":{"type  |
+      |":"string","typeVersion":"0.0.0","constraints":[{"  |
+      |valid_values":["placement_optimization"]}]}},"obje  |
+      |ctiveParameter":{"name":"objectiveParameter","type  |
+      |":"policy.data.objectiveParameter_properties","typ  |
+      |eVersion":"0.0.0","required":true},"identity":{"na  |
+      |me":"identity","type":"string","typeVersion":"0.0.  |
+      |0","required":true},"objective":{"name":"objective  |
+      |","type":"list","typeVersion":"0.0.0","required":t  |
+      |rue,"entry_schema":{"type":"string","typeVersion":  |
+      |"0.0.0","constraints":[{"valid_values":["minimize"  |
+      |,"maximize"]}]}},"policyScope":{"name":"policyScop  |
+      |e","type":"list","typeVersion":"0.0.0","descriptio  |
+      |n":"scope where the policy is applicable","require  |
+      |d":true,"entry_schema":{"type":"string","typeVersi  |
+      |on":"0.0.0"}}},"name":"onap.policies.optimization.  |
+      |OptimizationPolicy","version":"1.0.0","derived_fro  |
+      |m":"onap.policies.Optimization:0.0.0","metadata":{  |
+      |}},"onap.policies.optimization.PciPolicy":{"proper  |
+      |ties":{"policyType":{"name":"policyType","type":"l  |
+      |ist","typeVersion":"0.0.0","description":"type of   |
+      |a policy","required":true,"entry_schema":{"type":"  |
+      |string","typeVersion":"0.0.0","constraints":[{"val  |
+      |id_values":["pciPolicy"]}]}},"identity":{"name":"i  |
+      |dentity","type":"string","typeVersion":"0.0.0","re  |
+      |quired":true},"pciProperties":{"name":"pciProperti  |
+      |es","type":"list","typeVersion":"0.0.0","required"  |
+      |:false,"entry_schema":{"type":"policy.data.pciProp  |
+      |erties_properties","typeVersion":"0.0.0"}},"policy  |
+      |Scope":{"name":"policyScope","type":"list","typeVe  |
+      |rsion":"0.0.0","description":"scope where the       |
+      |policy is applicable","required":true,"entry_schem  |
+      |a":{"type":"string","typeVersion":"0.0.0"}},"resou  |
+      |rces":{"name":"resources","type":"list","typeVersi  |
+      |on":"0.0.0","required":true,"entry_schema":{"type"  |
+      |:"string","typeVersion":"0.0.0"}}},"name":"onap.po  |
+      |licies.optimization.PciPolicy","version":"1.0.0","  |
+      |derived_from":"onap.policies.Optimization:0.0.0","  |
+      |metadata":{}},"onap.policies.optimization.QueryPol  |
+      |icy":{"properties":{"policyScope":{"name":"policyS  |
+      |cope","type":"list","typeVersion":"0.0.0","descrip  |
+      |tion":"scope where the policy is applicable","requ  |
+      |ired":true,"entry_schema":{"type":"string","typeVe  |
+      |rsion":"0.0.0"}},"identity":{"name":"identity","ty  |
+      |pe":"string","typeVersion":"0.0.0","required":true  |
+      |},"queryProperties":{"name":"queryProperties","typ  |
+      |e":"list","typeVersion":"0.0.0","required":true,"e  |
+      |ntry_schema":{"type":"policy.data.queryProperties_  |
+      |properties","typeVersion":"0.0.0"}},"policyType":{  |
+      |"name":"policyType","type":"list","typeVersion":"0  |
+      |.0.0","description":"type of a policy","required":  |
+      |true,"entry_schema":{"type":"string","typeVersion"  |
+      |:"0.0.0","constraints":[{"valid_values":["request_  |
+      |param_query"]}]}}},"name":"onap.policies.optimizat  |
+      |ion.QueryPolicy","version":"1.0.0","derived_from":  |
+      |"onap.policies.Optimization:0.0.0","metadata":{}},  |
+      |"onap.policies.optimization.SubscriberPolicy":{"pr  |
+      |operties":{"policyScope":{"name":"policyScope","ty  |
+      |pe":"list","typeVersion":"0.0.0","description":"sc  |
+      |ope where the policy is applicable","required":tru  |
+      |e,"entry_schema":{"type":"string","typeVersion":"0  |
+      |.0.0"}},"properties":{"name":"properties","type":"  |
+      |policy.data.properties_properties","typeVersion":"  |
+      |0.0.0","required":true},"identity":{"name":"identi  |
+      |ty","type":"string","typeVersion":"0.0.0","require  |
+      |d":true},"policyType":{"name":"policyType","type":  |
+      |"list","typeVersion":"0.0.0","description":"type    |
+      |of a policy","required":true,"entry_schema":{"type  |
+      |":"string","typeVersion":"0.0.0","constraints":[{"  |
+      |valid_values":["subscriberPolicy"]}]}}},"name":"on  |
+      |ap.policies.optimization.SubscriberPolicy","versio  |
+      |n":"1.0.0","derived_from":"onap.policies.Optimizat  |
+      |ion:0.0.0","metadata":{}},"onap.policies.optimizat  |
+      |ion.Vim_fit":{"properties":{"identity":{"name":"id  |
+      |entity","type":"string","typeVersion":"0.0.0","req  |
+      |uired":true},"policyScope":{"name":"policyScope","  |
+      |type":"list","typeVersion":"0.0.0","description":"  |
+      |scope where the policy is applicable","required":t  |
+      |rue,"entry_schema":{"type":"string","typeVersion":  |
+      |"0.0.0"}},"resources":{"name":"resources","type":"  |
+      |list","typeVersion":"0.0.0","required":true,"entry  |
+      |_schema":{"type":"string","typeVersion":"0.0.0"}},  |
+      |"capacityProperties":{"name":"capacityProperties",  |
+      |"type":"policy.data.capacityProperties_properties"  |
+      |,"typeVersion":"0.0.0","required":true},"applicabl  |
+      |eResources":{"name":"applicableResources","type":"  |
+      |list","typeVersion":"0.0.0","required":true,"entry  |
+      |_schema":{"type":"string","typeVersion":"0.0.0","c  |
+      |onstraints":[{"valid_values":["any","all"]}]}},"po  |
+      |licyType":{"name":"policyType","type":"list","type  |
+      |Version":"0.0.0","description":"type of a policy",  |
+      |"required":true,"entry_schema":{"type":"string","t  |
+      |ypeVersion":"0.0.0","constraints":[{"valid_values"  |
+      |:["vim_fit"]}]}}},"name":"onap.policies.optimizati  |
+      |on.Vim_fit","version":"1.0.0","derived_from":"onap  |
+      |.policies.Optimization:0.0.0","metadata":{}},"onap  |
+      |.policies.optimization.VnfPolicy":{"properties":{"  |
+      |identity":{"name":"identity","type":"string","type  |
+      |Version":"0.0.0","required":true},"policyScope":{"  |
+      |name":"policyScope","type":"list","typeVersion":"0  |
+      |.0.0","description":"scope where the policy is app  |
+      |licable","required":true,"entry_schema":{"type":"s  |
+      |tring","typeVersion":"0.0.0"}},"vnfProperties":{"n  |
+      |ame":"vnfProperties","type":"list","typeVersion":"  |
+      |0.0.0","required":true,"entry_schema":{"type":"pol  |
+      |icy.data.vnfProperties_properties","typeVersion":"  |
+      |0.0.0"}},"applicableResources":{"name":"applicable  |
+      |Resources","type":"list","typeVersion":"0.0.0","re  |
+      |quired":true,"entry_schema":{"type":"string","type  |
+      |Version":"0.0.0","constraints":[{"valid_values":["  |
+      |any","all"]}]}},"policyType":{"name":"policyType",  |
+      |"type":"list","typeVersion":"0.0.0","description":  |
+      |"type of a policy","required":true,"entry_schema":  |
+      |{"type":"string","typeVersion":"0.0.0","constraint  |
+      |s":[{"valid_values":["vnfPolicy"]}]}},"resources":  |
+      |{"name":"resources","type":"list","typeVersion":"0  |
+      |.0.0","required":true,"entry_schema":{"type":"stri  |
+      |ng","typeVersion":"0.0.0"}}},"name":"onap.policies  |
+      |.optimization.VnfPolicy","version":"1.0.0","derive  |
+      |d_from":"onap.policies.Optimization:0.0.0","metada  |
+      |ta":{}}}]                                           |
+      +----------------------------------------------------+
+      |ToscaServiceTemplateSimple                          |
+      +----------------------------------------------------+
+      |1.0.0                                               |
+      +----------------------------------------------------+

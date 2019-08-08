@@ -1,0 +1,700 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/policy/api/v1/policytypes",
+    "headers" : {
+      "Authorization" : "Basic aGVhbHRoY2hlY2s6emIhWHp0RzM0",
+      "Accept" : "application/json",
+      "Environment" : "TEST",
+      "ClientAuth" : "cHl0aG9uOnRlc3Q=",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "tosca_definitions_version" : "tosca_simple_yaml_1_0_0",
+      "policy_types" : [ {
+        "onap.policies.Monitoring" : {
+          "properties" : { },
+          "name" : "onap.policies.Monitoring",
+          "version" : "1.0.0",
+          "derived_from" : "tosca.policies.Root:0.0.0",
+          "metadata" : { },
+          "description" : "a base policy type for all policies that govern monitoring provision"
+        },
+        "onap.policies.Optimization" : {
+          "properties" : { },
+          "name" : "onap.policies.Optimization",
+          "version" : "1.0.0",
+          "derived_from" : "tosca.policies.Root:0.0.0",
+          "metadata" : { },
+          "description" : "a base policy type for all policies that govern optimization"
+        },
+        "onap.policies.controlloop.Guard" : {
+          "properties" : { },
+          "name" : "onap.policies.controlloop.Guard",
+          "version" : "1.0.0",
+          "derived_from" : "tosca.policies.Root:0.0.0",
+          "metadata" : { },
+          "description" : "Guard Policies for Control Loop Operational Policies"
+        },
+        "onap.policies.controlloop.Operational" : {
+          "properties" : { },
+          "name" : "onap.policies.controlloop.Operational",
+          "version" : "1.0.0",
+          "derived_from" : "tosca.policies.Root:0.0.0",
+          "metadata" : { },
+          "description" : "Operational Policy for Control Loops"
+        },
+        "onap.policies.controlloop.guard.Blacklist" : {
+          "properties" : {
+            "blacklist_policy" : {
+              "name" : "blacklist_policy",
+              "type" : "map",
+              "typeVersion" : "0.0.0",
+              "required" : false,
+              "entry_schema" : {
+                "type" : "onap.datatypes.guard.Blacklist",
+                "typeVersion" : "0.0.0"
+              }
+            }
+          },
+          "name" : "onap.policies.controlloop.guard.Blacklist",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.controlloop.Guard:0.0.0",
+          "metadata" : { },
+          "description" : "Supports blacklist of VNF's from performing control loop actions on."
+        },
+        "onap.policies.controlloop.guard.FrequencyLimiter" : {
+          "properties" : {
+            "frequency_policy" : {
+              "name" : "frequency_policy",
+              "type" : "map",
+              "typeVersion" : "0.0.0",
+              "required" : false,
+              "entry_schema" : {
+                "type" : "onap.datatypes.guard.FrequencyLimiter",
+                "typeVersion" : "0.0.0"
+              }
+            }
+          },
+          "name" : "onap.policies.controlloop.guard.FrequencyLimiter",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.controlloop.Guard:0.0.0",
+          "metadata" : { },
+          "description" : "Supports limiting the frequency of actions being taken by a Actor."
+        },
+        "onap.policies.controlloop.guard.MinMax" : {
+          "properties" : {
+            "minmax_policy" : {
+              "name" : "minmax_policy",
+              "type" : "map",
+              "typeVersion" : "0.0.0",
+              "required" : false,
+              "entry_schema" : {
+                "type" : "onap.datatypes.guard.MinMax",
+                "typeVersion" : "0.0.0"
+              }
+            }
+          },
+          "name" : "onap.policies.controlloop.guard.MinMax",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.controlloop.Guard:0.0.0",
+          "metadata" : { },
+          "description" : "Supports Min/Max number of VF Modules"
+        },
+        "onap.policies.monitoring.cdap.tca.hi.lo.app" : {
+          "properties" : {
+            "tca_policy" : {
+              "name" : "tca_policy",
+              "type" : "map",
+              "typeVersion" : "0.0.0",
+              "description" : "TCA Policy JSON",
+              "required" : false,
+              "entry_schema" : {
+                "type" : "onap.datatypes.monitoring.tca_policy",
+                "typeVersion" : "0.0.0"
+              }
+            }
+          },
+          "name" : "onap.policies.monitoring.cdap.tca.hi.lo.app",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Monitoring:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server" : {
+          "properties" : {
+            "datafile.policy" : {
+              "name" : "datafile.policy",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "description" : "datafile Policy JSON as string",
+              "required" : false
+            },
+            "buscontroller_feed_publishing_endpoint" : {
+              "name" : "buscontroller_feed_publishing_endpoint",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "description" : "DMAAP Bus Controller feed endpoint",
+              "required" : false
+            }
+          },
+          "name" : "onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server",
+          "version" : "1.0.0",
+          "derived_from" : "policy.nodes.Root:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.optimization.AffinityPolicy" : {
+          "properties" : {
+            "identity" : {
+              "name" : "identity",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "policyScope" : {
+              "name" : "policyScope",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "scope where the policy is applicable",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "affinityProperties" : {
+              "name" : "affinityProperties",
+              "type" : "policy.data.affinityProperties_properties",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "resources" : {
+              "name" : "resources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "applicableResources" : {
+              "name" : "applicableResources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "any", "all" ]
+                } ]
+              }
+            },
+            "policyType" : {
+              "name" : "policyType",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "type of a policy",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "zone" ]
+                } ]
+              }
+            }
+          },
+          "name" : "onap.policies.optimization.AffinityPolicy",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Optimization:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.optimization.DistancePolicy" : {
+          "properties" : {
+            "identity" : {
+              "name" : "identity",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "policyScope" : {
+              "name" : "policyScope",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "scope where the policy is applicable",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "distanceProperties" : {
+              "name" : "distanceProperties",
+              "type" : "policy.data.distanceProperties_properties",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "applicableResources" : {
+              "name" : "applicableResources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "any", "all" ]
+                } ]
+              }
+            },
+            "policyType" : {
+              "name" : "policyType",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "type of a policy",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "distance_to_location" ]
+                } ]
+              }
+            },
+            "resources" : {
+              "name" : "resources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            }
+          },
+          "name" : "onap.policies.optimization.DistancePolicy",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Optimization:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.optimization.HpaPolicy" : {
+          "properties" : {
+            "policyType" : {
+              "name" : "policyType",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "type of a policy",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "hpa" ]
+                } ]
+              }
+            },
+            "identity" : {
+              "name" : "identity",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "flavorFeatures" : {
+              "name" : "flavorFeatures",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "policy.data.flavorFeatures_properties",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "policyScope" : {
+              "name" : "policyScope",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "scope where the policy is applicable",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "resources" : {
+              "name" : "resources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            }
+          },
+          "name" : "onap.policies.optimization.HpaPolicy",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Optimization:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.optimization.OptimizationPolicy" : {
+          "properties" : {
+            "policyType" : {
+              "name" : "policyType",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "type of a policy",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "placement_optimization" ]
+                } ]
+              }
+            },
+            "objectiveParameter" : {
+              "name" : "objectiveParameter",
+              "type" : "policy.data.objectiveParameter_properties",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "identity" : {
+              "name" : "identity",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "objective" : {
+              "name" : "objective",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "minimize", "maximize" ]
+                } ]
+              }
+            },
+            "policyScope" : {
+              "name" : "policyScope",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "scope where the policy is applicable",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            }
+          },
+          "name" : "onap.policies.optimization.OptimizationPolicy",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Optimization:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.optimization.PciPolicy" : {
+          "properties" : {
+            "policyType" : {
+              "name" : "policyType",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "type of a policy",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "pciPolicy" ]
+                } ]
+              }
+            },
+            "identity" : {
+              "name" : "identity",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "pciProperties" : {
+              "name" : "pciProperties",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : false,
+              "entry_schema" : {
+                "type" : "policy.data.pciProperties_properties",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "policyScope" : {
+              "name" : "policyScope",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "scope where the policy is applicable",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "resources" : {
+              "name" : "resources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            }
+          },
+          "name" : "onap.policies.optimization.PciPolicy",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Optimization:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.optimization.QueryPolicy" : {
+          "properties" : {
+            "policyScope" : {
+              "name" : "policyScope",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "scope where the policy is applicable",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "identity" : {
+              "name" : "identity",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "queryProperties" : {
+              "name" : "queryProperties",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "policy.data.queryProperties_properties",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "policyType" : {
+              "name" : "policyType",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "type of a policy",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "request_param_query" ]
+                } ]
+              }
+            }
+          },
+          "name" : "onap.policies.optimization.QueryPolicy",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Optimization:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.optimization.SubscriberPolicy" : {
+          "properties" : {
+            "policyScope" : {
+              "name" : "policyScope",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "scope where the policy is applicable",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "properties" : {
+              "name" : "properties",
+              "type" : "policy.data.properties_properties",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "identity" : {
+              "name" : "identity",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "policyType" : {
+              "name" : "policyType",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "type of a policy",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "subscriberPolicy" ]
+                } ]
+              }
+            }
+          },
+          "name" : "onap.policies.optimization.SubscriberPolicy",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Optimization:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.optimization.Vim_fit" : {
+          "properties" : {
+            "identity" : {
+              "name" : "identity",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "policyScope" : {
+              "name" : "policyScope",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "scope where the policy is applicable",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "resources" : {
+              "name" : "resources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "capacityProperties" : {
+              "name" : "capacityProperties",
+              "type" : "policy.data.capacityProperties_properties",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "applicableResources" : {
+              "name" : "applicableResources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "any", "all" ]
+                } ]
+              }
+            },
+            "policyType" : {
+              "name" : "policyType",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "type of a policy",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "vim_fit" ]
+                } ]
+              }
+            }
+          },
+          "name" : "onap.policies.optimization.Vim_fit",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Optimization:0.0.0",
+          "metadata" : { }
+        },
+        "onap.policies.optimization.VnfPolicy" : {
+          "properties" : {
+            "identity" : {
+              "name" : "identity",
+              "type" : "string",
+              "typeVersion" : "0.0.0",
+              "required" : true
+            },
+            "policyScope" : {
+              "name" : "policyScope",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "scope where the policy is applicable",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "vnfProperties" : {
+              "name" : "vnfProperties",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "policy.data.vnfProperties_properties",
+                "typeVersion" : "0.0.0"
+              }
+            },
+            "applicableResources" : {
+              "name" : "applicableResources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "any", "all" ]
+                } ]
+              }
+            },
+            "policyType" : {
+              "name" : "policyType",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "description" : "type of a policy",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0",
+                "constraints" : [ {
+                  "valid_values" : [ "vnfPolicy" ]
+                } ]
+              }
+            },
+            "resources" : {
+              "name" : "resources",
+              "type" : "list",
+              "typeVersion" : "0.0.0",
+              "required" : true,
+              "entry_schema" : {
+                "type" : "string",
+                "typeVersion" : "0.0.0"
+              }
+            }
+          },
+          "name" : "onap.policies.optimization.VnfPolicy",
+          "version" : "1.0.0",
+          "derived_from" : "onap.policies.Optimization:0.0.0",
+          "metadata" : { }
+        }
+      } ],
+      "name" : "ToscaServiceTemplateSimple",
+      "version" : "1.0.0"
+    }
+  }
+} ]
