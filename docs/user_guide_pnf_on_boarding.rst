@@ -8,9 +8,9 @@
 Step to import VNF/PNF
 ==============================================
 
-This document describe how to insert existing PNF/VNF to AAI with CLI project.
+This document describes how to insert existing PNF/VNF to AAI with CLI project.
 
-The main step will include:
+Main steps:
 1. create customer and service instance in AAI. This step could be done by UUI or VID, OR user can insert customer/service instance node by CLI cmd.
 
 2. create PNF/VNF

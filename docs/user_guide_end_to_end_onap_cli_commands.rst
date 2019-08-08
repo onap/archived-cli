@@ -8,9 +8,9 @@
 End-to-End command guide for working with ONAP
 ==============================================
 
-This document demonstrate end to end working with ONAP using cli.
+This document demonstrates end to end working with ONAP using cli.
 
-In current state of ONAP, it is getting initialized by robot scritp (`demo.sh init`),
+Currently, in ONAP, it is getting initialized by robot script (`demo.sh init`),
 which requires programming knowledge to modify the scripts as per the requirement.
 Cli provides an interface to communicate with different services in ONAP and it can
 be used to configure ONAP as per requirement without any programming knowledge.
@@ -154,7 +154,7 @@ Run following command to create VSP.
 Add artifact to VSP
 -------------------
 
-This command will associate artifacts to VSP.
+This command associates artifacts to VSP.
 
 ::
 
