@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b87e9f9d_2252d0e1",
+        "filename": "products/onap-elalto/features/aai/src/main/resources/open-cli-schema/business/customer/customer-create-schema-elalto.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-08-08T11:50:12Z",
+      "side": 1,
+      "message": "update to correct one. thanks",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "ac9a231a71ca5e928c83c9855b54d737a3a97960",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
