@@ -23,7 +23,8 @@ import org.onap.cli.fw.store.OnapCommandExecutionStoreTest;
 
 import static org.junit.Assert.*;
 
-public class OnapCommandExceutionShowOutCommandTest {
+public class OnapCommandExceutionShowOutCommandTest 
+{
     static OnapCommandExecutionStoreTest executionStoreTest;
     @BeforeClass
     public static void setUp() throws Exception {
@@ -37,7 +38,8 @@ public class OnapCommandExceutionShowOutCommandTest {
         executionStoreTest.storeExectutionStartTest();
     }
     @Test
-    public void runTest() throws OnapCommandException {
+    public void runTest() throws OnapCommandException 
+    {
         OnapCommandExceutionShowOutCommand cmd=new OnapCommandExceutionShowOutCommand();
         cmd.initializeSchema("execution-show-out.yaml");
         cmd.getParametersMap().get("execution-id").setValue("requestId");
