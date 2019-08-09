@@ -14,16 +14,29 @@
  * limitations under the License.
  */
 package org.onap.cli.fw.cmd.execution;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandExecutionFailed;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
+import org.onap.cli.fw.store.OnapCommandExecutionStoreTest;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class OnapCommandExceutionShowCommandTest {
-
+@BeforeClass
+public static void setUp() throws Exception {
+    OnapCommandExecutionStoreTest executionStoreTest= new OnapCommandExecutionStoreTest();
+    executionStoreTest.setUp();
+    executionStoreTest.listExecutionsTest();
+    executionStoreTest.storeExectutionDebugTest();
+    executionStoreTest.storeExectutionEndTest();
+    executionStoreTest.storeExectutionOutputTest();
+    executionStoreTest.storeExectutionProgressTest();
+    executionStoreTest.storeExectutionStartTest();
+}
     @Test
     public void runTest() throws OnapCommandException {
         OnapCommandExceutionShowCommand cmd=new OnapCommandExceutionShowCommand();
@@ -31,9 +44,8 @@ public class OnapCommandExceutionShowCommandTest {
         cmd.getParametersMap().get("execution-id").setValue("requestId");
         cmd.getParametersMap().get("format").setValue("TEXT");
         cmd.execute();
-         List<OnapCommandResultAttribute> oclipCommandResultAttributes = cmd.getResult()
+        List<OnapCommandResultAttribute> oclipCommandResultAttributes = cmd.getResult()
                 .getRecords();
         assertTrue(oclipCommandResultAttributes.size() > 1);
     }
-
 }

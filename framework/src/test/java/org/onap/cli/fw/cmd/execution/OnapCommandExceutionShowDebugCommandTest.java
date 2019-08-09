@@ -13,14 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.onap.cli.fw.cmd.execution;
 
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.store.OnapCommandExecutionStoreTest;
+
 import static org.junit.Assert.*;
 
 public class OnapCommandExceutionShowDebugCommandTest {
+    public static void setUp() throws Exception {
+        OnapCommandExecutionStoreTest executionStoreTest= new OnapCommandExecutionStoreTest();
+        executionStoreTest.setUp();
+        executionStoreTest.listExecutionsTest();
+        executionStoreTest.storeExectutionDebugTest();
+        executionStoreTest.storeExectutionEndTest();
+        executionStoreTest.storeExectutionOutputTest();
+        executionStoreTest.storeExectutionProgressTest();
+        executionStoreTest.storeExectutionStartTest();
+    }
     @Test
     public void runTest() throws OnapCommandException {
         OnapCommandExceutionShowDebugCommand cmd=new OnapCommandExceutionShowDebugCommand();
