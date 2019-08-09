@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.onap.cli.fw.cmd.execution;
 
 import org.junit.Test;

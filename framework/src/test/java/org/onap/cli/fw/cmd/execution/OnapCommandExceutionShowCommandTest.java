@@ -31,8 +31,9 @@ public class OnapCommandExceutionShowCommandTest {
         cmd.getParametersMap().get("execution-id").setValue("requestId");
         cmd.getParametersMap().get("format").setValue("TEXT");
         cmd.execute();
-        List<OnapCommandResultAttribute> oclipCommandResultAttributes = cmd.getResult()
+         List<OnapCommandResultAttribute> oclipCommandResultAttributes = cmd.getResult()
                 .getRecords();
         assertTrue(oclipCommandResultAttributes.size() > 1);
     }
+
 }

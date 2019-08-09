@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.onap.cli.fw.store;
 
 import org.junit.Before;
@@ -34,8 +33,9 @@ public class OnapCommandExecutionStoreTest {
     }
     @Test
     public void storeExectutionStartTest(){
-        assertNotNull(executionStore.storeExectutionStart("requestId","product","service","cmd","profile","input"));
-    }
+        assertNotNull(executionStore.storeExectutionStart  ("requestId","product","service","cmd","profile","input"));
+    } 
+   
     @Test
     public void listExecutionsTest() throws OnapCommandExecutionFailed {
         Map<String,String> search=new HashMap<>();
