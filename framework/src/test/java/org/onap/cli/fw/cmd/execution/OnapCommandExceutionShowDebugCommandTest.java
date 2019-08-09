@@ -15,6 +15,7 @@
  */
 package org.onap.cli.fw.cmd.execution;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.store.OnapCommandExecutionStoreTest;
@@ -22,6 +23,7 @@ import org.onap.cli.fw.store.OnapCommandExecutionStoreTest;
 import static org.junit.Assert.*;
 
 public class OnapCommandExceutionShowDebugCommandTest {
+    @BeforeClass
     public static void setUp() throws Exception {
         OnapCommandExecutionStoreTest executionStoreTest= new OnapCommandExecutionStoreTest();
         executionStoreTest.setUp();
