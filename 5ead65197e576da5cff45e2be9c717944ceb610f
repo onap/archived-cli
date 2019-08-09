@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3240a86f_7094250d",
+        "filename": "framework/src/test/java/org/onap/cli/fw/cmd/execution/OnapCommandExceutionListCommandTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-08-09T12:25:42Z",
+      "side": 1,
+      "message": "improve it or remove it.",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "5ead65197e576da5cff45e2be9c717944ceb610f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
