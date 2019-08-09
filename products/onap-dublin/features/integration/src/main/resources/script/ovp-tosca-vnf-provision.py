@@ -435,7 +435,11 @@ vnf_csar = args.vnf_csar
 ns_csar = args.ns_csar
 vnfm_driver = args.vnfm_driver
 result_json_path = args.result_json_path
-request_id = args.request_id
+
+if args.request_id is None:
+    request_id = os.environ["OPEN_CLI_REQUEST_ID"]
+else:
+    request_id = args.request_id
 
 # setup CLI
 parameters = get_parameters(config_file)

@@ -206,9 +206,9 @@ public class OpenCommandShellCmd extends OnapCommand {
                 pr.setStderr(stderrStream);
 
                 OnapCommandExecutionStore.getStore().storeExectutionDebug(this.getExecutionContext(), pr.toString());
-            } else {
-                this.getResult().setDebugInfo(pr.toString());
             }
+
+            this.getResult().setDebugInfo(pr.toString());
 
             pr.run();
         } catch (Exception e) {
