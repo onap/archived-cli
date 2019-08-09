@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "841a9a6a_194f4685",
+        "filename": "products/onap-elalto/features/aai/src/main/resources/open-cli-schema/esr/ems/ems-show-schema-elalto.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-08-09T12:27:55Z",
+      "side": 1,
+      "message": "portrait",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "fcea0ab22709d9cd401e68ef21fb701060e4ec87",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
