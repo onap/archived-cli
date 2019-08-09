@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c736882_f753433c",
+        "filename": "products/onap-elalto/features/multicloud/src/main/resources/open-cli-schema/multicloud-register-cloud-schema.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-08-09T09:07:05Z",
+      "side": 1,
+      "message": "9",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "99829808a558a8c2e8364d9df2cb1559c2a77475",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
