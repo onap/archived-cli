@@ -1,0 +1,60 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+
+name: sdnc-list
+
+description: List the configured sdnc
+
+
+info:
+  product: onap-elalto
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: landscape
+  attributes:
+    - name: sdnc-id
+      description: Onap sdnc id
+      scope: short
+      type: string
+    - name: resource-version
+      description: Onap sdnc resource version
+      scope: short
+      type: string
+    - name: location
+      description: Onap sdnc location
+      scope: short
+      type: string
+    - name: product-name
+      description: Onap sdnc product name
+      scope: short
+      type: string
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v16/external-system/esr-thirdparty-sdnc-list
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    sdnc-id: $b{$.esr-thirdparty-sdnc.[*].thirdparty-sdnc-id}
+    location: $b{$.esr-thirdparty-sdnc.[*].location}
+    product-name: $b{$.esr-thirdparty-sdnc.[*].product-name}
+    resource-version: $b{$.esr-thirdparty-sdnc.[*].resource-version}
+  
