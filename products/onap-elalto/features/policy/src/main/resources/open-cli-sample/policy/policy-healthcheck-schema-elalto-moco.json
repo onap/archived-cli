@@ -1,0 +1,24 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/policy/api/v1/healthcheck",
+    "headers" : {
+      "Authorization" : "Basic aGVhbHRoY2hlY2s6emIhWHp0RzM0",
+      "Accept" : "application/json",
+      "Environment" : "TEST",
+      "ClientAuth" : "cHl0aG9uOnRlc3Q=",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "name" : "Policy API",
+      "url" : "self",
+      "healthy" : true,
+      "code" : 200,
+      "message" : "alive"
+    }
+  }
+} ]
