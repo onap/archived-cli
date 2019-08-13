@@ -1,0 +1,60 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf-module-list
+description: List the VF module in a VNF instance
+
+info:
+  product: onap-elalto
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+   - name: vnf-id
+     description: id of vnf instance
+     type: string
+     short_option: x
+     long_option: vnf-id
+     is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: vf-module-name
+      description: Name of the vf-module
+      scope: short
+      type: string
+    - name: vf-module-id
+      description: Id of the vf-module
+      scope: short
+      type: string
+    - name: resource-version
+      description: resource version of the vf module
+      scope: short
+      type: string
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v16/network/generic-vnfs/generic-vnf/${vnf-id}/vf-modules
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    vf-module-name: $b{vf-module.[*].vf-module-name}
+    vf-module-id: $b{vf-module.[*].vf-module-id}
+    resource-version: $b{vf-module.[*].resource-version}
