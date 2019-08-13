@@ -1,0 +1,97 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: subscription-cloud-delete
+description: Delete a cloud region from a customer subscription
+
+info:
+  product: onap-elalto
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: customer-name
+    description: Onap customer name
+    type: string
+    short_option: x
+    long_option: customer-name
+    is_optional: false
+  - name: cloud-owner
+    description: Onap cloud owner name
+    type: string
+    short_option: z
+    long_option: cloud-owner
+    is_optional: false
+  - name: cloud-region
+    description: Onap cloud region
+    type: string
+    short_option: r
+    long_option: cloud-region
+    is_optional: false
+  - name: cloud-tenant-id
+    description: Onap cloud tenant id
+    type: string
+    short_option: c
+    long_option: cloud-tenant-id
+    is_optional: false
+  - name: service-type
+    description: Onap service type
+    type: string
+    short_option: e
+    long_option: service-type
+    is_optional: false
+  - name: tenant-name
+    description: name of tenant to use in the cloud region
+    type: string
+    short_option: y
+    long_option: tenant-name
+    is_optional: false
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v16/business/customers/customer/${customer-name}/service-subscriptions/service-subscription/${service-type}/relationship-list/relationship
+    method: DELETE
+    context:
+      remove_empty_node: true
+    body: '{
+                "related-to": "tenant",
+                "relationship-label": "org.onap.relationships.inventory.Uses",
+                "related-link": "/aai/v16/cloud-infrastructure/cloud-regions/cloud-region/${cloud-owner}/${cloud-region}/tenants/tenant/${cloud-tenant-id}",
+                "relationship-data": [
+                    {
+                        "relationship-key": "cloud-region.cloud-owner",
+                        "relationship-value": "${cloud-owner}"
+                    },
+                    {
+                        "relationship-key": "cloud-region.cloud-region-id",
+                        "relationship-value": "${cloud-region}"
+                    },
+                    {
+                        "relationship-key": "tenant.tenant-id",
+                        "relationship-value": "${cloud-tenant-id}"
+                    }
+                ],
+                "related-to-property": [
+                    {
+                        "property-key": "tenant.tenant-name",
+                        "property-value": "${tenant-name}"
+                    }
+                ]
+            }'
+  success_codes:
+    - 204
