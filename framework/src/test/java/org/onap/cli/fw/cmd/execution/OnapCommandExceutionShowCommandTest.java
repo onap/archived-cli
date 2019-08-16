@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package org.onap.cli.fw.cmd.execution;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -21,6 +22,7 @@ import org.onap.cli.fw.error.OnapCommandExecutionFailed;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.store.OnapCommandExecutionStoreTest;
 
+import java.io.File;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -30,14 +32,9 @@ public class OnapCommandExceutionShowCommandTest {
 public static void setUp() throws Exception {
     OnapCommandExecutionStoreTest executionStoreTest= new OnapCommandExecutionStoreTest();
     executionStoreTest.setUp();
-    executionStoreTest.listExecutionsTest();
-    executionStoreTest.storeExectutionDebugTest();
-    executionStoreTest.storeExectutionEndTest();
-    executionStoreTest.storeExectutionOutputTest();
-    executionStoreTest.storeExectutionProgressTest();
     executionStoreTest.storeExectutionStartTest();
 }
-    @Test
+   @Test
     public void runTest() throws OnapCommandException {
         OnapCommandExceutionShowCommand cmd=new OnapCommandExceutionShowCommand();
         cmd.initializeSchema("execution-show.yaml");
@@ -47,5 +44,13 @@ public static void setUp() throws Exception {
         List<OnapCommandResultAttribute> oclipCommandResultAttributes = cmd.getResult()
                 .getRecords();
         assertTrue(oclipCommandResultAttributes.size() > 1);
+    }
+
+
+    @AfterClass
+    public static void tearDown() throws Exception {
+        String dirPathForExecutions = System.getProperty("user.dir") + File.separator + "data/executions";
+        File executionsDir = new File(dirPathForExecutions);
+        assertTrue(OnapCommandExceutionListCommandTest.deleteDirectory(executionsDir));
     }
 }
