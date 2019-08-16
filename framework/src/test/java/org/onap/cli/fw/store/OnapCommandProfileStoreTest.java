@@ -15,11 +15,14 @@
  */
 package org.onap.cli.fw.store;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
+import org.onap.cli.fw.cmd.execution.OnapCommandExceutionListCommandTest;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandPersistProfileFailed;
 import org.onap.cli.fw.input.cache.OnapCommandParamEntity;
+import org.onap.cli.fw.utils.FileUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -29,39 +32,53 @@ import static org.junit.Assert.*;
 
 public class OnapCommandProfileStoreTest {
     OnapCommandProfileStore onapCommandProfileStore;
+
     @Before
     public void setUp() throws Exception {
-        onapCommandProfileStore=OnapCommandProfileStore.getInstance();
+        onapCommandProfileStore = OnapCommandProfileStore.getInstance();
     }
+
     @Test
     public void includeProfileTest() throws OnapCommandException {
         onapCommandProfileStore.includeProfile("profiles");
-        assertTrue(new File(System.getProperty("user.dir")+File.separator+"data/profiles").exists());
+        assertTrue(new File(System.getProperty("user.dir") + File.separator + "data/profiles").exists());
     }
+
     @Test
     public void persistProfileAndgetProfilesTest() throws OnapCommandPersistProfileFailed {
-        OnapCommandParamEntity onapCommandParamEntity=new OnapCommandParamEntity();
+        OnapCommandParamEntity onapCommandParamEntity = new OnapCommandParamEntity();
         onapCommandParamEntity.setName("schema-list");
         onapCommandParamEntity.setProduct("open-cli");
         onapCommandParamEntity.setValue("value");
-        List<OnapCommandParamEntity> paramEntityList=new ArrayList<>();
+        List<OnapCommandParamEntity> paramEntityList = new ArrayList<>();
         paramEntityList.add(onapCommandParamEntity);
-        onapCommandProfileStore.persistProfile(paramEntityList,"abc");
-        assertTrue(new File(System.getProperty("user.dir")+File.separator+"data/profiles/abc-profile.json").exists());
+        onapCommandProfileStore.persistProfile(paramEntityList, "abc");
+        assertTrue(new File(System.getProperty("user.dir") + File.separator + "data/profiles/abc-profile.json").exists());
         assertNotNull(onapCommandProfileStore.getProfiles());
     }
-    @Test
-    public void removeProfileTest(){
-        onapCommandProfileStore.removeProfile("abc");
-        assertFalse(new File(System.getProperty("user.dir")+File.separator+"data/profiles/abc-profile.json").exists());
-    }
-    @Test
-    public void addTest(){
-        onapCommandProfileStore.add("abc","abc","abc");
-    }
-@Test
-    public void getParamsTest(){
-        assertNotNull(onapCommandProfileStore.getParams("abc"));
-}
 
+    @Test
+    public void removeProfileTest() {
+        onapCommandProfileStore.removeProfile("abc");
+        assertFalse(new File(System.getProperty("user.dir") + File.separator + "data/profiles/abc-profile.json").exists());
+    }
+
+    @Test
+    public void addTest() {
+        onapCommandProfileStore.add("abc", "abc", "abc");
+    }
+
+    @Test
+    public void getParamsTest() {
+        assertNotNull(onapCommandProfileStore.getParams("abc"));
+    }
+
+
+
+    @AfterClass
+    public static void tearDown() throws Exception {
+        String dirPathForData = System.getProperty("user.dir") + File.separator + "data";
+        File dataDir = new File(dirPathForData);
+        assertTrue(OnapCommandExceutionListCommandTest.deleteDirectory(dataDir));
+    }
 }
