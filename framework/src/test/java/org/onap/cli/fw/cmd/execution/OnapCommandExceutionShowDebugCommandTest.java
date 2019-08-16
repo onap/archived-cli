@@ -15,10 +15,13 @@
  */
 package org.onap.cli.fw.cmd.execution;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.store.OnapCommandExecutionStoreTest;
+
+import java.io.File;
 
 import static org.junit.Assert.*;
 
@@ -27,14 +30,9 @@ public class OnapCommandExceutionShowDebugCommandTest {
     public static void setUp() throws Exception {
         OnapCommandExecutionStoreTest executionStoreTest= new OnapCommandExecutionStoreTest();
         executionStoreTest.setUp();
-        executionStoreTest.listExecutionsTest();
-        executionStoreTest.storeExectutionDebugTest();
-        executionStoreTest.storeExectutionEndTest();
-        executionStoreTest.storeExectutionOutputTest();
-        executionStoreTest.storeExectutionProgressTest();
         executionStoreTest.storeExectutionStartTest();
     }
-    @Test
+   @Test
     public void runTest() throws OnapCommandException {
         OnapCommandExceutionShowDebugCommand cmd=new OnapCommandExceutionShowDebugCommand();
         cmd.initializeSchema("execution-show-debug.yaml");
@@ -42,6 +40,13 @@ public class OnapCommandExceutionShowDebugCommandTest {
         cmd.execute();
         assertNotNull(cmd.getResult().getOutput());
 
+    }
+
+ @AfterClass
+    public static void tearDown() throws Exception {
+        String dirPathForExecutions = System.getProperty("user.dir") + File.separator + "data/executions";
+        File executionsDir = new File(dirPathForExecutions);
+        assertTrue(OnapCommandExceutionListCommandTest.deleteDirectory(executionsDir));
     }
 
 }
