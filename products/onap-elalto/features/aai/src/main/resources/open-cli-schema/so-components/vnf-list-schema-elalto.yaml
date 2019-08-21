@@ -1,0 +1,93 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vnf-list
+description: List all the generic vnfs
+
+info:
+  product: onap-elalto
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: landscape
+  attributes:
+    - name: vnf-name
+      description: Name of VNF
+      scope: short
+      type: string
+    - name: vnf-id
+      description: Id of VNF
+      scope: short
+      type: string
+    - name: vnf-type
+      description: Type of VNF (composed of the service model name and the vf model name)
+      scope: short
+      type: string
+    - name: resource-version
+      description: resource version of VNF
+      scope: short
+      type: string
+    - name: vf-model-version-id
+      description: Version Id of its VF model
+      scope: long
+      type: string
+    - name: vf-model-invariant-id
+      description: Invariant Id of its VF model
+      scope: long
+      type: string
+    - name: vf-model-customization-id
+      description: Customization Id of its VF model
+      scope: long
+      type: string
+    - name: service-instance-name
+      description: Name of its service instance
+      scope: short
+      type: string
+    - name: service-instance-id
+      description: Id of its service instance
+      scope: short
+      type: string
+    - name: service-type
+      description: subsription service type
+      scope: long
+      type: string
+    - name: customer-name
+      description: global customer id
+      scope: long
+      type: string
+
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v16/network/generic-vnfs/
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    vnf-name: $b{generic-vnf.[*].vnf-name}
+    vnf-id: $b{generic-vnf.[*].vnf-id}
+    vnf-type: $b{generic-vnf.[*].vnf-type}
+    resource-version: $b{generic-vnf.[*].resource-version}
+    service-instance-name: $b{generic-vnf.[*].relationship-list.relationship.[*].related-to-property.[?(@.property-key == 'service-instance.service-instance-name')].property-value}
+    service-instance-id: $b{generic-vnf.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'service-instance.service-instance-id')].relationship-value}
+    service-type: $b{generic-vnf.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'service-subscription.service-type')].relationship-value}
+    customer-name: $b{generic-vnf.[*].relationship-list.relationship.[*].relationship-data.[?(@.relationship-key == 'customer.global-customer-id')].relationship-value}
+    vf-model-version-id: $b{generic-vnf.[*].model-version-id}
+    vf-model-invariant-id: $b{generic-vnf.[*].model-invariant-id}
+    vf-model-customization-id: $b{generic-vnf.[*].model-customization-id}
