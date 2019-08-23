@@ -1,0 +1,38 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: policy-type-list-with-latest-version
+version: onap-elalto
+samples:
+  sample1:
+    name: policy-type-list-with-latest-version
+    input: --policy-type-id onap.policies.controlloop.Operational -m https://172.16.0.185:6969 -u healthcheck -p zb!XztG34
+    moco: policy-type-list-with-latest-version-schema-elalto-moco.json
+    output: |
+      +----------------------------------------------------+
+      |Type properties                                     |
+      +----------------------------------------------------+
+      |tosca_simple_yaml_1_0_0                             |
+      +----------------------------------------------------+
+      |[{"onap.policies.controlloop.Operational":{"proper  |
+      |ties":{},"name":"onap.policies.controlloop.Operati  |
+      |onal","version":"1.0.0","derived_from":"tosca.poli  |
+      |cies.Root:0.0.0","metadata":{},"description":"Oper  |
+      |ational Policy for Control Loops"}}]                |
+      +----------------------------------------------------+
+      |ToscaServiceTemplateSimple                          |
+      +----------------------------------------------------+
+      |1.0.0                                               |
+      +----------------------------------------------------+

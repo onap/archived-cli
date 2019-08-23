@@ -1,0 +1,32 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/policy/api/v1/policytypes/onap.policies.controlloop.Operational/versions/latest",
+    "headers" : {
+      "Authorization" : "Basic aGVhbHRoY2hlY2s6emIhWHp0RzM0",
+      "Accept" : "application/json",
+      "Environment" : "TEST",
+      "ClientAuth" : "cHl0aG9uOnRlc3Q=",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "tosca_definitions_version" : "tosca_simple_yaml_1_0_0",
+      "policy_types" : [ {
+        "onap.policies.controlloop.Operational" : {
+          "properties" : { },
+          "name" : "onap.policies.controlloop.Operational",
+          "version" : "1.0.0",
+          "derived_from" : "tosca.policies.Root:0.0.0",
+          "metadata" : { },
+          "description" : "Operational Policy for Control Loops"
+        }
+      } ],
+      "name" : "ToscaServiceTemplateSimple",
+      "version" : "1.0.0"
+    }
+  }
+} ]
