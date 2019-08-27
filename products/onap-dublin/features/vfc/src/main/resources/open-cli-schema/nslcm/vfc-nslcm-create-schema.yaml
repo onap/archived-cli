@@ -13,7 +13,7 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vfc-nslcm-create
+name: vfc-nslcm-create1
 description: vfc nslcm create ns
 
 info:
@@ -64,8 +64,15 @@ http:
     method: POST
     context:
       remove_empty_node: true
-      body: '{"context": {"globalCustomerId": ${customer-name}, "serviceType": ${service-type}},
-              "csarId": "${ns-csar-uuid}", "nsName": "${ns-csar-name}"}'
+    body: '{
+             "context": {
+               "globalCustomerId": "${customer-name}",
+               "serviceType": "${service-type}"
+             },
+             "csarId": "${ns-csar-uuid}",
+             "nsName": "${ns-csar-name}",
+             "description": "description"
+           }'
     headers:
       Content-Type: application/json
       Accept: application/json
