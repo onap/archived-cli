@@ -18,7 +18,7 @@ description: List the service model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
@@ -29,7 +29,7 @@ results:
       description: UUID
       type: string
       scope: short
-    - name: uniqueId
+    - name: id
       description: uniqueId
       type: string
       scope: short
@@ -71,7 +71,7 @@ http:
     - 200
   result_map:
     uuid: $b{services.[*].uuid}
-    uniqueId: $b{services.[*].uniqueId}
+    id: $b{services.[*].uniqueId}
     invariant-uuid: $b{services.[*].invariantUUID}
     version: $b{services.[*].version}
     name: $b{services.[*].name}
