@@ -18,7 +18,7 @@ description: List the VF resource model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
@@ -29,8 +29,8 @@ results:
       description: UUID
       type: string
       scope: short
-    - name: uniqueid
-      description: UUID
+    - name: id
+      description: id
       type: string
       scope: short
     - name: invariant-uuid
@@ -74,7 +74,7 @@ http:
     - 200
   result_map:
     uuid: $b{resources.[*].uuid}
-    uniqueid: $b{resources.[*].uniqueId}
+    id: $b{resources.[*].uniqueId}
     invariant-uuid: $b{resources.[*].invariantUUID}
     version: $b{resources.[*].version}
     name: $b{resources.[*].name}
