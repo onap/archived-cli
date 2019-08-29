@@ -18,7 +18,7 @@ description: Package Vendor Software Product
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.onboarding
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
