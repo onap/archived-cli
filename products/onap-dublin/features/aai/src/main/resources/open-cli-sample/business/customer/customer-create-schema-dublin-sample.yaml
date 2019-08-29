@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: customer-create
+version: onap-dublin
+samples:
+  sample1:
+    name: customer-create
+    input: --format json --customer-name ovp --subscriber-name ovp
+    moco: customer-create-schema-dublin-moco.json
+    output: |
+      [{}]

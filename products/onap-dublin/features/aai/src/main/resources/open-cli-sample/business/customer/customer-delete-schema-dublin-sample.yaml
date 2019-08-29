@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: customer-delete
+version: onap-dublin
+samples:
+  sample1:
+    name: customer-delete
+    input: --format json --customer-id ovp --resource-version 1567068664088
+    moco: customer-delete-schema-dublin-moco.json
+    output: |
+      [{}]

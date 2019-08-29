@@ -1,0 +1,30 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/business/customers",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-59c70d03-10ab-42a8-b6a7-65a0c85f22e4",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "customer" : [ {
+        "global-customer-id" : "Demonstration",
+        "subscriber-name" : "Demonstration",
+        "subscriber-type" : "INFRA",
+        "resource-version" : "1564139322133"
+      }, {
+        "global-customer-id" : "ovp",
+        "subscriber-name" : "ovp",
+        "subscriber-type" : "INFRA",
+        "resource-version" : "1567068664088"
+      } ]
+    }
+  }
+} ]

@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: customer-list
+version: onap-dublin
+samples:
+  sample1:
+    name: customer-list
+    input: --format json
+    moco: customer-list-schema-dublin-moco.json
+    output: |
+      [{"resource-version":"1564139322133","name":"Demonstration"},{"resource-version":"1567068664088","name":"ovp"}]

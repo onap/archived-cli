@@ -1,0 +1,22 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v13/business/customers/customer/ovp",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-7c0cea00-bd21-4560-b31e-c03c5ad3ffa3",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "global-customer-id" : "ovp",
+      "subscriber-name" : "ovp",
+      "subscriber-type" : "INFRA"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]
