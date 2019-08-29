@@ -18,24 +18,38 @@ description: Accepts the Service model test in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-model-id
+  - name: service-id
     description: Service model ID
     type: string
-    long_option: service-model-id
+    long_option: service-id
     short_option: b
     is_optional: false
-  - name: test-remark
+  - name: remarks
     description: Remarks when accepting test
     type: string
-    long_option: test-remark
+    long_option: remarks
     short_option: r
     is_optional: false
-
+results:
+  direction: portrait
+  attributes:
+    - name: id
+      description: NS checked out version unique ID
+      scope: short
+      type: string
+    - name: uuid
+      description: NS checked out version unique ID
+      scope: short
+      type: string
+    - name: version
+      description: VF version
+      scope: short
+      type: string
 http:
   service:
     name: sdc
@@ -43,8 +57,12 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-id}/lifecycleState/certify
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/lifecycleState/certify
     method: POST
-    body: '{"userRemarks": "${test-remark}"}'
+    body: '{"userRemarks": "${remarks}"}'
   success_codes:
     - 200
+  result_map:
+    id: $b{$.uniqueId}
+    version: $b{$.version}
+    uuid: $b{$.unid}

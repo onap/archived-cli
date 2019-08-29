@@ -1,40 +1,40 @@
 [ {
   "request" : {
     "method" : "post",
-    "uri" : "/sdc2/rest/v1/catalog/services/fb8ffb35-a8e3-493f-9b9b-b31321b68dfa/lifecycleState/certify",
+    "uri" : "/sdc2/rest/v1/catalog/services/58620731-40a9-4f8e-95db-ef9fc478a705/lifecycleState/certify",
     "headers" : {
       "Authorization" : "Basic am0wMDA3OmRlbW8xMjM0NTYh",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "jm0007",
-      "X-TransactionId" : "req-c6dc01f3-123a-4ec5-b800-6786b1900a2d",
+      "X-TransactionId" : "req-3a94168f-d5bf-4f7c-86a8-8e57fa3228bd",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "userRemarks" : "cli-tested"
+      "userRemarks" : "Created by Open Command Platform - OCOMP"
     }
   },
   "response" : {
     "status" : 200,
     "json" : {
-      "uniqueId" : "87d3570a-2d08-4b5a-bb51-c7744b32b8de",
-      "name" : "cli-service",
+      "uniqueId" : "402a8ba7-5425-4072-8d05-40d7acbb4411",
+      "name" : "vgwocompvtp Service",
       "version" : "1.0",
       "isHighestVersion" : true,
-      "creationDate" : 1553192910482,
-      "lastUpdateDate" : 1553194117643,
-      "description" : "create service model with cli",
+      "creationDate" : 1567068764463,
+      "lastUpdateDate" : 1567068805262,
+      "description" : "Created by Open Command Platform - OCOMP",
       "lifecycleState" : "CERTIFIED",
-      "tags" : [ "cli-service" ],
+      "tags" : [ "vgwocompvtp Service" ],
       "icon" : "defaulticon",
-      "normalizedName" : "cliservice",
-      "systemName" : "CliService",
+      "normalizedName" : "vgwocompvtpservice",
+      "systemName" : "VgwocompvtpService",
       "contactId" : "cs0008",
       "allVersions" : {
-        "1.0" : "87d3570a-2d08-4b5a-bb51-c7744b32b8de"
+        "1.0" : "402a8ba7-5425-4072-8d05-40d7acbb4411"
       },
-      "projectCode" : "000000",
-      "invariantUUID" : "4dd682d8-4c3c-4f6c-96b1-9e19eed5987c",
+      "projectCode" : "OCOMP",
+      "invariantUUID" : "1b6d7385-916d-4f96-aebd-f2cd03c59079",
       "componentType" : "SERVICE",
       "categories" : [ {
         "name" : "Network L1-3",
@@ -55,8 +55,8 @@
       "environmentContext" : "General_Revenue-Bearing",
       "instantiationType" : "A-la-carte",
       "vspArchived" : false,
-      "archived" : false,
-      "uuid" : "788289e1-161a-42b8-89ed-14adde63c600"
+      "uuid" : "ea98398d-1858-4a22-b227-74eb0e60df49",
+      "archived" : false
     }
   }
 } ]
