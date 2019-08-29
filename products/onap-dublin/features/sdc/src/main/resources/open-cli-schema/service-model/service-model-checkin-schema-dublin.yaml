@@ -18,14 +18,14 @@ description: Checkin Service model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
-  - name: service-model-uuid
-    description: Service model UUID (can be found by running service-model-list)
+  - name: service-id
+    description: Service model ID
     type: string
-    long_option: service-model-uuid
+    long_option: service-id
     short_option: b
     is_optional: false
   - name: remarks
@@ -34,7 +34,21 @@ parameters:
     long_option: remarks
     short_option: r
     is_optional: false
-  
+results:
+  direction: portrait
+  attributes:
+    - name: id
+      description: NS checked out version unique ID
+      scope: short
+      type: string
+    - name: uuid
+      description: NS checked out version unique ID
+      scope: short
+      type: string
+    - name: version
+      description: VF version
+      scope: short
+      type: string
 http:
   service:
     name: sdc
@@ -42,8 +56,12 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-uuid}/lifecycleState/CHECKIN
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/lifecycleState/CHECKIN
     method: POST
     body: '{"userRemarks": "${remarks}"}'
   success_codes:
     - 200
+  result_map:
+    id: $b{$.uniqueId}
+    version: $b{$.version}
+    uuid: $b{$.unid}
