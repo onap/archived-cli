@@ -1,29 +1,28 @@
 [ {
   "request" : {
     "method" : "post",
-    "uri" : "/onboarding-api/v1.0/vendor-license-models/6b33c26b3a924b2789fa17fabd4a292d/versions/2b683bedebeb4874a9c2a82939c77f0d/license-agreements",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/d572f583bf224b4c93b99105cd35b0a9/versions/496cc167b6cf44c3b7818c95a1d9e036/license-agreements",
     "headers" : {
       "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-43cc944d-8da7-41f3-95c7-59baf629cbd4",
+      "X-TransactionId" : "req-ea614e07-bd30-414b-aeaa-d0d517c0010d",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "addedFeatureGroupsIds" : [ "457e9905f32544cca5351e86cc2e7958" ],
-      "description" : "philip-aggrement",
+      "addedFeatureGroupsIds" : [ "880c355b9b374ec08db60906f86a7c15" ],
       "licenseTerm" : {
         "choice" : "Fixed_Term",
         "other" : ""
       },
-      "name" : "philip-agreement"
+      "name" : "ocompvtpvendor Agreement"
     }
   },
   "response" : {
     "status" : 200,
     "json" : {
-      "value" : "ad7e38cbd8d94b0a8705b58a461e6b70"
+      "value" : "d53857e1d3df472cadd3ac72dfd83a6f"
     }
   }
 } ]

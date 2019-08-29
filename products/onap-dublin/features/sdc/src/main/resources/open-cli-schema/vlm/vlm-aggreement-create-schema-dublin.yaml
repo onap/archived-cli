@@ -18,7 +18,7 @@ description: Create license aggreement
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.onboarding
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
@@ -40,12 +40,6 @@ parameters:
     short_option: e
     long_option: vlm-version
     is_optional: false
-  - name: description
-    description: Description for aggreement
-    type: string
-    short_option: z
-    long_option: description
-    is_optional: false
   - name: vlm-feature-group-id
     description: VLM feature group
     type: string
@@ -56,7 +50,7 @@ parameters:
 results:
   direction: portrait
   attributes:
-    - name: ID
+    - name: id
       description: aggreement ID
       scope: short
       type: string
@@ -69,10 +63,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/license-agreements
     method: POST
-    body: '{"addedFeatureGroupsIds": ["${vlm-feature-group-id}"], "description": "${description}", "licenseTerm": {"choice": "Fixed_Term", "other": ""}, "name": "${name}"}'
+    body: '{"addedFeatureGroupsIds": ["${vlm-feature-group-id}"], "licenseTerm": {"choice": "Fixed_Term", "other": ""}, "name": "${name}"}'
   success_codes:
     - 200
   result_map:
-    ID: $b{$.value}
-  sample_response:
-    body: '{"value":"2DEB6CB4B082415BB7A697C9CD1273BA"}'
+    id: $b{$.value}
