@@ -18,7 +18,7 @@ description: Delete License Model (certified vlms cannot be deleted)
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.onboarding
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
