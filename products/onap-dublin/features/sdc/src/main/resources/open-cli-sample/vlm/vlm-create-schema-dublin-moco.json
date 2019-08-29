@@ -7,21 +7,21 @@
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-0b3114ea-c98a-4035-b0f4-9f522f0188d4",
+      "X-TransactionId" : "req-c3ff5864-dab6-4026-a298-ce11eb9a11c5",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "vendorName" : "philip-vendor",
-      "description" : "",
+      "vendorName" : "ocompvtpvendor",
+      "description" : "Created by Open Command Platform - OCOMP",
       "iconRef" : "icon"
     }
   },
   "response" : {
     "status" : 200,
     "json" : {
-      "itemId" : "6b33c26b3a924b2789fa17fabd4a292d",
+      "itemId" : "d572f583bf224b4c93b99105cd35b0a9",
       "version" : {
-        "id" : "2b683bedebeb4874a9c2a82939c77f0d",
+        "id" : "496cc167b6cf44c3b7818c95a1d9e036",
         "name" : "1.0",
         "description" : "Initial version",
         "status" : "Draft"
