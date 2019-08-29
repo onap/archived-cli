@@ -18,23 +18,27 @@ description: Checkout Service model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-model-uuid
-    description: Service model UUID (can be found from service-model-list)
+  - name: service-id
+    description: Service model ID
     type: string
-    long_option: service-model-uuid
+    long_option: service-id
     short_option: b
     is_optional: true
 
 results:
   direction: portrait
   attributes:
-    - name: ID
+    - name: id
       description: NS checked out version unique ID
+      scope: short
+      type: string
+    - name: version
+      description: VF version
       scope: short
       type: string
 http:
@@ -44,10 +48,11 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-uuid}/lifecycleState/CHECKOUT
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/lifecycleState/CHECKOUT
     method: POST
     body: '{}'
   success_codes:
     - 200
   result_map:
-    ID: $b{$.uniqueId}
+    id: $b{$.uniqueId}
+    version: $b{$.version}
