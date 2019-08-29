@@ -18,15 +18,15 @@ description: Distributes the Service model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-model-uniqueId
+  - name: service-id
     description: Service model UUID (can be found from service-model-list)
     type: string
-    long_option: service-model-uniqueId
+    long_option: service-id
     short_option: b
     is_optional: true
 
@@ -37,7 +37,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-uniqueId}/distribution/PROD/activate
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/distribution/PROD/activate
     method: POST
     body: '{}'
   success_codes:
