@@ -1,13 +1,13 @@
 [ {
   "request" : {
     "method" : "put",
-    "uri" : "/onboarding-api/v1.0/vendor-software-products/0afed170432e471e9dafb662f78a8277/versions/a6a78a511fd74524889f8095e12b9aac/actions",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products/55ca1625888743a1b791790b126b79f9/versions/f13d686db7bf4fb0ba34354faf8a9d30/actions",
     "headers" : {
       "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-625cc732-d215-4a80-9887-7fbe217954c2",
+      "X-TransactionId" : "req-febd3087-e011-469e-b57a-b71c2077647d",
       "Content-Type" : "application/json"
     },
     "json" : {
