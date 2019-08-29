@@ -18,7 +18,7 @@ description: Create feature group Pool
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.onboarding
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
@@ -40,12 +40,6 @@ parameters:
     type: string
     short_option: e
     long_option: vlm-version
-    is_optional: false
-  - name: description
-    description: Description for feature group
-    type: string
-    short_option: z
-    long_option: description
     is_optional: false
   - name: vlm-key-group-id
     description: VLM keygroup
@@ -69,7 +63,7 @@ parameters:
 results:
   direction: portrait
   attributes:
-    - name: ID
+    - name: id
       description: Feature group ID
       scope: short
       type: string
@@ -82,10 +76,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/feature-groups
     method: POST
-    body: '{"name": "${name}", "addedLicenseKeyGroupsIds": ["${vlm-key-group-id}"], "addedEntitlementPoolsIds": ["${vlm-entitle-pool-id}"], "partNumber": "${part-number}", "description": "${description}"}'
+    body: '{"name": "${name}", "addedLicenseKeyGroupsIds": ["${vlm-key-group-id}"], "addedEntitlementPoolsIds": ["${vlm-entitle-pool-id}"], "partNumber": "${part-number}"}'
   success_codes:
     - 200
   result_map:
-    ID: $b{$.value}
-  sample_response:
-    body: '{"value":"2DEB6CB4B082415BB7A697C9CD1273BA"}'
+    id: $b{$.value}

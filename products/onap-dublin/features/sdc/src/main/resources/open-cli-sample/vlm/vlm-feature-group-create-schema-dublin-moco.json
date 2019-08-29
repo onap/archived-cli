@@ -1,27 +1,26 @@
 [ {
   "request" : {
     "method" : "post",
-    "uri" : "/onboarding-api/v1.0/vendor-license-models/6b33c26b3a924b2789fa17fabd4a292d/versions/2b683bedebeb4874a9c2a82939c77f0d/feature-groups",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/d572f583bf224b4c93b99105cd35b0a9/versions/496cc167b6cf44c3b7818c95a1d9e036/feature-groups",
     "headers" : {
       "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-0033cd99-1c03-4f1b-acf1-e2262e0b7027",
+      "X-TransactionId" : "req-969b3e0d-a7a7-4947-bbfa-3925637e5842",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "name" : "philip-feature-grp",
-      "addedLicenseKeyGroupsIds" : [ "51466fa44cb346eda6881176440eee5d" ],
-      "addedEntitlementPoolsIds" : [ "8c70182a9c4641e79477708ef6ed6984" ],
-      "partNumber" : "itohan-part",
-      "description" : "philip-feature-grp"
+      "name" : "ocompvtpvendor Feature group",
+      "addedLicenseKeyGroupsIds" : [ "0c36608f4bab42c298a17388d7ec6727" ],
+      "addedEntitlementPoolsIds" : [ "7f3150863aca4d82b837d2d1980ef064" ],
+      "partNumber" : "OCOMP"
     }
   },
   "response" : {
     "status" : 200,
     "json" : {
-      "value" : "457e9905f32544cca5351e86cc2e7958"
+      "value" : "880c355b9b374ec08db60906f86a7c15"
     }
   }
 } ]

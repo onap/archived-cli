@@ -1,27 +1,10 @@
-# Copyright © Intel Corporation 2019
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 open_cli_sample_version: 1.0
-name: -x
+name: vlm-feature-group-create
 version: onap-dublin
 samples:
   sample1:
-    name: -x
-    input: philip-feature-grp -y 6b33c26b3a924b2789fa17fabd4a292d -e 2b683bedebeb4874a9c2a82939c77f0d -z philip-feature-grp -g 51466fa44cb346eda6881176440eee5d -b 8c70182a9c4641e79477708ef6ed6984 -c itohan-part -u cs0008 -p demo123456! -m http://10.43.107.110:8081
+    name: vlm-feature-group-create
+    input: --format json --vlm-id d572f583bf224b4c93b99105cd35b0a9 --name ocompvtpvendor Feature group --vlm-version 496cc167b6cf44c3b7818c95a1d9e036 --vlm-key-group-id 0c36608f4bab42c298a17388d7ec6727 --part-number OCOMP --vlm-entitle-pool-id 7f3150863aca4d82b837d2d1980ef064
     moco: vlm-feature-group-create-schema-dublin-moco.json
     output: |
-      +----------+----------------------------------+
-      |property  |value                             |
-      +----------+----------------------------------+
-      |ID        |457e9905f32544cca5351e86cc2e7958  |
-      +----------+----------------------------------+
+      {"id":"880c355b9b374ec08db60906f86a7c15"}
