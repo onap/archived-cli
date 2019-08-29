@@ -1,12 +1,12 @@
 [ {
   "request" : {
     "method" : "delete",
-    "uri" : "/aai/v13/business/customers/customer/hpa_cust/service-subscriptions/service-subscription/test-service",
+    "uri" : "/aai/v13/business/customers/customer/ovp/service-subscriptions/service-subscription/tosca_vnf_validation",
     "headers" : {
       "Authorization" : "Basic QUFJOkFBSQ==",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
-      "X-TransactionId" : "req-3a02dc1d-19b5-45d9-a34e-6d08a8b20a10",
+      "X-TransactionId" : "req-72799430-1922-4872-90cf-43233725a595",
       "Content-Type" : "application/json"
     },
     "json" : null
