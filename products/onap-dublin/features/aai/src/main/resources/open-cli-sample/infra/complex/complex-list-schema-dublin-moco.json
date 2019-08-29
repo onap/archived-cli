@@ -1,12 +1,12 @@
 [ {
   "request" : {
     "method" : "get",
-    "uri" : "/aai/v14//aai/v14/cloud-infrastructure/complexes/",
+    "uri" : "/aai/v14/cloud-infrastructure/complexes/",
     "headers" : {
       "Authorization" : "Basic QUFJOkFBSQ==",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
-      "X-TransactionId" : "req-6752433d-3b43-41a3-9547-9a58a9f0f8f5",
+      "X-TransactionId" : "req-6d8eccd5-8542-47b5-8f88-a6542e88a3ac",
       "Content-Type" : "application/json"
     },
     "json" : null
@@ -15,70 +15,25 @@
     "status" : 200,
     "json" : {
       "complex" : [ {
-        "physical-location-id" : "clli1",
-        "data-center-code" : "example-data-center-code-val-5556",
-        "complex-name" : "clli1",
-        "identity-url" : "example-identity-url-val-56898",
-        "resource-version" : "1547842499867",
-        "physical-location-type" : "example-physical-location-type-val-7608",
-        "street1" : "example-street1-val-34205",
-        "street2" : "example-street2-val-99210",
-        "city" : "example-city-val-27150",
-        "state" : "example-state-val-59487",
-        "postal-code" : "00000",
-        "country" : "USA",
-        "region" : "example-region-val-13893",
-        "latitude" : "32.89948",
-        "longitude" : "97.045443",
+        "physical-location-id" : "clli2",
+        "data-center-code" : "example-data-center-code-val-6667",
+        "complex-name" : "clli2",
+        "identity-url" : "example-identity-url-val-28399",
+        "resource-version" : "1564454689109",
+        "physical-location-type" : "example-physical-location-type-val-28399",
+        "street1" : "example-street1-val-28399",
+        "street2" : "example-street2-val-28399",
+        "city" : "example-city-val-28399",
+        "state" : "example-state-val-28399",
+        "postal-code" : "example-postal-code-val-28399",
+        "country" : "example-country-val-28399",
+        "region" : "RegionOne",
+        "latitude" : "1111",
+        "longitude" : "2222",
         "elevation" : "example-elevation-val-28399",
         "lata" : "example-lata-val-28399",
         "relationship-list" : {
           "relationship" : [ {
-            "related-to" : "cloud-region",
-            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
-            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-05",
-            "relationship-data" : [ {
-              "relationship-key" : "cloud-region.cloud-owner",
-              "relationship-value" : "CloudOwner"
-            }, {
-              "relationship-key" : "cloud-region.cloud-region-id",
-              "relationship-value" : "ONAP-POD-01-Rail-05"
-            } ],
-            "related-to-property" : [ {
-              "property-key" : "cloud-region.owner-defined-type",
-              "property-value" : "t1"
-            } ]
-          }, {
-            "related-to" : "cloud-region",
-            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
-            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-04",
-            "relationship-data" : [ {
-              "relationship-key" : "cloud-region.cloud-owner",
-              "relationship-value" : "CloudOwner"
-            }, {
-              "relationship-key" : "cloud-region.cloud-region-id",
-              "relationship-value" : "ONAP-POD-01-Rail-04"
-            } ],
-            "related-to-property" : [ {
-              "property-key" : "cloud-region.owner-defined-type",
-              "property-value" : "t1"
-            } ]
-          }, {
-            "related-to" : "cloud-region",
-            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
-            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-06",
-            "relationship-data" : [ {
-              "relationship-key" : "cloud-region.cloud-owner",
-              "relationship-value" : "CloudOwner"
-            }, {
-              "relationship-key" : "cloud-region.cloud-region-id",
-              "relationship-value" : "ONAP-POD-01-Rail-06"
-            } ],
-            "related-to-property" : [ {
-              "property-key" : "cloud-region.owner-defined-type",
-              "property-value" : "t1"
-            } ]
-          }, {
             "related-to" : "cloud-region",
             "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
             "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/RegionOne",
@@ -91,64 +46,28 @@
             } ],
             "related-to-property" : [ {
               "property-key" : "cloud-region.owner-defined-type",
-              "property-value" : "t1"
+              "property-value" : "OwnerType"
             } ]
           } ]
         }
       }, {
-        "physical-location-id" : "clli2",
-        "data-center-code" : "code6",
-        "complex-name" : "clli2",
-        "identity-url" : "url",
-        "resource-version" : "1551206645488",
+        "physical-location-id" : "ocomp-region",
+        "data-center-code" : "ocomp",
+        "complex-name" : "ocomp-region",
+        "identity-url" : "http://10.12.11.1:5000/v3",
+        "resource-version" : "1567068618154",
         "physical-location-type" : "phy_type",
-        "street1" : "street1",
-        "street2" : "street2",
-        "city" : "HIlls",
-        "state" : "OR",
-        "postal-code" : "88889",
-        "country" : "ENG",
-        "region" : "region_val",
-        "latitude" : "100.2",
-        "longitude" : "30.8",
-        "elevation" : "elev",
-        "lata" : "lata",
-        "relationship-list" : {
-          "relationship" : [ {
-            "related-to" : "cloud-region",
-            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
-            "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-07",
-            "relationship-data" : [ {
-              "relationship-key" : "cloud-region.cloud-owner",
-              "relationship-value" : "CloudOwner"
-            }, {
-              "relationship-key" : "cloud-region.cloud-region-id",
-              "relationship-value" : "ONAP-POD-01-Rail-07"
-            } ],
-            "related-to-property" : [ {
-              "property-key" : "cloud-region.owner-defined-type",
-              "property-value" : "t1"
-            } ]
-          } ]
-        }
-      }, {
-        "physical-location-id" : "clli3",
-        "data-center-code" : "code6",
-        "complex-name" : "clli3",
-        "identity-url" : "url",
-        "resource-version" : "1552414833543",
-        "physical-location-type" : "phy_type",
-        "street1" : "street1",
-        "street2" : "street2",
-        "city" : "HIlls",
-        "state" : "CA",
-        "postal-code" : "88888",
-        "country" : "NIG",
-        "region" : "region_val",
-        "latitude" : "10.2",
-        "longitude" : "30.8",
-        "elevation" : "elev",
-        "lata" : "lata"
+        "street1" : "ocomp-street1",
+        "street2" : "ocomp-street2",
+        "city" : "ocomp-city",
+        "state" : "ocomp-state",
+        "postal-code" : "001481",
+        "country" : "abc",
+        "region" : "onap",
+        "latitude" : "1.0",
+        "longitude" : "1.0",
+        "elevation" : "ocomp-elelation",
+        "lata" : "ocomp-lata"
       } ]
     }
   }

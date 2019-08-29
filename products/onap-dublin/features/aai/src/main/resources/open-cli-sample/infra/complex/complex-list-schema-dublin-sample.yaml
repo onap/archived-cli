@@ -1,31 +1,10 @@
-# Copyright © Intel Corporation 2019
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 open_cli_sample_version: 1.0
 name: complex-list
 version: onap-dublin
 samples:
   sample1:
     name: complex-list
-    input: 
+    input: --format json
     moco: complex-list-schema-dublin-moco.json
     output: |
-      +--------------+------------------------------------+------------------+----------+--------------------------+----------+------------+------------------------------+
-      |complex-name  |data-center-code                    |resource-version  |country   |region                    |latitude  |longitude   |elevation                     |
-      +--------------+------------------------------------+------------------+----------+--------------------------+----------+------------+------------------------------+
-      |clli1         |example-data-center-code-val-5556   |1547842499867     |USA       |example-region-val-13893  |32.89948  |97.045443   |example-elevation-val-28399   |
-      +--------------+------------------------------------+------------------+----------+--------------------------+----------+------------+------------------------------+
-      |clli2         |code6                               |1551206645488     |ENG       |region_val                |100.2     |30.8        |elev                          |
-      +--------------+------------------------------------+------------------+----------+--------------------------+----------+------------+------------------------------+
-      |clli3         |code6                               |1552414833543     |NIG       |region_val                |10.2      |30.8        |elev                          |
-      +--------------+------------------------------------+------------------+----------+--------------------------+----------+------------+------------------------------+
+      [{"elevation":"example-elevation-val-28399","complex-name":"clli2","country":"example-country-val-28399","resource-version":"1564454689109","latitude":"1111","data-center-code":"example-data-center-code-val-6667","region":"RegionOne","longitude":"2222"},{"elevation":"ocomp-elelation","complex-name":"ocomp-region","country":"abc","resource-version":"1567068618154","latitude":"1.0","data-center-code":"ocomp","region":"onap","longitude":"1.0"}]
