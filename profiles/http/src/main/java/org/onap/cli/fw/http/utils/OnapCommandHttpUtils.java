@@ -171,7 +171,7 @@ public class OnapCommandHttpUtils {
         /**
          * In case of empty response body [] or {}
          **/
-        if (resultHttp.getBody().length() <= 2) {
+        if (resultHttp.getBody() != null && resultHttp.getBody().length() <= 2) {
             return result;
         }
 

@@ -161,6 +161,10 @@ public class OnapCli {
         System.out.println(msg);
     }
 
+    protected void printerr(String msg) {
+        System.err.println(msg);
+    }
+
     private void print(Throwable throwable) {
         String error = throwable.getMessage() != null ? throwable.getMessage() : "";
         this.print(error);
@@ -349,7 +353,7 @@ public class OnapCli {
             } else {
                 resultAtt.getValues().add(OnapCommandConstants.VERIFY_RESULT_FAIL);
             }
-            this.print(testResult.getDebugInfo());
+            this.printerr(testResult.getDebugInfo());
             this.print("\n***************Expected Output: \n" + expectedOutput);
             this.print("\n***************Actual Output: \n" + actualOutput);
         }
@@ -509,20 +513,28 @@ public class OnapCli {
                 }
 
                 //refer params from profile
-                if (this.profile != null)
+                if (this.profile != null) {
+
+                    Map<String, String> paramCache = new HashMap<>();
+                    if (this.product == null)
+                        paramCache = OnapCommandRegistrar.getRegistrar().getParamCache();
+                    else
+                        paramCache = OnapCommandRegistrar.getRegistrar().getParamCache(this.product);
+
                     for (OnapCommandParameter param: cmd.getParameters()) {
-                        if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(
+                        if (paramCache.containsKey(
                                 cmd.getInfo().getService() + ":" + cmd.getName() + ":" + param.getLongOption())) {
-                            param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
+                            param.setValue(paramCache.get(
                                     cmd.getInfo().getService() + ":" + cmd.getName() + ":" + param.getLongOption()));
-                        } else if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(
+                        } else if (paramCache.containsKey(
                                 cmd.getInfo().getService() + ":" + param.getLongOption())) {
-                            param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
+                            param.setValue(paramCache.get(
                                     cmd.getInfo().getService() + ":" + param.getLongOption()));
-                        } else if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(param.getLongOption())) {
-                            param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(param.getLongOption()));
+                        } else if (paramCache.containsKey(param.getLongOption())) {
+                            param.setValue(paramCache.get(param.getLongOption()));
                         }
                     }
+                }
 
                 //load the parameters value from the map read from param-file
                 if (!this.argsParamFile.isEmpty()) {
@@ -558,8 +570,17 @@ public class OnapCli {
                     this.exitFailure();
                 }
             } catch (OnapCommandWarning w) {
+                if (cmd.getExecutionContext() != null) {
+                    OnapCommandExecutionStore.getStore().storeExectutionEnd(
+                            cmd.getExecutionContext(),
+                            w.getMessage(),
+                            null,
+                            cmd.getResult().getDebugInfo(),
+                            cmd.getResult().isPassed());
+                }
+
                 this.print(w);
-                this.print(cmd.getResult().getDebugInfo());
+                this.printerr(cmd.getResult().getDebugInfo());
                 this.exitSuccessfully();
             } catch (Exception e) {
                 if (executionStoreContext != null) {
@@ -572,7 +593,7 @@ public class OnapCli {
                 }
 
                 this.print(e);
-                this.print(cmd.getResult().getDebugInfo());
+                this.printerr(cmd.getResult().getDebugInfo());
                 this.exitFailure();
             }
         }
@@ -580,7 +601,7 @@ public class OnapCli {
 
     public void handleTracking(OnapCommand cmd) throws OnapCommandException {
         if (cmd.getResult().isDebug())
-            this.print(cmd.getResult().getDebugInfo());
+            this.printerr(cmd.getResult().getDebugInfo());
 
         String printOut = cmd.getResult().print();
         this.print(printOut);

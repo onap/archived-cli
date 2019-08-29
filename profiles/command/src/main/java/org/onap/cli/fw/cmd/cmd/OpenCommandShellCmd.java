@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.conf.OnapCommandCmdConstants;
 import org.onap.cli.fw.cmd.error.OnapCommandCmdFailure;
@@ -175,11 +176,13 @@ public class OpenCommandShellCmd extends OnapCommand {
         //add oclip specific environment variables
         if (this.getExecutionContext() != null) {
             envs.add("OPEN_CLI_REQUEST_ID=" + this.getExecutionContext().getRequestId());
+            if (this.getExecutionContext().getProfile() != null) {
+                envs.add("OPEN_CLI_PROFILE=" + this.getExecutionContext().getProfile());
+            }
             if (OnapCommandRegistrar.getRegistrar().getHost() != null) {
                 envs.add("OPEN_CLI_RPC_HOST=" + OnapCommandRegistrar.getRegistrar().getHost());
                 envs.add("OPEN_CLI_RPC_PORT=" + OnapCommandRegistrar.getRegistrar().getPort());
             }
-            //mrkanag set the profile OPEN_CLI_PROFILE
         }
 
         for (String env: this.getEnvs().keySet()) {
@@ -315,7 +318,32 @@ public class OpenCommandShellCmd extends OnapCommand {
             int idxE = line.indexOf("}", idxS);
             String tmpName = line.substring(idxS + 7, idxE);
             tmpName = tmpName.trim();
-            result.put("tmp:" + tmpName, this.getOutputAttributeFilePath(tmpName, true));
+            String tmpTkns[] = tmpName.split(":");
+            String tmpFileName;
+            String paramName;
+            if (tmpTkns.length == 2) {
+                tmpFileName = tmpTkns[0];
+                paramName = tmpTkns[1];
+            } else {
+                tmpFileName = tmpTkns[0];
+                paramName = null;
+            }
+
+            String tmpFilePath = this.getOutputAttributeFilePath(tmpFileName, true);
+            if (paramName != null) {
+                //Write the value of input params into file before passing to command
+                try {
+                    FileUtils.touch(new File(tmpFilePath));
+                    FileUtils.writeStringToFile(new File(tmpFilePath),
+                            this.getParametersMap().get(paramName).getValue().toString());
+                } catch (IOException e) {
+                    // NO SONAR
+                }
+            }
+
+            result.put("tmp:" + tmpFileName, tmpFilePath); //used in output parsing
+            result.put("tmp:" + tmpName, tmpFilePath); //used in line replacement
+
             currentIdx = idxE + 1;
         }
         return result;

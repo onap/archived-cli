@@ -20,7 +20,7 @@ package org.onap.cli.fw.error;
  * Command sample is invalid.
  *
  */
-public class OnapCommandInvalidSample extends OnapCommandException {
+public class OnapCommandInvalidSample extends OnapCommandWarning {
 
     private static final long serialVersionUID = -3387652326582792835L;
 

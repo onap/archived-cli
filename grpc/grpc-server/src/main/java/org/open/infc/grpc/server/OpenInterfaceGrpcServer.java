@@ -162,18 +162,18 @@ public class OpenInterfaceGrpcServer {
                                 new ArrayList<String>());
 
                         //fill from profile
+                        Map<String, String> cache= OnapCommandRegistrar.getRegistrar().getParamCache(product);
                         for (OnapCommandParameter param: cmd.getParameters()) {
-                            Map<String, String> cache= OnapCommandRegistrar.getRegistrar().getParamCache(product);
                             if (cache.containsKey(
                                     cmd.getInfo().getService() + ":" + cmd.getName() + ":" + param.getLongOption())) {
-                                param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
+                                param.setValue(cache.get(
                                         cmd.getInfo().getService() + ":" + cmd.getName() + ":" + param.getLongOption()));
                             } else if (cache.containsKey(
                                     cmd.getInfo().getService() + ":" + param.getLongOption())) {
-                                param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(
+                                param.setValue(cache.get(
                                         cmd.getInfo().getService() + ":" + param.getLongOption()));
-                            } else if (OnapCommandRegistrar.getRegistrar().getParamCache().containsKey(param.getLongOption())) {
-                                param.setValue(OnapCommandRegistrar.getRegistrar().getParamCache().get(param.getLongOption()));
+                            } else if (cache.containsKey(param.getLongOption())) {
+                                param.setValue(cache.get(param.getLongOption()));
                             }
                         }
                     }
@@ -260,7 +260,6 @@ public class OpenInterfaceGrpcServer {
 
             } catch (OnapCommandException e) {
                 logger.info(e.getMessage());
-
 
                 Builder reply = Output.newBuilder();
                 reply.putAttrs(OnapCommandConstants.RESULTS, "{}");

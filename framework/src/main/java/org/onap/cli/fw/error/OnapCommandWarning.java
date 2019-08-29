@@ -31,4 +31,8 @@ public abstract class OnapCommandWarning extends OnapCommandException {
     public OnapCommandWarning(String errorCode, String errorMessage) {
         super(errorCode, errorMessage);
     }
+
+    public OnapCommandWarning(String errorCode, String errorMessage, Throwable err) {
+        super(errorCode, errorMessage, err);
+    }
 }

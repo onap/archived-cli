@@ -43,6 +43,7 @@ public class OnapCommandConstants {
     public static final String OPEN_CLI_DATA_DIR = "cli.data.dir";
     public static final String OPEN_CLI_ARTIFACT_DIR = "cli.artifact.dir";
     public static final String OPEN_CLI_GRPC_CLIENT_TIMEOUT = "cli.grpc.client.timeout";
+    public static final String OPEN_CLI_EXECUTION_SEARCH_MODE = "cli.execution.search.mode";
     //schema
     public static final String OPEN_CLI_SCHEMA_VERSION = "open_cli_schema_version";
     public static final String OPEN_CLI_SCHEMA_VERSION_VALUE_1_0 = "1.0";

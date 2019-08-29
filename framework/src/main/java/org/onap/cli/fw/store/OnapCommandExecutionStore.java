@@ -48,12 +48,21 @@ public class OnapCommandExecutionStore {
     private enum SearchMode {
         find,
         file //for developer mode
+
+
     }
+
     private static SearchMode SEARCH_MODE = SearchMode.file;
+    static {
+        String mode = OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_EXECUTION_SEARCH_MODE);
+        if (mode.equalsIgnoreCase(SearchMode.find.name()))
+            SEARCH_MODE = SearchMode.find;
+    }
 
     public static class ExecutionStoreContext {
         private String requestId;
         private String executionId;
+        private String profile;
         private String storePath;
         public String getExecutionId() {
             return executionId;
@@ -75,6 +84,12 @@ public class OnapCommandExecutionStore {
         public ExecutionStoreContext setRequestId(String requestId) {
             this.requestId = requestId;
              return this;
+        }
+        public String getProfile() {
+            return profile;
+        }
+        public void setProfile(String profile) {
+            this.profile = profile;
         }
     }
 
@@ -219,8 +234,10 @@ public class OnapCommandExecutionStore {
 
             if (input != null)
                 FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "input"), input);
-            if (profile != null)
+            if (profile != null) {
+                context.setProfile(profile);
                 FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "profile"), profile);
+            }
 
             FileUtils.touch(new File(context.getStorePath() + File.separator + "stdout"));
             FileUtils.touch(new File(context.getStorePath() + File.separator + "stderr"));
@@ -371,6 +388,7 @@ public class OnapCommandExecutionStore {
         if (new File(executionStorePath + File.separator + "executionId").exists())
             exectuion.setId(FileUtils.readFileToString(new File(executionStorePath + File.separator + "executionId")));
         exectuion.setProduct(FileUtils.readFileToString(new File(executionStorePath + File.separator + "product")));
+        exectuion.setProfile(FileUtils.readFileToString(new File(executionStorePath + File.separator + "profile")));
         exectuion.setService(FileUtils.readFileToString(new File(executionStorePath + File.separator + "service")));
         exectuion.setCommand(FileUtils.readFileToString(new File(executionStorePath + File.separator + "command")));
         if (new File(executionStorePath + File.separator + "profile").exists())

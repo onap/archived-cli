@@ -17,12 +17,13 @@
 package org.onap.cli.fw.http.error;
 
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandWarning;
 
 /**
  * Invalid data for generating moco json .
  *
  */
-public class OnapCommandFailedMocoGenerate extends OnapCommandException {
+public class OnapCommandFailedMocoGenerate extends OnapCommandWarning {
 
     private static final long serialVersionUID = -5386652726982792831L;
 
