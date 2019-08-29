@@ -1,0 +1,19 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc2/rest/v1/catalog/resources/b85dad49-bd5c-4036-8eb0-601778b9d6ff/archive",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-bd079298-34a7-4031-a56b-d8d5ef6a7f63",
+      "Content-Type" : "application/json"
+    },
+    "json" : { }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : null
+  }
+} ]

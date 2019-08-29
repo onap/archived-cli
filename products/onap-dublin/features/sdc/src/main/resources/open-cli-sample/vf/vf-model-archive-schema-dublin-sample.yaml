@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: vf-model-archive
+version: onap-dublin
+samples:
+  sample1:
+    name: vf-model-archive
+    input: --format json --vf-id b85dad49-bd5c-4036-8eb0-601778b9d6ff
+    moco: vf-model-archive-schema-dublin-moco.json
+    output: |
+      [{}]
