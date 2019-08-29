@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: cloud-delete
+version: onap-dublin
+samples:
+  sample1:
+    name: cloud-delete
+    input: --format json --resource-version 1567068896092 --region-name RegionOVP --cloud-name OCOMP
+    moco: cloud-delete-schema-dublin-moco.json
+    output: |
+      [{}]
