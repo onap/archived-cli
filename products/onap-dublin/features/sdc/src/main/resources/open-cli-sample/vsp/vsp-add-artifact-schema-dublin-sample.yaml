@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: vsp-add-artifact
+version: onap-dublin
+samples:
+  sample1:
+    name: vsp-add-artifact
+    input: --format json --vsp-version f13d686db7bf4fb0ba34354faf8a9d30 --vsp-id 55ca1625888743a1b791790b126b79f9 --vsp-file /tmp/data/vtp-tmp-files/vgw.csar
+    moco: vsp-add-artifact-schema-dublin-moco.json
+    output: |
+      [{}]
