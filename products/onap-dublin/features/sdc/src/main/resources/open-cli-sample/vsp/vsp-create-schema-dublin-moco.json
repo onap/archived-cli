@@ -7,31 +7,31 @@
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-a5095ef3-5afc-4305-945b-26fbdaf0b6b0",
+      "X-TransactionId" : "req-86df50dc-3478-46c9-bba5-85acb0ac33db",
       "Content-Type" : "application/json"
     },
     "json" : {
       "category" : "resourceNewCategory.generic",
-      "vendorId" : "74b43ab85f3d49948c1513a27adfaba7",
+      "vendorId" : "d572f583bf224b4c93b99105cd35b0a9",
       "subCategory" : "resourceNewCategory.generic.abstract",
-      "description" : "cli-test-vsp",
-      "licensingVersion" : "eb65c2fbbaee4a8dbd0b60e697e98fb7",
+      "description" : "Created by Open Command Platform - OCOMP",
+      "licensingVersion" : "496cc167b6cf44c3b7818c95a1d9e036",
       "licensingData" : {
-        "featureGroups" : [ "292d56e87f274ef385b0dfd41f41a066" ],
-        "licenseAgreement" : "92bcbe53b6724ae78c7c13e4269cb90f"
+        "featureGroups" : [ "880c355b9b374ec08db60906f86a7c15" ],
+        "licenseAgreement" : "d53857e1d3df472cadd3ac72dfd83a6f"
       },
       "icon" : "icon",
       "onboardingMethod" : "NetworkPackage",
-      "vendorName" : "Itohan-vendor",
-      "name" : "cli-vsp-v2"
+      "vendorName" : "ocompvtpvendor",
+      "name" : "vgwocompvtp"
     }
   },
   "response" : {
     "status" : 200,
     "json" : {
-      "itemId" : "a9928e0e8b124f4d87a9e0654c4b1d60",
+      "itemId" : "55ca1625888743a1b791790b126b79f9",
       "version" : {
-        "id" : "b087302e50374ab28e5a8d4b32aa3abe",
+        "id" : "f13d686db7bf4fb0ba34354faf8a9d30",
         "name" : "1.0",
         "description" : "Initial version",
         "status" : "Draft"

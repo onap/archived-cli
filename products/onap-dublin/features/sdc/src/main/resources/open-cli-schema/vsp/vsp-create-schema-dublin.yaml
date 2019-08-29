@@ -18,7 +18,7 @@ description: Create Vendor Software Product
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.onboarding
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
@@ -71,16 +71,21 @@ parameters:
     long_option: onboarding-method
     short_option: o
     is_optional: false
+    default_value: NetworkPackage
 
 results:
   direction: portrait
   attributes:
-    - name: ID
+    - name: id
       description: VSP ID
       scope: short
       type: string
     - name: version
       description: VSP Model version
+      scope: short
+      type: string
+    - name: version-id
+      description: VSP Model version id
       scope: short
       type: uuid
 http:
@@ -107,5 +112,6 @@ http:
   success_codes:
     - 200
   result_map:
-    ID: $b{$.itemId}
-    version: $b{$.version.id}
+    id: $b{$.itemId}
+    version: $b{$.version.name}
+    version-id: $b{$.version.id}

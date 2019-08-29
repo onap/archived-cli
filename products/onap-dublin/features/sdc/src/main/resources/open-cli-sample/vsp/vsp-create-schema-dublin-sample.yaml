@@ -1,29 +1,10 @@
-# Copyright © Intel Corporation 2019
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 open_cli_sample_version: 1.0
-name: -j
+name: vsp-create
 version: onap-dublin
 samples:
   sample1:
-    name: -j
-    input: 292d56e87f274ef385b0dfd41f41a066 -o NetworkPackage -e Itohan-vendor -x cli-vsp-v2 -y cli-test-vsp -i 92bcbe53b6724ae78c7c13e4269cb90f -c eb65c2fbbaee4a8dbd0b60e697e98fb7 -g 74b43ab85f3d49948c1513a27adfaba7 -u cs0008 -p demo123456! -m http://10.43.107.110:8081
+    name: vsp-create
+    input: --format json --vlm-id d572f583bf224b4c93b99105cd35b0a9 --vlm-agreement-id d53857e1d3df472cadd3ac72dfd83a6f --vsp-name vgwocompvtp --vlm-version 496cc167b6cf44c3b7818c95a1d9e036 --vsp-description Created by Open Command Platform - OCOMP --vlm-vendor ocompvtpvendor --vlm-feature-group-id 880c355b9b374ec08db60906f86a7c15
     moco: vsp-create-schema-dublin-moco.json
     output: |
-      +----------+----------------------------------+
-      |property  |value                             |
-      +----------+----------------------------------+
-      |ID        |a9928e0e8b124f4d87a9e0654c4b1d60  |
-      +----------+----------------------------------+
-      |version   |b087302e50374ab28e5a8d4b32aa3abe  |
-      +----------+----------------------------------+
+      {"version-id":"f13d686db7bf4fb0ba34354faf8a9d30","id":"55ca1625888743a1b791790b126b79f9","version":"1.0"}
