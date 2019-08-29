@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: cloud-list
+version: onap-dublin
+samples:
+  sample1:
+    name: cloud-list
+    input: --format json
+    moco: cloud-list-schema-dublin-moco.json
+    output: |
+      [{"cloud":"CloudOwner","resource-version":"1564455111890","region":"RegionOne"},{"cloud":"OCOMP","resource-version":"1567068896092","region":"RegionOVP"},{"cloud":"OCOMP","resource-version":"1566891032056","region":"ONAP-POD-01-Rail-05"}]

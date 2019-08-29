@@ -1,0 +1,63 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/cloud-infrastructure/cloud-regions",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-66435ecc-bdd6-41ad-8ffe-e00f7b18064a",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "cloud-region" : [ {
+        "cloud-owner" : "CloudOwner",
+        "cloud-region-id" : "RegionOne",
+        "cloud-type" : "SharedNode",
+        "owner-defined-type" : "OwnerType",
+        "cloud-region-version" : "v1",
+        "cloud-zone" : "CloudZone",
+        "resource-version" : "1564455111890",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "complex",
+            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
+            "related-link" : "/aai/v13/cloud-infrastructure/complexes/complex/clli2",
+            "relationship-data" : [ {
+              "relationship-key" : "complex.physical-location-id",
+              "relationship-value" : "clli2"
+            } ]
+          } ]
+        }
+      }, {
+        "cloud-owner" : "OCOMP",
+        "cloud-region-id" : "RegionOVP",
+        "cloud-type" : "OpenStack",
+        "owner-defined-type" : "ocomp",
+        "cloud-region-version" : "ocata",
+        "identity-url" : "http://10.12.11.1:5000/v3",
+        "cloud-zone" : "az1",
+        "complex-name" : "ocomp-region",
+        "sriov-automation" : "false",
+        "cloud-extra-info" : "{\"openstack-region-id\":\"RegionOVP\"}",
+        "resource-version" : "1567068896092"
+      }, {
+        "cloud-owner" : "OCOMP",
+        "cloud-region-id" : "ONAP-POD-01-Rail-05",
+        "cloud-type" : "OpenStack",
+        "owner-defined-type" : "ocomp",
+        "cloud-region-version" : "ocata",
+        "identity-url" : "http://10.12.11.1:5000/v3",
+        "cloud-zone" : "az1",
+        "complex-name" : "ocomp-cloud-complex",
+        "sriov-automation" : "false",
+        "cloud-extra-info" : "{\"openstack-region-id\":\"ONAP-POD-01-Rail-05\"}",
+        "resource-version" : "1566891032056"
+      } ]
+    }
+  }
+} ]
