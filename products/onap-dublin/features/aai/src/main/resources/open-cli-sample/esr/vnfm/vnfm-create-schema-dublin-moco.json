@@ -1,0 +1,42 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v13/external-system/esr-vnfm-list/esr-vnfm/1e915311-1474-4ffb-8408-1183ddfcd1a8",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-97afb15a-fc8a-489d-8d1f-5506b7189bee",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "vnfm-id" : "1e915311-1474-4ffb-8408-1183ddfcd1a8",
+      "vim-id" : "OCOMP",
+      "certificate-url" : "",
+      "esr-system-info-list" : {
+        "esr-system-info" : [ {
+          "esr-system-info-id" : "1e915311-1474-4ffb-8408-1183ddfcd1a8",
+          "system-name" : "OCOMP hwvnfmdriver",
+          "type" : "hwvnfmdriver",
+          "vendor" : "ocompvtpvendor",
+          "version" : "v1.0",
+          "service-url" : "http://159.138.8.8:30280",
+          "user-name" : "admin",
+          "password" : "password",
+          "system-type" : "vnfm",
+          "protocal" : "",
+          "ssl-cacert" : "",
+          "ssl-insecure" : "",
+          "ip-address" : "",
+          "port" : "",
+          "cloud-domain" : "",
+          "default-tenant" : ""
+        } ]
+      }
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]

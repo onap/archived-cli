@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: vnfm-list
+version: onap-dublin
+samples:
+  sample1:
+    name: vnfm-list
+    input: --format json
+    moco: vnfm-list-schema-dublin-moco.json
+    output: |
+      [{"certificate-url":"","resource-version":"1567068700278","vim-id":"OCOMP","vnfm-id":"1e915311-1474-4ffb-8408-1183ddfcd1a8"}]

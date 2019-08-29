@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: vnfm-create
+version: onap-dublin
+samples:
+  sample1:
+    name: vnfm-create
+    input: --format json --vendor ocompvtpvendor --username admin --vim-id OCOMP --name OCOMP hwvnfmdriver --url http://159.138.8.8:30280 --vnfm-id 1e915311-1474-4ffb-8408-1183ddfcd1a8 --password password --type hwvnfmdriver --vnfm-version v1.0
+    moco: vnfm-create-schema-dublin-moco.json
+    output: |
+      [{}]

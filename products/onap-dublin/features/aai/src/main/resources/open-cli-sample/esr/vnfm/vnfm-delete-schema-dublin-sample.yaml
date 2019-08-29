@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: vnfm-delete
+version: onap-dublin
+samples:
+  sample1:
+    name: vnfm-delete
+    input: --format json --vnfm-id 1e915311-1474-4ffb-8408-1183ddfcd1a8 --resource-version 1567068700278
+    moco: vnfm-delete-schema-dublin-moco.json
+    output: |
+      [{}]
