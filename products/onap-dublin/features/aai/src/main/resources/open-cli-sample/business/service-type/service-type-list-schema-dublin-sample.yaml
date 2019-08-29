@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: service-type-list
+version: onap-dublin
+samples:
+  sample1:
+    name: service-type-list
+    input: --format json
+    moco: service-type-list-schema-dublin-moco.json
+    output: |
+      [{"resource-version":"1564140431957","service-type":"vFW","service-type-id":"e8cb8968-5411-478b-906a-f28747de72cd"},{"resource-version":"1564455509142","service-type":"vLB","service-type-id":"60330738-6cd0-4032-af2a-3088a03d4f47"},{"resource-version":"1564455509234","service-type":"vCPE","service-type-id":"47412b60-6fb0-4b57-b801-77e0cbb69441"},{"resource-version":"1564455509053","service-type":"vFWCL","service-type-id":"399e426b-2467-4575-8aa3-78ca766f9f37"},{"resource-version":"1564455509330","service-type":"vIMS","service-type-id":"51afd5ba-bf2d-460c-b9a4-302fd70aec1c"},{"resource-version":"1567068649380","service-type":"tosca_vnf_validation","service-type-id":"tosca_vnf_validation"},{"resource-version":"1564455509431","service-type":"gNB","service-type-id":"e3a3e05d-2179-4f04-b6ab-0a87909caf49"}]

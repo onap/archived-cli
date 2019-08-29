@@ -1,0 +1,48 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v13/service-design-and-creation/services",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-75560ef7-f314-49bd-b825-4b282c49829a",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "service" : [ {
+        "service-id" : "e8cb8968-5411-478b-906a-f28747de72cd",
+        "service-description" : "vFW",
+        "resource-version" : "1564140431957"
+      }, {
+        "service-id" : "60330738-6cd0-4032-af2a-3088a03d4f47",
+        "service-description" : "vLB",
+        "resource-version" : "1564455509142"
+      }, {
+        "service-id" : "47412b60-6fb0-4b57-b801-77e0cbb69441",
+        "service-description" : "vCPE",
+        "resource-version" : "1564455509234"
+      }, {
+        "service-id" : "399e426b-2467-4575-8aa3-78ca766f9f37",
+        "service-description" : "vFWCL",
+        "resource-version" : "1564455509053"
+      }, {
+        "service-id" : "51afd5ba-bf2d-460c-b9a4-302fd70aec1c",
+        "service-description" : "vIMS",
+        "resource-version" : "1564455509330"
+      }, {
+        "service-id" : "tosca_vnf_validation",
+        "service-description" : "tosca_vnf_validation",
+        "resource-version" : "1567068649380"
+      }, {
+        "service-id" : "e3a3e05d-2179-4f04-b6ab-0a87909caf49",
+        "service-description" : "gNB",
+        "resource-version" : "1564455509431"
+      } ]
+    }
+  }
+} ]

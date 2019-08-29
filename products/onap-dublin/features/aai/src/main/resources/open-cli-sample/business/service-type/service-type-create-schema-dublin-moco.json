@@ -1,0 +1,21 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v13/service-design-and-creation/services/service/tosca_vnf_validation",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-278f4b1f-de6f-4709-8fa2-f0d06a3e8fd7",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "service-description" : "tosca_vnf_validation",
+      "service-id" : "tosca_vnf_validation"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]

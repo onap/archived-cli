@@ -1,0 +1,18 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/aai/v13/service-design-and-creation/services/service/tosca_vnf_validation",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-0a160884-549b-4a63-8c26-631f1097dfa7",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 204,
+    "json" : null
+  }
+} ]

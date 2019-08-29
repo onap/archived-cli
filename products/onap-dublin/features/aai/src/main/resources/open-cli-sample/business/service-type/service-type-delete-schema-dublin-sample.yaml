@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: service-type-delete
+version: onap-dublin
+samples:
+  sample1:
+    name: service-type-delete
+    input: --format json --resource-version 1567068649380 --service-type-id tosca_vnf_validation
+    moco: service-type-delete-schema-dublin-moco.json
+    output: |
+      [{}]

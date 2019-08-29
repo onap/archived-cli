@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: service-type-create
+version: onap-dublin
+samples:
+  sample1:
+    name: service-type-create
+    input: --format json --service-type tosca_vnf_validation --service-type-id tosca_vnf_validation
+    moco: service-type-create-schema-dublin-moco.json
+    output: |
+      [{}]
