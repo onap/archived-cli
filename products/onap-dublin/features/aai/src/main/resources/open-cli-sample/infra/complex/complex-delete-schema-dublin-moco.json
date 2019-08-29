@@ -1,12 +1,12 @@
 [ {
   "request" : {
     "method" : "delete",
-    "uri" : "/aai/v14//aai/v14/cloud-infrastructure/complexes/complex/clli3",
+    "uri" : "/aai/v14/cloud-infrastructure/complexes/complex/ocomp-region",
     "headers" : {
       "Authorization" : "Basic QUFJOkFBSQ==",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
-      "X-TransactionId" : "req-26090fb4-0d07-4272-bced-b14574420451",
+      "X-TransactionId" : "req-b1e0cf51-157c-40f5-a966-157ba2c88655",
       "Content-Type" : "application/json"
     },
     "json" : null
