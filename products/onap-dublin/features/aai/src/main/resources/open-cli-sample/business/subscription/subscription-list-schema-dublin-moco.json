@@ -1,12 +1,12 @@
 [ {
   "request" : {
     "method" : "get",
-    "uri" : "/aai/v13/business/customers/customer/hpa_cust/service-subscriptions",
+    "uri" : "/aai/v13/business/customers/customer/ovp/service-subscriptions",
     "headers" : {
       "Authorization" : "Basic QUFJOkFBSQ==",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
-      "X-TransactionId" : "req-0617d23c-c9af-473a-9045-e964fd12d81f",
+      "X-TransactionId" : "req-46b9c555-2eef-4747-8830-8a58b6f610b3",
       "Content-Type" : "application/json"
     },
     "json" : null
@@ -15,62 +15,26 @@
     "status" : 200,
     "json" : {
       "service-subscription" : [ {
-        "service-type" : "vfwhpa",
-        "resource-version" : "1552436330116",
+        "service-type" : "tosca_vnf_validation",
+        "resource-version" : "1567068689784",
         "relationship-list" : {
           "relationship" : [ {
             "related-to" : "tenant",
             "relationship-label" : "org.onap.relationships.inventory.Uses",
-            "related-link" : "/aai/v13/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-06/tenants/tenant/709ba629fe194f8699b12f9d6ffd86a0",
+            "related-link" : "/aai/v13/cloud-infrastructure/cloud-regions/cloud-region/OCOMP/RegionOVP/tenants/tenant/6fcac72c-a2cd-4d18-9f1d-09908ca08afe",
             "relationship-data" : [ {
               "relationship-key" : "cloud-region.cloud-owner",
-              "relationship-value" : "CloudOwner"
+              "relationship-value" : "OCOMP"
             }, {
               "relationship-key" : "cloud-region.cloud-region-id",
-              "relationship-value" : "ONAP-POD-01-Rail-06"
+              "relationship-value" : "RegionOVP"
             }, {
               "relationship-key" : "tenant.tenant-id",
-              "relationship-value" : "709ba629fe194f8699b12f9d6ffd86a0"
+              "relationship-value" : "6fcac72c-a2cd-4d18-9f1d-09908ca08afe"
             } ],
             "related-to-property" : [ {
               "property-key" : "tenant.tenant-name",
-              "property-value" : "Integration-HPA"
-            } ]
-          }, {
-            "related-to" : "tenant",
-            "relationship-label" : "org.onap.relationships.inventory.Uses",
-            "related-link" : "/aai/v13/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-04/tenants/tenant/709ba629fe194f8699b12f9d6ffd86a0",
-            "relationship-data" : [ {
-              "relationship-key" : "cloud-region.cloud-owner",
-              "relationship-value" : "CloudOwner"
-            }, {
-              "relationship-key" : "cloud-region.cloud-region-id",
-              "relationship-value" : "ONAP-POD-01-Rail-04"
-            }, {
-              "relationship-key" : "tenant.tenant-id",
-              "relationship-value" : "709ba629fe194f8699b12f9d6ffd86a0"
-            } ],
-            "related-to-property" : [ {
-              "property-key" : "tenant.tenant-name",
-              "property-value" : "Integration-HPA"
-            } ]
-          }, {
-            "related-to" : "tenant",
-            "relationship-label" : "org.onap.relationships.inventory.Uses",
-            "related-link" : "/aai/v13/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-05/tenants/tenant/709ba629fe194f8699b12f9d6ffd86a0",
-            "relationship-data" : [ {
-              "relationship-key" : "cloud-region.cloud-owner",
-              "relationship-value" : "CloudOwner"
-            }, {
-              "relationship-key" : "cloud-region.cloud-region-id",
-              "relationship-value" : "ONAP-POD-01-Rail-05"
-            }, {
-              "relationship-key" : "tenant.tenant-id",
-              "relationship-value" : "709ba629fe194f8699b12f9d6ffd86a0"
-            } ],
-            "related-to-property" : [ {
-              "property-key" : "tenant.tenant-name",
-              "property-value" : "Integration-HPA"
+              "property-value" : "ocomp"
             } ]
           } ]
         }
