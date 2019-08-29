@@ -18,7 +18,7 @@ description: Retrieve SDC consumer
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
