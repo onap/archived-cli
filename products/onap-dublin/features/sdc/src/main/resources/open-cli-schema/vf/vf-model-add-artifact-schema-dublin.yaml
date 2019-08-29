@@ -18,15 +18,15 @@ description: Add a artifact to a Virtual function
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP HPA Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: vf-uniqueId
+  - name: vf-id
     description: VF UniqueId
     type: string
-    long_option: vf-uniqueId
+    long_option: vf-id
     short_option: x
     is_optional: false
   - name: remarks
@@ -62,7 +62,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/resources/${vf-uniqueId}/artifacts
+    uri: /sdc2/rest/v1/catalog/resources/${vf-id}/artifacts
     method: POST
     headers:
       Content-MD5: $s{md5:__body__}
