@@ -18,15 +18,15 @@ description: Rejects the Service model test in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP HPA Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-model-id
+  - name: service-id
     description: Service model ID
     type: string
-    long_option: service-model-id
+    long_option: service-id
     short_option: b
     is_optional: false
   - name: test-remark
@@ -43,7 +43,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-id}/lifecycleState/failCertification
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/lifecycleState/failCertification
     method: POST
     body: '{"userRemarks": "${test-remark}"}'
   success_codes:

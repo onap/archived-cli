@@ -18,15 +18,15 @@ description: Undo Checkout of Service model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-model-uuid
+  - name: service-uuid
     description: Service model UUIID (check service-model-list)
     type: string
-    long_option: service-model-uuid
+    long_option: service-uuid
     short_option: b
     is_optional: true
 
@@ -37,7 +37,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-uuid}/lifecycleState/UNDOCHECKOUT
+    uri: /sdc2/rest/v1/catalog/services/${service-uuid}/lifecycleState/UNDOCHECKOUT
     method: POST
     body: '{"userRemarks": null}'
   success_codes:
