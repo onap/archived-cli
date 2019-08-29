@@ -18,15 +18,15 @@ description: Starts the testing of a Service model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-model-id
+  - name: service-id
     description: Service model ID
     type: string
-    long_option: service-model-id
+    long_option: service-id
     short_option: b
     is_optional: true
 
@@ -37,7 +37,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-id}/lifecycleState/startCertification
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/lifecycleState/startCertification
     method: POST
     body: '{}'
   success_codes:
