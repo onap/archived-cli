@@ -18,27 +18,27 @@ description: Set property to a service model
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP HPA Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-uniqueId
+  - name: service-id
     description: service UniqueId
     type: string
-    long_option: service-uniqueId
+    long_option: service-id
     short_option: x
     is_optional: false
-  - name: resource-uuid
-    description: resource uuid
+  - name: vf-resource-id
+    description: resource id provided by service ns_id.vf_id.vf_name
     type: string
-    long_option: resource-uuid
+    long_option: vf-resource-id
     short_option: y
     is_optional: false
-  - name: resource-uniqueId
-    description: resource UniqueId
+  - name: vf-id
+    description: resource id
     type: string
-    long_option: resource-uniqueId
+    long_option: vf-id
     short_option: z
     is_optional: false
   - name: property-name
@@ -53,6 +53,12 @@ parameters:
     long_option: property-value
     short_option: r
     is_optional: false
+  - name: input-uuid
+    description: VF Model Input uuid
+    type: string
+    long_option: input-uuid
+    short_option: R
+    is_optional: false
 http:
   service:
     name: sdc
@@ -60,8 +66,8 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-uniqueId}/resourceInstance/${resource-uniqueId}/properties
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/resourceInstance/${vf-resource-id}/inputs
     method: POST
-    body: '[{"constraints":null,"defaultValue":null,"description":null,"name":"${property-name}","parentUniqueId":null,"password":false,"required":false,"schema":{"property":{}},"schemaType":null,"type":"string","uniqueId":"${resource-uuid}.${property-name}","value":"${property-value}","definition":false,"getInputValues":null,"parentPropertyType":null,"subPropertyInputPath":null,"toscaPresentation":{"ownerId":null},"getPolicyValues":null,"inputPath":null}]'
+    body: '[{"constraints":[],"definition":false,"name":"${property-name}","parentUniqueId":"${input-uuid}","password":false,"required":false,"schema":{"property":{}},"toscaPresentation":{"ownerId":"${input-uuid}"},"type":"string","uniqueId":"${input-uuid}.${property-name}","value":"${property-value}"}]'
   success_codes:
     - 200

@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: service-model-set-property
+version: onap-dublin
+samples:
+  sample1:
+    name: service-model-set-property
+    input: --format json --input-uuid b8f09d0e-dd33-46d1-bb49-434094bf632f --service-id 58620731-40a9-4f8e-95db-ef9fc478a705 --property-name nf_type --vf-resource-id 58620731-40a9-4f8e-95db-ef9fc478a705.b85dad49-bd5c-4036-8eb0-601778b9d6ff.vgwocompvtp --property-value hwvnfmdriver --vf-id b85dad49-bd5c-4036-8eb0-601778b9d6ff
+    moco: service-model-set-property-moco.json
+    output: |
+      [{}]
