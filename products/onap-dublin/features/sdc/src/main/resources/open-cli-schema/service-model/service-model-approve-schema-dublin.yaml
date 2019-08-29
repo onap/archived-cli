@@ -18,15 +18,15 @@ description: Approves the Service model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-model-uniqueId
-    description: Service model UniqueId (can be found by running service-model-list)
+  - name: service-id
+    description: Service model UniqueId
     type: string
-    long_option: service-model-uniqueId
+    long_option: service-id
     short_option: b
     is_optional: false
   - name: remarks
@@ -43,7 +43,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-uniqueId}/distribution-state/approve
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/distribution-state/approve
     method: POST
     body: '{"userRemarks": "${remarks}"}'
   success_codes:
