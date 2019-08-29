@@ -18,7 +18,7 @@ description: Create License Key Group
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.onboarding
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
@@ -48,17 +48,11 @@ parameters:
     long_option: type
     is_optional: false
     default_value: Universal
-  - name: description
-    description: Description for License Key Group
-    type: string
-    short_option: z
-    long_option: description
-    is_optional: true
 
 results:
   direction: portrait
   attributes:
-    - name: ID
+    - name: id
       description: License Model ID
       scope: short
       type: string
@@ -71,8 +65,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/license-key-groups
     method: POST
-    body: '{"description": "${description}", "name": "${name}", "type": "${type}"}'
+    body: '{"name": "${name}", "type": "${type}"}'
   success_codes:
     - 200
   result_map:
-    ID: $b{$.value}
+    id: $b{$.value}

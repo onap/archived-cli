@@ -1,25 +1,24 @@
 [ {
   "request" : {
     "method" : "post",
-    "uri" : "/onboarding-api/v1.0/vendor-license-models/6b33c26b3a924b2789fa17fabd4a292d/versions/2b683bedebeb4874a9c2a82939c77f0d/license-key-groups",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/d572f583bf224b4c93b99105cd35b0a9/versions/496cc167b6cf44c3b7818c95a1d9e036/license-key-groups",
     "headers" : {
       "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-5b5c1feb-062f-42d2-876d-0d748f460015",
+      "X-TransactionId" : "req-f6c9d577-764c-4411-b0d6-1983d1312d0d",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "description" : "",
-      "name" : "philip-key-grp",
+      "name" : "ocompvtpvendor Key goroup",
       "type" : "Universal"
     }
   },
   "response" : {
     "status" : 200,
     "json" : {
-      "value" : "51466fa44cb346eda6881176440eee5d"
+      "value" : "0c36608f4bab42c298a17388d7ec6727"
     }
   }
 } ]
