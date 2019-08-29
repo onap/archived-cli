@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: tenant-list
+version: onap-dublin
+samples:
+  sample1:
+    name: tenant-list
+    input: --format json --region RegionOVP --cloud OCOMP
+    moco: tenant-list-schema-dublin-moco.json
+    output: |
+      [{"resource-version":"1567068676263","tenant-id":"6fcac72c-a2cd-4d18-9f1d-09908ca08afe","tenant-name":"ocomp"}]

@@ -1,0 +1,21 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v13/cloud-infrastructure/cloud-regions/cloud-region/OCOMP/RegionOVP/tenants/tenant/6fcac72c-a2cd-4d18-9f1d-09908ca08afe",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-300c4e32-4fb2-4fe8-b238-e3cb13c2a9d1",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "tenant-id" : "6fcac72c-a2cd-4d18-9f1d-09908ca08afe",
+      "tenant-name" : "ocomp"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]

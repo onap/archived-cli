@@ -1,0 +1,18 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/aai/v13/cloud-infrastructure/cloud-regions/cloud-region/OCOMP/RegionOVP/tenants/tenant/6fcac72c-a2cd-4d18-9f1d-09908ca08afe",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-22a79b24-0ed5-475c-9c5e-fed1d4461bb3",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 204,
+    "json" : null
+  }
+} ]

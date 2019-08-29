@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: tenant-create
+version: onap-dublin
+samples:
+  sample1:
+    name: tenant-create
+    input: --format json --region RegionOVP --tenant-id 6fcac72c-a2cd-4d18-9f1d-09908ca08afe --cloud OCOMP --tenant-name ocomp
+    moco: tenant-create-schema-dublin-moco.json
+    output: |
+      [{}]
