@@ -1,61 +1,10 @@
-# Copyright © Intel Corporation 2019
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 open_cli_sample_version: 1.0
-name: -x
+name: vsp-validate
 version: onap-dublin
 samples:
   sample1:
-    name: -x
-    input: 0afed170432e471e9dafb662f78a8277 -y a6a78a511fd74524889f8095e12b9aac -u cs0008 -p demo123456! -m http://10.43.107.110:8081
+    name: vsp-validate
+    input: --format json --vsp-version f13d686db7bf4fb0ba34354faf8a9d30 --vsp-id 55ca1625888743a1b791790b126b79f9
     moco: vsp-validate-schema-dublin-moco.json
     output: |
-      +----------+----------------------------------------------------+
-      |property  |value                                               |
-      +----------+----------------------------------------------------+
-      |status    |Success                                             |
-      +----------+----------------------------------------------------+
-      |errors    |{base_vfw.yaml=[{"level":"WARNING","message":"WARN  |
-      |          |ING: [NNP1]: Port 'Fixed_IPS' Parameter Name not    |
-      |          |aligned with Guidelines, Parameter Name             |
-      |          |[onap_private_subnet_id], Resource ID               |
-      |          |[vfw_private_2_port]. As a result, VF\/VFC          |
-      |          |Profile may miss this information"},{"level":"WARN  |
-      |          |ING","message":"WARNING: [NNP1]: Port 'Fixed_IPS'   |
-      |          |Parameter Name not aligned with Guidelines,         |
-      |          |Parameter Name [onap_private_subnet_id], Resource   |
-      |          |ID [vpg_private_1_port]. As a result, VF\/VFC       |
-      |          |Profile may miss this information"},{"level":"WARN  |
-      |          |ING","message":"WARNING: [NNP1]: Port 'Fixed_IPS'   |
-      |          |Parameter Name not aligned with Guidelines,         |
-      |          |Parameter Name [onap_private_subnet_id], Resource   |
-      |          |ID [vsn_private_1_port]. As a result, VF\/VFC       |
-      |          |Profile may miss this information"},{"level":"WARN  |
-      |          |ING","message":"WARNING: [NNS11]: Nova Server       |
-      |          |naming convention in image, flavor and name         |
-      |          |properties is not consistent, Resource ID           |
-      |          |[vfw_0]"},{"level":"WARNING","message":"WARNING:    |
-      |          |[NNS12]: A resource is connected twice to the       |
-      |          |same network role, Network Role [vpg_0], Resource   |
-      |          |ID [onap_private]"},{"level":"WARNING","message":"  |
-      |          |WARNING: [NNS11]: Nova Server naming convention     |
-      |          |in image, flavor and name properties is not         |
-      |          |consistent, Resource ID                             |
-      |          |[vpg_0]"},{"level":"WARNING","message":"WARNING:    |
-      |          |[NNS12]: A resource is connected twice to the       |
-      |          |same network role, Network Role [vsn_0], Resource   |
-      |          |ID [onap_private]"},{"level":"WARNING","message":"  |
-      |          |WARNING: [NNS11]: Nova Server naming convention     |
-      |          |in image, flavor and name properties is not         |
-      |          |consistent, Resource ID [vsn_0]"}]}                 |
-      +----------+----------------------------------------------------+
+      {"errors":{},"status":"Success"}

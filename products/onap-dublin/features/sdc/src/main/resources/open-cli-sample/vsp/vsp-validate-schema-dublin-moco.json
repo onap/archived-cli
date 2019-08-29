@@ -1,13 +1,13 @@
 [ {
   "request" : {
     "method" : "put",
-    "uri" : "/onboarding-api/v1.0/vendor-software-products/0afed170432e471e9dafb662f78a8277/versions/a6a78a511fd74524889f8095e12b9aac/orchestration-template-candidate/process",
+    "uri" : "/onboarding-api/v1.0/vendor-software-products/55ca1625888743a1b791790b126b79f9/versions/f13d686db7bf4fb0ba34354faf8a9d30/orchestration-template-candidate/process",
     "headers" : {
       "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-db25d79f-0a66-4a9b-b8af-0d3e2f5c6376",
+      "X-TransactionId" : "req-67a5ecb0-1ae4-4a3e-a78d-f175b2df042b",
       "Content-Type" : "application/json"
     },
     "json" : { }
@@ -15,34 +15,8 @@
   "response" : {
     "status" : 200,
     "json" : {
-      "fileNames" : [ "base_vfw.yaml", "base_vfw.env" ],
-      "errors" : {
-        "base_vfw.yaml" : [ {
-          "level" : "WARNING",
-          "message" : "WARNING: [NNP1]: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vfw_private_2_port]. As a result, VF/VFC Profile may miss this information"
-        }, {
-          "level" : "WARNING",
-          "message" : "WARNING: [NNP1]: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vpg_private_1_port]. As a result, VF/VFC Profile may miss this information"
-        }, {
-          "level" : "WARNING",
-          "message" : "WARNING: [NNP1]: Port 'Fixed_IPS' Parameter Name not aligned with Guidelines, Parameter Name [onap_private_subnet_id], Resource ID [vsn_private_1_port]. As a result, VF/VFC Profile may miss this information"
-        }, {
-          "level" : "WARNING",
-          "message" : "WARNING: [NNS11]: Nova Server naming convention in image, flavor and name properties is not consistent, Resource ID [vfw_0]"
-        }, {
-          "level" : "WARNING",
-          "message" : "WARNING: [NNS12]: A resource is connected twice to the same network role, Network Role [vpg_0], Resource ID [onap_private]"
-        }, {
-          "level" : "WARNING",
-          "message" : "WARNING: [NNS11]: Nova Server naming convention in image, flavor and name properties is not consistent, Resource ID [vpg_0]"
-        }, {
-          "level" : "WARNING",
-          "message" : "WARNING: [NNS12]: A resource is connected twice to the same network role, Network Role [vsn_0], Resource ID [onap_private]"
-        }, {
-          "level" : "WARNING",
-          "message" : "WARNING: [NNS11]: Nova Server naming convention in image, flavor and name properties is not consistent, Resource ID [vsn_0]"
-        } ]
-      },
+      "fileNames" : [ "Artifacts/Deployment/Other/id_rsa.pub", "Definitions/MainServiceTemplate.yaml", "Definitions/onap_dm.yaml", "MainServiceTemplate.yaml", "Artifacts/Deployment/Other/id_rsa", "Artifacts/Deployment/Other/image", "Artifacts/Deployment/Other/authorized_keys", "MainServiceTemplate.mf", "TOSCA-Metadata/TOSCA.meta" ],
+      "errors" : { },
       "status" : "Success"
     }
   }
