@@ -1,31 +1,31 @@
 [ {
   "request" : {
     "method" : "put",
-    "uri" : "/aai/v14//aai/v14/cloud-infrastructure/complexes/complex/clli3",
+    "uri" : "/aai/v14/cloud-infrastructure/complexes/complex/ocomp-region",
     "headers" : {
       "Authorization" : "Basic QUFJOkFBSQ==",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
-      "X-TransactionId" : "req-f84bd111-614f-4f6e-9bea-f076a8b63810",
+      "X-TransactionId" : "req-230ff595-12b3-480a-86c4-f5e3b1f8d5b0",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "physical-location-id" : "clli3",
-      "data-center-code" : "code6",
-      "complex-name" : "clli3",
-      "identity-url" : "url",
+      "physical-location-id" : "ocomp-region",
+      "data-center-code" : "ocomp",
+      "complex-name" : "ocomp-region",
+      "identity-url" : "http://10.12.11.1:5000/v3",
       "physical-location-type" : "phy_type",
-      "street1" : "street1",
-      "street2" : "street2",
-      "city" : "HIlls",
-      "state" : "CA",
-      "postal-code" : "88888",
-      "country" : "usa",
-      "region" : "region_val",
-      "latitude" : "10.2",
-      "longitude" : "30.8",
-      "elevation" : "elev",
-      "lata" : "lata"
+      "street1" : "ocomp-street1",
+      "street2" : "ocomp-street2",
+      "city" : "ocomp-city",
+      "state" : "ocomp-state",
+      "postal-code" : "001481",
+      "country" : "abc",
+      "region" : "onap",
+      "latitude" : "1.0",
+      "longitude" : "1.0",
+      "elevation" : "ocomp-elelation",
+      "lata" : "ocomp-lata"
     }
   },
   "response" : {
