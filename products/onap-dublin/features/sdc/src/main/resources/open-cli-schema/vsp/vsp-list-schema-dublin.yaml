@@ -18,7 +18,7 @@ description: List of the Vendor Software Products
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.onboarding
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 results:
