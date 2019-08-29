@@ -1,0 +1,145 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vnf-tosca-provision
+description: |
+  ONAP TOSCA VNF validation using ONAP CLI and Open Command Platform (OCOMP)
+  NOTE: Before using this command, configure the $OPEN_CLI_HOME/conf/vnf-tosca-provision.json
+
+  This command runs in 4 mode:
+  1. setup: Create requires Vendor, Service Subscription and VNF cloud in ONAP
+  2. standup: From the given VSP csar, VNF csar and NS csar, it creates VF Model, NS Model and NS service
+  3. cleanup: Remove those entries provided in onap-objects parameter
+  4. validate: Run setup -> standup -> cleanup
+
+  On every execution, it reports the ONAP managed object's ids in result onap-objects attribute. so
+  if requires, these attribute value could be passed in input parameter onap-objects on subsequent
+  executions to avoid recreation of these ONA managed objects
+
+info:
+  product: onap-dublin
+  service: vnf-validation
+  author: ONAP VTP Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: config-json
+    description: Configuration file path
+    type: string
+    short_option: x
+    long_option: config-json
+    default_value: $s{env:OPEN_CLI_HOME}/conf/vnf-tosca-provision.json
+    is_optional: false
+  - name: vsp
+    description: Path to the ONAP vendor service product (VSP) for the VNF to provision
+    type: binary
+    short_option: y
+    long_option: vsp
+    is_optional: false
+  - name: vnf-csar
+    description: Path to the TOSCA CSAR for the VNF to provision
+    type: binary
+    short_option: r
+    long_option: vnf-csar
+    is_optional: false
+  - name: ns-csar
+    description: Path to the TOSCA CSAR for the NS service to provision
+    type: binary
+    short_option: b
+    long_option: ns-csar
+    is_optional: true
+    default: false
+  - name: vnfm-driver
+    description: VNFM driver to use. One of gvnfmdriver or hwvnfmdriver
+    type: string
+    short_option: c
+    long_option: vnfm-driver
+    is_optional: false
+  - name: onap-objects
+    description: Existing ONAP object ids to use instead of creating them while running this task
+    type: json
+    short_option: Z
+    long_option: onap-objects
+    is_optional: true
+    default_value: {}
+  - name: mode
+    description: setup or standup or cleanup
+    type: string
+    short_option: Y
+    long_option: mode
+    is_optional: true
+    default_value: validate
+  - name: vnf-name
+    description: VNF Name
+    type: string
+    short_option: A
+    long_option: vnf-name
+    is_optional: false
+  - name: vnf-vendor-name
+    description: VNF Vendor Name
+    type: string
+    short_option: B
+    long_option: vnf-vendor-name
+    is_optional: false
+results:
+  direction: portrait
+  attributes:
+    - name: vnf-id
+      description: ONAP VNF instance id
+      scope: short
+      type: string
+    - name: vnf-status
+      description: Onap VNF status
+      scope: short
+      type: string
+    - name: ns-id
+      description: Onap NS service instance id
+      scope: short
+      type: string
+    - name: ns-status
+      description: Onap NS status
+      scope: short
+      type: string
+    - name: vnfm-driver
+      description: VNFM driver used
+      type: string
+      scope: short
+    - name: onap-objects
+      description: ONAP object used
+      type: json
+      scope: short
+    - name: vnf-vendor-name
+      description: VNF Vendor Name
+      type: string
+      scope: short
+    - name: vnf-name
+      description: VNF Name
+      type: string
+      scope: short
+cmd:
+  command:
+    -  python $s{env:OPEN_CLI_HOME}/script/vnf-tosca-provision.py --vendor-name ${vnf-vendor-name} --vnf-name ${vnf-name} --mode ${mode} --result-json $s{tmp:result.json:onap-objects} --conf ${config-json} --vsp ${vsp} --vnf-csar ${vnf-csar} --ns-csar ${ns-csar} --vnfm-driver ${vnfm-driver}
+  success_codes:
+    - 0
+  working_directory: .
+  output: $s{tmp:result.json}
+  result_map:
+    vnf-id: $o{$.vnf_id}
+    vnf-status: $o{$.vnf_status}
+    ns-id: $o{$.ns_instance_id}
+    ns-status: $o{$.ns_instance_status}
+    vnfm-driver: ${vnfm-driver}
+    vnf-name: ${vnf-name}
+    vnf-vendor-name: ${vnf-vendor-name}
+    onap-objects: $o{$}

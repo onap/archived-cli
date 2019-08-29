@@ -1,0 +1,74 @@
+{
+    "ONAP": {
+        "vlm_id" : null,
+        "vlm_version": null,
+        "entitlement_id": null,
+        "key_group_id": null,
+        "feature_group_id": null,
+        "agreement_id": null,
+
+        "vsp_version": null,
+        "vsp_version_id": null,
+        "vsp_id": null,
+
+        "vf_id": null,
+        "vf_uuid": null,
+        "vf_version": null,
+        "vf_inputs": null,
+
+        "ns_id": null,
+        "ns_uuid": null,
+        "ns_version": null,
+        "ns_vf_resource_id": null,
+
+        "customer_id": null,
+        "customer_version": null,
+        "service_type_id": null,
+        "service_type_version": null,
+        "subscription_version": null,
+        "location_id": null,
+        "location_version": null,
+        "cloud_version": null,
+        "cloud_id": null,
+        "esr_vnfm_id": null,
+        "esr_vnfm_version": null,
+        "tenant_id": null,
+        "tenant_version": null,
+
+        "ns_instance_id": null
+    },
+    "subscription": {
+           "customer-name": "ovp",
+           "service-type": "tosca_vnf_validation"
+    },
+    "vnf": {
+        "vendor-name" : "vnf-vendor-kanag",
+        "name": "vgwvnfovpdemo",
+        "vsp-csar": "C:\\Users\\k00365106\\Desktop\\vtp\\tosca-lcm\\csar\\vgw.csar",
+        "vnf-csar": "C:\\Users\\k00365106\\Desktop\\vtp\\tosca-lcm\\csar\\vnf_vgw.csar",
+        "ns-csar": "C:\\Users\\k00365106\\Desktop\\vtp\\tosca-lcm\\csar\\ns.csar",
+        "vnfm-driver": "hwvnfmdriver"
+    },
+    "cloud": {
+        "identity-url": "http://10.12.11.1:5000/v3",
+        "username": "admin",
+        "password": "password",
+        "region": "RegionOVP",
+        "version": "ocata",
+        "tenant": "ocomp"
+    },
+    "vnfm":{
+        "hwvnfmdriver":{
+            "version": "v1.0",
+            "url": "http://159.138.8.8:30280",
+            "username": "admin",
+            "password": "password"
+        },
+        "gvnfmdriver":{
+            "version": "v1.0",
+            "url": "http://159.138.8.8:30280",
+            "username": "admin",
+            "password": "password"
+        }
+    }
+}

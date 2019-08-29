@@ -1,0 +1,69 @@
+[ {
+  "product" : "onap-dublin",
+  "name" : "sdc.catalog:host-username",
+  "value" : "cs0008"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.catalog:service-model-test-accept:host-username",
+  "value" : "jm0007"
+}, {
+  "product" : "onap-dublin",
+  "name" : "aai:host-url",
+  "value" : "https://159.138.8.8:30233"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.catalog:host-url",
+  "value" : "http://159.138.8.8:30205"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.catalog:service-model-add-artifact:host-username",
+  "value" : "ocomp"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.catalog:vf-model-add-artifact:host-username",
+  "value" : "ocomp"
+}, {
+  "product" : "onap-dublin",
+  "name" : "multicloud:host-url",
+  "value" : "https://159.138.8.8:30233"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.onboarding:host-password",
+  "value" : "demo123456!"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.onboarding:host-url",
+  "value" : "http://159.138.8.8:30280"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.catalog:service-model-test-start:host-username",
+  "value" : "jm0007"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.onboarding:host-username",
+  "value" : "cs0008"
+}, {
+  "product" : "onap-dublin",
+  "name" : "aai:host-password",
+  "value" : "AAI"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.catalog:service-model-approve:host-username",
+  "value" : "gv0001"
+}, {
+  "product" : "onap-dublin",
+  "name" : "aai:host-username",
+  "value" : "AAI"
+}, {
+  "product" : "onap-dublin",
+  "name" : "vfc:host-url",
+  "value" : "https://159.138.8.8:30233"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.catalog:host-password",
+  "value" : "demo123456!"
+}, {
+  "product" : "onap-dublin",
+  "name" : "sdc.catalog:service-model-distribute:host-username",
+  "value" : "op0001"
+} ]

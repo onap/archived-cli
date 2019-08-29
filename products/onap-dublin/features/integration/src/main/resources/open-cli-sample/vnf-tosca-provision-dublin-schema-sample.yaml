@@ -1,0 +1,43 @@
+open_cli_sample_version: 1.0
+name: vnf-tosca-provision
+version: onap-dublin
+samples:
+  sample1:
+    name: vnf-tosca-provision
+    input: --mode checkup --vsp c:\Users\k00365106\Desktop\vtp\tosca-lcm\vgw.csar --vnf-csar c:\Users\k00365106\Desktop\vtp\tosca-lcm\vgw.csar --ns-csar c:\Users\k00365106\Desktop\vtp\tosca-lcm\vgw.csar --vnfm-driver hwvnfmdriver --timeout 800000 --vnf-name vgw12345678901 --vnf-vendor-name vnfvendor12345678901 --onap-objects D:\workspace\cli\deployment\zip\target\deployunzip\data\tmp\1234567890-1567065851687_result.json
+    moco: vnf-tosca-provision-dublin-schema-moco.json
+    output: |
+      +------------------+----------------------------------------------------+
+      |property          |value                                               |
+      +------------------+----------------------------------------------------+
+      |vnf-id            |                                                    |
+      +------------------+----------------------------------------------------+
+      |vnf-status        |                                                    |
+      +------------------+----------------------------------------------------+
+      |ns-id             |null                                                |
+      +------------------+----------------------------------------------------+
+      |ns-status         |                                                    |
+      +------------------+----------------------------------------------------+
+      |vnfm-driver       |hwvnfmdriver                                        |
+      +------------------+----------------------------------------------------+
+      |onap-objects      |{"vf_inputs": null, "vlm_id": null,                 |
+      |                  |"esr_vnfm_version": null, "vlm_version": null,      |
+      |                  |"vf_id": null, "ns_instance_id": null,              |
+      |                  |"location_id": null, "service_type_version":        |
+      |                  |null, "vsp_version": null, "vsp_id": null,          |
+      |                  |"cloud_id": null, "key_group_id": null,             |
+      |                  |"ns_version": null, "vf_uuid": null,                |
+      |                  |"esr_vnfm_id": null, "tenant_version": null,        |
+      |                  |"vsp_version_id": null, "customer_id": null,        |
+      |                  |"entitlement_id": null, "service_type_id": null,    |
+      |                  |"cloud_version": null, "agreement_id": null,        |
+      |                  |"customer_version": null, "ns_vf_resource_id":      |
+      |                  |null, "tenant_id": null, "ns_uuid": null,           |
+      |                  |"vf_version": null, "location_version": null,       |
+      |                  |"subscription_version": null, "feature_group_id":   |
+      |                  |null, "ns_id": null}                               |
+      +------------------+----------------------------------------------------+
+      |vnf-vendor-name   |vnfvendor12345678901                                |
+      +------------------+----------------------------------------------------+
+      |vnf-name          |vgw12345678901                                      |
+      +------------------+----------------------------------------------------+
