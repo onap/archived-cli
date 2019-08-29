@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: complex-disassociate
+version: onap-dublin
+samples:
+  sample1:
+    name: complex-disassociate
+    input: --format json --complex-name ocomp-region --cloud-owner OCOMP --cloud-region RegionOVP
+    moco: complex-disassociate-schema-dublin-moco.json
+    output: |
+      [{}]

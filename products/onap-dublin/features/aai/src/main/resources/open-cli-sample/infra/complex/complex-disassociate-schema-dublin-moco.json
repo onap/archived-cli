@@ -1,0 +1,25 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/OCOMP/RegionOVP/relationship-list/relationship",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-26265a69-7c6c-4315-bddb-0e9548880b15",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "related-to" : "complex",
+      "related-link" : "/aai/v11/cloud-infrastructure/complexes/complex/ocomp-region",
+      "relationship-data" : [ {
+        "relationship-key" : "complex.physical-location-id",
+        "relationship-value" : "ocomp-region"
+      } ]
+    }
+  },
+  "response" : {
+    "status" : 204,
+    "json" : null
+  }
+} ]
