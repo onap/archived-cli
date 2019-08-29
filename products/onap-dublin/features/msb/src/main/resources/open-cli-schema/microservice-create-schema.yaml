@@ -46,7 +46,7 @@ parameters:
     short_option: b
     long_option: enable-ssl
     is_optional: true
-    default: false
+    default_value: false
   - name: path
     description: Onap service path
     type: string
@@ -56,12 +56,21 @@ parameters:
   - name: node-ip
     description: Onap service running node IP
     type: string
+    long_option: node-ip
+    short_option: X
+    is_optional: false
   - name: node-port
     description: Onap service running node port
     type: string
+    long_option: node-port
+    short_option: Y
+    is_optional: false
   - name: create-or-update
     description: Onap service create or update
     type: bool
+    long_option: create-or-update
+    short_option: Z
+    is_optional: true
     default_value: true
 results:
   direction: portrait
