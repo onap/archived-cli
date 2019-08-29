@@ -1,41 +1,39 @@
 [ {
   "request" : {
     "method" : "post",
-    "uri" : "/sdc2/rest/v1/catalog/resources/b3e0f162-5356-4b43-a9c0-3ab7e66638d2/lifecycleState/certify",
+    "uri" : "/sdc2/rest/v1/catalog/resources/eeafae8a-9269-4109-b97c-63290957ae8f/lifecycleState/certify",
     "headers" : {
       "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-d77560cd-ce34-48fe-9607-327f1eab89b4",
+      "X-TransactionId" : "req-68cb2dd3-ab18-4fc5-90aa-67ca3d24903a",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "userRemarks" : "cli vf certification"
+      "userRemarks" : "Created by Open Command Platform - OCOMP"
     }
   },
   "response" : {
     "status" : 200,
     "json" : {
-      "uniqueId" : "86e7f0b5-e93f-45d7-b279-6e8d450fb1d9",
-      "name" : "cli-vf-3",
+      "uniqueId" : "b85dad49-bd5c-4036-8eb0-601778b9d6ff",
+      "name" : "vgwocompvtp Vnf",
       "version" : "1.0",
       "isHighestVersion" : true,
-      "creationDate" : 1553125006126,
-      "lastUpdateDate" : 1553125171457,
-      "description" : "cli-vf-3",
+      "creationDate" : 1567068744167,
+      "lastUpdateDate" : 1567068757452,
+      "description" : "Created by Open Command Platform - OCOMP",
       "lifecycleState" : "CERTIFIED",
-      "tags" : [ "cli-vf-3" ],
+      "tags" : [ "CLI", "vgwocompvtp Vnf" ],
       "icon" : "defaulticon",
-      "normalizedName" : "clivf3",
-      "systemName" : "CliVf3",
+      "normalizedName" : "vgwocompvtpvnf",
+      "systemName" : "VgwocompvtpVnf",
       "contactId" : "cs0008",
       "allVersions" : {
-        "1.0" : "86e7f0b5-e93f-45d7-b279-6e8d450fb1d9"
+        "1.0" : "b85dad49-bd5c-4036-8eb0-601778b9d6ff"
       },
-      "csarUUID" : "b45a4ac88b274c179744e4a2d2d93767",
-      "csarVersion" : "1.0",
-      "invariantUUID" : "d0046ab0-5789-4a97-b61a-2763acddd180",
+      "invariantUUID" : "4c891c7d-3e24-49de-a81e-9b08f75027c5",
       "componentType" : "RESOURCE",
       "categories" : [ {
         "name" : "Generic",
@@ -55,14 +53,14 @@
       "lastUpdaterUserId" : "cs0008",
       "lastUpdaterFullName" : "Carlos Santana",
       "archiveTime" : 0,
-      "vendorName" : "itohan-vendor",
+      "vendorName" : "ocompvtpvendor",
       "vendorRelease" : "1.0",
       "resourceVendorModelNumber" : "",
       "resourceType" : "VF",
-      "toscaResourceName" : "org.openecomp.resource.vf.CliVf3",
+      "toscaResourceName" : "org.openecomp.resource.vf.VgwocompvtpVnf",
       "vspArchived" : false,
-      "archived" : false,
-      "uuid" : "1119b3ca-ba88-446e-8812-7fe8f8078aef"
+      "uuid" : "d68a7966-e850-46f2-b5e0-d819c16a27db",
+      "archived" : false
     }
   }
 } ]

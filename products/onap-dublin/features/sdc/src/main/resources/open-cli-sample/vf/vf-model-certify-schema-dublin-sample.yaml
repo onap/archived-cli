@@ -1,22 +1,10 @@
-# Copyright © Intel Corporation 2019
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 open_cli_sample_version: 1.0
-name: -b
+name: vf-model-certify
 version: onap-dublin
 samples:
   sample1:
-    name: -b
-    input: b3e0f162-5356-4b43-a9c0-3ab7e66638d2 -r cli vf certification -u cs0008 -p demo123456! -m http://10.12.6.129:30205 --debug
+    name: vf-model-certify
+    input: --format json --remarks Created by Open Command Platform - OCOMP --vf-id eeafae8a-9269-4109-b97c-63290957ae8f
     moco: vf-model-certify-schema-dublin-moco.json
-    output:
+    output: |
+      {"id":"b85dad49-bd5c-4036-8eb0-601778b9d6ff","uuid":"d68a7966-e850-46f2-b5e0-d819c16a27db","version":"1.0"}

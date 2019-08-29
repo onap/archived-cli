@@ -18,15 +18,15 @@ description: Certify a Virtual function
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP HPA Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: vf-uniqueId
+  - name: vf-id
     description: VF UniqueId
     type: string
-    long_option: vf-uniqueId
+    long_option: vf-id
     short_option: b
     is_optional: false
   - name: remarks
@@ -36,6 +36,21 @@ parameters:
     short_option: r
     is_optional: true
 
+results:
+  direction: portrait
+  attributes:
+    - name: id
+      description: VF version unique ID
+      scope: short
+      type: string
+    - name: uuid
+      description: VF UUID
+      scope: short
+      type: uuid
+    - name: version
+      description: VF version
+      scope: short
+      type: string
 http:
   service:
     name: sdc
@@ -43,8 +58,12 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/resources/${vf-uniqueId}/lifecycleState/certify
+    uri: /sdc2/rest/v1/catalog/resources/${vf-id}/lifecycleState/certify
     method: POST
     body: '{"userRemarks":"${remarks}"}'
   success_codes:
     - 200
+  result_map:
+    id: $b{$.uniqueId}
+    uuid: $b{$.uuid}
+    version: $b{$.version}
