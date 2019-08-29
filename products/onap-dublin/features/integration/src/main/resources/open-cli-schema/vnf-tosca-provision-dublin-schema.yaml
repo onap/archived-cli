@@ -16,22 +16,86 @@ open_cli_schema_version: 1.0
 name: vnf-tosca-provision
 description: |
   ONAP TOSCA VNF validation using ONAP CLI and Open Command Platform (OCOMP)
-  NOTE: Before using this command, configure the $OPEN_CLI_HOME/conf/vnf-tosca-provision.json
 
   This command runs in 4 mode:
-  1. setup: Create requires Vendor, Service Subscription and VNF cloud in ONAP
-  2. standup: From the given VSP csar, VNF csar and NS csar, it creates VF Model, NS Model and NS service
-  3. cleanup: Remove those entries provided in onap-objects parameter
+  1. setup:    Create requires Vendor, Service Subscription and VNF cloud in ONAP
+  2. standup:  From the given VSP csar, VNF csar and NS csar, it creates VF Model, NS Model and NS service
+  3. cleanup:  Remove those entries provided in onap-objects parameter
   4. validate: Run setup -> standup -> cleanup
 
   On every execution, it reports the ONAP managed object's ids in result onap-objects attribute. so
   if requires, these attribute value could be passed in input parameter onap-objects on subsequent
   executions to avoid recreation of these ONA managed objects
 
+  prerequisites
+  -------------
+  1. Setup the OCOMP profile to configure the ONAP service URL and creadentials as given below
+
+  a. Run command 'oclip' to go to OCOMP interactive mode
+
+  b. Type 'use onap-dublin' to choose the onap-dublin product
+
+  c. Type 'profile onap-dublin' to create or to use existing onap-dublin profile
+
+  d. Set following entries:
+    set sdc.onboarding:host-url=https://159.138.8.8:30280
+    set sdc.onboarding:host-username=cs0008
+    set sdc.onboarding:host-password=demo123456!
+    set sdc.catalog:host-url=https://159.138.8.8:30205
+    set sdc.catalog:host-password=demo123456\!
+    set sdc.catalog:host-username=cs0008
+    set sdc.catalog:service-model-approve:host-username=gv0001
+    set sdc.catalog:service-model-distribute:host-username=op0001
+    set sdc.catalog:service-model-test-start:host-username=jm0007
+    set sdc.catalog:service-model-test-accept:host-username=jm0007
+    set sdc.catalog:service-model-add-artifact:host-username=ocomp
+    set sdc.catalog:vf-model-add-artifact:host-username=ocomp
+    set aai:host-url=https://159.138.8.8:30233
+    set aai:host-username=AAI
+    set aai:host-password=AAI
+    set vfc:host-url=http://159.138.8.8:30280
+    set multicloud:host-url=http://159.138.8.8:30280
+
+    NOTE:
+    By default, SDC onboarding service does not provide node port, which is available to access from external ONAP network.
+    so to enable for external access, register the SDC onboarding service into MSB and use MSB url for sdc.onboarding:host-url.
+
+      oclip --product onap-dublin microservice-create --host-url http://159.138.8.8:30280 --service-name sdcob --service-version v1.0 --service-url /onboarding-api/v1.0 --path /onboarding-api/v1.0  --node-ip 172.16.1.0 --node-port 8081
+
+      oclip --product onap-dublin microservice-create --host-url http://159.138.8.8:30280 --service-name sdcobs --service-version v1.0 --service-url /onboarding-api/v1.0 --path /onboarding-api/v1.0  --node-ip 172.16.1.0 --node-port 8445 --enable-ssl
+
+      Find out SDC onboarding service IP and port details as given here:
+        [root@onap-dublin-vfw-93996-50c1z ~]# kubectl get pods -n onap -o wide | grep sdc-onboarding-be
+        dev-sdc-sdc-onboarding-be-5564b877c8-vpwr5                        2/2     Running            0          29d   172.16.1.0     192.168.2.163   <none>           <none>
+        dev-sdc-sdc-onboarding-be-cassandra-init-mtvz6                    0/1     Completed          0          29d   172.16.0.220   192.168.2.163   <none>           <none>
+        [root@onap-dublin-vfw-93996-50c1z ~]#
+
+        Note down the IP address for sdc-onboarding-be 172.16.1.0
+
+        [root@onap-dublin-vfw-93996-50c1z ~]# kubectl get services -n onap -o wide | grep sdc-onboarding-be
+        sdc-onboarding-be                                           ClusterIP      10.247.198.92    <none>                                 8445/TCP,8081/TCP                                             29d   app=sdc-onboarding-be,release=dev-sdc
+        [root@onap-dublin-vfw-93996-50c1z ~]#
+
+        Note down the port for sdc-onboarding-be 8445 8081
+
+        Similarly, other service IP and Port could be discovered like above, in case not know earlier :)
+
+     This profile would be used while running the command with ONAP setup configured in it, as below
+       oclip --profile onap-dublin vnf-tosca-provision .....
+
+  e. Verify these details once by typing 'set'
+
+  e. Exit from the interactive console by typing 'exit'
+
+  2. Setup SDC consumer
+    oclip --product onap-dublin --profile onap-dublin sdc-consumer-create --consumer-name ocomp
+
+  3. Update the cloud and vnfm driver details in the configuration file $OPEN_CLI_HOME/conf/vnf-tosca-provision.json
+
 info:
   product: onap-dublin
   service: vnf-validation
-  author: ONAP VTP Team onap-discuss@lists.onap.org
+  author: ONAP VTP Team kanagaraj.manickam@huawei.com
 
 parameters:
   - name: config-json
