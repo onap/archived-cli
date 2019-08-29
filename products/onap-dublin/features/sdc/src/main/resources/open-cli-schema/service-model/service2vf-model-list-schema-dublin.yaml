@@ -18,16 +18,16 @@ description: List the VF in a given service model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-model-id
+  - name: service-id
     description: Service model uuid
     type: string
     short_option: z
-    long_option: service-model-id
+    long_option: service-id
     is_optional: false
 
 results:
@@ -49,7 +49,7 @@ results:
       description: version
       type: string
       scope: short
-    - name: vf-unique-uuid
+    - name: vf-id
       description: customization UUID
       type: string
       scope: short
@@ -61,12 +61,12 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-id}
+    uri: /sdc2/rest/v1/catalog/services/${service-id}
     method: GET
   success_codes:
     - 200
   result_map:
-    vf-unique-uuid: $b{componentInstances.[*].uniqueId}
+    vf-id: $b{componentInstances.[*].uniqueId}
     vf-uuid: $b{componentInstances.[*].componentUid}
     vf-name: $b{componentInstances.[*].componentName}
     vf-version: $b{componentInstances.[*].componentVersion}
