@@ -1,30 +1,30 @@
 [ {
   "request" : {
     "method" : "post",
-    "uri" : "/onboarding-api/v1.0/vendor-license-models/6b33c26b3a924b2789fa17fabd4a292d/versions/2b683bedebeb4874a9c2a82939c77f0d/entitlement-pools",
+    "uri" : "/onboarding-api/v1.0/vendor-license-models/d572f583bf224b4c93b99105cd35b0a9/versions/496cc167b6cf44c3b7818c95a1d9e036/entitlement-pools",
     "headers" : {
       "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
       "USER_ID" : "cs0008",
-      "X-TransactionId" : "req-47de9a0c-f2c9-4355-a8ed-0ce066cac513",
+      "X-TransactionId" : "req-5f019d90-52bb-402f-b742-f5de970b3f58",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "name" : "philip-pool",
+      "name" : "ocompvtpvendor Entitlement Pool",
       "time" : {
         "choice" : "",
         "other" : ""
       },
-      "startDate" : "03/15/2019",
-      "expiryDate" : "12/31/2030",
-      "manufacturerReferenceNumber" : "philip-vendor"
+      "startDate" : "08/29/2019",
+      "expiryDate" : "08/30/2019",
+      "manufacturerReferenceNumber" : "OCOMP"
     }
   },
   "response" : {
     "status" : 200,
     "json" : {
-      "value" : "8c70182a9c4641e79477708ef6ed6984"
+      "value" : "7f3150863aca4d82b837d2d1980ef064"
     }
   }
 } ]

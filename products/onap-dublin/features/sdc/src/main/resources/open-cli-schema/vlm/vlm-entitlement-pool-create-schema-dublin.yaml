@@ -18,7 +18,7 @@ description: Create Entitlement Pool
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.onboarding
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
@@ -41,35 +41,29 @@ parameters:
     short_option: e
     long_option: vlm-version
     is_optional: false
-  - name: description
-    description: Description for Entitlement Pool
-    type: string
-    short_option: z
-    long_option: description
-    is_optional: false
   - name: manufacture-reference-number
     description: Manufature Reference Number
     type: string
     short_option: k
     long_option: manufacture-reference-number
     is_optional: false
-  - name: startDate
+  - name: start-date
     description: License start date (MM/DD/YYYY)
     type: string
     short_option: l
-    long_option: startDate
+    long_option: start-date
     is_optional: false
-  - name: expiryDate
+  - name: expiry-date
     description: License end date (MM/DD/YYYY)
     type: string
     short_option: g
-    long_option: expiryDate
-    is_optional: false    
+    long_option: expiry-date
+    is_optional: false
 
 results:
   direction: portrait
   attributes:
-    - name: ID
+    - name: id
       description: Entitlement Pool ID
       scope: short
       type: string
@@ -82,8 +76,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/entitlement-pools
     method: POST
-    body: '{"name":"${name}","time":{"choice":"","other":""},"startDate":"${startDate}","expiryDate":"${expiryDate}","manufacturerReferenceNumber":"${manufacture-reference-number}"}'
+    body: '{"name":"${name}","time":{"choice":"","other":""},"startDate":"${start-date}","expiryDate":"${expiry-date}","manufacturerReferenceNumber":"${manufacture-reference-number}"}'
   success_codes:
     - 200
   result_map:
-    ID: $b{$.value}
+    id: $b{$.value}
