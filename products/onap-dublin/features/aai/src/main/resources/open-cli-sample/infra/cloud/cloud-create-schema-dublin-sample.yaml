@@ -1,22 +1,10 @@
-# Copyright © Intel Corporation 2019
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 open_cli_sample_version: 1.0
 name: cloud-create
 version: onap-dublin
 samples:
   sample1:
     name: cloud-create
-    input: -e 5c85ce1f-aa78-4ebf-8d6f-4b62773e9bce -b cloud_username -I {\"openstack-region-id\":\"ONAP-POD-01-Rail-07\"} -x CloudOwner -y ONAP-POD-01-Rail-07 -j cloud_password -w titanium_cloud -l Integration-HPA -url http://10.12.11.1:5000/v3 -n clli3 -q openstack -r t1 -Q VIM -i url -g CloudZone -z true -k active -c Default
+    input: --format json --username admin --complex-name ocomp-region --system-status active --ssl-insecure true --cloud-owner OCOMP --region-name RegionOVP --cloud-zone az1 --identity-url http://10.12.11.1:5000/v3 --system-type VIM --owner-type ocomp --cloud-domain Default --esr-id OCOMP --default-tenant ocomp --password password --service-url http://10.12.11.1:5000/v3 --cloud-type OpenStack --cloud-region-version ocata
     moco: cloud-create-schema-dublin-moco.json
-    output:
+    output: |
+      [{}]

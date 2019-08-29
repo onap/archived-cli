@@ -1,35 +1,35 @@
 [ {
   "request" : {
     "method" : "put",
-    "uri" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-07",
+    "uri" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/OCOMP/RegionOVP",
     "headers" : {
       "Authorization" : "Basic QUFJOkFBSQ==",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
-      "X-TransactionId" : "req-a0eb1dc2-626d-4b89-8c46-a6cb341d2810",
+      "X-TransactionId" : "req-0ebe379c-6ccd-4821-afaa-05e277ec3161",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "cloud-owner" : "CloudOwner",
-      "cloud-region-id" : "ONAP-POD-01-Rail-07",
-      "cloud-type" : "openstack",
-      "owner-defined-type" : "t1",
-      "cloud-region-version" : "titanium_cloud",
-      "complex-name" : "clli3",
-      "cloud-zone" : "CloudZone",
+      "cloud-owner" : "OCOMP",
+      "cloud-region-id" : "RegionOVP",
+      "cloud-type" : "OpenStack",
+      "owner-defined-type" : "ocomp",
+      "cloud-region-version" : "ocata",
+      "complex-name" : "ocomp-region",
+      "cloud-zone" : "az1",
       "sriov-automation" : "false",
-      "identity-url" : "url",
-      "cloud-extra-info" : "{\"openstack-region-id\":\"ONAP-POD-01-Rail-07\"}",
+      "identity-url" : "http://10.12.11.1:5000/v3",
+      "cloud-extra-info" : "{\"openstack-region-id\":\"RegionOVP\"}",
       "esr-system-info-list" : {
         "esr-system-info" : [ {
-          "esr-system-info-id" : "5c85ce1f-aa78-4ebf-8d6f-4b62773e9bce",
+          "esr-system-info-id" : "OCOMP",
           "service-url" : "http://10.12.11.1:5000/v3",
-          "user-name" : "cloud_username",
-          "password" : "cloud_password",
+          "user-name" : "admin",
+          "password" : "password",
           "system-type" : "VIM",
           "ssl-insecure" : "true",
           "cloud-domain" : "Default",
-          "default-tenant" : "Integration-HPA",
+          "default-tenant" : "ocomp",
           "system-status" : "active"
         } ]
       }
