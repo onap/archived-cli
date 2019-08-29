@@ -18,7 +18,7 @@ description: Create Virtual function from Vendor Software Product
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP HPA Team onap-discuss@lists.onap.org
 
 
@@ -46,19 +46,27 @@ parameters:
     type: string
     long_option: vsp-id
     short_option: b
-    is_optional: false
+    is_optional: true
   - name: vsp-version
     description: VSP version
     type: string
     long_option: vsp-version
     short_option: g
-    is_optional: false
+    is_optional: true
 
 results:
   direction: portrait
   attributes:
-    - name: ID
+    - name: id
       description: VF ID
+      scope: short
+      type: string
+    - name: uuid
+      description: VF UUID
+      scope: short
+      type: string
+    - name: inputs
+      description: VNF Input ids
       scope: short
       type: string
 http:
@@ -70,49 +78,12 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/resources
     method: POST
-    body: '{
-           "artifacts":{},
-           "toscaArtifacts":{},
-           "contactId":"${host-username}",
-           "categories":[{
-               "name":"Generic",
-               "normalizedName":"generic",
-               "uniqueId":"resourceNewCategory.generic",
-               "icons": null,
-               "subcategories":[{
-                   "name":"Abstract",
-                   "normalizedName":"abstract",
-                   "uniqueId":"resourceNewCategory.generic.abstract",
-                   "groupings":null,
-                   "version":null,
-                   "ownerId":null,
-                   "icons":["abstract"],
-                   "empty":false,
-                   "type":null }],
-            "version":null,
-            "ownerId":null,
-            "empty":false,
-            "type":null }],
-            "description":"${description}",
-            "icon":"defaulticon",
-            "componentInstancesProperties":{},
-            "componentInstancesAttributes":{},
-            "name":"${name}",
-            "tags":["${name}"],
-            "capabilities":{},
-            "requirements":{},
-            "deploymentArtifacts":{},
-            "componentType":"RESOURCE",
-            "vendorName":"${vendor-name}",
-            "vendorRelease":"1.0",
-            "componentInstances":[],
-            "properties":[],
-            "attributes":[],
-            "resourceType":"VF",
-            "csarUUID":"${vsp-id}",
-            "csarVersion":"1.0"
-           }'
+    body: '{"contactId": "${host-username}", "vendorRelease": "1.0", "requirements": {}, "artifacts": {}, "capabilities": {}, "componentInstancesProperties": {}, "deploymentArtifacts": {}, "icon": "defaulticon", "vendorName": "${vendor-name}", "description": "${description}", "tags": ["CLI", "${name}"], "properties": [], "categories": [{"subcategories": [{"normalizedName": "abstract", "name": "Abstract", "uniqueId": "resourceNewCategory.generic.abstract", "icons": ["database"]}], "normalizedName": "generic", "name": "Generic", "uniqueId": "resourceNewCategory.generic"}], "name": "${name}", "toscaArtifacts": {}, "csarUUID": "${vsp-id}", "resourceType": "VF", "csarVersion": "${vsp-version}", "componentType": "RESOURCE", "componentInstancesAttributes": {}, "attributes": [], "componentInstances": []}'
+    context:
+      remove_empty_node: true
   success_codes:
     - 201
   result_map:
-    ID: $b{$.uniqueId}
+    id: $b{$.uniqueId}
+    uuid: $b{$.uuid}
+    inputs: $b{$.inputs.[*].uniqueId}
