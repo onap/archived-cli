@@ -18,7 +18,7 @@ description: List the vendor license models in ONAP
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.onboarding
   author: ONAP HPA Integration Team (itohan.ukponmwan@intel.com)
 
 results:
