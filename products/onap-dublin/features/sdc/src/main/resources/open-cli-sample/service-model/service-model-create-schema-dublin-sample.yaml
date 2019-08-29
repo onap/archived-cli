@@ -1,27 +1,10 @@
-# Copyright © Intel Corporation 2019
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 open_cli_sample_version: 1.0
-name: -z
+name: service-model-create
 version: onap-dublin
 samples:
   sample1:
-    name: -z
-    input: 000000 -y create service model with cli -e network_l_1-3 -x cli-service -c Network L1-3 -u cs0008 -b network l1-3 -p demo123456! -m http://10.12.6.129:30205
+    name: service-model-create
+    input: --format json --category network l1-3 --description Created by Open Command Platform - OCOMP --project-code OCOMP --icon-id network_l_1-3 --service-name vgwocompvtp Service --category-display-name Network L1-3
     moco: service-model-create-schema-dublin-moco.json
     output: |
-      +----------+--------------------------------------+
-      |property  |value                                 |
-      +----------+--------------------------------------+
-      |ID        |fb8ffb35-a8e3-493f-9b9b-b31321b68dfa  |
-      +----------+--------------------------------------+
+      {"id":"58620731-40a9-4f8e-95db-ef9fc478a705","uuid":"ea98398d-1858-4a22-b227-74eb0e60df49"}

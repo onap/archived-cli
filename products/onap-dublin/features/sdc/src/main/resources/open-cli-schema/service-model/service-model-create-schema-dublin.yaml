@@ -18,7 +18,7 @@ description: Create Service model in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP HPA Team onap-discuss@lists.onap.org
 
 
@@ -66,8 +66,12 @@ parameters:
 results:
   direction: portrait
   attributes:
-    - name: ID
+    - name: id
       description: Service ID
+      scope: short
+      type: string
+    - name: uuid
+      description: Service UUID
       scope: short
       type: string
 http:
@@ -117,4 +121,5 @@ http:
     - 200
     - 201
   result_map:
-    ID: $b{$.uniqueId}
+    id: $b{$.uniqueId}
+    uuid: $b{$.uuid}
