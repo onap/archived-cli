@@ -5,6 +5,7 @@ data/
 build/
 dist/
 ocomp.egg-info/
+.pydevproject
 .project
 .settings
 .classpath

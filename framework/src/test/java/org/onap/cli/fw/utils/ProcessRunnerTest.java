@@ -39,7 +39,7 @@ public class ProcessRunnerTest {
     public void testStreamToString() throws IOException {
         InputStream stubInputStream = IOUtils.toInputStream("Test stream", "UTF-8");
         String out = processRunner.streamToString(stubInputStream);
-        Assert.assertEquals("Test stream\n", out);
+        Assert.assertEquals("Test stream", out.trim());
     }
 
 }

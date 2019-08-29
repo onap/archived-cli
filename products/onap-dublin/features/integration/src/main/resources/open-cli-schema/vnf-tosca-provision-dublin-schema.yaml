@@ -17,11 +17,12 @@ name: vnf-tosca-provision
 description: |
   ONAP TOSCA VNF validation using ONAP CLI and Open Command Platform (OCOMP)
 
-  This command runs in 4 mode:
+  This command runs in 5 mode:
   1. setup:    Create requires Vendor, Service Subscription and VNF cloud in ONAP
   2. standup:  From the given VSP csar, VNF csar and NS csar, it creates VF Model, NS Model and NS service
   3. cleanup:  Remove those entries provided in onap-objects parameter
-  4. validate: Run setup -> standup -> cleanup
+  4. provision:Run setup -> standup
+  5. validate: Run setup -> standup -> cleanup
 
   On every execution, it reports the ONAP managed object's ids in result onap-objects attribute. so
   if requires, these attribute value could be passed in input parameter onap-objects on subsequent
@@ -85,7 +86,7 @@ description: |
 
   e. Verify these details once by typing 'set'
 
-  e. Exit from the interactive console by typing 'exit'
+  f. Exit from the interactive console by typing 'exit'
 
   2. Setup SDC consumer
     oclip --product onap-dublin --profile onap-dublin sdc-consumer-create --consumer-name ocomp
@@ -138,12 +139,12 @@ parameters:
     is_optional: true
     default_value: {}
   - name: mode
-    description: setup or standup or cleanup
+    description: setup or standup or cleanup or provision or validate
     type: string
     short_option: Y
     long_option: mode
     is_optional: true
-    default_value: validate
+    default_value: checkup
   - name: vnf-name
     description: VNF Name
     type: string

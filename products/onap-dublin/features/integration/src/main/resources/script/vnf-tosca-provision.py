@@ -619,8 +619,9 @@ if __name__ == '__main__':
                         '\ncleanup - Remove the ONAP objects which are either created during \nsetup and standup phase or provided by the user in result-json file ' \
                                    '\nCAUTION: If required, do not provide the existing ONAP object ids \nin result-json while doing the cleanup, to avoid them getting deleted.'\
                         '\ncheckup - Check the deployment weather OCOMP is working properly or not' \
+                        '\nprovision - Run thru setup -> standup' \
                         '\nvalidate -  run thru setup -> standup -> cleanup modes for end to end vnf validation',
-                                   choices=('setup', 'standup', 'cleanup', 'checkup', 'validate'))
+                                   choices=('setup', 'standup', 'cleanup', 'checkup', 'provision', 'validate'))
 
     args = parser.parse_args()
     print (args)
@@ -713,6 +714,9 @@ if __name__ == '__main__':
         elif mode == 'checkup':
             onap.ocomp.product = 'open-cli'
             onap.ocomp.run(command='schema-list', params={'product': 'open-cli'})
+        elif mode == 'provision':
+           _setup()
+           _standup()
         elif mode == 'validate':
            _setup()
            _standup()
