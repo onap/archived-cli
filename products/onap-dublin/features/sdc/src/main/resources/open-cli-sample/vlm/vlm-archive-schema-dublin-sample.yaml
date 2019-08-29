@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: vlm-archive
+version: onap-dublin
+samples:
+  sample1:
+    name: vlm-archive
+    input: --format json --vlm-id d572f583bf224b4c93b99105cd35b0a9
+    moco: vlm-archive-schema-dublin-moco.json
+    output: |
+      [{}]
