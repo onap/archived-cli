@@ -1,34 +1,34 @@
 [ {
   "request" : {
     "method" : "put",
-    "uri" : "/aai/v14/business/customers/customer/hpa_cust/service-subscriptions/service-subscription/test-service",
+    "uri" : "/aai/v14/business/customers/customer/ovp/service-subscriptions/service-subscription/tosca_vnf_validation",
     "headers" : {
       "Authorization" : "Basic QUFJOkFBSQ==",
       "X-FromAppId" : "ONAP CLI",
       "Accept" : "application/json",
-      "X-TransactionId" : "req-6c818985-7492-4b34-9994-11753a1f954b",
+      "X-TransactionId" : "req-f3754c09-0a70-4913-b8ed-1273752ad452",
       "Content-Type" : "application/json"
     },
     "json" : {
-      "service-type" : "test-service",
+      "service-type" : "tosca_vnf_validation",
       "relationship-list" : {
         "relationship" : [ {
           "related-to" : "tenant",
           "relationship-label" : "org.onap.relationships.inventory.Uses",
-          "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-06/tenants/tenant/709ba629fe194f8699b12f9d6ffd86a0",
+          "related-link" : "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/OCOMP/RegionOVP/tenants/tenant/6fcac72c-a2cd-4d18-9f1d-09908ca08afe",
           "relationship-data" : [ {
             "relationship-key" : "cloud-region.cloud-owner",
-            "relationship-value" : "CloudOwner"
+            "relationship-value" : "OCOMP"
           }, {
             "relationship-key" : "cloud-region.cloud-region-id",
-            "relationship-value" : "ONAP-POD-01-Rail-06"
+            "relationship-value" : "RegionOVP"
           }, {
             "relationship-key" : "tenant.tenant-id",
-            "relationship-value" : "709ba629fe194f8699b12f9d6ffd86a0"
+            "relationship-value" : "6fcac72c-a2cd-4d18-9f1d-09908ca08afe"
           } ],
           "related-to-property" : [ {
             "property-key" : "tenant.tenant-name",
-            "property-value" : "Integration-HPA"
+            "property-value" : "ocomp"
           } ]
         } ]
       }
