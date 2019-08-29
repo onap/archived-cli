@@ -18,22 +18,22 @@ description: Helps to add VF into service models in SDC
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-model-id
+  - name: service-id
     description: Onap Service Name
     type: string
     short_option: x
-    long_option: service-model-id
+    long_option: service-id
     is_optional: false
-  - name: vf-uniqueId
+  - name: vf-id
     description: VF Unique ID
     type: string
     short_option: y
-    long_option: vf-uniqueId
+    long_option: vf-id
     is_optional: true
   - name: vf-name
     description: VF Name
@@ -51,12 +51,16 @@ parameters:
 results:
   direction: portrait
   attributes:
-    - name: ID
+    - name: id
       description: Service ID
       scope: short
       type: string
-    - name: UUID
+    - name: uuid
       description: Service UUID
+      scope: short
+      type: string
+    - name: inputs
+      description: VNF Input ids
       scope: short
       type: string
 http:
@@ -66,11 +70,12 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-model-id}/resourceInstance
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/resourceInstance
     method: POST
-    body: '{"name": "${vf-name}", "componentVersion": "${vf-version}", "posY": 248, "posX": 406, "uniqueId": "${service-model-id}-${vf-uniqueId}", "originType": "VF", "componentUid": "${vf-uniqueId}", "icon": "defaulticon"}'
+    body: '{"name": "${vf-name}", "componentVersion": "${vf-version}", "posY": 248, "posX": 406, "uniqueId": "${service-id}-${vf-id}", "originType": "VF", "componentUid": "${vf-id}", "icon": "defaulticon"}'
   success_codes:
     - 201
   result_map:
-    ID: $b{$.uniqueId}
-    UUID: $b{$.componentUid}
+    id: $b{$.uniqueId}
+    uuid: $b{$.componentUid}
+    inputs: $b{$.inputs.[*].uniqueId}
