@@ -1,22 +1,10 @@
-# Copyright © Intel Corporation 2019
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 open_cli_sample_version: 1.0
-name: -x
+name: vlm-submit
 version: onap-dublin
 samples:
   sample1:
-    name: -x
-    input: 6b33c26b3a924b2789fa17fabd4a292d -y 2b683bedebeb4874a9c2a82939c77f0d -u cs0008 -p demo123456! -m http://10.43.107.110:8081
+    name: vlm-submit
+    input: --format json --vlm-id d572f583bf224b4c93b99105cd35b0a9 --vlm-version 496cc167b6cf44c3b7818c95a1d9e036
     moco: vlm-submit-schema-dublin-moco.json
-    output:
+    output: |
+      [{}]
