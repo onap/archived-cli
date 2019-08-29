@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: service-model-add-artifact
+version: onap-dublin
+samples:
+  sample1:
+    name: service-model-add-artifact
+    input: --format json --remarks Created by Open Command Platform - OCOMP --artifact-name tosca csar --artifact /tmp/data/vtp-tmp-files/vnf_vgw.csar --service-id 58620731-40a9-4f8e-95db-ef9fc478a705
+    moco: service-model-add-artifact-schema-dublin-moco.json
+    output: |
+      [{}]

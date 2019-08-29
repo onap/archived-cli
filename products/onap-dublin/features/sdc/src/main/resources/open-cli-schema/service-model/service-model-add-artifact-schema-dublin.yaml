@@ -18,15 +18,15 @@ description: Add a artifact to a Service model
 
 info:
   product: onap-dublin
-  service: sdc
+  service: sdc.catalog
   author: ONAP HPA Team onap-discuss@lists.onap.org
 
 
 parameters:
-  - name: service-uniqueId
+  - name: service-id
     description: Service Unique Id
     type: string
-    long_option: service-uniqueId
+    long_option: service-id
     short_option: x
     is_optional: false
   - name: remarks
@@ -62,7 +62,7 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /sdc2/rest/v1/catalog/services/${service-uniqueId}/artifacts
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/artifacts
     method: POST
     headers:
       Content-MD5: $s{md5:__body__}
