@@ -19,6 +19,6 @@ package org.onap.cli.cmd.auth;
 import org.onap.cli.fw.http.cmd.BasicAuthLoginCommand;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 
-@OnapCommandSchema(schema = "basic-login-onap-sdc-dublin.yaml")
-public class OnapSdcBasicAuthLoginCommandDublin extends BasicAuthLoginCommand {
+@OnapCommandSchema(schema = "basic-login-onap-sdc-onboarding-dublin.yaml")
+public class OnapSdcOnboardingBasicAuthLoginCommandDublin extends BasicAuthLoginCommand {
 }
