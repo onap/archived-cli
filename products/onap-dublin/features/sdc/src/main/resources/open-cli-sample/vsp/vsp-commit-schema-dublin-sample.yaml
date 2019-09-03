@@ -1,0 +1,10 @@
+open_cli_sample_version: 1.0
+name: vsp-commit
+version: onap-dublin
+samples:
+  sample1:
+    name: vsp-commit
+    input: --format json --remarks Powered by Open Command Platform - OCOMP --vsp-version d6e590f98c2347b7a29b27e263527fac --vsp-id a653d9bd40dc43e2ae45004daeab9003
+    moco: vsp-commit-schema-dublin-moco.json
+    output: |
+      [{}]

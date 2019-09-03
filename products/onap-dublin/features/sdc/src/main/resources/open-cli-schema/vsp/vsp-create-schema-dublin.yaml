@@ -100,7 +100,7 @@ http:
     body: '{
             "category": "resourceNewCategory.generic",
             "vendorId": "${vlm-id}",
-            "subCategory": "resourceNewCategory.generic.abstract",
+            "subCategory": "resourceNewCategory.generic.network elements",
             "description": "${vsp-description}",
             "licensingVersion": "${vlm-version}",
             "licensingData": {"featureGroups": ["${vlm-feature-group-id}"], "licenseAgreement": "${vlm-agreement-id}"},

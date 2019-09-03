@@ -1,0 +1,24 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/onboarding-api/v1.0/items/a653d9bd40dc43e2ae45004daeab9003/versions/d6e590f98c2347b7a29b27e263527fac/actions",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-f64dec4f-646e-46d8-807e-99e7170a6afb",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "action" : "Commit",
+      "commitRequest" : {
+        "message" : "Powered by Open Command Platform - OCOMP"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : { }
+  }
+} ]
