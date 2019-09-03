@@ -42,11 +42,11 @@
            "service-type": "tosca_vnf_validation"
     },
     "vnf": {
-        "vendor-name" : "vnf-vendor-kanag",
-        "name": "vgwvnfovpdemo",
-        "vsp-csar": "C:\\Users\\k00365106\\Desktop\\vtp\\tosca-lcm\\csar\\vgw.csar",
-        "vnf-csar": "C:\\Users\\k00365106\\Desktop\\vtp\\tosca-lcm\\csar\\vnf_vgw.csar",
-        "ns-csar": "C:\\Users\\k00365106\\Desktop\\vtp\\tosca-lcm\\csar\\ns.csar",
+        "vendor-name" : "vnfvendor0309190443",
+        "name": "vgwvnfovpdemo0309190443",
+        "vsp-csar": "D:\\workspace\\onap\\1.1\\SOL001\\vCPE\\csar_files\\default\\vgw.csar",
+        "vnf-csar": "D:\\workspace\\onap\\1.1\\SOL001\\vCPE_VFC\\csar_files\\default\\vgw.csar",
+        "ns-csar": "D:\\workspace\\onap\\1.1\\SOL001\\vCPE_VFC\\csar_files\\default\\ns.csar",
         "vnfm-driver": "hwvnfmdriver"
     },
     "cloud": {

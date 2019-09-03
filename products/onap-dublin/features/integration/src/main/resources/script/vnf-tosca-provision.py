@@ -126,7 +126,7 @@ class ONAP:
         self.conf = conf
         self.ocomp = OCOMP(request_id, debug, product=product, profile=profile)
         self.preload()
-        self.tag = 'Created by Open Command Platform - OCOMP'
+        self.tag = 'Powered by Open Command Platform - OCOMP'
 
     def preload(self):
         if self.conf['ONAP']:
@@ -173,7 +173,7 @@ class ONAP:
                                                 'vlm-version': self.vlm_version,
                                                 'vlm-key-group-id': self.key_group_id,
                                                 'vlm-entitle-pool-id': self.entitlement_id,
-                                                'part-number': 'OCOMP'})
+                                                'part-number': '100000'})
 
             self.feature_group_id = output['id']
             submit = True
@@ -211,15 +211,22 @@ class ONAP:
                                     params={'vsp-id': self.vsp_id,
                                             'vsp-version': self.vsp_version_id,
                                             'vsp-file': self.conf['vnf']['vsp-csar']})
+
             output = self.ocomp.run(command='vsp-validate',
                                     params={'vsp-id': self.vsp_id,
                                             'vsp-version': self.vsp_version_id})
             if not output['status'] == "Success":
                 raise Exception("Invalid VSP package, please check it compliance using VTP")
 
+            self.ocomp.run(command='vsp-commit',
+                                    params={'vsp-id': self.vsp_id,
+                                            'vsp-version': self.vsp_version_id,
+                                            'remarks': self.tag})
+
             self.ocomp.run(command='vsp-submit',
                                     params={'vsp-id': self.vsp_id,
                                             'vsp-version': self.vsp_version_id})
+
             self.ocomp.run(command='vsp-package',
                                     params={'vsp-id': self.vsp_id,
                                             'vsp-version': self.vsp_version_id})
