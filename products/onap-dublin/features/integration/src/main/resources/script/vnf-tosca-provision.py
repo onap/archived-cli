@@ -320,7 +320,7 @@ class ONAP:
     def setup_cloud_and_subscription(self):
         associate = False
         if not self.location_id and not self.location_version:
-            location_id = 'ocomp-region'
+            location_id = 'ocomp-region-{}'.format(self.ocomp.request_id)
             self.ocomp.run(command='complex-create',
                                     params={'physical-location-id': location_id,
                                             'data-center-code': 'ocomp',
@@ -349,7 +349,7 @@ class ONAP:
                     break
 
         if not self.cloud_id and not self.cloud_version:
-            cloud_id = 'OCOMP'
+            cloud_id = 'OCOMP-{}'.format(self.ocomp.request_id)
             self.ocomp.run(command='cloud-create',
                                     params={'region-name': self.conf['cloud']['region'],
                                             'complex-name': self.location_id,
@@ -386,10 +386,11 @@ class ONAP:
 
         subscribe = False
         if not self.service_type_id and not self.service_type_version:
+            service_type_id = '{}-{}'.format(self.conf['subscription']['service-type'], self.ocomp.request_id)
             self.ocomp.run(command='service-type-create',
-                                params={'service-type': self.conf['subscription']['service-type'],
-                                        'service-type-id': self.conf['subscription']['service-type']})
-            self.service_type_id = self.conf['subscription']['service-type']
+                                params={'service-type': service_type_id,
+                                        'service-type-id': service_type_id})
+            self.service_type_id = service_type_id
             subscribe = True
 
             output = self.ocomp.run(command='service-type-list')
@@ -400,10 +401,11 @@ class ONAP:
                     break
 
         if not self.customer_id and not self.customer_version:
+            customer_id = '{}-{}'.format(self.conf['subscription']['customer-name'], self.ocomp.request_id)
             self.ocomp.run(command='customer-create',
-                                params={'customer-name': self.conf['subscription']['customer-name'],
-                                        'subscriber-name': self.conf['subscription']['customer-name']})
-            self.customer_id = self.conf['subscription']['customer-name']
+                                params={'customer-name': customer_id,
+                                        'subscriber-name': customer_id})
+            self.customer_id = customer_id
             subscribe = True
 
             output = self.ocomp.run(command='customer-list')
@@ -644,6 +646,8 @@ if __name__ == '__main__':
         profile = args.profile
 
     request_id = args.request_id
+    if not request_id:
+        request_id = str(uuid.uuid4())
     vsp_csar = args.vsp
     vnf_csar = args.vnf_csar
     ns_csar = args.ns_csar
@@ -679,8 +683,10 @@ if __name__ == '__main__':
             conf['vnf']['ns-csar'] = vnf_csar
         if vnf_name:
             conf['vnf']['name'] = vnf_name
+        conf['vnf']['name'] = '{}{}'.format(conf['vnf']['name'], request_id)
         if vnf_name:
             conf['vnf']['vendor-name'] = vendor_name
+        conf['vnf']['vendor-name'] = '{}-{}'.format(conf['vnf']['vendor-name'], request_id)
 
 
     if args.result:

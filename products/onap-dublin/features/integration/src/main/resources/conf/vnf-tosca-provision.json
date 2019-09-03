@@ -42,8 +42,8 @@
            "service-type": "tosca_vnf_validation"
     },
     "vnf": {
-        "vendor-name" : "vnfvendor0309190443",
-        "name": "vgwvnfovpdemo0309190443",
+        "vendor-name" : "vgw-vendor",
+        "name": "vgw",
         "vsp-csar": "D:\\workspace\\onap\\1.1\\SOL001\\vCPE\\csar_files\\default\\vgw.csar",
         "vnf-csar": "D:\\workspace\\onap\\1.1\\SOL001\\vCPE_VFC\\csar_files\\default\\vgw.csar",
         "ns-csar": "D:\\workspace\\onap\\1.1\\SOL001\\vCPE_VFC\\csar_files\\default\\ns.csar",
