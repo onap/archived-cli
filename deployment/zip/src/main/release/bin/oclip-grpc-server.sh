@@ -30,6 +30,8 @@ else
 fi
 
 CLASSPATH=${OPEN_CLI_HOME}/conf${SEP}${OPEN_CLI_HOME}${SEP}${OPEN_CLI_HOME}/docs
+export PATH=$OPEN_CLI_HOME\bin;$PATH
+
 for entry in "$OPEN_CLI_HOME/lib"/*
 do
   CLASSPATH=${CLASSPATH}${SEP}${entry}
