@@ -683,7 +683,7 @@ if __name__ == '__main__':
             conf['vnf']['ns-csar'] = vnf_csar
         if vnf_name:
             conf['vnf']['name'] = vnf_name
-        conf['vnf']['name'] = '{}{}'.format(conf['vnf']['name'], request_id)
+        conf['vnf']['name'] = '{}{}'.format(conf['vnf']['name'], request_id).replace("-", "").replace("_", "")
         if vnf_name:
             conf['vnf']['vendor-name'] = vendor_name
         conf['vnf']['vendor-name'] = '{}-{}'.format(conf['vnf']['vendor-name'], request_id)
