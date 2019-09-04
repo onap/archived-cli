@@ -711,7 +711,7 @@ if __name__ == '__main__':
         onap.create_vsp()
         onap.create_vf_model()
         onap.create_service_model()
-#         onap.create_vnf()
+        onap.create_vnf()
         onap.vnf_status_check()
 
     def _cleanup():
