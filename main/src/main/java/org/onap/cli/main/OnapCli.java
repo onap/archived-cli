@@ -544,7 +544,7 @@ public class OnapCli {
                 OnapCliArgsParser.populateParams(cmd.getParameters(), this.args);
 
                 //start the execution
-                if (this.requestId != null && !this.requestId.isEmpty()) {
+                if (this.requestId != null && this.product != null && !this.requestId.isEmpty()) {
                     if (!(this.product.equalsIgnoreCase("open-cli") &&
                             this.cmdName.equalsIgnoreCase("execution-list"))) {
                         String input = cmd.getArgsJson(true);
