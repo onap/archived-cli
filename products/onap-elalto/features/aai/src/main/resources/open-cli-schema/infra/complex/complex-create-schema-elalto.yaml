@@ -1,0 +1,149 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: complex-create
+description: Create a cloud complex in Onap
+
+info:
+  product: onap-elalto
+  service: aai
+  author: Intel ONAP HPA integration team (itohan.ukponmwan@intel.com)
+
+parameters:
+  - name: physical-location-id
+    description: id of physical location
+    type: string
+    short_option: x
+    long_option: physical-location-id
+    is_optional: false
+  - name: data-center-code
+    description: datacenter name
+    type: string
+    short_option: y
+    long_option:  data-center-code
+    is_optional: false
+  - name: complex-name
+    description: complex name
+    type: string
+    short_option: z
+    long_option:  complex-name
+    is_optional: false
+  - name: identity-url
+    description: identity url for complex
+    type: string
+    short_option: q
+    long_option:  identity-url
+    is_optional: false
+  - name: physical-location-type
+    description: complex physical location type
+    type: string
+    short_option: r
+    long_option:  physical-location-type
+    is_optional: false
+  - name: street1
+    description: name of street 1 for complex
+    type: string
+    short_option: i
+    long_option:  street1
+    is_optional: false
+  - name: street2
+    description:  name of street 2 for complex
+    type: string
+    short_option: j
+    long_option: street2
+    is_optional: false
+  - name: city
+    description: city complex is located in
+    type: string
+    short_option: g
+    long_option:  city
+    is_optional: false
+  - name: state
+    description: state complex is located in
+    type: string
+    short_option: S
+    long_option:  state
+    is_optional: false
+  - name: postal-code
+    description: postal code for complex
+    type: string
+    short_option: w
+    long_option:  postal-code
+    is_optional: false
+  - name: country
+    description: country complex is located
+    type: string
+    short_option: k
+    long_option:  country
+    is_optional: false
+  - name: region
+    description: region complex is located
+    type: string
+    short_option: l
+    long_option:  region
+    is_optional: false
+  - name: latitude
+    description: latitude of complex location
+    type: string
+    short_option: lt
+    long_option:  latitude
+    is_optional: false
+  - name: longitude
+    description: longitude of complex location
+    type: string
+    short_option: lo
+    long_option:  longitude
+    is_optional: false
+  - name: elevation
+    description: elevation of complex location
+    type: string
+    short_option: o
+    long_option:  elevation
+    is_optional: false
+  - name: lata
+    description: lata of complex
+    type: string
+    short_option: la
+    long_option:  lata
+    is_optional: false
+
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v16/cloud-infrastructure/complexes/complex/${complex-name}
+    method: PUT
+    body:  '{
+            "physical-location-id": "${physical-location-id}",
+            "data-center-code": "${data-center-code}",
+            "complex-name": "${complex-name}",
+            "identity-url": "${identity-url}",
+            "physical-location-type": "${physical-location-type}",
+            "street1": "${street1}",
+            "street2": "${street2}",
+            "city": "${city}",
+            "state": "${state}",
+            "postal-code": "${postal-code}",
+            "country": "${country}",
+            "region": "${region}",
+            "latitude": "${latitude}",
+            "longitude": "${longitude}",
+            "elevation": "${elevation}",
+            "lata": "${lata}"
+            }'
+  success_codes:
+    - 201

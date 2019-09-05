@@ -1,0 +1,123 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: complex-list
+description: List the configured complexes
+
+info:
+  product: onap-elalto
+  service: aai
+  author: ONAP HPA Integration Team (itohan.ukponmwan@intel.com)
+
+results:
+  direction: landscape
+  attributes:
+    - name: complex-name
+      description: onap complex
+      scope: short
+      type: string
+    - name: physical-location-id
+      description: onap complex location id
+      scope: long
+      type: string
+    - name: data-center-code
+      description: data center code
+      scope: short
+      type: string
+    - name: identity-url
+      description: identity url
+      scope: long
+      type: string
+    - name: resource-version
+      description: complex resource version
+      scope: short
+      type: string
+    - name: physical-location-type
+      description: physical location type
+      scope: long
+      type: string
+    - name: street1
+      description: onap complex street1
+      scope: long
+      type: string
+    - name: street2
+      description: onap complex street2
+      scope: long
+      type: string
+    - name: city
+      description: onap complex city
+      scope: long
+      type: string
+    - name: state
+      description: onap complex state
+      scope: long
+      type: string
+    - name: postal-code
+      description: onap complex postal code
+      scope: long
+      type: string
+    - name: country
+      description: onap complex country
+      scope: short
+      type: string
+    - name: region
+      description: onap complex region
+      scope: short
+      type: string
+    - name: latitude
+      description: onap complex latitude
+      scope: short
+      type: string
+    - name: longitude
+      description: onap complex longitude
+      scope: short
+      type: string
+    - name: elevation
+      description: onap complex elevation
+      scope: short
+      type: string
+    - name: lata
+      description: onap complex lata
+      scope: long
+      type: string
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v16/cloud-infrastructure/complexes/
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    physical-location-id: $b{complex.[*].physical-location-id}
+    data-center-code: $b{complex.[*].data-center-code}
+    complex-name: $b{complex.[*].complex-name}
+    identity-url: $b{complex.[*].identity-url}
+    resource-version: $b{complex.[*].resource-version}
+    physical-location-type: $b{complex.[*].physical-location-type}
+    street1: $b{complex.[*].street1}
+    street2: $b{complex.[*].street2}
+    city: $b{complex.[*].city}
+    state: $b{complex.[*].state}
+    postal-code: $b{complex.[*].postal-code}
+    country: $b{complex.[*].country}
+    region: $b{complex.[*].region}
+    latitude: $b{complex.[*].latitude}
+    longitude: $b{complex.[*].longitude}
+    elevation: $b{complex.[*].elevation}
+    lata: $b{complex.[*].lata}
+
