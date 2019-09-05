@@ -1,0 +1,124 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: policy-statistics
+description: Returns current statistics including the counters of API invocation
+
+info:
+  product: onap-elalto
+  service: policy
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: portrait
+  attributes:
+    - name: code
+      description: code
+      scope: short
+      type: string
+    - name: totalApiCallCount
+      description: total api call count
+      scope: short
+      type: string
+    - name: apiCallSuccessCount
+      description: api call success count
+      scope: short
+      type: string
+    - name: apiCallFailureCount
+      description: api call failure count
+      scope: short
+      type: string
+    - name: totalPolicyGetCount
+      description: total policy get count
+      scope: short
+      type: string
+    - name: totalPolicyPostCount
+      description: total policy post count
+      scope: short
+      type: string
+    - name: totalPolicyTypeGetCount
+      description: total policy type get count
+      scope: short
+      type: string
+    - name: totalPolicyTypePostCount
+      description: total policy type post count
+      scope: short
+      type: string
+    - name: policyGetSuccessCount
+      description: policy get success count
+      scope: short
+      type: string
+    - name: policyGetFailureCount
+      description: policy get failure count
+      scope: short
+      type: string
+    - name: policyPostSuccessCount
+      description: policy post success count
+      scope: short
+      type: string
+    - name: policyPostFailureCount
+      description: policy post failure count
+      scope: short
+      type: string
+    - name: policyTypeGetSuccessCount
+      description: policy type get success count
+      scope: short
+      type: string
+    - name: policyTypeGetFailureCount
+      description: policy type get failure count
+      scope: short
+      type: string
+    - name: policyTypePostSuccessCount
+      description: policy type post success count
+      scope: short
+      type: string
+    - name: policyTypePostFailureCount
+      description: policy type post failure count
+      scope: short
+      type: string
+
+http:
+  service:
+    name: policy
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /policy/api/v1/statistics
+    method: GET
+    headers:
+      Accept: application/json
+      Environment: TEST
+
+  success_codes:
+    - 200
+
+  result_map:
+    code: $b{$.code}
+    totalApiCallCount: $b{$.totalApiCallCount}
+    apiCallSuccessCount: $b{$.apiCallSuccessCount}
+    apiCallFailureCount: $b{$.apiCallFailureCount}
+    totalPolicyGetCount: $b{$.totalPolicyGetCount}
+    totalPolicyPostCount: $b{$.totalPolicyPostCount}
+    totalPolicyTypeGetCount: $b{$.totalPolicyTypeGetCount}
+    totalPolicyTypePostCount: $b{$.totalPolicyTypePostCount}
+    policyGetSuccessCount: $b{$.policyGetSuccessCount}
+    policyGetFailureCount: $b{$.policyGetFailureCount}
+    policyPostSuccessCount: $b{$.policyPostSuccessCount}
+    policyPostFailureCount: $b{$.policyPostFailureCount}
+    policyTypeGetSuccessCount: $b{$.policyTypeGetSuccessCount}
+    policyTypeGetFailureCount: $b{$.policyTypeGetFailureCount}
+    policyTypePostSuccessCount: $b{$.policyTypePostSuccessCount}
+    policyTypePostFailureCount: $b{$.policyTypePostFailureCount}

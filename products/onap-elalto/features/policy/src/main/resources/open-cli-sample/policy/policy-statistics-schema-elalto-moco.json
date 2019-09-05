@@ -1,0 +1,35 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/policy/api/v1/statistics",
+    "headers" : {
+      "Authorization" : "Basic aGVhbHRoY2hlY2s6emIhWHp0RzM0",
+      "Accept" : "application/json",
+      "Environment" : "TEST",
+      "ClientAuth" : "cHl0aG9uOnRlc3Q=",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "code" : 200,
+      "totalApiCallCount" : 4,
+      "apiCallSuccessCount" : 4,
+      "apiCallFailureCount" : 0,
+      "totalPolicyGetCount" : 0,
+      "totalPolicyPostCount" : 0,
+      "totalPolicyTypeGetCount" : 0,
+      "totalPolicyTypePostCount" : 0,
+      "policyGetSuccessCount" : 0,
+      "policyGetFailureCount" : 0,
+      "policyPostSuccessCount" : 0,
+      "policyPostFailureCount" : 0,
+      "policyTypeGetSuccessCount" : 0,
+      "policyTypeGetFailureCount" : 0,
+      "policyTypePostSuccessCount" : 0,
+      "policyTypePostFailureCount" : 0
+    }
+  }
+} ]
