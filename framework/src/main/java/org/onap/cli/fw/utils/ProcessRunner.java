@@ -17,12 +17,12 @@
 package org.onap.cli.fw.utils;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,8 +41,8 @@ public class ProcessRunner {
     private String cwd = System.getProperty("user.home");
     private String []env = null;
     private int exitCode = -1;
-    private String output;
-    private String error;
+    private String output = "";
+    private String error = "";
     private long timeout = 0;
     private OutputStream stdout;
     private OutputStream stderr;
@@ -92,12 +92,6 @@ public class ProcessRunner {
     public void run() throws InterruptedException, IOException {
         Process p = null;
 
-        final StringWriter writerOutput = new StringWriter();
-        final StringWriter writerError = new StringWriter();
-
-        final OutputStream stdout = this.getStdout();
-        final OutputStream stderr = this.getStderr();
-
         if (this.cmd.length == 1) {
             p = Runtime.getRuntime().exec(this.shell + this.cmd[0], this.env, null);
         } else {
@@ -107,47 +101,70 @@ public class ProcessRunner {
             p = Runtime.getRuntime().exec(cmds, this.env, null);
         }
 
-        final Process p1 = p;
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    if (stdout != null) {
-                        IOUtils.copy(p1.getInputStream(), stdout);
-                    }
-                    else IOUtils.copy(p1.getInputStream(), writerOutput);
-                } catch (IOException e) {
-                }
-            }
-        }).start();
+        boolean readOutput = false;
+        if (this.getStdout() == null) {
+            this.setStdout(new ByteArrayOutputStream());
+            readOutput = true;
+        }
 
-        new Thread(new Runnable() {
+        boolean readError = false;
+        if (this.getStderr() == null) {
+            this.setStderr(new ByteArrayOutputStream());
+            readError = true;
+        }
+
+        final OutputStream stdout = this.getStdout();
+        final OutputStream stderr = this.getStderr();
+
+        final InputStream stdoutP = p.getInputStream();
+        final InputStream stderrP = p.getErrorStream();
+
+        Thread outThread = new Thread(new Runnable() {
             public void run() {
                 try {
-                    if (stderr != null) {
-                        IOUtils.copy(p1.getErrorStream(), stderr);
-                    }
-                    else IOUtils.copy(p1.getErrorStream(), writerError);
+                    IOUtils.copy(stdoutP, stdout);
                 } catch (IOException e) {
                 }
             }
-        }).start();
+        });
+
+        Thread errThread = new Thread(new Runnable() {
+            public void run() {
+                try {
+                    IOUtils.copy(stderrP, stderr);
+                } catch (IOException e) {
+                }
+            }
+        });
+
+        outThread.start();
+        errThread.start();
 
         boolean completed = p.waitFor(this.getTimeout(), TimeUnit.MILLISECONDS);
+        outThread.join();
+        errThread.join();
+
         if (completed) {
             this.exitCode = p.exitValue();
         }
 
-        this.output = writerOutput.toString();
-        this.error = writerError.toString();
-        log.debug("CMD: " + Arrays.asList(this.cmd).toString() + "\nWORKING_DIR: " + this.cwd + "\nENV: " +
-        ((this.env == null) ? this.env : Arrays.asList(this.env).toString()) +
-                "\nOUTPUT: " + this.output + "\nERROR: " + this.error + "\nEXIT_CODE: " + this.exitCode);
+        if (readOutput)
+            this.output = new String(((ByteArrayOutputStream)this.getStdout()).toByteArray(), "UTF-8");
+
+        if (readError)
+            this.error = new String(((ByteArrayOutputStream)this.getStderr()).toByteArray(), "UTF-8");;
+
         p.destroy();
+
+        log.debug("CMD: " + Arrays.asList(this.cmd).toString() +
+                "\nWORKING_DIR: " + this.cwd +
+                "\nENV: " + ((this.env == null) ? this.env : Arrays.asList(this.env).toString()) +
+                "\nOUTPUT: " + this.output +
+                "\nERROR: " + this.error +
+                "\nEXIT_CODE: " + this.exitCode);
 
         if (!completed) {
             throw new RuntimeException("TIMEOUT:: cmd:" + Arrays.asList(this.cmd).toString());
-        } else {
-
         }
     }
 
