@@ -342,7 +342,7 @@ public class OnapCommandExecutionStore {
                 //find results -type d -newermt '2019-02-11 10:00:00' ! -newermt '2019-02-11 15:10:00' -name "*__*__profile-list*"
                 //find 'results' -type d -newermt '2019-02-11T10:00:00.000' ! -newermt '2019-02-11T15:10:00.000' -name "*__*__profile*"
 
-                String searchString = "find '" + new File(getBasePath()).getAbsolutePath() + "' -type d ";
+                String searchString = "find " + new File(getBasePath()).getAbsolutePath() + " -type d ";
 
                 String startTime = search.get("startTime");
                 if (startTime != null) {
@@ -354,7 +354,7 @@ public class OnapCommandExecutionStore {
                     searchString += " ! -newermt " + endTime ;
                 }
 
-                searchString += " -name '";
+                searchString += " -name \"";
 
                 if(search.containsKey("execution-id")) {
                     searchString += search.get("execution-id");
@@ -366,7 +366,7 @@ public class OnapCommandExecutionStore {
 
                 for (String term: Arrays.asList(new String []{"product", "service", "command", "profile"})) {
                     searchString += "__";
-                    if (search.get(term) != null) {
+                    if (search.get(term) != null && !search.get(term).isEmpty()) {
                         searchString += search.get(term);
                     } else {
                         searchString += "*";
@@ -375,16 +375,18 @@ public class OnapCommandExecutionStore {
                 if (!searchString.endsWith("*"))
                     searchString += "*";
 
-                searchString += "'";
+                searchString += "\"";
 
                 ProcessRunner pr = new ProcessRunner(new String [] {searchString}, null, ".");
+                pr.setTimeout(10000);
                 pr.overrideToUnix();
                 pr.run();
                 if (pr.getExitCode() != 0) {
                     throw new OnapCommandExecutionFailed("System failed to search the executions with error " + pr.getError());
                 }
 
-                dirs = Arrays.asList(pr.getOutput().split("\\r?\\n"));
+                if (!pr.getOutput().trim().isEmpty())
+                    dirs = Arrays.asList(pr.getOutput().split("\\r?\\n"));
             }
 
             for (String dir: dirs) {
