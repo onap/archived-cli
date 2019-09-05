@@ -1,0 +1,60 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: tenant-create
+description: Create a tenant under given cloud region in Onap
+
+info:
+  product: onap-elalto
+  service: aai
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: cloud
+    description: Onap cloud
+    type: string
+    short_option: x
+    long_option: cloud
+    is_optional: false
+  - name: region
+    description: Onap cloud region
+    type: string
+    short_option: y
+    long_option: region
+    is_optional: false
+  - name: tenant-id
+    description: Onap cloud tenant id
+    type: uuid
+    short_option: z
+    long_option: tenant-id
+    is_optional: false
+  - name: tenant-name
+    description: Onap cloud tenant name
+    type: string
+    short_option: r
+    long_option: tenant-name
+    is_optional: false
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /aai/v16/cloud-infrastructure/cloud-regions/cloud-region/${cloud}/${region}/tenants/tenant/${tenant-id}
+    method: PUT
+    body: '{"tenant-id": "${tenant-id}", "tenant-name": "${tenant-name}"}'
+  success_codes:
+    - 200
+    - 201
