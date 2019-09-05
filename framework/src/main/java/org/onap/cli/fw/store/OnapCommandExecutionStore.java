@@ -214,7 +214,7 @@ public class OnapCommandExecutionStore {
         String storePath = getBasePath() + File.separator + executionId + SEPARATOR + product +
                 SEPARATOR + service +
                 SEPARATOR + cmd +
-                (profile != null ? (SEPARATOR + profile) : "" );
+                SEPARATOR + (profile != null ? profile : "" );
 
         try {
             File dir = new File(storePath);
@@ -319,9 +319,25 @@ public class OnapCommandExecutionStore {
 
         try {
             List <String> dirs = new ArrayList<>();
-            if (SEARCH_MODE.equals(SearchMode.file)) {
-                for (File f: new File(getBasePath()).listFiles())
-                    dirs.add(f.getAbsolutePath());
+            if (System.getProperty("os.name").toLowerCase().startsWith("windows") || SEARCH_MODE.equals(SearchMode.file)) {
+                for (File f: new File(getBasePath()).listFiles()) {
+                    if(search.containsKey("execution-id")) {
+                        if (f.getName().startsWith(search.get("execution-id")))
+                                dirs.add(f.getAbsolutePath());
+
+                        continue;
+                    }
+
+                    if(search.containsKey("request-id")) {
+                        if (f.getName().startsWith(search.get("request-id")))
+                                dirs.add(f.getAbsolutePath());
+
+                        continue;
+                    }
+
+                    else
+                        dirs.add(f.getAbsolutePath());
+                }
             } else {
                 //find results -type d -newermt '2019-02-11 10:00:00' ! -newermt '2019-02-11 15:10:00' -name "*__*__profile-list*"
                 //find 'results' -type d -newermt '2019-02-11T10:00:00.000' ! -newermt '2019-02-11T15:10:00.000' -name "*__*__profile*"
@@ -388,7 +404,6 @@ public class OnapCommandExecutionStore {
         if (new File(executionStorePath + File.separator + "executionId").exists())
             exectuion.setId(FileUtils.readFileToString(new File(executionStorePath + File.separator + "executionId")));
         exectuion.setProduct(FileUtils.readFileToString(new File(executionStorePath + File.separator + "product")));
-        exectuion.setProfile(FileUtils.readFileToString(new File(executionStorePath + File.separator + "profile")));
         exectuion.setService(FileUtils.readFileToString(new File(executionStorePath + File.separator + "service")));
         exectuion.setCommand(FileUtils.readFileToString(new File(executionStorePath + File.separator + "command")));
         if (new File(executionStorePath + File.separator + "profile").exists())
