@@ -238,7 +238,7 @@ public class OpenCommandShellCmd extends OnapCommand {
         }
 
         if (this.output.equals("$stdout")) {
-            if (pr.getStdout() != null) {
+            if (this.getExecutionContext() != null) {
                 try (FileInputStream is = new FileInputStream(this.getStdoutPath())){
                     outputValue = pr.streamToString(is);
                 } catch (IOException e) {
@@ -248,7 +248,7 @@ public class OpenCommandShellCmd extends OnapCommand {
                 outputValue = pr.getOutput();
 
         } else if (this.output.equals("$stderr")) {
-            if (pr.getStderr() != null) {
+            if (this.getExecutionContext() != null) {
                 try (FileInputStream is = new FileInputStream(this.getStderrPath())) {
                     outputValue = pr.streamToString(is);
                 } catch (IOException e) {
