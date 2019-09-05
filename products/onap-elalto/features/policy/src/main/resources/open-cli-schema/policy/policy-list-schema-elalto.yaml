@@ -1,0 +1,69 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: policy-list
+description: Retrieve all version details of a policy created for a particular policy type version
+
+info:
+  product: onap-elalto
+  service: policy
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: policy-type-id
+    description: Policy type ID
+    type: string
+    long_option: policy-type-id
+    short_option: x
+    is_optional: false
+  - name: version-id
+    description: Policy type version ID
+    type: string
+    long_option: version-id
+    short_option: y
+    is_optional: false
+  - name: policy-id
+    description: Policy ID
+    type: string
+    long_option: policy-id
+    short_option: z
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: Policy properties
+      description: Policy properties
+      scope: short
+      type: json
+
+http:
+  service:
+    name: policy
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /policy/api/v1/policytypes/${policy-type-id}/versions/${version-id}/policies/${policy-id}
+    method: GET
+    headers:
+      Accept: application/json
+      Environment: TEST
+
+  success_codes:
+    - 200
+
+  result_map:
+    Policy properties: $b{$.[*]}

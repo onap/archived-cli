@@ -1,0 +1,54 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_sample_version: 1.0
+name: policy-list
+version: onap-elalto
+samples:
+  sample1:
+    name: policy-list
+    input: --policy-type-id onap.policies.controlloop.Operational --version-id 1.0.0 --policy-id operational.BandwidthOnDemand -m https://172.16.0.185:6969 -u healthcheck -p zb!XztG34
+    moco: policy-list-schema-elalto-moco.json
+    output: |
+      +----------------------------------------------------+
+      |Policy properties                                   |
+      +----------------------------------------------------+
+      |tosca_simple_yaml_1_0_0                             |
+      +----------------------------------------------------+
+      |{policies=[{"operational.BandwidthOnDemand":{"type  |
+      |":"onap.policies.controlloop.Operational","type_ve  |
+      |rsion":"1.0.0","properties":{"content":"controlLoo  |
+      |p%3A%0D%0A++version%3A+2.0.0%0D%0A++controlLoopNam  |
+      |e%3A+ControlLoop-CCVPN-2179b738-fd36-4843-a71a-a8c  |
+      |24c70c22b%0D%0A++trigger_policy%3A+unique-policy-i  |
+      |d-16-BandwidthOnDemand%0D%0A++timeout%3A+3600%0D%0  |
+      |A++abatement%3A+false%0D%0A%0D%0Apolicies%3A%0D%0A  |
+      |++-+id%3A+unique-policy-id-16-BandwidthOnDemand%0D  |
+      |%0A++++name%3A+CCVPNBandwidthOnDemand%0D%0A++++des  |
+      |cription%3A%0D%0A++++actor%3A+SDNC%0D%0A++++recipe  |
+      |%3A+BandwidthOnDemand%0D%0A++++target%3A%0D%0A++++  |
+      |++type%3A+VM%0D%0A++++retry%3A+3%0D%0A++++timeout%  |
+      |3A+1200%0D%0A++++success%3A+final_success%0D%0A+++  |
+      |+failure%3A+final_failure%0D%0A++++failure_timeout  |
+      |%3A+final_failure_timeout%0D%0A++++failure_retries  |
+      |%3A+final_failure_retries%0D%0A++++failure_excepti  |
+      |on%3A+final_failure_exception%0D%0A++++failure_gua  |
+      |rd%3A+final_failure_guard"},"name":"operational.Ba  |
+      |ndwidthOnDemand","version":"1.0.0","metadata":{}}}  |
+      |]}                                                  |
+      +----------------------------------------------------+
+      |ToscaServiceTemplateSimple                          |
+      +----------------------------------------------------+
+      |1.0.0                                               |
+      +----------------------------------------------------+
