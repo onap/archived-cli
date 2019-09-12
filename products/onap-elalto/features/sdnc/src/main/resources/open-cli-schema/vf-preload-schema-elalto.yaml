@@ -1,0 +1,42 @@
+#  Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf-preload
+description: Preload SDNC with parameter values for a VF module in ONAP
+
+info:
+  product: onap-elalto
+  service: sdnc
+  author: Intel ONAP HPA integration team (itohan.ukponmwan@intel.com)
+
+
+parameters:
+  - name: preload-file
+    description: File containing preload values
+    type: text
+    short_option: y
+    long_option: preload-file
+    is_optional: false
+
+http:
+  service:
+    auth: basic
+    mode: direct
+  request:
+    uri: /restconf/operations/VNF-API:preload-vnf-topology-operation
+    method: POST
+    body: '${preload-file}'
+  success_codes:
+    - 200

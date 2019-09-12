@@ -1,0 +1,256 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf-module-create
+description: Create a VF Module
+
+info:
+  product: onap-elalto
+  service: so
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: lcp-cloudregion-id
+    description: AIC LCP node location identifier
+    type: string
+    short_option: l
+    long_option: lcp-cloudregion-id
+    is_optional: false
+  - name: cloud-owner
+    description: cloud region cloud owner
+    type: string
+    short_option: co
+    long_option: cloud-owner
+    is_optional: false
+  - name: tenant-id
+    description: openstack tenant id (uuid)
+    type: string
+    short_option: w
+    long_option: tenant-id
+    is_optional: false
+  - name: vnf-instance-id
+    description: vnf instance id
+    type: string
+    short_option: y
+    long_option: vnf-instance-id
+    is_optional: false
+  - name: service-instance-id
+    description: unique id for service instance
+    type: string
+    short_option: x
+    long_option: service-instace-id
+    is_optional: false
+  - name: parent-service-model
+    description: parent service model name
+    type: string
+    short_option: z
+    long_option: parent-service-model
+    is_optional: false
+  - name: service-model-id
+    description: service model id
+    type: string
+    short_option: si
+    long_option: service-model-id
+    is_optional: false
+  - name: service-model-invariant-id
+    description: service model invariant id
+    type: string
+    short_option: sd
+    long_option: service-model-invariant-id
+    is_optional: false
+  - name: service-model-version
+    description: service model version
+    type: string
+    short_option: sv
+    long_option: service-model-version
+    is_optional: false
+  - name: supress-rollback
+    description: rollback changes if instantiation fails.
+    type: bool
+    short_option: r
+    long_option: supress-rollback
+    is_optional: false
+  - name: instance-name
+    description: service instance name
+    type: string
+    short_option: i
+    long_option: instance-name
+    is_optional: false
+  - name: vf-module-model-invariant-id
+    description: Invariant Id of vf module model in SO catalogdb
+    type: string
+    short_option: vi
+    long_option: vf-module-model-invariant-id
+    is_optional: false
+  - name: vf-module-model-version-id
+    description: version Id of vf module model in SO catalogdb
+    type: string
+    short_option: vv
+    long_option: vf-module-model-version-id
+    is_optional: false
+  - name: vf-module-model-name
+    description: Model Name of vf module model in SO catalogdb
+    type: string
+    short_option: vn
+    long_option: vf-module-model-name
+    is_optional: false
+  - name: vf-module-model-customization-id
+    description: Customization Id of vf module model in SO catalogdb
+    type: string
+    short_option: vc
+    long_option: vf-module-model-customization-id
+    is_optional: false
+  - name: vf-module-model-version
+    description: version of vf module model in SO catalogdb
+    type: string
+    short_option: vm
+    long_option: vf-module-model-version
+    is_optional: false
+  - name: requestor-id
+    description: Id of requestor
+    type: string
+    short_option: R
+    long_option: requestor-id
+    is_optional: false
+  - name: vf-model-name
+    description: name of vf model used in service model
+    type: string
+    short_option: vf
+    long_option: vf-model-name
+    is_optional: false
+  - name: vf-model-invariant-id
+    description: vf model invariant id
+    type: string
+    short_option: mi
+    long_option: vf-model-invariant-id
+    is_optional: false
+  - name: vf-model-version
+    description: vf model version
+    type: string
+    short_option: mv
+    long_option: vf-model-version
+    is_optional: false
+  - name: vf-model-id
+    description: vf model id
+    type: string
+    short_option: vid
+    long_option: vf-model-id
+    is_optional: false
+  - name: vf-model-customization-id
+    description: vf model customization id
+    type: string
+    short_option: mc
+    long_option: vf-model-customization-id
+    is_optional: false
+  - name: vf-model-customization-name
+    description: vf model customization name
+    type: string
+    short_option: mn
+    long_option: vf-model-customization-name
+    is_optional: false
+  - name: test-api
+    description: api for testing (VNF_API|GR_API)
+    type: string
+    short_option: api
+    long_option: test-api
+    is_optional: false
+  - name: use-preload
+    description: To use preloaded values or not
+    type: bool
+    short_option: up
+    long_option: use-preload
+    is_optional: false
+
+results:
+  direction: portrait
+  attribute:
+    - name: vf-instance-id
+      description: id for the created vf
+      type: string
+      scope: short
+
+http:
+  service:
+    name: so
+    version: v6
+    mode: direct
+    auth: basic
+  request:
+    uri: /onap/so/infra/serviceInstantiation/v7/serviceInstances/${service-instance-id}/vnfs/${vnf-instance-id}/vfModules
+    method: POST
+    body: '{
+              "requestDetails":{
+                 "modelInfo":{
+                    "modelType":"vfModule",
+                    "modelInvariantId":"${vf-module-model-invariant-id}",
+                    "modelVersionId":"${vf-module-model-version-id}",
+                    "modelName":"${vf-module-model-name}",
+                    "modelVersion":"${vf-module-model-version}",
+                    "modelCustomizationId": "${vf-module-model-customization-id}",
+                    "modelCustomizationName": "${vf-module-model-name}"
+                 },
+                 "cloudConfiguration":{
+                    "lcpCloudRegionId":"${lcp-cloudregion-id}",
+                    "tenantId":"${tenant-id}",
+                    "cloudOwner":"${cloud-owner}"
+                 },
+                 "requestInfo":{
+                    "instanceName":"${instance-name}",
+                    "source":"VID",
+                    "suppressRollback":"${supress-rollback}",
+                    "requestorId" : "${requestor-id}"
+                 },
+                 "relatedInstanceList":[
+                    {
+                       "relatedInstance":{
+                          "instanceId":"${service-instance-id}",
+                          "modelInfo":{
+                             "modelType":"service",
+                             "modelInvariantId":"${service-model-invariant-id}",
+                             "modelVersionId":"${service-model-id}",
+                             "modelName":"${parent-service-model}",
+                             "modelVersion":"${service-model-version}"
+                          }
+                       }
+                    },
+                    {
+                       "relatedInstance":{
+                          "instanceId":"${vnf-instance-id}",
+                          "modelInfo":{
+                             "modelType":"vnf",
+                             "modelInvariantId":"${vf-model-invariant-id}",
+                             "modelVersionId":"${vf-model-id}",
+                             "modelName":"${vf-model-name}",
+                             "modelVersion":"${vf-model-version}",
+                             "modelCustomizationId": "${vf-model-customization-id}",
+                             "modelCustomizationName":"${vf-model-customization-name}"
+                          }
+                       }
+                    }
+                 ],
+                 "requestParameters":{
+                    "userParams":[],
+                    "testApi": "${test-api}",
+                    "usePreload": true
+                 }
+              }
+           }'
+
+  success_codes:
+    - 202
+  result_map:
+    vf-instance-id: $b{$.vfInstanceId}
+  sample_response:
+    body: '{ "vfInstanceId" : "234567AB" }'

@@ -1,0 +1,125 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: service-model-create
+description: Create Service model in SDC
+
+info:
+  product: onap-elalto
+  service: sdc.catalog
+  author: ONAP HPA Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: service-name
+    description: Onap Service Name
+    type: string
+    short_option: x
+    long_option: service-name
+    is_optional: false
+  - name: description
+    description: Description for Service
+    type: string
+    short_option: y
+    long_option: description
+    is_optional: true
+  - name: project-code
+    description: Project code
+    type: string
+    long_option: project-code
+    short_option: z
+    is_optional: true
+  - name: category
+    description: Service category (options are "network l4+","network l1-3","e2e service","mobility","network service","voip call control")
+    type: string
+    short_option: b
+    long_option: category
+    is_optional: true
+    default_value: network l1-3
+  - name: category-display-name
+    description: Service category display name (Options are "Network L4+","Network L1-3","E2E Service","Network Service","Mobility","VoIP Call Control")
+    type: string
+    short_option: c
+    long_option: category-display-name
+    is_optional: true
+    default_value: Network L1-3
+  - name: icon-id
+    description: Service Icon id (options are "network_l_4","network_l_1-3"[use this icon for "Network L1-3","E2E Service","Network Service"],"mobility","call_controll")
+    type: string
+    short_option: e
+    long_option: icon-id
+    default_value: defaulticon
+    is_optional: true
+
+results:
+  direction: portrait
+  attributes:
+    - name: id
+      description: Service ID
+      scope: short
+      type: string
+    - name: uuid
+      description: Service UUID
+      scope: short
+      type: string
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/catalog/services
+    method: POST
+    body: '{
+            "artifacts":{},
+            "toscaArtifacts":{},
+            "contactId":"${host-username}",
+            "categories":[{
+              "name":"${category-display-name}",
+              "normalizedName":"${category}",
+              "uniqueId":"serviceNewCategory.${category}",
+              "icons":["${icon-id}"],
+              "subcategories":null,
+              "version":null,
+              "ownerId":null,
+              "empty":false,
+              "type":null }],
+           "description":"${description}",
+           "icon":"defaulticon",
+           "componentInstancesProperties":{},
+           "componentInstancesAttributes":{},
+           "name":"${service-name}",
+           "tags":["${service-name}"],
+           "capabilities":{},
+           "requirements":{},
+           "deploymentArtifacts":{},
+           "componentType":"SERVICE",
+           "projectCode":"${project-code}",
+           "componentInstances":[],
+           "properties":[],
+           "attributes":[],
+           "forwardingPaths":{},
+           "ecompGeneratedNaming":true,
+           "serviceApiArtifacts":{},
+           "instantiationType":"A-la-carte",
+           "environmentContext":"General_Revenue-Bearing"
+         }'
+  success_codes:
+    - 200
+    - 201
+  result_map:
+    id: $b{$.uniqueId}
+    uuid: $b{$.uuid}

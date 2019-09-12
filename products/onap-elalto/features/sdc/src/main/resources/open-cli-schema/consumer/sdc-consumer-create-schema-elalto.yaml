@@ -1,0 +1,70 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: sdc-consumer-create
+description: Create SDC consumer
+
+info:
+  product: onap-elalto
+  service: sdc.catalog
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: consumer-name
+    description: Consumer Name
+    type: string
+    short_option: x
+    long_option: consumer-name
+    is_optional: false
+  - name: consumer-password
+    description: Consumer password
+    type: string
+    short_option: y
+    long_option: consumer-password
+    is_optional: true
+    default_value: 7fa005e6e478ee677053a2c4a5c2f11190e2aa8be227a037291ea4cbc074ecb6
+  - name: salt
+    description: Salt
+    type: string
+    long_option: salt
+    short_option: c
+    is_optional: true
+    default_value: ab2987754f0c6293174865e86c47035d
+  - name: user-id
+    description: Designer user id
+    type: string
+    long_option: user-id
+    short_option: e
+    default_value: jh0003
+    is_optional: true
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: none
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/consumers
+    method: POST
+    headers:
+      USER_ID: ${user-id}
+    body: '{
+            "consumerName": "${consumer-name}",
+            "consumerSalt": "${salt}",
+            "consumerPassword": "${consumer-password}"
+           }'
+  success_codes:
+    - 200
+    - 201
