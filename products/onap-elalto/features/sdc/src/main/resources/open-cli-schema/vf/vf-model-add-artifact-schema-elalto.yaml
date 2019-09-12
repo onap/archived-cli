@@ -1,0 +1,72 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf-model-add-artifact
+description: Add a artifact to a Virtual function
+
+info:
+  product: onap-elalto
+  service: sdc.catalog
+  author: ONAP HPA Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: vf-id
+    description: VF UniqueId
+    type: string
+    long_option: vf-id
+    short_option: x
+    is_optional: false
+  - name: remarks
+    description: certification remarks
+    type: string
+    long_option: remarks
+    short_option: y
+    default_value: Uploaded from ONAP CLI
+    is_optional: true
+  - name: artifact
+    description: VNF CSAR file
+    type: byte
+    long_option: artifact
+    short_option: z
+    is_optional: false
+  - name: artifact-name
+    description: VNF CSAR name
+    type: string
+    long_option: artifact-name
+    short_option: b
+    is_optional: false
+  - name: user-id
+    description: Designer user id
+    type: string
+    long_option: user-id
+    short_option: e
+    default_value: cs0008
+    is_optional: true
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/catalog/resources/${vf-id}/artifacts
+    method: POST
+    headers:
+      Content-MD5: $s{md5:__body__}
+      USER_ID: ${user-id}
+    body: '{"payloadData":"${artifact}","artifactDisplayName":"${artifact-name}","artifactType":"OTHER","description":"${remarks}","artifactName":"${artifact-name}", "artifactLabel":"${artifact-name}","artifactGroupType":"DEPLOYMENT", artifactChecksum="$s{md5:artifact}"}'
+  success_codes:
+    - 200

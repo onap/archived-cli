@@ -1,4 +1,4 @@
-# Copyright 2019 Huawei Technologies Co., Ltd.
+#  Copyright © Intel Corporation 2019
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ description: Create a cloud region in Onap
 info:
   product: onap-elalto
   service: aai
-  author: ONAP CLI Team onap-discuss@lists.onap.org
+  author: Intel ONAP HPA integration team (itohan.ukponmwan@intel.com)
 
 
 parameters:
@@ -41,7 +41,7 @@ parameters:
     short_option: q
     long_option:  cloud-type
     is_optional: false
-  - name: owner-defined-type
+  - name: owner-type
     description: owner defined type
     type: string
     short_option: r
@@ -77,14 +77,14 @@ parameters:
     short_option: S
     long_option:  sriov-automation
     is_optional: true
-    default: false
+    default_value: false
   - name: identity-url
     description: Onap identity-url, updated by multicloud if multicloud is used
     type: string
     short_option: i
     long_option:  identity-url
     is_optional: false
-  - name: esr-system-info-id
+  - name: esr-id
     description: id for esr system (arbitrary UUID e.g 5c85ce1f-aa78-4ebf-8d6f-4b62773e9bc8)
     type: uuid
     short_option: e
@@ -96,11 +96,11 @@ parameters:
     short_option: url
     long_option:  service-url
     is_optional: false
-  - name: user-name
+  - name: username
     description: cloud user name
     type: string
     short_option: b
-    long_option:  user-name
+    long_option:  username
     is_optional: false
   - name: password
     description: cloud password
@@ -138,37 +138,31 @@ parameters:
     short_option: k
     long_option:  system-status
     is_optional: false
-  - name: cloud-extra-info
-    description: extra info to register cloud , generally string with region id e.g {\"openstack-region-id\":\"region-id\"}, enter as {\\"openstack-region-id\\":\\"ONAP-POD-01-Rail-07\\"} with CLI
-    type: string
-    short_option: I
-    long_option:  extra-info
-    is_optional: false
 
 http:
   service:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v16/cloud-infrastructure/cloud-regions/cloud-region/${cloud-owner}/${region-name}
+    uri: /aai/v14/cloud-infrastructure/cloud-regions/cloud-region/${cloud-owner}/${region-name}
     method: PUT
     body: '{
                 "cloud-owner": "${cloud-owner}",
                 "cloud-region-id": "${region-name}",
                 "cloud-type": "${cloud-type}",
-                "owner-defined-type": "${owner-defined-type}",
+                "owner-defined-type": "${owner-type}",
                 "cloud-region-version": "${cloud-region-version}",
                 "complex-name":"${complex-name}",
                 "cloud-zone": "${cloud-zone}",
                 "sriov-automation": "${sriov-automation}",
                 "identity-url": "${identity-url}",
-                "cloud-extra-info":"${cloud-extra-info}",
+                "cloud-extra-info":"{\"openstack-region-id\":\"${region-name}\"}",
                 "esr-system-info-list": {
                 "esr-system-info":[
                  {
-                      "esr-system-info-id":"${esr-system-info-id}",
+                      "esr-system-info-id":"${esr-id}",
                       "service-url": "${service-url}",
-                      "user-name":"${user-name}",
+                      "user-name":"${username}",
                       "password":"${password}",
                       "system-type": "${system-type}",
                       "ssl-insecure": "${ssl-insecure}",

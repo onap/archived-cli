@@ -1,0 +1,73 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: service2vf-model-list
+description: List the VF in a given service model in SDC
+
+info:
+  product: onap-elalto
+  service: sdc.catalog
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: service-id
+    description: Service model uuid
+    type: string
+    short_option: z
+    long_option: service-id
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: vf-uuid
+      description: UUID
+      type: string
+      scope: short
+    - name: vf-name
+      description: name
+      type: string
+      scope: short
+    - name: vf-customization-uuid
+      description: customization UUID
+      type: string
+      scope: short
+    - name: vf-version
+      description: version
+      type: string
+      scope: short
+    - name: vf-id
+      description: customization UUID
+      type: string
+      scope: short
+
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/catalog/services/${service-id}
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    vf-id: $b{componentInstances.[*].uniqueId}
+    vf-uuid: $b{componentInstances.[*].componentUid}
+    vf-name: $b{componentInstances.[*].componentName}
+    vf-version: $b{componentInstances.[*].componentVersion}
+    vf-customization-uuid: $b{componentInstances.[*].customizationUUID}

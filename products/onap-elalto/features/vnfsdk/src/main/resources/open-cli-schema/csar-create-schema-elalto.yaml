@@ -1,0 +1,52 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: csar-create
+description: Uploads the CSARs in marketplace
+
+
+info:
+  product: onap-elalto
+  service: marketplace
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: csar-file
+    description: CSAR File path
+    type: binary
+    short_option: x
+    long_option: csar-file
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: csarId
+      description: CSAR id
+      scope: short
+      type: string
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: /onapapi/vnfsdk-marketplace/v1/PackageResource/csars
+    method: POST
+    body: ${csar-file}
+    multipart_entity_name: file
+  success_codes:
+    - 200
+  result_map:
+    csarId: $b{$.csarId}
