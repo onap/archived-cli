@@ -19,7 +19,7 @@ description: List the configured complexes
 info:
   product: onap-elalto
   service: aai
-  author: ONAP HPA Integration Team (itohan.ukponmwan@intel.com)
+  author: ONAP HPA Integration Team (onap-discuss@lists.onap.org)
 
 results:
   direction: landscape

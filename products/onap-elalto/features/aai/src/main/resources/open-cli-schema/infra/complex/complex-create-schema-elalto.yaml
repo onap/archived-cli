@@ -19,7 +19,7 @@ description: Create a cloud complex in Onap
 info:
   product: onap-elalto
   service: aai
-  author: Intel ONAP HPA integration team (itohan.ukponmwan@intel.com)
+  author: Intel ONAP HPA integration team (onap-discuss@lists.onap.org)
 
 parameters:
   - name: physical-location-id

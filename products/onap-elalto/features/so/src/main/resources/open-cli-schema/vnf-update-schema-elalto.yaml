@@ -1,0 +1,185 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vnf-update
+description: Update a VNF
+
+info:
+  product: onap-elalto
+  service: so
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: cloud-region
+    description: cloud region identifier
+    type: string
+    short_option: l
+    long_option: cloud-region
+    is_optional: false
+  - name: tenant-id
+    description: openstack tenant id
+    type: string
+    short_option: z
+    long_option: tenant-id
+    is_optional: false
+  - name: product-family
+    description: service type for serivce (e.g. vLB)
+    type: string
+    short_option: w
+    long_option: product-family
+    is_optional: false
+  - name: instance-name
+    description: service instance name
+    type: string
+    short_option: o
+    long_option: instance-name
+    is_optional: false
+  - name: service-instance-id
+    description: unique id for service instance
+    type: string
+    short_option: y
+    long_option: service-instance-id
+    is_optional: false
+  - name: vf-model-invariant-id
+    description: vf model invariant id
+    type: string
+    short_option: b
+    long_option: vf-model-invariant-id
+    is_optional: false
+  - name: vf-model-uuid
+    description: model uuid for vf
+    type: string
+    short_option: c
+    long_option: vf-model-uuid
+    is_optional: false
+  - name: vf-model-name
+    description: vf model name
+    type: string
+    short_option: e
+    long_option: vf-model-name
+    is_optional: false
+  - name: vf-model-version
+    description: vf model version
+    type: string
+    short_option: g
+    long_option: vf-model-version
+    is_optional: false
+  - name: vf-model-customization-id
+    description: vf model customization id
+    type: string
+    short_option: i
+    long_option: vf-model-customization-id
+    is_optional: false
+  - name: service-model-invariant-id
+    description: model invariant id
+    type: string
+    short_option: j
+    long_option: service-model-invariant-id
+    is_optional: false
+  - name: service-model-uuid
+    description: model name version id
+    type: string
+    short_option: k
+    long_option: service-model-uuid
+    is_optional: false
+  - name: service-model-name
+    description: service model name
+    type: string
+    short_option: q
+    long_option: service-model-name
+    is_optional: false
+  - name: service-model-version
+    description: service model version
+    type: string
+    short_option: n
+    long_option: service-model-version
+    is_optional: false
+  - name: requestor-id
+    description: requestor ID
+    type: string
+    short_option: r
+    long_option: requestor-id
+    is_optional: false
+
+
+results:
+  direction: portrait
+  attributes:
+    - name: vf-id
+      description: id for the created vnf
+      type: string
+      scope: short
+
+http:
+  service:
+    name: so
+    version: v6
+    auth: basic
+    mode: direct
+  request:
+    uri: /onap/so/infra/serviceInstantiation/v7/serviceInstances/${service-instance-id}/vnfs
+    method: PUT
+    body: '{
+              "requestDetails":{
+                 "modelInfo":{
+                    "modelType":"vnf",
+                    "modelInvariantId":"${vf-model-invariant-id}",
+                    "modelVersionId":"${vf-model-uuid}",
+                    "modelName":"${vf-model-name}",
+                    "modelVersion":"${vf-model-version}",
+                    "modelCustomizationId":"${vf-model-customization-id}"
+                 },
+                 "cloudConfiguration":{
+                    "lcpCloudRegionId":"${cloud-region}",
+                    "tenantId":"${tenant-id}"
+                 },
+                 "requestInfo":{
+                    "requestorId":"${requestor-id}",
+                    "instanceName":"${instance-name}",
+                    "source":"VID",
+                    "productFamilyId":"${product-family}"
+                 },
+                 "relatedInstanceList":[
+                    {
+                       "relatedInstance":{
+                          "instanceId":"${service-instance-id}",
+                          "modelInfo":{
+                             "modelType":"service",
+                             "modelInvariantId":"${service-model-invariant-id}",
+                             "modelVersionId":"${service-model-uuid}",
+                             "modelName":"${service-model-name}",
+                             "modelVersion":"${service-model-version}"
+                          }
+                       }
+                    }
+                 ],
+                 "requestParameters":{
+
+                 }
+              }
+           }'
+
+  success_codes:
+    - 202
+  result_map:
+    vf-id: $b{$.requestReferences.instanceId}
+  sample_response:
+    body: '{
+              "requestReferences":{
+                 "instanceId":"2a152730-f6eb-4dc6-9b81-7a6f6f263d71",
+                 "requestId":"6402628f-7f67-4605-9e60-0d8632616d02"
+              }
+           }'

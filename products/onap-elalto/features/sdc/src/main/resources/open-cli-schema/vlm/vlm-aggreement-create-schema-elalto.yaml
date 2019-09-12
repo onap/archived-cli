@@ -1,0 +1,70 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vlm-aggreement-create
+description: Create license aggreement
+
+info:
+  product: onap-elalto
+  service: sdc.onboarding
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: name
+    description: aggreement name
+    type: string
+    short_option: x
+    long_option: name
+    is_optional: false
+  - name: vlm-id
+    description: License Model ID
+    type: string
+    short_option: y
+    long_option: vlm-id
+    is_optional: false
+  - name: vlm-version
+    description: License Model version
+    type: string
+    short_option: e
+    long_option: vlm-version
+    is_optional: false
+  - name: vlm-feature-group-id
+    description: VLM feature group
+    type: string
+    short_option: g
+    long_option: vlm-feature-group-id
+    is_optional: false
+
+results:
+  direction: portrait
+  attributes:
+    - name: id
+      description: aggreement ID
+      scope: short
+      type: string
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/license-agreements
+    method: POST
+    body: '{"addedFeatureGroupsIds": ["${vlm-feature-group-id}"], "licenseTerm": {"choice": "Fixed_Term", "other": ""}, "name": "${name}"}'
+  success_codes:
+    - 200
+  result_map:
+    id: $b{$.value}

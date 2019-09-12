@@ -1,0 +1,73 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: service-model-set-property
+description: Set property to a service model
+
+info:
+  product: onap-elalto
+  service: sdc.catalog
+  author: ONAP HPA Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: service-id
+    description: service UniqueId
+    type: string
+    long_option: service-id
+    short_option: x
+    is_optional: false
+  - name: vf-resource-id
+    description: resource id provided by service ns_id.vf_id.vf_name
+    type: string
+    long_option: vf-resource-id
+    short_option: y
+    is_optional: false
+  - name: vf-id
+    description: resource id
+    type: string
+    long_option: vf-id
+    short_option: z
+    is_optional: false
+  - name: property-name
+    description: property name
+    type: string
+    long_option: property-name
+    short_option: b
+    is_optional: false
+  - name: property-value
+    description: property value
+    type: string
+    long_option: property-value
+    short_option: r
+    is_optional: false
+  - name: input-uuid
+    description: VF Model Input uuid
+    type: string
+    long_option: input-uuid
+    short_option: R
+    is_optional: false
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/resourceInstance/${vf-resource-id}/inputs
+    method: POST
+    body: '[{"constraints":[],"definition":false,"name":"${property-name}","parentUniqueId":"${input-uuid}","password":false,"required":false,"schema":{"property":{}},"toscaPresentation":{"ownerId":"${input-uuid}"},"type":"string","uniqueId":"${input-uuid}.${property-name}","value":"${property-value}"}]'
+  success_codes:
+    - 200

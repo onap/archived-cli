@@ -75,7 +75,7 @@ http:
                   {
                     "related-to": "tenant",
                     "relationship-label": "org.onap.relationships.inventory.Uses",
-                    "related-link": "/aai/v14/cloud-infrastructure/cloud-regions/cloud-region/${cloud-owner}/${cloud-region}/tenants/tenant/${cloud-tenant-id}",
+                    "related-link": "/aai/v16/cloud-infrastructure/cloud-regions/cloud-region/${cloud-owner}/${cloud-region}/tenants/tenant/${cloud-tenant-id}",
                     "relationship-data": [
                        {
                           "relationship-key": "cloud-region.cloud-owner",

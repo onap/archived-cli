@@ -1,0 +1,81 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: service-model-add-vf
+description: Helps to add VF into service models in SDC
+
+info:
+  product: onap-elalto
+  service: sdc.catalog
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: service-id
+    description: Onap Service Name
+    type: string
+    short_option: x
+    long_option: service-id
+    is_optional: false
+  - name: vf-id
+    description: VF Unique ID
+    type: string
+    short_option: y
+    long_option: vf-id
+    is_optional: true
+  - name: vf-name
+    description: VF Name
+    type: string
+    short_option: z
+    long_option: vf-name
+    is_optional: true
+  - name: vf-version
+    description: VF version
+    type: string
+    long_option: vf-version
+    short_option: b
+    is_optional: true
+
+results:
+  direction: portrait
+  attributes:
+    - name: id
+      description: Service ID
+      scope: short
+      type: string
+    - name: uuid
+      description: Service UUID
+      scope: short
+      type: string
+    - name: inputs
+      description: VNF Input ids
+      scope: short
+      type: string
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /sdc2/rest/v1/catalog/services/${service-id}/resourceInstance
+    method: POST
+    body: '{"name": "${vf-name}", "componentVersion": "${vf-version}", "posY": 248, "posX": 406, "uniqueId": "${service-id}-${vf-id}", "originType": "VF", "componentUid": "${vf-id}", "icon": "defaulticon"}'
+  success_codes:
+    - 201
+  result_map:
+    id: $b{$.uniqueId}
+    uuid: $b{$.componentUid}
+    inputs: $b{$.inputs.[*].uniqueId}
