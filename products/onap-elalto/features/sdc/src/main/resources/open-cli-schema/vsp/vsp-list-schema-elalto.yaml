@@ -1,0 +1,73 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vsp-list
+description: List of the Vendor Software Products
+
+info:
+  product: onap-elalto
+  service: sdc.onboarding
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: landscape
+  attributes:
+    - name: ID
+      description: VSP ID
+      scope: short
+      type: string
+    - name: name
+      description: VSP Name
+      scope: short
+      type: string
+    - name: vendor-name
+      description: Vendor name
+      scope: long
+      type: string
+    - name: version
+      description: Version
+      scope: short
+      type: string
+    - name: status
+      description: status
+      scope: short
+      type: string
+    - name: license-id
+      description: license aggreement
+      scope: long
+      type: string
+    - name: license-version
+      description: license version
+      scope: long
+      type: string
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-software-products
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    ID: $b{results.[*].id}
+    name: $b{results.[*].name}
+    vendor-name: $b{results.[*].vendorName}
+    version: $b{results.[*].version.id}
+    status: $b{results.[*].status}
+    license-id: $b{results.[*].licensingData.licenseAgreement}
+    license-version: $b{results.[*].licensingVersion.id}

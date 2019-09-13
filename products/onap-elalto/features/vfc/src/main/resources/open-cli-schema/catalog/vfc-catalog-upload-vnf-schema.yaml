@@ -1,4 +1,4 @@
-# Copyright 2019 Huawei Technologies Co., Ltd.
+#  Copyright 2019 Huawei Technologies Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,34 +13,41 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: complex-delete
-description: Delete a complex from Onap
+name: vfc-catalog-upload-vnf-package
+description: Upload VNF package into VFC
 
 info:
   product: onap-elalto
-  service: aai
-  author: ONAP HPA Integration Team (onap-discuss@lists.onap.org)
+  service: vfc
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
-  - name: complex-name
-    description: Onap complex name
+  - name: vnf-id
+    description: VNF id created in VFC
     type: string
-    short_option: x
-    long_option: complex-name
+    short_option: c
+    long_option: vnf-id
     is_optional: false
-  - name: resource-version
-    description: Onap complex region version
-    type: uuid
-    short_option: y
-    long_option: resource-version
-    is_optional: true
+  - name: vnf-package
+    description: VNF package
+    type: binary
+    short_option: e
+    long_option: vnf-package
+    is_optional: false
+
 http:
   service:
-    auth: basic
+    auth: none
     mode: direct
   request:
-    uri: /aai/v16/cloud-infrastructure/complexes/complex/${complex-name}?resource-version=${resource-version}
-    method: DELETE
+    uri: /api/vnfpkgm/v1/vnf_packages/${vnf-id}/package_content
+    method: PUT
+    body:
+    body:
+      multipart:
+        - name: file
+          content: ${vnf-package}
+          type: file
+    multipart_entity_name: file
   success_codes:
-    - 204
-    - 404
+    - 201

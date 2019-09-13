@@ -1,4 +1,4 @@
-# Copyright 2019 Huawei Technologies Co., Ltd.
+#  Copyright © Intel Corporation 2019
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,34 +13,44 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: complex-delete
-description: Delete a complex from Onap
+name: vfc-catalog-delete-vnf
+description: vfc delete onboard vnf to catalog of vfc
 
 info:
   product: onap-elalto
-  service: aai
-  author: ONAP HPA Integration Team (onap-discuss@lists.onap.org)
+  service: vfc
+  author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
 parameters:
-  - name: complex-name
-    description: Onap complex name
+  - name: vnf-csar-uuid
+    description: vnf's uuid of csar file
     type: string
-    short_option: x
-    long_option: complex-name
+    short_option: c
+    long_option: vnf-csar-uuid
     is_optional: false
-  - name: resource-version
-    description: Onap complex region version
-    type: uuid
-    short_option: y
-    long_option: resource-version
-    is_optional: true
+
+results:
+  direction: landscape
+  attributes:
+    - name: job-id
+      description: job-id
+      scope: short
+      type: string
+
 http:
   service:
-    auth: basic
+    auth: none
     mode: direct
   request:
-    uri: /aai/v16/cloud-infrastructure/complexes/complex/${complex-name}?resource-version=${resource-version}
+    uri: /api/catalog/v1/vnfpackages/${vnf-csar-uuid}
     method: DELETE
+    context:
+      remove_empty_node: true
+    body: '{}'
+    headers:
+      Content-Type: application/json
+      Accept: application/json
   success_codes:
-    - 204
-    - 404
+    - 202
+  result_map:
+    job-id: $b{$.jobId}

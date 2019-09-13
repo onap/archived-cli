@@ -13,34 +13,44 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: complex-delete
-description: Delete a complex from Onap
+name: vsp-commit
+description: Commit Vendor Software Product
 
 info:
   product: onap-elalto
-  service: aai
-  author: ONAP HPA Integration Team (onap-discuss@lists.onap.org)
+  service: sdc.onboarding
+  author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
-  - name: complex-name
-    description: Onap complex name
+  - name: vsp-id
+    description: Onap VSP ID
     type: string
     short_option: x
-    long_option: complex-name
+    long_option: vsp-id
     is_optional: false
-  - name: resource-version
-    description: Onap complex region version
-    type: uuid
+  - name: vsp-version
+    description: VSP version
+    type: string
     short_option: y
-    long_option: resource-version
+    long_option: vsp-version
+    is_optional: false
+  - name: remarks
+    description: VSP remarks
+    type: string
+    short_option: z
+    long_option: remarks
     is_optional: true
+    default_value: Created by OCOMP
 http:
   service:
+    name: sdc
+    version: v1.0
     auth: basic
     mode: direct
   request:
-    uri: /aai/v16/cloud-infrastructure/complexes/complex/${complex-name}?resource-version=${resource-version}
-    method: DELETE
+    uri: /onboarding-api/v1.0/items/${vsp-id}/versions/${vsp-version}/actions
+    method: PUT
+    body: '{"action":"Commit","commitRequest":{"message":"${remarks}"}}'
   success_codes:
-    - 204
-    - 404
+    - 201
+    - 200

@@ -1,0 +1,83 @@
+#  Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf-module-show
+description: Show a VF Module
+
+info:
+  product: onap-elalto
+  service: so
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+results:
+  direction: landscape
+  attributes:
+  - name: name
+    description: Onap service name
+    scope: short
+    type: string
+  - name: version
+    description: Onap service version
+    scope: short
+    type: string
+  - name: url
+    description: Onap service base url
+    scope: short
+    type: url
+  - name: status
+    description: Onap service status
+    scope: short
+    type: digit
+  - name: nodes
+    description: Onap service running nodes
+    scope: long
+    type: json
+  - name: enable-ssl
+    description: Onap service is enabled with https or not
+    scope: long
+    type: string
+  - name: path
+    description: Onap service path
+    scope: long
+    type: string
+
+
+http:
+  service:
+    name: so
+    version: v6
+    auth: basic
+    mode: direct
+  request:
+    uri: /onap/so/infra/serviceInstantiation/v7/serviceInstances
+    method: GET
+  success_codes:
+  - 201
+  - 200
+  result_map:
+    name: $b{$.[*].serviceName}
+    version: $b{$.[*].version}
+    url: $b{$.[*].url}
+    status: $b{$.[*].status}
+    enable-ssl: $b{$.[*].enable_ssl}
+    path: $b{$.[*].path}
+    nodes: $b{$.[*].nodes[*].ip}:$b{$.[*].nodes[*].port}
+  sample_response:
+    body: '{
+              "requestReferences":{
+                 "instanceId":"${instance-id}",
+                 "requestId":"375ba428-65e7-4f2b-afb9-74735ac6bfd0"
+              }
+           }'

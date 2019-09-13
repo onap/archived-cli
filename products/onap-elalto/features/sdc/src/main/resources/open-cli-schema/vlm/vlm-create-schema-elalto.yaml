@@ -1,0 +1,63 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vlm-create
+description: Create License Model
+
+info:
+  product: onap-elalto
+  service: sdc.onboarding
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+
+parameters:
+  - name: vendor-name
+    description: vendor name
+    type: string
+    short_option: x
+    long_option: vendor-name
+    is_optional: false
+  - name: description
+    description: Description for License Model
+    type: string
+    short_option: y
+    long_option: description
+    is_optional: true
+results:
+  direction: portrait
+  attributes:
+    - name: id
+      description: License Model ID
+      scope: short
+      type: uuid
+    - name: version
+      description: License Model version
+      scope: short
+      type: uuid
+http:
+  service:
+    name: sdc
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /onboarding-api/v1.0/vendor-license-models
+    method: POST
+    body: '{"vendorName": "${vendor-name}", "description": "${description}",  "iconRef": "icon"}'
+  success_codes:
+    - 200
+  result_map:
+    id: $b{$.itemId}
+    version: $b{$.version.id}

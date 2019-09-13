@@ -1,4 +1,4 @@
-# Copyright 2019 Huawei Technologies Co., Ltd.
+# Copyright © Intel Corporation 2019
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,34 +13,38 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: complex-delete
-description: Delete a complex from Onap
+name: vlm-submit
+description: Submit Vendor License Model
 
 info:
   product: onap-elalto
-  service: aai
-  author: ONAP HPA Integration Team (onap-discuss@lists.onap.org)
+  service: sdc.onboarding
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
 
 parameters:
-  - name: complex-name
-    description: Onap complex name
+  - name: vlm-id
+    description: Onap VLM ID
     type: string
     short_option: x
-    long_option: complex-name
+    long_option: vlm-id
     is_optional: false
-  - name: resource-version
-    description: Onap complex region version
-    type: uuid
+  - name: vlm-version
+    description: VLM version
+    type: string
     short_option: y
-    long_option: resource-version
-    is_optional: true
+    long_option: vlm-version
+    is_optional: false
 http:
   service:
+    name: sdc
+    version: v1.0
     auth: basic
     mode: direct
   request:
-    uri: /aai/v16/cloud-infrastructure/complexes/complex/${complex-name}?resource-version=${resource-version}
-    method: DELETE
+    uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/actions
+    method: PUT
+    body: '{"action": "Submit"}'
   success_codes:
-    - 204
-    - 404
+    - 201
+    - 200

@@ -1,4 +1,4 @@
-# Copyright 2019 Huawei Technologies Co., Ltd.
+#  Copyright © Intel Corporation 2019
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,34 +13,30 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: complex-delete
-description: Delete a complex from Onap
+name: vf-preload
+description: Preload SDNC with parameter values for a VF module in ONAP
 
 info:
   product: onap-elalto
-  service: aai
-  author: ONAP HPA Integration Team (onap-discuss@lists.onap.org)
+  service: sdnc
+  author: Intel ONAP HPA integration team (onap-discuss@lists.onap.org)
+
 
 parameters:
-  - name: complex-name
-    description: Onap complex name
-    type: string
-    short_option: x
-    long_option: complex-name
-    is_optional: false
-  - name: resource-version
-    description: Onap complex region version
-    type: uuid
+  - name: preload-file
+    description: File containing preload values
+    type: text
     short_option: y
-    long_option: resource-version
-    is_optional: true
+    long_option: preload-file
+    is_optional: false
+
 http:
   service:
     auth: basic
     mode: direct
   request:
-    uri: /aai/v16/cloud-infrastructure/complexes/complex/${complex-name}?resource-version=${resource-version}
-    method: DELETE
+    uri: /restconf/operations/VNF-API:preload-vnf-topology-operation
+    method: POST
+    body: '${preload-file}'
   success_codes:
-    - 204
-    - 404
+    - 200

@@ -1,0 +1,143 @@
+# Copyright © Intel Corporation 2019
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vf-module-update
+description: Update a VF Module
+
+info:
+  product: onap-elalto
+  service: so
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: lcp-cloudregion-id
+    description: AIC LCP node location identifier
+    type: string
+    short_option: l
+    long_option: lcp-cloudregion-id
+    is_optional: false
+  - name: tenant-id
+    description: openstack tenant id (uuid)
+    type: string
+    short_option: w
+    long_option: tenant-id
+    is_optional: false
+  - name: vnf-instance-id
+    description: vnf instance id
+    type: string
+    short_option: y
+    long_option: vnf-instace-id
+    is_optional: false
+  - name: service-instance-id
+    description: unique id for service instance
+    type: string
+    short_option: x
+    long_option: service-instace-id
+    is_optional: false
+  - name: parenet-service-model
+    description: parent service model name
+    type: string
+    short_option: z
+    long_option: parenet-service-model
+    is_optional: false
+  - name: supress-rollback
+    description: rollback changes if instantiation fails.
+    type: bool
+    short_option: r
+    long_option: supress-rollback
+    is_optional: true
+  - name: instance-name
+    description: service instance name
+    type: string
+    short_option: i
+    long_option: instance-name
+    is_optional: false
+
+results:
+  direction: portrait
+  attribute:
+    - name: vf-instance-id
+      description: id for the created vf
+      type: string
+      scope: short
+
+http:
+  service:
+    name: so
+    version: v6
+    auth: basic
+    mode: direct
+  request:
+    uri: /onap/so/infra/serviceInstantiation/v7/serviceInstances/${service-instance-id}/vnfs/${vnf-instance-id}/vfModules
+    method: PUT
+    body: '{
+              "requestDetails":{
+                 "modelInfo":{
+                    "modelType":"vfModule",
+                    "modelInvariantId":"ff5256d2-5a33-55df-13ab-12abad84e7ff",
+                    "modelNameVersionId":"fe6478e5-ea33-3346-ac12-ab121484a3fe",
+                    "modelName":"vSAMP12..base..module-0",
+                    "modelVersion":"1"
+                 },
+                 "cloudConfiguration":{
+                    "lcpCloudRegionId":"${lcp-cloudregion-id}",
+                    "tenantId":"${tenant-id}"
+                 },
+                 "requestInfo":{
+                    "instanceName":"${instance-name}",
+                    "source":"VID",
+                    "suppressRollback":"${supress-rollback}"
+                 },
+                 "relatedInstanceList":[
+                    {
+                       "relatedInstance":{
+                          "instanceId":"${service-instance-id}",
+                          "modelInfo":{
+                             "modelType":"service",
+                             "modelInvariantId":"ff3514e3-5a33-55df-13ab-12abad84e7ff",
+                             "modelNameVersionId":"fe6985cd-ea33-3346-ac12-ab121484a3fe",
+                             "modelName":"${parenet-service-model}",
+                             "modelVersion":"1.0"
+                          }
+                       }
+                    },
+                    {
+                       "relatedInstance":{
+                          "instanceId":"${vnf-instance-id}",
+                          "modelInfo":{
+                             "modelType":"vnf",
+                             "modelInvariantId":"ff5256d1-5a33-55df-13ab-12abad84e7ff",
+                             "modelNameVersionId":"fe6478e4-ea33-3346-ac12-ab121484a3fe",
+                             "modelName":"vSAMP12",
+                             "modelVersion":"1.0",
+                             "modelCustomizationName":"vSAMP12 1"
+                          }
+                       }
+                    }
+                 ],
+                 "requestParameters":{
+                    "userParams":[
+
+                    ]
+                 }
+              }
+           }'
+
+  success_codes:
+    - 202
+  result_mpa:
+    vf-instance-id: $b{$.vfInstanceId}
+  sample_response:
+    body: '{"vfInstanceId":"234567AB"}'
