@@ -4,6 +4,26 @@
 CLI Release Notes
 =================
 
+Version: 4.0.0
+--------------
+
+:Release Date: 2019-059-30
+
+**New Features**
+
+- End to End VNF provisioning and termination using ONAP CLI commands
+
+**Security Notes**
+
+*Fixed Security Issues*
+
+*Known Security Issues*
+
+- In default deployment CLI (cli) exposes HTTP port 30260 outside of cluster. [`OJSI-129 <https://jira.onap.org/browse/OJSI-129>`_]
+- In default deployment CLI (cli) exposes HTTP port 30271 outside of cluster. [`OJSI-135 <https://jira.onap.org/browse/OJSI-135>`_]
+- CVE-2019-12130 - CLI exposes unprotected APIs/UIs on port 30271. [`OJSI-205 <https://jira.onap.org/browse/OJSI-205>`_]
+
+*Known Vulnerabilities in Used Modules*
 
 Version: 3.0.0
 --------------
