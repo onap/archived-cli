@@ -65,4 +65,4 @@ http:
   result_map:
     id: $b{$.uniqueId}
     version: $b{$.version}
-    uuid: $b{$.unid}
+    uuid: $b{$.uuid}

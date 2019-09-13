@@ -39,10 +39,10 @@ description: |
   c. Type 'profile onap-dublin' to create or to use existing onap-dublin profile
 
   d. Set following entries:
-    set sdc.onboarding:host-url=https://159.138.8.8:30280
+    set sdc.onboarding:host-url=http://159.138.8.8:30280
     set sdc.onboarding:host-username=cs0008
     set sdc.onboarding:host-password=demo123456!
-    set sdc.catalog:host-url=https://159.138.8.8:30205
+    set sdc.catalog:host-url=http://159.138.8.8:30205
     set sdc.catalog:host-password=demo123456\!
     set sdc.catalog:host-username=cs0008
     set sdc.catalog:service-model-approve:host-username=gv0001
