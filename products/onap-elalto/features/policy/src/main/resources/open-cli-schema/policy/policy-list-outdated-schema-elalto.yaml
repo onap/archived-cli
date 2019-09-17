@@ -1,0 +1,88 @@
+# Copyright 2019 Intel Corporation.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: policy-list-outdated
+description: List policies
+
+info:
+  product: onap-elalto
+  service: policy
+  author: ONAP HPA Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: policy-name
+    description: ONAP policy name
+    type: string
+    long_option: policy-name
+    short_option: x
+    is_optional: false
+    default_value: .*
+  - name: config-attributes
+    description: Configuration Attributes
+    type: json
+    long_option: config-attributes
+    short_option: A
+    is_optional: true
+    default_value: {}
+
+results:
+  direction: landscape
+  attributes:
+    - name: name
+      description: Policy Name
+      scope: short
+      type: string
+    - name: type
+      description: Policy type
+      scope: short
+      type: string
+    - name: config
+      description: Policy configuration
+      scope: short
+      type: json
+    - name: version
+      description: Policy version
+      scope: long
+      type: string
+    - name: rules
+      description: Policy rules
+      scope: long
+      type: json
+http:
+  service:
+    name: policy
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /pdp/api/getConfig
+    method: POST
+    body: '{"configAttributes": "${config-attributes}", "policyName": "${policy-name}"}'
+    headers:
+      Accept: application/json
+      ClientAuth: cHl0aG9uOnRlc3Q=
+      Environment: TEST
+
+
+  success_codes:
+    - 200
+
+  result_map:
+    name: $b{$.[*].policyName}
+    type: $b{$.[*].policyType}
+    version: $b{$.[*].policyVersion}
+    config: $b{$.[*].config}
+    rules: $b{$.[*].matchingConditions}
+
