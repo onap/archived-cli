@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Ruoyu Ying <ruoyu.ying@intel.com>
+Code-Review+2: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Submitted-by: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Submitted-at: Thu, 19 Sep 2019 09:23:29 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/cli/+/95838
+Project: cli
+Branch: refs/heads/master
