@@ -1,0 +1,15 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/api/multicloud-titaniumcloud/v1/CloudOwner/ONAP-POD-01-Rail-04/registry",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 202,
+    "json" : null
+  }
+} ]

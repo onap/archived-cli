@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: service-model-create
+version: onap-elalto
+samples:
+  sample1:
+    name: service-model-create
+    input: -z 000000 -y hpa service model -e network_l_1-3 -x vfw-hpa-01 -c Network L1-3 -b network l1-3 -u cs0008 -p demo123456! -m https://10.12.5.110:30204
+    moco: service-model-create-schema-elalto-moco.json
+    output: |
+      +----------+--------------------------------------+
+      |property  |value                                 |
+      +----------+--------------------------------------+
+      |id        |12eac43a-d95a-4383-8d97-12da68053b66  |
+      +----------+--------------------------------------+
+      |uuid      |a9031c62-bb9e-4db4-bee0-691768ed94f4  |
+      +----------+--------------------------------------+

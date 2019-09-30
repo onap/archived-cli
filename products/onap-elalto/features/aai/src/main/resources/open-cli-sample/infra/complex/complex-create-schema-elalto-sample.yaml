@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: complex-create
+version: onap-elalto
+samples:
+  sample1:
+    name: complex-create
+    input: -j street2 -r phy_type -x clli1 -y code1 -lt 32.89948 -l northwest -i street1 -lo 97.045443 -S oregon -la example-lata-val-28399 -g hillsboro -w 00000 -z clli1 -k USA -o example-elevation-val-28399 -q example-identity-url-val-56898 -m https://10.12.5.110:30233 -u AAI -p AAI
+    moco: complex-create-schema-elalto-moco.json
+    output:

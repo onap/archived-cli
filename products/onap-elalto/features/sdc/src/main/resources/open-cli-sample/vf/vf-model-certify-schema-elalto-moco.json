@@ -1,0 +1,68 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc2/rest/v1/catalog/resources/2b8ea1f3-6e16-4f05-87b3-a14c8e564e57/lifecycleState/certify",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-a9d9f5a2-9560-4702-bfc9-babee6618ace",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "userRemarks" : "remarkss"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "uniqueId" : "f2a9f1e6-1635-442d-89ef-42370b0e69ac",
+      "name" : "hpa-vf-0",
+      "version" : "1.0",
+      "isHighestVersion" : true,
+      "creationDate" : 1569874080670,
+      "lastUpdateDate" : 1569874111102,
+      "description" : "hpa-vf",
+      "lifecycleState" : "CERTIFIED",
+      "tags" : [ "CLI", "hpa-vf-0" ],
+      "icon" : "defaulticon",
+      "normalizedName" : "hpavf0",
+      "systemName" : "HpaVf0",
+      "contactId" : "cs0008",
+      "allVersions" : {
+        "1.0" : "f2a9f1e6-1635-442d-89ef-42370b0e69ac"
+      },
+      "csarUUID" : "b6c23299280842eca622e9f1a4166d4f",
+      "csarVersion" : "1.0",
+      "invariantUUID" : "ddc48ee5-28ed-4fc4-98d6-bc0cdcc57a89",
+      "componentType" : "RESOURCE",
+      "categories" : [ {
+        "name" : "Generic",
+        "normalizedName" : "generic",
+        "uniqueId" : "resourceNewCategory.generic",
+        "subcategories" : [ {
+          "name" : "Abstract",
+          "normalizedName" : "abstract",
+          "uniqueId" : "resourceNewCategory.generic.abstract",
+          "icons" : [ "objectStorage", "compute" ],
+          "empty" : false
+        } ],
+        "empty" : false
+      } ],
+      "creatorUserId" : "cs0008",
+      "creatorFullName" : "Carlos Santana",
+      "lastUpdaterUserId" : "cs0008",
+      "lastUpdaterFullName" : "Carlos Santana",
+      "archiveTime" : 0,
+      "vendorName" : "hpa-vendor-1",
+      "vendorRelease" : "1.0",
+      "resourceVendorModelNumber" : "",
+      "resourceType" : "VF",
+      "toscaResourceName" : "org.openecomp.resource.vf.HpaVf0",
+      "vspArchived" : false,
+      "uuid" : "76756a3e-ab7d-49df-9002-3d8008233a2b",
+      "archived" : false
+    }
+  }
+} ]

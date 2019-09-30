@@ -1,0 +1,62 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc2/rest/v1/catalog/services/12eac43a-d95a-4383-8d97-12da68053b66/lifecycleState/certificationRequest",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-9c66c69b-395a-4099-87ad-022f759693c5",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "userRemarks" : "test"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "uniqueId" : "12eac43a-d95a-4383-8d97-12da68053b66",
+      "name" : "vfw-hpa-01",
+      "version" : "0.1",
+      "isHighestVersion" : true,
+      "creationDate" : 1569874783975,
+      "lastUpdateDate" : 1569874808780,
+      "description" : "hpa service model",
+      "lifecycleState" : "READY_FOR_CERTIFICATION",
+      "tags" : [ "vfw-hpa-01" ],
+      "icon" : "defaulticon",
+      "normalizedName" : "vfwhpa01",
+      "systemName" : "VfwHpa01",
+      "contactId" : "cs0008",
+      "allVersions" : {
+        "0.1" : "12eac43a-d95a-4383-8d97-12da68053b66"
+      },
+      "projectCode" : "000000",
+      "invariantUUID" : "51e3401d-2924-40e7-827f-ca7ec567e5de",
+      "componentType" : "SERVICE",
+      "categories" : [ {
+        "name" : "Network L1-3",
+        "normalizedName" : "network l1-3",
+        "uniqueId" : "serviceNewCategory.network l1-3",
+        "empty" : false
+      } ],
+      "creatorUserId" : "cs0008",
+      "creatorFullName" : "Carlos Santana",
+      "lastUpdaterUserId" : "cs0008",
+      "lastUpdaterFullName" : "Carlos Santana",
+      "archiveTime" : 0,
+      "distributionStatus" : "DISTRIBUTION_NOT_APPROVED",
+      "ecompGeneratedNaming" : true,
+      "namingPolicy" : "",
+      "serviceType" : "",
+      "serviceRole" : "",
+      "environmentContext" : "General_Revenue-Bearing",
+      "instantiationType" : "A-la-carte",
+      "vspArchived" : false,
+      "uuid" : "a9031c62-bb9e-4db4-bee0-691768ed94f4",
+      "archived" : false
+    }
+  }
+} ]

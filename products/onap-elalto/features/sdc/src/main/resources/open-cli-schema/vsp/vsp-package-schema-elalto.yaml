@@ -43,6 +43,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-software-products/${vsp-id}/versions/${vsp-version}/actions
     method: PUT
+    headers:
+      USER_ID: "${host-username}"
     body: '{"action": "Create_Package"}'
   success_codes:
     - 201

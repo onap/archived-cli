@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: cloud-create
+version: onap-elalto
+samples:
+  sample1:
+    name: cloud-create
+    input: -e 8c85ce1f-aa78-45bf-8d6f-4b62784e9bc7 -b itohan_ukponmwan -x CloudOwner -y ONAP-POD-01-Rail-04 -j ONAP-pod-01_2d:ff -w titanium_cloud -l Integration-HPA -url http://10.12.11.1:5000/v3 -n clli1 -q openstack -r t1 -Q VIM -i WillBeUpdatedByMultiCloud -g CloudZone -z True -k active -c Default -m https://10.12.5.110:30233 -u AAI -p AAI
+    moco: cloud-create-schema-elalto-moco.json
+    output:

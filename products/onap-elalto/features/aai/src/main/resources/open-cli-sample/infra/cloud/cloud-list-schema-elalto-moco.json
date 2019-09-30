@@ -1,0 +1,187 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/aai/v16/cloud-infrastructure/cloud-regions",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-82e1515e-60e9-484b-beab-5120d926c3b5",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "cloud-region" : [ {
+        "cloud-owner" : "k8scloudowner1",
+        "cloud-region-id" : "k8sregionone",
+        "cloud-type" : "k8s",
+        "owner-defined-type" : "t1",
+        "cloud-region-version" : "1.0",
+        "cloud-zone" : "CloudZone",
+        "complex-name" : "clli1",
+        "sriov-automation" : "false",
+        "cloud-extra-info" : "{\"openstack-region-id\":\"k8sregionone\"}",
+        "orchestration-disabled" : false,
+        "in-maint" : false,
+        "resource-version" : "1569534556132",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "complex",
+            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
+            "related-link" : "/aai/v16/cloud-infrastructure/complexes/complex/clli1",
+            "relationship-data" : [ {
+              "relationship-key" : "complex.physical-location-id",
+              "relationship-value" : "clli1"
+            } ]
+          } ]
+        }
+      }, {
+        "cloud-owner" : "CloudOwner",
+        "cloud-region-id" : "ONAP-POD-01-Rail-06",
+        "cloud-type" : "openstack",
+        "owner-defined-type" : "t1",
+        "cloud-region-version" : "titanium_cloud",
+        "identity-url" : "http://msb-iag.onap:80/api/multicloud-titaniumcloud/v1/CloudOwner/ONAP-POD-01-Rail-06/identity/v2.0",
+        "cloud-zone" : "CloudZone",
+        "complex-name" : "clli1",
+        "sriov-automation" : "false",
+        "cloud-extra-info" : "{\"openstack-region-id\":\"ONAP-POD-01-Rail-06\"}",
+        "orchestration-disabled" : false,
+        "in-maint" : false,
+        "resource-version" : "1569537456041",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "pserver",
+            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
+            "related-link" : "/aai/v16/cloud-infrastructure/pservers/pserver/CloudOwner_ONAP-POD-01-Rail-06_controller-0",
+            "relationship-data" : [ {
+              "relationship-key" : "pserver.hostname",
+              "relationship-value" : "CloudOwner_ONAP-POD-01-Rail-06_controller-0"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "pserver.pserver-name2"
+            } ]
+          }, {
+            "related-to" : "complex",
+            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
+            "related-link" : "/aai/v16/cloud-infrastructure/complexes/complex/clli1",
+            "relationship-data" : [ {
+              "relationship-key" : "complex.physical-location-id",
+              "relationship-value" : "clli1"
+            } ]
+          } ]
+        }
+      }, {
+        "cloud-owner" : "CloudOwner",
+        "cloud-region-id" : "ONAP-POD-01-Rail-04",
+        "cloud-type" : "openstack",
+        "owner-defined-type" : "t1",
+        "cloud-region-version" : "titanium_cloud",
+        "identity-url" : "http://msb-iag.onap:80/api/multicloud-titaniumcloud/v1/CloudOwner/ONAP-POD-01-Rail-04/identity/v2.0",
+        "cloud-zone" : "CloudZone",
+        "complex-name" : "clli1",
+        "sriov-automation" : "false",
+        "cloud-extra-info" : "{\"openstack-region-id\":\"ONAP-POD-01-Rail-04\"}",
+        "orchestration-disabled" : false,
+        "in-maint" : false,
+        "resource-version" : "1569537472345",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "pserver",
+            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
+            "related-link" : "/aai/v16/cloud-infrastructure/pservers/pserver/CloudOwner_ONAP-POD-01-Rail-04_controller-0",
+            "relationship-data" : [ {
+              "relationship-key" : "pserver.hostname",
+              "relationship-value" : "CloudOwner_ONAP-POD-01-Rail-04_controller-0"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "pserver.pserver-name2"
+            } ]
+          }, {
+            "related-to" : "complex",
+            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
+            "related-link" : "/aai/v16/cloud-infrastructure/complexes/complex/clli1",
+            "relationship-data" : [ {
+              "relationship-key" : "complex.physical-location-id",
+              "relationship-value" : "clli1"
+            } ]
+          } ]
+        }
+      }, {
+        "cloud-owner" : "CloudOwner",
+        "cloud-region-id" : "ONAP-POD-01-Rail-07",
+        "cloud-type" : "openstack",
+        "owner-defined-type" : "t1",
+        "cloud-region-version" : "titanium_cloud",
+        "identity-url" : "http://msb-iag.onap:80/api/multicloud-titaniumcloud/v1/CloudOwner/ONAP-POD-01-Rail-07/identity/v2.0",
+        "cloud-zone" : "CloudZone",
+        "complex-name" : "clli1",
+        "sriov-automation" : "false",
+        "cloud-extra-info" : "{\"openstack-region-id\":\"ONAP-POD-01-Rail-07\"}",
+        "orchestration-disabled" : false,
+        "in-maint" : false,
+        "resource-version" : "1569537445468",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "pserver",
+            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
+            "related-link" : "/aai/v16/cloud-infrastructure/pservers/pserver/CloudOwner_ONAP-POD-01-Rail-07_controller-0",
+            "relationship-data" : [ {
+              "relationship-key" : "pserver.hostname",
+              "relationship-value" : "CloudOwner_ONAP-POD-01-Rail-07_controller-0"
+            } ],
+            "related-to-property" : [ {
+              "property-key" : "pserver.pserver-name2"
+            } ]
+          }, {
+            "related-to" : "complex",
+            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
+            "related-link" : "/aai/v16/cloud-infrastructure/complexes/complex/clli1",
+            "relationship-data" : [ {
+              "relationship-key" : "complex.physical-location-id",
+              "relationship-value" : "clli1"
+            } ]
+          } ]
+        }
+      }, {
+        "cloud-owner" : "CloudOwner",
+        "cloud-region-id" : "ONAP-POD-01-Rail-05",
+        "cloud-type" : "openstack",
+        "owner-defined-type" : "t1",
+        "cloud-region-version" : "titanium_cloud",
+        "identity-url" : "http://msb-iag.onap:80/api/multicloud-titaniumcloud/v1/CloudOwner/ONAP-POD-01-Rail-05/identity/v2.0",
+        "cloud-zone" : "CloudZone",
+        "complex-name" : "clli1",
+        "sriov-automation" : "false",
+        "cloud-extra-info" : "{\"openstack-region-id\":\"ONAP-POD-01-Rail-05\"}",
+        "orchestration-disabled" : false,
+        "in-maint" : false,
+        "resource-version" : "1569537463136",
+        "relationship-list" : {
+          "relationship" : [ {
+            "related-to" : "complex",
+            "relationship-label" : "org.onap.relationships.inventory.LocatedIn",
+            "related-link" : "/aai/v16/cloud-infrastructure/complexes/complex/clli1",
+            "relationship-data" : [ {
+              "relationship-key" : "complex.physical-location-id",
+              "relationship-value" : "clli1"
+            } ]
+          } ]
+        }
+      }, {
+        "cloud-owner" : "CloudOwner",
+        "cloud-region-id" : "RegionOne",
+        "cloud-type" : "SharedNode",
+        "owner-defined-type" : "OwnerType",
+        "cloud-region-version" : "v1",
+        "cloud-zone" : "CloudZone",
+        "orchestration-disabled" : false,
+        "in-maint" : false,
+        "resource-version" : "1569538337999"
+      } ]
+    }
+  }
+} ]

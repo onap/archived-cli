@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: service-type-create
+version: onap-elalto
+samples:
+  sample1:
+    name: service-type-create
+    input: -x vFW -m https://10.12.5.110:30233 -u AAI -p AAI
+    moco: service-type-create-schema-elalto-moco.json
+    output:

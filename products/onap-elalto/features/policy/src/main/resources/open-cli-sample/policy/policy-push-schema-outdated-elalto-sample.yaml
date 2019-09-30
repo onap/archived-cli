@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: policy-push-outdated
+version: onap-elalto
+samples:
+  sample1:
+    name: policy-push-outdated
+    input: -m https://10.12.5.110:30694 -u testpdp -p alpha123 -x OSDF_CASABLANCA.hpa_policy_vFWHPA_2 -b MicroService -c default
+    moco: policy-push-schema-outdated-elalto-moco.json
+    output:

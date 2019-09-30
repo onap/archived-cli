@@ -1,0 +1,36 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v16/business/customers/customer/hpa_cust/service-subscriptions/service-subscription/vFW/relationship-list/relationship",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-303c73eb-e36b-4287-b6eb-563cb0dc7837",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "related-to" : "tenant",
+      "relationship-label" : "org.onap.relationships.inventory.Uses",
+      "related-link" : "/aai/v16/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-05/tenants/tenant/709ba629fe194f8699b12f9d6ffd86a0",
+      "relationship-data" : [ {
+        "relationship-key" : "cloud-region.cloud-owner",
+        "relationship-value" : "CloudOwner"
+      }, {
+        "relationship-key" : "cloud-region.cloud-region-id",
+        "relationship-value" : "ONAP-POD-01-Rail-05"
+      }, {
+        "relationship-key" : "tenant.tenant-id",
+        "relationship-value" : "709ba629fe194f8699b12f9d6ffd86a0"
+      } ],
+      "related-to-property" : [ {
+        "property-key" : "tenant.tenant-name",
+        "property-value" : "Integration-HPA"
+      } ]
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : null
+  }
+} ]

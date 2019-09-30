@@ -76,6 +76,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/entitlement-pools
     method: POST
+    headers:
+      USER_ID: ${host-username}
     body: '{"name":"${name}","time":{"choice":"","other":""},"startDate":"${start-date}","expiryDate":"${expiry-date}","manufacturerReferenceNumber":"${manufacture-reference-number}"}'
   success_codes:
     - 200

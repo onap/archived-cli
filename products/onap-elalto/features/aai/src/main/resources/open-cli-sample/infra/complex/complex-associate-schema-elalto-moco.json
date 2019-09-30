@@ -1,0 +1,25 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v16/cloud-infrastructure/cloud-regions/cloud-region/CloudOwner/ONAP-POD-01-Rail-04/relationship-list/relationship",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-7286b4b1-5a57-4934-9776-d436d9f6f5aa",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "related-to" : "complex",
+      "related-link" : "/aai/v16/cloud-infrastructure/complexes/complex/clli1",
+      "relationship-data" : [ {
+        "relationship-key" : "complex.physical-location-id",
+        "relationship-value" : "clli1"
+      } ]
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : null
+  }
+} ]

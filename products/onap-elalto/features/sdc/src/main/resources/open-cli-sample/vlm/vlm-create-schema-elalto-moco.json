@@ -1,0 +1,31 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc1/feProxy/onboarding-api/v1.0/vendor-license-models",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-e7c10692-db7b-43d9-81cb-007cb32459cb",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "vendorName" : "hpa-vendor-1",
+      "description" : "",
+      "iconRef" : "icon"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "itemId" : "8e1cffcf802941b1a88861ea71857fe2",
+      "version" : {
+        "id" : "f6b115c0f4d8459f9422a21559025a7e",
+        "name" : "1.0",
+        "description" : "Initial version",
+        "status" : "Draft"
+      }
+    }
+  }
+} ]

@@ -83,6 +83,8 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/services
     method: POST
+    headers:
+      USER_ID: ${host-username}
     body: '{
             "artifacts":{},
             "toscaArtifacts":{},

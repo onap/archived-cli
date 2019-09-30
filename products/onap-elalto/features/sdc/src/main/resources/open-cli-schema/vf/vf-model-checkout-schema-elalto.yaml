@@ -51,6 +51,8 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/resources/${vf-id}/lifecycleState/CHECKOUT
     method: POST
+    headers:
+      USER_ID: ${host-username}
     body: '{}'
   success_codes:
     - 200

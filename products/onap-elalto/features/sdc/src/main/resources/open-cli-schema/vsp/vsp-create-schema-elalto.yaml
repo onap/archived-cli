@@ -97,6 +97,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-software-products
     method: POST
+    headers:
+      USER_ID: "${host-username}"
     body: '{
             "category": "resourceNewCategory.generic",
             "vendorId": "${vlm-id}",

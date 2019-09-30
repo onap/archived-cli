@@ -1,0 +1,72 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onap/so/infra/serviceInstantiation/v7/serviceInstances",
+    "headers" : {
+      "Authorization" : "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "4ae21be0-1766-482c-9462-3ef31328b969",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "requestDetails" : {
+        "modelInfo" : {
+          "modelType" : "service",
+          "modelInvariantId" : "51e3401d-2924-40e7-827f-ca7ec567e5de",
+          "modelUuid" : "a9031c62-bb9e-4db4-bee0-691768ed94f4",
+          "modelName" : "vfw-hpa-01",
+          "modelVersion" : "1.0",
+          "modelVersionId" : "a9031c62-bb9e-4db4-bee0-691768ed94f4",
+          "modelInvariantUuid" : "51e3401d-2924-40e7-827f-ca7ec567e5de"
+        },
+        "subscriberInfo" : {
+          "globalSubscriberId" : "hpa_cust",
+          "subscriberName" : "hpa_cust"
+        },
+        "requestInfo" : {
+          "requestorId" : "demo",
+          "instanceName" : "hpa-instance-vFW",
+          "source" : "CLI",
+          "suppressRollback" : "false"
+        },
+        "requestParameters" : {
+          "subscriptionServiceType" : "vFW",
+          "aLaCarte" : "True",
+          "testApi" : "VNF_API",
+          "userParams" : [ {
+            "name" : "Customer_Location",
+            "value" : {
+              "customerLatitude" : "32.897480",
+              "customerLongitude" : "97.040443",
+              "customerName" : "some_company"
+            }
+          }, {
+            "name" : "Homing_Solution",
+            "value" : "oof"
+          }, {
+            "name" : "orchestrator",
+            "value" : "multicloud"
+          } ]
+        },
+        "project" : {
+          "projectName" : "Project-Demonstration"
+        },
+        "owningEntity" : {
+          "owningEntityId" : "98d5c337-ccd0-49d7-87b6-14b9a33d4c8a",
+          "owningEntityName" : "OE-Demonstration"
+        }
+      }
+    }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "requestReferences" : {
+        "requestId" : "4ae21be0-1766-482c-9462-3ef31328b969",
+        "instanceId" : "d7fd79c9-d0df-4f2f-a3b1-a9361304a991",
+        "requestSelfLink" : "http://10.12.5.110:30277/orchestrationRequests/v7/4ae21be0-1766-482c-9462-3ef31328b969"
+      }
+    }
+  }
+} ]

@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: vlm-aggreement-create
+version: onap-elalto
+samples:
+  sample1:
+    name: vlm-aggreement-create
+    input: -x hpa-agreement-1 -y 8e1cffcf802941b1a88861ea71857fe2 -e f6b115c0f4d8459f9422a21559025a7e -g 0c81a6a0272546f49403d241bb4ce3b3 -u cs0008 -p demo123456! -m https://10.12.5.110:30207/sdc1/feProxy
+    moco: vlm-aggreement-create-schema-elalto-moco.json
+    output: |
+      +----------+----------------------------------+
+      |property  |value                             |
+      +----------+----------------------------------+
+      |id        |8cadce750de14b72b37c4c94d41e2cfd  |
+      +----------+----------------------------------+

@@ -1,0 +1,23 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/sdc1/feProxy/onboarding-api/v1.0/vendor-license-models/25a262cd648a4c639badc3d2e842d605",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-c81050ef-93bd-4b86-98d9-af6ee23bbc34",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "vendorName" : "hpa-test",
+      "description" : "vendor license model",
+      "iconRef" : "icon"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : { }
+  }
+} ]

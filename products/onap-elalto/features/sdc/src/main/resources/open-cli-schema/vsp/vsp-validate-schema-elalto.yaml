@@ -56,6 +56,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-software-products/${vsp-id}/versions/${vsp-version}/orchestration-template-candidate/process
     method: PUT
+    headers:
+      USER_ID: "${host-username}"
     body: '{}'
   success_codes:
     - 201

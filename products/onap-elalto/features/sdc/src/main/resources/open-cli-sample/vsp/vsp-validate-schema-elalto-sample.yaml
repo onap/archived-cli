@@ -1,0 +1,48 @@
+open_cli_sample_version: 1.0
+name: vsp-validate
+version: onap-elalto
+samples:
+  sample1:
+    name: vsp-validate
+    input: -x b6c23299280842eca622e9f1a4166d4f -y ab2c5855856240aa8cf6ad41ee447d51 -u cs0008 -p demo123456! -m https://10.12.5.110:30207/sdc1/feProxy
+    moco: vsp-validate-schema-elalto-moco.json
+    output: |
+      +----------+----------------------------------------------------+
+      |property  |value                                               |
+      +----------+----------------------------------------------------+
+      |status    |Success                                             |
+      +----------+----------------------------------------------------+
+      |errors    |{base_vfw.yaml=[{"level":"WARNING","message":"WARN  |
+      |          |ING: [NNP1]: Port 'Fixed_IPS' Parameter Name not    |
+      |          |aligned with Guidelines, Parameter Name             |
+      |          |[onap_private_subnet_id], Resource ID               |
+      |          |[vfw_private_2_port]. As a result, VF\/VFC          |
+      |          |Profile may miss this information"},{"level":"WARN  |
+      |          |ING","message":"WARNING: [NNP1]: Port 'Fixed_IPS'   |
+      |          |Parameter Name not aligned with Guidelines,         |
+      |          |Parameter Name [onap_private_subnet_id], Resource   |
+      |          |ID [vpg_private_1_port]. As a result, VF\/VFC       |
+      |          |Profile may miss this information"},{"level":"WARN  |
+      |          |ING","message":"WARNING: [NNP1]: Port 'Fixed_IPS'   |
+      |          |Parameter Name not aligned with Guidelines,         |
+      |          |Parameter Name [onap_private_subnet_id], Resource   |
+      |          |ID [vsn_private_1_port]. As a result, VF\/VFC       |
+      |          |Profile may miss this information"},{"level":"WARN  |
+      |          |ING","message":"WARNING: [NNS11]: Nova Server       |
+      |          |naming convention in image, flavor and name         |
+      |          |properties is not consistent, Resource ID           |
+      |          |[vfw_0]"},{"level":"WARNING","message":"WARNING:    |
+      |          |[NNS12]: A resource is connected twice to the       |
+      |          |same network role, Network Role [vpg_0], Resource   |
+      |          |ID [onap_private]"},{"level":"WARNING","message":"  |
+      |          |WARNING: [NNS11]: Nova Server naming convention     |
+      |          |in image, flavor and name properties is not         |
+      |          |consistent, Resource ID                             |
+      |          |[vpg_0]"},{"level":"WARNING","message":"WARNING:    |
+      |          |[NNS12]: A resource is connected twice to the       |
+      |          |same network role, Network Role [vsn_0], Resource   |
+      |          |ID [onap_private]"},{"level":"WARNING","message":"  |
+      |          |WARNING: [NNS11]: Nova Server naming convention     |
+      |          |in image, flavor and name properties is not         |
+      |          |consistent, Resource ID [vsn_0]"}]}                 |
+      +----------+----------------------------------------------------+

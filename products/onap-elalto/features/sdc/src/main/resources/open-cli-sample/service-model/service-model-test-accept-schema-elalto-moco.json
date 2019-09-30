@@ -1,0 +1,62 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc2/rest/v1/catalog/services/12eac43a-d95a-4383-8d97-12da68053b66/lifecycleState/certify",
+    "headers" : {
+      "Authorization" : "Basic am0wMDA3OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "jm0007",
+      "X-TransactionId" : "req-7488d49e-5457-4c6c-94b7-77eee29ae27d",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "userRemarks" : "accepted"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "uniqueId" : "a74efd34-1874-4069-9ac6-fcffa28bc29a",
+      "name" : "vfw-hpa-01",
+      "version" : "1.0",
+      "isHighestVersion" : true,
+      "creationDate" : 1569874783975,
+      "lastUpdateDate" : 1569874814770,
+      "description" : "hpa service model",
+      "lifecycleState" : "CERTIFIED",
+      "tags" : [ "vfw-hpa-01" ],
+      "icon" : "defaulticon",
+      "normalizedName" : "vfwhpa01",
+      "systemName" : "VfwHpa01",
+      "contactId" : "cs0008",
+      "allVersions" : {
+        "1.0" : "a74efd34-1874-4069-9ac6-fcffa28bc29a"
+      },
+      "projectCode" : "000000",
+      "invariantUUID" : "51e3401d-2924-40e7-827f-ca7ec567e5de",
+      "componentType" : "SERVICE",
+      "categories" : [ {
+        "name" : "Network L1-3",
+        "normalizedName" : "network l1-3",
+        "uniqueId" : "serviceNewCategory.network l1-3",
+        "empty" : false
+      } ],
+      "creatorUserId" : "jm0007",
+      "creatorFullName" : "Joni Mitchell",
+      "lastUpdaterUserId" : "jm0007",
+      "lastUpdaterFullName" : "Joni Mitchell",
+      "archiveTime" : 0,
+      "distributionStatus" : "DISTRIBUTION_NOT_APPROVED",
+      "ecompGeneratedNaming" : true,
+      "namingPolicy" : "",
+      "serviceType" : "",
+      "serviceRole" : "",
+      "environmentContext" : "General_Revenue-Bearing",
+      "instantiationType" : "A-la-carte",
+      "vspArchived" : false,
+      "uuid" : "a9031c62-bb9e-4db4-bee0-691768ed94f4",
+      "archived" : false
+    }
+  }
+} ]
