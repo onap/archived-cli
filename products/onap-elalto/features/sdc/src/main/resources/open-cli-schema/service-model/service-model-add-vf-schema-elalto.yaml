@@ -72,6 +72,8 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/services/${service-id}/resourceInstance
     method: POST
+    headers:
+      USER_ID: ${host-username}
     body: '{"name": "${vf-name}", "componentVersion": "${vf-version}", "posY": 248, "posX": 406, "uniqueId": "${service-id}-${vf-id}", "originType": "VF", "componentUid": "${vf-id}", "icon": "defaulticon"}'
   success_codes:
     - 201

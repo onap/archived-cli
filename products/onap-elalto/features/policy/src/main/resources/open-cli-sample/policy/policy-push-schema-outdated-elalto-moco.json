@@ -1,0 +1,22 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/pdp/api/pushPolicy",
+    "headers" : {
+      "Authorization" : "Basic dGVzdHBkcDphbHBoYTEyMw==",
+      "Accept" : "application/json",
+      "Environment" : "TEST",
+      "ClientAuth" : "cHl0aG9uOnRlc3Q=",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "policyName" : "OSDF_CASABLANCA.hpa_policy_vFWHPA_2",
+      "policyType" : "MicroService",
+      "pdpGroup" : "default"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : { }
+  }
+} ]

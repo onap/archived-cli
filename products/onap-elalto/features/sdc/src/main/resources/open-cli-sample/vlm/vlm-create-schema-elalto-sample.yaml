@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: vlm-create
+version: onap-elalto
+samples:
+  sample1:
+    name: vlm-create
+    input: -x hpa-vendor-1 -u cs0008 -p demo123456! -m https://10.12.5.110:30207/sdc1/feProxy
+    moco: vlm-create-schema-elalto-moco.json
+    output: |
+      +----------+----------------------------------+
+      |property  |value                             |
+      +----------+----------------------------------+
+      |id        |8e1cffcf802941b1a88861ea71857fe2  |
+      +----------+----------------------------------+
+      |version   |f6b115c0f4d8459f9422a21559025a7e  |
+      +----------+----------------------------------+

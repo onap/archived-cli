@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: customer-create
+version: onap-elalto
+samples:
+  sample1:
+    name: customer-create
+    input: -x hpa_cust -y hpa_cust -m https://10.12.5.110:30233 -u AAI -p AAI
+    moco: customer-create-schema-elalto-moco.json
+    output:

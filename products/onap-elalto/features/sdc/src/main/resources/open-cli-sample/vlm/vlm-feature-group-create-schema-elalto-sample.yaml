@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: vlm-feature-group-create
+version: onap-elalto
+samples:
+  sample1:
+    name: vlm-feature-group-create
+    input: -x hpa-feature-1 -y 8e1cffcf802941b1a88861ea71857fe2 -e f6b115c0f4d8459f9422a21559025a7e -g 8a6fe24684294c468c7e88c42d2c898e -b 8a13144a349e47989ba706681300e73c -c hpa-part -u cs0008 -p demo123456! -m https://10.12.5.110:30207/sdc1/feProxy
+    moco: vlm-feature-group-create-schema-elalto-moco.json
+    output: |
+      +----------+----------------------------------+
+      |property  |value                             |
+      +----------+----------------------------------+
+      |id        |0c81a6a0272546f49403d241bb4ce3b3  |
+      +----------+----------------------------------+

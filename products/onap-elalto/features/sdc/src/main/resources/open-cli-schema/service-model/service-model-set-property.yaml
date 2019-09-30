@@ -68,6 +68,8 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/services/${service-id}/resourceInstance/${vf-resource-id}/inputs
     method: POST
+    headers:
+      USER_ID: ${host-username}
     body: '[{"constraints":[],"definition":false,"name":"${property-name}","parentUniqueId":"${input-uuid}","password":false,"required":false,"schema":{"property":{}},"toscaPresentation":{"ownerId":"${input-uuid}"},"type":"string","uniqueId":"${input-uuid}.${property-name}","value":"${property-value}"}]'
   success_codes:
     - 200

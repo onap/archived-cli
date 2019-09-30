@@ -50,6 +50,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/items/${vsp-id}/versions/${vsp-version}/actions
     method: PUT
+    headers:
+      USER_ID: "${host-username}"
     body: '{"action":"Commit","commitRequest":{"message":"${remarks}"}}'
   success_codes:
     - 201

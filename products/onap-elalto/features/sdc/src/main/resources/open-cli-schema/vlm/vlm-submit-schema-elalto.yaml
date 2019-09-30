@@ -44,6 +44,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/actions
     method: PUT
+    headers:
+       USER_ID: ${host-username}
     body: '{"action": "Submit"}'
   success_codes:
     - 201

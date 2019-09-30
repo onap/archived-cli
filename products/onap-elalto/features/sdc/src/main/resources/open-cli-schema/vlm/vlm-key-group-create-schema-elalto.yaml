@@ -65,6 +65,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/license-key-groups
     method: POST
+    headers:
+       USER_ID: ${host-username}
     body: '{"name": "${name}", "type": "${type}"}'
   success_codes:
     - 200

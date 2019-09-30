@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vsp-add-artifact
+version: onap-elalto
+samples:
+  sample1:
+    name: vsp-add-artifact
+    input: -x b6c23299280842eca622e9f1a4166d4f -y ab2c5855856240aa8cf6ad41ee447d51 -z /root/automation_stuff/vfw_hpa.zip -u cs0008 -p demo123456! -m https://10.12.5.110:30207/sdc1/feProxy
+    moco: vsp-add-artifact-schema-elalto-moco.json
+    output:

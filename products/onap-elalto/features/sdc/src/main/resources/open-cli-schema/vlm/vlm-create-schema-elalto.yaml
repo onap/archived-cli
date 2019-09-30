@@ -55,6 +55,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models
     method: POST
+    headers: 
+       USER_ID: ${host-username}
     body: '{"vendorName": "${vendor-name}", "description": "${description}",  "iconRef": "icon"}'
   success_codes:
     - 200

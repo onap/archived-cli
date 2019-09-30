@@ -35,12 +35,13 @@ parameters:
     long_option: cloud-owner
     is_optional: false
 
+
 http:
   service:
     auth: none
     mode: direct
   request:
-    uri: /api/multicloud/v0/${cloud-owner}_${cloud-region}/registry
+    uri: /api/multicloud-titaniumcloud/v1/${cloud-owner}/${cloud-region}/registry
     method: POST
   success_codes:
     - 202

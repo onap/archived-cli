@@ -76,6 +76,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/feature-groups
     method: POST
+    headers:
+       USER_ID: ${host-username}
     body: '{"name": "${name}", "addedLicenseKeyGroupsIds": ["${vlm-key-group-id}"], "addedEntitlementPoolsIds": ["${vlm-entitle-pool-id}"], "partNumber": "${part-number}"}'
   success_codes:
     - 200

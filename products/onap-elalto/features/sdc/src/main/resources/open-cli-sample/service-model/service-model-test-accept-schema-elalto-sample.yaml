@@ -1,0 +1,18 @@
+open_cli_sample_version: 1.0
+name: service-model-test-accept
+version: onap-elalto
+samples:
+  sample1:
+    name: service-model-test-accept
+    input: -b 12eac43a-d95a-4383-8d97-12da68053b66 -r accepted -u jm0007 -p demo123456! -m https://10.12.5.110:30204
+    moco: service-model-test-accept-schema-elalto-moco.json
+    output: |
+      +----------+--------------------------------------+
+      |property  |value                                 |
+      +----------+--------------------------------------+
+      |id        |a74efd34-1874-4069-9ac6-fcffa28bc29a  |
+      +----------+--------------------------------------+
+      |uuid      |                                      |
+      +----------+--------------------------------------+
+      |version   |1.0                                   |
+      +----------+--------------------------------------+

@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: owning-entity-list
+version: onap-elalto
+samples:
+  sample1:
+    name: owning-entity-list
+    input: -u AAI -p AAI -m https://10.12.5.110:30233
+    moco: owning-entity-list-schema-elalto-moco.json
+    output: |
+      +------------------+--------------------------------------+------------------+
+      |name              |Id                                    |resource-version  |
+      +------------------+--------------------------------------+------------------+
+      |OE-Demonstration  |98d5c337-ccd0-49d7-87b6-14b9a33d4c8a  |1569883244791     |
+      +------------------+--------------------------------------+------------------+

@@ -1,0 +1,71 @@
+open_cli_sample_version: 1.0
+name: vlm-list
+version: onap-elalto
+samples:
+  sample1:
+    name: vlm-list
+    input: --help
+    moco: vlm-list-schema-elalto-moco.json
+    output: |
+      usage: oclip vlm-list
+      
+      List the vendor license models in ONAP
+      
+      Product: onap-elalto
+      Service: sdc.onboarding
+      Author: ONAP HPA Integration Team (onap-discuss@lists.onap.org)
+      
+      Options::
+      
+       [-m | --host-url] [-C | --no-catalog] [-f | --format]
+       [-h | --help] [-V | --verify] [-t | --no-title]
+       [-d | --debug] [-v | --version] [-s | --long]
+       [-D | --context] [-u | --host-username] [-a | --no-auth]
+       [-p | --host-password]
+      
+      where::
+      
+       -m | --host-url        host url in http(s). It is of type URL. By          
+                              default, it is read from environment variable       
+                              OPEN_CLI_HOST_URL.                                  
+       -C | --no-catalog      Whether to use given host-url directly or           
+                              discover it from catalog, it will override the      
+                              service->mode. It is of type BOOL. It is            
+                              optional.                                           
+       -f | --format          Output formats, supported formats such as table,    
+                              csv, json, yaml. It is of type STRING.              
+       -h | --help            print help message. It is of type BOOL.             
+       -V | --verify          Helps to verify the command using samples           
+                              provides under open-cli-samples directory. By       
+                              default, it goes with mock.To enable the            
+                              verification of samples in real time, set           
+                              DISABLE_MOCKING=true in the context parameter. It   
+                              is of type BOOL. It is optional.                    
+       -t | --no-title        whether to print title or not. It is of type BOOL.  
+       -d | --debug           Enable debug output. It is of type BOOL.            
+       -v | --version         print service version. It is of type BOOL.          
+       -s | --long            whether to print all attributes or only short       
+                              attributes. It is of type BOOL.                     
+       -D | --context         command context. It is of type MAP. It is           
+                              optional.                                           
+       -u | --host-username   Host user name. It is of type STRING. By default,   
+                              it is read from environment variable                
+                              OPEN_CLI_HOST_USERNAME.                             
+       -a | --no-auth         Whether to authenticate user or not. It is of       
+                              type BOOL.                                          
+       -p | --host-password   Host user password. It is of type STRING. By        
+                              default, it is read from environment variable       
+                              OPEN_CLI_HOST_PASSWORD. Secured.                    
+      
+      
+      Results::
+      
+       vlm-name   name of the vendor license model and is of type   
+                  STRING.                                           
+       vlm-id     ID of the vendor license model and is of type     
+                  STRING.                                           
+      
+      
+      Error::
+      
+       On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>

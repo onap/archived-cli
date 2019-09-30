@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: service-model-distribute
+version: onap-elalto
+samples:
+  sample1:
+    name: service-model-distribute
+    input: -b a74efd34-1874-4069-9ac6-fcffa28bc29a -u op0001 -p demo123456! -m https://10.12.5.110:30204
+    moco: service-model-distribute-schema-elalto-moco.json
+    output:

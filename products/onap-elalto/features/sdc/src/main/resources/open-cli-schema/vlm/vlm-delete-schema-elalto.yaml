@@ -46,6 +46,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}
     method: DELETE
+    headers:
+       USER_ID: ${host-username}
     body: '{"vendorName": "${vendor-name}", "description": "vendor license model",  "iconRef": "icon"}'
   success_codes:
     - 200

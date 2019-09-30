@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: vlm-entitlement-pool-create
+version: onap-elalto
+samples:
+  sample1:
+    name: vlm-entitlement-pool-create
+    input: -x hpa-pool-1 -y 8e1cffcf802941b1a88861ea71857fe2 -e f6b115c0f4d8459f9422a21559025a7e -k hpa-vendor-1 -g 12/31/2040 -l 09/30/2019 -u cs0008 -p demo123456! -m https://10.12.5.110:30207/sdc1/feProxy
+    moco: vlm-entitlement-pool-create-schema-elalto-moco.json
+    output: |
+      +----------+----------------------------------+
+      |property  |value                             |
+      +----------+----------------------------------+
+      |id        |8a13144a349e47989ba706681300e73c  |
+      +----------+----------------------------------+

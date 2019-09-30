@@ -38,6 +38,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/items/${vsp-id}/actions
     method: PUT
+    headers:
+      USER_ID: "${host-username}"
     body: '{"action": "ARCHIVE"}'
   success_codes:
     - 201

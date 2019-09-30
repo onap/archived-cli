@@ -1,0 +1,32 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/sdc1/feProxy/onboarding-api/v1.0/vendor-software-products/b6c23299280842eca622e9f1a4166d4f/versions/ab2c5855856240aa8cf6ad41ee447d51/actions",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-1b845803-a01f-48cd-b838-91a3e2a1957c",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "action" : "Create_Package"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "description" : "hpa-vsp-desc",
+      "vspName" : "hpa-vsp-vfw-0",
+      "version" : "1.0",
+      "packageId" : "b6c23299280842eca622e9f1a4166d4f",
+      "category" : "resourceNewCategory.generic",
+      "subCategory" : "resourceNewCategory.generic.network elements",
+      "vendorName" : "hpa-vendor-1",
+      "vendorRelease" : "1.0",
+      "packageType" : "CSAR",
+      "resourceType" : "VF"
+    }
+  }
+} ]

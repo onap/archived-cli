@@ -63,6 +63,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models/${vlm-id}/versions/${vlm-version}/license-agreements
     method: POST
+    headers:
+       USER_ID: ${host-username}
     body: '{"addedFeatureGroupsIds": ["${vlm-feature-group-id}"], "licenseTerm": {"choice": "Fixed_Term", "other": ""}, "name": "${name}"}'
   success_codes:
     - 200
