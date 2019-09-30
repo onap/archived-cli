@@ -29,14 +29,6 @@ parameters:
     long_option: ns-instance-id
     is_optional: false
 
-results:
-  direction: landscape
-  attributes:
-    - name: status
-      description: status
-      scope: short
-      type: string
-
 http:
   service:
     auth: none
@@ -52,5 +44,4 @@ http:
       Accept: application/json
   success_codes:
     - 204
-  result_map:
-    status: ${success_codes}
+

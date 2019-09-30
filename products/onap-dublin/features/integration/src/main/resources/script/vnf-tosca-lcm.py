@@ -13,6 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This script uses the ONAP CLI for providing the end-end service creation and termination.
+# Used in devops, testing, certification and production
+# NOTE: This feature is avaialble as ONAP CLI vnf-tosca-lcm
+#
+# Author: kanagaraj.manickam@huawei.com 
+#
+
 import json
 import os
 import argparse
@@ -21,6 +28,9 @@ import uuid
 import subprocess
 import platform
 import datetime
+import string
+import random
+
 from argparse import RawTextHelpFormatter
 
 if platform.system() == 'Windows':
@@ -123,7 +133,7 @@ class ONAP:
                  conf,
                  request_id,
                  debug = False):
-        self.conf = conf
+        self.conf = conf or {}
         self.ocomp = OCOMP(request_id, debug, product=product, profile=profile)
         self.preload()
         self.tag = 'Powered by Open Command Platform - OCOMP'
@@ -132,6 +142,8 @@ class ONAP:
         if self.conf['ONAP']:
             for attr in self.conf['ONAP']:
                 setattr(self, attr, self.conf['ONAP'][attr])
+        else:
+            self.conf['ONAP'] = {}
 
     def create_vlm(self):
         submit = False
@@ -320,7 +332,7 @@ class ONAP:
     def setup_cloud_and_subscription(self):
         associate = False
         if not self.location_id and not self.location_version:
-            location_id = 'ocomp-region-{}'.format(self.ocomp.request_id)
+            location_id = 'ocomp-region-{}'.format(self.conf['ONAP']['uid'])
             self.ocomp.run(command='complex-create',
                                     params={'physical-location-id': location_id,
                                             'data-center-code': 'ocomp',
@@ -349,7 +361,7 @@ class ONAP:
                     break
 
         if not self.cloud_id and not self.cloud_version:
-            cloud_id = 'OCOMP-{}'.format(self.ocomp.request_id)
+            cloud_id = 'OCOMP-{}'.format(self.conf['ONAP']['uid'])
             self.ocomp.run(command='cloud-create',
                                     params={'region-name': self.conf['cloud']['region'],
                                             'complex-name': self.location_id,
@@ -386,7 +398,7 @@ class ONAP:
 
         subscribe = False
         if not self.service_type_id and not self.service_type_version:
-            service_type_id = '{}-{}'.format(self.conf['subscription']['service-type'], self.ocomp.request_id)
+            service_type_id = '{}-{}'.format(self.conf['subscription']['service-type'], self.conf['ONAP']['uid'])
             self.ocomp.run(command='service-type-create',
                                 params={'service-type': service_type_id,
                                         'service-type-id': service_type_id})
@@ -401,7 +413,7 @@ class ONAP:
                     break
 
         if not self.customer_id and not self.customer_version:
-            customer_id = '{}-{}'.format(self.conf['subscription']['customer-name'], self.ocomp.request_id)
+            customer_id = '{}-{}'.format(self.conf['subscription']['customer-name'], self.ocomp.conf['ONAP']['random'])
             self.ocomp.run(command='customer-create',
                                 params={'customer-name': customer_id,
                                         'subscriber-name': customer_id})
@@ -508,6 +520,8 @@ class ONAP:
 
     def cleanup(self):
         if self.ns_instance_id:
+            self.ocomp.run(command='vfc-nslcm-terminate',
+                              params={'ns-instance-id': self.ns_instance_id})
             self.ocomp.run(command='vfc-nslcm-delete',
                               params={'ns-instance-id': self.ns_instance_id})
             self.ns_instance_id = None
@@ -675,6 +689,8 @@ if __name__ == '__main__':
     config_file = args.config_file_path
     with open(config_file) as json_file:
         conf = json.load(json_file)
+        if not conf['ONAP']['uid']:
+            conf['ONAP']['uid'] = ''.join(random.sample(string.ascii_lowercase,5))
         if vsp_csar:
             conf['vnf']['vsp-csar'] = vsp_csar
         if vnf_csar:
@@ -683,11 +699,10 @@ if __name__ == '__main__':
             conf['vnf']['ns-csar'] = vnf_csar
         if vnf_name:
             conf['vnf']['name'] = vnf_name
-        conf['vnf']['name'] = '{}{}'.format(conf['vnf']['name'], request_id).replace("-", "").replace("_", "")
-        if vnf_name:
+        conf['vnf']['name'] = '{}{}'.format(conf['vnf']['name'], conf['ONAP']['uid'])
+        if vendor_name:
             conf['vnf']['vendor-name'] = vendor_name
-        conf['vnf']['vendor-name'] = '{}-{}'.format(conf['vnf']['vendor-name'], request_id)
-
+        conf['vnf']['vendor-name'] = '{}-{}'.format(conf['vnf']['vendor-name'], conf['ONAP']['uid'])
 
     if args.result:
         result_file = args.result

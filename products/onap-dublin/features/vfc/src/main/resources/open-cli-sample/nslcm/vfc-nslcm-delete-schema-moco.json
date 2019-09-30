@@ -1,0 +1,10 @@
+[ {
+  "request" : {
+    "method" : "delete",
+    "uri" : "/api/nslcm/v1/ns/25f3159c-ff2d-4ad0-ac66-3270941bfa52"
+  },
+  "response" : {
+    "status" : 204,
+    "json" : null
+  }
+} ]

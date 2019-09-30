@@ -30,7 +30,7 @@ parameters:
     is_optional: false
 
 results:
-  direction: landscape
+  direction: portrait
   attributes:
     - name: job-id
       description: job id

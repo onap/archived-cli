@@ -28,15 +28,18 @@ public class SampleYamlGenerator {
     static int nTab;
 
     public static void generateSampleYaml(String cmdName, List<String> input, String output, String version,
-            String targetPath, boolean debug) throws IOException {
+            String targetPath, boolean debug, String name) throws IOException {
 
         PrintWriter writer = new PrintWriter(targetPath, "UTF-8");
         writeKeyValuePair(writer, "open_cli_sample_version", "1.0");
         writeKeyValuePair(writer, "name", cmdName);
         writeKeyValuePair(writer, "version", version);
 
+        if (name == null) {
+            name = "sample1";
+        }
         writeKey(writer, "samples");
-        writeKey(writer, "sample1");
+        writeKey(writer, name);
 
         writeKeyValuePair(writer, "name", cmdName);
         writeKeyValuePair(writer, "input", input.stream().collect(Collectors.joining(" ")).trim());

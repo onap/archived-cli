@@ -1,0 +1,20 @@
+[
+    {
+        "include" : "catalog/vfc-catalog-onboard-vnf-schema-moco.json"
+    },
+    {
+        "include" : "catalog/vfc-catalog-onboard-ns-schema-moco.json"
+    },
+    {
+        "include" : "nslcm/vfc-nslcm-create-schema-moco.json"
+    },
+    {
+        "include" : "nslcm/vfc-nslcm-instantiate-schema-moco.json"
+    },
+    {
+        "include" : "nslcm/vfc-nslcm-delete-schema-moco.json"
+    },
+    {
+        "include" : "nslcm/vfc-nslcm-terminate-schema-moco.json"
+    }
+]

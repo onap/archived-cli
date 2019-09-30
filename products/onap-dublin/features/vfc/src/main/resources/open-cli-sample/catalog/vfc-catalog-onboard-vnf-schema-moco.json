@@ -1,14 +1,7 @@
 [ {
   "request" : {
     "method" : "post",
-    "uri" : "/api/catalog/v1/vnfpackages",
-    "headers" : {
-      "Accept" : "application/json",
-      "Content-Type" : "application/json"
-    },
-    "json" : {
-      "csarId" : "c1cec675-1069-487d-b1a9-c256b17c3291"
-    }
+    "uri" : "/api/catalog/v1/vnfpackages"
   },
   "response" : {
     "status" : 202,

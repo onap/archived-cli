@@ -22,7 +22,7 @@ info:
   author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
 results:
-  direction: landscape
+  direction: portrait
   attributes:
     - name: ns-instance-id
       description: ns-instance-id

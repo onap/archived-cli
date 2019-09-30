@@ -160,6 +160,7 @@ public class OnapCommandConstants {
 
     public static final String SAMPLE_GEN_ENABLED = "cli.sample.gen.enable";
     public static final String SAMPLE_GEN_TARGET_FOLDER = "cli.sample.gen.target";
+    public static final String SAMPLE_GEN_NAME = "cli.sample.gen.name";
 
     public static final String OPEN_CLI_SAMPLE_VERSION = "open_cli_sample_version";
     public static final String OPEN_CLI_SAMPLE_VERSION_VALUE_1_0 = "1.0";

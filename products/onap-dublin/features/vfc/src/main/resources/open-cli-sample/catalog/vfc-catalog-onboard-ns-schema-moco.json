@@ -1,14 +1,7 @@
 [ {
   "request" : {
     "method" : "post",
-    "uri" : "/api/catalog/v1/nspackages",
-    "headers" : {
-      "Accept" : "application/json",
-      "Content-Type" : "application/json"
-    },
-    "json" : {
-      "csarId" : "a3394090-c5b4-49b4-974c-00a6eac755ab"
-    }
+    "uri" : "/api/catalog/v1/nspackages"
   },
   "response" : {
     "status" : 202,

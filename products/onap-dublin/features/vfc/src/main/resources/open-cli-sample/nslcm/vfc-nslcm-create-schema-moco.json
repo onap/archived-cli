@@ -1,15 +1,7 @@
 [ {
   "request" : {
     "method" : "post",
-    "uri" : "/api/nslcm/v1/ns",
-    "headers" : {
-      "Accept" : "application/json",
-      "Content-Type" : "application/json"
-    },
-    "json" : {
-      "csarId" : "a3394090-c5b4-49b4-974c-00a6eac755ab",
-      "nsName" : "vcpe1"
-    }
+    "uri" : "/api/nslcm/v1/ns"
   },
   "response" : {
     "status" : 201,
