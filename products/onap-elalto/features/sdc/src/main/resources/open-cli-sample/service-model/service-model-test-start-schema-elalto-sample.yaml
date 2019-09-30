@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: service-model-test-start
+version: onap-elalto
+samples:
+  sample1:
+    name: service-model-test-start
+    input: -b 12eac43a-d95a-4383-8d97-12da68053b66 -u jm0007 -p demo123456! -m https://10.12.5.110:30204
+    moco: service-model-test-start-schema-elalto-moco.json
+    output:

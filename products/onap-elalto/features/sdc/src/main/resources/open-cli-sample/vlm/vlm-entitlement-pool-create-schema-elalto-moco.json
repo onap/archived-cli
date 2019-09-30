@@ -1,0 +1,30 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc1/feProxy/onboarding-api/v1.0/vendor-license-models/8e1cffcf802941b1a88861ea71857fe2/versions/f6b115c0f4d8459f9422a21559025a7e/entitlement-pools",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-c3da7893-3169-4c91-a70d-9288fc86860c",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "name" : "hpa-pool-1",
+      "time" : {
+        "choice" : "",
+        "other" : ""
+      },
+      "startDate" : "09/30/2019",
+      "expiryDate" : "12/31/2040",
+      "manufacturerReferenceNumber" : "hpa-vendor-1"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "value" : "8a13144a349e47989ba706681300e73c"
+    }
+  }
+} ]

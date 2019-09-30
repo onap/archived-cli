@@ -1,0 +1,126 @@
+open_cli_sample_version: 1.0
+name: policy-list-outdated
+version: onap-elalto
+samples:
+  sample1:
+    name: policy-list-outdated
+    input: -m https://10.12.5.110:30694 -u testpdp -p alpha123
+    moco: policy-list-outdated-schema-elalto-moco.json
+    output: |
+      +----------------------------------------------------+--------------+----------------------------------------------------+
+      |name                                                |type          |config                                              |
+      +----------------------------------------------------+--------------+----------------------------------------------------+
+      |OSDF_CASABLANCA.Config_MS_vnfPolicy_vFWHPA_3.1.xml  |MicroService  |{"service":"vnfPolicy","guard":"False","content":{  |
+      |                                                    |              |"policyType":"vnfPolicy","policyScope":["vfw","us"  |
+      |                                                    |              |,"international","ip"],"identity":"vnf_vFW","resou  |
+      |                                                    |              |rces":["vFW","HpaVf0"],"applicableResources":"any"  |
+      |                                                    |              |,"vnfProperties":[{"equipmentRole":"","inventoryPr  |
+      |                                                    |              |ovider":"aai","inventoryType":"cloud","serviceType  |
+      |                                                    |              |":"","customerId":"","orchestrationStatus":""}]},"  |
+      |                                                    |              |priority":"6","templateVersion":"OpenSource.versio  |
+      |                                                    |              |n.1","riskLevel":"3","description":"vnfPolicy","po  |
+      |                                                    |              |licyName":"OSDF_CASABLANCA.vnfPolicy_vFWHPA_3","ve  |
+      |                                                    |              |rsion":"test1","riskType":"test"}                   |
+      +----------------------------------------------------+--------------+----------------------------------------------------+
+      |OSDF_CASABLANCA.Config_MS_Distance_vFWHPA_2.1.xml   |MicroService  |{"service":"distancePolicy","guard":"False","conte  |
+      |                                                    |              |nt":{"policyType":"distance_to_location","applicab  |
+      |                                                    |              |leResources":"any","identity":"distance-vFW","poli  |
+      |                                                    |              |cyScope":["vfw","us","international","ip"],"distan  |
+      |                                                    |              |ceProperties":{"distance":{"value":"100","unit":"k  |
+      |                                                    |              |m","operator":"<"},"locationInfo":"customer_loc"},  |
+      |                                                    |              |"resources":["vFW","HpaVf0"]},"priority":"3","temp  |
+      |                                                    |              |lateVersion":"OpenSource.version.1","riskLevel":"2  |
+      |                                                    |              |","description":"DistancePolicyforvFW","policyName  |
+      |                                                    |              |":"OSDF_CASABLANCA.Distance_vFWHPA_2","version":"t  |
+      |                                                    |              |est1","riskType":"test"}                            |
+      +----------------------------------------------------+--------------+----------------------------------------------------+
+      |OSDF_CASABLANCA.Config_MS_Placement_Optimization_3  |MicroService  |{"service":"optimizationPolicy","guard":"False","c  |
+      |.1.xml                                              |              |ontent":{"policyType":"placement_optimization","ob  |
+      |                                                    |              |jective":"minimize","objectiveParameter":{"operato  |
+      |                                                    |              |r":"sum","parameterAttributes":[{"parameter":"dist  |
+      |                                                    |              |ance","operator":"product","customerLocationInfo":  |
+      |                                                    |              |"customer_loc","weight":"1","resources":["vGMuxInf  |
+      |                                                    |              |ra"]},{"parameter":"distance","operator":"product"  |
+      |                                                    |              |,"customerLocationInfo":"customer_loc","weight":"1  |
+      |                                                    |              |","resources":["vG"]},{"parameter":"hpa_score","op  |
+      |                                                    |              |erator":"product","weight":"200","resources":["vG"  |
+      |                                                    |              |]},{"parameter":"distance","operator":"product","c  |
+      |                                                    |              |ustomerLocationInfo":"customer_loc","weight":"100"  |
+      |                                                    |              |,"resources":["vFW","HpaVf0"]},{"parameter":"hpa_s  |
+      |                                                    |              |core","operator":"product","weight":"200","resourc  |
+      |                                                    |              |es":["vFW","HpaVf0"]}]},"identity":"optimization",  |
+      |                                                    |              |"policyScope":["vcpe","us","international","ip","v  |
+      |                                                    |              |GMuxInfra","vG","vfw"]},"priority":"5","templateVe  |
+      |                                                    |              |rsion":"OpenSource.version.1","riskLevel":"3","des  |
+      |                                                    |              |cription":"PlacementOptimizationPolicyforvGMuxInfr  |
+      |                                                    |              |a","policyName":"OSDF_CASABLANCA.Placement_Optimiz  |
+      |                                                    |              |ation_3","version":"test1","riskType":"test"}       |
+      +----------------------------------------------------+--------------+----------------------------------------------------+
+      |OSDF_CASABLANCA.Config_MS_QueryPolicy_vFWHPA_3.1.x  |MicroService  |{"service":"queryPolicy","guard":"False","content"  |
+      |ml                                                  |              |:{"policyType":"request_param_query","queryPropert  |
+      |                                                    |              |ies":[{"attribute":"customerLatitude","attribute_l  |
+      |                                                    |              |ocation":"customerLatitude"},{"attribute":"custome  |
+      |                                                    |              |rLongitude","attribute_location":"customerLongitud  |
+      |                                                    |              |e"}],"identity":"vFW_Query_Policy","serviceName":"  |
+      |                                                    |              |vFW","policyScope":["vfw","us","international","ip  |
+      |                                                    |              |"]},"priority":"3","templateVersion":"OpenSource.v  |
+      |                                                    |              |ersion.1","riskLevel":"2","description":"Querypoli  |
+      |                                                    |              |cyforvFW","policyName":"OSDF_CASABLANCA.QueryPolic  |
+      |                                                    |              |y_vFWHPA_3","version":"test1","riskType":"test"}    |
+      +----------------------------------------------------+--------------+----------------------------------------------------+
+      |OSDF_CASABLANCA.Config_MS_hpa_policy_vFWHPA_2.1.xm  |MicroService  |{"service":"hpaPolicy","guard":"False","content":{  |
+      |l                                                   |              |"flavorFeatures":[{"directives":[{"attributes":[{"  |
+      |                                                    |              |attribute_value":"","attribute_name":"firewall_fla  |
+      |                                                    |              |vor_name"}],"type":"flavor_directives"}],"type":"v  |
+      |                                                    |              |nfc","flavorProperties":[{"mandatory":"True","hpa-  |
+      |                                                    |              |feature-attributes":[{"hpa-attribute-value":"2","u  |
+      |                                                    |              |nit":"","operator":"=","hpa-attribute-key":"numVir  |
+      |                                                    |              |tualCpu"},{"hpa-attribute-value":"512","unit":"MB"  |
+      |                                                    |              |,"operator":"=","hpa-attribute-key":"virtualMemSiz  |
+      |                                                    |              |e"}],"directives":[],"hpa-version":"v1","architect  |
+      |                                                    |              |ure":"generic","hpa-feature":"basicCapabilities"},  |
+      |                                                    |              |{"mandatory":"True","hpa-feature-attributes":[{"hp  |
+      |                                                    |              |a-attribute-value":"2","unit":"MB","operator":"=",  |
+      |                                                    |              |"hpa-attribute-key":"memoryPageSize"}],"directives  |
+      |                                                    |              |":[],"hpa-version":"v1","architecture":"generic","  |
+      |                                                    |              |hpa-feature":"hugePages"},{"hpa-feature":"localSto  |
+      |                                                    |              |rage","hpa-version":"v1","architecture":"generic",  |
+      |                                                    |              |"mandatory":"True","directives":[],"hpa-feature-at  |
+      |                                                    |              |tributes":[{"hpa-attribute-key":"diskSize","hpa-at  |
+      |                                                    |              |tribute-value":"10","operator":">=","unit":"GB"}]}  |
+      |                                                    |              |,{"mandatory":"False","score":"100","directives":[  |
+      |                                                    |              |],"hpa-version":"v1","hpa-feature-attributes":[{"h  |
+      |                                                    |              |pa-attribute-value":"isolate","unit":"","operator"  |
+      |                                                    |              |:"=","hpa-attribute-key":"logicalCpuThreadPinningP  |
+      |                                                    |              |olicy"},{"hpa-attribute-value":"dedicated","unit":  |
+      |                                                    |              |"","operator":"=","hpa-attribute-key":"logicalCpuP  |
+      |                                                    |              |inningPolicy"}],"architecture":"generic","hpa-feat  |
+      |                                                    |              |ure":"cpuPinning"}],"id":"vfw"},{"directives":[{"a  |
+      |                                                    |              |ttributes":[{"attribute_value":"","attribute_name"  |
+      |                                                    |              |:"packetgen_flavor_name"}],"type":"flavor_directiv  |
+      |                                                    |              |es"}],"type":"vnfc","flavorProperties":[{"mandator  |
+      |                                                    |              |y":"True","hpa-feature-attributes":[{"hpa-attribut  |
+      |                                                    |              |e-value":"1","operator":">=","hpa-attribute-key":"  |
+      |                                                    |              |numVirtualCpu"},{"hpa-attribute-value":"7","unit":  |
+      |                                                    |              |"GB","operator":">=","hpa-attribute-key":"virtualM  |
+      |                                                    |              |emSize"}],"directives":[],"hpa-version":"v1","arch  |
+      |                                                    |              |itecture":"generic","hpa-feature":"basicCapabiliti  |
+      |                                                    |              |es"},{"hpa-feature":"localStorage","hpa-version":"  |
+      |                                                    |              |v1","architecture":"generic","mandatory":"True","d  |
+      |                                                    |              |irectives":[],"hpa-feature-attributes":[{"hpa-attr  |
+      |                                                    |              |ibute-key":"diskSize","hpa-attribute-value":"10","  |
+      |                                                    |              |operator":">=","unit":"GB"}]}],"id":"vgenerator"},  |
+      |                                                    |              |{"directives":[{"attributes":[{"attribute_value":"  |
+      |                                                    |              |","attribute_name":"sink_flavor_name"}],"type":"fl  |
+      |                                                    |              |avor_directives"}],"id":"vsink","type":"vnfc","fla  |
+      |                                                    |              |vorProperties":[{"mandatory":"True","directives":[  |
+      |                                                    |              |],"hpa-version":"v1","hpa-feature-attributes":[],"  |
+      |                                                    |              |architecture":"generic","hpa-feature":"basicCapabi  |
+      |                                                    |              |lities"}]}],"policyType":"hpa","policyScope":["vfw  |
+      |                                                    |              |","us","international","ip"],"identity":"hpa-vFW",  |
+      |                                                    |              |"resources":["vFW","HpaVf0"]},"priority":"3","temp  |
+      |                                                    |              |lateVersion":"OpenSource.version.1","riskLevel":"2  |
+      |                                                    |              |","description":"HPApolicyforvFW","policyName":"OS  |
+      |                                                    |              |DF_CASABLANCA.hpa_policy_vFWHPA_2","version":"test  |
+      |                                                    |              |1","riskType":"test"}                               |
+      +----------------------------------------------------+--------------+----------------------------------------------------+

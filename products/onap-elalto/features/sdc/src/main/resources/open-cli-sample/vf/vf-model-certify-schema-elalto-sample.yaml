@@ -1,0 +1,18 @@
+open_cli_sample_version: 1.0
+name: vf-model-certify
+version: onap-elalto
+samples:
+  sample1:
+    name: vf-model-certify
+    input: -b 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57 -r remarkss -u cs0008 -p demo123456! -m https://10.12.5.110:30204
+    moco: vf-model-certify-schema-elalto-moco.json
+    output: |
+      +----------+--------------------------------------+
+      |property  |value                                 |
+      +----------+--------------------------------------+
+      |id        |f2a9f1e6-1635-442d-89ef-42370b0e69ac  |
+      +----------+--------------------------------------+
+      |uuid      |76756a3e-ab7d-49df-9002-3d8008233a2b  |
+      +----------+--------------------------------------+
+      |version   |1.0                                   |
+      +----------+--------------------------------------+

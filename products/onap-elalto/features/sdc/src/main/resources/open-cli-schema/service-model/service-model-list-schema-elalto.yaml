@@ -67,6 +67,8 @@ http:
   request:
     uri: /sdc2/rest/v1/followed
     method: GET
+    headers:
+      USER_ID: ${host-username}
   success_codes:
     - 200
   result_map:

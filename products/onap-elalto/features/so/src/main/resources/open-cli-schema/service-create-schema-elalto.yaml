@@ -167,6 +167,9 @@ http:
   request:
     uri: /onap/so/infra/serviceInstantiation/v7/serviceInstances
     method: POST
+    headers:
+      X-TransactionId: $s{uuid} 
+
     body: '{
               "requestDetails":{
                  "modelInfo":{

@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: service-create
+version: onap-elalto
+samples:
+  sample1:
+    name: service-create
+    input: -w vFW -la 32.897480 -lo 97.040443 -o multicloud -A True -i vfw-hpa-01 -y some_company -x Project-Demonstration -q demo -O OE-Demonstration -k hpa-instance-vFW -P VNF_API -H oof -n a9031c62-bb9e-4db4-bee0-691768ed94f4 -e 51e3401d-2924-40e7-827f-ca7ec567e5de -j 1.0 -S hpa_cust -g a9031c62-bb9e-4db4-bee0-691768ed94f4 -z 98d5c337-ccd0-49d7-87b6-14b9a33d4c8a -c hpa_cust -u InfraPortalClient -p password1$ -m http://10.12.5.110:30277 --debug
+    moco: service-create-schema-elalto-moco.json
+    output: |
+      +------------+--------------------------------------+
+      |property    |value                                 |
+      +------------+--------------------------------------+
+      |service-id  |d7fd79c9-d0df-4f2f-a3b1-a9361304a991  |
+      +------------+--------------------------------------+

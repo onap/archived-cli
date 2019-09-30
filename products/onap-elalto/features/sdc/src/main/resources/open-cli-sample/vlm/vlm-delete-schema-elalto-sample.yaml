@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vlm-delete
+version: onap-elalto
+samples:
+  sample1:
+    name: vlm-delete
+    input: -x hpa-test -y 25a262cd648a4c639badc3d2e842d605 -u cs0008 -p demo123456! -m https://10.12.5.110:30207/sdc1/feProxy
+    moco: vlm-delete-schema-elalto-moco.json
+    output:

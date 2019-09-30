@@ -1,0 +1,32 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/sdc1/feProxy/onboarding-api/v1.0/vendor-software-products/253b4ec6f96f458294c0276f4a6dc2bc/versions/b48de24b9e334c8cbcb8ba5356e35204",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-210b6771-bf5d-4784-922e-bc94c041066c",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "category" : "resourceNewCategory.generic",
+      "vendorId" : "8c97aece07bf43ab859700328e0b336b",
+      "subCategory" : "resourceNewCategory.generic.network elements",
+      "description" : "hpa-vsp-desc",
+      "licensingVersion" : "ac9ff5fe4a2e4939a9c6b29e21e65c96",
+      "licensingData" : {
+        "featureGroups" : [ "9a113c17158747fb821f2d8626f6e94a" ],
+        "licenseAgreement" : "c1afa5207e104431aca3b72001dbf6c1"
+      },
+      "icon" : "icon",
+      "vendorName" : "hpa-test",
+      "name" : "hpa-vsp-test-7"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : { }
+  }
+} ]

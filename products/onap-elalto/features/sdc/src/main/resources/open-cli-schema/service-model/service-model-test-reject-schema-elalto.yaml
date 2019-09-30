@@ -45,6 +45,8 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/services/${service-id}/lifecycleState/failCertification
     method: POST
+    headers:
+      USER_ID: ${host-username}
     body: '{"userRemarks": "${test-remark}"}'
   success_codes:
     - 200

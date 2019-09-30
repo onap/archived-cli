@@ -1,0 +1,41 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc1/feProxy/onboarding-api/v1.0/vendor-software-products",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-0cc37083-8ba4-4dff-a133-83b95e14e123",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "category" : "resourceNewCategory.generic",
+      "vendorId" : "8e1cffcf802941b1a88861ea71857fe2",
+      "subCategory" : "resourceNewCategory.generic.network elements",
+      "description" : "hpa-vsp-desc",
+      "licensingVersion" : "f6b115c0f4d8459f9422a21559025a7e",
+      "licensingData" : {
+        "featureGroups" : [ "0c81a6a0272546f49403d241bb4ce3b3" ],
+        "licenseAgreement" : "8cadce750de14b72b37c4c94d41e2cfd"
+      },
+      "icon" : "icon",
+      "onboardingMethod" : "NetworkPackage",
+      "vendorName" : "hpa-vendor-1",
+      "name" : "hpa-vsp-vfw-0"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "itemId" : "b6c23299280842eca622e9f1a4166d4f",
+      "version" : {
+        "id" : "ab2c5855856240aa8cf6ad41ee447d51",
+        "name" : "1.0",
+        "description" : "Initial version",
+        "status" : "Draft"
+      }
+    }
+  }
+} ]

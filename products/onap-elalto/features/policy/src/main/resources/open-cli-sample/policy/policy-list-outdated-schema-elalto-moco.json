@@ -1,0 +1,106 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/pdp/api/getConfig",
+    "headers" : {
+      "Authorization" : "Basic dGVzdHBkcDphbHBoYTEyMw==",
+      "Accept" : "application/json",
+      "Environment" : "TEST",
+      "ClientAuth" : "cHl0aG9uOnRlc3Q=",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "configAttributes" : { },
+      "policyName" : ".*"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : [ {
+      "policyConfigMessage" : "Config Retrieved! ",
+      "policyConfigStatus" : "CONFIG_RETRIEVED",
+      "type" : "JSON",
+      "config" : "{\"service\":\"vnfPolicy\",\"guard\":\"False\",\"content\":{\"policyType\":\"vnfPolicy\",\"policyScope\":[\"vfw\",\"us\",\"international\",\"ip\"],\"identity\":\"vnf_vFW\",\"resources\":[\"vFW\",\"HpaVf0\"],\"applicableResources\":\"any\",\"vnfProperties\":[{\"equipmentRole\":\"\",\"inventoryProvider\":\"aai\",\"inventoryType\":\"cloud\",\"serviceType\":\"\",\"customerId\":\"\",\"orchestrationStatus\":\"\"}]},\"priority\":\"6\",\"templateVersion\":\"OpenSource.version.1\",\"riskLevel\":\"3\",\"description\":\"vnfPolicy\",\"policyName\":\"OSDF_CASABLANCA.vnfPolicy_vFWHPA_3\",\"version\":\"test1\",\"riskType\":\"test\"}",
+      "policyName" : "OSDF_CASABLANCA.Config_MS_vnfPolicy_vFWHPA_3.1.xml",
+      "policyType" : "MicroService",
+      "policyVersion" : "1",
+      "matchingConditions" : {
+        "ECOMPName" : "SampleDemo",
+        "ONAPName" : "SampleDemo",
+        "service" : "vnfPolicy",
+        "policyScope" : "vfw,us,international,ip",
+        "policyType" : "vnfPolicy"
+      },
+      "responseAttributes" : { },
+      "property" : null
+    }, {
+      "policyConfigMessage" : "Config Retrieved! ",
+      "policyConfigStatus" : "CONFIG_RETRIEVED",
+      "type" : "JSON",
+      "config" : "{\"service\":\"distancePolicy\",\"guard\":\"False\",\"content\":{\"policyType\":\"distance_to_location\",\"applicableResources\":\"any\",\"identity\":\"distance-vFW\",\"policyScope\":[\"vfw\",\"us\",\"international\",\"ip\"],\"distanceProperties\":{\"distance\":{\"value\":\"100\",\"unit\":\"km\",\"operator\":\"<\"},\"locationInfo\":\"customer_loc\"},\"resources\":[\"vFW\",\"HpaVf0\"]},\"priority\":\"3\",\"templateVersion\":\"OpenSource.version.1\",\"riskLevel\":\"2\",\"description\":\"DistancePolicyforvFW\",\"policyName\":\"OSDF_CASABLANCA.Distance_vFWHPA_2\",\"version\":\"test1\",\"riskType\":\"test\"}",
+      "policyName" : "OSDF_CASABLANCA.Config_MS_Distance_vFWHPA_2.1.xml",
+      "policyType" : "MicroService",
+      "policyVersion" : "1",
+      "matchingConditions" : {
+        "ECOMPName" : "SampleDemo",
+        "ONAPName" : "SampleDemo",
+        "service" : "distancePolicy",
+        "policyScope" : "vfw,us,international,ip",
+        "policyType" : "distance_to_location"
+      },
+      "responseAttributes" : { },
+      "property" : null
+    }, {
+      "policyConfigMessage" : "Config Retrieved! ",
+      "policyConfigStatus" : "CONFIG_RETRIEVED",
+      "type" : "JSON",
+      "config" : "{\"service\":\"optimizationPolicy\",\"guard\":\"False\",\"content\":{\"policyType\":\"placement_optimization\",\"objective\":\"minimize\",\"objectiveParameter\":{\"operator\":\"sum\",\"parameterAttributes\":[{\"parameter\":\"distance\",\"operator\":\"product\",\"customerLocationInfo\":\"customer_loc\",\"weight\":\"1\",\"resources\":[\"vGMuxInfra\"]},{\"parameter\":\"distance\",\"operator\":\"product\",\"customerLocationInfo\":\"customer_loc\",\"weight\":\"1\",\"resources\":[\"vG\"]},{\"parameter\":\"hpa_score\",\"operator\":\"product\",\"weight\":\"200\",\"resources\":[\"vG\"]},{\"parameter\":\"distance\",\"operator\":\"product\",\"customerLocationInfo\":\"customer_loc\",\"weight\":\"100\",\"resources\":[\"vFW\",\"HpaVf0\"]},{\"parameter\":\"hpa_score\",\"operator\":\"product\",\"weight\":\"200\",\"resources\":[\"vFW\",\"HpaVf0\"]}]},\"identity\":\"optimization\",\"policyScope\":[\"vcpe\",\"us\",\"international\",\"ip\",\"vGMuxInfra\",\"vG\",\"vfw\"]},\"priority\":\"5\",\"templateVersion\":\"OpenSource.version.1\",\"riskLevel\":\"3\",\"description\":\"PlacementOptimizationPolicyforvGMuxInfra\",\"policyName\":\"OSDF_CASABLANCA.Placement_Optimization_3\",\"version\":\"test1\",\"riskType\":\"test\"}",
+      "policyName" : "OSDF_CASABLANCA.Config_MS_Placement_Optimization_3.1.xml",
+      "policyType" : "MicroService",
+      "policyVersion" : "1",
+      "matchingConditions" : {
+        "ECOMPName" : "SampleDemo",
+        "ONAPName" : "SampleDemo",
+        "service" : "optimizationPolicy",
+        "policyScope" : "vcpe,us,international,ip,vGMuxInfra,vG,vfw",
+        "policyType" : "placement_optimization"
+      },
+      "responseAttributes" : { },
+      "property" : null
+    }, {
+      "policyConfigMessage" : "Config Retrieved! ",
+      "policyConfigStatus" : "CONFIG_RETRIEVED",
+      "type" : "JSON",
+      "config" : "{\"service\":\"queryPolicy\",\"guard\":\"False\",\"content\":{\"policyType\":\"request_param_query\",\"queryProperties\":[{\"attribute\":\"customerLatitude\",\"attribute_location\":\"customerLatitude\"},{\"attribute\":\"customerLongitude\",\"attribute_location\":\"customerLongitude\"}],\"identity\":\"vFW_Query_Policy\",\"serviceName\":\"vFW\",\"policyScope\":[\"vfw\",\"us\",\"international\",\"ip\"]},\"priority\":\"3\",\"templateVersion\":\"OpenSource.version.1\",\"riskLevel\":\"2\",\"description\":\"QuerypolicyforvFW\",\"policyName\":\"OSDF_CASABLANCA.QueryPolicy_vFWHPA_3\",\"version\":\"test1\",\"riskType\":\"test\"}",
+      "policyName" : "OSDF_CASABLANCA.Config_MS_QueryPolicy_vFWHPA_3.1.xml",
+      "policyType" : "MicroService",
+      "policyVersion" : "1",
+      "matchingConditions" : {
+        "ECOMPName" : "SampleDemo",
+        "ONAPName" : "SampleDemo",
+        "service" : "queryPolicy",
+        "policyScope" : "vfw,us,international,ip",
+        "policyType" : "request_param_query"
+      },
+      "responseAttributes" : { },
+      "property" : null
+    }, {
+      "policyConfigMessage" : "Config Retrieved! ",
+      "policyConfigStatus" : "CONFIG_RETRIEVED",
+      "type" : "JSON",
+      "config" : "{\"service\":\"hpaPolicy\",\"guard\":\"False\",\"content\":{\"flavorFeatures\":[{\"directives\":[{\"attributes\":[{\"attribute_value\":\"\",\"attribute_name\":\"firewall_flavor_name\"}],\"type\":\"flavor_directives\"}],\"type\":\"vnfc\",\"flavorProperties\":[{\"mandatory\":\"True\",\"hpa-feature-attributes\":[{\"hpa-attribute-value\":\"2\",\"unit\":\"\",\"operator\":\"=\",\"hpa-attribute-key\":\"numVirtualCpu\"},{\"hpa-attribute-value\":\"512\",\"unit\":\"MB\",\"operator\":\"=\",\"hpa-attribute-key\":\"virtualMemSize\"}],\"directives\":[],\"hpa-version\":\"v1\",\"architecture\":\"generic\",\"hpa-feature\":\"basicCapabilities\"},{\"mandatory\":\"True\",\"hpa-feature-attributes\":[{\"hpa-attribute-value\":\"2\",\"unit\":\"MB\",\"operator\":\"=\",\"hpa-attribute-key\":\"memoryPageSize\"}],\"directives\":[],\"hpa-version\":\"v1\",\"architecture\":\"generic\",\"hpa-feature\":\"hugePages\"},{\"hpa-feature\":\"localStorage\",\"hpa-version\":\"v1\",\"architecture\":\"generic\",\"mandatory\":\"True\",\"directives\":[],\"hpa-feature-attributes\":[{\"hpa-attribute-key\":\"diskSize\",\"hpa-attribute-value\":\"10\",\"operator\":\">=\",\"unit\":\"GB\"}]},{\"mandatory\":\"False\",\"score\":\"100\",\"directives\":[],\"hpa-version\":\"v1\",\"hpa-feature-attributes\":[{\"hpa-attribute-value\":\"isolate\",\"unit\":\"\",\"operator\":\"=\",\"hpa-attribute-key\":\"logicalCpuThreadPinningPolicy\"},{\"hpa-attribute-value\":\"dedicated\",\"unit\":\"\",\"operator\":\"=\",\"hpa-attribute-key\":\"logicalCpuPinningPolicy\"}],\"architecture\":\"generic\",\"hpa-feature\":\"cpuPinning\"}],\"id\":\"vfw\"},{\"directives\":[{\"attributes\":[{\"attribute_value\":\"\",\"attribute_name\":\"packetgen_flavor_name\"}],\"type\":\"flavor_directives\"}],\"type\":\"vnfc\",\"flavorProperties\":[{\"mandatory\":\"True\",\"hpa-feature-attributes\":[{\"hpa-attribute-value\":\"1\",\"operator\":\">=\",\"hpa-attribute-key\":\"numVirtualCpu\"},{\"hpa-attribute-value\":\"7\",\"unit\":\"GB\",\"operator\":\">=\",\"hpa-attribute-key\":\"virtualMemSize\"}],\"directives\":[],\"hpa-version\":\"v1\",\"architecture\":\"generic\",\"hpa-feature\":\"basicCapabilities\"},{\"hpa-feature\":\"localStorage\",\"hpa-version\":\"v1\",\"architecture\":\"generic\",\"mandatory\":\"True\",\"directives\":[],\"hpa-feature-attributes\":[{\"hpa-attribute-key\":\"diskSize\",\"hpa-attribute-value\":\"10\",\"operator\":\">=\",\"unit\":\"GB\"}]}],\"id\":\"vgenerator\"},{\"directives\":[{\"attributes\":[{\"attribute_value\":\"\",\"attribute_name\":\"sink_flavor_name\"}],\"type\":\"flavor_directives\"}],\"id\":\"vsink\",\"type\":\"vnfc\",\"flavorProperties\":[{\"mandatory\":\"True\",\"directives\":[],\"hpa-version\":\"v1\",\"hpa-feature-attributes\":[],\"architecture\":\"generic\",\"hpa-feature\":\"basicCapabilities\"}]}],\"policyType\":\"hpa\",\"policyScope\":[\"vfw\",\"us\",\"international\",\"ip\"],\"identity\":\"hpa-vFW\",\"resources\":[\"vFW\",\"HpaVf0\"]},\"priority\":\"3\",\"templateVersion\":\"OpenSource.version.1\",\"riskLevel\":\"2\",\"description\":\"HPApolicyforvFW\",\"policyName\":\"OSDF_CASABLANCA.hpa_policy_vFWHPA_2\",\"version\":\"test1\",\"riskType\":\"test\"}",
+      "policyName" : "OSDF_CASABLANCA.Config_MS_hpa_policy_vFWHPA_2.1.xml",
+      "policyType" : "MicroService",
+      "policyVersion" : "1",
+      "matchingConditions" : {
+        "ECOMPName" : "SampleDemo",
+        "ONAPName" : "SampleDemo",
+        "service" : "hpaPolicy",
+        "policyScope" : "vfw,us,international,ip",
+        "policyType" : "hpa"
+      },
+      "responseAttributes" : { },
+      "property" : null
+    } ]
+  }
+} ]

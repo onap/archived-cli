@@ -1,0 +1,18 @@
+open_cli_sample_version: 1.0
+name: vsp-add-license
+version: onap-elalto
+samples:
+  sample1:
+    name: vsp-add-license
+    input: -j 9a113c17158747fb821f2d8626f6e94a -e hpa-test -x hpa-vsp-test-7 -y hpa-vsp-desc -i c1afa5207e104431aca3b72001dbf6c1 -c ac9ff5fe4a2e4939a9c6b29e21e65c96 -g 8c97aece07bf43ab859700328e0b336b -id 253b4ec6f96f458294c0276f4a6dc2bc -vid b48de24b9e334c8cbcb8ba5356e35204 -u cs0008 -p demo123456! -m https://10.12.5.110:30207/sdc1/feProxy --debug
+    moco: vsp-add-license-schema-elalto-moco.json
+    output: |
+      +------------+--------+
+      |property    |value   |
+      +------------+--------+
+      |id          |[]      |
+      +------------+--------+
+      |version     |[]      |
+      +------------+--------+
+      |version-id  |[]      |
+      +------------+--------+

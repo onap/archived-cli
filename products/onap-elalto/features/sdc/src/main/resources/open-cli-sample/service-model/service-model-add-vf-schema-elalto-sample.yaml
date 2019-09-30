@@ -1,0 +1,87 @@
+open_cli_sample_version: 1.0
+name: service-model-add-vf
+version: onap-elalto
+samples:
+  sample1:
+    name: service-model-add-vf
+    input: -x 12eac43a-d95a-4383-8d97-12da68053b66 -b 1.0 -y f2a9f1e6-1635-442d-89ef-42370b0e69ac -z hpa-vf-0 -u cs0008 -p demo123456! -m https://10.12.5.110:30204
+    moco: service-model-add-vf-schema-elalto-moco.json
+    output: |
+      +----------+----------------------------------------------------+
+      |property  |value                                               |
+      +----------+----------------------------------------------------+
+      |id        |12eac43a-d95a-4383-8d97-12da68053b66.f2a9f1e6-1635  |
+      |          |-442d-89ef-42370b0e69ac.hpavf00                     |
+      +----------+----------------------------------------------------+
+      |uuid      |f2a9f1e6-1635-442d-89ef-42370b0e69ac                |
+      +----------+----------------------------------------------------+
+      |inputs    |[2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.public_net_i  |
+      |          |d,                                                  |
+      |          |2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.sec_group,     |
+      |          |bda5008a-ae19-4035-aca5-4e161580a0b1.nf_type,       |
+      |          |2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vfw_name_0, 2  |
+      |          |b8ea1f3-6e16-4f05-87b3-a14c8e564e57.nexus_artifact  |
+      |          |_repo, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.onap_p  |
+      |          |rivate_net_cidr, 2b8ea1f3-6e16-4f05-87b3-a14c8e564  |
+      |          |e57.dcae_collector_ip, 2b8ea1f3-6e16-4f05-87b3-a14  |
+      |          |c8e564e57.vsn_private_1_port_vnic_type, 2b8ea1f3-6  |
+      |          |e16-4f05-87b3-a14c8e564e57.vfw_private_2_port_vnic  |
+      |          |_type,                                              |
+      |          |2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vpg_name_0,    |
+      |          |bda5008a-ae19-4035-aca5-4e161580a0b1.nf_naming,     |
+      |          |2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vsn_name_0, b  |
+      |          |da5008a-ae19-4035-aca5-4e161580a0b1.multi_stage_de  |
+      |          |sign, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.onap_pr  |
+      |          |ivate_net_id, bda5008a-ae19-4035-aca5-4e161580a0b1  |
+      |          |.nf_naming_code, 2b8ea1f3-6e16-4f05-87b3-a14c8e564  |
+      |          |e57.vpg_private_0_port_vnic_type, 2b8ea1f3-6e16-4f  |
+      |          |05-87b3-a14c8e564e57.unprotected_private_net_id, 2  |
+      |          |b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vsn_private_0_  |
+      |          |port_vnic_type, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e  |
+      |          |57.protected_private_provider_net, bda5008a-ae19-4  |
+      |          |035-aca5-4e161580a0b1.sdnc_artifact_name, 2b8ea1f3  |
+      |          |-6e16-4f05-87b3-a14c8e564e57.demo_artifacts_versio  |
+      |          |n, bda5008a-ae19-4035-aca5-4e161580a0b1.max_instan  |
+      |          |ces,                                                |
+      |          |2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.key_name, bda  |
+      |          |5008a-ae19-4035-aca5-4e161580a0b1.sdnc_model_versi  |
+      |          |on, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.install_s  |
+      |          |cript_version, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e5  |
+      |          |7.vfw_image_name, 2b8ea1f3-6e16-4f05-87b3-a14c8e56  |
+      |          |4e57.unprotected_private_provider_net, bda5008a-ae  |
+      |          |19-4035-aca5-4e161580a0b1.min_instances, 2b8ea1f3-  |
+      |          |6e16-4f05-87b3-a14c8e564e57.vf_module_id, 2b8ea1f3  |
+      |          |-6e16-4f05-87b3-a14c8e564e57.sink_flavor_name, bda  |
+      |          |5008a-ae19-4035-aca5-4e161580a0b1.skip_post_instan  |
+      |          |tiation_configuration, 2b8ea1f3-6e16-4f05-87b3-a14  |
+      |          |c8e564e57.packetgen_flavor_name,                    |
+      |          |bda5008a-ae19-4035-aca5-4e161580a0b1.nf_function,   |
+      |          |2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vfw_private_i  |
+      |          |p_1, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vfw_priv  |
+      |          |ate_ip_0, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.ona  |
+      |          |p_private_subnet_id, 2b8ea1f3-6e16-4f05-87b3-a14c8  |
+      |          |e564e57.vfw_private_ip_2, 2b8ea1f3-6e16-4f05-87b3-  |
+      |          |a14c8e564e57.vpg_private_1_port_vnic_type, 2b8ea1f  |
+      |          |3-6e16-4f05-87b3-a14c8e564e57.vfw_private_1_port_v  |
+      |          |nic_type,                                           |
+      |          |2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vnf_id, 2b8ea  |
+      |          |1f3-6e16-4f05-87b3-a14c8e564e57.dcae_collector_por  |
+      |          |t, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vsn_privat  |
+      |          |e_ip_0, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vpg_p  |
+      |          |rivate_ip_1, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.  |
+      |          |vsn_private_ip_1, 2b8ea1f3-6e16-4f05-87b3-a14c8e56  |
+      |          |4e57.vpg_private_ip_0, 2b8ea1f3-6e16-4f05-87b3-a14  |
+      |          |c8e564e57.protected_private_net_cidr, 2b8ea1f3-6e1  |
+      |          |6-4f05-87b3-a14c8e564e57.unprotected_private_net_c  |
+      |          |idr, 2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.vfw_priv  |
+      |          |ate_0_port_vnic_type, 2b8ea1f3-6e16-4f05-87b3-a14c  |
+      |          |8e564e57.firewall_flavor_name, bda5008a-ae19-4035-  |
+      |          |aca5-4e161580a0b1.availability_zone_max_count,      |
+      |          |2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.pub_key,       |
+      |          |bda5008a-ae19-4035-aca5-4e161580a0b1.nf_role, 2b8e  |
+      |          |a1f3-6e16-4f05-87b3-a14c8e564e57.protected_private  |
+      |          |_net_id,                                            |
+      |          |2b8ea1f3-6e16-4f05-87b3-a14c8e564e57.cloud_env, bd  |
+      |          |a5008a-ae19-4035-aca5-4e161580a0b1.sdnc_model_name  |
+      |          |]                                                   |
+      +----------+----------------------------------------------------+

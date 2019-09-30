@@ -1,0 +1,21 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/sdc1/feProxy/onboarding-api/v1.0/vendor-software-products/b6c23299280842eca622e9f1a4166d4f/versions/ab2c5855856240aa8cf6ad41ee447d51/actions",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-5bf79765-f60f-409d-9e02-75f35756d7b5",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "action" : "Submit"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : { }
+  }
+} ]

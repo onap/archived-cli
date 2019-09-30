@@ -1,0 +1,21 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/sdc1/feProxy/onboarding-api/v1.0/vendor-software-products/b6c23299280842eca622e9f1a4166d4f/versions/ab2c5855856240aa8cf6ad41ee447d51/orchestration-template-candidate",
+    "headers" : {
+      "Content-type" : "multipart/form-data",
+      "Accept" : "*/*",
+      "USER_ID" : "cs0008"
+    },
+    "json" : { }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "errors" : { },
+      "status" : "Success",
+      "onboardingOrigin" : "zip",
+      "networkPackageName" : "vfw_hpa"
+    }
+  }
+} ]

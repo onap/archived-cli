@@ -39,6 +39,8 @@ http:
   request:
     uri: /sdc2/rest/v1/catalog/services/${service-id}/archive
     method: POST
+    headers:
+      USER_ID: ${host-username}
     body: '{}'
   success_codes:
     - 200

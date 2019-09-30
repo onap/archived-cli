@@ -1,0 +1,22 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v16/business/customers/customer/hpa_cust",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-d90d62b3-f976-44a8-9b51-d18096eba60b",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "global-customer-id" : "hpa_cust",
+      "subscriber-name" : "hpa_cust",
+      "subscriber-type" : "INFRA"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]

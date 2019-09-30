@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: subscription-cloud-add
+version: onap-elalto
+samples:
+  sample1:
+    name: subscription-cloud-add
+    input: -x hpa_cust -c 709ba629fe194f8699b12f9d6ffd86a0 -z CloudOwner -e vFW -y Integration-HPA -r ONAP-POD-01-Rail-05 -m https://10.12.5.110:30233 -u AAI -p AAI
+    moco: subscription-cloud-add-schema-elalto-moco.json
+    output:

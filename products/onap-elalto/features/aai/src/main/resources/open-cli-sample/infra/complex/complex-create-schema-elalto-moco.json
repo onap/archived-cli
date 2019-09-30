@@ -1,0 +1,35 @@
+[ {
+  "request" : {
+    "method" : "put",
+    "uri" : "/aai/v16/cloud-infrastructure/complexes/complex/clli1",
+    "headers" : {
+      "Authorization" : "Basic QUFJOkFBSQ==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "req-21cb3e86-0e0b-4d31-b027-aa43935109e6",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "physical-location-id" : "clli1",
+      "data-center-code" : "code1",
+      "complex-name" : "clli1",
+      "identity-url" : "example-identity-url-val-56898",
+      "physical-location-type" : "phy_type",
+      "street1" : "street1",
+      "street2" : "street2",
+      "city" : "hillsboro",
+      "state" : "oregon",
+      "postal-code" : "00000",
+      "country" : "USA",
+      "region" : "northwest",
+      "latitude" : "32.89948",
+      "longitude" : "97.045443",
+      "elevation" : "example-elevation-val-28399",
+      "lata" : "example-lata-val-28399"
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "json" : null
+  }
+} ]

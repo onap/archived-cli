@@ -39,6 +39,8 @@ http:
   request:
     uri: /onboarding-api/v1.0/vendor-license-models
     method: GET
+    headers:
+       USER_ID: ${host-username}
   success_codes:
     - 200
   result_map:

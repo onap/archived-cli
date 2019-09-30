@@ -1,0 +1,126 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/sdc1/feProxy/onboarding-api/v1.0/vendor-license-models",
+    "headers" : {
+      "Authorization" : "Basic Y3MwMDA4OmRlbW8xMjM0NTYh",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "USER_ID" : "cs0008",
+      "X-TransactionId" : "req-0e83b16c-98a3-4c11-8cdc-030d665b4fa6",
+      "Content-Type" : "application/json"
+    },
+    "json" : null
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "listCount" : 13,
+      "results" : [ {
+        "id" : "25a262cd648a4c639badc3d2e842d605",
+        "type" : "vlm",
+        "name" : "hpa-test",
+        "description" : "",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "926452d0ce2c47768c738d8cb936bfd0",
+        "type" : "vlm",
+        "name" : "hpa-vendor",
+        "description" : "",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "380f0c9b81394bb28b86f3c14cd1d25a",
+        "type" : "vlm",
+        "name" : "hpa-vendor-00",
+        "description" : "",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "79fef92c2c274518bac5fd5197eba099",
+        "type" : "vlm",
+        "name" : "hpa-vendor-0",
+        "description" : "",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "88c609b8fa3346e185f803b169fe5d8c",
+        "type" : "vlm",
+        "name" : "8d3a7462-01d7-499d-9046",
+        "description" : "vendor license model",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "f8ce970cf8994873a8c56ffb7df8dd69",
+        "type" : "vlm",
+        "name" : "ae64828a-14aa-4ad9-b315",
+        "description" : "vendor license model",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "8dc3168ebd5e4808aab0f1a382b40665",
+        "type" : "vlm",
+        "name" : "adae68d4-e3cd-4b12-bce3",
+        "description" : "vendor license model",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "34a7da80a9ad4786b3a25c6743b39978",
+        "type" : "vlm",
+        "name" : "89fcd4ec-d432-4033-8ccb",
+        "description" : "vendor license model",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "0316337115104112b9250166e5655025",
+        "type" : "vlm",
+        "name" : "4f64997b-a9f1-44cd-8f1b",
+        "description" : "vendor license model",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "e8765688750d4923917136b7748df059",
+        "type" : "vlm",
+        "name" : "dcc3444f-805b-4315-b002",
+        "description" : "vendor license model",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "4bc079dd6db8495aa5a83e2bcdb83b58",
+        "type" : "vlm",
+        "name" : "533c7d38-d73c-455e-b0d0",
+        "description" : "vendor license model",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "812f9fe6c7134eed8030ceac087ea07b",
+        "type" : "vlm",
+        "name" : "71302b8b-1521-4157-be3c",
+        "description" : "vendor license model",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      }, {
+        "id" : "784b26f84d1e46e68d8da56ae22d2e9e",
+        "type" : "vlm",
+        "name" : "c3b14323-c7af-4468-8391",
+        "description" : "vendor license model",
+        "owner" : "cs0008",
+        "status" : "ACTIVE",
+        "properties" : { }
+      } ]
+    }
+  }
+} ]
