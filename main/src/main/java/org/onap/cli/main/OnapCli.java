@@ -764,7 +764,8 @@ public class OnapCli {
                 SampleYamlGenerator.generateSampleYaml(cmd.getName(), args, cmd.getResult().print(),
                         cmd.getInfo().getProduct(),
                         OnapCommandConfig.getPropertyValue(OnapCommandConstants.SAMPLE_GEN_TARGET_FOLDER) + "/" + cmd.getSchemaName().replaceAll(".yaml", "") + "-sample.yaml",
-                        cmd.getResult().isDebug());
+                        cmd.getResult().isDebug(),
+                        OnapCommandConfig.getPropertyValue(OnapCommandConstants.SAMPLE_GEN_NAME));
             } catch (IOException error) {
                 throw new OnapCommandInvalidSample(this.cmdName, error);
             }

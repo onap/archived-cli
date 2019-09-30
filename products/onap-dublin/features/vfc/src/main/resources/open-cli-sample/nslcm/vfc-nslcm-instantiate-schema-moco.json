@@ -1,0 +1,12 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/api/nslcm/v1/ns/25f3159c-ff2d-4ad0-ac66-3270941bfa52/instantiate"
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "jobId" : "7b06898d-e67a-4c9f-b1ce-90346ed6e520"
+    }
+  }
+} ]

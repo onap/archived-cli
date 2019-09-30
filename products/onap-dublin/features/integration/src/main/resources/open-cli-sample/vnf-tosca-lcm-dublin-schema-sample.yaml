@@ -1,9 +1,9 @@
 open_cli_sample_version: 1.0
-name: vnf-tosca-provision
+name: vnf-tosca-lcm
 version: onap-dublin
 samples:
   sample1:
-    name: vnf-tosca-provision
+    name: vnf-tosca-lcm
     input: --mode checkup --vsp c:\Users\k00365106\Desktop\vtp\tosca-lcm\vgw.csar --vnf-csar c:\Users\k00365106\Desktop\vtp\tosca-lcm\vgw.csar --ns-csar c:\Users\k00365106\Desktop\vtp\tosca-lcm\vgw.csar --vnfm-driver hwvnfmdriver --timeout 800000 --vnf-name vgw12345678901 --vnf-vendor-name vnfvendor12345678901 --onap-objects D:\workspace\cli\deployment\zip\target\deployunzip\data\tmp\1234567890-1567065851687_result.json
     moco: vnf-tosca-provision-dublin-schema-moco.json
     output: |

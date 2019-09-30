@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vfc-nslcm-delete
+version: onap-dublin
+samples:
+  sample1:
+    name: vfc-nslcm-delete
+    input: --host-url http://localhost:12306 --ns-instance-id 25f3159c-ff2d-4ad0-ac66-3270941bfa52
+    moco: vfc-nslcm-delete-schema-moco.json
+    output:

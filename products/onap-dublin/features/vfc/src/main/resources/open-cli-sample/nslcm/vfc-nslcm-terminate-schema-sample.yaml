@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: vfc-nslcm-terminate
+version: onap-dublin
+samples:
+  sample1:
+    name: vfc-nslcm-terminate
+    input: --host-url http://localhost:12306 --ns-instance-id 25f3159c-ff2d-4ad0-ac66-3270941bfa52
+    moco: vfc-nslcm-terminate-schema-moco.json
+    output: |
+      +--------------------------------------+
+      |job-id                                |
+      +--------------------------------------+
+      |f479d5eb-82a1-4a1f-9174-e071ee46c841  |
+      +--------------------------------------+
