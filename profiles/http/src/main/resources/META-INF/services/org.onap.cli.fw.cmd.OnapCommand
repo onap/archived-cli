@@ -16,3 +16,4 @@ org.onap.cli.fw.http.cmd.BasicAuthLoginCommand
 org.onap.cli.fw.http.cmd.BasicAuthLogoutCommand
 org.onap.cli.fw.http.cmd.CatalogCommand
 org.onap.cli.fw.http.cmd.OnapHttpCommand
+org.onap.cli.fw.http.cmd.OnapHttpMocoServerCommand

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vnf-tosca-provision
+name: vnf-tosca-lcm
 description: |
   ONAP TOSCA VNF validation using ONAP CLI and Open Command Platform (OCOMP)
 
@@ -82,7 +82,7 @@ description: |
         Similarly, other service IP and Port could be discovered like above, in case not know earlier :)
 
      This profile would be used while running the command with ONAP setup configured in it, as below
-       oclip --profile onap-dublin vnf-tosca-provision .....
+       oclip --profile onap-dublin vnf-tosca-lcm .....
 
   e. Verify these details once by typing 'set'
 
@@ -104,7 +104,7 @@ parameters:
     type: string
     short_option: x
     long_option: config-json
-    default_value: $s{env:OPEN_CLI_HOME}/conf/vnf-tosca-provision.json
+    default_value: $s{env:OPEN_CLI_HOME}/conf/vnf-tosca-lcm.json
     is_optional: false
   - name: vsp
     description: Path to the ONAP vendor service product (VSP) for the VNF to provision
@@ -194,7 +194,7 @@ results:
       scope: short
 cmd:
   command:
-    -  python $s{env:OPEN_CLI_HOME}/script/vnf-tosca-provision.py --vendor-name ${vnf-vendor-name} --vnf-name ${vnf-name} --mode ${mode} --result-json $s{tmp:result.json:onap-objects} --conf ${config-json} --vsp ${vsp} --vnf-csar ${vnf-csar} --ns-csar ${ns-csar} --vnfm-driver ${vnfm-driver}
+    -  python $s{env:OPEN_CLI_HOME}/script/vnf-tosca-lcm.py --vendor-name ${vnf-vendor-name} --vnf-name ${vnf-name} --mode ${mode} --result-json $s{tmp:result.json:onap-objects} --conf ${config-json} --vsp ${vsp} --vnf-csar ${vnf-csar} --ns-csar ${ns-csar} --vnfm-driver ${vnfm-driver}
   success_codes:
     - 0
   working_directory: .
