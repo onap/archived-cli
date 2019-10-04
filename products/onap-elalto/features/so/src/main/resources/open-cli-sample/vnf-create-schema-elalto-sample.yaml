@@ -1,0 +1,14 @@
+open_cli_sample_version: 1.0
+name: vnf-create
+version: onap-elalto
+samples:
+  sample1:
+    name: vnf-create
+    input: -j 51e3401d-2924-40e7-827f-ca7ec567e5de -q vfw-hpa-01 -k a9031c62-bb9e-4db4-bee0-691768ed94f4 -l ONAP-POD-01-Rail-07 -y 9545d48f-03da-467e-8994-ae0716e7372d -z 709ba629fe194f8699b12f9d6ffd86a0 -r demo -c 76756a3e-ab7d-49df-9002-3d8008233a2b -o vfw-hpa-vnf -e hpa-vf-0 -g 1.0 -b ddc48ee5-28ed-4fc4-98d6-bc0cdcc57a89 -n 1.0 -i a51ec934-6b32-4818-965c-5f18cf2cd254 -vn hpa-vf-0 0 -w vFW -pn Platform-Demonstration -lob LOB-Demonstration -u InfraPortalClient -p password1$ -m http://10.12.5.110:30277
+    moco: vnf-create-schema-elalto-moco.json
+    output: |
+      +----------+--------------------------------------+
+      |property  |value                                 |
+      +----------+--------------------------------------+
+      |vf-id     |067c71c2-2fa5-4573-9c6d-aa7bf49f7c51  |
+      +----------+--------------------------------------+

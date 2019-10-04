@@ -190,6 +190,8 @@ http:
   request:
     uri: /onap/so/infra/serviceInstantiation/v7/serviceInstances/${service-instance-id}/vnfs/${vnf-instance-id}/vfModules
     method: POST
+    headers:
+      X-TransactionId: $s{uuid}
     body: '{
               "requestDetails":{
                  "modelInfo":{

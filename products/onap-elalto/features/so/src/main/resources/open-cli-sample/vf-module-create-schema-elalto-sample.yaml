@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vf-module-create
+version: onap-elalto
+samples:
+  sample1:
+    name: vf-module-create
+    input: -w 709ba629fe194f8699b12f9d6ffd86a0 -mn hpa-vf-0 0 -x 9545d48f-03da-467e-8994-ae0716e7372d -l ONAP-POD-01-Rail-07 -sv 1.0 -vc 23ceb926-02db-4595-94a3-5c13556946e4 -vm 1 -mv 1.0 -i vfw-sriov-cli -vf hpa-vf-0 -vi ab1c39d3-d32b-44f3-971b-942ab47d2723 -r false -mc a51ec934-6b32-4818-965c-5f18cf2cd254 -api VNF_API -mi ddc48ee5-28ed-4fc4-98d6-bc0cdcc57a89 -vid 76756a3e-ab7d-49df-9002-3d8008233a2b -y 067c71c2-2fa5-4573-9c6d-aa7bf49f7c51 -R demo -si a9031c62-bb9e-4db4-bee0-691768ed94f4 -up true -sd 51e3401d-2924-40e7-827f-ca7ec567e5de -z vfw-hpa-01 -vn HpaVf0..base_vfw..module-0 -vv 44968d8f-9299-490d-9c44-43c38816decc -co CloudOwner -u InfraPortalClient -p password1$ -m http://10.12.5.110:30277
+    moco: vf-module-create-schema-elalto-moco.json
+    output:
