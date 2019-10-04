@@ -1,0 +1,65 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onap/so/infra/serviceInstantiation/v7/serviceInstances/9545d48f-03da-467e-8994-ae0716e7372d/vnfs",
+    "headers" : {
+      "Authorization" : "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "21cb637e-b1f4-4c48-b12f-dbc33d2a021c",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "requestDetails" : {
+        "modelInfo" : {
+          "modelType" : "vnf",
+          "modelInvariantId" : "ddc48ee5-28ed-4fc4-98d6-bc0cdcc57a89",
+          "modelVersionId" : "76756a3e-ab7d-49df-9002-3d8008233a2b",
+          "modelName" : "hpa-vf-0",
+          "modelVersion" : "1.0",
+          "modelCustomizationId" : "a51ec934-6b32-4818-965c-5f18cf2cd254",
+          "modelCustomizationName" : "hpa-vf-0 0"
+        },
+        "cloudConfiguration" : {
+          "lcpCloudRegionId" : "ONAP-POD-01-Rail-07",
+          "tenantId" : "709ba629fe194f8699b12f9d6ffd86a0"
+        },
+        "requestInfo" : {
+          "requestorId" : "demo",
+          "instanceName" : "vfw-hpa-vnf",
+          "source" : "VID",
+          "productFamilyId" : "vFW"
+        },
+        "platform" : {
+          "platformName" : "Platform-Demonstration"
+        },
+        "lineOfBusiness" : {
+          "lineOfBusinessName" : "LOB-Demonstration"
+        },
+        "relatedInstanceList" : [ {
+          "relatedInstance" : {
+            "instanceId" : "9545d48f-03da-467e-8994-ae0716e7372d",
+            "modelInfo" : {
+              "modelType" : "service",
+              "modelInvariantId" : "51e3401d-2924-40e7-827f-ca7ec567e5de",
+              "modelVersionId" : "a9031c62-bb9e-4db4-bee0-691768ed94f4",
+              "modelName" : "vfw-hpa-01",
+              "modelVersion" : "1.0"
+            }
+          }
+        } ],
+        "requestParameters" : { }
+      }
+    }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "requestReferences" : {
+        "requestId" : "21cb637e-b1f4-4c48-b12f-dbc33d2a021c",
+        "instanceId" : "067c71c2-2fa5-4573-9c6d-aa7bf49f7c51",
+        "requestSelfLink" : "http://10.12.5.110:30277/orchestrationRequests/v7/21cb637e-b1f4-4c48-b12f-dbc33d2a021c"
+      }
+    }
+  }
+} ]

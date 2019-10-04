@@ -1,0 +1,77 @@
+[ {
+  "request" : {
+    "method" : "post",
+    "uri" : "/onap/so/infra/serviceInstantiation/v7/serviceInstances/9545d48f-03da-467e-8994-ae0716e7372d/vnfs/067c71c2-2fa5-4573-9c6d-aa7bf49f7c51/vfModules",
+    "headers" : {
+      "Authorization" : "Basic SW5mcmFQb3J0YWxDbGllbnQ6cGFzc3dvcmQxJA==",
+      "X-FromAppId" : "ONAP CLI",
+      "Accept" : "application/json",
+      "X-TransactionId" : "ed017684-b0ca-46e2-8037-3b2a9ba0f6f5",
+      "Content-Type" : "application/json"
+    },
+    "json" : {
+      "requestDetails" : {
+        "modelInfo" : {
+          "modelType" : "vfModule",
+          "modelInvariantId" : "ab1c39d3-d32b-44f3-971b-942ab47d2723",
+          "modelVersionId" : "44968d8f-9299-490d-9c44-43c38816decc",
+          "modelName" : "HpaVf0..base_vfw..module-0",
+          "modelVersion" : "1",
+          "modelCustomizationId" : "23ceb926-02db-4595-94a3-5c13556946e4",
+          "modelCustomizationName" : "HpaVf0..base_vfw..module-0"
+        },
+        "cloudConfiguration" : {
+          "lcpCloudRegionId" : "ONAP-POD-01-Rail-07",
+          "tenantId" : "709ba629fe194f8699b12f9d6ffd86a0",
+          "cloudOwner" : "CloudOwner"
+        },
+        "requestInfo" : {
+          "instanceName" : "vfw-sriov-cli",
+          "source" : "VID",
+          "suppressRollback" : "false",
+          "requestorId" : "demo"
+        },
+        "relatedInstanceList" : [ {
+          "relatedInstance" : {
+            "instanceId" : "9545d48f-03da-467e-8994-ae0716e7372d",
+            "modelInfo" : {
+              "modelType" : "service",
+              "modelInvariantId" : "51e3401d-2924-40e7-827f-ca7ec567e5de",
+              "modelVersionId" : "a9031c62-bb9e-4db4-bee0-691768ed94f4",
+              "modelName" : "vfw-hpa-01",
+              "modelVersion" : "1.0"
+            }
+          }
+        }, {
+          "relatedInstance" : {
+            "instanceId" : "067c71c2-2fa5-4573-9c6d-aa7bf49f7c51",
+            "modelInfo" : {
+              "modelType" : "vnf",
+              "modelInvariantId" : "ddc48ee5-28ed-4fc4-98d6-bc0cdcc57a89",
+              "modelVersionId" : "76756a3e-ab7d-49df-9002-3d8008233a2b",
+              "modelName" : "hpa-vf-0",
+              "modelVersion" : "1.0",
+              "modelCustomizationId" : "a51ec934-6b32-4818-965c-5f18cf2cd254",
+              "modelCustomizationName" : "hpa-vf-0 0"
+            }
+          }
+        } ],
+        "requestParameters" : {
+          "userParams" : [ ],
+          "testApi" : "VNF_API",
+          "usePreload" : true
+        }
+      }
+    }
+  },
+  "response" : {
+    "status" : 202,
+    "json" : {
+      "requestReferences" : {
+        "requestId" : "ed017684-b0ca-46e2-8037-3b2a9ba0f6f5",
+        "instanceId" : "56bd8d30-9ef9-491f-809e-c1212ca7db76",
+        "requestSelfLink" : "http://10.12.5.110:30277/orchestrationRequests/v7/ed017684-b0ca-46e2-8037-3b2a9ba0f6f5"
+      }
+    }
+  }
+} ]

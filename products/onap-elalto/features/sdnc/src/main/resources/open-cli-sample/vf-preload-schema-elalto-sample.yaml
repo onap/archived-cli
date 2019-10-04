@@ -1,0 +1,9 @@
+open_cli_sample_version: 1.0
+name: vf-preload
+version: onap-elalto
+samples:
+  sample1:
+    name: vf-preload
+    input: -u admin -p Kp8bJ4SXszM0WXlhak3eHlcse2gAw84vaoGGmJvUy2U -y /root/automation_stuff/integration/test/hpa_automation/heat/sample_vfw_hpa_preload_sriov_fake.txt -m http://10.12.5.110:30059
+    moco: vf-preload-schema-elalto-moco.json
+    output:
