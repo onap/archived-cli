@@ -1,0 +1,9 @@
+---
+distribution_type: container
+container_release_tag: '5.0.0'
+project: 'cli'
+log-dir: 'cli-maven-docker-stage-master/113/'
+ref: 9a9119ce46744aed9639ccd36bce768a05d4b386
+containers:
+  - name: onap/cli
+    version: 4.0-STAGING-latest
