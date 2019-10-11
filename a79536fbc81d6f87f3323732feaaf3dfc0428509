@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43332cbe_6dd8a84f",
+        "filename": "releases/5.0.0-maven.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2019-10-11T21:11:54Z",
+      "side": 1,
+      "message": "log_dir",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "a79536fbc81d6f87f3323732feaaf3dfc0428509",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
