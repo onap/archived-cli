@@ -7,11 +7,19 @@ CLI Release Notes
 Version: 4.0.0
 --------------
 
-:Release Date: 2019-059-30
+:Release Date: 2019-10-24
 
 **New Features**
 
-- End to End VNF provisioning and termination using ONAP CLI commands
+1. ONAP CLI is used to end-end automation of VNF service provision and termination for both HEAT and TOSCA based VNF service.
+
+2. Multi-level orchestration capability is made available to use and user could use python, or similar scripting/workflow engine for the same
+
+3. VNF Test Platform(VTP) has used the Open Command Platform (OCOMP) – part of ONAP CLI project, for VNF life cycle testing (create and delete)
+
+4. ONAP CLI for ONAP Dublin version is stabilized to use it for both service provisioning and testing purpose
+
+5. ONAP CLI for el alto is enabled as experimental (dev) mode
 
 **Security Notes**
 
