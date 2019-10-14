@@ -16,7 +16,7 @@ To Run OCLIP on local docker machine
 
 2. Pull cli docker image and run locally::
 
-    docker run -d --name oclip -e OPEN_CLI_MODE=daemon -p 8080:9090 -p 8080:80 nexus3.onap.org:10001/onap/cli:2.0-STAGING-latest
+    docker run -d --name oclip -e OPEN_CLI_MODE=daemon -p 9090:8080 -p 8080:80 nexus3.onap.org:10001/onap/cli:2.0-STAGING-latest
 
 Access the CLI console
 ~~~~~~~~~~~~~~~~~~~~~~
