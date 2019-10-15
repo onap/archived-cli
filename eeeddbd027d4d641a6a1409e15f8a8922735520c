@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6abc855d_6a29dec2",
+        "filename": "releases/4.0.0-container.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2019-10-15T17:25:53Z",
+      "side": 1,
+      "message": "I also do not see this in the snapshot repo:\nAll i see is https://nexus3.onap.org/#browse/browse:docker.snapshot:v2%2Fonap%2Fcli%2Ftags",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "eeeddbd027d4d641a6a1409e15f8a8922735520c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
