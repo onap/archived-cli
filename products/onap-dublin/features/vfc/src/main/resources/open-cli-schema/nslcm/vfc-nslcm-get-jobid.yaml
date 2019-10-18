@@ -1,0 +1,55 @@
+# Copyright (c) 2019, CMCC Technologies Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License")
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vfc-nslcm-get-jobid
+description: vfc nsclm get the jobid of  ns created job
+
+info:
+  product: onap-dublin
+  service: vfc
+  author: ONAP VFC Team (yangyanyj@chinamobile.com)
+
+results:
+  direction: portrait
+  attributes:
+    - name: ns-job-id
+      description: ns-job-id
+      scope: short
+      type: string
+    - name: ns-name
+      description: ns-name
+      scope: short
+      type: string
+    - name: description
+      description: description
+      scope: short
+      type: string
+
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: /api/nsd/v1/ns_descriptors
+    method: GET
+    context:
+      remove_empty_node: true
+    body: '{}'
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+  success_codes:
+    - 200
+  result_map:
+    ns-job-id: $b{$.ns-job-id}
+    ns-name: $b{$.nsName}
+    description: $b{$.description}
