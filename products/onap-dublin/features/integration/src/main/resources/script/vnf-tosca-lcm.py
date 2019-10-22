@@ -689,7 +689,7 @@ if __name__ == '__main__':
     config_file = args.config_file_path
     with open(config_file) as json_file:
         conf = json.load(json_file)
-        if not conf['ONAP']['uid']:
+        if not 'uid' in conf['ONAP']:
             conf['ONAP']['uid'] = ''.join(random.sample(string.ascii_lowercase,5))
         if vsp_csar:
             conf['vnf']['vsp-csar'] = vsp_csar
