@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66e239fd_f4ca0753",
+        "filename": "releases/4.0.0-container.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2019-10-23T17:40:53Z",
+      "side": 1,
+      "message": "I think you missed my email where I mentioned you need to change this. \n\nThis file is wrong unfortunatelly since the image was not produced by this commit nor by this job... \n:(",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 45
+      },
+      "revId": "567f23715262f5129db848d758a305bf17f7db32",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
