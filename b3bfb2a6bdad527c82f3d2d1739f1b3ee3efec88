@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51eb39a2_0635d75e",
+        "filename": "products/onap-dublin/features/vfc/src/main/resources/open-cli-schema/nslcm/vfc-nslcm-subscription-schema.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-10-23T06:34:28Z",
+      "side": 1,
+      "message": "Hi Yan, could you please use small case for name, long_option, its convention followed :). Thanks",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "b3bfb2a6bdad527c82f3d2d1739f1b3ee3efec88",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1c8aee0_7b1b5fe3",
+        "filename": "products/onap-dublin/features/vfc/src/main/resources/open-cli-schema/nslcm/vfc-nslcm-subscription-schema.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2019-10-23T06:34:28Z",
+      "side": 1,
+      "message": "if ok, pls remove _. thank you",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "b3bfb2a6bdad527c82f3d2d1739f1b3ee3efec88",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
