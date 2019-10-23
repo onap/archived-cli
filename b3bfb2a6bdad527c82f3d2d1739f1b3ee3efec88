@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0718f63_bb147871",
+        "filename": "products/onap-dublin/features/vfc/src/main/resources/open-cli-schema/nslcm/vfc-nslcm-subscription-schema.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 925
+      },
+      "writtenOn": "2019-10-23T07:34:30Z",
+      "side": 1,
+      "message": "Ok, thanks for you advice. I\u0027ll revise it according to your suggestion. Please review it again.",
+      "parentUuid": "51eb39a2_0635d75e",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "b3bfb2a6bdad527c82f3d2d1739f1b3ee3efec88",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1c8aee0_7b1b5fe3",
         "filename": "products/onap-dublin/features/vfc/src/main/resources/open-cli-schema/nslcm/vfc-nslcm-subscription-schema.yaml",
         "patchSetId": 2
