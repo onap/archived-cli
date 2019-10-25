@@ -1,0 +1,65 @@
+# Copyright (c) 2019, CMCC Technologies Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License")
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vfc-nslcm-query-multinslcmopoccs
+description: Query status information about multiple NS lifecycle management operation occurrences.
+
+info:
+  product: onap-dublin
+  service: vfc
+  author: ONAP VFC Team (yangyanyj@chinamobile.com)
+
+results:
+  direction: portrait
+  attributes:
+    - name: nslcm-opocc-id
+      description: nslcm-opocc-id
+      scope: short
+      type: string
+    - name: operation-state
+      description: operation-state
+      scope: short
+      type: string
+    - name: ns-instance-id
+      description: ns-instance-id
+      scope: short
+      type: string
+    - name: lcm-operation-type
+      description: lcm-operation-type
+      scope: short
+      type: stringstatusEnteredTime
+    - name: status-entered-time
+      description: status-entered-time
+      scope: short
+      type: string
+
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: api/nslcm/v1/ns_lcm_op_occs
+    method: GET
+    context:
+      remove_empty_node: true
+    body: '{}'
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+  success_codes:
+    - 200
+  result_map:
+    nslcm-opocc-id: $b{$.nslcmOpoccId}
+    ns-operation-state: $b{$.operationState}
+    ns-instance-id: $b{$.nsInstanceId}
+    lcm-operation-type-id: $b{$.lcmOperationType}
+    status-entered-time: $b{$.statusEnteredTime}
