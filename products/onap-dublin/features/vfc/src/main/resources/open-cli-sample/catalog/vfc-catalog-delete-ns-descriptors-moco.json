@@ -1,0 +1,28 @@
+{
+    "delete":{
+        "operationId":"api_nsd_v1_ns_descriptors_delete",
+        "description":"Delete a NSD",
+        "parameters":[
+
+        ],
+        "responses":{
+            "204":{
+                "description":"No content"
+            },
+            "500":{
+                "description":"Internal error"
+            }
+        },
+        "tags":[
+            "api"
+        ]
+    },
+    "parameters":[
+        {
+            "name":"nsdInfoId",
+            "in":"path",
+            "required":true,
+            "type":"string"
+        }
+    ]
+}
