@@ -1,0 +1,76 @@
+# Copyright (c) 2019, CMCC Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License")
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vfc-nslcm-get-ns-descriptors
+description: VFC get ns descriptors from catalog
+
+info:
+  product: onap-dublin
+  service: vfc
+  author: ONAP VFC Team (yangyanyj@chinamobile.com)
+
+parameters:
+  - name: nsd-info-id
+    description: nsd's info id
+    type: string
+    short_option: c
+    long_option: nsd-info-id
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: nsd-info-id
+      description: nsd-info-id
+      scope: short
+      type: string
+    - name: nsd-name
+      description: nsd-name
+      scope: short
+      type: string
+    - name: nsd-description
+      description: nsd-description
+      scope: short
+      type: string
+    - name: ns-package-id
+      description: ns-package-id
+      scope: short
+      type: string
+    - name: sdc-csar-id
+      description: sdc-csar-id
+      scope: short
+      type: string
+
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: api/nsd/v1/ns_descriptors/${nsd-info-id}
+    method: GET
+    context:
+      remove_empty_node: true
+    body: '{}'
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+  success_codes:
+    - 200
+  result_map:
+    nsd-info-id: $b{$.nsdId}
+    nsd-name: $b{$.nsdName}
+    nsd-description: $b{$.nsdDescription}
+    ns-package-id: $b{$.nsPackageId}
+    sdc-csar-id: $b{$.sdcCsarId }
