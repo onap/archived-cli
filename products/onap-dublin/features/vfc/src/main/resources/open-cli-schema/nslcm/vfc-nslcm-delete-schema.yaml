@@ -44,4 +44,3 @@ http:
       Accept: application/json
   success_codes:
     - 204
-
