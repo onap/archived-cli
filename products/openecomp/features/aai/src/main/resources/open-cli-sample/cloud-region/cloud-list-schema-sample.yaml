@@ -1,0 +1,16 @@
+open_cli_sample_version: 1.0
+name: cloud-list
+version: openecomp
+samples:
+  sample1:
+    name: cloud-list
+    input: -m https://192.168.235.14:30233 -u AAI -p AAI
+    moco:
+    output: |
+          +------------+----------------------+------------------+
+          |cloud       |region                |resource-version  |
+          +------------+----------------------+------------------+
+          |CloudOwner  |ONAP-POD-01-Rail-07   |1573204283780     |
+          +------------+----------------------+------------------+
+          |TEST        |TEST01                |1573627576779     |
+          +------------+----------------------+------------------+
