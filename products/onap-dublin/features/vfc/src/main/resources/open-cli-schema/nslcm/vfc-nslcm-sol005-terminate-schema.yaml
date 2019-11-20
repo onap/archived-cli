@@ -1,0 +1,55 @@
+# Copyright (c) 2019, CMCC Technologies Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License")
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#        http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: vfc-nslcm-sol-terminate
+description: vfc nsclm get the jobid of  ns created job
+
+info:
+  product: onap-dublin
+  service: vfc
+  author: ONAP VFC Team (yangyanyj@chinamobile.com)
+
+parameters:
+  - name: ns-instance-id
+    description: ns's instance id
+    type: string
+    short_option: i
+    long_option: ns-instance-id
+    is_optional: false
+
+results:
+  direction: portrait
+  attributes:
+    - name: job-id
+      description: job id
+      scope: short
+      type: string
+
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: /api/nslcm/v1/ns_instances/${ns-instance-id}/terminate
+    method: POST
+    context:
+      remove_empty_node: true
+    body: '{}'
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+  success_codes:
+    - 202
+  result_map:
+    job-id: $b{$.jobId}
