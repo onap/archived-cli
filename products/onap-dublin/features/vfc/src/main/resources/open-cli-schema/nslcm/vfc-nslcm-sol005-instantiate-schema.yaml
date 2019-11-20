@@ -13,13 +13,13 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: vfc-nslcm-sol-instantiate
-description: vfc nslcm instantiate ns with sol005 api
+name: vfc-nslcm-instantiate
+description: vfc nslcm instantiate ns
 
 info:
   product: onap-dublin
   service: vfc
-  author: ONAP VFC Team (yangyanyj@chinamobile.com)
+  author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
 parameters:
   - name: ns-instance-id
@@ -54,7 +54,7 @@ http:
     auth: none
     mode: direct
   request:
-    uri: api/nslcm/v1/ns_instances/${ns-instance-id}/instantiate
+    uri: /api/nslcm/v1/ns/${ns-instance-id}/instantiate
     method: POST
     context:
       remove_empty_node: true
@@ -69,6 +69,6 @@ http:
       Content-Type: application/json
       Accept: application/json
   success_codes:
-    - 202
+    - 200
   result_map:
     job-id: $b{$.jobId}

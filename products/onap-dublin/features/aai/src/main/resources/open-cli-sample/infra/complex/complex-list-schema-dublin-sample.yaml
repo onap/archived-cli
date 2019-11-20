@@ -8,3 +8,20 @@ samples:
     moco: complex-list-schema-dublin-moco.json
     output: |
       [{"elevation":"example-elevation-val-28399","complex-name":"clli2","country":"example-country-val-28399","resource-version":"1564454689109","latitude":"1111","data-center-code":"example-data-center-code-val-6667","region":"RegionOne","longitude":"2222"},{"elevation":"ocomp-elelation","complex-name":"ocomp-region","country":"abc","resource-version":"1567068618154","latitude":"1.0","data-center-code":"ocomp","region":"onap","longitude":"1.0"}]
+
+  sample2:
+    name: complex-list
+    input: -m https://192.168.235.14:30233 -u AAI -p AAI
+    moco: complex-list-schema-dublin-moco.json
+    output:
+          +--------------------------------+------------------------------------+------------------+----------------------------+--------------------------+----------------------------+------------------------------+------------------------------+
+          |complex-name                    |data-center-code                    |resource-version  |country                     |region                    |latitude             |longitude                     |elevation                     |
+          +--------------------------------+------------------------------------+------------------+----------------------------+--------------------------+----------------------------+------------------------------+------------------------------+
+          |example-complex-name-val-12992  |example-data-center-code-val-77883  |1573185230174     |example-country-val-98673   |example-region-val-10014  |example-latitude-val-47555  |example-longitude-val-76903   |example-elevation-val-63385   |
+          +--------------------------------+------------------------------------+------------------+----------------------------+--------------------------+----------------------------+------------------------------+------------------------------+
+          |example-complex-name-val-12992  |example-data-center-code-val-77883  |1573184581971     |example-country-val-98673   |example-region-val-10014  |example-latitude-val-47555  |example-longitude-val-76903   |example-elevation-val-63385   |
+          +--------------------------------+------------------------------------+------------------+----------------------------+--------------------------+----------------------------+------------------------------+------------------------------+
+          |example-complex-name-val-12992  |example-data-center-code-val-77883  |1573713048882     |example-country-val-98673   |example-region-val-10014  |example-latitude-val-47555  |example-longitude-val-76903   |example-elevation-val-63385   |
+          +--------------------------------+------------------------------------+------------------+----------------------------+--------------------------+----------------------------+------------------------------+------------------------------+
+          |clli1_01                        |code1                               |1574154508662     |USA                         |northwest                 |32.89948             |97.045443                     |example-elevation-val-28399   |
+          +--------------------------------+------------------------------------+------------------+----------------------------+--------------------------+----------------------------+------------------------------+------------------------------+
