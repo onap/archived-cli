@@ -34,10 +34,23 @@
     <grpc.version>1.8.0</grpc.version>
   </properties>
   <dependencies>
+<!-- netty-codec-http2 excluded due to Security Issues:- CVE-2019-9512,CVE-2019-9514,CVE-2019-9515,CVE-2019-9518,CVE-2019-16869
+ and added invulnerable netty-codec-http2 4.1.42.Final -->
     <dependency>
       <groupId>io.grpc</groupId>
       <artifactId>grpc-netty</artifactId>
       <version>${grpc.version}</version>
+       <exclusions>
+        <exclusion>
+           <groupId>io.netty</groupId>
+            <artifactId>netty-codec-http2</artifactId>
+            </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-http2</artifactId>
+        <version>4.1.42.Final</version>
     </dependency>
     <dependency>
       <groupId>io.grpc</groupId>
