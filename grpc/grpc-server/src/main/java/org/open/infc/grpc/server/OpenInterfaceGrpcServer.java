@@ -34,6 +34,7 @@ import org.onap.cli.fw.output.OnapCommandResultType;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.store.OnapCommandExecutionStore;
 import org.onap.cli.fw.store.OnapCommandExecutionStore.ExecutionStoreContext;
+import org.onap.cli.fw.utils.JsonUtil;
 import org.onap.cli.main.OnapCli;
 import org.onap.cli.main.utils.OnapCliArgsParser;
 import org.open.infc.grpc.Args;
@@ -45,7 +46,6 @@ import org.open.infc.grpc.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -245,11 +245,7 @@ public class OpenInterfaceGrpcServer {
                     // use the status from the plugin.
                     reply.setSuccess(cmd.getResult().isPassed());
 
-                    try {
-                        reply.putAttrs(OnapCommandConstants.RESULTS, new ObjectMapper().readTree(printOut).toString());
-                    } catch (IOException e) {
-                        reply.putAttrs(OnapCommandConstants.RESULTS, printOut);
-                    }
+                    reply.putAttrs(OnapCommandConstants.RESULTS, JsonUtil.convertToJsonString(printOut));
 
                     output = reply.build();
                     logger.info(output.toString());

@@ -15,13 +15,14 @@
  */
 package org.onap.cli.http.mock;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class MockJsonGenerator {
     public static void generateMocking(MockRequest mockRequest, MockResponse mockResponse,
@@ -31,9 +32,7 @@ public class MockJsonGenerator {
         mockObject.setRequest(mockRequest);
         mockObject.setResponse(mockResponse);
 
-        ObjectMapper mapper = new ObjectMapper();
-        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        writer.writeValue(new File(jsonFilePath),
-                Arrays.asList(mockObject));
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        gson.toJson(Arrays.asList(mockObject),new FileWriter(jsonFilePath));
     }
 }

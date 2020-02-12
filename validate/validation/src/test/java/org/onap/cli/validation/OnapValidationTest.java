@@ -16,6 +16,7 @@
 
 package org.onap.cli.validation;
 
+import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -41,6 +42,7 @@ import org.onap.cli.fw.error.OnapCommandInvalidSample;
 import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
+import org.onap.cli.fw.utils.JsonUtil;
 import org.onap.cli.main.OnapCli;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.moco.OnapCommandSample;
@@ -261,4 +263,13 @@ public class OnapValidationTest {
         onapCli.handle();
         assertEquals(OnapCliConstants.EXIT_SUCCESS, onapCli.getExitCode());
     }
- }
+    @Test
+    public void testOnapCommandSchemaInfoForUnknownFields(){
+        OnapCommandSchemaInfo ocsi = new OnapCommandSchemaInfo();
+        String testExp = "{\"schemaName\":\"testSchema\",\"schemaURI\":\"testUri\",\"unknownField\":\"unknown\"}";
+        ocsi= (OnapCommandSchemaInfo) JsonUtil.convertJsonStringToClassType(testExp,OnapCommandSchemaInfo.class);
+        assertNotNull(ocsi);
+    }
+
+
+}
