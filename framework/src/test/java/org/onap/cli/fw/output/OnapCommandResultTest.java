@@ -27,6 +27,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.input.OnapCommandParameterType;
+import org.onap.cli.fw.utils.JsonUtil;
 
 public class OnapCommandResultTest {
 
@@ -206,5 +207,32 @@ public class OnapCommandResultTest {
         assertEquals(expRes, result);
 
     }
+    @Test
+    public void commandResultPrintLandscapeJsonTestForGson() throws OnapCommandException {
+        OnapCommandResult res = new OnapCommandResult();
+        res.setDebugInfo("debugInfo");
+        res.setIncludeSeparator(true);
+        res.setIncludeTitle(true);
+        res.setOutput("Output");
+        res.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
+
+        OnapCommandResultAttribute att = new OnapCommandResultAttribute();
+        att.setName("param");
+        att.setDescription("description");
+        att.setType(OnapCommandParameterType.JSON);
+        att.setValues(
+                new ArrayList<String>(Arrays.asList(new String[] { "{\"id\": \"0001\",\"value\": \"result\"}" })));
+        List<OnapCommandResultAttribute> list = new ArrayList<OnapCommandResultAttribute>();
+        list.add(att);
+        res.setRecords(list);
+        res.setScope(OnapCommandResultAttributeScope.LONG);
+        res.setType(OnapCommandResultType.JSON);
+
+        String result = res.print();
+        String expRes="[{\"param\":{\"id\":\"0001\",\"value\":\"result\"}}]";
+        assertEquals(JsonUtil.convertToJsonString(expRes),result);
+
+    }
+
 
 }

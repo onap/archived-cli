@@ -128,5 +128,35 @@ public class OnapCommandParameterTest {
         param.setValue("value");
         param.validate();
     }
+    @Test
+    public void parameterObjTestForGson() throws OnapCommandInvalidParameterValue {
+        OnapCommandParameter param = new OnapCommandParameter();
+        param.setDefaultValue("defaultValue");
+        param.setDescription("description");
+        param.setLongOption("longOption");
+        param.setName("name");
+        param.setOptional(true);
+        param.setParameterType(OnapCommandParameterType.JSON);
+        param.setSecured(false);
+        param.setShortOption("shortOption");
+        param.setValue("value");
+
+        param.setParameterType(OnapCommandParameterType.ARRAY);
+        List<String> list = Arrays.asList("1", "2", "3");
+        param.setValue(list);
+        assertTrue(((List)param.getValue()).containsAll(list));
+
+        param.setRawDefaultValue("[\"1\", \"2\", \"3\", \"4\"]");
+        assertTrue(((List<String>)param.getDefaultValue())
+                .containsAll(Arrays.asList("1", "2", "3", "4")));
+
+        param.setParameterType(OnapCommandParameterType.MAP);
+        param.setRawDefaultValue("{\"testKey\":\"testValue\"}");
+        assertTrue(((Map<String, String>)param.getDefaultValue()).values().containsAll(
+                Arrays.asList("testValue")
+        ));
+    }
+
+
 
 }

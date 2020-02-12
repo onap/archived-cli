@@ -26,6 +26,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.google.gson.JsonObject;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -40,11 +41,8 @@ import org.onap.cli.fw.http.connect.HttpInput;
 import org.onap.cli.fw.http.error.OnapCommandHttpInvalidResultMap;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
+import org.onap.cli.fw.utils.JsonUtil;
 import org.onap.cli.fw.utils.OnapCommandUtils;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import net.minidev.json.JSONObject;
 
 public class OnapCommandSchemaHttpLoader {
 
@@ -416,11 +414,7 @@ public class OnapCommandSchemaHttpLoader {
         if (body == null || "".equals(body)) {
             errorList.add(OnapCommandHttpConstants.HTTP_BODY_JSON_EMPTY);
         } else {
-            try {
-                new ObjectMapper().readValue(body, JSONObject.class);
-            } catch (IOException e1) { // NOSONAR
-                errorList.add(OnapCommandHttpConstants.HTTP_BODY_FAILED_PARSING);
-            }
+            JsonUtil.convertJsonStringToClassType(body, JsonObject.class);
         }
 
         OnapCommandUtils.parseParameters(body, bodyParamNames);
