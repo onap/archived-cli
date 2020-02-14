@@ -36,6 +36,12 @@
             <groupId>org.onap.cli</groupId>
             <artifactId>cli-sample-mock-generator</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 <!--Change version from 4.3.5 to 4.5.7 due to sonatype-2017-
 0359 and CVE-2015-526.
@@ -69,11 +75,11 @@ Excluded commons-codec vulnerable version and added invulnerable version
             <artifactId>json-path</artifactId>
             <version>2.2.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.4</version>
-        </dependency>
+      <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.8.2</version>
+      </dependency>
         <dependency>
             <groupId>org.onap.cli</groupId>
             <artifactId>cli-main</artifactId>
@@ -92,6 +98,10 @@ Excluded commons-codec vulnerable version and added invulnerable version
               <exclusion>
                   <groupId>ch.qos.logback</groupId>
                   <artifactId>logback-classic</artifactId>
+              </exclusion>
+              <exclusion>
+                  <groupId>com.fasterxml.jackson.core</groupId>
+                  <artifactId>jackson-databind</artifactId>
               </exclusion>
           </exclusions>
           </dependency>

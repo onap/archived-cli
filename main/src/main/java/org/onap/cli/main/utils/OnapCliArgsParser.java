@@ -17,6 +17,9 @@
 package org.onap.cli.main.utils;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.Reader;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,27 +28,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
+import org.onap.cli.fw.utils.JsonUtil;
 import org.onap.cli.main.error.OnapCliArgumentValueMissing;
 import org.onap.cli.main.error.OnapCliInvalidArgument;
 import org.yaml.snakeyaml.Yaml;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.minidev.json.JSONObject;
 
 /**
  * Oclip CLI utilities.
  *
  */
 public class OnapCliArgsParser {
-
     /**
      * private Constructor.
      */
@@ -193,16 +195,17 @@ public class OnapCliArgsParser {
     }
 
     public static String readJsonStringFromUrl(String input, String argName) throws OnapCliInvalidArgument {
-        ObjectMapper mapper = new ObjectMapper();
         try {
             File file = new File(input);
             if (file.isFile()) {
-                return mapper.readValue(file, JSONObject.class).toJSONString();
+                FileReader reader = new FileReader(file);
+                return JsonUtil.getGsonInstance().fromJson(reader, JsonElement.class).toString();
             } else if (input.startsWith("file:") || input.startsWith("http:") || input.startsWith("ftp:")) {
                 URL jsonUrl = new URL(input);
-                return mapper.readValue(jsonUrl, JSONObject.class).toJSONString();
+                Reader reader = new InputStreamReader(jsonUrl.openStream());
+                return JsonUtil.getGsonInstance().fromJson(reader, JsonElement.class).toString();
             } else {
-                return mapper.readValue(input, JSONObject.class).toJSONString();
+                return JsonUtil.getGsonInstance().fromJson(input, JsonElement.class).toString();
             }
         } catch (IOException e) {
             throw new OnapCliInvalidArgument(argName, e);
@@ -255,22 +258,14 @@ public class OnapCliArgsParser {
     }
 
     public static List<String> convertJsonToListString(String arg, String json) throws OnapCliInvalidArgument {
-        TypeReference<List<String>> mapType = new TypeReference<List<String>>() {
+        TypeToken<List<String>> mapType = new TypeToken<List<String>>() {
         };
-        try {
-            return new ObjectMapper().readValue(json, mapType);
-        } catch (IOException e) {
-            throw new OnapCliInvalidArgument(arg, e);
-        }
+        return JsonUtil.getGsonInstance().fromJson(json, mapType.getType());
     }
 
     public static Map<String, String> convertJsonToMapString(String arg, String json) throws OnapCliInvalidArgument {
-        TypeReference<Map<String, String>> mapType = new TypeReference<Map<String, String>>() {
+        TypeToken<Map<String, String>> mapType = new TypeToken<Map<String, String>>() {
         };
-        try {
-            return new ObjectMapper().readValue(json, mapType);
-        } catch (IOException e) {
-            throw new OnapCliInvalidArgument(arg, e);
-        }
+        return JsonUtil.getGsonInstance().fromJson(json, mapType.getType());
     }
 }
