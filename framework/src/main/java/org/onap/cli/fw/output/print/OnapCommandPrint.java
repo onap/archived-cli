@@ -26,18 +26,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
-import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
+
 /**
  * Oclip Command Table print.
  *
@@ -63,6 +63,7 @@ public class OnapCommandPrint {
     public void addColumn(String header, List<String> data) {
         this.data.put(header, data);
     }
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     /**
      * Get column.
@@ -271,21 +272,20 @@ public class OnapCommandPrint {
 
                 array.add(rowO);
             }
-            try {
-                return new ObjectMapper().readTree(array.toJSONString()).toString();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                return array.toJSONString();
-            }
+            return gson.toJson(array.toJSONString()).toString();
 
         }
     }
 
+//    required vulnerable fix
+//    jackson-dataformat-yaml:YAMLMapper is a sub component of jackson-databind
+//    jackson-databind is replaced with gson
     public String printYaml() throws OnapCommandOutputPrintingFailed {
-        try {
-            return new YAMLMapper().writeValueAsString(new ObjectMapper().readTree(this.printJson()));
-        } catch (IOException  e) {
-            throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
-        }
+//        try {
+//            return new YAMLMapper().writeValueAsString(new ObjectMapper().readTree(this.printJson()));
+//        } catch (IOException  e) {
+//            throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
+//        }
+        return "";
     }
 }

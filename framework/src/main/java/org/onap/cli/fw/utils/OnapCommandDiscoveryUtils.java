@@ -31,7 +31,10 @@ import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_DIRECTORY;
 import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_PATH_PATERN;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Writer;
+import java.io.FileWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -42,6 +45,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.ServiceLoader;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -58,11 +64,10 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.yaml.snakeyaml.Yaml;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class OnapCommandDiscoveryUtils {
 
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
     /**
      * Fetch a particular schema details.
      *
@@ -150,8 +155,8 @@ public class OnapCommandDiscoveryUtils {
         String dataDir = OnapCommandDiscoveryUtils.getDataStorePath();
         try {
             File file = new File(dataDir + File.separator + DISCOVERY_FILE);
-            ObjectMapper mapper = new ObjectMapper();
-            OnapCommandSchemaInfo[] list = mapper.readValue(file, OnapCommandSchemaInfo[].class);
+            JsonReader jsonReader = new JsonReader(new FileReader(file));
+            OnapCommandSchemaInfo[] list = gson.fromJson(jsonReader, OnapCommandSchemaInfo[].class);
             schemas.addAll(Arrays.asList(list));
         } catch (IOException e) {
             throw new OnapCommandDiscoveryFailed(dataDir,
@@ -189,9 +194,9 @@ public class OnapCommandDiscoveryUtils {
                 FileUtils.forceMkdir(new File(dataDir));
 
                 File file = new File(dataDir + File.separator + DISCOVERY_FILE);
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
-                mapper.writerWithDefaultPrettyPrinter().writeValue(file, schemas);
+                try(Writer writer = new FileWriter(file)){
+                    gson.toJson(schemas,writer);
+                }
             } catch (IOException e1) {
                 throw new OnapCommandDiscoveryFailed(dataDir,
                         DISCOVERY_FILE, e1);
