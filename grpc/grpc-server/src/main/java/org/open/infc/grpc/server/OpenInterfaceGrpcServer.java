@@ -24,6 +24,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
@@ -45,7 +47,6 @@ import org.open.infc.grpc.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -58,7 +59,7 @@ public class OpenInterfaceGrpcServer {
       private static final String CONF_FILE = "oclip-grpc-server.properties";
       private static final String CONF_SERVER_PORT = "oclip.grpc_server_port";
       private static final String CONF_SERVER_HOST = "oclip.grpc_server_host";
-
+      private static Gson gson = new GsonBuilder().serializeNulls().create();
       static {
           OnapCommandConfig.addProperties(CONF_FILE);
       }
@@ -245,11 +246,7 @@ public class OpenInterfaceGrpcServer {
                     // use the status from the plugin.
                     reply.setSuccess(cmd.getResult().isPassed());
 
-                    try {
-                        reply.putAttrs(OnapCommandConstants.RESULTS, new ObjectMapper().readTree(printOut).toString());
-                    } catch (IOException e) {
-                        reply.putAttrs(OnapCommandConstants.RESULTS, printOut);
-                    }
+                    reply.putAttrs(OnapCommandConstants.RESULTS, gson.fromJson(printOut,String.class));
 
                     output = reply.build();
                     logger.info(output.toString());

@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
@@ -45,8 +47,6 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Oclip Command.
@@ -55,6 +55,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public abstract class OnapCommand {
 
     private static Logger log = LoggerFactory.getLogger(OnapCommand.class);
+
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     private String cmdDescription;
 
@@ -179,12 +181,7 @@ public abstract class OnapCommand {
             args.put(param.getName(), param.getValue().toString());
         }
 
-        try {
-            return new ObjectMapper().writeValueAsString(args);
-        } catch (JsonProcessingException e) {
-            log.error("exception occured {}", e.getMessage());
-            return "{}";
-        }
+        return gson.toJson(args);
     }
 
     /**

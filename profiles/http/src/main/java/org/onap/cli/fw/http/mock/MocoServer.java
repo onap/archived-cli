@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
@@ -32,8 +34,6 @@ import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.springframework.core.io.Resource;
 import org.yaml.snakeyaml.Yaml;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dreamhead.moco.HttpServer;
 import com.github.dreamhead.moco.Moco;
 import com.github.dreamhead.moco.ResponseHandler;
@@ -43,6 +43,7 @@ public class MocoServer {
 
     private Runner runner;
     private Map<String, Object> mocoServerConfigs = new HashMap();
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     public MocoServer(String mockFile) throws OnapCommandException {
         Resource resource = null;
@@ -69,12 +70,8 @@ public class MocoServer {
             mocoServerConfigs.put(OnapCommandHttpConstants.VERIFY_RESPONSE_STATUS, response.get(OnapCommandHttpConstants.VERIFY_RESPONSE_STATUS));
 
             if(response.get(OnapCommandHttpConstants.VERIFY_RESPONSE_JSON) != null) {
-                try {
-                    mocoServerConfigs.put(OnapCommandHttpConstants.VERIFY_RESPONSE_JSON,
-                            new ObjectMapper().writeValueAsString(response.get(OnapCommandHttpConstants.VERIFY_RESPONSE_JSON)));
-                } catch (JsonProcessingException e) {
-                   throw new OnapCommandException("Invalid mocking file" + mockFile, e);
-                }
+                mocoServerConfigs.put(OnapCommandHttpConstants.VERIFY_RESPONSE_JSON,
+                        gson.toJson(response.get(OnapCommandHttpConstants.VERIFY_RESPONSE_JSON)));
             }
         }
     }

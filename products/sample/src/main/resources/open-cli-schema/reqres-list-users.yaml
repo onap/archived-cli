@@ -1,0 +1,45 @@
+open_cli_schema_version: 1.0
+name: list-users
+description: |
+  Place this OCS YAML under $OPEN_CLI_HOME/open-cli-schema folder. Then run the commands
+  oclip schema-refresh
+
+  It is used to display the temparature and wind speed details from https://openweathermap.org.
+  Try to add new commands to display different weather details by exploring this site.
+
+  Sample usage:
+  oclip --product tutorial list-users --host-url http://reqres.in
+
+info:
+  product: tutorial
+  service: learning
+  author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
+
+results:
+  direction: landscape
+  attributes:
+    - name: FirstName
+      description: FirstName
+      scope: short
+      type: string
+    - name: LastName
+      description: LastName
+      scope: short
+      type: string
+    - name: Email
+      description: Email
+      scope: short
+      type: string
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: /api/users?page=2
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    FirstName: $b{$.data.[*].first_name}
+    LastName: $b{$.data.[*].last_name}
+    Email: $b{$.data.[*].email}

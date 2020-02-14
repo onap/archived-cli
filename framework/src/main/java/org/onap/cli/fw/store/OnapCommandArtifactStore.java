@@ -17,6 +17,7 @@
 package org.onap.cli.fw.store;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -33,6 +34,9 @@ import java.util.TimeZone;
 
 import javax.xml.bind.DatatypeConverter;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
@@ -43,10 +47,10 @@ import org.onap.cli.fw.error.OnapCommandArtifactNotFound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OnapCommandArtifactStore {
     private static Logger log = LoggerFactory.getLogger(OnapCommandArtifactStore.class);
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     private static boolean storeReady = false;
 
@@ -180,7 +184,7 @@ public class OnapCommandArtifactStore {
             artifact.setCreateAt(dateFormatter.format(new Date()));
             artifact.setLastUpdatedAt(artifact.getCreateAt());
 
-            FileUtils.writeStringToFile(new File(storePath), new ObjectMapper().writeValueAsString(artifact));
+            FileUtils.writeStringToFile(new File(storePath), gson.toJson(artifact));
         } catch (NoSuchAlgorithmException | IOException e) {
             //It is expected that this never occurs
             log.error("Failed to store the artifact at " + storePath);
@@ -197,7 +201,7 @@ public class OnapCommandArtifactStore {
         }
 
         try {
-            return new ObjectMapper().readValue(FileUtils.readFileToString(aFile), Artifact.class);
+            return gson.fromJson(FileUtils.readFileToString(aFile), Artifact.class);
         } catch (IOException e) {
             //It is expected that this never occurs
             log.error("Failed to retrieve the artifact at " + storePath);
@@ -235,7 +239,8 @@ public class OnapCommandArtifactStore {
             }
         }*/)) {
             try {
-                artifacts.add(new ObjectMapper().readValue(file, Artifact.class));
+                JsonReader jsonReader = new JsonReader(new FileReader(file));
+                artifacts.add(gson.fromJson(jsonReader, Artifact.class));
             } catch (IOException e) {
                 //It is expected that this never occurs
                 log.error("While seraching Failed to retrieve the artifact at " + file.getAbsolutePath());
@@ -302,8 +307,7 @@ public class OnapCommandArtifactStore {
 
                 artifact.setMetadata(existing.getMetadata());
             }
-
-            FileUtils.writeStringToFile(new File(newStorePath), new ObjectMapper().writeValueAsString(artifact));
+            FileUtils.writeStringToFile(new File(newStorePath), gson.toJson(artifact));
 
             if (!newStorePath.equalsIgnoreCase(existingStorePath)) {
                 this.deleteArtifact(name, category);
