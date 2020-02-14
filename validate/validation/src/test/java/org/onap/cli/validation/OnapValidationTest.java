@@ -16,9 +16,6 @@
 
 package org.onap.cli.validation;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -41,12 +38,19 @@ import org.onap.cli.fw.error.OnapCommandInvalidSample;
 import org.onap.cli.fw.error.OnapCommandProductVersionInvalid;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
+import org.onap.cli.http.mock.utils.JsonUtil;
 import org.onap.cli.main.OnapCli;
 import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.moco.OnapCommandSample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
+
+
+import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 
 public class OnapValidationTest {
 
@@ -261,4 +265,13 @@ public class OnapValidationTest {
         onapCli.handle();
         assertEquals(OnapCliConstants.EXIT_SUCCESS, onapCli.getExitCode());
     }
- }
+
+    @Test
+    public void testOnapCommandSchemaInfoForUnknownFields(){
+        OnapCommandSchemaInfo ocsi = new OnapCommandSchemaInfo();
+        String testExp = "{\"schemaName\":\"testSchema\",\"schemaURI\":\"testUri\",\"unknownField\":\"unknown\"}";
+        ocsi= JsonUtil.gson.fromJson(testExp,OnapCommandSchemaInfo.class);
+        assertNotNull(ocsi);
+    }
+
+}

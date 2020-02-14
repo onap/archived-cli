@@ -40,13 +40,12 @@ import org.onap.cli.fw.schema.OnapCommandSchemaMerger;
 import org.onap.cli.fw.store.OnapCommandArtifactStore;
 import org.onap.cli.fw.store.OnapCommandArtifactStore.Artifact;
 import org.onap.cli.fw.store.OnapCommandExecutionStore.ExecutionStoreContext;
+import org.onap.cli.fw.utils.JsonUtil;
 import org.onap.cli.fw.utils.OnapCommandHelperUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Oclip Command.
@@ -179,12 +178,7 @@ public abstract class OnapCommand {
             args.put(param.getName(), param.getValue().toString());
         }
 
-        try {
-            return new ObjectMapper().writeValueAsString(args);
-        } catch (JsonProcessingException e) {
-            log.error("exception occured {}", e.getMessage());
-            return "{}";
-        }
+        return JsonUtil.gson.toJson(args);
     }
 
     /**

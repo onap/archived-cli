@@ -16,14 +16,16 @@
 
 package org.onap.cli.http.mock;
 
+
+import com.google.gson.JsonElement;
+import org.onap.cli.http.mock.utils.JsonUtil;
+
 import java.io.IOException;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MockResponse {
     private int status;
-    private JsonNode json;
+    private JsonElement json;
 
     public int getStatus() {
         return status;
@@ -33,17 +35,16 @@ public class MockResponse {
         this.status = status;
     }
 
-    public JsonNode getJson() {
+    public JsonElement getJson() {
         return json;
     }
 
     public void setJson(String json) throws IOException {
         if (json != null && !json.isEmpty()) {
             try {
-                ObjectMapper objectMapper = new ObjectMapper();
-                this.json = objectMapper.readTree(json);
+                this.json = JsonUtil.gson.fromJson(json,JsonElement.class);
             } catch (Exception e) {
-                this.json = new ObjectMapper().readTree("{}");
+                this.json = JsonUtil.gson.fromJson("{}",JsonElement.class);
             }
         }
     }

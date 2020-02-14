@@ -25,6 +25,9 @@ import org.onap.cli.fw.error.OnapCommandArtifactContentNotExist;
 import org.onap.cli.fw.error.OnapCommandArtifactNotFound;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,4 +86,30 @@ public class OnapCommandArtifactStoreTest {
     public void listArtifactTest() throws OnapCommandArtifactNotFound {
         assertNotNull(onapCommandArtifactStore.listArtifact("category","namePattern"));
     }
+    @Test
+    public void createArtifactTestForGson() throws OnapCommandArtifactContentChecksumNotMatch, OnapCommandArtifactAlreadyExist, OnapCommandArtifactContentNotExist, OnapCommandArtifactNotFound {
+        assertNotNull(onapCommandArtifactStore.createArtifact(artifact));
+        String artifactPath=System.getProperty("user.dir")+File.separator+"data/artifacts";
+        File artifactFile= new File(artifactPath+File.separator+"artifact__category.json");
+        assertTrue(artifactFile.exists());
+        onapCommandArtifactStore.deleteArtifact("artifact","category");
+
+    }
+
+    @Test
+    public void listArtifactTestForGson() throws OnapCommandArtifactNotFound, IOException {
+        String basePath= System.getProperty("user.dir")+File.separator+"data/artifacts/testFile.json";
+        File testFile = new File(basePath);
+        if (!testFile.exists())
+            testFile.createNewFile();
+        BufferedWriter writer = new BufferedWriter(new FileWriter(testFile));
+        String content = "{\"name\": \"name\",\"description\": \"description\",\"categoty\": \"categoty\",\"checksum\": \"checksum\",\"size\": 100,\"createAt\": \"createAt\",\"lastUpdatedAt\":\"lastUpdatedAt\",\"path\": \"path\",\"metadata\": {}}";
+        writer.write(content);
+        writer.close();
+        assertNotNull(onapCommandArtifactStore.listArtifact("category","namePattern"));
+
+        testFile.delete();
+    }
+
+
 }
