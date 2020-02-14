@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import com.google.gson.Gson;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
@@ -45,7 +46,6 @@ import org.open.infc.grpc.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -245,11 +245,8 @@ public class OpenInterfaceGrpcServer {
                     // use the status from the plugin.
                     reply.setSuccess(cmd.getResult().isPassed());
 
-                    try {
-                        reply.putAttrs(OnapCommandConstants.RESULTS, new ObjectMapper().readTree(printOut).toString());
-                    } catch (IOException e) {
-                        reply.putAttrs(OnapCommandConstants.RESULTS, printOut);
-                    }
+                    String str = new Gson().fromJson(printOut,String.class);
+                    reply.putAttrs(OnapCommandConstants.RESULTS, str);
 
                     output = reply.build();
                     logger.info(output.toString());

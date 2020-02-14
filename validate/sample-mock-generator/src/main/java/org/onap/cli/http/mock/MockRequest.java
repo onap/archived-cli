@@ -16,19 +16,19 @@
 
 package org.onap.cli.http.mock;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MockRequest {
     private String method;
     private String uri;
     private Map<String, String> headers;
-    private JsonNode json;
+    private JsonElement json;
 
     public String getMethod() {
         return method;
@@ -56,17 +56,17 @@ public class MockRequest {
         this.headers = headers;
     }
 
-    public JsonNode getJson() {
+    public JsonElement getJson() {
         return json;
     }
 
     public void setJson(String json) throws IOException {
         if (!json.isEmpty()) {
+            Gson gson = new Gson();
             try {
-                ObjectMapper objectMapper = new ObjectMapper();
-                this.json = objectMapper.readTree(json);
+                this.json = gson.fromJson(json,JsonElement.class);
             } catch (Exception e) {
-                this.json = new ObjectMapper().readTree("{}");
+                this.json = gson.fromJson("{}",JsonElement.class);
             }
         }
 
