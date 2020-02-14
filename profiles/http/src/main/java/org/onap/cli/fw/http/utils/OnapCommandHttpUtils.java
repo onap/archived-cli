@@ -16,13 +16,14 @@
 
 package org.onap.cli.fw.http.utils;
 
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
+import com.google.gson.JsonElement;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandParameterNotFound;
@@ -36,12 +37,11 @@ import org.onap.cli.fw.http.error.OnapCommandHttpInvalidRequestBody;
 import org.onap.cli.fw.http.error.OnapCommandHttpInvalidResponseBody;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
+import org.onap.cli.fw.utils.JsonUtil;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 
@@ -277,26 +277,31 @@ public class OnapCommandHttpUtils {
         }
     }
 
-    public static void normalizeJson(JsonNode node) {
-        Iterator<JsonNode> it = node.iterator();
+    public static void normalizeJson(JsonElement node) {
+        Iterator<Entry<String, JsonElement>> it = node.getAsJsonObject().entrySet().iterator();
         while (it.hasNext()) {
-            JsonNode child = it.next();
-            if (child.isTextual() && child.asText().equals(""))
+            JsonElement child = (JsonElement) it.next().getValue();
+            if (child.isJsonPrimitive() && child.getAsString().equals(""))
                 it.remove();
-            else  if (child.isNull())
+            else  if (child.isJsonNull())
                 it.remove();
-            else
+            else if (child.isJsonObject())
                 normalizeJson(child);
+            else if (child.isJsonArray()) {
+                for (JsonElement ele:child.getAsJsonArray()) {
+                    if (ele.isJsonObject())
+                        normalizeJson(ele);
+                }
+            }
         }
     }
 
     public static String normalizeJson(String json) throws OnapCommandHttpInvalidRequestBody {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode node;
+        JsonElement node;
         try {
-            node = mapper.readTree(json);
+            node = (JsonElement) JsonUtil.convertJsonStringToClassType(json,JsonElement.class);
             normalizeJson(node);
-            return mapper.writeValueAsString(node);
+            return JsonUtil.convertToJsonString(node);
         } catch (Exception e) {  //NOSONAR
             throw new OnapCommandHttpInvalidRequestBody(e);
         }

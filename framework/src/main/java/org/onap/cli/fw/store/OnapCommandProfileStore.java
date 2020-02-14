@@ -19,8 +19,12 @@ package org.onap.cli.fw.store;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_PROFILE_JSON;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.Writer;
+import java.io.FileWriter;
+import java.io.Reader;
+import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -35,10 +39,10 @@ import org.onap.cli.fw.error.OnapCommandPersistProfileFailed;
 import org.onap.cli.fw.error.OnapCommandProfileLoadFailed;
 import org.onap.cli.fw.error.OnapCommandProfileNotFound;
 import org.onap.cli.fw.input.cache.OnapCommandParamEntity;
+import org.onap.cli.fw.utils.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OnapCommandProfileStore {
     private static Logger log = LoggerFactory.getLogger(OnapCommandProfileStore.class);
@@ -47,7 +51,6 @@ public class OnapCommandProfileStore {
     private static OnapCommandProfileStore single = null;
 
     private String profileName = OnapCommandConstants.PARAM_CACHE_FILE_NAME;
-
     static {
         try {
             FileUtils.forceMkdir(new File(getDataStorePath()));
@@ -167,8 +170,9 @@ public class OnapCommandProfileStore {
             String dataDir = getDataStorePath();
             try {
                 File file = new File(dataDir + File.separator + profileName + DATA_PATH_PROFILE_JSON);
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.writerWithDefaultPrettyPrinter().writeValue(file, params);
+                try (Writer writer = new FileWriter(file)){
+                    JsonUtil.getGsonInstance().toJson(params,writer);
+                }
             } catch (IOException e1) {
                 throw new OnapCommandPersistProfileFailed(e1);
             }
@@ -181,8 +185,8 @@ public class OnapCommandProfileStore {
         try {
             File file = new File(dataDir + File.separator + profileName + DATA_PATH_PROFILE_JSON);
             if (file.exists()) {
-                ObjectMapper mapper = new ObjectMapper();
-                OnapCommandParamEntity[] list = mapper.readValue(file, OnapCommandParamEntity[].class);
+                Reader jsonReader = new FileReader(file);
+                OnapCommandParamEntity[] list = JsonUtil.getGsonInstance().fromJson(jsonReader, OnapCommandParamEntity[].class);
                 params.addAll(Arrays.asList(list));
 //            } else {
 //                throw new OnapCommandProfileNotFound(profileName);
