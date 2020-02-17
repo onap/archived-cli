@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a14b13ae_6ded2420",
+        "filename": "framework/src/main/java/org/onap/cli/fw/input/OnapCommandParameter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "remove it.",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd1f2710_72596e9c",
+        "filename": "framework/src/main/java/org/onap/cli/fw/output/print/OnapCommandPrint.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "add note to impl. required valunerable fix",
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2ff23f_9d9c06dc",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandArtifactStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "remove it and use it directly without creating var",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f2b447f_9732a5c4",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandProfileStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "add only required classes",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e29b18a3_20a1c8dc",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandProfileStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 12
+      },
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b6d499e_e71f2443",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/JsonUtil.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "return gson.",
+      "range": {
+        "startLine": 27,
+        "startChar": 15,
+        "endLine": 27,
+        "endChar": 59
+      },
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5268b337_21530d47",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 33,
+        "startChar": 14,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58821b26_fe9e23c8",
+        "filename": "grpc/grpc-server/src/main/java/org/open/infc/grpc/server/OpenInterfaceGrpcServer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "why not JsonUtil",
+      "range": {
+        "startLine": 248,
+        "startChar": 33,
+        "endLine": 248,
+        "endChar": 43
+      },
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f80e2498_77ec3aee",
+        "filename": "main/src/main/java/org/onap/cli/main/utils/OnapCliArgsParser.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "consistent with JsonUtil usage",
+      "range": {
+        "startLine": 49,
+        "startChar": 34,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14665abe_ab8fbe75",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/utils/OnapCommandHttpUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-17T10:43:57Z",
+      "side": 1,
+      "message": "unit testing?",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 5
+      },
+      "revId": "0c208a4fc31adc7fd629835dfe033d88d0ae43a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
