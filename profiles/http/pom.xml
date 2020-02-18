@@ -37,11 +37,27 @@
             <artifactId>cli-sample-mock-generator</artifactId>
             <version>${project.version}</version>
         </dependency>
+<!--Change version from 4.3.5 to 4.5.7 due to sonatype-2017-
+0359 and CVE-2015-526.
+Excluded commons-codec vulnerable version and added invulnerable version
+
+ -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.3.5</version>
+            <version>4.5.7</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+      <dependency>
+          <groupId>commons-codec</groupId>
+          <artifactId>commons-codec</artifactId>
+          <version>1.13</version>
+      </dependency>
         <dependency>
           <groupId>org.apache.httpcomponents</groupId>
           <artifactId>httpmime</artifactId>
