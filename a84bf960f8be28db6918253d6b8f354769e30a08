@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfaf9ee7_670c420f",
+        "filename": "framework/src/test/java/org/onap/cli/fw/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-19T11:40:20Z",
+      "side": 1,
+      "message": "fix it",
+      "range": {
+        "startLine": 58,
+        "startChar": 31,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "a84bf960f8be28db6918253d6b8f354769e30a08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
