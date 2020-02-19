@@ -35,7 +35,8 @@ import javax.net.ssl.X509TrustManager;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.annotation.NotThreadSafe;
+import org.apache.http.annotation.Contract;
+import org.apache.http.annotation.ThreadingBehavior;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
@@ -372,7 +373,7 @@ public class OnapHttpConnection {
         }
     }
 
-    @NotThreadSafe
+     @Contract(threading = ThreadingBehavior.UNSAFE) 
     static class HttpDeleteWithBody extends HttpEntityEnclosingRequestBase {
 
         public HttpDeleteWithBody() {

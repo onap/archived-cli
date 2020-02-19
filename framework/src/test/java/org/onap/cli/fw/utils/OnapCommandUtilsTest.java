@@ -59,6 +59,7 @@ import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertNotNull;
 import static org.onap.cli.fw.conf.OnapCommandConstants.IS_INCLUDE;
 import static org.onap.cli.fw.input.OnapCommandParameterType.ARRAY;
 import static org.onap.cli.fw.input.OnapCommandParameterType.BOOL;
@@ -512,5 +513,10 @@ public class OnapCommandUtilsTest {
                 }
             }
         };
+     }
+@Test
+    public void testMd5(){
+        assertNotNull(OnapCommandUtils.md5("a"));
     }
+
 }

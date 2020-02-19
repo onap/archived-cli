@@ -54,20 +54,24 @@
             <artifactId>commons-csv</artifactId>
             <version>1.3</version>
         </dependency>
+<!-- Change version from 1.9 to 1.13 due to "sonatype-2012-
+0050" for commons-codec -->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.9</version>
+            <version>1.13</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-io</artifactId>
             <version>1.3.2</version>
         </dependency>
+<!-- Change version from 3.2.9 to 5.1.2 due to "sonatype-2015-
+0327" for spring-core -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>3.2.9.RELEASE</version>
+            <version>5.1.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
