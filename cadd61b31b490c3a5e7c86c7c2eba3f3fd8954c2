@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9229c219_c7b5fa60",
+        "filename": "deployment/zip/src/main/release/conf/log4j2.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T05:56:56Z",
+      "side": 1,
+      "message": "add url for this file naming and guidelines in a comment section",
+      "revId": "cadd61b31b490c3a5e7c86c7c2eba3f3fd8954c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8c83603_22d53e48",
+        "filename": "framework/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T05:56:56Z",
+      "side": 1,
+      "message": "can you please find url and add ref for this version is not vulnerable. thx",
+      "revId": "cadd61b31b490c3a5e7c86c7c2eba3f3fd8954c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0151363d_ffaea57c",
+        "filename": "profiles/snmp/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T05:56:56Z",
+      "side": 1,
+      "message": "can you pls make sure this is tested. thx",
+      "revId": "cadd61b31b490c3a5e7c86c7c2eba3f3fd8954c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
