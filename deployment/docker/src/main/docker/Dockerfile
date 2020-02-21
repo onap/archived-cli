@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM openjdk:8-jre-slim
+FROM openjdk:11.0.5-jre-slim
 
 ENV OPEN_CLI_HOME=/opt/oclip \
     OPEN_CLI_DEBUG=false \
