@@ -47,11 +47,14 @@ RUN apt-get update && apt-get install -y lighttpd git curl pandoc vim && \
     if [ ! -d  /var/www-data/servers/open-cli/ ]; then mkdir -p /var/www-data/servers/open-cli/; fi  && \
     cp $OPEN_CLI_HOME/http/web/*.* /var/www-data/servers/open-cli/ && \
     cp $OPEN_CLI_HOME/http/lighttpd/10-proxy.conf /etc/lighttpd/conf-enabled/ && \
-    cp $OPEN_CLI_HOME/installer/cli-*.zip /var/www-data/servers/open-cli/oclip.zip
+    cp $OPEN_CLI_HOME/installer/cli-*.zip /var/www-data/servers/open-cli/oclip.zip && \
+    cp $OPEN_CLI_HOME/http/web/ocomp.crt ~/.gotty.crt && \
+    cp $OPEN_CLI_HOME/http/web/ocomp.key ~/.gotty.key
+    #openssl req -x509 -nodes -days 9999 -newkey rsa:2048 -keyout ~/.ocomp.key -out ~/.ocomp.crt -subj "/C=IN/ST=KA/L=BLR/O=CLI/CN=onap"
 EXPOSE 80
 EXPOSE 8080
 EXPOSE 50051
-ENTRYPOINT if [ "$OPEN_CLI_MODE" = "daemon" ]; then service lighttpd start; gotty --permit-write --reconnect oclip; \
+ENTRYPOINT if [ "$OPEN_CLI_MODE" = "daemon" ]; then service lighttpd start; gotty -t --permit-write --reconnect oclip; \
            elif [ "$OPEN_CLI_MODE" = "ocs-web" ]; then echo "****** OCLIP Web Command Server ******"; service lighttpd start; \
            elif [ "$OPEN_CLI_MODE" = "ocs-grpc" ]; then echo "****** OCLIP gRPC Command Server ******"; oclip-grpc; \
            elif [ "$OPEN_CLI_MODE" = "occ" ]; then echo "****** OCLIP Web Command Console (OCC) ******"; gotty --permit-write --reconnect oclip; \
