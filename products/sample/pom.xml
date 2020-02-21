@@ -32,6 +32,10 @@
     <packaging>jar</packaging>
     <build>
         <plugins>
+            <!--SonarCloud migration from SonarQube -->
+            <plugin><groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-dependency-plugin</artifactId>
