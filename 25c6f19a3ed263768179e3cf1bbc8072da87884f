@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06091d39_f3e2e4e2",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T12:03:41Z",
+      "side": 1,
+      "message": "add version",
+      "revId": "25c6f19a3ed263768179e3cf1bbc8072da87884f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0951a2ee_33a26d98",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T12:03:41Z",
+      "side": 1,
+      "message": "check with test, refer https://mkyong.com/maven/maven-jacoco-code-coverage-example/",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "25c6f19a3ed263768179e3cf1bbc8072da87884f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
