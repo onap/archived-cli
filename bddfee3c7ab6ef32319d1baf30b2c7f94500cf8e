@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "674bc3f9_ae5c3962",
+        "filename": "framework/src/main/java/org/onap/cli/fw/output/print/OnapCommandPrint.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T12:29:50Z",
+      "side": 1,
+      "message": "Add proper comment above this method on why its commented. create an CLI JIRA and add the JIRA link here",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 18
+      },
+      "revId": "bddfee3c7ab6ef32319d1baf30b2c7f94500cf8e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b441b2d3_c4aa5ac2",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandProfileStore.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T12:29:50Z",
+      "side": 1,
+      "message": "combine into one",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 173,
+        "endChar": 19
+      },
+      "revId": "bddfee3c7ab6ef32319d1baf30b2c7f94500cf8e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a70f806f_1bb484e1",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandProfileStore.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T12:29:50Z",
+      "side": 1,
+      "message": "keep right formatting",
+      "range": {
+        "startLine": 174,
+        "startChar": 60,
+        "endLine": 174,
+        "endChar": 61
+      },
+      "revId": "bddfee3c7ab6ef32319d1baf30b2c7f94500cf8e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daf81be2_69cd39c2",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/JsonUtil.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T12:29:50Z",
+      "side": 1,
+      "message": "check for thread sharing issues, otherwise fix the below method",
+      "range": {
+        "startLine": 24,
+        "startChar": 19,
+        "endLine": 24,
+        "endChar": 75
+      },
+      "revId": "bddfee3c7ab6ef32319d1baf30b2c7f94500cf8e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8a1f658_28c8f542",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/JsonUtil.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-21T12:29:50Z",
+      "side": 1,
+      "message": "not required. as it looks like a wrapper over gson methods",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "bddfee3c7ab6ef32319d1baf30b2c7f94500cf8e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
