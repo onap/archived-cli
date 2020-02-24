@@ -30,6 +30,16 @@
     <artifactId>cli-validation</artifactId>
     <name>cli/validate/validation</name>
     <packaging>jar</packaging>
+    <!--Step-1:- SonarCloud migration from SonarQube -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.language>java</sonar.language>
+        <sonar.surefire.reportsPath>${project.build.directory}/surefire-reports</sonar.surefire.reportsPath>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco-ut/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.jacoco.reportMissing.force.zero>true</sonar.jacoco.reportMissing.force.zero>
+        <sonar.projectVersion>${project.version}</sonar.projectVersion>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -134,4 +144,29 @@
            </plugin>
         </plugins>
     </build> -->
+    <build><plugins>
+        <!--Step-2:- SonarCloud migration from SonarQube -->
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>prepare-agent</id>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>report</id>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                    <configuration>
+                        <dataFile>${project.build.directory}/code-coverage/jacoco.exec</dataFile>
+                        <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins></build>
 </project>
