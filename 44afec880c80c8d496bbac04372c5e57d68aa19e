@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3ff3a73_c9895f67",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/JsonUtil.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-24T05:39:05Z",
+      "side": 1,
+      "message": "csn you remove this class and use the gson in respective class where its used. thx",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "44afec880c80c8d496bbac04372c5e57d68aa19e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
