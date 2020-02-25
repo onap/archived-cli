@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebdd97f9_035e2fd4",
+        "filename": "framework/src/main/java/org/onap/cli/fw/cmd/OnapCommand.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-25T06:37:41Z",
+      "side": 1,
+      "message": "take care of execptions",
+      "revId": "8f0ac0f77cb39e66d5b9aa4a2501431dab339720",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cc88455_da311b73",
+        "filename": "framework/src/main/java/org/onap/cli/fw/output/print/OnapCommandPrint.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-25T06:37:41Z",
+      "side": 1,
+      "message": "keep at the right place",
+      "revId": "8f0ac0f77cb39e66d5b9aa4a2501431dab339720",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bf4e9bd_156c6a8b",
+        "filename": "framework/src/main/java/org/onap/cli/fw/output/print/OnapCommandPrint.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-25T06:37:41Z",
+      "side": 1,
+      "message": "JIRA ?",
+      "revId": "8f0ac0f77cb39e66d5b9aa4a2501431dab339720",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04796bab_b659197c",
+        "filename": "main/src/main/java/org/onap/cli/main/utils/OnapCliArgsParser.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-25T06:37:41Z",
+      "side": 1,
+      "message": "take care of stream closing",
+      "range": {
+        "startLine": 205,
+        "startChar": 16,
+        "endLine": 205,
+        "endChar": 33
+      },
+      "revId": "8f0ac0f77cb39e66d5b9aa4a2501431dab339720",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7b3eb30_d01df071",
+        "filename": "products/sample/src/main/resources/open-cli-schema/reqres-list-users.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-25T06:37:41Z",
+      "side": 1,
+      "message": "change to product: test, service:ut",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "8f0ac0f77cb39e66d5b9aa4a2501431dab339720",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b68c007d_e8cc2cd1",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/utils/OnapCommandHttpUtils.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-25T06:37:41Z",
+      "side": 1,
+      "message": "change to text equivalent",
+      "range": {
+        "startLine": 286,
+        "startChar": 24,
+        "endLine": 286,
+        "endChar": 37
+      },
+      "revId": "8f0ac0f77cb39e66d5b9aa4a2501431dab339720",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b01c12e1_1b175681",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/utils/OnapCommandHttpUtils.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-25T06:37:41Z",
+      "side": 1,
+      "message": "not required.",
+      "range": {
+        "startLine": 294,
+        "startChar": 20,
+        "endLine": 294,
+        "endChar": 43
+      },
+      "revId": "8f0ac0f77cb39e66d5b9aa4a2501431dab339720",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
