@@ -47,11 +47,21 @@
             </exclusion>
       </exclusions>
     </dependency>
+      <!-- excluded netty-codec-http and added invulnerable version -->
     <dependency>
         <groupId>io.netty</groupId>
         <artifactId>netty-codec-http2</artifactId>
         <version>4.1.42.Final</version>
+        <exclusions><exclusion>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec-http</artifactId>
+        </exclusion></exclusions>
     </dependency>
+      <dependency>
+          <groupId>io.netty</groupId>
+          <artifactId>netty-codec-http</artifactId>
+          <version>4.1.45.Final</version>
+      </dependency>
     <dependency>
       <groupId>io.grpc</groupId>
       <artifactId>grpc-protobuf</artifactId>

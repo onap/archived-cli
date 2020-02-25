@@ -87,6 +87,8 @@ Excluded commons-codec vulnerable version and added invulnerable version
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
+      <!--excluded netty-handler -->
+      <!-- excluded netty-codec-http and added invulnerable version -->
         <dependency>
           <groupId>com.github.dreamhead</groupId>
           <artifactId>moco-runner</artifactId>
@@ -100,8 +102,21 @@ Excluded commons-codec vulnerable version and added invulnerable version
                   <groupId>ch.qos.logback</groupId>
                   <artifactId>logback-classic</artifactId>
               </exclusion>
+              <exclusion>
+                  <groupId>io.netty</groupId>
+                  <artifactId>netty-handler</artifactId>
+              </exclusion>
+            <exclusion>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec-http</artifactId>
+            </exclusion>
           </exclusions>
           </dependency>
+      <dependency>
+          <groupId>io.netty</groupId>
+          <artifactId>netty-codec-http</artifactId>
+          <version>4.1.45.Final</version>
+      </dependency>
           <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
