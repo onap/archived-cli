@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f4c67ff_114675a2",
+        "filename": "main/src/main/java/org/onap/cli/main/utils/OnapCliArgsParser.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-26T06:34:24Z",
+      "side": 1,
+      "message": "move to finally block",
+      "range": {
+        "startLine": 211,
+        "startChar": 15,
+        "endLine": 211,
+        "endChar": 31
+      },
+      "revId": "7dcaf7c17d3ae398d0fb295c2423eebdeb300f0a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
