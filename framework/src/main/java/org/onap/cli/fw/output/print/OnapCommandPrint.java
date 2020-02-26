@@ -16,6 +16,16 @@
 
 package org.onap.cli.fw.output.print;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
+import net.minidev.json.JSONValue;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
+import org.onap.cli.fw.output.OnapCommandPrintDirection;
+
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -26,23 +36,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
-import org.onap.cli.fw.conf.OnapCommandConstants;
-import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
-import org.onap.cli.fw.output.OnapCommandPrintDirection;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
-import net.minidev.json.JSONValue;
 /**
  * Oclip Command Table print.
  *
  */
 public class OnapCommandPrint {
+
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     public static final int MAX_COLUMN_LENGTH = 50;
 
@@ -272,8 +272,8 @@ public class OnapCommandPrint {
                 array.add(rowO);
             }
             try {
-                return new ObjectMapper().readTree(array.toJSONString()).toString();
-            } catch (IOException e) {
+                return gson.toJson(array.toJSONString()).toString();
+            } catch (Exception e) { // NOSONAR
                 // TODO Auto-generated catch block
                 return array.toJSONString();
             }
@@ -281,11 +281,19 @@ public class OnapCommandPrint {
         }
     }
 
+    /*
+        required vulnerable fix
+        jackson-dataformat-yaml:YAMLMapper is a sub component of jackson-databind
+        jackson-databind is replaced with gson
+        JIRA: CLI-251
+     */
     public String printYaml() throws OnapCommandOutputPrintingFailed {
-        try {
+     /*   try {
             return new YAMLMapper().writeValueAsString(new ObjectMapper().readTree(this.printJson()));
         } catch (IOException  e) {
             throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
         }
+     */
+     return "";
     }
 }
