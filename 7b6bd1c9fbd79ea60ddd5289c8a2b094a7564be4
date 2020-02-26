@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d239349_ac9231f6",
+        "filename": "profiles/http/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-26T16:15:39Z",
+      "side": 1,
+      "message": "there is not corresponding inclustion of this jar below and how the testing is passed?",
+      "range": {
+        "startLine": 107,
+        "startChar": 29,
+        "endLine": 107,
+        "endChar": 43
+      },
+      "revId": "7b6bd1c9fbd79ea60ddd5289c8a2b094a7564be4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
