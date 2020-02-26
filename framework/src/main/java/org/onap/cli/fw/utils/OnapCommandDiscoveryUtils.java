@@ -16,24 +16,33 @@
 
 package org.onap.cli.fw.utils;
 
-import static org.onap.cli.fw.conf.OnapCommandConstants.ATTRIBUTES;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DEAFULT_INPUT_PARAMETERS_NAME;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DEFAULT_SCHEMA_PATH_PATERN;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DESCRIPTION;
-import static org.onap.cli.fw.conf.OnapCommandConstants.DISCOVERY_FILE;
-import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_PARAM;
-import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
-import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SAMPLE_VERSION;
-import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
-import static org.onap.cli.fw.conf.OnapCommandConstants.PARAMETERS;
-import static org.onap.cli.fw.conf.OnapCommandConstants.RESULTS;
-import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_DIRECTORY;
-import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_PATH_PATERN;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
+import org.apache.commons.io.FileUtils;
+import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.conf.OnapCommandConfig;
+import org.onap.cli.fw.conf.OnapCommandConstants;
+import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
+import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
+import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.error.OnapCommandInstantiationFailed;
+import org.onap.cli.fw.error.OnapCommandInvalidSample;
+import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import org.onap.cli.fw.error.OnapCommandNotFound;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
+import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.io.File;
+import java.io.Reader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Writer;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -42,26 +51,23 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.ServiceLoader;
 
-import org.apache.commons.io.FileUtils;
-import org.onap.cli.fw.cmd.OnapCommand;
-import org.onap.cli.fw.conf.OnapCommandConfig;
-import org.onap.cli.fw.conf.OnapCommandConstants;
-import org.onap.cli.fw.error.OnapCommandDiscoveryFailed;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.error.OnapCommandInstantiationFailed;
-import org.onap.cli.fw.error.OnapCommandInvalidSample;
-import org.onap.cli.fw.error.OnapCommandInvalidSchema;
-import org.onap.cli.fw.error.OnapCommandNotFound;
-import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
-import org.yaml.snakeyaml.Yaml;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DISCOVERY_FILE;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DEFAULT_SCHEMA_PATH_PATERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DEAFULT_INPUT_PARAMETERS_NAME;
+import static org.onap.cli.fw.conf.OnapCommandConstants.PARAMETERS;
+import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_PATH_PATERN;
+import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION;
+import static org.onap.cli.fw.conf.OnapCommandConstants.NAME;
+import static org.onap.cli.fw.conf.OnapCommandConstants.DESCRIPTION;
+import static org.onap.cli.fw.conf.OnapCommandConstants.IS_DEFAULT_PARAM;
+import static org.onap.cli.fw.conf.OnapCommandConstants.RESULTS;
+import static org.onap.cli.fw.conf.OnapCommandConstants.SCHEMA_DIRECTORY;
+import static org.onap.cli.fw.conf.OnapCommandConstants.OPEN_CLI_SAMPLE_VERSION;
+import static org.onap.cli.fw.conf.OnapCommandConstants.ATTRIBUTES;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class OnapCommandDiscoveryUtils {
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     /**
      * Fetch a particular schema details.
@@ -90,10 +96,9 @@ public class OnapCommandDiscoveryUtils {
              throw new OnapCommandNotFound(cmd, version);
 
         return schemaInfo;
-    }
-
+   }
     /**
-     * Load the previous discovered json file.
+    * Load the previous discovered json file.
      *
      * @return list
      * @throws OnapCommandInvalidSchema
@@ -148,14 +153,28 @@ public class OnapCommandDiscoveryUtils {
         if (!OnapCommandDiscoveryUtils.isAlreadyDiscovered()) return schemas;
 
         String dataDir = OnapCommandDiscoveryUtils.getDataStorePath();
+        Reader reader = null;
+        JsonReader jsonReader = null;
         try {
             File file = new File(dataDir + File.separator + DISCOVERY_FILE);
-            ObjectMapper mapper = new ObjectMapper();
-            OnapCommandSchemaInfo[] list = mapper.readValue(file, OnapCommandSchemaInfo[].class);
+            reader = new FileReader(file);
+            jsonReader = new JsonReader(reader);
+            OnapCommandSchemaInfo[] list = gson.fromJson(jsonReader, OnapCommandSchemaInfo[].class);
             schemas.addAll(Arrays.asList(list));
-        } catch (IOException e) {
+        } catch (Exception e) { // NOSONAR
             throw new OnapCommandDiscoveryFailed(dataDir,
                     DISCOVERY_FILE, e);
+        }finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+                if (jsonReader!=null){
+                    jsonReader.close();
+                }
+            } catch (IOException e) {
+                //
+            }
         }
 
         return schemas;
@@ -189,10 +208,10 @@ public class OnapCommandDiscoveryUtils {
                 FileUtils.forceMkdir(new File(dataDir));
 
                 File file = new File(dataDir + File.separator + DISCOVERY_FILE);
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
-                mapper.writerWithDefaultPrettyPrinter().writeValue(file, schemas);
-            } catch (IOException e1) {
+                try(Writer writer = new FileWriter(file)){
+                    gson.toJson(schemas,writer);
+                }
+            } catch (Exception e1) { // NOSONAR
                 throw new OnapCommandDiscoveryFailed(dataDir,
                         DISCOVERY_FILE, e1);
             }
@@ -552,7 +571,7 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadYaml(String filePath) throws OnapCommandInvalidSchema  {
+    public static Map<String, ?> loadYaml(String filePath) throws OnapCommandInvalidSchema {
         Map<String, ?> values = null;
         try {
             values = (Map<String, Object>) new Yaml().load(FileUtils.readFileToString(new File(filePath)));
