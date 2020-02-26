@@ -15,15 +15,18 @@
  */
 package org.onap.cli.http.mock;
 
-import java.io.File;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class MockJsonGenerator {
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
+
     public static void generateMocking(MockRequest mockRequest, MockResponse mockResponse,
             String jsonFilePath) throws IOException {
 
@@ -31,9 +34,10 @@ public class MockJsonGenerator {
         mockObject.setRequest(mockRequest);
         mockObject.setResponse(mockResponse);
 
-        ObjectMapper mapper = new ObjectMapper();
-        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        writer.writeValue(new File(jsonFilePath),
-                Arrays.asList(mockObject));
+        try(FileWriter writer = new FileWriter(jsonFilePath)){
+            gson.toJson(Arrays.asList(mockObject), writer);
+        }catch (JsonIOException e){
+            //
+        }
     }
 }

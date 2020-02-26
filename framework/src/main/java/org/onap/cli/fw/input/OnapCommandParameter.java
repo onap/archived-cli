@@ -16,14 +16,15 @@
 
 package org.onap.cli.fw.input;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandParameterMissing;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -36,6 +37,11 @@ import java.util.UUID;
  *
  */
 public class OnapCommandParameter {
+
+    /*
+     * Used locally for json conversion
+     */
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     /*
      * Name, for positional parameters, the place is decided from schema file definition
@@ -211,16 +217,16 @@ public class OnapCommandParameter {
         switch (parameterType) {
             case MAP:
                 try {
-                    defaultValue = new ObjectMapper().readValue(processedValue, Map.class);
-                } catch (IOException e) {
+                    defaultValue = gson.fromJson(processedValue, Map.class);
+                } catch (JsonSyntaxException e) {
                     throw new OnapCommandInvalidParameterValue("Invalid default value for " + this.getName(), e);
                 }
                 break;
 
             case ARRAY:
                 try {
-                    defaultValue = new ObjectMapper().readValue(processedValue, List.class);
-                } catch (IOException e) {
+                    defaultValue = gson.fromJson(processedValue, List.class);
+                } catch (JsonSyntaxException e) {
                     throw new OnapCommandInvalidParameterValue("Invalid default value for " + this.getName(), e);
                 }
                 break;
