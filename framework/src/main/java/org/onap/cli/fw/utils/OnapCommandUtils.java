@@ -31,6 +31,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
@@ -46,8 +49,6 @@ import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 
 /**
@@ -57,6 +58,8 @@ import com.jayway.jsonpath.JsonPath;
 public class OnapCommandUtils {
 
     static Logger log = LoggerFactory.getLogger(OnapCommandUtils.class);
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
+
     /**
      * Private constructor.
      */
@@ -336,13 +339,13 @@ public class OnapCommandUtils {
                 currentIdx = idxE + 2;
             } else if (OnapCommandParameterType.MAP.equals(param.getParameterType())) {
                 try {
-                    String value = new ObjectMapper().writeValueAsString(params.get(paramName).getValue());
+                    String value = gson.toJson(params.get(paramName).getValue());
                     if ((idxS == 0) && (currentIdx == 0)) {
                         result = value;
                     } else {
                         result += line.substring(currentIdx, idxS - 1) + value;
                     }
-                } catch (JsonProcessingException e) {  // NOSONAR
+                } catch (JsonIOException e) {  // NOSONAR
                     //never occur as map is coverted to json string here
                 }
 
