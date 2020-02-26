@@ -16,15 +16,10 @@
 
 package org.onap.cli.main.utils;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.onap.cli.fw.error.OnapCommandException;
@@ -35,16 +30,24 @@ import org.onap.cli.main.error.OnapCliArgumentValueMissing;
 import org.onap.cli.main.error.OnapCliInvalidArgument;
 import org.yaml.snakeyaml.Yaml;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import net.minidev.json.JSONObject;
+import java.net.URL;
+import java.io.File;
+import java.io.Reader;
+import java.io.InputStreamReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Oclip CLI utilities.
  *
  */
 public class OnapCliArgsParser {
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     /**
      * private Constructor.
@@ -193,19 +196,32 @@ public class OnapCliArgsParser {
     }
 
     public static String readJsonStringFromUrl(String input, String argName) throws OnapCliInvalidArgument {
-        ObjectMapper mapper = new ObjectMapper();
+        String jsonValue;
+        Reader reader = null;
         try {
             File file = new File(input);
             if (file.isFile()) {
-                return mapper.readValue(file, JSONObject.class).toJSONString();
+                reader = new FileReader(file);
+                jsonValue = gson.fromJson(reader, JsonElement.class).toString();
+                return jsonValue;
             } else if (input.startsWith("file:") || input.startsWith("http:") || input.startsWith("ftp:")) {
                 URL jsonUrl = new URL(input);
-                return mapper.readValue(jsonUrl, JSONObject.class).toJSONString();
+                reader = new InputStreamReader(jsonUrl.openStream());
+                jsonValue = gson.fromJson(reader, JsonElement.class).toString();
+                return jsonValue;
             } else {
-                return mapper.readValue(input, JSONObject.class).toJSONString();
+                return gson.fromJson(input, JsonElement.class).toString();
             }
-        } catch (IOException e) {
+        } catch (Exception e) { // NOSONAR
             throw new OnapCliInvalidArgument(argName, e);
+        }finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                //
+            }
         }
     }
 
@@ -255,21 +271,21 @@ public class OnapCliArgsParser {
     }
 
     public static List<String> convertJsonToListString(String arg, String json) throws OnapCliInvalidArgument {
-        TypeReference<List<String>> mapType = new TypeReference<List<String>>() {
+        TypeToken<List<String>> mapType = new TypeToken<List<String>>() {
         };
         try {
-            return new ObjectMapper().readValue(json, mapType);
-        } catch (IOException e) {
+            return gson.fromJson(json, mapType.getType());
+        } catch (Exception e) { // NOSONAR
             throw new OnapCliInvalidArgument(arg, e);
         }
     }
 
     public static Map<String, String> convertJsonToMapString(String arg, String json) throws OnapCliInvalidArgument {
-        TypeReference<Map<String, String>> mapType = new TypeReference<Map<String, String>>() {
+        TypeToken<Map<String, String>> mapType = new TypeToken<Map<String, String>>() {
         };
         try {
-            return new ObjectMapper().readValue(json, mapType);
-        } catch (IOException e) {
+            return gson.fromJson(json, mapType.getType());
+        } catch (Exception e) { // NOSONAR
             throw new OnapCliInvalidArgument(arg, e);
         }
     }

@@ -24,7 +24,10 @@ import org.onap.cli.fw.error.OnapCommandArtifactContentChecksumNotMatch;
 import org.onap.cli.fw.error.OnapCommandArtifactContentNotExist;
 import org.onap.cli.fw.error.OnapCommandArtifactNotFound;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,5 +85,50 @@ public class OnapCommandArtifactStoreTest {
     @Test
     public void listArtifactTest() throws OnapCommandArtifactNotFound {
         assertNotNull(onapCommandArtifactStore.listArtifact("category","namePattern"));
+    }
+    @Test
+    public void createArtifactTestForGson() throws OnapCommandArtifactContentChecksumNotMatch, OnapCommandArtifactAlreadyExist, OnapCommandArtifactContentNotExist, OnapCommandArtifactNotFound {
+        assertNotNull(onapCommandArtifactStore.createArtifact(artifact));
+        String artifactPath=System.getProperty("user.dir")+File.separator+"data/artifacts";
+        File artifactFile= new File(artifactPath+File.separator+"artifact__category.json");
+        assertTrue(artifactFile.exists());
+        onapCommandArtifactStore.deleteArtifact("artifact","category");
+
+    }
+
+    @Test
+    public void listArtifactTestForGson() throws OnapCommandArtifactNotFound {
+        String basePath= System.getProperty("user.dir")+File.separator+"data/artifacts/testFile.json";
+        File testFile = new File(basePath);
+        if (!testFile.exists()) {
+            FileWriter fileWriter= null;
+            BufferedWriter writer = null;
+            try {
+                testFile.createNewFile();
+                fileWriter = new FileWriter(testFile);
+                writer = new BufferedWriter(fileWriter);
+                String content = "{\"name\": \"name\",\"description\": \"description\",\"categoty\": \"categoty\"," +
+                        "\"checksum\": \"checksum\",\"size\": 100,\"createAt\": \"createAt\"" +
+                        ",\"lastUpdatedAt\":\"lastUpdatedAt\",\"path\": \"path\",\"metadata\": {}}";
+                writer.write(content);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    if (writer != null) {
+                        writer.close();
+                    }
+                    if (fileWriter != null){
+                        fileWriter.close();
+                    }
+                } catch (IOException e) {
+                    //
+                }
+            }
+        }
+        assertNotNull(onapCommandArtifactStore.listArtifact("category","namePattern"));
+
+        testFile.delete();
     }
 }

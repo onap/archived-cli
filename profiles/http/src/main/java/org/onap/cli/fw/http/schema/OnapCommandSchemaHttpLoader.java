@@ -16,16 +16,9 @@
 
 package org.onap.cli.fw.http.schema;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.stream.Collectors;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -42,20 +35,26 @@ import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import net.minidev.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class OnapCommandSchemaHttpLoader {
 
     private static final String ATTRIBUTE = "Attribute '";
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     private OnapCommandSchemaHttpLoader() {
         // to follow standards !
     }
 
     public static List<String> loadHttpSchema(OnapHttpCommand cmd, String schemaName, boolean includeDefault,
-                                          boolean validateSchema) throws OnapCommandException {
+                                              boolean validateSchema) throws OnapCommandException {
         try {
             List<String> errors = new ArrayList<>();
             if (includeDefault) {
@@ -70,7 +69,7 @@ public class OnapCommandSchemaHttpLoader {
             }
 
             Map<String, List<Map<String, String>>> commandYamlMap =
-                    (Map<String, List<Map<String, String>>>)OnapCommandSchemaLoader.validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+                    (Map<String, List<Map<String, String>>>) OnapCommandSchemaLoader.validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
             errors.addAll(parseHttpSchema(cmd, commandYamlMap, validateSchema));
 
@@ -106,14 +105,14 @@ public class OnapCommandSchemaHttpLoader {
                             OnapCommandConfig.getCommaSeparatedList(OnapCommandHttpConstants.HTTP_MANDATORY_SECTIONS), OnapCommandHttpConstants.HTTP);
                     errorList.addAll(validateHttpSchemaSection(values));
                 }
-                for (Map.Entry<String, ?> entry1 : valMap.entrySet()) {
+                for (Entry<String, ?> entry1 : valMap.entrySet()) {
                     String key1 = entry1.getKey();
 
                     switch (key1) {
                         case OnapCommandHttpConstants.REQUEST:
                             Map<String, ?> map = (Map<String, ?>) valMap.get(key1);
 
-                            for (Map.Entry<String, ?> entry2 : map.entrySet()) {
+                            for (Entry<String, ?> entry2 : map.entrySet()) {
                                 try {
                                     String key2 = entry2.getKey();
 
@@ -197,7 +196,7 @@ public class OnapCommandSchemaHttpLoader {
                                     validationMap.put(OnapCommandHttpConstants.AUTH, OnapCommandHttpConstants.AUTH_VALUES);
                                     validationMap.put(OnapCommandHttpConstants.MODE, OnapCommandHttpConstants.MODE_VALUES);
 
-                                    for (Map.Entry<String, String> secKey : validationMap.entrySet()) {
+                                    for (Entry<String, String> secKey : validationMap.entrySet()) {
                                         if (serviceMap.containsKey(secKey.getKey())) {
                                             Object obj = serviceMap.get(secKey.getKey());
                                             if (obj == null) {
@@ -215,7 +214,7 @@ public class OnapCommandSchemaHttpLoader {
 
                                 OnapCommandHttpService srv = new OnapCommandHttpService();
 
-                                for (Map.Entry<String, String> entry : serviceMap.entrySet()) {
+                                for (Entry<String, String> entry : serviceMap.entrySet()) {
                                     String key = entry.getKey();
 
                                     switch (key) {
@@ -417,8 +416,8 @@ public class OnapCommandSchemaHttpLoader {
             errorList.add(OnapCommandHttpConstants.HTTP_BODY_JSON_EMPTY);
         } else {
             try {
-                new ObjectMapper().readValue(body, JSONObject.class);
-            } catch (IOException e1) { // NOSONAR
+                gson.fromJson(body, JsonElement.class);
+            } catch (Exception e1) { // NOSONAR
                 errorList.add(OnapCommandHttpConstants.HTTP_BODY_FAILED_PARSING);
             }
         }
