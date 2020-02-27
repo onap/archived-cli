@@ -36,7 +36,7 @@ results:
     - name: lcm-operation-type
       description: lcm-operation-type
       scope: short
-      type: stringstatusEnteredTime
+      type: string
     - name: status-entered-time
       description: status-entered-time
       scope: short
