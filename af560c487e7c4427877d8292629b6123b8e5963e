@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3d8fa13_d2bad80e",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandArtifactStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-28T06:15:30Z",
+      "side": 1,
+      "message": "optimize to use only on reader, and create it in try () block",
+      "range": {
+        "startLine": 245,
+        "startChar": 44,
+        "endLine": 245,
+        "endChar": 50
+      },
+      "revId": "af560c487e7c4427877d8292629b6123b8e5963e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06fec762_f9018db7",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-28T06:15:30Z",
+      "side": 1,
+      "message": "maintain import positioning as it is",
+      "revId": "af560c487e7c4427877d8292629b6123b8e5963e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc999a35_32ba2e11",
+        "filename": "products/sample/src/main/resources/open-cli-schema/reqres-create-user.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-28T06:15:30Z",
+      "side": 1,
+      "message": "add copywrite",
+      "revId": "af560c487e7c4427877d8292629b6123b8e5963e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c00f7e5_74ee383b",
+        "filename": "products/sample/src/main/resources/open-cli-schema/reqres-delete-user.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-28T06:15:30Z",
+      "side": 1,
+      "message": "remove and make sure junk comments are NOT in place.",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 88
+      },
+      "revId": "af560c487e7c4427877d8292629b6123b8e5963e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f6ee101_c1f29983",
+        "filename": "products/sample/src/main/resources/open-cli-schema/reqres-update-user.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-28T06:15:30Z",
+      "side": 1,
+      "message": "PUT ?? if not available, remove it",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 16
+      },
+      "revId": "af560c487e7c4427877d8292629b6123b8e5963e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3edf9ea_a5b96c04",
+        "filename": "profiles/http/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-28T06:15:30Z",
+      "side": 1,
+      "message": "create JIRA to track this case.",
+      "revId": "af560c487e7c4427877d8292629b6123b8e5963e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96a55dd0_74ef2712",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/schema/OnapCommandSchemaHttpLoader.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-28T06:15:30Z",
+      "side": 1,
+      "message": "revert this kind of changes",
+      "revId": "af560c487e7c4427877d8292629b6123b8e5963e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50a58aef_ff24faf2",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/utils/OnapCommandHttpUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-02-28T06:15:30Z",
+      "side": 1,
+      "message": "combine to one if with \u0026\u0026",
+      "range": {
+        "startLine": 288,
+        "startChar": 28,
+        "endLine": 289,
+        "endChar": 32
+      },
+      "revId": "af560c487e7c4427877d8292629b6123b8e5963e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
