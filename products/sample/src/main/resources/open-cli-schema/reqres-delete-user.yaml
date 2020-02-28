@@ -1,0 +1,44 @@
+# Copyright 2020 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: delete-user
+description: |
+    Place this OCS YAML under $OPEN_CLI_HOME/open-cli-schema folder. Then run the commands
+    oclip schema-refresh
+
+    It is used to display the temparature and wind speed details from https://openweathermap.org.
+    Try to add new commands to display different weather details by exploring this site.
+
+    Sample usage:
+    oclip --product test delete-user --host-url https://reqres.in
+
+info:
+  product: test
+  service: ut
+  author: Priyanka Akhade priyanka.akhade@huawei.com
+
+
+results:
+  direction: landscape
+
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: /api/users/2
+    method: DELETE
+  success_codes:
+    - 204
