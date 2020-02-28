@@ -1,0 +1,77 @@
+# Copyright 2020 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: update-user
+description: |
+    Place this OCS YAML under $OPEN_CLI_HOME/open-cli-schema folder. Then run the commands
+    oclip schema-refresh
+
+    It is used to update the specific user's details at https://reqres.in.
+
+    Sample usage:
+    oclip --product test update-user --host-url https://reqres.in --user-name Priyanka --job-role Tester
+
+info:
+  product: test
+  service: ut
+  author: Priyanka Akhade priyanka.akhade@huawei.com
+
+parameters:
+  - name: name
+    description: User name
+    type: string
+    short_option: n
+    long_option: user-name
+    is_optional: false
+  - name: job
+    description: job role
+    type: string
+    short_option: r
+    long_option: job-role
+    is_optional: true
+    default_value: Software Engineer
+
+results:
+  direction: landscape
+  attributes:
+    - name: NAME
+      description: user name
+      scope: short
+      type: string
+    - name : DESIGNATION
+      description: job role
+      scope: short
+      type: string
+    - name : UPDATED_AT
+      description: updated DateTime
+      scope: short
+      type: string
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: /api/users/2
+    method: PUT
+    body: '{
+             "name":"${name}",
+             "job":"${job}"
+           }'
+  success_codes:
+    - 200
+  result_map:
+    NAME: $b{$.name}
+    DESIGNATION: $b{$.job}
+    UPDATED_AT: $b{$.updatedAt}

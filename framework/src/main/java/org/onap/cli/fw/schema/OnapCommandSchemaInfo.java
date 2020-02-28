@@ -26,13 +26,11 @@ import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.info.OnapCommandState;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * OnapCommandSchemaInfo is used in discovery caching.
  *
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> {
 
     /**

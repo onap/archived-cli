@@ -19,21 +19,24 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.FileWriter;
+
 
 public class MockJsonGenerator {
-    public static void generateMocking(MockRequest mockRequest, MockResponse mockResponse,
-            String jsonFilePath) throws IOException {
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
+
+    public static void generateMocking(MockRequest mockRequest, MockResponse mockResponse, String jsonFilePath) throws IOException {
 
         MockObject mockObject = new MockObject();
         mockObject.setRequest(mockRequest);
         mockObject.setResponse(mockResponse);
 
-        ObjectMapper mapper = new ObjectMapper();
-        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        writer.writeValue(new File(jsonFilePath),
-                Arrays.asList(mockObject));
+        try(FileWriter writer = new FileWriter(jsonFilePath)){
+            gson.toJson(Arrays.asList(mockObject), writer);
+        }catch (Exception e){ // NOSONAR
+            //
+        }
     }
 }

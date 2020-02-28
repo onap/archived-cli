@@ -45,7 +45,8 @@ import org.open.infc.grpc.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -54,6 +55,7 @@ import io.grpc.stub.StreamObserver;
 public class OpenInterfaceGrpcServer {
 
       private static final Logger logger = LoggerFactory.getLogger(OpenInterfaceGrpcServer.class.getName());
+    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
       private static final String CONF_FILE = "oclip-grpc-server.properties";
       private static final String CONF_SERVER_PORT = "oclip.grpc_server_port";
@@ -246,8 +248,8 @@ public class OpenInterfaceGrpcServer {
                     reply.setSuccess(cmd.getResult().isPassed());
 
                     try {
-                        reply.putAttrs(OnapCommandConstants.RESULTS, new ObjectMapper().readTree(printOut).toString());
-                    } catch (IOException e) {
+                        reply.putAttrs(OnapCommandConstants.RESULTS, gson.fromJson(printOut,String.class));
+                    } catch (Exception e) { // NOSONAR
                         reply.putAttrs(OnapCommandConstants.RESULTS, printOut);
                     }
 

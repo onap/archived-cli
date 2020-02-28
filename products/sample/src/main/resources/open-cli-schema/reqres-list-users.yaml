@@ -1,0 +1,58 @@
+# Copyright 2020 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: list-users
+description: |
+  Place this OCS YAML under $OPEN_CLI_HOME/open-cli-schema folder. Then run the commands
+  oclip schema-refresh
+
+  It is used to display the users' details from https://reqres.in.
+
+  Sample usage:
+  oclip --product test list-users --host-url https://reqres.in
+
+info:
+  product: test
+  service: ut
+  author: Priyanka Akhade priyanka.akhade@huawei.com
+
+results:
+  direction: landscape
+  attributes:
+    - name: FIRST_NAME
+      description: FirstName
+      scope: short
+      type: string
+    - name: LAST_NAME
+      description: LastName
+      scope: short
+      type: string
+    - name: EMAIL
+      description: Email
+      scope: short
+      type: string
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: /api/users?page=2
+    method: GET
+  success_codes:
+    - 200
+  result_map:
+    FIRST_NAME: $b{$.data.[*].first_name}
+    LAST_NAME: $b{$.data.[*].last_name}
+    EMAIL: $b{$.data.[*].email}
