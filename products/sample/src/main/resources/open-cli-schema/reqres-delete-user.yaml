@@ -1,0 +1,30 @@
+open_cli_schema_version: 1.0
+name: delete-user
+description: |
+    Place this OCS YAML under $OPEN_CLI_HOME/open-cli-schema folder. Then run the commands
+    oclip schema-refresh
+
+    It is used to display the temparature and wind speed details from https://openweathermap.org.
+    Try to add new commands to display different weather details by exploring this site.
+
+    Sample usage:
+    oclip --product test delete-user --host-url https://reqres.in
+
+info:
+  product: test
+  service: ut
+  author: Priyanka Akhade priyanka.akhade@huawei.com
+
+
+results:
+  direction: landscape
+
+http:
+  service:
+    auth: none
+    mode: direct
+  request:
+    uri: /api/users/2
+    method: DELETE
+  success_codes:
+    - 204
