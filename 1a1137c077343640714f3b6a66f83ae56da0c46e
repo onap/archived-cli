@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7145774f_fb224040",
+        "filename": "deployment/zip/src/main/release/conf/log4j2.properties",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-02-29T08:07:58Z",
+      "side": 1,
+      "message": "make it readable.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 86
+      },
+      "revId": "1a1137c077343640714f3b6a66f83ae56da0c46e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
