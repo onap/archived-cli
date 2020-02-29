@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "953408a2_b8815f60",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-02-29T07:01:47Z",
+      "side": 1,
+      "message": "changes should only affect.",
+      "range": {
+        "startLine": 560,
+        "startChar": 3,
+        "endLine": 560,
+        "endChar": 92
+      },
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b7e2580_21940056",
+        "filename": "grpc/grpc-client/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-02-29T07:01:47Z",
+      "side": 1,
+      "message": "changes should only affect.",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2edeead_49b8e110",
+        "filename": "profiles/http/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-02-29T07:01:47Z",
+      "side": 1,
+      "message": "remove jackson-databind exclusion",
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1bc6ec2_b5b70273",
+        "filename": "profiles/snmp/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-02-29T07:01:47Z",
+      "side": 1,
+      "message": "show only added code",
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "460a9184_2ca8ede3",
+        "filename": "validate/sample-mock-generator/src/main/java/org/onap/cli/http/mock/MockJsonGenerator.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-02-29T07:01:47Z",
+      "side": 1,
+      "message": "sequence of import should not break",
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
