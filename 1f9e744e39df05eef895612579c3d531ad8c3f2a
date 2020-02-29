@@ -48,6 +48,75 @@
     },
     {
       "key": {
+        "uuid": "c84d563e_9a041a92",
+        "filename": "products/sample/src/main/resources/open-cli-schema/reqres-create-user.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-02-29T09:47:18Z",
+      "side": 1,
+      "message": "write correct info related to command",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 88
+      },
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d71f01_d3b1cbfd",
+        "filename": "products/sample/src/main/resources/open-cli-schema/reqres-create-user.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-02-29T09:47:18Z",
+      "side": 1,
+      "message": "write only 201",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 9
+      },
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24273150_3aa16422",
+        "filename": "products/sample/src/main/resources/open-cli-schema/reqres-single-user.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-02-29T09:47:18Z",
+      "side": 1,
+      "message": "add last name and email also",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2edeead_49b8e110",
         "filename": "profiles/http/pom.xml",
         "patchSetId": 2
