@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66be3fa1_8dd86341",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-29T10:24:56Z",
+      "side": 1,
+      "message": "in order to replace (import java.util.*) with Specific imports from java.util, above code is affected",
+      "parentUuid": "953408a2_b8815f60",
+      "range": {
+        "startLine": 560,
+        "startChar": 3,
+        "endLine": 560,
+        "endChar": 92
+      },
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b7e2580_21940056",
         "filename": "grpc/grpc-client/pom.xml",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-29T07:01:47Z",
       "side": 1,
       "message": "changes should only affect.",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae0a1ec4_52b34a4f",
+        "filename": "grpc/grpc-client/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-29T10:24:56Z",
+      "side": 1,
+      "message": "\u003cversion\u003e1.7.16\u003c/version\u003e was removed during changes, code is affected after adding same tag",
+      "parentUuid": "1b7e2580_21940056",
       "range": {
         "startLine": 43,
         "startChar": 9,
@@ -151,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "afbb18c7_ccc05a9c",
+        "filename": "profiles/snmp/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-29T10:24:56Z",
+      "side": 1,
+      "message": "Code is affected as previously added \u003cexclusions\u003e\u003c/exclusions\u003e was removed",
+      "parentUuid": "d1bc6ec2_b5b70273",
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "460a9184_2ca8ede3",
         "filename": "validate/sample-mock-generator/src/main/java/org/onap/cli/http/mock/MockJsonGenerator.java",
         "patchSetId": 2
@@ -165,6 +231,24 @@
       "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b2b106_f72cb7f9",
+        "filename": "validate/sample-mock-generator/src/main/java/org/onap/cli/http/mock/MockJsonGenerator.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-29T10:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "460a9184_2ca8ede3",
+      "revId": "1f9e744e39df05eef895612579c3d531ad8c3f2a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
