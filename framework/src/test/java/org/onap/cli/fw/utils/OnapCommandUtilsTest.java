@@ -517,6 +517,6 @@ public class OnapCommandUtilsTest {
 
    @Test
    public void testMd5(){
-	assertNotNull(OnapCommandUtils.md5("a"));
+    assertNotNull(OnapCommandUtils.md5("a"));
     }
 }

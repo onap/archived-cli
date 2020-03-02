@@ -86,7 +86,7 @@
             <artifactId>cli-products-onap-dublin-features-aai</artifactId>
             <version>${project.version}</version>
         </dependency>
- 
+
         <dependency>
             <groupId>org.onap.cli</groupId>
             <artifactId>cli-products-onap-dublin-features-sdc</artifactId>

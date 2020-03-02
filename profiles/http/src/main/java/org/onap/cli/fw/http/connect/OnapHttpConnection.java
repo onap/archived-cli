@@ -373,7 +373,7 @@ public class OnapHttpConnection {
         }
     }
 
-     @Contract(threading = ThreadingBehavior.UNSAFE) 
+     @Contract(threading = ThreadingBehavior.UNSAFE)
     static class HttpDeleteWithBody extends HttpEntityEnclosingRequestBase {
 
         public HttpDeleteWithBody() {
