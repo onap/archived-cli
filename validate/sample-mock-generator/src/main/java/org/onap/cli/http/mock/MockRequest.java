@@ -20,8 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
 import com.google.gson.JsonElement;
 
 public class MockRequest {
@@ -29,8 +28,6 @@ public class MockRequest {
     private String uri;
     private Map<String, String> headers;
     private JsonElement json;
-    private static Gson gson = new GsonBuilder().serializeNulls().create();
-
     public String getMethod() {
         return method;
     }
@@ -64,9 +61,10 @@ public class MockRequest {
     public void setJson(String json) throws IOException {
         if (!json.isEmpty()) {
             try {
-                this.json = gson.fromJson(json,JsonElement.class);
+                JsonParser parser = new JsonParser();
+                this.json = parser.parse(json);
             } catch (Exception e) {
-                this.json = gson.fromJson("{}",JsonElement.class);
+                this.json = new JsonParser().parse("{}");
             }
         }
 

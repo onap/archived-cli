@@ -32,7 +32,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class OnapCommandResultTest {
-    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     @Test
     @Ignore
@@ -230,10 +229,9 @@ public class OnapCommandResultTest {
         res.setRecords(list);
         res.setScope(OnapCommandResultAttributeScope.LONG);
         res.setType(OnapCommandResultType.JSON);
-
         String result = res.print();
         String expRes="[{\"param\":{\"id\":\"0001\",\"value\":\"result\"}}]";
-        assertEquals(gson.toJson(expRes),result);
+        assertEquals(expRes,result);
 
     }
 }
