@@ -18,15 +18,12 @@ package org.onap.cli.http.mock;
 
 import java.io.IOException;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 public class MockResponse {
     private int status;
     private JsonElement json;
-    private static Gson gson = new GsonBuilder().serializeNulls().create();
-
     public int getStatus() {
         return status;
     }
@@ -42,9 +39,10 @@ public class MockResponse {
     public void setJson(String json) throws IOException {
         if (json != null && !json.isEmpty()) {
             try {
-                this.json = gson.fromJson(json,JsonElement.class);
+                JsonParser parser = new JsonParser();
+                this.json = parser.parse(json);
             } catch (Exception e) {
-                this.json = gson.fromJson("{}", JsonElement.class);
+                this.json = new JsonParser().parse("{}");
             }
         }
     }

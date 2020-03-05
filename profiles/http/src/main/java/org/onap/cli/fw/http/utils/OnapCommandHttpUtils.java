@@ -43,6 +43,8 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 
@@ -300,9 +302,10 @@ public class OnapCommandHttpUtils {
     }
 
     public static String normalizeJson(String json) throws OnapCommandHttpInvalidRequestBody {
+        JsonParser jsonParser = new JsonParser();
         JsonElement node;
         try {
-            node = gson.fromJson(json,JsonElement.class);
+            node = jsonParser.parse(json);
             normalizeJson(node);
             return gson.toJson(node);
         } catch (Exception e) {  //NOSONAR

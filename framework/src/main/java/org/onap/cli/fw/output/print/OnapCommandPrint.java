@@ -31,8 +31,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
 
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
@@ -43,7 +42,6 @@ import net.minidev.json.JSONValue;
  */
 public class OnapCommandPrint {
 
-    private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     public static final int MAX_COLUMN_LENGTH = 50;
 
@@ -273,7 +271,7 @@ public class OnapCommandPrint {
                 array.add(rowO);
             }
             try {
-                return gson.toJson(array.toJSONString()).toString();
+                return new JsonParser().parse(array.toJSONString()).toString();
             } catch (Exception e) { // NOSONAR
                 // TODO Auto-generated catch block
                 return array.toJSONString();
