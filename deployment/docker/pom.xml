@@ -23,12 +23,12 @@
     <parent>
         <groupId>org.onap.cli</groupId>
         <artifactId>cli-deployment</artifactId>
-        <version>5.0.1</version>
+        <version>5.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>cli-docker</artifactId>
     <name>cli/deployment/docker</name>
-    <version>5.0.1</version>
+    <version>5.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
   <properties>

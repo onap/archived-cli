@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.onap.cli</groupId>
         <artifactId>cli-products-onap-dublin-features</artifactId>
-        <version>5.0.1</version>
+        <version>5.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>cli-products-onap-dublin-features-msb</artifactId>
