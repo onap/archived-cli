@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.onap.cli</groupId>
     <artifactId>cli-profiles</artifactId>
-    <version>5.0.2-SNAPSHOT</version>
+    <version>5.0.2</version>
   </parent>
 
   <artifactId>cli-profiles-snmp</artifactId>
