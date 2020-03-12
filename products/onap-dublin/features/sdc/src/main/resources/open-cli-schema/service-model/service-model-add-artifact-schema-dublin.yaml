@@ -48,6 +48,20 @@ parameters:
     long_option: artifact-name
     short_option: b
     is_optional: false
+  - name: artifact-label
+    description: Artifact Label
+    type: string
+    long_option: artifact-label
+    short_option: l
+    default_value: artifactLabel
+    is_optional: false
+  - name: artifact-group-type
+    description: Upload Artifact Group Type
+    type: string
+    long_option: artifact-group-type
+    short_option: g
+    default_value: INFORMATIONAL
+    is_optional: true
   - name: user-id
     description: Designer user id
     type: string
@@ -67,6 +81,6 @@ http:
     headers:
       Content-MD5: $s{md5:__body__}
       USER_ID: ${user-id}
-    body: '{"payloadData":"${artifact}","artifactDisplayName":"${artifact-name}","artifactType":"OTHER","description":"${remarks}","artifactName":"${artifact-name}", "artifactLabel":"${artifact-name}","artifactGroupType":"INFORMATIONAL", artifactChecksum="$s{md5:artifact}"}'
+    body: '{"payloadData":"${artifact}","artifactDisplayName":"${artifact-name}","artifactType":"OTHER","description":"${remarks}","artifactName":"${artifact-name}", "artifactLabel":"${artifact-label}","artifactGroupType":"${artifact-group-type}", artifactChecksum="$s{md5:artifact}"}'
   success_codes:
     - 200
