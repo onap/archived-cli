@@ -35,7 +35,7 @@
   </properties>
   <dependencies>
 <!-- netty-codec-http2 excluded due to Security Issues:- CVE-2019-9512,CVE-2019-9514,CVE-2019-9515,CVE-2019-9518,CVE-2019-16869
- and added invulnerable netty-codec-http2 4.1.42.Final -->
+ and added invulnerable netty-codec-http2 4.1.46.Final -->
     <dependency>
       <groupId>io.grpc</groupId>
       <artifactId>grpc-netty</artifactId>
@@ -47,21 +47,13 @@
             </exclusion>
       </exclusions>
     </dependency>
-      <!-- excluded netty-codec-http and added invulnerable version -->
+
     <dependency>
         <groupId>io.netty</groupId>
         <artifactId>netty-codec-http2</artifactId>
-        <version>4.1.42.Final</version>
-        <exclusions><exclusion>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-codec-http</artifactId>
-        </exclusion></exclusions>
+        <version>4.1.46.Final</version>
     </dependency>
-      <dependency>
-          <groupId>io.netty</groupId>
-          <artifactId>netty-codec-http</artifactId>
-          <version>4.1.45.Final</version>
-      </dependency>
+      
     <dependency>
       <groupId>io.grpc</groupId>
       <artifactId>grpc-protobuf</artifactId>
