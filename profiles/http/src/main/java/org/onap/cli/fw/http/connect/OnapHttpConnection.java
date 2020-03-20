@@ -308,7 +308,7 @@ public class OnapHttpConnection {
 
         requestBase.setURI(URI.create(input.getUri()));
         requestBase.setConfig(RequestConfig.custom()
-                .setSocketTimeout(30000).setConnectTimeout(50000).build());
+                .setSocketTimeout(600000).setConnectTimeout(600000).build());
 
         for (Entry<String, String> h : input.getReqHeaders().entrySet()) {
             requestBase.addHeader(h.getKey(), h.getValue());
