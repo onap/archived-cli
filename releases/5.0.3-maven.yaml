@@ -1,0 +1,5 @@
+---
+distribution_type: maven
+version: '5.0.3'
+project: 'cli'
+log_dir: 'cli-maven-stage-master/279'
