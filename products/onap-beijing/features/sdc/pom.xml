@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.onap.cli</groupId>
         <artifactId>cli-products-onap-beijing-features</artifactId>
-        <version>5.0.3-SNAPSHOT</version>
+        <version>5.0.3</version>
     </parent>
 
     <artifactId>cli-products-onap-beijing-features-sdc</artifactId>
