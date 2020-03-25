@@ -4,6 +4,30 @@
 CLI Release Notes
 =================
 
+Version: 5.0.3
+--------------
+
+:Release Date: 2020-03-25
+
+**New Features**
+
+1. Improved HTTP timeout
+
+2. Enable Non-Root user in docker container
+
+3. Improved SDC and VFC commands in dublin branch
+
+4. HTTPS is enabled for Web console
+
+**Security Notes**
+
+*Fixed Security Issues*
+
+*Known Security Issues*
+
+*Known Vulnerabilities in Used Modules*
+
+
 Version: 4.0.0
 --------------
 
