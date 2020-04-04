@@ -48,6 +48,7 @@ RUN sudo apt-get install -y lighttpd git curl pandoc vim && \
     ln  $OPEN_CLI_HOME/bin/oclip-grpc-server.sh /usr/local/bin/oclip-grpc  && \
     if [ ! -d  $OPEN_CLI_HOME/data ]; then mkdir  $OPEN_CLI_HOME/data; fi  && \
     if [ ! -d  $OPEN_CLI_HOME/open-cli-schema ]; then mkdir  $OPEN_CLI_HOME/open-cli-schema; fi && \
+    if [ ! -d  $OPEN_CLI_HOME/open-cli-sample ]; then mkdir  $OPEN_CLI_HOME/open-cli-sample; fi && \
     sudo touch /var/log/lighttpd/access.log && \
     sudo cp /etc/lighttpd/conf-available/10-accesslog.conf /etc/lighttpd/conf-enabled/ && \
     sudo cp $OPEN_CLI_HOME/http/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf && \
