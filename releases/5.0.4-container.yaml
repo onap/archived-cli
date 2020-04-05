@@ -1,0 +1,9 @@
+---
+distribution_type: container
+container_release_tag: '5.0.4'
+project: 'cli'
+log_dir: 'cli-maven-docker-stage-master/306'
+ref:  27acd3ddf6da4e0863afddcc5346e6d585103d69
+containers:
+  - name: cli
+    version: 5.0-STAGING-latest
