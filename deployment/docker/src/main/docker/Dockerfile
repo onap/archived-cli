@@ -27,8 +27,7 @@ ENV OPEN_CLI_HOME=/opt/oclip \
     OPEN_CLI_DEBUG_PORT=5005 \
     OPEN_CLI_MODE=shell \
     OPEN_CLI_PRODUCT_IN_USE=onap-dublin \
-    GOTTY_TITLE_FORMAT="{{ .command }}" \
-    OCLIP_GRPC_SERVER="http://oclip_ocs_grpc:50051"
+    GOTTY_TITLE_FORMAT="{{ .command }}"
 
 ADD ./STAGE $OPEN_CLI_HOME
 WORKDIR $OPEN_CLI_HOME
@@ -60,11 +59,11 @@ RUN sudo apt-get install -y lighttpd git curl pandoc vim && \
     cp $OPEN_CLI_HOME/http/web/ocomp.key ~/.gotty.key && \
     sudo cp $OPEN_CLI_HOME/http/web/ocomp.pem /etc/lighttpd/ocomp.pem
     #openssl req -x509 -nodes -days 9999 -newkey rsa:2048 -keyout ~/.ocomp.key -out ~/.ocomp.crt -subj "/C=IN/ST=KA/L=BLR/O=CLI/CN=onap"
-EXPOSE 80
-EXPOSE 8080
+EXPOSE 443
+EXPOSE 9090
 EXPOSE 50051
-ENTRYPOINT if [ "$OPEN_CLI_MODE" = "daemon" ]; then sudo service lighttpd start; gotty -t --permit-write --reconnect oclip; \
+ENTRYPOINT if [ "$OPEN_CLI_MODE" = "daemon" ]; then sudo service lighttpd start; gotty -t --port 9090 --permit-write --reconnect oclip; \
            elif [ "$OPEN_CLI_MODE" = "ocs-web" ]; then echo "****** OCLIP Web Command Server ******"; sudo service lighttpd start; \
            elif [ "$OPEN_CLI_MODE" = "ocs-grpc" ]; then echo "****** OCLIP gRPC Command Server ******"; oclip-grpc; \
-           elif [ "$OPEN_CLI_MODE" = "occ" ]; then echo "****** OCLIP Web Command Console (OCC) ******"; gotty -t --permit-write --reconnect oclip; \
+           elif [ "$OPEN_CLI_MODE" = "occ" ]; then echo "****** OCLIP Web Command Console (OCC) ******"; gotty -t  --port 9090 --permit-write --reconnect oclip; \
            else echo "****** OCLIP Command Shell******"; oclip -v && /bin/bash; fi
