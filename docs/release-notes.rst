@@ -4,10 +4,10 @@
 CLI Release Notes
 =================
 
-Version: 5.0.3
+Version: 5.0.4
 --------------
 
-:Release Date: 2020-03-25
+:Release Date: 2020-04-07
 
 **New Features**
 
@@ -15,9 +15,11 @@ Version: 5.0.3
 
 2. Enable Non-Root user in docker container
 
-3. Improved SDC and VFC commands in dublin branch
+3. Improved SDC and VFC commands under onap-dublin product
 
-4. HTTPS is enabled for Web console
+4. CLI web portal is made to run HTTPS 443 port and Web consoles at HTTPS 9090
+
+5. Vulnerability is improved from previous release by using secured 3rd-party libraries
 
 **Security Notes**
 
