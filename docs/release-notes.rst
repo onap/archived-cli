@@ -1,4 +1,5 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
+.. _release_notes:
 
 
 CLI Release Notes
@@ -41,7 +42,7 @@ Version: 4.0.0
 
 2. Multi-level orchestration capability is made available to use and user could use python, or similar scripting/workflow engine for the same
 
-3. VNF Test Platform(VTP) has used the Open Command Platform (OCOMP) – part of ONAP CLI project, for VNF life cycle testing (create and delete)
+3. VNF Test Platform(VTP) has used the Open Command Platform (OCOMP) - part of ONAP CLI project, for VNF life cycle testing (create and delete)
 
 4. ONAP CLI for ONAP Dublin version is stabilized to use it for both service provisioning and testing purpose
 
