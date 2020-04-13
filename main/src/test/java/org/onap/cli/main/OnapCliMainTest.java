@@ -30,6 +30,10 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 
+import java.util.Map;
+import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
+import static org.junit.Assert.assertFalse;
 
 
 public class OnapCliMainTest {
@@ -212,5 +216,10 @@ public class OnapCliMainTest {
         } catch (OnapCommandHelpFailed e) {
             fail("Directive help failed to run");
         }
+    }
+//    @Test
+    public void testLoadYamlForYamlReader() throws OnapCommandInvalidSchema {
+        Map<String,?> map = OnapCommandDiscoveryUtils.loadYaml("/home/root1/All_about_cli/cli/framework/src/main/resources/open-cli-schema/product/product-list.yaml");
+        assertFalse(map.isEmpty());
     }
 }
