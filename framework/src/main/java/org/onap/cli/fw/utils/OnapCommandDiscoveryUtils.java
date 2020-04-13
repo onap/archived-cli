@@ -56,7 +56,8 @@ import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
-import org.yaml.snakeyaml.Yaml;
+import com.esotericsoftware.yamlbeans.YamlReader;
+import java.io.InputStreamReader;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,7 +65,6 @@ import com.google.gson.stream.JsonReader;
 import java.io.FileReader;
 import java.io.Writer;
 import java.io.FileWriter;
-
 
 public class OnapCommandDiscoveryUtils {
     private static Gson gson = new GsonBuilder().serializeNulls().create();
@@ -215,8 +215,9 @@ public class OnapCommandDiscoveryUtils {
      */
     public static Map<String, ?> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
         Map<String, ?> values = null;
-        try {
-            values = (Map<String, ?>) new Yaml().load(resource.getInputStream());
+        try (InputStreamReader inputStreamReader = new InputStreamReader(resource.getInputStream());){
+            YamlReader reader = new YamlReader(inputStreamReader);
+            values = (Map<String, ?>) reader.read();
         } catch (Exception e) {
             throw new OnapCommandInvalidSchema(resource.getFilename(), e);
         }
@@ -306,7 +307,7 @@ public class OnapCommandDiscoveryUtils {
                         if (deafultResourceMap.containsKey(PARAMETERS)) {
                             List<Object> params = new ArrayList<>();
                             for (Map<String, ?> p: (List<Map<String, ?>>) deafultResourceMap.get(PARAMETERS)) {
-                                if (p.keySet().contains(IS_DEFAULT_PARAM) && !((Boolean) p.get(IS_DEFAULT_PARAM))) {
+                                if (p.keySet().contains(IS_DEFAULT_PARAM) && ! (Boolean.getBoolean(String.valueOf(p.get(IS_DEFAULT_PARAM))))) {
                                     params.add(p);
                                 }
                             }
@@ -541,8 +542,9 @@ public class OnapCommandDiscoveryUtils {
      */
     public static Map<String, ?> loadYaml(Resource resource) throws OnapCommandInvalidSchema {
         Map<String, ?> values = null;
-        try {
-            values = (Map<String, ?>) new Yaml().load(resource.getInputStream());
+        try (InputStreamReader inputStreamReader = new InputStreamReader(resource.getInputStream());){
+            YamlReader reader = new YamlReader(inputStreamReader);
+            values = (Map<String, ?>) reader.read();
         } catch (Exception e) {
             throw new OnapCommandInvalidSchema(resource.getFilename(), e);
         }
@@ -559,8 +561,9 @@ public class OnapCommandDiscoveryUtils {
      */
     public static Map<String, ?> loadYaml(String filePath) throws OnapCommandInvalidSchema {
         Map<String, ?> values = null;
-        try {
-            values = (Map<String, Object>) new Yaml().load(FileUtils.readFileToString(new File(filePath)));
+        try (FileReader fileReader = new FileReader(new File(filePath));){
+            YamlReader reader = new YamlReader(fileReader);
+            values = (Map<String, ?>) reader.read();
         } catch (Exception e) {
             throw new OnapCommandInvalidSchema(filePath, e);
         }
