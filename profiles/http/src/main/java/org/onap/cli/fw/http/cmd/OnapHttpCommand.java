@@ -242,7 +242,7 @@ public class OnapHttpCommand extends OnapCommand {
         this.output = this.authClient.run(this.getInput());
 
         this.getResult().setOutput(output);
-        if (!this.getSuccessStatusCodes().contains(output.getStatus())) {
+        if (!this.getSuccessStatusCodes().contains(String.valueOf(output.getStatus()))) {
             throw new OnapCommandExecutionFailed(this.getName(), output.getBody(), output.getStatus());
         }
 
