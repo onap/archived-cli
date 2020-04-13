@@ -47,7 +47,8 @@ import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.moco.OnapCommandSample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.yaml.snakeyaml.Yaml;
+import com.esotericsoftware.yamlbeans.YamlReader;
+import java.io.InputStreamReader;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -220,8 +221,9 @@ public class OnapValidationTest {
     private static List<OnapCommandSample> loadSamples(InputStream inputStream, String fileName) throws OnapCommandInvalidSample {
         List<OnapCommandSample> samples = new ArrayList<>();
         Map<String, ?> values = null;
-        try {
-            values = (Map<String, ?>) new Yaml().load(inputStream);
+        try (InputStreamReader inputStreamReader = new InputStreamReader(inputStream);){
+            YamlReader reader = new YamlReader(inputStreamReader);
+            values = (Map<String, ?>) reader.read();
         } catch (Exception e) {
             throw new OnapCommandInvalidSample(fileName, e);
         }
