@@ -28,7 +28,10 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
-import org.yaml.snakeyaml.Yaml;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import com.esotericsoftware.yamlbeans.YamlException;
+import com.esotericsoftware.yamlbeans.YamlReader;
 
 /**
  * Product list.
@@ -58,7 +61,8 @@ public class OnapProductsListCommand extends OnapCommand {
                     "/" + product + OnapCommandConstants.PRODUCT_REGISTRY_YAML);
 
             if (stream != null) {
-                Map<String, ?> map = (Map<String, ?>) new Yaml().load(stream);
+                Map<String, ?> map = null;
+                map = OnapCommandDiscoveryUtils.loadYaml(stream);
                 Map<String, String> productMap = (Map<String, String>) map.get("product");
                 String description = (String) productMap.get(OnapCommandConstants.DESCRIPTION);
                 this.getResult().getRecordsMap().get("description").getValues().add(description.trim());
