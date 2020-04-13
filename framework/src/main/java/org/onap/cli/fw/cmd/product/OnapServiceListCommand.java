@@ -29,7 +29,6 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
-import org.yaml.snakeyaml.Yaml;
 
 /**
  * Service list.
@@ -62,7 +61,7 @@ public class OnapServiceListCommand extends OnapCommand {
 
         Map<String, String> serviceDescs = new HashMap<>();
         if (stream != null) {
-            Map<String, ?> map = (Map<String, ?>) new Yaml().load(stream);
+            Map<String, ?> map = OnapCommandDiscoveryUtils.loadYaml(stream);
             if (map.containsKey("services")) {
                 List<Map<String, String>> services = (List) map.get("services");
 
