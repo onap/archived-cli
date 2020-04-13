@@ -47,7 +47,8 @@ import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.moco.OnapCommandSample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.yaml.snakeyaml.Yaml;
+import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -221,9 +222,9 @@ public class OnapValidationTest {
         List<OnapCommandSample> samples = new ArrayList<>();
         Map<String, ?> values = null;
         try {
-            values = (Map<String, ?>) new Yaml().load(inputStream);
-        } catch (Exception e) {
-            throw new OnapCommandInvalidSample(fileName, e);
+            values = OnapCommandDiscoveryUtils.loadYaml(inputStream);
+        } catch (OnapCommandInvalidSchema e) { //NOSONAR
+            LOG.error("Failed to load schema file", e.getMessage());
         }
 
         OnapCommandSample sample = new OnapCommandSample();

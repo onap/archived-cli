@@ -164,7 +164,7 @@ public class OnapCommandSchemaHttpLoader {
                                             for (String key: context.keySet()) {
                                                 switch (key) {
                                                     case OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES:
-                                                        Boolean flag = (Boolean) context.get(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES);
+                                                        Boolean flag = Boolean.valueOf(context.get(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES).toString());
                                                         cmd.getInput().getContext().put(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES, flag.toString());
                                                         break;
                                                 }
@@ -351,7 +351,7 @@ public class OnapCommandSchemaHttpLoader {
         }
 
         for (Object successCode : requestSuccessCodes) {
-            Integer code = (Integer) successCode;
+            Integer code = Integer.valueOf(String.valueOf(successCode));
             if (code < 200 || code >= 300) {
                 if ( code != 404) {
                     errorList.add(OnapCommandHttpConstants.HTTP_SUCCESS_CODE_INVALID);
