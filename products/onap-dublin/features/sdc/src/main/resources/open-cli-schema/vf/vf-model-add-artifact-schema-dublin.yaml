@@ -48,6 +48,13 @@ parameters:
     long_option: artifact-name
     short_option: b
     is_optional: false
+  - name: artifact-label
+    description: Artifact Label
+    type: string
+    long_option: artifact-label
+    short_option: l
+    default_value: artifactLabel
+    is_optional: false
   - name: user-id
     description: Designer user id
     type: string
