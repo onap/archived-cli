@@ -48,6 +48,13 @@ parameters:
     long_option: artifact-name
     short_option: b
     is_optional: false
+  - name: artifact-label
+    description: Artifact Label
+    type: string
+    long_option: artifact-label
+    short_option: l
+    default_value: artifactLabel
+    is_optional: false
   - name: user-id
     description: Designer user id
     type: string
@@ -67,6 +74,6 @@ http:
     headers:
       Content-MD5: $s{md5:__body__}
       USER_ID: ${user-id}
-    body: '{"payloadData":"${artifact}","artifactDisplayName":"${artifact-name}","artifactType":"OTHER","description":"${remarks}","artifactName":"${artifact-name}", "artifactLabel":"${artifact-name}","artifactGroupType":"DEPLOYMENT", artifactChecksum="$s{md5:artifact}"}'
+    body: '{"payloadData":"${artifact}","artifactDisplayName":"${artifact-name}","artifactType":"OTHER","description":"${remarks}","artifactName":"${artifact-name}", "artifactLabel":"${artifact-label}","artifactGroupType":"DEPLOYMENT", artifactChecksum="$s{md5:artifact}"}'
   success_codes:
     - 200
