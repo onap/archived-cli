@@ -14,7 +14,7 @@ name: vfc-nslcm-get-jobid
 description: vfc nsclm get the jobid of  ns created job
 
 info:
-  product: onap-dublin
+  product: onap-elalto
   service: vfc
   author: ONAP VFC Team (yangyanyj@chinamobile.com)
 

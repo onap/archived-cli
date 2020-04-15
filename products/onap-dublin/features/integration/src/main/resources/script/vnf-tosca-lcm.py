@@ -31,7 +31,6 @@ import datetime
 import string
 import random
 import time
-import requests
 
 from argparse import RawTextHelpFormatter
 
@@ -494,8 +493,20 @@ class ONAP:
 
     def create_vnf(self):
         self.ocomp.run(command='vfc-catalog-onboard-vnf',
-                                params={'vnf-csar-uuid': self.vf_uuid})
-        time.sleep(60)
+                       params={'vnf-csar-uuid': self.vf_uuid})
+
+        vnf_flag = False
+        for i in range(60):
+            output = self.ocomp.run(command='vfc-catalog-get-vnf')
+            for csar in output:
+                if csar.get("csar-id") == self.vf_uuid:
+                    vnf_flag = True
+                    break
+            if vnf_flag:
+                break
+            else:
+                time.sleep(1)
+
         self.ocomp.run(command='vfc-catalog-onboard-ns',
                                 params={'ns-csar-uuid': self.ns_uuid})
 
@@ -513,40 +524,30 @@ class ONAP:
                                         'sdn-controller-id': self.esr_vnfm_id})
 
         jobid = output['job-id']
-        self.waitProcessFinished(self.ns_instance_id, jobid, "instantiate")
+        self.waitProcessFinished(jobid)
 
     def vnf_status_check(self):
         self.vnf_status = 'active'
         self.ns_instance_status = 'active'
 
-    def waitProcessFinished(self, ns_instance_id, job_id, action):
-        job_url = self.conf['ONAP']['msb_url'] + "/api/nslcm/v1/jobs/%s" % job_id
-        progress = 0
-        for i in range(600):
-            job_resp = requests.get(url=job_url)
-            if 200 == job_resp.status_code:
-                if "responseDescriptor" in job_resp.json():
-                    progress_rep = (job_resp.json())["responseDescriptor"]["progress"]
-                    if 100 != progress_rep:
-                        if 255 == progress_rep:
-                            print("Ns %s %s failed." % (ns_instance_id, action))
-                            break
-                        elif progress_rep != progress:
-                            progress = progress_rep
-                            print("Ns %s %s process is %s." % (ns_instance_id, action, progress))
-                        time.sleep(0.2)
-                    else:
-                        print("Ns %s %s process is %s." % (ns_instance_id, action, progress_rep))
-                        print("Ns %s %s successfully." % (ns_instance_id, action))
-                        time.sleep(10)
-                        break
+    def waitProcessFinished(self, job_id):
+        for i in range(150):
+            output = self.ocomp.run(command='vfc-nslcm-get-jobid',
+                                    params={'ns-job-id': job_id})
+            progress_rep = int(output["job-progress"])
+            if 100 != progress_rep:
+                if 255 == progress_rep:
+                    break
+                time.sleep(1)
+            else:
+                break
 
     def cleanup(self):
         if self.ns_instance_id:
             output = self.ocomp.run(command='vfc-nslcm-terminate',
                               params={'ns-instance-id': self.ns_instance_id})
             jobid = output['job-id']
-            self.waitProcessFinished(self.ns_instance_id, jobid, "terminate")
+            self.waitProcessFinished(jobid)
             self.ocomp.run(command='vfc-nslcm-delete',
                               params={'ns-instance-id': self.ns_instance_id})
             self.ns_instance_id = None
@@ -607,11 +608,22 @@ class ONAP:
 
         if self.cloud_id:
             self.ocomp.run(command='multicloud-cloud-delete',
-                              params={'cloud-owner': self.cloud_id,
-                                      'cloud-region': self.conf['cloud']['region']})
-            self.cloud_id = self.cloud_version = None
+                           params={'cloud-owner': self.cloud_id,
+                                   'cloud-region': self.conf['cloud']['region']})
 
-        time.sleep(30)
+            for i in range(30):
+                cloud_flag = False
+                output = self.ocomp.run(command='cloud-list')
+                for cloud in output:
+                    if cloud.get('cloud') == self.cloud_id:
+                        cloud_flag = True
+                        break
+                if not cloud_flag:
+                    break
+                else:
+                    time.sleep(1)
+
+            self.cloud_id = self.cloud_version = None
 
         if self.location_id and self.location_version:
             self.ocomp.run(command='complex-delete',
