@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aca4eceb_0fdecc9a",
+        "filename": "products/onap-dublin/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-add-artifact-schema-dublin.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-16T00:14:42Z",
+      "side": 1,
+      "message": "pls make it true. thanks",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "048290f7d8e1fb74c12dd1f3557acf6918d29d47",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "337370b7_c9cf32de",
+        "filename": "products/onap-elalto/features/sdc/src/main/resources/open-cli-schema/vf/vf-model-add-artifact-schema-elalto.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-16T00:14:42Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "048290f7d8e1fb74c12dd1f3557acf6918d29d47",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
