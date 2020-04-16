@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "966922d7_d53f0021",
+        "filename": "framework/src/main/java/org/onap/cli/fw/cmd/product/OnapServiceListCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-16T16:50:00Z",
+      "side": 1,
+      "message": "can you make this as static method in DiscoveryUtils and use it framework, main and profile projects. thanks",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 76,
+        "endChar": 13
+      },
+      "revId": "19a85b95d3f1a3daaff467e5503e91be26fd287b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f93bda_bf8bc686",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/cmd/OnapHttpCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-16T16:50:00Z",
+      "side": 1,
+      "message": "is this not string already?",
+      "revId": "19a85b95d3f1a3daaff467e5503e91be26fd287b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
