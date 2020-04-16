@@ -60,10 +60,10 @@ RUN sudo apt-get install -y lighttpd git curl pandoc vim && \
     sudo cp $OPEN_CLI_HOME/http/web/ocomp.pem /etc/lighttpd/ocomp.pem
     #openssl req -x509 -nodes -days 9999 -newkey rsa:2048 -keyout ~/.ocomp.key -out ~/.ocomp.crt -subj "/C=IN/ST=KA/L=BLR/O=CLI/CN=onap"
 EXPOSE 443
-EXPOSE 9090
+EXPOSE 9443
 EXPOSE 50051
-ENTRYPOINT if [ "$OPEN_CLI_MODE" = "daemon" ]; then sudo service lighttpd start; gotty -t --port 9090 --permit-write --reconnect oclip; \
+ENTRYPOINT if [ "$OPEN_CLI_MODE" = "daemon" ]; then sudo service lighttpd start; gotty -t --port 9443 --permit-write --reconnect oclip; \
            elif [ "$OPEN_CLI_MODE" = "ocs-web" ]; then echo "****** OCLIP Web Command Server ******"; sudo service lighttpd start; \
            elif [ "$OPEN_CLI_MODE" = "ocs-grpc" ]; then echo "****** OCLIP gRPC Command Server ******"; oclip-grpc; \
-           elif [ "$OPEN_CLI_MODE" = "occ" ]; then echo "****** OCLIP Web Command Console (OCC) ******"; gotty -t  --port 9090 --permit-write --reconnect oclip; \
+           elif [ "$OPEN_CLI_MODE" = "occ" ]; then echo "****** OCLIP Web Command Console (OCC) ******"; gotty -t  --port 9443 --permit-write --reconnect oclip; \
            else echo "****** OCLIP Command Shell******"; oclip -v && /bin/bash; fi
