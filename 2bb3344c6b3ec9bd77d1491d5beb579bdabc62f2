@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61e7f3b4_ba764f2f",
+        "filename": "products/onap-dublin/features/integration/src/main/resources/script/vnf-tosca-lcm.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-16T00:24:02Z",
+      "side": 0,
+      "message": "why this clean up are removed?",
+      "range": {
+        "startLine": 584,
+        "startChar": 11,
+        "endLine": 600,
+        "endChar": 78
+      },
+      "revId": "2bb3344c6b3ec9bd77d1491d5beb579bdabc62f2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
