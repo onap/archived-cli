@@ -1,0 +1,75 @@
+
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/api/nslcm/v1/jobs/NS-NS_INST-330366c3-3a42-4739-9d46-6f468cf7e6ec-a85c262c-8099-11ea-80f5-0227d810af52",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "jobId": "NS-NS_INST-330366c3-3a42-4739-9d46-6f468cf7e6ec-a85c262c-8099-11ea-80f5-0227d810af52",
+      "responseDescriptor": {
+        "status": "finished",
+        "progress": 100,
+        "statusDescription": "Create NS successfully.",
+        "errorCode": "0",
+        "responseId": 8,
+        "responseHistoryList": [
+          {
+            "status": "processing",
+            "progress": 90,
+            "statusDescription": "Start to post deal",
+            "errorCode": "0",
+            "responseId": 7
+          },
+          {
+            "status": "processing",
+            "progress": 70,
+            "statusDescription": "Start to create SFC",
+            "errorCode": "0",
+            "responseId": 6
+          },
+          {
+            "status": "processing",
+            "progress": 50,
+            "statusDescription": "Start to create PNF",
+            "errorCode": "0",
+            "responseId": 5
+          },
+          {
+            "status": "processing",
+            "progress": 30,
+            "statusDescription": "Start to create VNF",
+            "errorCode": "0",
+            "responseId": 4
+          },
+          {
+            "status": "processing",
+            "progress": 10,
+            "statusDescription": "Start to create VL",
+            "errorCode": "0",
+            "responseId": 3
+          },
+          {
+            "status": "processing",
+            "progress": 10,
+            "statusDescription": "NS inst(330366c3-3a42-4739-9d46-6f468cf7e6ec) buildin workflow started.",
+            "errorCode": "0",
+            "responseId": 2
+          },
+          {
+            "status": "processing",
+            "progress": 5,
+            "statusDescription": "Start query nsd(be194bc4-eb04-467c-a4ee-67e43ecbb7ad)",
+            "errorCode": "0",
+            "responseId": 1
+          }
+        ]
+      }
+    }
+  }
+} ]
