@@ -54,7 +54,7 @@ parameters:
     long_option: artifact-label
     short_option: l
     default_value: artifactLabel
-    is_optional: false
+    is_optional: true
   - name: artifact-group-type
     description: Upload Artifact Group Type
     type: string
