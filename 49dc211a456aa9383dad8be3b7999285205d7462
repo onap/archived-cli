@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "12f6f008_885d5ff9",
+        "filename": "products/onap-dublin/features/integration/src/main/resources/script/vnf-tosca-lcm.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 5953
+      },
+      "writtenOn": "2020-04-20T12:10:02Z",
+      "side": 1,
+      "message": "Pls see the latest script",
+      "parentUuid": "b1ddd329_b1cdea5f",
+      "range": {
+        "startLine": 498,
+        "startChar": 8,
+        "endLine": 498,
+        "endChar": 22
+      },
+      "revId": "49dc211a456aa9383dad8be3b7999285205d7462",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4e0f8ce_882171a5",
         "filename": "products/onap-dublin/features/integration/src/main/resources/script/vnf-tosca-lcm.py",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "6f4cbd32_e77c9161",
+        "filename": "products/onap-dublin/features/integration/src/main/resources/script/vnf-tosca-lcm.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 5953
+      },
+      "writtenOn": "2020-04-20T12:10:02Z",
+      "side": 1,
+      "message": "Pls see the latest script",
+      "parentUuid": "a4e0f8ce_882171a5",
+      "revId": "49dc211a456aa9383dad8be3b7999285205d7462",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19d799ea_f4b4fa5a",
         "filename": "products/onap-dublin/features/integration/src/main/resources/script/vnf-tosca-lcm.py",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2020-04-16T00:24:02Z",
       "side": 1,
       "message": "same here.",
+      "range": {
+        "startLine": 614,
+        "startChar": 19,
+        "endLine": 614,
+        "endChar": 21
+      },
+      "revId": "49dc211a456aa9383dad8be3b7999285205d7462",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a517d06_b2970d99",
+        "filename": "products/onap-dublin/features/integration/src/main/resources/script/vnf-tosca-lcm.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 5953
+      },
+      "writtenOn": "2020-04-20T12:10:02Z",
+      "side": 1,
+      "message": "Pls see the latest script",
+      "parentUuid": "19d799ea_f4b4fa5a",
       "range": {
         "startLine": 614,
         "startChar": 19,
