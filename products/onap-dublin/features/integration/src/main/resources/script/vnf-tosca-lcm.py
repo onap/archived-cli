@@ -30,6 +30,7 @@ import platform
 import datetime
 import string
 import random
+import time
 
 from argparse import RawTextHelpFormatter
 
@@ -248,8 +249,8 @@ class ONAP:
             output = self.ocomp.run(command='vf-model-create',
                                     params={'name': '{} Vnf'.format(self.conf['vnf']['name']),
                                             'vendor-name': self.conf['vnf']['vendor-name'],
-#                                             'vsp-id': self.vsp_id,
-#                                             'vsp-version': self.vsp_version, # TODO: SDC fails to add VSP, check it
+                                            'vsp-id': self.vsp_id,
+                                            'vsp-version': self.vsp_version, # TODO: SDC fails to add VSP, check it
                                             'description': self.tag})
 
             vf_id = output['id']
@@ -259,7 +260,7 @@ class ONAP:
                                     params={'vf-id': vf_id,
                                             'remarks': self.tag,
                                             'artifact': self.conf['vnf']['vnf-csar'],
-                                            'artifact-name': 'tosca csar'})
+                                            'artifact-name': 'vnf.csar'})
 
             output = self.ocomp.run(command='vf-model-certify',
                                         params={'vf-id': vf_id,
@@ -293,7 +294,8 @@ class ONAP:
                                     params={'service-id': ns_id,
                                             'remarks': self.tag,
                                             'artifact': self.conf['vnf']['ns-csar'],
-                                            'artifact-name': 'tosca csar'})
+                                            'artifact-group-type': 'DEPLOYMENT',
+                                            'artifact-name': 'ns.csar'})
             #set property vnfmdriver
             for input in self.vf_inputs:
                 if input.endswith('.nf_type'):
@@ -367,7 +369,7 @@ class ONAP:
                                             'complex-name': self.location_id,
                                             'identity-url': self.conf['cloud']['identity-url'],
                                             'cloud-owner': cloud_id,
-                                            'cloud-type': 'OpenStack',
+                                            'cloud-type': 'openstack',
                                             'owner-type': 'ocomp',
                                             'cloud-region-version': self.conf['cloud']['version'],
                                             'cloud-zone': 'az1',
@@ -396,6 +398,9 @@ class ONAP:
                                             'cloud-region': self.conf['cloud']['region'],
                                             'cloud-owner': self.cloud_id})
 
+        self.ocomp.run(command='multicloud-register-cloud',
+                       params={'cloud-region': self.conf['cloud']['region'], 'cloud-owner': self.cloud_id})
+
         subscribe = False
         if not self.service_type_id and not self.service_type_version:
             service_type_id = '{}-{}'.format(self.conf['subscription']['service-type'], self.conf['ONAP']['uid'])
@@ -413,7 +418,7 @@ class ONAP:
                     break
 
         if not self.customer_id and not self.customer_version:
-            customer_id = '{}-{}'.format(self.conf['subscription']['customer-name'], self.ocomp.conf['ONAP']['random'])
+            customer_id = '{}-{}'.format(self.conf['subscription']['customer-name'], self.conf['ONAP']['uid'])
             self.ocomp.run(command='customer-create',
                                 params={'customer-name': customer_id,
                                         'subscriber-name': customer_id})
@@ -428,23 +433,16 @@ class ONAP:
                     break
 
         if not self.tenant_id and not self.tenant_version:
-            tenant_id = str(uuid.uuid4())
-            self.ocomp.run(command='tenant-create',
-                                params={'tenant-name': self.conf['cloud']['tenant'],
-                                        'tenant-id': tenant_id,
-                                        'cloud':self.cloud_id,
-                                        'region': self.conf['cloud']['region']})
-            self.tenant_id = tenant_id
-            subscribe = True
-
             output = self.ocomp.run(command='tenant-list', params={
                 'cloud': self.cloud_id,
                 'region': self.conf['cloud']['region']
                 })
 
             for tenant in output:
-                if tenant['tenant-id'] == self.tenant_id:
+                if tenant['tenant-name'] == self.conf['cloud']['tenant']:
+                    self.tenant_id = tenant['tenant-id']
                     self.tenant_version = tenant['resource-version']
+                    subscribe = True
                     break
 
         if subscribe:
@@ -471,7 +469,7 @@ class ONAP:
 
             esr_vnfm_id = str(uuid.uuid4())
             self.ocomp.run(command='vnfm-create',
-                                    params={'vim-id': self.cloud_id,
+                                    params={'vim-id': self.cloud_id + "_" + self.conf['cloud']['region'],
                                             'vnfm-id': esr_vnfm_id,
                                             'name': 'OCOMP {}'.format(vnfmdriver),
                                             'type': vnfmdriver,
@@ -495,7 +493,19 @@ class ONAP:
 
     def create_vnf(self):
         self.ocomp.run(command='vfc-catalog-onboard-vnf',
-                                params={'vnf-csar-uuid': self.vf_uuid})
+                       params={'vnf-csar-uuid': self.vf_uuid})
+
+        vnf_flag = False
+        for i in range(60):
+            output = self.ocomp.run(command='vfc-catalog-get-vnf')
+            for csar in output:
+                if csar.get("csar-id") == self.vf_uuid:
+                    vnf_flag = True
+                    break
+            if vnf_flag:
+                break
+            else:
+                time.sleep(1)
 
         self.ocomp.run(command='vfc-catalog-onboard-ns',
                                 params={'ns-csar-uuid': self.ns_uuid})
@@ -508,20 +518,36 @@ class ONAP:
 
         self.ns_instance_id = output['ns-instance-id']
 
-        vnfmdriver = self.conf['vnf']['vnfm-driver']
-        self.ocomp.run(command='vfc-nslcm-instantiate',
+        output = self.ocomp.run(command='vfc-nslcm-instantiate',
                                 params={'ns-instance-id': self.ns_instance_id,
-                                        'location': self.cloud_id,
+                                        'location': self.cloud_id + "_" + self.conf['cloud']['region'],
                                         'sdn-controller-id': self.esr_vnfm_id})
+
+        jobid = output['job-id']
+        self.waitProcessFinished(jobid)
 
     def vnf_status_check(self):
         self.vnf_status = 'active'
         self.ns_instance_status = 'active'
 
+    def waitProcessFinished(self, job_id):
+        for i in range(150):
+            output = self.ocomp.run(command='vfc-nslcm-get-jobid',
+                                    params={'ns-job-id': job_id})
+            progress_rep = int(output["job-progress"])
+            if 100 != progress_rep:
+                if 255 == progress_rep:
+                    break
+                time.sleep(1)
+            else:
+                break
+
     def cleanup(self):
         if self.ns_instance_id:
-            self.ocomp.run(command='vfc-nslcm-terminate',
+            output = self.ocomp.run(command='vfc-nslcm-terminate',
                               params={'ns-instance-id': self.ns_instance_id})
+            jobid = output['job-id']
+            self.waitProcessFinished(jobid)
             self.ocomp.run(command='vfc-nslcm-delete',
                               params={'ns-instance-id': self.ns_instance_id})
             self.ns_instance_id = None
@@ -580,24 +606,23 @@ class ONAP:
                                       'resource-version': self.tenant_version})
             self.tenant_id = self.tenant_version = None
 
-        if self.cloud_id and self.location_id:
-            self.ocomp.run(command='complex-disassociate',
-                              params={'cloud-owner': self.cloud_id,
-                                      'cloud-region': self.conf['cloud']['region'],
-                                      'complex-name': self.location_id})
+        if self.cloud_id:
+            self.ocomp.run(command='multicloud-cloud-delete',
+                           params={'cloud-owner': self.cloud_id,
+                                   'cloud-region': self.conf['cloud']['region']})
 
-        if self.cloud_id and self.cloud_version:
-            output = self.ocomp.run(command='cloud-list')
-
-            for c in output:
-                if c['cloud'] == self.cloud_id and c['region'] == self.conf['cloud']['region']:
-                    self.cloud_version = c['resource-version']
+            for i in range(30):
+                cloud_flag = False
+                output = self.ocomp.run(command='cloud-list')
+                for cloud in output:
+                    if cloud.get('cloud') == self.cloud_id:
+                        cloud_flag = True
+                        break
+                if not cloud_flag:
                     break
+                else:
+                    time.sleep(1)
 
-            self.ocomp.run(command='cloud-delete',
-                              params={'cloud-name': self.cloud_id,
-                                      'region-name': self.conf['cloud']['region'],
-                                      'resource-version': self.cloud_version})
             self.cloud_id = self.cloud_version = None
 
         if self.location_id and self.location_version:
@@ -696,13 +721,15 @@ if __name__ == '__main__':
         if vnf_csar:
             conf['vnf']['vnf-csar'] = vnf_csar
         if ns_csar:
-            conf['vnf']['ns-csar'] = vnf_csar
+            conf['vnf']['ns-csar'] = ns_csar
         if vnf_name:
             conf['vnf']['name'] = vnf_name
         conf['vnf']['name'] = '{}{}'.format(conf['vnf']['name'], conf['ONAP']['uid'])
         if vendor_name:
             conf['vnf']['vendor-name'] = vendor_name
         conf['vnf']['vendor-name'] = '{}-{}'.format(conf['vnf']['vendor-name'], conf['ONAP']['uid'])
+        if vnfm_driver:
+            conf['vnf']['vnfm-driver'] = vnfm_driver
 
     if args.result:
         result_file = args.result
