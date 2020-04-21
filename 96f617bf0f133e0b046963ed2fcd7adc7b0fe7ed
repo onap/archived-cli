@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53ee1f0b_7afa2d29",
+        "filename": "products/onap-dublin/features/integration/src/main/resources/script/vnf-tosca-lcm.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-21T02:59:13Z",
+      "side": 1,
+      "message": "pls remove this lib now. thank you for adding support for cli.",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "96f617bf0f133e0b046963ed2fcd7adc7b0fe7ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
