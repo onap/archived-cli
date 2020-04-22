@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dce144c_5a5144aa",
+        "filename": "framework/src/main/java/org/onap/cli/fw/cmd/product/OnapProductsListCommand.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-22T10:36:22Z",
+      "side": 1,
+      "message": "refine it",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "ac921b1f642bf9df0004d8ada2b190487f5c5acc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc3f5fd_fb73eb4f",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-22T10:36:22Z",
+      "side": 1,
+      "message": "combine into on catch statement",
+      "range": {
+        "startLine": 589,
+        "startChar": 20,
+        "endLine": 591,
+        "endChar": 36
+      },
+      "revId": "ac921b1f642bf9df0004d8ada2b190487f5c5acc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
