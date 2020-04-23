@@ -22,7 +22,7 @@ info:
   author: ONAP VFC Team (yangyanyj@chinamobile.com)
 
 results:
-  direction: portrait
+  direction: landscape
   attributes:
     - name: ns-instance-id
       description: ns-instance-id
@@ -46,7 +46,7 @@ http:
     auth: none
     mode: direct
   request:
-    uri: api/nslcm/v1/ns_instances
+    uri: /api/nslcm/v1/ns_instances
     method: GET
     context:
       remove_empty_node: true
@@ -57,7 +57,7 @@ http:
   success_codes:
     - 200
   result_map:
-    ns-instance-id: $b{$.nsInstanceId}
-    ns-name: $b{$.nsName}
-    description: $b{$.description}
-    nsd-id: $b{$.nsdId}
+    ns-instance-id: $b{$.[*].id}
+    ns-name: $b{$.[*].nsInstanceName}
+    description: $b{$.[*].nsInstanceDescription}
+    nsd-id: $b{$.[*].nsdId}

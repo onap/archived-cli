@@ -60,7 +60,7 @@ http:
     auth: none
     mode: direct
   request:
-    uri: api/nslcm/v1/ns_instances
+    uri: /api/nslcm/v1/ns_instances
     method: POST
     context:
       remove_empty_node: true

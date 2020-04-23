@@ -1,0 +1,224 @@
+
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/api/nslcm/v1/ns_lcm_op_occs",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : [
+      {
+        "id": "1aa6afe6-035a-47f0-a14d-7b63e00424f4",
+        "operationState": "COMPLETED",
+        "stateEnteredTime": "2020-04-20 09:59:59",
+        "startTime": "2020-04-20 09:58:08",
+        "nsInstanceId": "18c8be1a-6776-47b4-bbfc-bb8cd4a61152",
+        "operation": "INSTANTIATE",
+        "isAutomaticInvocation": "False",
+        "operationParams": {
+          "additionalParamForNs": {
+            "sdncontroller": "e8bd9e9e-70f4-4893-b75c-9cd3fe161eab",
+            "location": "OCOMP-hiofn_RegionOne"
+          }
+        },
+        "isCancelPending": "False",
+        "cancelMode": null,
+        "error": null,
+        "resourceChanges": null,
+        "_links": {
+          "self": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/1aa6afe6-035a-47f0-a14d-7b63e00424f4"
+          },
+          "nsInstance": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_instances/18c8be1a-6776-47b4-bbfc-bb8cd4a61152"
+          },
+          "retry": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/1aa6afe6-035a-47f0-a14d-7b63e00424f4/retry"
+          },
+          "rollback": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/1aa6afe6-035a-47f0-a14d-7b63e00424f4/rollback"
+          },
+          "continue": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/1aa6afe6-035a-47f0-a14d-7b63e00424f4/continue"
+          },
+          "fail": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/1aa6afe6-035a-47f0-a14d-7b63e00424f4/fail"
+          },
+          "cancel": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/1aa6afe6-035a-47f0-a14d-7b63e00424f4/cancel"
+          }
+        }
+      },
+      {
+        "id": "7bb94926-cf28-487e-a40d-1cdc90d14abe",
+        "operationState": "COMPLETED",
+        "stateEnteredTime": "2020-04-20 10:36:12",
+        "startTime": "2020-04-20 10:35:03",
+        "nsInstanceId": "1a68a79b-e1b6-47d3-9655-b8e4afb5f4f7",
+        "operation": "INSTANTIATE",
+        "isAutomaticInvocation": "False",
+        "operationParams": {
+          "additionalParamForNs": {
+            "sdncontroller": "58e5c86b-7f07-487d-a507-b123a245e37d",
+            "location": "OCOMP-rsnbf_RegionOne"
+          }
+        },
+        "isCancelPending": "False",
+        "cancelMode": null,
+        "error": null,
+        "resourceChanges": null,
+        "_links": {
+          "self": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/7bb94926-cf28-487e-a40d-1cdc90d14abe"
+          },
+          "nsInstance": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_instances/1a68a79b-e1b6-47d3-9655-b8e4afb5f4f7"
+          },
+          "retry": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/7bb94926-cf28-487e-a40d-1cdc90d14abe/retry"
+          },
+          "rollback": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/7bb94926-cf28-487e-a40d-1cdc90d14abe/rollback"
+          },
+          "continue": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/7bb94926-cf28-487e-a40d-1cdc90d14abe/continue"
+          },
+          "fail": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/7bb94926-cf28-487e-a40d-1cdc90d14abe/fail"
+          },
+          "cancel": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/7bb94926-cf28-487e-a40d-1cdc90d14abe/cancel"
+          }
+        }
+      },
+      {
+        "id": "816cf68f-56f2-423b-8fb4-aae5b96f3908",
+        "operationState": "COMPLETED",
+        "stateEnteredTime": "2020-04-20 10:50:23",
+        "startTime": "2020-04-20 10:48:51",
+        "nsInstanceId": "b7609865-9212-4ab0-a390-c192ffce751c",
+        "operation": "INSTANTIATE",
+        "isAutomaticInvocation": "False",
+        "operationParams": {
+          "additionalParamForNs": {
+            "sdncontroller": "ac2906fe-8304-4db6-9678-1ff392884d75",
+            "location": "OCOMP-tmlfq_RegionOne"
+          }
+        },
+        "isCancelPending": "False",
+        "cancelMode": null,
+        "error": null,
+        "resourceChanges": null,
+        "_links": {
+          "self": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/816cf68f-56f2-423b-8fb4-aae5b96f3908"
+          },
+          "nsInstance": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_instances/b7609865-9212-4ab0-a390-c192ffce751c"
+          },
+          "retry": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/816cf68f-56f2-423b-8fb4-aae5b96f3908/retry"
+          },
+          "rollback": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/816cf68f-56f2-423b-8fb4-aae5b96f3908/rollback"
+          },
+          "continue": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/816cf68f-56f2-423b-8fb4-aae5b96f3908/continue"
+          },
+          "fail": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/816cf68f-56f2-423b-8fb4-aae5b96f3908/fail"
+          },
+          "cancel": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/816cf68f-56f2-423b-8fb4-aae5b96f3908/cancel"
+          }
+        }
+      },
+      {
+        "id": "cc2180c2-52c0-41fa-8ae1-a3b54142cc95",
+        "operationState": "COMPLETED",
+        "stateEnteredTime": "2020-04-20 11:08:15",
+        "startTime": "2020-04-20 11:06:53",
+        "nsInstanceId": "deccc3a8-3f90-4801-b43a-8eccbadce8f2",
+        "operation": "INSTANTIATE",
+        "isAutomaticInvocation": "False",
+        "operationParams": {
+          "additionalParamForNs": {
+            "sdncontroller": "56c16600-4aae-4680-ba1b-6acfc8f8b27f",
+            "location": "OCOMP-pvjzk_RegionOne"
+          }
+        },
+        "isCancelPending": "False",
+        "cancelMode": null,
+        "error": null,
+        "resourceChanges": null,
+        "_links": {
+          "self": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/cc2180c2-52c0-41fa-8ae1-a3b54142cc95"
+          },
+          "nsInstance": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_instances/deccc3a8-3f90-4801-b43a-8eccbadce8f2"
+          },
+          "retry": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/cc2180c2-52c0-41fa-8ae1-a3b54142cc95/retry"
+          },
+          "rollback": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/cc2180c2-52c0-41fa-8ae1-a3b54142cc95/rollback"
+          },
+          "continue": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/cc2180c2-52c0-41fa-8ae1-a3b54142cc95/continue"
+          },
+          "fail": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/cc2180c2-52c0-41fa-8ae1-a3b54142cc95/fail"
+          },
+          "cancel": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/cc2180c2-52c0-41fa-8ae1-a3b54142cc95/cancel"
+          }
+        }
+      },
+      {
+        "id": "f3a5e32e-22e9-4f23-b881-59c0360af22f",
+        "operationState": "COMPLETED",
+        "stateEnteredTime": "2020-04-20 10:41:05",
+        "startTime": "2020-04-20 10:39:59",
+        "nsInstanceId": "1a68a79b-e1b6-47d3-9655-b8e4afb5f4f7",
+        "operation": "TERMINATE",
+        "isAutomaticInvocation": "False",
+        "operationParams": {
+          "gracefulTerminationTimeout": 60000,
+          "terminationType": "FORCEFUL"
+        },
+        "isCancelPending": "False",
+        "cancelMode": null,
+        "error": null,
+        "resourceChanges": null,
+        "_links": {
+          "self": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/f3a5e32e-22e9-4f23-b881-59c0360af22f"
+          },
+          "nsInstance": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_instances/1a68a79b-e1b6-47d3-9655-b8e4afb5f4f7"
+          },
+          "retry": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/f3a5e32e-22e9-4f23-b881-59c0360af22f/retry"
+          },
+          "rollback": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/f3a5e32e-22e9-4f23-b881-59c0360af22f/rollback"
+          },
+          "continue": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/f3a5e32e-22e9-4f23-b881-59c0360af22f/continue"
+          },
+          "fail": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/f3a5e32e-22e9-4f23-b881-59c0360af22f/fail"
+          },
+          "cancel": {
+            "href": "http://msb-iag:80/api/nslcm/v1/ns_lcm_op_occs/f3a5e32e-22e9-4f23-b881-59c0360af22f/cancel"
+          }
+        }
+      }
+    ]
+  }
+} ]

@@ -19,14 +19,14 @@ info:
   author: ONAP VFC Team (yangyanyj@chinamobile.com)
 
 results:
-  direction: portrait
+  direction: landscape
   attributes:
     - name: nslcm-opocc-id
       description: nslcm-opocc-id
       scope: short
       type: string
-    - name: operation-state
-      description: operation-state
+    - name: ns-operation-state
+      description: ns-operation-state
       scope: short
       type: string
     - name: ns-instance-id
@@ -37,8 +37,8 @@ results:
       description: lcm-operation-type
       scope: short
       type: string
-    - name: status-entered-time
-      description: status-entered-time
+    - name: state-entered-time
+      description: state-entered-time
       scope: short
       type: string
 
@@ -47,19 +47,18 @@ http:
     auth: none
     mode: direct
   request:
-    uri: api/nslcm/v1/ns_lcm_op_occs
+    uri: /api/nslcm/v1/ns_lcm_op_occs
     method: GET
-    context:
-      remove_empty_node: true
-    body: '{}'
     headers:
       Content-Type: application/json
       Accept: application/json
+
   success_codes:
     - 200
+
   result_map:
-    nslcm-opocc-id: $b{$.nslcmOpoccId}
-    ns-operation-state: $b{$.operationState}
-    ns-instance-id: $b{$.nsInstanceId}
-    lcm-operation-type-id: $b{$.lcmOperationType}
-    status-entered-time: $b{$.statusEnteredTime}
+    nslcm-opocc-id: $b{$.[*].id}
+    ns-operation-state: $b{$.[*].operationState}
+    ns-instance-id: $b{$.[*].nsInstanceId}
+    lcm-operation-type: $b{$.[*].operation}
+    state-entered-time: $b{$.[*].stateEnteredTime}

@@ -32,6 +32,10 @@ parameters:
 results:
   direction: landscape
   attributes:
+    - name: id
+      description: ns package id
+      scope: short
+      type: string
     - name: nsd-info-id
       description: nsd-info-id
       scope: short
@@ -40,25 +44,25 @@ results:
       description: nsd-name
       scope: short
       type: string
-    - name: nsd-description
-      description: nsd-description
+    - name: nsd-onboarding-state
+      description: nsd-onboarding-state
       scope: short
       type: string
-    - name: ns-package-id
-      description: ns-package-id
+    - name: vnf-package-ids
+      description: vnf-package-ids
       scope: short
-      type: string
-    - name: sdc-csar-id
-      description: sdc-csar-id
+      type: array
+    - name: pnf-package-ids
+      description: pnf-package-ids
       scope: short
-      type: string
+      type: array
 
 http:
   service:
     auth: none
     mode: direct
   request:
-    uri: api/nsd/v1/ns_descriptors/${nsd-info-id}
+    uri: /api/nsd/v1/ns_descriptors/${nsd-info-id}
     method: GET
     context:
       remove_empty_node: true
@@ -69,8 +73,9 @@ http:
   success_codes:
     - 200
   result_map:
+    id: $b{$.id}
     nsd-info-id: $b{$.nsdId}
     nsd-name: $b{$.nsdName}
-    nsd-description: $b{$.nsdDescription}
-    ns-package-id: $b{$.nsPackageId}
-    sdc-csar-id: $b{$.sdcCsarId }
+    nsd-onboarding-state: $b{$.nsdOnboardingState}
+    vnf-package-ids: $b{$.vnfPkgIds}
+    pnf-package-ids: $b{$.pnfdInfoIds}

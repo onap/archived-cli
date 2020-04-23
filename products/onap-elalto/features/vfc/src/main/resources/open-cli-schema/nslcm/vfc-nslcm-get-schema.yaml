@@ -57,7 +57,7 @@ http:
   success_codes:
     - 200
   result_map:
-    ns-instance-id: $b{$.nsInstanceId}
-    ns-name: $b{$.nsName}
-    description: $b{$.description}
-    nsd-id: $b{$.nsdId}
+    ns-instance-id: $b{$.[*].nsInstanceId}
+    ns-name: $b{$.[*].nsName}
+    description: $b{$.[*].description}
+    nsd-id: $b{$.[*].nsdId}

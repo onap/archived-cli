@@ -54,7 +54,7 @@ http:
     auth: none
     mode: direct
   request:
-    uri: api/nslcm/v1/ns_instances/${ns-instance-id}/instantiate
+    uri: /api/nslcm/v1/ns_instances/${ns-instance-id}/instantiate
     method: POST
     context:
       remove_empty_node: true

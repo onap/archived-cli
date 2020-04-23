@@ -1,0 +1,37 @@
+[ {
+  "request" : {
+    "method" : "get",
+    "uri" : "/api/nsd/v1/ns_descriptors/2295cab6-4b4a-403f-8eb9-4dd83ca049d0",
+    "headers" : {
+      "Accept" : "application/json",
+      "Content-Type" : "application/json"
+    },
+    "json" : { }
+  },
+  "response" : {
+    "status" : 200,
+    "json" : {
+      "id": "2295cab6-4b4a-403f-8eb9-4dd83ca049d0",
+      "nsdId": "2295cab6-4b4a-403f-8eb9-4dd83ca049d0",
+      "nsdName": "vCPE-tes1",
+      "nsdVersion": "",
+      "nsdDesigner": "",
+      "nsdInvariantId": "83fbd4c0-a2f3-4b35-8ba4-dfec47c6a99b",
+      "vnfPkgIds": [
+        "0a628ee7-465d-4916-b772-b72b541d8320",
+        "af099c7a-a975-40f5-bf9f-ac67de1b11a9",
+        "5bcdb6a8-6c4b-4032-b56d-d3030ee1ec05",
+        "1347001a-38ca-480a-a77b-d34873b6d0be",
+        "0ec7a346-26f2-414b-bcfd-4dfd63846c4d"
+      ],
+      "pnfdInfoIds": [],
+      "nestedNsdInfoIds": [],
+      "nsdOnboardingState": "ONBOARDED",
+      "onboardingFailureDetails": null,
+      "nsdOperationalState": "ENABLED",
+      "nsdUsageState": "NOT_IN_USE",
+      "userDefinedData": {},
+      "_links": null
+    }
+  }
+} ]

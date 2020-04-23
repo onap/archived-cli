@@ -22,7 +22,7 @@ info:
   author: ONAP HPA Integration Team (haibin.huang@intel.com)
 
 results:
-  direction: portrait
+  direction: landscape
   attributes:
     - name: ns-instance-id
       description: ns-instance-id
@@ -57,7 +57,7 @@ http:
   success_codes:
     - 200
   result_map:
-    ns-instance-id: $b{$.nsInstanceId}
-    ns-name: $b{$.nsName}
-    description: $b{$.description}
-    nsd-id: $b{$.nsdId}
+    ns-instance-id: $b{$.[*].nsInstanceId}
+    ns-name: $b{$.[*].nsName}
+    description: $b{$.[*].description}
+    nsd-id: $b{$.[*].nsdId}

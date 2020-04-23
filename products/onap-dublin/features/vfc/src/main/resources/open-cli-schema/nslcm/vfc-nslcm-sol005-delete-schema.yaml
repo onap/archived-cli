@@ -33,7 +33,7 @@ http:
     auth: none
     mode: direct
   request:
-    uri: api/nslcm/v1/ns_instances/${ns-instance-id}
+    uri: /api/nslcm/v1/ns_instances/${ns-instance-id}
     method: DELETE
     context:
       remove_empty_node: true
