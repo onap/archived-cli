@@ -28,8 +28,8 @@ parameters:
     short_option: c
     long_option: ns-csar-uuid
     is_optional: false
-  - name: ns-csar-name
-    description: ns's name of csar
+  - name: ns-name
+    description: ns's name of create
     type: string
     short_option: n
     long_option: ns-csar-name
@@ -66,14 +66,14 @@ http:
       remove_empty_node: true
     body: '{
              "nsdId": "${ns-csar-uuid}",
-             "nsName": "${ns-csar-name}",
+             "nsName": "${ns-name}",
              "nsDescription": "description"
            }'
     headers:
       Content-Type: application/json
       Accept: application/json
-      HTTP_GLOBALCUSTOMERID: '${customer-name}'
-      HTTP_SERVICETYPE: '${service-type}'
+      GLOBALCUSTOMERID: '${customer-name}'
+      SERVICETYPE: '${service-type}'
 
   success_codes:
     - 201
