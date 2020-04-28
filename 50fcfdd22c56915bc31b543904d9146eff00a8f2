@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee38cef3_551980f7",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-28T04:38:35Z",
+      "side": 1,
+      "message": "rearrange the statements",
+      "revId": "50fcfdd22c56915bc31b543904d9146eff00a8f2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e0c4e17_8f8d5bc1",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/mock/MocoServer.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-28T04:38:35Z",
+      "side": 1,
+      "message": "make use of discoverutils",
+      "revId": "50fcfdd22c56915bc31b543904d9146eff00a8f2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feac856e_a336e42d",
+        "filename": "validate/validation/src/test/java/org/onap/cli/validation/OnapValidationTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-28T04:38:35Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "50fcfdd22c56915bc31b543904d9146eff00a8f2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
