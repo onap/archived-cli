@@ -1,0 +1,62 @@
+# Copyright 2019 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: policy-list-with-config
+description: Retrieve policies according to configs 
+
+info:
+  product: onap-elato
+  service: policy
+  author: ONAP CLI Team onap-discuss@lists.onap.org
+
+parameters:
+  - name: config-attributes
+    description: Policy retrieval config attributes
+    type: list
+    long_option: config-attributes
+    short_option: x
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: Policy properties
+      description: Policy properties
+      scope: short
+      type: json
+
+http:
+  service:
+    name: policy
+    version: v1.0
+    auth: basic
+    mode: direct
+  request:
+    uri: /policy/pdpx/v1/decision
+    method: POST
+    body: '{"ONAPName": "OOF",
+            "ONAPComponent": "OOF_Component",
+            "ONAPInstance": "OOF_Component_Instance",
+            "action": "optimize",
+            "resources": "${config-attributes}"}'
+    headers:
+      Accept: application/json
+
+
+  success_codes:
+    - 200
+
+  result_map:
+    Policy properties: $b{$.[*]}
