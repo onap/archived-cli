@@ -33,13 +33,3 @@ results:
       description: Authorization
       scope: short
       type: string
-    - name: Environment
-      description: Environment
-      scope: short
-      type: string
-      default_value: TEST
-    - name: ClientAuth
-      description: Client Auth
-      scope: short
-      type: string
-      default_value: cHl0aG9uOnRlc3Q=
