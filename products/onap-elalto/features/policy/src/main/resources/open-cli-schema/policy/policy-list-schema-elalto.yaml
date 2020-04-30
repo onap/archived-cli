@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: policy-list
-description: Retrieve all version details of a policy created for a particular policy type version
+name: policy-list-with-config
+description: Retrieve policies according to configs 
 
 info:
   product: onap-elalto
@@ -22,23 +22,11 @@ info:
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
-  - name: policy-type-id
-    description: Policy type ID
-    type: string
-    long_option: policy-type-id
+  - name: config-attributes
+    description: Policy retrieval config attributes
+    type: json
+    long_option: config-attributes
     short_option: x
-    is_optional: false
-  - name: version-id
-    description: Policy type version ID
-    type: string
-    long_option: version-id
-    short_option: y
-    is_optional: false
-  - name: policy-id
-    description: Policy ID
-    type: string
-    long_option: policy-id
-    short_option: z
     is_optional: false
 
 results:
@@ -56,11 +44,16 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /policy/api/v1/policytypes/${policy-type-id}/versions/${version-id}/policies/${policy-id}
-    method: GET
+    uri: /policy/pdpx/v1/decision
+    method: POST
+    body: '{"ONAPName": "OOF",
+            "ONAPComponent": "OOF_Component",
+            "ONAPInstance": "OOF_Component_Instance",
+            "action": "optimize",
+            "resources": "${config-attributes}"}'
     headers:
       Accept: application/json
-      Environment: TEST
+
 
   success_codes:
     - 200

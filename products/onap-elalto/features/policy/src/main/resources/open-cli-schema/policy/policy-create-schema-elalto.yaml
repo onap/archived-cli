@@ -1,4 +1,4 @@
-# Copyright 2019 Huawei Technologies Co., Ltd.
+# Copyright © Intel Corporation 2019
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,8 +13,8 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
-name: policy-list
-description: Retrieve all version details of a policy created for a particular policy type version
+name: policy-create
+description: Create a policy thru policy-api
 
 info:
   product: onap-elalto
@@ -22,32 +22,30 @@ info:
   author: ONAP CLI Team onap-discuss@lists.onap.org
 
 parameters:
-  - name: policy-type-id
-    description: Policy type ID
+  - name: policy-name
+    description: Onap policy Name
     type: string
-    long_option: policy-type-id
     short_option: x
+    long_option: policy-name
     is_optional: false
-  - name: version-id
-    description: Policy type version ID
+  - name: policy-body
+    description: Policy body
+    type: json
+    long_option: policy-body
+    short_option: b
+    is_optional: false
+  - name: policy-type
+    description: Onap policy type
     type: string
-    long_option: version-id
-    short_option: y
+    short_option: T
+    long_option: policy-type
     is_optional: false
-  - name: policy-id
-    description: Policy ID
+  - name: policy-version 
+    description: Onap policy Version
     type: string
-    long_option: policy-id
-    short_option: z
+    short_option: S
+    long_option: policy-version
     is_optional: false
-
-results:
-  direction: landscape
-  attributes:
-    - name: Policy properties
-      description: Policy properties
-      scope: short
-      type: json
 
 http:
   service:
@@ -56,14 +54,18 @@ http:
     auth: basic
     mode: direct
   request:
-    uri: /policy/api/v1/policytypes/${policy-type-id}/versions/${version-id}/policies/${policy-id}
-    method: GET
+    uri: /policy/api/v1/policytypes/${policy-type}/versions/${policy-version}/policies
+    method: POST
+    context:
+      remove_empty_node: true
+    body: '{"tosca_definitions_version": "tosca_simple_yaml_1_1_0",
+            "topology_template": {
+            "policies": [{
+              "${policy-name}": "${policy-body}"}]}}'
     headers:
+      Content-Type: application/json
       Accept: application/json
-      Environment: TEST
 
   success_codes:
     - 200
-
-  result_map:
-    Policy properties: $b{$.[*]}
+    - 201
