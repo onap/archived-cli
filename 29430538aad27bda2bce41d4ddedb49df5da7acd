@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2d1d9e7_4ea1eb52",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-30T04:27:14Z",
+      "side": 1,
+      "message": "return loadYaml(resource.getInputStream());",
+      "range": {
+        "startLine": 221,
+        "startChar": 13,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "29430538aad27bda2bce41d4ddedb49df5da7acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae68cc9_ae5c9539",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-30T04:27:14Z",
+      "side": 1,
+      "message": "return loadYaml(resource.getInputStream());",
+      "range": {
+        "startLine": 548,
+        "startChar": 14,
+        "endLine": 550,
+        "endChar": 52
+      },
+      "revId": "29430538aad27bda2bce41d4ddedb49df5da7acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3228b982_6a603417",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-04-30T04:27:14Z",
+      "side": 1,
+      "message": "return loadYaml(from file, create InputStream);",
+      "range": {
+        "startLine": 567,
+        "startChar": 9,
+        "endLine": 570,
+        "endChar": 31
+      },
+      "revId": "29430538aad27bda2bce41d4ddedb49df5da7acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
