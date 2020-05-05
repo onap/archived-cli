@@ -88,7 +88,6 @@ import org.onap.cli.fw.output.OnapCommandResultAttributeScope;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.springframework.core.io.Resource;
-import org.yaml.snakeyaml.Yaml;
 
 public class OnapCommandSchemaLoader {
 
@@ -541,13 +540,7 @@ public class OnapCommandSchemaLoader {
      *             exception
      */
     public static Map<String, ?> loadSchema(InputStream stream, String schemaName) throws OnapCommandInvalidSchema  {
-        Map<String, ?> values = null;
-        try {
-            values = (Map<String, ?>) new Yaml().load(stream);
-        } catch (Exception e) {
-            throw new OnapCommandInvalidSchema(schemaName, e);
-        }
+        return OnapCommandDiscoveryUtils.loadYaml(stream);
 
-        return values;
     }
 }
