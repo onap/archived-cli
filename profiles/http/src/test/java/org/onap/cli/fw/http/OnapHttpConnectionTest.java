@@ -156,6 +156,65 @@ public class OnapHttpConnectionTest {
         con.request(inp);
     }
 
+    @Test(expected = OnapCommandHttpFailure.class)
+    public void testGetMultipartEntityWithoutMultipartEntityName() throws OnapCommandHttpFailure {
+        new MockUp<CloseableHttpClient>() {
+            @Mock
+            public CloseableHttpResponse execute(HttpUriRequest request, HttpContext context)
+                    throws IOException, ClientProtocolException {
+
+                throw new IOException("IO Exception");
+            }
+        };
+        new MockUp<HttpInput>() {
+
+            @Mock
+            public boolean isBinaryData() {
+                return true;
+            }
+        };
+        Map<String, String> reqHeaders = new HashMap<>();
+        reqHeaders.put("Content-Disposition","form-data");
+        reqHeaders.put("name","upload");
+        reqHeaders.put("filename","upload.txt");
+        reqHeaders.put("Content-Type","application/octet-stream");
+        reqHeaders.put("Content-Transfer-Encoding","binary");
+        inp.setReqHeaders(reqHeaders);
+        inp.setMethod("post");
+        con = new OnapHttpConnection();
+        con.request(inp);
+    }
+
+    @Test(expected = OnapCommandHttpFailure.class)
+    public void testGetMultipartEntityWithMultipartEntityName() throws OnapCommandHttpFailure {
+        new MockUp<CloseableHttpClient>() {
+            @Mock
+            public CloseableHttpResponse execute(HttpUriRequest request, HttpContext context)
+                    throws IOException, ClientProtocolException {
+
+                throw new IOException("IO Exception");
+            }
+        };
+        new MockUp<HttpInput>() {
+
+            @Mock
+            public boolean isBinaryData() {
+                return true;
+            }
+        };
+        Map<String, String> reqHeaders = new HashMap<>();
+        reqHeaders.put("Content-Disposition","form-data");
+        reqHeaders.put("name","upload");
+        reqHeaders.put("filename","upload.txt");
+        reqHeaders.put("Content-Type","application/octet-stream");
+        reqHeaders.put("Content-Transfer-Encoding","binary");
+        inp.setReqHeaders(reqHeaders);
+        inp.setMethod("post");
+        inp.setMultipartEntityName("test");
+        con = new OnapHttpConnection();
+        con.request(inp);
+    }
+
     @Test()
     public void httpUnSecuredCloseExceptionTest() throws OnapCommandHttpFailure {
         inp.setMethod("other");

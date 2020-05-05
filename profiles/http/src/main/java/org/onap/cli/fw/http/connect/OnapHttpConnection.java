@@ -363,7 +363,7 @@ public class OnapHttpConnection {
 
             return entityBuilder.build();
         } else {
-            String fileTag = input.getMultipartEntityName() != "" ? input.getMultipartEntityName() : "file";
+            String fileTag = (!input.getMultipartEntityName().equals("")) ? input.getMultipartEntityName() : "file";
             File file = new File(input.getBody().trim());
             HttpEntity multipartEntity = MultipartEntityBuilder
                     .create()
