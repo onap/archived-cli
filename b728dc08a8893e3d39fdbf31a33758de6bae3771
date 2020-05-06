@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67d7c998_5ff18bae",
+        "filename": "validate/sample-yaml-generator/src/main/java/org/onap/cli/sample/yaml/SampleYamlGenerator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-05-06T04:41:01Z",
+      "side": 1,
+      "message": "remove skip",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "b728dc08a8893e3d39fdbf31a33758de6bae3771",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
