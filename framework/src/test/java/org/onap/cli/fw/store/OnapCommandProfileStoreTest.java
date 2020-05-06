@@ -22,13 +22,13 @@ import org.onap.cli.fw.cmd.execution.OnapCommandExceutionListCommandTest;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandPersistProfileFailed;
 import org.onap.cli.fw.input.cache.OnapCommandParamEntity;
-import org.onap.cli.fw.utils.FileUtil;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import java.io.IOException;
 
 public class OnapCommandProfileStoreTest {
     OnapCommandProfileStore onapCommandProfileStore;
@@ -59,6 +59,12 @@ public class OnapCommandProfileStoreTest {
 
     @Test
     public void removeProfileTest() {
+        onapCommandProfileStore.removeProfile("abc");
+        assertFalse(new File(System.getProperty("user.dir") + File.separator + "data/profiles/abc-profile.json").exists());
+    }
+    @Test
+    public void removeProfileDeleteTest() throws IOException {
+        new File(System.getProperty("user.dir") + File.separator + "data/profiles/abc-profile.json").createNewFile();
         onapCommandProfileStore.removeProfile("abc");
         assertFalse(new File(System.getProperty("user.dir") + File.separator + "data/profiles/abc-profile.json").exists());
     }

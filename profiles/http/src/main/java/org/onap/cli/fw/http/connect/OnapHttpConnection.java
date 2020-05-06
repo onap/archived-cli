@@ -91,12 +91,12 @@ public class OnapHttpConnection {
         }
 
         @Override
-        public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+        public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) { //NOSONAR
             // No need to implement.
         }
 
         @Override
-        public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+        public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) { //NOSONAR
             // No need to implement.
         }
     }
