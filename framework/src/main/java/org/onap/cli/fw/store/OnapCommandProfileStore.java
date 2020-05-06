@@ -206,7 +206,9 @@ public class OnapCommandProfileStore {
          String dataDir = getDataStorePath();
          File file = new File(dataDir + File.separator + profile + DATA_PATH_PROFILE_JSON);
          if (file.exists()) {
-            file.delete();
+            if(!file.delete()){
+                log.error("Failed to delete profile "+file.getAbsolutePath());
+            }
          }
     }
 
