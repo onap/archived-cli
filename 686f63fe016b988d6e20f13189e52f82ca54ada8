@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60ac3aa1_c8025e14",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/connect/OnapHttpConnection.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-05-06T04:39:40Z",
+      "side": 1,
+      "message": "isEmpty()",
+      "range": {
+        "startLine": 366,
+        "startChar": 60,
+        "endLine": 366,
+        "endChar": 72
+      },
+      "revId": "686f63fe016b988d6e20f13189e52f82ca54ada8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
