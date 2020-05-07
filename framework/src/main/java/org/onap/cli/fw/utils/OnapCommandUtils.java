@@ -262,7 +262,7 @@ public class OnapCommandUtils {
                     if (splEntry.startsWith(OnapCommandConstants.SPL_ENTRY_ENV)) {
                         //start to read after env:ENV_VAR_NAME
                         String envVarName = splEntry.substring(4);
-                        value = System.getenv(envVarName);
+                        value = System.getenv(envVarName); //NOSONAR
                         if (value == null) {
                             //when env is not defined, assign the same env:ENV_VAR_NAME
                             //so that it will given hit to user that ENV_VAR_NAME to be

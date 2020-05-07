@@ -169,7 +169,7 @@ public class OpenCommandShellCmd extends OnapCommand {
         List <String> envs = new ArrayList<>();
 
         //add current process environments to sub process
-        for (Map.Entry<String, String> env: System.getenv().entrySet()) {
+        for (Map.Entry<String, String> env: System.getenv().entrySet()) { //NOSONAR
             envs.add(env.getKey() + "=" + env.getValue());
         }
 
