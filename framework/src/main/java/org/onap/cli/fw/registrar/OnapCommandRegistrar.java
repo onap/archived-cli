@@ -139,7 +139,7 @@ public class OnapCommandRegistrar {
     }
 
     private OnapCommandRegistrar() {
-        this.enabledProductVersion = System.getenv(OnapCommandConstants.OPEN_CLI_PRODUCT_IN_USE_ENV_NAME);
+        this.enabledProductVersion = System.getenv(OnapCommandConstants.OPEN_CLI_PRODUCT_IN_USE_ENV_NAME); //NOSONAR
         if (this.enabledProductVersion == null) {
             this.enabledProductVersion = OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_PRODUCT_NAME);
         }
