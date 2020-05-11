@@ -276,7 +276,7 @@ public abstract class OnapCommand {
             if (!param.getParameterType().equals(OnapCommandParameterType.BINARY))
                 continue;
 
-            if (param.getValue().toString().matches("artifact://*:*")) {
+            if (param.getValue().toString().matches("artifact://*:*")) { //NOSONAR
                 String categoryAndName = param.getValue().toString().replaceFirst("artifact://", "");
                 String[] categoryAndNameTokens = categoryAndName.split(":");
                 Artifact a = OnapCommandArtifactStore.getStore().getArtifact(categoryAndNameTokens[1], categoryAndNameTokens[0]);
