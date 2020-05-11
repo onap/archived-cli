@@ -267,7 +267,9 @@ public class OnapCommandExecutionStore {
             else
                 FileUtils.touch(new File(context.getStorePath() + File.separator + "failed"));
 
-            new File(context.getStorePath() + File.separator + "in-progress").delete();
+            if(!new File(context.getStorePath() + File.separator + "in-progress").delete()){
+                log.error("Failed to delete "+ context.getStorePath() + File.separator + "in-progress");
+            }
         } catch (IOException e) {
             log.error("Failed to store the execution end details " + context.storePath);
         }

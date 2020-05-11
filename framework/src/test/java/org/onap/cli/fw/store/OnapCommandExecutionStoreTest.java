@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.*;
+import java.io.IOException;
 
 public class OnapCommandExecutionStoreTest {
     OnapCommandExecutionStore executionStore;
@@ -59,6 +60,16 @@ public class OnapCommandExecutionStoreTest {
         store.setStorePath("abc");
         executionStore.storeExectutionEnd(store, "abc", "abc", "abc", true);
         assertTrue(new File(System.getProperty("user.dir") + File.separator + "abc").exists());
+    }
+    @Test
+    public void storeExectutionEndDeleteTest() throws IOException {
+        new File("target/in-progress").createNewFile();
+        OnapCommandExecutionStore.ExecutionStoreContext store = new OnapCommandExecutionStore.ExecutionStoreContext();
+        store.setExecutionId("abc");
+        store.setRequestId("abc");
+        store.setStorePath("target/");
+        executionStore.storeExectutionEnd(store, "abc", "abc", "abc", true);
+        assertFalse(new File("target" + File.separator + "in-progress").exists());
     }
 
     @Test

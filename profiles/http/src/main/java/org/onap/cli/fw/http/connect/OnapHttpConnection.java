@@ -91,12 +91,12 @@ public class OnapHttpConnection {
         }
 
         @Override
-        public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+        public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) { //NOSONAR
             // No need to implement.
         }
 
         @Override
-        public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+        public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) { //NOSONAR
             // No need to implement.
         }
     }
@@ -363,7 +363,7 @@ public class OnapHttpConnection {
 
             return entityBuilder.build();
         } else {
-            String fileTag = input.getMultipartEntityName() != "" ? input.getMultipartEntityName() : "file";
+            String fileTag = (!input.getMultipartEntityName().isEmpty()) ? input.getMultipartEntityName() : "file";
             File file = new File(input.getBody().trim());
             HttpEntity multipartEntity = MultipartEntityBuilder
                     .create()
