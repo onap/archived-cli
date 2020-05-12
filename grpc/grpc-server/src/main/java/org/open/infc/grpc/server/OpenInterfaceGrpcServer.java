@@ -115,7 +115,7 @@ public class OpenInterfaceGrpcServer {
        */
       public static void main(String[] args) throws IOException, InterruptedException {
         final OpenInterfaceGrpcServer server = new OpenInterfaceGrpcServer();
-        server.start(args.length ==1 ? args[0] : null);
+        server.start(args.length ==1 ? args[0] : null); //NOSONAR
         server.blockUntilShutdown();
       }
 
