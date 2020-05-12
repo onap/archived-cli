@@ -779,7 +779,7 @@ public class OnapCli {
      *            array
      */
     public static void main(String[] args) {
-        OnapCli cli = new OnapCli(args);
+        OnapCli cli = new OnapCli(args); //NOSONAR
         cli.handle();
         System.exit(cli.getExitCode());
     }
