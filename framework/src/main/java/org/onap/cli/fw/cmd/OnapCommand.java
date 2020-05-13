@@ -232,11 +232,11 @@ public abstract class OnapCommand {
     }
 
     protected void preRun() throws OnapCommandException {
-        log.debug(this.getName() + " PRE-RUN");
+        log.debug("{} PRE-RUN", this.getName());
     }
 
     protected void postRun() throws OnapCommandException {
-        log.debug(this.getName() + " POST-RUN");
+        log.debug("{} POST-RUN", this.getName());
     }
 
     /**
@@ -251,11 +251,11 @@ public abstract class OnapCommand {
             throw new OnapCommandNotInitialized(this.getClass().getName());
         }
 
-        log.info("CMD: " + this.getName());
+        log.info("CMD: {}", this.getName());
 
         Map<String, OnapCommandParameter> paramMap = this.getParametersMap();
 
-        log.info("INPUT: " + paramMap);
+        log.info("INPUT: {}", paramMap);
 
         // -h or --help is always higher precedence !, user can set this value to get help message
         if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
@@ -316,7 +316,7 @@ public abstract class OnapCommand {
 
         this.run();
 
-        log.info("OUTPUT: " + this.cmdResult.getRecords());
+        log.info("OUTPUT: {}", this.cmdResult.getRecords());
 
         postRun();
 
