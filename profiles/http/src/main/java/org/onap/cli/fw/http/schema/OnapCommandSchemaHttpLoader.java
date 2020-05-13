@@ -246,7 +246,8 @@ public class OnapCommandSchemaHttpLoader {
                             if (validate) {
                                 validateHttpSccessCodes(errorList, (List<Object>) valMap.get(key1));
                             }
-                            cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
+                            List<String> list = (ArrayList) valMap.get(key1);
+                            cmd.setSuccessStatusCodes(list.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
                             break;
 
                         case OnapCommandHttpConstants.RESULT_MAP:
