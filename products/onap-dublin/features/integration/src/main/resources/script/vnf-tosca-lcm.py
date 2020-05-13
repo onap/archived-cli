@@ -598,6 +598,17 @@ class ONAP:
                                       'resource-version': self.service_type_version})
             self.service_type_id = self.service_type_version = None
 
+        output = self.ocomp.run(command='tenant-list', params={
+            'cloud': self.cloud_id,
+            'region': self.conf['cloud']['region']
+        })
+
+        for tenant in output:
+            if tenant['tenant-name'] == self.conf['cloud']['tenant']:
+                self.tenant_id = tenant['tenant-id']
+                self.tenant_version = tenant['resource-version']
+                break
+
         if self.tenant_id and self.tenant_version:
             self.ocomp.run(command='tenant-delete',
                               params={'cloud': self.cloud_id,
@@ -624,6 +635,13 @@ class ONAP:
                     time.sleep(1)
 
             self.cloud_id = self.cloud_version = None
+
+        output = self.ocomp.run(command='complex-list')
+
+        for location in output:
+            if location['complex-name'] == self.location_id:
+                self.location_version = location['resource-version']
+                break
 
         if self.location_id and self.location_version:
             self.ocomp.run(command='complex-delete',
