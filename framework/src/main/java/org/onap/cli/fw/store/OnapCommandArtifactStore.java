@@ -160,7 +160,7 @@ public class OnapCommandArtifactStore {
 
     private String getChecksum(String storePath) throws IOException, NoSuchAlgorithmException {
         byte[] b = Files.readAllBytes(Paths.get(storePath));
-        byte[] hash = MessageDigest.getInstance("MD5").digest(b);
+        byte[] hash = MessageDigest.getInstance("MD5").digest(b); //NOSONAR
         return DatatypeConverter.printHexBinary(hash);
     }
 
