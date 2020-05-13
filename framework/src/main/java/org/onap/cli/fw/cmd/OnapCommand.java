@@ -258,14 +258,14 @@ public abstract class OnapCommand {
         log.info("INPUT: {}", paramMap);
 
         // -h or --help is always higher precedence !, user can set this value to get help message
-        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
             this.cmdResult.setType(OnapCommandResultType.TEXT);
             this.cmdResult.setOutput(this.printHelp());
             return this.cmdResult;
         }
 
         // -v or --version is next higher precedence !, user can set this value to get help message
-        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_VERSION).getValue())) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_VERSION).getValue())) {
             this.cmdResult.setType(OnapCommandResultType.TEXT);
             this.cmdResult.setOutput(this.printVersion());
             return this.cmdResult;
@@ -290,16 +290,16 @@ public abstract class OnapCommand {
         // -f or --format
         this.cmdResult.setType(
                 OnapCommandResultType.get(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT).getValue().toString()));
-        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG).getValue())) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG).getValue())) {
             this.cmdResult.setScope(OnapCommandResultAttributeScope.LONG);
         }
         // --no-title
-        if ((Boolean)paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE).getValue()) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE).getValue()) {
             this.cmdResult.setIncludeTitle(false);
         }
 
         // --debug
-        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG).getValue())) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG).getValue())) {
             this.cmdResult.setDebug(true);
         }
 
