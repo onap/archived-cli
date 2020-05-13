@@ -216,7 +216,7 @@ public abstract class OnapCommand {
     /**
      * Any additional profile based such as http schema could be initialized.
      */
-    protected List<String> initializeProfileSchema(Map<String, ?> schemaMap, boolean validate) throws OnapCommandException {
+    protected List<String> initializeProfileSchema(Map<String, ?> schemaMap, boolean validate) throws OnapCommandException { //NOSONAR
         return new ArrayList<>();
     }
 
@@ -231,11 +231,11 @@ public abstract class OnapCommand {
          }
     }
 
-    protected void preRun() throws OnapCommandException {
+    protected void preRun() throws OnapCommandException { //NOSONAR
         log.debug("{} PRE-RUN", this.getName());
     }
 
-    protected void postRun() throws OnapCommandException {
+    protected void postRun() throws OnapCommandException { //NOSONAR
         log.debug("{} POST-RUN", this.getName());
     }
 
