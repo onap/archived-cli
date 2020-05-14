@@ -27,6 +27,9 @@ import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 public class OnapCommandParameterTest {
 
     @Test
@@ -156,6 +159,14 @@ public class OnapCommandParameterTest {
         assertTrue(((Map<String, String>)param.getDefaultValue()).values().containsAll(
                 Arrays.asList("testValue")
         ));
+    }
+    @Test
+    public void setParameterTypeTest(){
+        OnapCommandParameter param = new OnapCommandParameter();
+        param.setParameterType(OnapCommandParameterType.JSON);
+        assertEquals("{}", param.getDefaultValue());
+        param = new OnapCommandParameter();
+        assertNull(param.getDefaultValue());
     }
 
 }

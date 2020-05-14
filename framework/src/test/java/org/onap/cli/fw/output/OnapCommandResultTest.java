@@ -234,4 +234,12 @@ public class OnapCommandResultTest {
         assertEquals(expRes,result);
 
     }
+    @Test
+    public void resultObjectTest(){
+        OnapCommandResult res = new OnapCommandResult();
+        res.setOutput("test-result");
+        assertEquals("test-result",res.getOutput());
+        res = new OnapCommandResult();
+        assertTrue(res.getOutput().equals(""));
+    }
 }
