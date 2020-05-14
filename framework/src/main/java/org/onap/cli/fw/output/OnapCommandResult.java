@@ -39,7 +39,7 @@ public class OnapCommandResult {
      *
      * if type=TEXT, then it holds the result in text format such as help message
      */
-    private Object output = new String("");
+    private Object output = "";
 
     /*
      * Type requested by user
