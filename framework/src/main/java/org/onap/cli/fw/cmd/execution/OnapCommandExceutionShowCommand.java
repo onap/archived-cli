@@ -60,7 +60,7 @@ public class OnapCommandExceutionShowCommand extends OnapCommand {
     }
 
 
-    public String printExecution(List<OnapCommandExecutionStore.Execution> executions) throws OnapCommandExecutionNotFound {
+    public String printExecution(List<OnapCommandExecutionStore.Execution> executions) throws OnapCommandExecutionNotFound { //NOSONAR
         StringBuilder msg = new StringBuilder("<oclip-execution-list>\n");
         for (OnapCommandExecutionStore.Execution e: executions) {
              msg.append("<oclip-execution>\n");
