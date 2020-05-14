@@ -216,7 +216,7 @@ public abstract class OnapCommand {
     /**
      * Any additional profile based such as http schema could be initialized.
      */
-    protected List<String> initializeProfileSchema(Map<String, ?> schemaMap, boolean validate) throws OnapCommandException {
+    protected List<String> initializeProfileSchema(Map<String, ?> schemaMap, boolean validate) throws OnapCommandException { //NOSONAR
         return new ArrayList<>();
     }
 
@@ -231,12 +231,12 @@ public abstract class OnapCommand {
          }
     }
 
-    protected void preRun() throws OnapCommandException {
-        log.debug(this.getName() + " PRE-RUN");
+    protected void preRun() throws OnapCommandException { //NOSONAR
+        log.debug("{} PRE-RUN", this.getName());
     }
 
-    protected void postRun() throws OnapCommandException {
-        log.debug(this.getName() + " POST-RUN");
+    protected void postRun() throws OnapCommandException { //NOSONAR
+        log.debug("{} POST-RUN", this.getName());
     }
 
     /**
@@ -251,21 +251,21 @@ public abstract class OnapCommand {
             throw new OnapCommandNotInitialized(this.getClass().getName());
         }
 
-        log.info("CMD: " + this.getName());
+        log.info("CMD: {}", this.getName());
 
         Map<String, OnapCommandParameter> paramMap = this.getParametersMap();
 
-        log.info("INPUT: " + paramMap);
+        log.info("INPUT: {}", paramMap);
 
         // -h or --help is always higher precedence !, user can set this value to get help message
-        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_HELP).getValue())) {
             this.cmdResult.setType(OnapCommandResultType.TEXT);
             this.cmdResult.setOutput(this.printHelp());
             return this.cmdResult;
         }
 
         // -v or --version is next higher precedence !, user can set this value to get help message
-        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_VERSION).getValue())) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_VERSION).getValue())) {
             this.cmdResult.setType(OnapCommandResultType.TEXT);
             this.cmdResult.setOutput(this.printVersion());
             return this.cmdResult;
@@ -290,16 +290,16 @@ public abstract class OnapCommand {
         // -f or --format
         this.cmdResult.setType(
                 OnapCommandResultType.get(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT).getValue().toString()));
-        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG).getValue())) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_ATTR_LONG).getValue())) {
             this.cmdResult.setScope(OnapCommandResultAttributeScope.LONG);
         }
         // --no-title
-        if ((Boolean)paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE).getValue()) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE).getValue())) {
             this.cmdResult.setIncludeTitle(false);
         }
 
         // --debug
-        if ((Boolean)(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG).getValue())) {
+        if (Boolean.TRUE.equals(paramMap.get(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG).getValue())) {
             this.cmdResult.setDebug(true);
         }
 
@@ -316,7 +316,7 @@ public abstract class OnapCommand {
 
         this.run();
 
-        log.info("OUTPUT: " + this.cmdResult.getRecords());
+        log.info("OUTPUT: {}", this.cmdResult.getRecords());
 
         postRun();
 

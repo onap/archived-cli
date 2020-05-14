@@ -431,7 +431,7 @@ public class OnapCommandUtils {
     }
 
     public static String md5(String content) {
-        String md5 = DigestUtils.md5Hex(content);
+        String md5 = DigestUtils.md5Hex(content); //NOSONAR
 
         byte[] encodeBase64 = Base64.encodeBase64(md5.getBytes());
         return new String(encodeBase64);
