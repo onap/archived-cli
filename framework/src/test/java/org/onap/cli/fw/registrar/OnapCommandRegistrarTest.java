@@ -60,8 +60,8 @@ public class OnapCommandRegistrarTest {
 
     @Test
     public void oclipCommandNotFoundTest() throws OnapCommandException {
+        registerar = OnapCommandRegistrar.getRegistrar();
         try {
-            registerar = OnapCommandRegistrar.getRegistrar();
             registerar.get("Test1");
             fail("This should have thrown an exception");
         } catch (OnapCommandNotFound e) {
