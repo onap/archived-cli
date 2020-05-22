@@ -778,7 +778,7 @@ public class OnapCli {
      * @param args
      *            array
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) { //NOSONAR
         OnapCli cli = new OnapCli(args); //NOSONAR
         cli.handle();
         System.exit(cli.getExitCode());
