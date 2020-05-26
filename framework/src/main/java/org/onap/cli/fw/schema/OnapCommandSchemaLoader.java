@@ -346,11 +346,7 @@ public class OnapCommandSchemaLoader {
                                                     IS_OPTIONAL, String.valueOf(parameter.get(key2))));
                                         }
 
-                                        if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
-                                            param.setOptional(true);
-                                        } else {
-                                            param.setOptional(false);
-                                        }
+                                        param.setOptional(BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2))));
                                         break;
 
                                     case IS_SECURED:
@@ -361,11 +357,7 @@ public class OnapCommandSchemaLoader {
                                             }
                                         }
 
-                                        if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
-                                            param.setSecured(true);
-                                        } else {
-                                            param.setSecured(false);
-                                        }
+                                        param.setSecured(BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2))));
                                         break;
 
                                     case IS_INCLUDE:
@@ -374,11 +366,7 @@ public class OnapCommandSchemaLoader {
                                                     IS_INCLUDE, String.valueOf(parameter.get(key2))));
                                         }
 
-                                        if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
-                                            param.setInclude(true);
-                                        } else {
-                                            param.setInclude(false);
-                                        }
+                                        param.setInclude(BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2))));
                                         break;
 
                                     case IS_DEFAULT_PARAM:
@@ -389,11 +377,7 @@ public class OnapCommandSchemaLoader {
                                             }
                                         }
 
-                                        if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
-                                            param.setDefaultParam(true);
-                                        } else {
-                                            param.setDefaultParam(false);
-                                        }
+                                        param.setDefaultParam(BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2))));
                                         break;
                                 }
                             }
@@ -477,11 +461,7 @@ public class OnapCommandSchemaLoader {
                                                                     IS_SECURED, String.valueOf(map.get(key4))));
                                                         }
                                                     }
-                                                    if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
-                                                        attr.setSecured(true);
-                                                    } else {
-                                                        attr.setSecured(false);
-                                                    }
+                                                    attr.setSecured(BOOLEAN_TRUE.equals(String.valueOf(map.get(key4))));
                                                     break;
 
                                                 case IS_DEFAULT_ATTR:
@@ -491,11 +471,7 @@ public class OnapCommandSchemaLoader {
                                                                     IS_DEFAULT_ATTR, String.valueOf(map.get(key4))));
                                                         }
                                                     }
-                                                    if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
-                                                        attr.setDefaultAttr(true);
-                                                    } else {
-                                                        attr.setDefaultAttr(false);
-                                                    }
+                                                    attr.setDefaultAttr(BOOLEAN_TRUE.equals(String.valueOf(map.get(key4))));
                                                     break;
                                             }
 

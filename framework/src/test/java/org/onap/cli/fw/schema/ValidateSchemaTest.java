@@ -123,4 +123,18 @@ public class ValidateSchemaTest {
         assertTrue(errorList5.size() == 0);
 
     }
+
+    @Test
+    public void validateAfterRemovingIfElseTest() throws OnapCommandException {
+        OnapCommand cmd2 = new OnapCommand() {
+            @Override
+            protected void run() throws OnapCommandException {
+
+            }
+        };
+        List < String > errorList2 = OnapCommandSchemaLoader.loadSchema(cmd2,
+            "schema-validate-basic-default-attr.yaml", true, true);
+        assertTrue(errorList2.size() > 0);
+    }
+
 }

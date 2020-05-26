@@ -440,8 +440,7 @@ public class OnapCommandExecutionStore {
 
             @Override
             public boolean accept(File dir, String name) {
-                if (name.startsWith(executionId)) return true;
-                return false;
+                return name.startsWith(executionId);
             }
         });
 
