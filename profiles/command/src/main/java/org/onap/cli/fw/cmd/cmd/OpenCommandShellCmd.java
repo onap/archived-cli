@@ -285,11 +285,7 @@ public class OpenCommandShellCmd extends OnapCommand {
             }
 
         //check for pass/failure
-        if (!this.passCodes.isEmpty() && !this.passCodes.contains(pr.getExitCode())) {
-            this.getResult().setPassed(false);
-        } else {
-            this.getResult().setPassed(true);
-        }
+        this.getResult().setPassed(!(!this.passCodes.isEmpty() && !this.passCodes.contains(pr.getExitCode())));
    }
 
     public String getOutput() {

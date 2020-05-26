@@ -1,0 +1,95 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+description: Register microservice into Onap
+name: schema-validate
+info:
+  product: open-cli
+  service: test
+  type: cmd
+  author: Sravan Kumar sravan.kumar1@huawei.com
+parameters:
+  - name: service-name1
+    description: Oclip service name
+    type: string
+    short_option: x
+    long_option: service-name
+    is_optional: false
+  - name: service-version
+    description: Oclip service version
+    type: string
+    short_option: y
+    long_option: service-version
+    is_optional: false
+  - name: service-url
+    description: Oclip service base url
+    type: url1
+    short_option: u
+    long_option: service-url
+    is_optional: false1
+  - name: status
+    description: Oclip service status
+    type: digit
+    short_option: z
+    long_option: service-version
+    is_optional: true
+    default_value: 1
+  - name: node-ip
+    description: Oclip service running node IP
+    type: string
+  - name: node-port
+    description: Oclip service running node port
+    type: string
+  - name: create-or-update
+    description: Oclip service create or update
+    type: cfbcv
+    default_value: true
+results:
+  direction: portrait1
+  attributes:
+    - name: name
+      description: Oclip service name
+      scope: short
+      type: string
+      is_default_attr: true
+     
+    - name: version
+      description: Oclip service version
+      scope: short
+      type: string
+      is_default_attr: true
+     
+    - name: status
+      description: Oclip service base url
+      scope: short
+      type: url
+      is_default_attr: true
+     
+    - name: status
+      description: Oclip service status
+      scope: short1
+      type: digit
+      is_default_attr: true
+     
+    - name: nodes
+      description: Oclip service running nodes
+      scope: long
+      type: string
+      is_default_attr: true
+    - name: location
+      description: Oclip service location
+      scope: long
+      type: url
+      is_default_attr: true
