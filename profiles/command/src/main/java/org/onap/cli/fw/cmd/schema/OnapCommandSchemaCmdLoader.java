@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.onap.cli.fw.cmd.cmd.OpenCommandShellCmd;
 import org.onap.cli.fw.cmd.conf.OnapCommandCmdConstants;
@@ -90,7 +91,8 @@ public class OnapCommandSchemaCmdLoader {
                         break;
 
                     case OnapCommandCmdConstants.SUCCESS_EXIT_CODE:
-                        cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
+                        List<String> list = (ArrayList) valMap.get(key1);
+                        cmd.setSuccessStatusCodes((ArrayList<Integer>)list.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
                         break;
 
                     case OnapCommandCmdConstants.PASS_CODE:
