@@ -83,7 +83,7 @@ public class OpenCommandShellCmd extends OnapCommand {
         return successStatusCodes;
     }
 
-    public void setSuccessStatusCodes(ArrayList<Integer> successStatusCodes) {
+    public void setSuccessStatusCodes(List<Integer> successStatusCodes) {
         this.successStatusCodes = successStatusCodes;
     }
 
