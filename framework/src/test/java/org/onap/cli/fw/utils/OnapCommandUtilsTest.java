@@ -519,4 +519,15 @@ public class OnapCommandUtilsTest {
    public void testMd5(){
     assertNotNull(OnapCommandUtils.md5("a"));
     }
+
+   @Test
+   public void replaceLineFromResults() {
+       Map < String, String > mapExample = new HashMap < String, String > ();
+       mapExample.put("key1", "paramA");
+       mapExample.put("key2", "paramB");
+       OnapCommandUtils.replaceLineFromResults("line $r{paramA} line $r{paramB}", mapExample);
+       assertTrue(mapExample.get("key1").equals("paramA"));
+       assertTrue(mapExample.get("key2").equals("paramB"));
+   }
+
 }

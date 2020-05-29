@@ -305,7 +305,7 @@ public class OnapCommandDiscoveryUtils {
                         //default_input_parameters_http.yaml
                         String profileName = resource.getFilename().substring(
                                 DEAFULT_INPUT_PARAMETERS_NAME.length() + 1,
-                                resource.getFilename().indexOf("."));
+                                resource.getFilename().indexOf('.'));
                         if (deafultResourceMap.containsKey(PARAMETERS)) {
                             List<Object> params = new ArrayList<>();
                             for (Map<String, ?> p: (List<Map<String, ?>>) deafultResourceMap.get(PARAMETERS)) {

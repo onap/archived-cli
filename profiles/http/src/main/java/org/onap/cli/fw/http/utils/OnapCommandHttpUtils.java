@@ -190,7 +190,7 @@ public class OnapCommandHttpUtils {
                 headerProcessedLine += line.substring(currentIdx);
                 break;
             }
-            int idxE = line.indexOf("}", idxS);
+            int idxE = line.indexOf('}', idxS);
             String headerName = line.substring(idxS + 3, idxE);
             headerName = headerName.trim();
             if (!resultHttp.getRespHeaders().containsKey(headerName)) {
@@ -213,7 +213,7 @@ public class OnapCommandHttpUtils {
                 bodyProcessedPattern += headerProcessedLine.substring(currentIdx);
                 break;
             }
-            int idxE = headerProcessedLine.indexOf("}", idxS);
+            int idxE = headerProcessedLine.indexOf('}', idxS);
             String jsonPath = headerProcessedLine.substring(idxS + 3, idxE);
             jsonPath = jsonPath.trim();
             Object value = new Object();
