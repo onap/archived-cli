@@ -124,7 +124,7 @@ public class OnapCommandUtils {
             if (idxS == -1) {
                 break;
             }
-            int idxE = line.indexOf("}", idxS);
+            int idxE = line.indexOf('}', idxS);
             String paramName = line.substring(idxS + 2, idxE);
             paramNames.add(paramName.trim());
 
@@ -213,7 +213,7 @@ public class OnapCommandUtils {
                 resultLine += line.substring(currentIdx);
                 break;
             }
-            int idxE = line.indexOf("}", idxS);
+            int idxE = line.indexOf('}', idxS);
             String attr = line.substring(idxS + 3, idxE);
             attr = attr.trim();
 
@@ -246,7 +246,7 @@ public class OnapCommandUtils {
                 resultSpl += lineSpl.substring(currentIdx);
                 break;
             }
-            int idxE = lineSpl.indexOf("}", idxS);
+            int idxE = lineSpl.indexOf('}', idxS);
             String splEntry = lineSpl.substring(idxS + 3, idxE);
             splEntry = splEntry.trim();
 
@@ -319,7 +319,7 @@ public class OnapCommandUtils {
                 result += line.substring(currentIdx);
                 break;
             }
-            int idxE = line.indexOf("}", idxS);
+            int idxE = line.indexOf('}', idxS);
             String paramName = line.substring(idxS + 2, idxE);
             paramName = paramName.trim();
             if (!params.containsKey(paramName)) {

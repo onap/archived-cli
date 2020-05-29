@@ -315,7 +315,7 @@ public class OpenCommandShellCmd extends OnapCommand {
                 break;
             }
 
-            int idxE = line.indexOf("}", idxS);
+            int idxE = line.indexOf('}', idxS);
             String tmpName = line.substring(idxS + 7, idxE);
             tmpName = tmpName.trim();
             String tmpTkns[] = tmpName.split(":");
@@ -382,7 +382,7 @@ public class OpenCommandShellCmd extends OnapCommand {
                     break;
                 }
             }
-            int idxE = line.indexOf("}", idxS);
+            int idxE = line.indexOf('}', idxS);
             String jsonPath = line.substring(idxS + 3, idxE);
             jsonPath = jsonPath.trim();
             Object value = new Object();
