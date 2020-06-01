@@ -370,15 +370,15 @@ public class OpenCommandShellCmd extends OnapCommand {
 
         // Process  jsonpath macros
         List<Object> values = new ArrayList<>();
-        String processedPattern = "";
-        currentIdx = 0;
+       StringBuilder processedPattern = new StringBuilder();
+       currentIdx = 0;
         int maxRows = 1; // in normal case, only one row will be there
         while (currentIdx < line.length()) {
             int idxS = line.indexOf("$o{", currentIdx); //check for output stream
             if (idxS == -1) {
                 idxS = line.indexOf("$e{", currentIdx); //check for error stream
                 if (idxS == -1) {
-                    processedPattern += line.substring(currentIdx);
+                    processedPattern.append(line.substring(currentIdx));
                     break;
                 }
             }
@@ -405,23 +405,23 @@ public class OpenCommandShellCmd extends OnapCommand {
                     maxRows = arr.size();
                 }
             }
-            processedPattern += line.substring(currentIdx, idxS) + "%s";
+            processedPattern.append(line.substring(currentIdx, idxS) + "%s");
             values.add(value);
             currentIdx = idxE + 1;
         }
 
-        if (processedPattern.isEmpty()) {
+        if (processedPattern.toString().isEmpty()) {
             result.add(line);
             return result;
         } else {
             for (int i = 0; i < maxRows; i++) {
                 currentIdx = 0;
-                String bodyProcessedLine = "";
+                StringBuilder bodyProcessedLine = new StringBuilder();
                 int positionalIdx = 0; // %s positional idx
                 while (currentIdx < processedPattern.length()) {
                     int idxS = processedPattern.indexOf("%s", currentIdx);
                     if (idxS == -1) {
-                        bodyProcessedLine += processedPattern.substring(currentIdx);
+                        bodyProcessedLine.append(processedPattern.substring(currentIdx));
                         break;
                     }
 
@@ -441,7 +441,7 @@ public class OpenCommandShellCmd extends OnapCommand {
                             }
                         }
 
-                        bodyProcessedLine += processedPattern.substring(currentIdx, idxS) + valStr;
+                        bodyProcessedLine.append(processedPattern.substring(currentIdx, idxS) + valStr);
                         currentIdx = idxEnd;
                         positionalIdx++;
                     } catch (OnapCommandResultEmpty e) {
@@ -450,7 +450,7 @@ public class OpenCommandShellCmd extends OnapCommand {
                         throw new OnapCommandResultMapProcessingFailed(line, e);
                     }
                 }
-                result.add(bodyProcessedLine);
+                result.add(bodyProcessedLine.toString());
             }
 
             return result;

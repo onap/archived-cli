@@ -91,7 +91,7 @@ public class OnapCommandHelperUtils {
         help += "\nAuthor: " + cmd.getInfo().getAuthor();
 
         // Add whole command
-        String commandOptions = "";
+        StringBuilder commandOptions = new StringBuilder();
 
         // Add parameters
         OnapCommandResult paramTable = new OnapCommandResult();
@@ -122,16 +122,16 @@ public class OnapCommandHelperUtils {
             String optFirstCol;
             if (newLineOptions == 3) {
                 newLineOptions = 0;
-                commandOptions += "\n";
+                commandOptions.append("\n");
             }
 
             if (param.getShortOption() != null || param.getLongOption() != null) {
                 optFirstCol = OnapCommandParameter.printShortOption(param.getShortOption()) + " | "
                         + OnapCommandParameter.printLongOption(param.getLongOption());
-                commandOptions += " [" + optFirstCol + "]";
+                commandOptions.append(" [" + optFirstCol + "]");
             } else {
                 optFirstCol = param.getName();
-                commandOptions += " <" + optFirstCol + ">";
+                commandOptions.append(" <" + optFirstCol + ">");
             }
 
             newLineOptions++;
@@ -169,7 +169,7 @@ public class OnapCommandHelperUtils {
         }
 
         try {
-            help += "\n\nOptions::\n\n" + commandOptions + "\n\nwhere::\n\n" + paramTable.print();
+            help += "\n\nOptions::\n\n" + commandOptions.toString() + "\n\nwhere::\n\n" + paramTable.print();
         } catch (OnapCommandException e) {
             throw new OnapCommandHelpFailed(e);
         }

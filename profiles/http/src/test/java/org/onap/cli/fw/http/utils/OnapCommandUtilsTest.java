@@ -50,6 +50,11 @@ import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
+import static org.junit.Assert.assertFalse;
+import java.util.List;
+import org.onap.cli.fw.error.OnapCommandResultMapProcessingFailed;
+import org.onap.cli.fw.error.OnapCommandResultEmpty;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnapCommandUtilsTest {
 
@@ -133,6 +138,31 @@ public class OnapCommandUtilsTest {
         params.put("head", "$h{head2}");
         output.setBody("{\"test\"}");
         input1 = OnapCommandHttpUtils.populateOutputs(params, output);
+    }
+
+    @Test
+    public void replaceLineFromOutputResultsTest() throws OnapCommandHttpHeaderNotFound, OnapCommandHttpInvalidResponseBody, OnapCommandResultMapProcessingFailed, OnapCommandResultEmpty {
+        HttpResult output = new HttpResult();
+
+        Map<String, String> mapHead = new HashMap<>();
+        mapHead.put("head1", "value1");
+        output.setRespHeaders(mapHead);
+        output.setStatus(0);
+        List<String> actualResult = OnapCommandHttpUtils.replaceLineFromOutputResults("", output);
+        assertTrue(actualResult.get(0).isEmpty());
+        output.setBody("");
+        actualResult = OnapCommandHttpUtils.replaceLineFromOutputResults("$h{head1}$b{$.serviceName}", output);
+        assertTrue(actualResult.isEmpty());
+        output.setBody(
+                "{\"serviceName\":\"test\",\"version\":\"v1\",\"url\":\"/api/test/v1\",\"protocol\":\"REST\","
+                        + "\"visualRange\":\"1\",\"lb_policy\":\"hash\",\"nodes\":[{\"ip\":\"127.0.0.1\",\"port\":\"8012\","
+                        + "\"ttl\":0,\"nodeId\":\"test_127.0.0.1_8012\",\"expiration\":\"2017-02-10T05:33:25Z\","
+                        + "\"created_at\":\"2017-02-10T05:33:25Z\",\"updated_at\":\"2017-02-10T05:33:25Z\"}],"
+                        + "\"status\":\"1\"}");
+        actualResult = OnapCommandHttpUtils.replaceLineFromOutputResults("$h{head1}${$.serviceName}", output);
+        assertTrue(actualResult.size()>0);
+        actualResult = OnapCommandHttpUtils.replaceLineFromOutputResults("$h{head1}$b{$.serviceName}", output);
+        assertFalse(actualResult.get(0).isEmpty());
     }
 
     @OnapCommandSchema(schema = "sample-test-schema-http.yaml")

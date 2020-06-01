@@ -164,7 +164,7 @@ public class OnapCommandHttpUtils {
     public static ArrayList<String> replaceLineFromOutputResults(String line, HttpResult resultHttp)
             throws OnapCommandHttpHeaderNotFound, OnapCommandHttpInvalidResponseBody,
             OnapCommandResultMapProcessingFailed, OnapCommandResultEmpty {
-        String headerProcessedLine = "";
+        StringBuilder headerProcessedLine = new StringBuilder();
 
         ArrayList<String> result = new ArrayList<>();
         if (!line.contains("$b{") && !line.contains("$h{")) {
@@ -187,7 +187,7 @@ public class OnapCommandHttpUtils {
         while (currentIdx < line.length()) {
             int idxS = line.indexOf("$h{", currentIdx);
             if (idxS == -1) {
-                headerProcessedLine += line.substring(currentIdx);
+                headerProcessedLine.append(line.substring(currentIdx));
                 break;
             }
             int idxE = line.indexOf("}", idxS);
@@ -198,19 +198,19 @@ public class OnapCommandHttpUtils {
             }
             String value = resultHttp.getRespHeaders().get(headerName);
 
-            headerProcessedLine += line.substring(currentIdx, idxS) + value;
+            headerProcessedLine.append(line.substring(currentIdx, idxS) + value);
             currentIdx = idxE + 1;
         }
 
         // Process body jsonpath macros
         List<Object> values = new ArrayList<>();
-        String bodyProcessedPattern = "";
+        StringBuilder bodyProcessedPattern = new StringBuilder();
         currentIdx = 0;
         int maxRows = 1; // in normal case, only one row will be there
         while (currentIdx < headerProcessedLine.length()) {
             int idxS = headerProcessedLine.indexOf("$b{", currentIdx);
             if (idxS == -1) {
-                bodyProcessedPattern += headerProcessedLine.substring(currentIdx);
+                bodyProcessedPattern.append(headerProcessedLine.substring(currentIdx));
                 break;
             }
             int idxE = headerProcessedLine.indexOf("}", idxS);
@@ -233,23 +233,23 @@ public class OnapCommandHttpUtils {
                     maxRows = arr.size();
                 }
             }
-            bodyProcessedPattern += headerProcessedLine.substring(currentIdx, idxS) + "%s";
+            bodyProcessedPattern.append(headerProcessedLine.substring(currentIdx, idxS) + "%s");
             values.add(value);
             currentIdx = idxE + 1;
         }
 
-        if (bodyProcessedPattern.isEmpty()) {
-            result.add(headerProcessedLine);
+        if (bodyProcessedPattern.toString().isEmpty()) {
+            result.add(headerProcessedLine.toString());
             return result;
         } else {
             for (int i = 0; i < maxRows; i++) {
                 currentIdx = 0;
-                String bodyProcessedLine = "";
+                StringBuilder bodyProcessedLine = new StringBuilder();
                 int positionalIdx = 0; // %s positional idx
-                while (currentIdx < bodyProcessedPattern.length()) {
+                while (currentIdx < bodyProcessedPattern.toString().length()) {
                     int idxS = bodyProcessedPattern.indexOf("%s", currentIdx);
                     if (idxS == -1) {
-                        bodyProcessedLine += bodyProcessedPattern.substring(currentIdx);
+                        bodyProcessedLine.append(bodyProcessedPattern.substring(currentIdx));
                         break;
                     }
                     int idxE = idxS + 2; // %s
@@ -265,7 +265,7 @@ public class OnapCommandHttpUtils {
                             }
                         }
 
-                        bodyProcessedLine += bodyProcessedPattern.substring(currentIdx, idxS) + valueS;
+                        bodyProcessedLine.append(bodyProcessedPattern.substring(currentIdx, idxS) + valueS);
                         currentIdx = idxE;
                         positionalIdx++;
                     } catch (OnapCommandResultEmpty e) {
@@ -274,7 +274,7 @@ public class OnapCommandHttpUtils {
                         throw new OnapCommandResultMapProcessingFailed(line, e);
                     }
                 }
-                result.add(bodyProcessedLine);
+                result.add(bodyProcessedLine.toString());
             }
 
             return result;
