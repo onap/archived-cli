@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2652792_5917ac23",
+        "filename": "profiles/command/src/main/java/org/onap/cli/fw/cmd/schema/OnapCommandSchemaCmdLoader.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-06-01T03:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518bc26e_f6935779",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "6a2c51d6d610e9b82f8880aaddce378747e9ec6d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32ef48fc_86ef3ec0",
         "filename": "profiles/command/src/main/java/org/onap/cli/fw/cmd/schema/OnapCommandSchemaCmdLoader.java",
         "patchSetId": 1
