@@ -25,7 +25,10 @@ import org.onap.cli.fw.store.OnapCommandExecutionStoreTest;
 import java.io.File;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import mockit.Mock;
+import mockit.MockUp;
+import org.onap.cli.fw.store.OnapCommandExecutionStore;
 
 public class OnapCommandExceutionShowCommandTest {
 @BeforeClass
@@ -46,7 +49,23 @@ public static void setUp() throws Exception {
         assertTrue(oclipCommandResultAttributes.size() > 1);
     }
 
-
+    @Test
+    public void runTestForStringBuilder() throws OnapCommandException {
+        new MockUp<OnapCommandExecutionStore.Execution>(){
+            @Mock
+            public String getOutput() {
+                return "oclip-request-output";
+            }
+        };
+        OnapCommandExceutionShowCommand cmd=new OnapCommandExceutionShowCommand();
+        cmd.initializeSchema("execution-show.yaml");
+        cmd.getParametersMap().get("execution-id").setValue("requestId");
+        cmd.getParametersMap().get("format").setValue("TEXT");
+        cmd.execute();
+        List<OnapCommandResultAttribute> oclipCommandResultAttributes = cmd.getResult()
+                .getRecords();
+        assertTrue(oclipCommandResultAttributes.size() > 1);
+    }
     @AfterClass
     public static void tearDown() throws Exception {
         String dirPathForExecutions = System.getProperty("user.dir") + File.separator + "data/executions";

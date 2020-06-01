@@ -344,42 +344,42 @@ public class OnapCommandExecutionStore {
                 //find results -type d -newermt '2019-02-11 10:00:00' ! -newermt '2019-02-11 15:10:00' -name "*__*__profile-list*"
                 //find 'results' -type d -newermt '2019-02-11T10:00:00.000' ! -newermt '2019-02-11T15:10:00.000' -name "*__*__profile*"
 
-                String searchString = "find " + new File(getBasePath()).getAbsolutePath() + " -type d ";
+                StringBuilder searchString = new StringBuilder("find " + new File(getBasePath()).getAbsolutePath() + " -type d ");
 
                 String startTime = search.get("startTime");
                 if (startTime != null) {
-                    searchString += " -newermt " + startTime ;
+                    searchString.append(" -newermt " + startTime);
                 }
 
                 String endTime = search.get("endTime");
                 if (endTime != null) {
-                    searchString += " ! -newermt " + endTime ;
+                    searchString.append(" ! -newermt " + endTime);
                 }
 
-                searchString += " -name \"";
+                searchString.append(" -name \"");
 
                 if(search.containsKey("execution-id")) {
-                    searchString += search.get("execution-id");
+                    searchString.append(search.get("execution-id"));
                 } else if(search.containsKey("request-id")) {
-                    searchString += search.get("request-id") + "*";
+                    searchString.append(search.get("request-id") + "*");
                 } else {
-                    searchString += "*";
+                    searchString.append("*");
                 }
 
                 for (String term: Arrays.asList(new String []{"product", "service", "command", "profile"})) {
-                    searchString += "__";
+                    searchString.append("__");
                     if (search.get(term) != null && !search.get(term).isEmpty()) {
-                        searchString += search.get(term);
+                        searchString.append(search.get(term));
                     } else {
-                        searchString += "*";
+                        searchString.append("*");
                     }
                 }
-                if (!searchString.endsWith("*"))
-                    searchString += "*";
+                if (!searchString.toString().endsWith("*"))
+                    searchString.append("*");
 
-                searchString += "\"";
+                searchString.append("\"");
 
-                ProcessRunner pr = new ProcessRunner(new String [] {searchString}, null, ".");
+                ProcessRunner pr = new ProcessRunner(new String [] {searchString.toString()}, null, ".");
                 pr.setTimeout(10000);
                 pr.overrideToUnix();
                 pr.run();
