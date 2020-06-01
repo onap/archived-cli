@@ -47,7 +47,7 @@ public class OnapSchemaShowCommand extends OnapCommand {
             throw new OnapCommandNotFound(cmd, product, service);
         }
 
-        Map <String, Object> ioMap = new HashMap<String, Object>();
+        Map <String, Object> ioMap = new HashMap<>();
         ioMap.put("name", info.getCmdName());
         ioMap.put("author", info.getAuthor());
         ioMap.put("description", info.getDescription());

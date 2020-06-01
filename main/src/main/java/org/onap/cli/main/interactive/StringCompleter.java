@@ -29,7 +29,7 @@ import java.util.TreeSet;
  *
  */
 public class StringCompleter implements Completer {
-    private final SortedSet<String> strings = new TreeSet<String>();
+    private final SortedSet<String> strings = new TreeSet<>();
 
     /**
      * Public Constructor takes collection of strings.
