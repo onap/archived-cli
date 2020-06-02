@@ -191,7 +191,7 @@ public class OpenCommandShellCmd extends OnapCommand {
 
         ProcessRunner pr = new ProcessRunner(
                 cmd,
-                (envs.size() > 0) ? envs.toArray(new String []{}) : null,
+                (!envs.isEmpty()) ? envs.toArray(new String []{}) : null,
                 cwd);
         FileOutputStream stdoutStream = null;
         FileOutputStream stderrStream = null;

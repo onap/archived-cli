@@ -93,7 +93,7 @@ public class OnapCommandHttpUtils {
             values.put(param.getKey(), param.getValue().getValue().toString());
         }
 
-        if (input.getMultiparts().size() > 0) {
+        if (!input.getMultiparts().isEmpty()) {
             for (HttpInput.Part part: input.getMultiparts()) {
                 part.setContent(OnapCommandUtils.replaceLineForSpecialValues(part.getContent(), values));
                 part.setContent(OnapCommandUtils.replaceLineFromInputParameters(part.getContent(), params));
