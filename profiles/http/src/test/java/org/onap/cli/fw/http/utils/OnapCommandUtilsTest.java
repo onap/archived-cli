@@ -49,6 +49,9 @@ import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 import org.onap.cli.fw.utils.OnapCommandUtils;
+import java.util.List;
+import org.onap.cli.fw.http.connect.HttpInput;
+import org.onap.cli.fw.http.connect.HttpInput.Part;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnapCommandUtilsTest {
@@ -176,4 +179,22 @@ public class OnapCommandUtilsTest {
                 + "[\"3a2fb75b52a54e9c8093e7c154210f9e\"]}]}}}";
         assertEquals(result, OnapCommandHttpUtils.normalizeJson(sample));
     }
+    
+    @Test
+    public void testPopulateParameters() throws OnapCommandException {
+        List <Part> multiparts = new ArrayList <HttpInput.Part> ();
+        Part part = new Part();
+        part.setContent("content");
+        multiparts.add(part);
+        Map <String, OnapCommandParameter> params = new HashMap <String, OnapCommandParameter> ();
+        OnapCommandParameter onapCommandParameter = new OnapCommandParameter();
+        onapCommandParameter.setName("CMD");
+        onapCommandParameter.setRawDefaultValue("value");
+        params.put("key", onapCommandParameter);
+        HttpInput httpInput = new HttpInput();
+        httpInput.setMultiparts(multiparts);
+        HttpInput input = OnapCommandHttpUtils.populateParameters(params, httpInput);
+        assertTrue(input != null);
+    }
+    
 }
