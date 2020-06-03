@@ -40,6 +40,19 @@ public class OnapCommandExecutionStore {
     private static Logger log = LoggerFactory.getLogger(OnapCommandExecutionStore.class);
 
     private static boolean storeReady = false;
+    private static String REQUEST_ID = "requestId";
+    private static String EXECUTION_ID = "executionId";
+    private static String INPUT = "input";
+    private static String STDOUT = "stdout";
+    private static String STDERR = "stderr";
+    private static String DEBUG = "debug";
+    private static String IN_PROGRESS = "in-progress";
+    private static String OUTPUT = "output";
+    private static String ERROR = "error";
+    private static String COMPLETED = "completed";
+    private static String FAILED = "failed";
+    private static String EXECUTIONID = "execution-id";
+    private static String REQUESTID = "request-id";
 
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
@@ -222,28 +235,28 @@ public class OnapCommandExecutionStore {
             context.setStorePath(dir.getAbsolutePath());
 
             if (product != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "product"), product);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + OnapCommandConstants.INFO_PRODUCT), product);
             if (service != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "service"), service);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + OnapCommandConstants.INFO_SERVICE), service);
             if (cmd != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "command"), cmd);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + OnapCommandConstants.RPC_CMD), cmd);
 
-            FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "requestId"), requestId);
+            FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + REQUEST_ID), requestId);
 
-            FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "executionId"), executionId);
+            FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + EXECUTION_ID), executionId);
 
             if (input != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "input"), input);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + INPUT), input);
             if (profile != null) {
                 context.setProfile(profile);
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "profile"), profile);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + OnapCommandConstants.RPC_PROFILE), profile);
             }
 
-            FileUtils.touch(new File(context.getStorePath() + File.separator + "stdout"));
-            FileUtils.touch(new File(context.getStorePath() + File.separator + "stderr"));
-            FileUtils.touch(new File(context.getStorePath() + File.separator + "debug"));
+            FileUtils.touch(new File(context.getStorePath() + File.separator + STDOUT));
+            FileUtils.touch(new File(context.getStorePath() + File.separator + STDERR));
+            FileUtils.touch(new File(context.getStorePath() + File.separator + DEBUG));
 
-            FileUtils.touch(new File(context.getStorePath() + File.separator + "in-progress"));
+            FileUtils.touch(new File(context.getStorePath() + File.separator + IN_PROGRESS));
         } catch (IOException e) {
             log.error("Failed to store the execution start details {}", storePath);
         }
@@ -257,18 +270,18 @@ public class OnapCommandExecutionStore {
 
         try {
             if (output != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "output"), output);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + OUTPUT), output);
             if (error != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "error"), error);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + ERROR), error);
             if (debug != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "debug"), debug);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + DEBUG), debug);
             if (passed)
-                FileUtils.touch(new File(context.getStorePath() + File.separator + "completed"));
+                FileUtils.touch(new File(context.getStorePath() + File.separator + COMPLETED));
             else
-                FileUtils.touch(new File(context.getStorePath() + File.separator + "failed"));
+                FileUtils.touch(new File(context.getStorePath() + File.separator + FAILED));
 
-            if(!new File(context.getStorePath() + File.separator + "in-progress").delete()){
-                log.error("Failed to delete {}", context.getStorePath() + File.separator + "in-progress");
+            if(!new File(context.getStorePath() + File.separator + IN_PROGRESS).delete()){
+                log.error("Failed to delete {}", context.getStorePath() + File.separator + IN_PROGRESS);
             }
         } catch (IOException e) {
             log.error("Failed to store the execution end details {}", context.storePath);
@@ -281,11 +294,11 @@ public class OnapCommandExecutionStore {
 
         try {
             if (output != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "output"), output);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + OUTPUT), output);
             if (error != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "error"), error);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + ERROR), error);
             if (debug != null)
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "debug"), debug);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + DEBUG), debug);
         } catch (IOException e) {
             log.error("Failed to store the execution end details {}", context.storePath);
         }
@@ -297,7 +310,7 @@ public class OnapCommandExecutionStore {
 
         try {
             if (debug != null) {
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "debug"), debug);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + DEBUG), debug);
             }
         } catch (IOException e) {
             log.error("Failed to store the execution debug details {}", context.storePath);
@@ -310,7 +323,7 @@ public class OnapCommandExecutionStore {
 
         try {
             if (output != null) {
-                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "output"), output);
+                FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + OUTPUT), output);
             }
         } catch (IOException e) {
             log.error("Failed to store the execution output details {}", context.storePath);
@@ -323,15 +336,15 @@ public class OnapCommandExecutionStore {
             List <String> dirs = new ArrayList<>();
             if (System.getProperty("os.name").toLowerCase().startsWith("windows") || SEARCH_MODE.equals(SearchMode.file)) {
                 for (File f: new File(getBasePath()).listFiles()) {
-                    if(search.containsKey("execution-id")) {
-                        if (f.getName().startsWith(search.get("execution-id")))
+                    if(search.containsKey(EXECUTIONID)) {
+                        if (f.getName().startsWith(search.get(EXECUTIONID)))
                                 dirs.add(f.getAbsolutePath());
 
                         continue;
                     }
 
-                    if(search.containsKey("request-id")) {
-                        if (f.getName().startsWith(search.get("request-id")))
+                    if(search.containsKey(REQUESTID)) {
+                        if (f.getName().startsWith(search.get(REQUESTID)))
                                 dirs.add(f.getAbsolutePath());
 
                         continue;
@@ -358,10 +371,10 @@ public class OnapCommandExecutionStore {
 
                 searchString.append(" -name \"");
 
-                if(search.containsKey("execution-id")) {
-                    searchString.append(search.get("execution-id"));
-                } else if(search.containsKey("request-id")) {
-                    searchString.append(search.get("request-id") + "*");
+                if(search.containsKey(EXECUTIONID)) {
+                    searchString.append(search.get(EXECUTIONID));
+                } else if(search.containsKey(REQUESTID)) {
+                    searchString.append(search.get(REQUESTID) + "*");
                 } else {
                     searchString.append("*");
                 }
@@ -403,32 +416,32 @@ public class OnapCommandExecutionStore {
 
     private Execution makeExecution(String executionStorePath) throws IOException {
         OnapCommandExecutionStore.Execution exectuion = new OnapCommandExecutionStore.Execution();
-        if (new File(executionStorePath + File.separator + "requestId").exists())
-            exectuion.setRequestId(FileUtils.readFileToString(new File(executionStorePath + File.separator + "requestId")));
-        if (new File(executionStorePath + File.separator + "executionId").exists())
-            exectuion.setId(FileUtils.readFileToString(new File(executionStorePath + File.separator + "executionId")));
-        exectuion.setProduct(FileUtils.readFileToString(new File(executionStorePath + File.separator + "product")));
-        exectuion.setService(FileUtils.readFileToString(new File(executionStorePath + File.separator + "service")));
-        exectuion.setCommand(FileUtils.readFileToString(new File(executionStorePath + File.separator + "command")));
-        if (new File(executionStorePath + File.separator + "profile").exists())
-            exectuion.setProfile(FileUtils.readFileToString(new File(executionStorePath + File.separator + "profile")));
+        if (new File(executionStorePath + File.separator + REQUEST_ID).exists())
+            exectuion.setRequestId(FileUtils.readFileToString(new File(executionStorePath + File.separator + REQUEST_ID)));
+        if (new File(executionStorePath + File.separator + EXECUTION_ID).exists())
+            exectuion.setId(FileUtils.readFileToString(new File(executionStorePath + File.separator + EXECUTION_ID)));
+        exectuion.setProduct(FileUtils.readFileToString(new File(executionStorePath + File.separator + OnapCommandConstants.INFO_PRODUCT)));
+        exectuion.setService(FileUtils.readFileToString(new File(executionStorePath + File.separator + OnapCommandConstants.INFO_SERVICE)));
+        exectuion.setCommand(FileUtils.readFileToString(new File(executionStorePath + File.separator + OnapCommandConstants.RPC_CMD)));
+        if (new File(executionStorePath + File.separator + OnapCommandConstants.RPC_PROFILE).exists())
+            exectuion.setProfile(FileUtils.readFileToString(new File(executionStorePath + File.separator + OnapCommandConstants.RPC_PROFILE)));
 
-        exectuion.setInput(FileUtils.readFileToString(new File(executionStorePath + File.separator + "input")));
-        exectuion.setStartTime(dateFormatter.format(new File(executionStorePath + File.separator + "input").lastModified()));
+        exectuion.setInput(FileUtils.readFileToString(new File(executionStorePath + File.separator + INPUT)));
+        exectuion.setStartTime(dateFormatter.format(new File(executionStorePath + File.separator + INPUT).lastModified()));
 
-        if (new File(executionStorePath + File.separator + "in-progress").exists()) {
-            exectuion.setStatus("in-progress");
-        } else if (new File(executionStorePath + File.separator + "completed").exists()) {
-            exectuion.setStatus("completed");
-            if (new File(executionStorePath + File.separator + "output").exists()) {
-                exectuion.setOutput(FileUtils.readFileToString(new File(executionStorePath + File.separator + "output")));
-                exectuion.setEndTime(dateFormatter.format(new File(executionStorePath + File.separator + "output").lastModified()));
+        if (new File(executionStorePath + File.separator + IN_PROGRESS).exists()) {
+            exectuion.setStatus(IN_PROGRESS);
+        } else if (new File(executionStorePath + File.separator + COMPLETED).exists()) {
+            exectuion.setStatus(COMPLETED);
+            if (new File(executionStorePath + File.separator + OUTPUT).exists()) {
+                exectuion.setOutput(FileUtils.readFileToString(new File(executionStorePath + File.separator + OUTPUT)));
+                exectuion.setEndTime(dateFormatter.format(new File(executionStorePath + File.separator + OUTPUT).lastModified()));
             }
-        } else if (new File(executionStorePath + File.separator + "failed").exists()) {
-            exectuion.setStatus("failed");
-            if (new File(executionStorePath + File.separator + "error").exists()) {
-                exectuion.setOutput(FileUtils.readFileToString(new File(executionStorePath + File.separator + "error")));
-                exectuion.setEndTime(dateFormatter.format(new File(executionStorePath + File.separator + "error").lastModified()));
+        } else if (new File(executionStorePath + File.separator + FAILED).exists()) {
+            exectuion.setStatus(FAILED);
+            if (new File(executionStorePath + File.separator + ERROR).exists()) {
+                exectuion.setOutput(FileUtils.readFileToString(new File(executionStorePath + File.separator + ERROR)));
+                exectuion.setEndTime(dateFormatter.format(new File(executionStorePath + File.separator + ERROR).lastModified()));
             }
         }
 
@@ -470,7 +483,7 @@ public class OnapCommandExecutionStore {
 
     public String showExecutionDebug(String executionId) throws OnapCommandExecutionNotFound {
         try {
-            return FileUtils.readFileToString(new File (this.getExecutionDir(executionId).getAbsolutePath() + File.separator + "debug"));
+            return FileUtils.readFileToString(new File (this.getExecutionDir(executionId).getAbsolutePath() + File.separator + DEBUG));
         } catch (IOException e) {
             return "";
         }
