@@ -75,7 +75,7 @@ public class OpenInterfaceGrpcServer {
             .addService(new OpenInterfaceGrpcImpl())
             .build()
             .start();
-        logger.info("Server started, listening on " + port);
+        logger.info("Server started, listening on {}", port);
 
         try {
             OnapCommandRegistrar.getRegistrar().setHost(host);

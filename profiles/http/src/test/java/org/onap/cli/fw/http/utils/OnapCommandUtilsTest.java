@@ -52,6 +52,7 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
 import java.util.List;
 import org.onap.cli.fw.error.OnapCommandResultMapProcessingFailed;
 import org.onap.cli.fw.error.OnapCommandResultEmpty;
+import static org.junit.Assert.assertFalse;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnapCommandUtilsTest {
@@ -161,7 +162,7 @@ public class OnapCommandUtilsTest {
         actualResult = OnapCommandHttpUtils.replaceLineFromOutputResults("$h{head1}${$.serviceName}", output);
         assertTrue(actualResult.size()>0);
         actualResult = OnapCommandHttpUtils.replaceLineFromOutputResults("$h{head1}$b{$.serviceName}", output);
-        System.out.println(actualResult);
+        assertFalse(actualResult.get(0).isEmpty());
     }
     @OnapCommandSchema(schema = "sample-test-schema-http.yaml")
     class OnapHttpCommandSample extends OnapHttpCommand {

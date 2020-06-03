@@ -245,7 +245,7 @@ public class OnapCommandExecutionStore {
 
             FileUtils.touch(new File(context.getStorePath() + File.separator + "in-progress"));
         } catch (IOException e) {
-            log.error("Failed to store the execution start details " + storePath);
+            log.error("Failed to store the execution start details {}", storePath);
         }
 
         return context;
@@ -268,10 +268,10 @@ public class OnapCommandExecutionStore {
                 FileUtils.touch(new File(context.getStorePath() + File.separator + "failed"));
 
             if(!new File(context.getStorePath() + File.separator + "in-progress").delete()){
-                log.error("Failed to delete "+ context.getStorePath() + File.separator + "in-progress");
+                log.error("Failed to delete {}", context.getStorePath() + File.separator + "in-progress");
             }
         } catch (IOException e) {
-            log.error("Failed to store the execution end details " + context.storePath);
+            log.error("Failed to store the execution end details {}", context.storePath);
         }
     }
 
@@ -287,7 +287,7 @@ public class OnapCommandExecutionStore {
             if (debug != null)
                 FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "debug"), debug);
         } catch (IOException e) {
-            log.error("Failed to store the execution end details " + context.storePath);
+            log.error("Failed to store the execution end details {}", context.storePath);
         }
     }
 
@@ -300,7 +300,7 @@ public class OnapCommandExecutionStore {
                 FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "debug"), debug);
             }
         } catch (IOException e) {
-            log.error("Failed to store the execution debug details " + context.storePath);
+            log.error("Failed to store the execution debug details {}", context.storePath);
         }
     }
 
@@ -313,7 +313,7 @@ public class OnapCommandExecutionStore {
                 FileUtils.writeStringToFile(new File(context.getStorePath() + File.separator + "output"), output);
             }
         } catch (IOException e) {
-            log.error("Failed to store the execution output details " + context.storePath);
+            log.error("Failed to store the execution output details {}", context.storePath);
         }
     }
     public List<OnapCommandExecutionStore.Execution> listExecutions(Map<String, String> search) throws OnapCommandExecutionFailed {
