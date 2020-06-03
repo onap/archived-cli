@@ -22,7 +22,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -46,12 +45,10 @@ import org.onap.cli.fw.store.OnapCommandExecutionStore;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.fw.utils.ProcessRunner;
 
-import com.google.gson.Gson;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 
 /**
  * Hello world.
