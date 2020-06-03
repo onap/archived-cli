@@ -61,7 +61,7 @@ public class OnapCommandSchemaSnmpLoader {
 
                     case OnapCommandSnmpConstants.SNMP_COMMAND:
                         cmd.setCommand((String) entry.getValue());
-
+                        break;
                     default:
                         break;
                 }

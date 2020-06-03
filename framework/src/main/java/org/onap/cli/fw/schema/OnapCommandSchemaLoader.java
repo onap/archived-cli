@@ -267,6 +267,7 @@ public class OnapCommandSchemaLoader {
                                     Object ignore = infoMap.get(key1);
                                     info.setIgnore(ignore.toString().equalsIgnoreCase(OnapCommandConstants.BOOLEAN_TRUE));
                                     break;
+                                default : // Do nothing
                             }
                         }
 
@@ -395,6 +396,7 @@ public class OnapCommandSchemaLoader {
                                             param.setDefaultParam(false);
                                         }
                                         break;
+                                    default : // Do nothing
                                 }
                             }
 
@@ -497,16 +499,19 @@ public class OnapCommandSchemaLoader {
                                                         attr.setDefaultAttr(false);
                                                     }
                                                     break;
+                                                default : // Do nothing
                                             }
 
                                         }
                                         cmd.getResult().getRecords().add(attr);
                                     }
                                     break;
+                                default : // Do nothing
                             }
                         }
                     }
                     break;
+                default : // Do nothing
             }
         }
 
