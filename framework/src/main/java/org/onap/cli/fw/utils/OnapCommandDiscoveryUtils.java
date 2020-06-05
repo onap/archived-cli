@@ -216,8 +216,8 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
-        Map<String, ?> values = null;
+    public static Map<String, Object> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
+        Map<String, Object> values = null;
         try {
             values = loadYaml(resource.getInputStream());
         } catch (Exception e) {
@@ -483,9 +483,9 @@ public class OnapCommandDiscoveryUtils {
 
     }
 
-    public static List<Map<String, ?>> createTestSuite(String cmd, String version) throws OnapCommandException {
+    public static List<Map<String, Object>> createTestSuite(String cmd, String version) throws OnapCommandException {
 
-        ArrayList<Map<String, ?>> testSamples = new ArrayList();
+        ArrayList<Map<String, Object>> testSamples = new ArrayList();
 
         List<Resource> resources = new ArrayList();
         OnapCommandSchemaInfo schemaInfo =  getSchemaInfo(cmd, version);
@@ -542,8 +542,8 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadYaml(Resource resource) throws OnapCommandInvalidSchema {
-        Map<String, ?> values = null;
+    public static Map<String, Object> loadYaml(Resource resource) throws OnapCommandInvalidSchema {
+        Map<String, Object> values = null;
         try {
             values = loadYaml(resource.getInputStream());
         } catch (Exception e) {
@@ -560,8 +560,8 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadYaml(String filePath) throws OnapCommandInvalidSchema {
-        Map<String, ?> values = null;
+    public static Map<String, Object> loadYaml(String filePath) throws OnapCommandInvalidSchema {
+        Map<String, Object> values = null;
         try {
             values = loadYaml(new FileInputStream(new File(filePath)));
         } catch (Exception e) {
@@ -579,11 +579,11 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadYaml(InputStream inputStream) throws OnapCommandInvalidSchema {
-        Map<String, ?> values = null;
+    public static Map<String, Object> loadYaml(InputStream inputStream) throws OnapCommandInvalidSchema {
+        Map<String, Object> values = null;
         try(InputStreamReader inputStreamReader = new InputStreamReader(inputStream);){
             YamlReader reader = new YamlReader(inputStreamReader);
-            values = (Map<String, ?>) reader.read();
+            values = (Map<String, Object>) reader.read();
             } catch (YamlException e) {
                 throw new OnapCommandInvalidSchema(inputStream.getClass().getName(),e.getMessage());
             } catch (IOException e) {

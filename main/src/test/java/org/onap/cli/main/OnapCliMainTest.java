@@ -30,7 +30,11 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Arrays;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import static org.junit.Assert.assertFalse;
@@ -221,5 +225,24 @@ public class OnapCliMainTest {
     public void testLoadYamlForYamlReader() throws OnapCommandInvalidSchema {
         Map<String,?> map = OnapCommandDiscoveryUtils.loadYaml("src/test/resources/open-cli-schema/sample-test-schema.yaml");
         assertFalse(map.isEmpty());
+    }
+    @Test
+    public void testverifyCommand() throws OnapCommandException {
+        cli = new OnapCli(new String[] {"schema-validate","--verify" });
+      new MockUp<OnapCommandRegistrar>(){
+            @Mock
+            public List<Map<String, Object>> getTestSuite(String cmd, String product) throws OnapCommandException {
+                List<Map<String, Object>> list=new ArrayList<>();
+                Map<String,Object>map=new HashMap<>();
+                map.put("output","output");
+                map.put("input", Arrays.asList(new String[]{"--verify"}));
+                map.put("sampleid","sample1");
+                map.put("samplefileid","schema-validate-sample.yaml");
+                map.put("moco","schema-validate-moco.json");
+                list.add(map);
+                return list;
+            }
+        };
+        cli.handleCommand();
     }
 }

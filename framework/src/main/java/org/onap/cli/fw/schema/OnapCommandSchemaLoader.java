@@ -105,8 +105,8 @@ public class OnapCommandSchemaLoader {
      * @throws OnapCommandInvalidSchema        invalid schema
      * @throws OnapCommandSchemaNotFound       schema not found
      */
-    public static Map<String, ?> validateSchemaVersion(String schemaName, String version) throws OnapCommandException {
-        Map<String, ?> values = null;
+    public static Map<String, Object> validateSchemaVersion(String schemaName, String version) throws OnapCommandException {
+        Map<String, Object> values = null;
         try {
             InputStream inputStream = OnapCommandUtils.class.getClassLoader().getResourceAsStream(schemaName);
 
@@ -160,8 +160,7 @@ public class OnapCommandSchemaLoader {
                 errors.addAll(parseSchema(cmd, defaultParameterMap, validateSchema));
             }
 
-            Map<String, List<Map<String, String>>> commandYamlMap =
-                    (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+            Map<String, ?> commandYamlMap = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
             errors.addAll(parseSchema(cmd, commandYamlMap, validateSchema));
 
@@ -544,7 +543,7 @@ public class OnapCommandSchemaLoader {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadSchema(InputStream stream, String schemaName) throws OnapCommandInvalidSchema  {
+    public static Map<String, Object> loadSchema(InputStream stream, String schemaName) throws OnapCommandInvalidSchema  {
         return OnapCommandDiscoveryUtils.loadYaml(stream);
 
     }

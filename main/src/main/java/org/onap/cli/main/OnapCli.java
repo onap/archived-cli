@@ -287,7 +287,7 @@ public class OnapCli {
                 .filter(e -> e.getName().equals(OnapCommandConstants.VERIFY_CONTEXT_PARAM))
                 .findFirst();
 
-        List<Map<String, ?>> testSuite = OnapCommandRegistrar.getRegistrar().getTestSuite(
+        List<Map<String, Object>> testSuite = OnapCommandRegistrar.getRegistrar().getTestSuite(
                 cmd.getName(),
                 cmd.getInfo().getProduct());
 
