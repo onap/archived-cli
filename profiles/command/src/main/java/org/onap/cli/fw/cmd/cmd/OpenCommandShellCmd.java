@@ -315,7 +315,7 @@ public class OpenCommandShellCmd extends OnapCommand {
             int idxE = line.indexOf('}', idxS);
             String tmpName = line.substring(idxS + 7, idxE);
             tmpName = tmpName.trim();
-            String tmpTkns[] = tmpName.split(":");
+            String[] tmpTkns = tmpName.split(":");
             String tmpFileName;
             String paramName;
             if (tmpTkns.length == 2) {
