@@ -253,7 +253,7 @@ public class OnapHttpCommand extends OnapCommand {
             this.resultMap.put(resultMapEntry.getKey(), value);
         }
 
-        Map<String, ArrayList<String>> results = OnapCommandHttpUtils.populateOutputs(this.getResultMap(), output);
+        Map<String, List<String>> results = OnapCommandHttpUtils.populateOutputs(this.getResultMap(), output);
         //results = OnapCommandUtils.populateOutputsFromInputParameters(results, this.getParametersMap());
 
         for (OnapCommandResultAttribute attr : this.getResult().getRecords()) {

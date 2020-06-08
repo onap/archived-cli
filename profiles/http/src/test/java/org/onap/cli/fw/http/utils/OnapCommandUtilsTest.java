@@ -120,7 +120,7 @@ public class OnapCommandUtilsTest {
         params.put("body", "$b{$.serviceName}");
         params.put("key", "value");
 
-        Map<String, ArrayList<String>> input1 = OnapCommandHttpUtils.populateOutputs(params, output);
+        Map<String, List<String>> input1 = OnapCommandHttpUtils.populateOutputs(params, output);
         assertEquals("{head=[value1], body=[test], key=[value]}", input1.toString());
 
         params.put("body", "$b{{$.serviceName}");

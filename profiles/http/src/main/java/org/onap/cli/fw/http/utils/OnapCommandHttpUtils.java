@@ -145,9 +145,9 @@ public class OnapCommandHttpUtils {
      * @throws OnapCommandResultMapProcessingFailed
      *             map processing failed exception
      */
-    public static Map<String, ArrayList<String>> populateOutputs(Map<String, String> resultMap, HttpResult resultHttp)
+    public static Map<String, List<String>> populateOutputs(Map<String, String> resultMap, HttpResult resultHttp)
             throws OnapCommandException {
-        Map<String, ArrayList<String>> resultsProcessed = new HashMap<>();
+        Map<String, List<String>> resultsProcessed = new HashMap<>();
 
         for (Entry<String, String> entry : resultMap.entrySet()) {
             String key = entry.getKey();
@@ -161,7 +161,7 @@ public class OnapCommandHttpUtils {
         return resultsProcessed;
     }
 
-    public static ArrayList<String> replaceLineFromOutputResults(String line, HttpResult resultHttp)
+    public static List<String> replaceLineFromOutputResults(String line, HttpResult resultHttp)
             throws OnapCommandHttpHeaderNotFound, OnapCommandHttpInvalidResponseBody,
             OnapCommandResultMapProcessingFailed, OnapCommandResultEmpty {
         StringBuilder headerProcessedLine = new StringBuilder();
