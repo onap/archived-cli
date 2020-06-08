@@ -354,12 +354,10 @@ public class OnapCommandSchemaLoader {
                                         break;
 
                                     case IS_SECURED:
-                                        if (validate) {
-                                            if (!OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
+                                            if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
                                                 exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
                                                         IS_SECURED, String.valueOf(parameter.get(key2))));
                                             }
-                                        }
 
                                         if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
                                             param.setSecured(true);
@@ -382,12 +380,10 @@ public class OnapCommandSchemaLoader {
                                         break;
 
                                     case IS_DEFAULT_PARAM:
-                                        if (validate) {
-                                            if (!OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
+                                            if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
                                                 exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
                                                         IS_DEFAULT_PARAM, String.valueOf(parameter.get(key2))));
                                             }
-                                        }
 
                                         if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
                                             param.setDefaultParam(true);
@@ -472,12 +468,10 @@ public class OnapCommandSchemaLoader {
                                                     break;
 
                                                 case IS_SECURED:
-                                                    if (validate) {
-                                                        if (!OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
+                                                        if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
                                                             exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(ATTRIBUTES,
                                                                     IS_SECURED, String.valueOf(map.get(key4))));
                                                         }
-                                                    }
                                                     if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
                                                         attr.setSecured(true);
                                                     } else {
@@ -486,12 +480,10 @@ public class OnapCommandSchemaLoader {
                                                     break;
 
                                                 case IS_DEFAULT_ATTR:
-                                                    if (validate) {
-                                                        if (!OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
+                                                        if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
                                                             exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(ATTRIBUTES,
                                                                     IS_DEFAULT_ATTR, String.valueOf(map.get(key4))));
                                                         }
-                                                    }
                                                     if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
                                                         attr.setDefaultAttr(true);
                                                     } else {

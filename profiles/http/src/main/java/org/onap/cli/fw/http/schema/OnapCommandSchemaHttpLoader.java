@@ -353,10 +353,8 @@ public class OnapCommandSchemaHttpLoader {
 
         for (Object successCode : requestSuccessCodes) {
             Integer code = Integer.valueOf(String.valueOf(successCode));
-            if (code < 200 || code >= 300) {
-                if ( code != 404) {
+            if ((code < 200 || code >= 300) && code != 404) {
                     errorList.add(OnapCommandHttpConstants.HTTP_SUCCESS_CODE_INVALID);
-                }
             }
         }
 

@@ -79,7 +79,11 @@ public class OnapCommandProfileStoreTest {
         assertNotNull(onapCommandProfileStore.getParams("abc"));
     }
 
-
+    @Test
+    public void removeTest() {
+        onapCommandProfileStore.add("abc", "abc", "abc");
+        onapCommandProfileStore.remove("abc","abc");
+    }
 
     @AfterClass
     public static void tearDown() throws Exception {

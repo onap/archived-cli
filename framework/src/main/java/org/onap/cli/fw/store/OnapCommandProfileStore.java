@@ -96,11 +96,9 @@ public class OnapCommandProfileStore {
     }
 
     public void remove(String productVersion, String paramName) {
-        if (paramCache.containsKey(productVersion)) {
-            if (paramCache.get(productVersion).containsKey(paramName)) {
+            if (paramCache.containsKey(productVersion) && paramCache.get(productVersion).containsKey(paramName)) {
                 paramCache.get(productVersion).remove(paramName);
             }
-        }
 
         this.persist();
     }
@@ -205,11 +203,9 @@ public class OnapCommandProfileStore {
     public void removeProfile(String profile) {
          String dataDir = getDataStorePath();
          File file = new File(dataDir + File.separator + profile + DATA_PATH_PROFILE_JSON);
-         if (file.exists()) {
-            if(!file.delete()){
+            if(file.exists() && !file.delete()){
                 log.error("Failed to delete profile "+file.getAbsolutePath());
             }
-         }
     }
 
     public List<String> getProfiles() {
