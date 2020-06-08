@@ -164,7 +164,7 @@ public class OnapCommandArtifactStore {
         return DatatypeConverter.printHexBinary(hash);
     }
 
-    public Artifact createArtifact(Artifact artifact) throws OnapCommandArtifactContentNotExist, OnapCommandArtifactAlreadyExist, OnapCommandArtifactContentChecksumNotMatch {
+    public Artifact createArtifact(Artifact artifact) throws OnapCommandArtifactContentNotExist, OnapCommandArtifactAlreadyExist, OnapCommandArtifactContentChecksumNotMatch { //NOSONAR
         if (!new File(artifact.getPath()).exists()) {
             throw new OnapCommandArtifactContentNotExist(artifact.getPath());
         }
@@ -210,7 +210,7 @@ public class OnapCommandArtifactStore {
     }
 
 
-    public List<Artifact> listArtifact(String category, String namePattern) throws OnapCommandArtifactNotFound {
+    public List<Artifact> listArtifact(String category, String namePattern) throws OnapCommandArtifactNotFound { //NOSONAR
         List<Artifact> artifacts = new ArrayList<>();
 
         String searchPattern = "";

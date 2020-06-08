@@ -176,7 +176,7 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static boolean isAlreadyDiscovered() throws OnapCommandDiscoveryFailed {
+    public static boolean isAlreadyDiscovered() throws OnapCommandDiscoveryFailed { //NOSONAR
         String dataDir = OnapCommandDiscoveryUtils.getDataStorePath();
         return new File(dataDir + File.separator + DISCOVERY_FILE).exists();
     }

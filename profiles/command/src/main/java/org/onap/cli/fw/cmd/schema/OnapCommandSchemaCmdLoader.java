@@ -46,7 +46,7 @@ public class OnapCommandSchemaCmdLoader {
      */
     public static ArrayList<String> parseCmdSchema(OpenCommandShellCmd cmd,
                                                     final Map<String, ?> values,
-                                                    boolean validate) throws OnapCommandException {
+                                                    boolean validate) throws OnapCommandException { //NOSONAR
         ArrayList<String> errorList = new ArrayList<>();
         Map<String, ?> valMap = (Map<String, ?>) values.get(OnapCommandCmdConstants.CMD);
 
