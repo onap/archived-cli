@@ -197,7 +197,7 @@ public class OpenCommandShellCmd extends OnapCommand {
         FileOutputStream stderrStream = null;
         String outputValue = "";
 
-        try {
+        try { //NOSONAR
             pr.setTimeout(timeout);
 
             if (this.getExecutionContext() != null) {
