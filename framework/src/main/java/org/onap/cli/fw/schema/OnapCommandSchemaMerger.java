@@ -50,9 +50,9 @@ public class OnapCommandSchemaMerger {
     public static void mergeYamlMap(Map<String, Object> mergedResult, Map<String, Object> yamlContents) {
         if (yamlContents == null) return;
 
-        for (String key : yamlContents.keySet()) {
-
-            Object yamlValue = yamlContents.get(key);
+        for (Map.Entry<String,Object> entry : yamlContents.entrySet()) {
+            String key=entry.getKey();
+            Object yamlValue = entry.getValue();
             if (yamlValue == null) {
                 mergedResult.put(key, yamlValue);
                 continue;

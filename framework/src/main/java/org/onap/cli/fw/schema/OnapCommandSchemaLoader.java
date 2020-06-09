@@ -217,13 +217,13 @@ public class OnapCommandSchemaLoader {
                             HashMap<String, String> validationMap = new HashMap<>();
                             validationMap.put(INFO_TYPE, COMMAND_TYPE_VALUES);
 
-                            for (String secKey : validationMap.keySet()) {
+                            for (Map.Entry<String,String> entry : validationMap.entrySet()) {
+                                String secKey=entry.getKey();
                                 if (infoMap.containsKey(secKey)) {
-                                    Object obj = infoMap.get(secKey);
-                                    if (obj == null) {
+                                    String value = infoMap.get(secKey);
+                                    if (value == null) {
                                         exceptionList.add("Attribute '" + secKey + "' under '" + INFO + "' is empty");
                                     } else {
-                                        String value = String.valueOf(obj);
                                         if (!OnapCommandConfig.getCommaSeparatedList(validationMap.get(secKey)).contains(value)) {
                                             exceptionList.add("Attribute '" + secKey + "' contains invalid value. Valide values are "
                                                     + OnapCommandConfig.getCommaSeparatedList(validationMap.get(key))); //

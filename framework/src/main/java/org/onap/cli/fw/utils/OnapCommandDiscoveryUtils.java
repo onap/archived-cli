@@ -511,9 +511,9 @@ public class OnapCommandDiscoveryUtils {
             Map<String, Map<String, String>> samples = (Map<String, Map<String, String>>) stringMap
                     .get(OnapCommandConstants.VERIFY_SAMPLES);
 
-            for (String sampleId : samples.keySet()) {
-
-                Map<String, String> sample = samples.get(sampleId);
+            for (Map.Entry<String,Map<String, String>> entry : samples.entrySet()) {
+                String sampleId=entry.getKey();
+                Map<String, String> sample = entry.getValue();
 
                 List<String> inputArgs = new ArrayList();
                 if (sample.get(OnapCommandConstants.VERIFY_INPUT) != null) {
