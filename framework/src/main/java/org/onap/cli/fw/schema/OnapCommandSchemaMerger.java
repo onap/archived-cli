@@ -34,7 +34,9 @@ import org.slf4j.LoggerFactory;
 public class OnapCommandSchemaMerger {
 
     static Logger LOG = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
-
+    private OnapCommandSchemaMerger() {
+        throw new IllegalStateException("Utility class");
+    }
     public static Map<String, Object> mergeSchemas(OnapCommand cmd) throws OnapCommandException {
         Map<String, Object> mergedResult = new LinkedHashMap<>();
 

@@ -70,6 +70,10 @@ import java.io.InputStreamReader;
 import java.io.FileInputStream;
 
 public class OnapCommandDiscoveryUtils {
+    private OnapCommandDiscoveryUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     /**
