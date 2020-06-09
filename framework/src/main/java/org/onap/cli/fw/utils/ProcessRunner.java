@@ -99,7 +99,7 @@ public class ProcessRunner {
         if (this.cmd.length == 1) {
             p = Runtime.getRuntime().exec(this.shell + this.cmd[0], this.env, workingDirectory); //NOSONAR
         } else {
-            List list = new ArrayList(Arrays.asList(this.shell.split(" ")));
+            List<String> list = new ArrayList<>(Arrays.asList(this.shell.split(" ")));
             list.addAll(Arrays.asList(this.cmd));
             String []cmds = Arrays.copyOf(list.toArray(), list.size(), String[].class);
             p = Runtime.getRuntime().exec(cmds, this.env, workingDirectory); //NOSONAR

@@ -47,7 +47,7 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
 
     private String product;
 
-    private List<String> sampleFiles = new ArrayList();
+    private List<String> sampleFiles = new ArrayList<>();
 
     /**
      * OCS version
@@ -71,7 +71,7 @@ public class OnapCommandSchemaInfo implements Comparable<OnapCommandSchemaInfo> 
 
     private List<Object> outputs = new ArrayList<>();
 
-    private Map<String, String> metadata = new HashMap();
+    private Map<String, String> metadata = new HashMap<>();
 
     private String description;
 

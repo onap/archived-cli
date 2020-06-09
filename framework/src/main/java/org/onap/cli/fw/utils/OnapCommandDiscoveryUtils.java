@@ -485,12 +485,12 @@ public class OnapCommandDiscoveryUtils {
 
     public static List<Map<String, ?>> createTestSuite(String cmd, String version) throws OnapCommandException {
 
-        ArrayList<Map<String, ?>> testSamples = new ArrayList();
+        ArrayList<Map<String, ?>> testSamples = new ArrayList<>();
 
-        List<Resource> resources = new ArrayList();
+        List<Resource> resources = new ArrayList<>();
         OnapCommandSchemaInfo schemaInfo =  getSchemaInfo(cmd, version);
 
-        List<String> sampleFiles = new ArrayList();
+        List<String> sampleFiles = new ArrayList<>();
         if (schemaInfo != null && !schemaInfo.getSampleFiles().isEmpty()) {
             sampleFiles.addAll(schemaInfo.getSampleFiles());
         }
@@ -515,13 +515,13 @@ public class OnapCommandDiscoveryUtils {
 
                 Map<String, String> sample = samples.get(sampleId);
 
-                List<String> inputArgs = new ArrayList();
+                List<String> inputArgs = new ArrayList<>();
                 if (sample.get(OnapCommandConstants.VERIFY_INPUT) != null) {
                     inputArgs.addAll(Arrays.asList(sample.get(OnapCommandConstants.VERIFY_INPUT).trim().split(" ")));
                 }
                 inputArgs.add(OnapCommandConstants.VERIFY_LONG_OPTION);
 
-                HashMap map = new HashMap();
+                HashMap<String, Object> map = new HashMap<>();
                 map.put(OnapCommandConstants.VERIFY_INPUT, inputArgs);
                 map.put(OnapCommandConstants.VERIFY_OUPUT, sample.get(OnapCommandConstants.VERIFY_OUPUT));
                 map.put(OnapCommandConstants.VERIFY_MOCO, sample.get(OnapCommandConstants.VERIFY_MOCO));
