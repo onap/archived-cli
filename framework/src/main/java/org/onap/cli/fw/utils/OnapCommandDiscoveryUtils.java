@@ -86,7 +86,7 @@ public class OnapCommandDiscoveryUtils {
     public static OnapCommandSchemaInfo getSchemaInfo(String cmd, String version) throws OnapCommandException {
         List<OnapCommandSchemaInfo> list = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(false);
         OnapCommandSchemaInfo schemaInfo = null;
-        if (list != null) {
+        if (list != null) { //NOSONAR
             for (OnapCommandSchemaInfo schema : list) {
                 if (cmd.equals(schema.getCmdName()) && version.equals(schema.getProduct())) {
                     schemaInfo = schema;
@@ -237,7 +237,7 @@ public class OnapCommandDiscoveryUtils {
      */
     public static Resource findResource(String fileName, String pattern) throws IOException {
         Resource[] resources = OnapCommandDiscoveryUtils.findResources(pattern);
-        if (resources != null && resources.length > 0) {
+        if (resources != null && resources.length > 0) { //NOSONAR
             for (Resource res : resources) {
                 if (res.getFilename().equals(fileName)) {
                     return res;
@@ -491,7 +491,7 @@ public class OnapCommandDiscoveryUtils {
         OnapCommandSchemaInfo schemaInfo =  getSchemaInfo(cmd, version);
 
         List<String> sampleFiles = new ArrayList();
-        if (schemaInfo != null && !schemaInfo.getSampleFiles().isEmpty()) {
+        if (schemaInfo != null && !schemaInfo.getSampleFiles().isEmpty()) { //NOSONAR
             sampleFiles.addAll(schemaInfo.getSampleFiles());
         }
 
