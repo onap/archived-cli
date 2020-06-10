@@ -128,7 +128,7 @@ public class ProcessRunner {
             public void run() {
                 try {
                     IOUtils.copy(stdoutP, stdout);
-                } catch (IOException e) {
+                } catch (IOException e) { // NOSONAR
                 }
             }
         });
@@ -137,7 +137,7 @@ public class ProcessRunner {
             public void run() {
                 try {
                     IOUtils.copy(stderrP, stderr);
-                } catch (IOException e) {
+                } catch (IOException e) { // NOSONAR
                 }
             }
         });
