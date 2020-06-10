@@ -31,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.nio.charset.StandardCharsets;
 
 public class ProcessRunner {
     private static Logger log = LoggerFactory.getLogger(ProcessRunner.class);
@@ -153,10 +154,10 @@ public class ProcessRunner {
         }
 
         if (readOutput)
-            this.output = new String(((ByteArrayOutputStream)this.getStdout()).toByteArray(), "UTF-8");
+            this.output = new String(((ByteArrayOutputStream)this.getStdout()).toByteArray(), StandardCharsets.UTF_8);
 
         if (readError)
-            this.error = new String(((ByteArrayOutputStream)this.getStderr()).toByteArray(), "UTF-8");
+            this.error = new String(((ByteArrayOutputStream)this.getStderr()).toByteArray(), StandardCharsets.UTF_8);
 
         p.destroy();
 
