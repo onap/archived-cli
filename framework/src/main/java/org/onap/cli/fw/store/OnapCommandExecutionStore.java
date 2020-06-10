@@ -43,7 +43,7 @@ public class OnapCommandExecutionStore {
 
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
-    private static String SEPARATOR = "__";
+    private static final String SEPARATOR = "__";
 
     private enum SearchMode {
         find,
@@ -52,11 +52,11 @@ public class OnapCommandExecutionStore {
 
     }
 
-    private static SearchMode SEARCH_MODE = SearchMode.file;
+    private static SearchMode searchMode = SearchMode.file;
     static {
         String mode = OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_EXECUTION_SEARCH_MODE);
         if (mode.equalsIgnoreCase(SearchMode.find.name()))
-            SEARCH_MODE = SearchMode.find;
+            searchMode = SearchMode.find;
     }
 
     public static class ExecutionStoreContext {
@@ -321,7 +321,7 @@ public class OnapCommandExecutionStore {
 
         try {
             List <String> dirs = new ArrayList<>();
-            if (System.getProperty("os.name").toLowerCase().startsWith("windows") || SEARCH_MODE.equals(SearchMode.file)) {
+            if (System.getProperty("os.name").toLowerCase().startsWith("windows") || searchMode.equals(SearchMode.file)) {
                 for (File f: new File(getBasePath()).listFiles()) {
                     if(search.containsKey("execution-id")) {
                         if (f.getName().startsWith(search.get("execution-id")))

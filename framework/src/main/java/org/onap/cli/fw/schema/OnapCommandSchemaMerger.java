@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class OnapCommandSchemaMerger {
 
-    static Logger LOG = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
+    static Logger log = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
     private OnapCommandSchemaMerger() {
         throw new IllegalStateException("Utility class");
     }

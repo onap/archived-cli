@@ -56,7 +56,7 @@ public class OnapCommandArtifactStore {
 
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
-    private static String SEPARATOR = "__";
+    private static final String SEPARATOR = "__";
 
     public static class Artifact {
         private String name;
