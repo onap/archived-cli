@@ -123,21 +123,17 @@ public class ProcessRunner {
         final InputStream stdoutP = p.getInputStream();
         final InputStream stderrP = p.getErrorStream();
 
-        Thread outThread = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    IOUtils.copy(stdoutP, stdout);
-                } catch (IOException e) {
-                }
+        Thread outThread = new Thread(() -> {
+            try {
+                IOUtils.copy(stdoutP, stdout);
+            } catch (IOException e) {
             }
         });
 
-        Thread errThread = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    IOUtils.copy(stderrP, stderr);
-                } catch (IOException e) {
-                }
+        Thread errThread = new Thread(() -> {
+            try {
+                IOUtils.copy(stderrP, stderr);
+            } catch (IOException e) {
             }
         });
 

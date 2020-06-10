@@ -212,12 +212,7 @@ public class OnapCommandProfileStore {
         List<String> profiles = new ArrayList<>();
 
         String dataDir = getDataStorePath();
-        for (File file: new File(dataDir).listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.endsWith(DATA_PATH_PROFILE_JSON);
-            }
-        })) {
+        for (File file: new File(dataDir).listFiles((dir, name) -> name.endsWith(DATA_PATH_PROFILE_JSON))) {
             String profile = file.getName().substring(0, file.getName().indexOf(DATA_PATH_PROFILE_JSON));
             profiles.add(profile);
         }
