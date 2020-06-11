@@ -160,12 +160,8 @@ public class ProcessRunner {
 
         p.destroy();
 
-        log.debug("CMD: " + Arrays.asList(this.cmd).toString() +
-                "\nWORKING_DIR: " + this.cwd +
-                "\nENV: " + ((this.env == null) ? this.env : Arrays.asList(this.env).toString()) +
-                "\nOUTPUT: " + this.output +
-                "\nERROR: " + this.error +
-                "\nEXIT_CODE: " + this.exitCode);
+        log.debug("CMD: {} \nWORKING_DIR: {} \nENV: {} \nOUTPUT: {} \nERROR: {} \nEXIT_CODE: {}",
+                Arrays.asList(this.cmd), this.cwd, ((this.env == null) ? this.env : Arrays.asList(this.env)), this.output, this.error, this.exitCode);
 
         if (!completed) {
             throw new RuntimeException("TIMEOUT:: cmd:" + Arrays.asList(this.cmd).toString());
