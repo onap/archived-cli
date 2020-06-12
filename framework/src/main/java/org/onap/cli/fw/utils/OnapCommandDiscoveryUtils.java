@@ -343,21 +343,17 @@ public class OnapCommandDiscoveryUtils {
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         if (obj == null) {
                             OnapCommandUtils.log.info("Invalid Schema yaml " + schema.getSchemaURI());
-                            continue;
                         }
-
+                        else{
                         schema.setVersion(obj.toString());
 
                         if (!schema.getVersion().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
                             OnapCommandUtils.log.info("Unsupported Schema version found " + schema.getSchemaURI());
-                            continue;
                         }
+                        else{
 
                         //There are schema like default input parameters and does not have command name
-                        if (resourceMap.get(NAME) == null) {
-                            continue;
-                        }
-
+                        if (resourceMap.get(NAME) != null) {
                         schema.setSchemaName(resource.getFilename());
                         schema.setCmdName((String) resourceMap.get(NAME));
 
@@ -406,6 +402,9 @@ public class OnapCommandDiscoveryUtils {
                         }
 
                         extSchemas.add(schema);
+                    }
+                        }
+                        }
                     }
                 }
             }

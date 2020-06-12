@@ -33,15 +33,13 @@ import org.slf4j.LoggerFactory;
  */
 public class OnapCommandSchemaMerger {
 
-    static Logger log = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
-    private OnapCommandSchemaMerger() {
-        throw new IllegalStateException("Utility class");
-    }
-    public static Map<String, Object> mergeSchemas(OnapCommand cmd) throws OnapCommandException {
-        Map<String, Object> mergedResult = new LinkedHashMap<>();
+    static Logger LOG = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
+
+    public static Map<String, ?> mergeSchemas(OnapCommand cmd) throws OnapCommandException {
+        Map<String, Object> mergedResult = new LinkedHashMap<String, Object>();
 
         for (String schema: cmd.getSchemas()) {
-            Map<String , Object> schemaMap = OnapCommandSchemaLoader.validateSchemaVersion(schema, cmd.getSchemaVersion());
+            Map<String , Object> schemaMap = (Map<String, Object>) OnapCommandSchemaLoader.validateSchemaVersion(schema, cmd.getSchemaVersion());
             mergeYamlMap(mergedResult, schemaMap);
         }
 
@@ -52,9 +50,9 @@ public class OnapCommandSchemaMerger {
     public static void mergeYamlMap(Map<String, Object> mergedResult, Map<String, Object> yamlContents) {
         if (yamlContents == null) return;
 
-        for (Map.Entry<String,Object> entry : yamlContents.entrySet()) {
-            String key=entry.getKey();
-            Object yamlValue = entry.getValue();
+        for (String key : yamlContents.keySet()) {
+
+            Object yamlValue = yamlContents.get(key);
             if (yamlValue == null) {
                 mergedResult.put(key, yamlValue);
                 continue;
@@ -116,9 +114,7 @@ public class OnapCommandSchemaMerger {
             String nameN = (String)oN.getOrDefault(OnapCommandConstants.NAME, null);
 
             //Name should be existing in the map, otherwise continue as don't know how to compare
-            if (nameN == null) {
-                continue;
-            }
+            if (nameN != null) {
 
             boolean existing = false;
             for (Object e: originalList) {
@@ -126,10 +122,6 @@ public class OnapCommandSchemaMerger {
                 String nameE = (String)oE.getOrDefault(OnapCommandConstants.NAME, null);
 
                 //Name should be existing in the map, otherwise continue as don't know how to compare
-                if (nameE == null) {
-                    continue;
-                }
-
                 if (nameN.equals(nameE)) {
                     for (Entry<String, Object> oNe : oN.entrySet()) {
                            oE.put(oNe.getKey(), oNe.getValue());
@@ -142,6 +134,7 @@ public class OnapCommandSchemaMerger {
             if (!existing) {
                 originalList.add(o);
             }
+        }
         }
     }
 }

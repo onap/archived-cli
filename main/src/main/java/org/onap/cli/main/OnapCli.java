@@ -378,8 +378,8 @@ public class OnapCli {
                         break;
                     } else if (OnapCliConstants.PARAM_INTERACTIVE_CLEAR.equalsIgnoreCase(line)) {
                         console.clearScreen();
-                        continue;
                     }
+                    else{
                     this.args = new ArrayList<>();
                     this.args.addAll(Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN)));
 
@@ -437,14 +437,13 @@ public class OnapCli {
                             }
                         }
                     } else {
-                        if (args.size() == 1 && args.get(0).trim().isEmpty()) {
+                        if (args.size() != 1 && !args.get(0).trim().isEmpty()) {
                             //Ignore blanks // NOSONAR
-                            continue;
-                        }
-
                         this.setArgs(this.args.toArray(new String [] {}));
                         handleCommand();
                     }
+                    }
+                }
                 }
             } catch (IOException e) { // NOSONAR
                 this.print("Failed to read console, " + e.getMessage());

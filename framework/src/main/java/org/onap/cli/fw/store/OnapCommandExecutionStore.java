@@ -334,7 +334,6 @@ public class OnapCommandExecutionStore {
                         if (f.getName().startsWith(search.get("request-id")))
                                 dirs.add(f.getAbsolutePath());
 
-                        continue;
                     }
 
                     else
