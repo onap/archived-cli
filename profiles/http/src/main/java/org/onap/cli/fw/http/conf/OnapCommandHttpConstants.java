@@ -94,7 +94,7 @@ public class OnapCommandHttpConstants {
     //context param
     public static final String CONTEXT = "context";
     public static final String CONTEXT_REMOVE_EMPTY_JSON_NODES = "remove_empty_node";
-    public static final String __BODY__ = "__body__";
+    public static final String __BODY__ = "__body__"; //NOSONAR
 
     // moco server const
     public static final String VERIFY_MOCO_HOST = "cli.verify.host";
