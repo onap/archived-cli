@@ -21,6 +21,8 @@ import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_PROFILE_JSON;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -203,7 +205,10 @@ public class OnapCommandProfileStore {
     public void removeProfile(String profile) {
          String dataDir = getDataStorePath();
          File file = new File(dataDir + File.separator + profile + DATA_PATH_PROFILE_JSON);
-            if(file.exists() && !file.delete()){
+        try {
+            Files.delete(Paths.get(dataDir + File.separator + profile + DATA_PATH_PROFILE_JSON));
+        } catch (IOException e) {
+            e.printStackTrace();
                 log.error("Failed to delete profile "+file.getAbsolutePath());
             }
     }

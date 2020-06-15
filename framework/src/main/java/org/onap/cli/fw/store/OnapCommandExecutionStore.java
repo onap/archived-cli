@@ -19,6 +19,9 @@ package org.onap.cli.fw.store;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -266,8 +269,11 @@ public class OnapCommandExecutionStore {
                 FileUtils.touch(new File(context.getStorePath() + File.separator + "completed"));
             else
                 FileUtils.touch(new File(context.getStorePath() + File.separator + "failed"));
-
-            if(!new File(context.getStorePath() + File.separator + "in-progress").delete()){
+            Path path= Paths.get(context.getStorePath() + File.separator + "in-progress");
+            try {
+                Files.delete(path);
+            } catch (IOException e) {
+                e.printStackTrace();
                 log.error("Failed to delete "+ context.getStorePath() + File.separator + "in-progress");
             }
         } catch (IOException e) {

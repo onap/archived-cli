@@ -255,7 +255,9 @@ public class OnapCommandArtifactStore {
         if (!aFile.exists()) {
             throw new OnapCommandArtifactNotFound(name, category);
         }
-        if(!aFile.delete()){
+        try {
+            Files.delete(Paths.get(storePath));
+        } catch (IOException e) {
             log.error("Failed to delete the artifact " + aFile.getAbsolutePath());
         }
     }
