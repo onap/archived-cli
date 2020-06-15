@@ -366,7 +366,7 @@ public class OnapCommandExecutionStore {
                     searchString += "*";
                 }
 
-                for (String term: Arrays.asList(new String []{"product", "service", "command", "profile"})) {
+                for (String term: Arrays.asList("product", "service", "command", "profile")) {
                     searchString += "__";
                     if (search.get(term) != null && !search.get(term).isEmpty()) {
                         searchString += search.get(term);

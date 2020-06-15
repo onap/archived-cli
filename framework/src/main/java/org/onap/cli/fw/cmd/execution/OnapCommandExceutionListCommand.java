@@ -37,7 +37,7 @@ public class OnapCommandExceutionListCommand extends OnapCommand {
     protected void run() throws OnapCommandException {
 
         Map<String, String> map = new HashMap<>();
-        for (String input: Arrays.asList(new String []{"request-id", "product", "service", "command", "profile", "start-time", "end-time"})) {
+        for (String input: Arrays.asList("request-id", "product", "service", "command", "profile", "start-time", "end-time")) {
             String value = getParametersMap().get(input).getValue().toString();
             if (value != null && !value.isEmpty()) {
                 map.put(input, value);

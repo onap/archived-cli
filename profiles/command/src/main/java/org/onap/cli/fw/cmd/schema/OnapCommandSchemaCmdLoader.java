@@ -64,7 +64,7 @@ public class OnapCommandSchemaCmdLoader {
                         if (o instanceof List) {
                             cmd.setCommand((List<String>) o);
                         } else {
-                            cmd.setCommand(Arrays.asList(new String [] {(String) o}));
+                            cmd.setCommand(Arrays.asList((String) o));
                         }
                         break;
 
