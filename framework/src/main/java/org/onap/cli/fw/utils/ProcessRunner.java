@@ -117,22 +117,22 @@ public class ProcessRunner {
             readError = true;
         }
 
-        final OutputStream stdout = this.getStdout();
-        final OutputStream stderr = this.getStderr();
+        final OutputStream stdoutLocal = this.getStdout();
+        final OutputStream stderrLocal = this.getStderr();
 
         final InputStream stdoutP = p.getInputStream();
         final InputStream stderrP = p.getErrorStream();
 
         Thread outThread = new Thread(() -> {
             try {
-                IOUtils.copy(stdoutP, stdout);
+                IOUtils.copy(stdoutP, stdoutLocal);
             } catch (IOException e) {
             }
         });
 
         Thread errThread = new Thread(() -> {
             try {
-                IOUtils.copy(stderrP, stderr);
+                IOUtils.copy(stderrP, stderrLocal);
             } catch (IOException e) {
             }
         });
