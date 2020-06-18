@@ -16,6 +16,14 @@
 
 package org.onap.cli.fw.conf;
 
+import org.junit.Test;
+
 public class OnapCommandConfgTest {
+
+	@Test
+	public void addPropertiesTest() {
+
+	    OnapCommandConfig.getPropertyValue("cli.schema.profile.confs");
+	}
 
 }

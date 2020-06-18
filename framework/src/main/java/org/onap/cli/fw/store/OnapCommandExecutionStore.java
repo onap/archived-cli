@@ -46,17 +46,17 @@ public class OnapCommandExecutionStore {
     private static String SEPARATOR = "__";
 
     private enum SearchMode {
-        find,
-        file //for developer mode
+        FIND,
+        FILE //for developer mode
 
 
     }
 
-    private static SearchMode SEARCH_MODE = SearchMode.file;
+    private static SearchMode SEARCH_MODE = SearchMode.FILE;
     static {
         String mode = OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_EXECUTION_SEARCH_MODE);
-        if (mode.equalsIgnoreCase(SearchMode.find.name()))
-            SEARCH_MODE = SearchMode.find;
+        if (mode.equalsIgnoreCase(SearchMode.FIND.name()))
+            SEARCH_MODE = SearchMode.FIND;
     }
 
     public static class ExecutionStoreContext {
@@ -321,7 +321,7 @@ public class OnapCommandExecutionStore {
 
         try {
             List <String> dirs = new ArrayList<>();
-            if (System.getProperty("os.name").toLowerCase().startsWith("windows") || SEARCH_MODE.equals(SearchMode.file)) {
+            if (System.getProperty("os.name").toLowerCase().startsWith("windows") || SEARCH_MODE.equals(SearchMode.FILE)) {
                 for (File f: new File(getBasePath()).listFiles()) {
                     if(search.containsKey("execution-id")) {
                         if (f.getName().startsWith(search.get("execution-id")))
@@ -366,7 +366,7 @@ public class OnapCommandExecutionStore {
                     searchString += "*";
                 }
 
-                for (String term: Arrays.asList(new String []{"product", "service", "command", "profile"})) {
+                for (String term: Arrays.asList("product", "service", "command", "profile")) {
                     searchString += "__";
                     if (search.get(term) != null && !search.get(term).isEmpty()) {
                         searchString += search.get(term);
@@ -440,8 +440,7 @@ public class OnapCommandExecutionStore {
 
             @Override
             public boolean accept(File dir, String name) {
-                if (name.startsWith(executionId)) return true;
-                return false;
+                return name.startsWith(executionId);
             }
         });
 

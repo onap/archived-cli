@@ -138,8 +138,8 @@ public class OnapCommandSchemaHttpLoader {
                                                 for (Object part: multiparts ) {
                                                     HttpInput.Part partO = new HttpInput.Part();
                                                     Map<String, String> partMap = (Map<String, String>) part;
-                                                    partO.setName((String) partMap.get("name"));
-                                                    partO.setContent((String)partMap.get("content"));
+                                                    partO.setName(partMap.get("name"));
+                                                    partO.setContent(partMap.get("content"));
                                                     if (partMap.get("type") != null && ((String)partMap.get("type")).equalsIgnoreCase("file")) {
                                                         partO.setBinary(true);
                                                     }

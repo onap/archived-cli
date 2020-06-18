@@ -57,8 +57,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import com.esotericsoftware.yamlbeans.YamlReader;
-import com.esotericsoftware.yamlbeans.YamlException;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -86,7 +84,7 @@ public class OnapCommandDiscoveryUtils {
     public static OnapCommandSchemaInfo getSchemaInfo(String cmd, String version) throws OnapCommandException {
         List<OnapCommandSchemaInfo> list = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(false);
         OnapCommandSchemaInfo schemaInfo = null;
-        if (list != null) {
+        if (list != null) { //NOSONAR
             for (OnapCommandSchemaInfo schema : list) {
                 if (cmd.equals(schema.getCmdName()) && version.equals(schema.getProduct())) {
                     schemaInfo = schema;
@@ -237,7 +235,7 @@ public class OnapCommandDiscoveryUtils {
      */
     public static Resource findResource(String fileName, String pattern) throws IOException {
         Resource[] resources = OnapCommandDiscoveryUtils.findResources(pattern);
-        if (resources != null && resources.length > 0) {
+        if (resources != null && resources.length > 0) { //NOSONAR
             for (Resource res : resources) {
                 if (res.getFilename().equals(fileName)) {
                     return res;
@@ -305,7 +303,7 @@ public class OnapCommandDiscoveryUtils {
                         //default_input_parameters_http.yaml
                         String profileName = resource.getFilename().substring(
                                 DEAFULT_INPUT_PARAMETERS_NAME.length() + 1,
-                                resource.getFilename().indexOf("."));
+                                resource.getFilename().indexOf('.'));
                         if (deafultResourceMap.containsKey(PARAMETERS)) {
                             List<Object> params = new ArrayList<>();
                             for (Map<String, ?> p: (List<Map<String, ?>>) deafultResourceMap.get(PARAMETERS)) {
@@ -491,7 +489,7 @@ public class OnapCommandDiscoveryUtils {
         OnapCommandSchemaInfo schemaInfo =  getSchemaInfo(cmd, version);
 
         List<String> sampleFiles = new ArrayList();
-        if (schemaInfo != null && !schemaInfo.getSampleFiles().isEmpty()) {
+        if (schemaInfo != null && !schemaInfo.getSampleFiles().isEmpty()) { //NOSONAR
             sampleFiles.addAll(schemaInfo.getSampleFiles());
         }
 
@@ -584,8 +582,6 @@ public class OnapCommandDiscoveryUtils {
         try(InputStreamReader inputStreamReader = new InputStreamReader(inputStream);){
             YamlReader reader = new YamlReader(inputStreamReader);
             values = (Map<String, ?>) reader.read();
-            } catch (YamlException e) {
-                throw new OnapCommandInvalidSchema(inputStream.getClass().getName(),e.getMessage());
             } catch (IOException e) {
                 throw new OnapCommandInvalidSchema(inputStream.getClass().getName(),e.getMessage());
             }

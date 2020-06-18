@@ -80,7 +80,7 @@ public class TableGenerator {
                     for (int cellIndex = 0; cellIndex < row.size(); cellIndex++) {
                         Object cell = row.get(cellIndex);
                         String finalCell = "";
-                        if (cell != null && cell instanceof List) {
+                        if (cell instanceof List) {
                             List<String> list = (List<String>) cell;
                             if (splitCellIndex < list.size()) {
                                 finalCell = list.get(splitCellIndex);

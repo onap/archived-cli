@@ -94,7 +94,7 @@ public class OnapCommandResultAttribute {
 
     public List<String> getValues() {
         if (this.values.isEmpty() && !this.defaultValue.isEmpty()) {
-            return Arrays.asList(new String [] {this.defaultValue});
+            return Arrays.asList(this.defaultValue);
         }
         return values;
     }

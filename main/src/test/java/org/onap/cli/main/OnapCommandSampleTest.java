@@ -19,6 +19,13 @@ package org.onap.cli.main;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.input.OnapCommandParameter;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
+import java.util.HashSet;
+import java.util.Set;
+import org.junit.Test;
+import org.onap.cli.fw.conf.OnapCommandConstants;
+import org.onap.cli.fw.schema.OnapCommandSchema;
 
 /**
  * This command helps to test the Command functionalities.
@@ -30,6 +37,24 @@ public class OnapCommandSampleTest extends OnapCommand {
     @Override
     protected void run() throws OnapCommandException {
 
+    }
+
+    @Test
+    public void sampleTestVersion() throws OnapCommandException {
+
+        Set < OnapCommandParameter > parameters = new HashSet < > ();
+        OnapCommandParameter version = new OnapCommandParameter();
+        version.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
+        version.setValue(true);
+        parameters.add(version);
+        OnapCommandParameter hlp = new OnapCommandParameter();
+        hlp.setName(OnapCommandConstants.DEFAULT_PARAMETER_HELP);
+        hlp.setValue(false);
+        parameters.add(hlp);
+
+        OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
+        sample.setParameters(parameters);
+        sample.execute();
     }
 
 }

@@ -365,11 +365,10 @@ public class OnapHttpConnection {
         } else {
             String fileTag = (!input.getMultipartEntityName().isEmpty()) ? input.getMultipartEntityName() : "file";
             File file = new File(input.getBody().trim());
-            HttpEntity multipartEntity = MultipartEntityBuilder
+            return MultipartEntityBuilder
                     .create()
                     .addBinaryBody(fileTag, file, ContentType.create("application/octet-stream"), file.getName())
                     .build();
-            return multipartEntity;
         }
     }
 
