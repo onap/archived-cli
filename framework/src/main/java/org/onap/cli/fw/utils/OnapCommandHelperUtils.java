@@ -37,6 +37,10 @@ import org.onap.cli.fw.output.OnapCommandResultType;
 
 public class OnapCommandHelperUtils {
 
+    private OnapCommandHelperUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      * Returns the build time from manifest.mf
      */

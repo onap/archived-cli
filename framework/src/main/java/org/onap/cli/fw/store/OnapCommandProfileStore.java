@@ -21,6 +21,8 @@ import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_PROFILE_JSON;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -96,11 +98,9 @@ public class OnapCommandProfileStore {
     }
 
     public void remove(String productVersion, String paramName) {
-        if (paramCache.containsKey(productVersion)) {
-            if (paramCache.get(productVersion).containsKey(paramName)) {
+            if (paramCache.containsKey(productVersion) && paramCache.get(productVersion).containsKey(paramName)) {
                 paramCache.get(productVersion).remove(paramName);
             }
-        }
 
         this.persist();
     }
@@ -205,23 +205,19 @@ public class OnapCommandProfileStore {
     public void removeProfile(String profile) {
          String dataDir = getDataStorePath();
          File file = new File(dataDir + File.separator + profile + DATA_PATH_PROFILE_JSON);
-         if (file.exists()) {
-            if(!file.delete()){
+        try {
+            Files.delete(Paths.get(dataDir + File.separator + profile + DATA_PATH_PROFILE_JSON));
+        } catch (IOException e) {
+            e.printStackTrace();
                 log.error("Failed to delete profile "+file.getAbsolutePath());
             }
-         }
     }
 
     public List<String> getProfiles() {
         List<String> profiles = new ArrayList<>();
 
         String dataDir = getDataStorePath();
-        for (File file: new File(dataDir).listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.endsWith(DATA_PATH_PROFILE_JSON);
-            }
-        })) {
+        for (File file: new File(dataDir).listFiles((dir, name) -> name.endsWith(DATA_PATH_PROFILE_JSON))) {
             String profile = file.getName().substring(0, file.getName().indexOf(DATA_PATH_PROFILE_JSON));
             profiles.add(profile);
         }

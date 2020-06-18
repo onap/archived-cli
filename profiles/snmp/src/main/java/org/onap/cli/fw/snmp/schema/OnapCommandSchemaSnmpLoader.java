@@ -27,7 +27,9 @@ import org.onap.cli.fw.snmp.conf.OnapCommandSnmpConstants;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 
 public class OnapCommandSchemaSnmpLoader {
-
+    private OnapCommandSchemaSnmpLoader() {
+        throw new IllegalStateException("Utility class");
+    }
     private static List<String> validateSnmpSchemaSection(Map<String, Object> values) {
         ArrayList<String> errorList = new ArrayList<>();
 
@@ -61,7 +63,7 @@ public class OnapCommandSchemaSnmpLoader {
 
                     case OnapCommandSnmpConstants.SNMP_COMMAND:
                         cmd.setCommand((String) entry.getValue());
-
+                        break;
                     default:
                         break;
                 }

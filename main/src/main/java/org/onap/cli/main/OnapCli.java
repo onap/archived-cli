@@ -287,7 +287,7 @@ public class OnapCli {
                 .filter(e -> e.getName().equals(OnapCommandConstants.VERIFY_CONTEXT_PARAM))
                 .findFirst();
 
-        List<Map<String, ?>> testSuite = OnapCommandRegistrar.getRegistrar().getTestSuite(
+        List<Map<String, Object>> testSuite = OnapCommandRegistrar.getRegistrar().getTestSuite(
                 cmd.getName(),
                 cmd.getInfo().getProduct());
 
@@ -378,8 +378,8 @@ public class OnapCli {
                         break;
                     } else if (OnapCliConstants.PARAM_INTERACTIVE_CLEAR.equalsIgnoreCase(line)) {
                         console.clearScreen();
-                        continue;
                     }
+                    else{
                     this.args = new ArrayList<>();
                     this.args.addAll(Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN)));
 
@@ -437,14 +437,13 @@ public class OnapCli {
                             }
                         }
                     } else {
-                        if (args.size() == 1 && args.get(0).trim().isEmpty()) {
+                        if (args.size() != 1 && !args.get(0).trim().isEmpty()) {
                             //Ignore blanks // NOSONAR
-                            continue;
-                        }
-
                         this.setArgs(this.args.toArray(new String [] {}));
                         handleCommand();
                     }
+                    }
+                }
                 }
             } catch (IOException e) { // NOSONAR
                 this.print("Failed to read console, " + e.getMessage());
@@ -544,8 +543,7 @@ public class OnapCli {
                 OnapCliArgsParser.populateParams(cmd.getParameters(), this.args);
 
                 //start the execution
-                if (this.requestId != null && this.product != null && !this.requestId.isEmpty()) {
-                    if (!(this.product.equalsIgnoreCase("open-cli") &&
+                    if (this.requestId != null && this.product != null && !this.requestId.isEmpty()&& !(this.product.equalsIgnoreCase("open-cli") &&
                             this.cmdName.equalsIgnoreCase("execution-list"))) {
                         String input = cmd.getArgsJson(true);
                         executionStoreContext = OnapCommandExecutionStore.getStore().storeExectutionStart(
@@ -556,7 +554,6 @@ public class OnapCli {
                                 this.profile,
                                 input);
                     }
-                }
 
                 cmd.setExecutionContext(executionStoreContext);
                 OnapCommandResult result = cmd.execute();

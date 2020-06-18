@@ -52,9 +52,11 @@ import net.minidev.json.JSONArray;
 
 public class OnapCommandHttpUtils {
 
-    static Logger LOG = LoggerFactory.getLogger(OnapCommandHttpUtils.class);
+    static Logger log = LoggerFactory.getLogger(OnapCommandHttpUtils.class);
     private static Gson gson = new GsonBuilder().serializeNulls().create();
-
+    private OnapCommandHttpUtils() {
+        throw new IllegalStateException("Utility class");
+    }
     /**
      * Set argument to param value.
      *

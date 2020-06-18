@@ -56,7 +56,7 @@ public class OnapCommandArtifactStore {
 
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
-    private static String SEPARATOR = "__";
+    private static final String SEPARATOR = "__";
 
     public static class Artifact {
         private String name;
@@ -255,7 +255,9 @@ public class OnapCommandArtifactStore {
         if (!aFile.exists()) {
             throw new OnapCommandArtifactNotFound(name, category);
         }
-        if(!aFile.delete()){
+        try {
+            Files.delete(Paths.get(storePath));
+        } catch (IOException e) {
             log.error("Failed to delete the artifact " + aFile.getAbsolutePath());
         }
     }
