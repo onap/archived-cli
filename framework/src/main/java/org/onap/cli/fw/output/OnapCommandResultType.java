@@ -31,11 +31,7 @@ public enum OnapCommandResultType {
      * @return boolean
      */
     public static boolean isTabularForm(String type) {
-        if (type.equalsIgnoreCase(TABLE.name())) {
-            return true;
-        }
-
-        return false;
+        return type.equalsIgnoreCase(TABLE.name());
     }
 
     /**

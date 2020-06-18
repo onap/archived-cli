@@ -126,6 +126,7 @@ public class OpenInterfaceGrpcServer {
 
         private String outputs = "";
 
+          @Override
           public void print(String msg) {
               outputs += msg + "\n";
           }

@@ -22,7 +22,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -46,12 +45,10 @@ import org.onap.cli.fw.store.OnapCommandExecutionStore;
 import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.fw.utils.ProcessRunner;
 
-import com.google.gson.Gson;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 
 /**
  * Hello world.
@@ -191,7 +188,7 @@ public class OpenCommandShellCmd extends OnapCommand {
 
         ProcessRunner pr = new ProcessRunner(
                 cmd,
-                (envs.size() > 0) ? envs.toArray(new String []{}) : null,
+                (!envs.isEmpty()) ? envs.toArray(new String []{}) : null,
                 cwd);
         FileOutputStream stdoutStream = null;
         FileOutputStream stderrStream = null;
@@ -285,11 +282,7 @@ public class OpenCommandShellCmd extends OnapCommand {
             }
 
         //check for pass/failure
-        if (!this.passCodes.isEmpty() && !this.passCodes.contains(pr.getExitCode())) {
-            this.getResult().setPassed(false);
-        } else {
-            this.getResult().setPassed(true);
-        }
+        this.getResult().setPassed(!(!this.passCodes.isEmpty() && !this.passCodes.contains(pr.getExitCode())));
    }
 
     public String getOutput() {
@@ -315,10 +308,10 @@ public class OpenCommandShellCmd extends OnapCommand {
                 break;
             }
 
-            int idxE = line.indexOf("}", idxS);
+            int idxE = line.indexOf('}', idxS);
             String tmpName = line.substring(idxS + 7, idxE);
             tmpName = tmpName.trim();
-            String tmpTkns[] = tmpName.split(":");
+            String[] tmpTkns = tmpName.split(":");
             String tmpFileName;
             String paramName;
             if (tmpTkns.length == 2) {
@@ -382,7 +375,7 @@ public class OpenCommandShellCmd extends OnapCommand {
                     break;
                 }
             }
-            int idxE = line.indexOf("}", idxS);
+            int idxE = line.indexOf('}', idxS);
             String jsonPath = line.substring(idxS + 3, idxE);
             jsonPath = jsonPath.trim();
             Object value = new Object();

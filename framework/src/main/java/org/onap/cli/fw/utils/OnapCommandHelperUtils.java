@@ -183,7 +183,7 @@ public class OnapCommandHelperUtils {
             resultTable.getRecords().add(attrHelp);
         }
 
-        if (cmd.getResult().getRecords().size() > 0) {
+        if (!cmd.getResult().getRecords().isEmpty()) {
             try {
                 help.append("\n\nResults::\n\n" + resultTable.print());
             } catch (OnapCommandException e) {

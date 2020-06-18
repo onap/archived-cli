@@ -16,7 +16,6 @@
 
 package org.onap.cli.fw.http.error;
 
-import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandWarning;
 
 /**

@@ -93,7 +93,7 @@ public class OnapCommandHttpUtils {
             values.put(param.getKey(), param.getValue().getValue().toString());
         }
 
-        if (input.getMultiparts().size() > 0) {
+        if (!input.getMultiparts().isEmpty()) {
             for (HttpInput.Part part: input.getMultiparts()) {
                 part.setContent(OnapCommandUtils.replaceLineForSpecialValues(part.getContent(), values));
                 part.setContent(OnapCommandUtils.replaceLineFromInputParameters(part.getContent(), params));
@@ -190,7 +190,7 @@ public class OnapCommandHttpUtils {
                 headerProcessedLine.append(line.substring(currentIdx));
                 break;
             }
-            int idxE = line.indexOf("}", idxS);
+            int idxE = line.indexOf('}', idxS);
             String headerName = line.substring(idxS + 3, idxE);
             headerName = headerName.trim();
             if (!resultHttp.getRespHeaders().containsKey(headerName)) {

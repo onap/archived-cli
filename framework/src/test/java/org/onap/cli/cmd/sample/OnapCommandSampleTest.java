@@ -114,7 +114,7 @@ public class OnapCommandSampleTest {
             UUID.fromString(attrValue.substring(4));
             attr = sample.getResult().getRecordsMap().get("output-2");
             attrValue = attr.getValues().get(0);
-            assertEquals(attrValue, "test");
+            assertEquals("test", attrValue);
         } catch (IllegalArgumentException e) {
             fail("Failed to replace the output default value on output-1");
         } catch (OnapCommandException e) {

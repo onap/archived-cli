@@ -238,7 +238,7 @@ public class OnapCommandPrint {
 
     public Object getJsonNodeOrString(String value) {
         try {
-            return (JSONObject) JSONValue.parse(value);
+            return JSONValue.parse(value);
         } catch (Exception e) {
             return value;
         }

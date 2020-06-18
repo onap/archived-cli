@@ -59,7 +59,7 @@ public class OnapProductsListCommand extends OnapCommand {
             if (stream != null) {
                 Map<String, ?> map = OnapCommandDiscoveryUtils.loadYaml(stream);
                 Map<String, String> productMap = (Map<String, String>) map.get("product");
-                String description = (String) productMap.get(OnapCommandConstants.DESCRIPTION);
+                String description = productMap.get(OnapCommandConstants.DESCRIPTION);
                 this.getResult().getRecordsMap().get("description").getValues().add(description.trim());
             } else {
                 this.getResult().getRecordsMap().get("description").getValues().add("");

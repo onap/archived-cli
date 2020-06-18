@@ -26,6 +26,7 @@ import org.onap.cli.fw.cmd.conf.OnapCommandCmdConstants;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.utils.OnapCommandUtils;
+import java.util.stream.Collectors;
 
 public class OnapCommandSchemaCmdLoader {
 
@@ -64,7 +65,7 @@ public class OnapCommandSchemaCmdLoader {
                         if (o instanceof List) {
                             cmd.setCommand((List<String>) o);
                         } else {
-                            cmd.setCommand(Arrays.asList(new String [] {(String) o}));
+                            cmd.setCommand(Arrays.asList((String) o));
                         }
                         break;
 
@@ -90,7 +91,8 @@ public class OnapCommandSchemaCmdLoader {
                         break;
 
                     case OnapCommandCmdConstants.SUCCESS_EXIT_CODE:
-                        cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
+                        List<String> list = (ArrayList) valMap.get(key1);
+                        cmd.setSuccessStatusCodes(list.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
                         break;
 
                     case OnapCommandCmdConstants.PASS_CODE:

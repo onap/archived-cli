@@ -44,8 +44,7 @@ public class OpenRemoteCli {
         OpenInterfaceGrpcClient client = new OpenInterfaceGrpcClient(
                 host, port, timeout);
         try {
-            Result result = client.remoteCli(Args.newBuilder().setRequestId(this.requestId).addAllArgs(args).build());
-            return result;
+            return client.remoteCli(Args.newBuilder().setRequestId(this.requestId).addAllArgs(args).build());
         } finally {
           client.shutdown();
         }
@@ -63,8 +62,7 @@ public class OpenRemoteCli {
             params.put("format", "json");
             Input input = Input.newBuilder().setAction(action).setRequestId(requestId).putAllOptions(options).putAllParams(params).build();
 
-            Output output = client.invoke(input);
-            return output;
+            return client.invoke(input);
         } finally {
           client.shutdown();
         }
@@ -86,8 +84,7 @@ public class OpenRemoteCli {
                   host, port);
 
           try {
-              Result result = client.remoteCli(Args.newBuilder().setRequestId(reqId).addAllArgs(args).build());
-              return result;
+              return client.remoteCli(Args.newBuilder().setRequestId(reqId).addAllArgs(args).build());
           } finally {
             client.shutdown();
           }
@@ -117,8 +114,7 @@ public class OpenRemoteCli {
             params.put("format", "json");
             Input input = Input.newBuilder().setAction(action).setRequestId(reqId).putAllOptions(options).putAllParams(params).build();
 
-            Output output = client.invoke(input);
-            return output;
+            return client.invoke(input);
         } finally {
           client.shutdown();
         }
