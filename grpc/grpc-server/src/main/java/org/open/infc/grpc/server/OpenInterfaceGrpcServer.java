@@ -75,7 +75,7 @@ public class OpenInterfaceGrpcServer {
             .addService(new OpenInterfaceGrpcImpl())
             .build()
             .start();
-        logger.info("Server started, listening on " + port);
+        logger.info("Server started, listening on {}", port);
 
         try {
             OnapCommandRegistrar.getRegistrar().setHost(host);
@@ -140,7 +140,7 @@ public class OpenInterfaceGrpcServer {
         @Override
         public void invoke(Input req, StreamObserver<Output> responseObserver) {
             Output output = null;
-            logger.info(req.toString());
+            logger.info("{}", req);
 
             String product = req.getOptionsMap().get(OnapCommandConstants.RPC_PRODUCT);
             String format =  req.getOptionsMap().getOrDefault(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_FORMAT, OnapCommandResultType.JSON.name().toLowerCase());
@@ -252,7 +252,7 @@ public class OpenInterfaceGrpcServer {
                     }
 
                     output = reply.build();
-                    logger.info(output.toString());
+                    logger.info("{}", output);
                 } else {
                     //Rpc command will set the output.
                     output = (Output) cmd.getResult().getOutput();
@@ -284,7 +284,7 @@ public class OpenInterfaceGrpcServer {
 
         @Override
         public void remoteCli(Args req, StreamObserver<Result> responseObserver) {
-            logger.info(req.toString());
+            logger.info("{}", req);
 
             List<String> args = new ArrayList<>();
             if (req.getRequestId() != null) {

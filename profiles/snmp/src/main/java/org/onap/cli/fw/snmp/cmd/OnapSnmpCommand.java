@@ -75,7 +75,7 @@ public class OnapSnmpCommand extends OnapCommand {
         return pdu;
     }
 
-    private Target getTarget() throws OnapCommandException {
+    private Target getTarget() throws OnapCommandException { //NOSONAR
         Address targetAddress = GenericAddress.parse(this.getAgent());  //udp:127.0.0.1/161
         CommunityTarget target = new CommunityTarget();
         target.setCommunity(new OctetString(OnapCommandSnmpConstants.SNMP_COMMNUNITY_STRING));

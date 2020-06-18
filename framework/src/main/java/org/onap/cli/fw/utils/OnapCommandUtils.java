@@ -200,7 +200,7 @@ public class OnapCommandUtils {
      * @return
      */
     public static String replaceLineFromResults(String line, Map <String, String> values) {
-        String resultLine = "";
+        StringBuilder resultLine = new StringBuilder();
 
         if (!line.contains("$r{")) {
             return line;
@@ -210,7 +210,7 @@ public class OnapCommandUtils {
         while (currentIdx < line.length()) {
             int idxS = line.indexOf("$r{", currentIdx);
             if (idxS == -1) {
-                resultLine += line.substring(currentIdx);
+                resultLine.append(line.substring(currentIdx));
                 break;
             }
             int idxE = line.indexOf("}", idxS);
@@ -225,15 +225,15 @@ public class OnapCommandUtils {
                 value = attr;
             }
 
-            resultLine += line.substring(currentIdx, idxS) + value;
+            resultLine.append(line.substring(currentIdx, idxS) + value);
             currentIdx = idxE + 1;
         }
 
-        return resultLine;
+        return resultLine.toString();
     }
 
     public static String replaceLineForSpecialValues(String lineSpl, Map <String, String> values) {
-        String resultSpl = "";
+        StringBuilder resultSpl = new StringBuilder();
 
         if (!lineSpl.contains("$s{")) {
             return lineSpl;
@@ -243,7 +243,7 @@ public class OnapCommandUtils {
         while (currentIdx < lineSpl.length()) {
             int idxS = lineSpl.indexOf("$s{", currentIdx);
             if (idxS == -1) {
-                resultSpl += lineSpl.substring(currentIdx);
+                resultSpl.append(lineSpl.substring(currentIdx));
                 break;
             }
             int idxE = lineSpl.indexOf("}", idxS);
@@ -297,16 +297,16 @@ public class OnapCommandUtils {
                     }
             }
 
-            resultSpl += lineSpl.substring(currentIdx, idxS) + value;
+            resultSpl.append(lineSpl.substring(currentIdx, idxS) + value);
             currentIdx = idxE + 1;
         }
 
-        return resultSpl;
+        return resultSpl.toString();
     }
 
     public static String replaceLineFromInputParameters(String line, Map<String, OnapCommandParameter> params)
             throws OnapCommandException {
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         if (!line.contains("${")) {
             return line;
@@ -316,7 +316,7 @@ public class OnapCommandUtils {
         while (currentIdx < line.length()) {
             int idxS = line.indexOf("${", currentIdx);
             if (idxS == -1) {
-                result += line.substring(currentIdx);
+                result.append(line.substring(currentIdx));
                 break;
             }
             int idxE = line.indexOf("}", idxS);
@@ -333,17 +333,17 @@ public class OnapCommandUtils {
                 // ignore the front and back double quotes in json body
                 String va_ = params.get(paramName).getValue().toString();
                 if (idxS > 0)
-                    result += line.substring(currentIdx, idxS - 1) + va_;
+                    result.append(line.substring(currentIdx, idxS - 1) + va_);
                 else
-                    result += va_;
+                    result.append(va_);
                 currentIdx = idxE + 2;
             } else if (OnapCommandParameterType.MAP.equals(param.getParameterType())) {
                 try {
                     String value = gson.toJson(params.get(paramName).getValue());
                     if ((idxS == 0) && (currentIdx == 0)) {
-                        result = value;
+                        result.replace(0, result.length(), value);
                     } else {
-                        result += line.substring(currentIdx, idxS - 1) + value;
+                        result.append(line.substring(currentIdx, idxS - 1) + value);
                     }
                 } catch (Exception e) {  // NOSONAR
                     //never occur as map is coverted to json string here
@@ -351,12 +351,12 @@ public class OnapCommandUtils {
 
                 currentIdx = idxE + 2;
             }else {
-                result += line.substring(currentIdx, idxS) + params.get(paramName).getValue().toString();
+                result.append(line.substring(currentIdx, idxS) + params.get(paramName).getValue().toString());
                 currentIdx = idxE + 1;
             }
         }
 
-        return result;
+        return result.toString();
     }
 
     /**

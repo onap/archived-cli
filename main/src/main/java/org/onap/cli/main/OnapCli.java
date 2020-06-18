@@ -327,7 +327,7 @@ public class OnapCli {
                     .findFirst();
 
             if (contextOpt.isPresent()) {
-                HashMap map = new HashMap();
+                HashMap<String, Object> map = new HashMap<>();
 
                 Object moco = sampleTest.get(OnapCommandConstants.VERIFY_MOCO);
                 if (moco == null) {

@@ -43,7 +43,7 @@ import java.io.InputStreamReader;
 public class MocoServer {
 
     private Runner runner;
-    private Map<String, Object> mocoServerConfigs = new HashMap();
+    private Map<String, Object> mocoServerConfigs = new HashMap<>();
     private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     public MocoServer(String mockFile) throws OnapCommandException {

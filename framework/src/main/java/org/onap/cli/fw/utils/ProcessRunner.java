@@ -99,7 +99,7 @@ public class ProcessRunner {
         if (this.cmd.length == 1) {
             p = Runtime.getRuntime().exec(this.shell + this.cmd[0], this.env, workingDirectory); //NOSONAR
         } else {
-            List list = new ArrayList(Arrays.asList(this.shell.split(" ")));
+            List<String> list = new ArrayList<>(Arrays.asList(this.shell.split(" ")));
             list.addAll(Arrays.asList(this.cmd));
             String []cmds = Arrays.copyOf(list.toArray(), list.size(), String[].class);
             p = Runtime.getRuntime().exec(cmds, this.env, workingDirectory); //NOSONAR
@@ -160,12 +160,8 @@ public class ProcessRunner {
 
         p.destroy();
 
-        log.debug("CMD: " + Arrays.asList(this.cmd).toString() +
-                "\nWORKING_DIR: " + this.cwd +
-                "\nENV: " + ((this.env == null) ? this.env : Arrays.asList(this.env).toString()) +
-                "\nOUTPUT: " + this.output +
-                "\nERROR: " + this.error +
-                "\nEXIT_CODE: " + this.exitCode);
+        log.debug("CMD: {} \nWORKING_DIR: {} \nENV: {} \nOUTPUT: {} \nERROR: {} \nEXIT_CODE: {}",
+                Arrays.asList(this.cmd), this.cwd, ((this.env == null) ? this.env : Arrays.asList(this.env)), this.output, this.error, this.exitCode);
 
         if (!completed) {
             throw new RuntimeException("TIMEOUT:: cmd:" + Arrays.asList(this.cmd).toString());
