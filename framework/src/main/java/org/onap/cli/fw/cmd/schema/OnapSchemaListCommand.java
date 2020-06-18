@@ -39,11 +39,7 @@ public class OnapSchemaListCommand extends OnapCommand {
 
         List<OnapCommandSchemaInfo> schemas = OnapCommandDiscoveryUtils.discoverOrLoadSchemas(true);
         for (OnapCommandSchemaInfo schema :  schemas) {
-            if (schema.isIgnore()) {
-                continue;
-            }
-
-            if (schema.getProduct().equalsIgnoreCase(product)) {
+            if (schema.getProduct().equalsIgnoreCase(product) && !schema.isIgnore()) {
                 if (service.length() > 0 && !service.equalsIgnoreCase(schema.getService())) {
                     continue;
                 }

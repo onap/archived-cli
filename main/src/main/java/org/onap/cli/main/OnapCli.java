@@ -287,7 +287,7 @@ public class OnapCli {
                 .filter(e -> e.getName().equals(OnapCommandConstants.VERIFY_CONTEXT_PARAM))
                 .findFirst();
 
-        List<Map<String, ?>> testSuite = OnapCommandRegistrar.getRegistrar().getTestSuite(
+        List<Map<String, Object>> testSuite = OnapCommandRegistrar.getRegistrar().getTestSuite(
                 cmd.getName(),
                 cmd.getInfo().getProduct());
 
@@ -544,8 +544,7 @@ public class OnapCli {
                 OnapCliArgsParser.populateParams(cmd.getParameters(), this.args);
 
                 //start the execution
-                if (this.requestId != null && this.product != null && !this.requestId.isEmpty()) {
-                    if (!(this.product.equalsIgnoreCase("open-cli") &&
+                    if (this.requestId != null && this.product != null && !this.requestId.isEmpty()&& !(this.product.equalsIgnoreCase("open-cli") &&
                             this.cmdName.equalsIgnoreCase("execution-list"))) {
                         String input = cmd.getArgsJson(true);
                         executionStoreContext = OnapCommandExecutionStore.getStore().storeExectutionStart(
@@ -556,7 +555,6 @@ public class OnapCli {
                                 this.profile,
                                 input);
                     }
-                }
 
                 cmd.setExecutionContext(executionStoreContext);
                 OnapCommandResult result = cmd.execute();

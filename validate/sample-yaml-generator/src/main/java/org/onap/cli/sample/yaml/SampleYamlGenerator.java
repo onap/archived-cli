@@ -26,7 +26,9 @@ import java.util.stream.Collectors;
 public class SampleYamlGenerator {
 
     static int nTab;
-
+    private SampleYamlGenerator() {
+        throw new IllegalStateException("Utility class");
+    }
     public static void generateSampleYaml(String cmdName, List<String> input, String output, String version,
             String targetPath, boolean debug, String name) throws IOException {
 

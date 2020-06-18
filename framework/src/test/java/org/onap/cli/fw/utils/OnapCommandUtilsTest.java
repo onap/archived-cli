@@ -43,6 +43,7 @@ import org.onap.cli.fw.schema.OnapCommandSchema;
 import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.onap.cli.fw.schema.OnapCommandSchemaLoader;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -428,6 +429,11 @@ public class OnapCommandUtilsTest {
         List<Class<OnapCommand>> cmds = OnapCommandDiscoveryUtils.discoverCommandPlugins();
         assertTrue(cmds.size() >= 1);
     }
+    @Test
+    public void createTestSuiteTest() throws OnapCommandException {
+        List<Map<String, Object>> cmds = OnapCommandDiscoveryUtils.createTestSuite("schema-validate","open-cli");
+        assertTrue(cmds.size() >= 1);
+    }
 
     @Test
     public void sortTest() {
@@ -544,4 +550,10 @@ public class OnapCommandUtilsTest {
 	   assertTrue(mapExample.get("key2").equals("paramB"));
    }
 
+    @Test
+    public void loadYamlTest() throws OnapCommandInvalidSchema {
+        File file=new File("src/test/resources/sample-test-info.yaml");
+        Map<String, Object> values= OnapCommandDiscoveryUtils.loadYaml(file.getAbsolutePath());
+        assertEquals(values.get("name"),"sample-test-info");
+    }
 }

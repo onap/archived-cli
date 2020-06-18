@@ -24,6 +24,8 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -94,6 +96,11 @@ public class OnapCommandRegistrarTest {
         OnapCommand cmd = registrar.get("sample-test");
         cmd.printVersion();
         registrar.listCommands();
+    }
+    @Test
+    public void getTestSuiteTest() throws OnapCommandException {
+        List<Map<String, Object>> cmds =registerar.getTestSuite("schema-validate","open-cli");
+        assertTrue(cmds.size() >= 1);
     }
 }
 

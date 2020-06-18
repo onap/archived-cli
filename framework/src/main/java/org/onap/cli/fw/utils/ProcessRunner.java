@@ -118,27 +118,25 @@ public class ProcessRunner {
             readError = true;
         }
 
-        final OutputStream stdout = this.getStdout();
-        final OutputStream stderr = this.getStderr();
+        final OutputStream stdoutLocal = this.getStdout();
+        final OutputStream stderrLocal = this.getStderr();
 
         final InputStream stdoutP = p.getInputStream();
         final InputStream stderrP = p.getErrorStream();
 
-        Thread outThread = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    IOUtils.copy(stdoutP, stdout);
-                } catch (IOException e) { // NOSONAR
-                }
+        Thread outThread = new Thread(() -> {
+            try {
+                IOUtils.copy(stdoutP, stdoutLocal);
+            } catch (IOException e) { //NOSONAR
+                // Do nothing
             }
         });
 
-        Thread errThread = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    IOUtils.copy(stderrP, stderr);
-                } catch (IOException e) { // NOSONAR
-                }
+        Thread errThread = new Thread(() -> {
+            try {
+                IOUtils.copy(stderrP, stderrLocal);
+            } catch (IOException e) { //NOSONAR
+                // Do nothing
             }
         });
 

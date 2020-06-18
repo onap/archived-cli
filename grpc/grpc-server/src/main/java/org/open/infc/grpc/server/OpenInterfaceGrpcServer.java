@@ -213,10 +213,8 @@ public class OpenInterfaceGrpcServer {
                     cmd.getParametersMap().get(OnapCommandConstants.RPC_MODE).setValue(OnapCommandConstants.RPC_MODE_RUN_RPC);
                 }
 
-                if (!cmd.isRpc()) {
                     //Start the execution
-                    if (req.getRequestId() != null && !req.getRequestId().isEmpty()) {
-                        if (!(cmd.getInfo().getProduct().equalsIgnoreCase("open-cli") &&
+                        if (!cmd.isRpc()&&req.getRequestId() != null && !req.getRequestId().isEmpty()&&!(cmd.getInfo().getProduct().equalsIgnoreCase("open-cli") &&
                                 cmd.getName().equalsIgnoreCase("execution-list"))) {
                         String input = cmd.getArgsJson(true);
                         executionStoreContext = OnapCommandExecutionStore.getStore().storeExectutionStart(
@@ -227,8 +225,6 @@ public class OpenInterfaceGrpcServer {
                                 profile,
                                 input);
                         }
-                    }
-                }
                 cmd.setExecutionContext(executionStoreContext);
                 cmd.execute();
 
