@@ -70,6 +70,10 @@ import java.io.InputStreamReader;
 import java.io.FileInputStream;
 
 public class OnapCommandDiscoveryUtils {
+    private OnapCommandDiscoveryUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     private static Gson gson = new GsonBuilder().serializeNulls().create();
 
     /**
@@ -216,8 +220,8 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
-        Map<String, ?> values = null;
+    public static Map<String, Object> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
+        Map<String, Object> values = null;
         try {
             values = loadYaml(resource.getInputStream());
         } catch (Exception e) {
@@ -338,22 +342,18 @@ public class OnapCommandDiscoveryUtils {
 
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         if (obj == null) {
-                            OnapCommandUtils.log.info("Invalid Schema yaml {}", schema.getSchemaURI());
-                            continue;
+                            OnapCommandUtils.log.info("Invalid Schema yaml {}" + schema.getSchemaURI());
                         }
-
+                        else{
                         schema.setVersion(obj.toString());
 
                         if (!schema.getVersion().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
-                            OnapCommandUtils.log.info("Unsupported Schema version found {}", schema.getSchemaURI());
-                            continue;
+                            OnapCommandUtils.log.info("Unsupported Schema version found {} " + schema.getSchemaURI());
                         }
+                        else{
 
                         //There are schema like default input parameters and does not have command name
-                        if (resourceMap.get(NAME) == null) {
-                            continue;
-                        }
-
+                        if (resourceMap.get(NAME) != null) {
                         schema.setSchemaName(resource.getFilename());
                         schema.setCmdName((String) resourceMap.get(NAME));
 
@@ -402,6 +402,9 @@ public class OnapCommandDiscoveryUtils {
                         }
 
                         extSchemas.add(schema);
+                    }
+                        }
+                        }
                     }
                 }
             }
@@ -483,9 +486,10 @@ public class OnapCommandDiscoveryUtils {
 
     }
 
-    public static List<Map<String, ?>> createTestSuite(String cmd, String version) throws OnapCommandException {
+    public static List<Map<String, Object>> createTestSuite(String cmd, String version) throws OnapCommandException {
 
-        ArrayList<Map<String, ?>> testSamples = new ArrayList<>();
+        ArrayList<Map<String, Object>> testSamples = new ArrayList();
+
 
         List<Resource> resources = new ArrayList<>();
         OnapCommandSchemaInfo schemaInfo =  getSchemaInfo(cmd, version);
@@ -511,9 +515,9 @@ public class OnapCommandDiscoveryUtils {
             Map<String, Map<String, String>> samples = (Map<String, Map<String, String>>) stringMap
                     .get(OnapCommandConstants.VERIFY_SAMPLES);
 
-            for (String sampleId : samples.keySet()) {
-
-                Map<String, String> sample = samples.get(sampleId);
+            for (Map.Entry<String,Map<String, String>> entry : samples.entrySet()) {
+                String sampleId=entry.getKey();
+                Map<String, String> sample = entry.getValue();
 
                 List<String> inputArgs = new ArrayList<>();
                 if (sample.get(OnapCommandConstants.VERIFY_INPUT) != null) {
@@ -542,8 +546,8 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadYaml(Resource resource) throws OnapCommandInvalidSchema {
-        Map<String, ?> values = null;
+    public static Map<String, Object> loadYaml(Resource resource) throws OnapCommandInvalidSchema {
+        Map<String, Object> values = null;
         try {
             values = loadYaml(resource.getInputStream());
         } catch (Exception e) {
@@ -560,8 +564,8 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadYaml(String filePath) throws OnapCommandInvalidSchema {
-        Map<String, ?> values = null;
+    public static Map<String, Object> loadYaml(String filePath) throws OnapCommandInvalidSchema {
+        Map<String, Object> values = null;
         try {
             values = loadYaml(new FileInputStream(new File(filePath)));
         } catch (Exception e) {
@@ -579,11 +583,11 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadYaml(InputStream inputStream) throws OnapCommandInvalidSchema {
-        Map<String, ?> values = null;
+    public static Map<String, Object> loadYaml(InputStream inputStream) throws OnapCommandInvalidSchema {
+        Map<String, Object> values = null;
         try(InputStreamReader inputStreamReader = new InputStreamReader(inputStream);){
             YamlReader reader = new YamlReader(inputStreamReader);
-            values = (Map<String, ?>) reader.read();
+            values = (Map<String, Object>) reader.read();
             } catch (YamlException e) {
                 throw new OnapCommandInvalidSchema(inputStream.getClass().getName(),e.getMessage());
             } catch (IOException e) {

@@ -173,10 +173,10 @@ public class OnapCommandParameter {
                     this.defaultValue = UUID.randomUUID().toString();
                     break;
                 case JSON:
-                    this.defaultValue = new String("{}");
+                    this.defaultValue = "{}";
                     break;
                 default:
-                    this.defaultValue = new String("");
+                    this.defaultValue = "";
                     break;
             }
         }

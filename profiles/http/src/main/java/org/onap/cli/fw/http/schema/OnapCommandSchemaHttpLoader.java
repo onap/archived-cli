@@ -68,8 +68,8 @@ public class OnapCommandSchemaHttpLoader {
                 errors.addAll(OnapCommandSchemaLoader.parseSchema(cmd, defaultParameterMap, validateSchema));
             }
 
-            Map<String, List<Map<String, String>>> commandYamlMap =
-                    (Map<String, List<Map<String, String>>>) OnapCommandSchemaLoader.validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+            Map<String, ?> commandYamlMap =
+                    OnapCommandSchemaLoader.validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
             errors.addAll(parseHttpSchema(cmd, commandYamlMap, validateSchema));
 
@@ -162,20 +162,18 @@ public class OnapCommandSchemaHttpLoader {
                                             Map<String, Object> context = (Map<String, Object>) map.get(key2);
 
                                             for (String key: context.keySet()) {
-                                                switch (key) {
-                                                    case OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES:
+                                                if (OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES.equals(key)) {
                                                         Boolean flag = Boolean.valueOf(context.get(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES).toString());
                                                         cmd.getInput().getContext().put(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES, flag.toString());
-                                                        break;
                                                 }
                                             }
-
 
                                             break;
                                         case OnapCommandHttpConstants.MULTIPART_ENTITY_NAME:
                                             Object multipartEntityName = map.get(key2);
                                             cmd.getInput().setMultipartEntityName(multipartEntityName.toString());
                                             break;
+                                        default : // Do nothing
                                     }
                                 }catch (Exception ex) {
                                     OnapCommandUtils.throwOrCollect(new OnapCommandInvalidSchema(cmd.getSchemaName(), ex), errorList, validate);
@@ -235,6 +233,7 @@ public class OnapCommandSchemaHttpLoader {
                                             Object mode = serviceMap.get(key);
                                             srv.setMode(mode.toString());
                                             break;
+                                        default : // Do nothing
                                     }
                                 }
 
@@ -260,6 +259,7 @@ public class OnapCommandSchemaHttpLoader {
                         case OnapCommandHttpConstants.SAMPLE_RESPONSE:
                             // (mrkanag) implement sample response handling
                             break;
+                        default : // Do nothing
                     }
                 }
             }
@@ -353,10 +353,8 @@ public class OnapCommandSchemaHttpLoader {
 
         for (Object successCode : requestSuccessCodes) {
             Integer code = Integer.valueOf(String.valueOf(successCode));
-            if (code < 200 || code >= 300) {
-                if ( code != 404) {
+            if ((code < 200 || code >= 300) && code != 404) {
                     errorList.add(OnapCommandHttpConstants.HTTP_SUCCESS_CODE_INVALID);
-                }
             }
         }
 

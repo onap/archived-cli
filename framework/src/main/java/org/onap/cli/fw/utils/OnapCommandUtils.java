@@ -252,13 +252,10 @@ public class OnapCommandUtils {
 
             String value = "";
 
-            switch (splEntry) {
-                case OnapCommandConstants.SPL_ENTRY_UUID:
+            if (OnapCommandConstants.SPL_ENTRY_UUID.equals(splEntry)) {
                     value = UUID.randomUUID().toString();
-                    break;
-
-                default:
-
+            }
+                else{
                     if (splEntry.startsWith(OnapCommandConstants.SPL_ENTRY_ENV)) {
                         //start to read after env:ENV_VAR_NAME
                         String envVarName = splEntry.substring(4);

@@ -96,6 +96,7 @@ public class OnapCommandSchemaCmdLoader {
                     case OnapCommandCmdConstants.PASS_CODE:
                         cmd.setPassCodes((ArrayList) valMap.get(key1));
                         break;
+                    default : // Do nothing
                 }
             }
         }

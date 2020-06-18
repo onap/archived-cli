@@ -26,7 +26,9 @@ import java.io.FileWriter;
 
 public class MockJsonGenerator {
     private static Gson gson = new GsonBuilder().serializeNulls().create();
-
+    private MockJsonGenerator() {
+        throw new IllegalStateException("Utility class");
+    }
     public static void generateMocking(MockRequest mockRequest, MockResponse mockResponse, String jsonFilePath) throws IOException {
 
         MockObject mockObject = new MockObject();

@@ -89,6 +89,8 @@ http:
     method: POST
     body: '{"serviceName":"${service-name}","version":"${service-version}","url":"${service-url}","protocol":"REST","visualRange":"1","lb_policy":"hash","nodes":[{"ip":"${node-ip}","port":"${node-port}","ttl":0}]}'
     headers:
+    context:
+      remove_empty_node: true
     queries:
       createOrUpdate: ${create-or-update}
   success_codes:

@@ -166,32 +166,32 @@ public class OpenCommandShellCmd extends OnapCommand {
         //Process command
         String []cmd = commandLine.toArray(new String []{});
         String cwd = this.getWd();
-        List <String> envs = new ArrayList<>();
+        List <String> envList = new ArrayList<>();
 
         //add current process environments to sub process
         for (Map.Entry<String, String> env: System.getenv().entrySet()) { //NOSONAR
-            envs.add(env.getKey() + "=" + env.getValue());
+            envList.add(env.getKey() + "=" + env.getValue());
         }
 
         //add oclip specific environment variables
         if (this.getExecutionContext() != null) {
-            envs.add("OPEN_CLI_REQUEST_ID=" + this.getExecutionContext().getRequestId());
+            envList.add("OPEN_CLI_REQUEST_ID=" + this.getExecutionContext().getRequestId());
             if (this.getExecutionContext().getProfile() != null) {
-                envs.add("OPEN_CLI_PROFILE=" + this.getExecutionContext().getProfile());
+                envList.add("OPEN_CLI_PROFILE=" + this.getExecutionContext().getProfile());
             }
             if (OnapCommandRegistrar.getRegistrar().getHost() != null) {
-                envs.add("OPEN_CLI_RPC_HOST=" + OnapCommandRegistrar.getRegistrar().getHost());
-                envs.add("OPEN_CLI_RPC_PORT=" + OnapCommandRegistrar.getRegistrar().getPort());
+                envList.add("OPEN_CLI_RPC_HOST=" + OnapCommandRegistrar.getRegistrar().getHost());
+                envList.add("OPEN_CLI_RPC_PORT=" + OnapCommandRegistrar.getRegistrar().getPort());
             }
         }
 
         for (String env: this.getEnvs().keySet()) {
-            envs.add(env + "=" + this.getEnvs().get(env));
+            envList.add(env + "=" + this.getEnvs().get(env));
         }
 
         ProcessRunner pr = new ProcessRunner(
                 cmd,
-                (envs.size() > 0) ? envs.toArray(new String []{}) : null,
+                (envList.size() > 0) ? envList.toArray(new String []{}) : null,
                 cwd);
         FileOutputStream stdoutStream = null;
         FileOutputStream stderrStream = null;

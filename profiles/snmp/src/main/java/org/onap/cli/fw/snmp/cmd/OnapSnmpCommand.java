@@ -116,9 +116,7 @@ public class OnapSnmpCommand extends OnapCommand {
 
             String[] oidStrArr = oids.toArray(new String[oids.size()]);
 
-            switch (this.command) {
-
-                case OnapCommandSnmpConstants.SNMP_CMD_GET:
+            if (OnapCommandSnmpConstants.SNMP_CMD_GET.equals(this.command)) {
                     ResponseEvent responseEvent = snmp.send(getPDU(PDU.GET, oidStrArr), getTarget(), null);
                     if ( responseEvent != null) {
                         if (responseEvent.getResponse().getErrorStatus() == PDU.noError) {
@@ -138,10 +136,6 @@ public class OnapSnmpCommand extends OnapCommand {
                     } else {
                         throw new OnapSnmpErrorResponse("Failed to send SNMP GET command");
                     }
-                    break;
-
-                default:
-                    break;
             }
             snmp.close();
         } catch (IOException ex) {

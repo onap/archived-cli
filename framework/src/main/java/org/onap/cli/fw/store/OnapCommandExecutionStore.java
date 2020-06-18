@@ -19,6 +19,9 @@ package org.onap.cli.fw.store;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +59,7 @@ public class OnapCommandExecutionStore {
 
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
-    private static String SEPARATOR = "__";
+    private static final String SEPARATOR = "__";
 
     private enum SearchMode {
         find,
@@ -65,11 +68,11 @@ public class OnapCommandExecutionStore {
 
     }
 
-    private static SearchMode SEARCH_MODE = SearchMode.file;
+    private static SearchMode searchMode = SearchMode.file;
     static {
         String mode = OnapCommandConfig.getPropertyValue(OnapCommandConstants.OPEN_CLI_EXECUTION_SEARCH_MODE);
         if (mode.equalsIgnoreCase(SearchMode.find.name()))
-            SEARCH_MODE = SearchMode.find;
+            searchMode = SearchMode.find;
     }
 
     public static class ExecutionStoreContext {
@@ -279,9 +282,11 @@ public class OnapCommandExecutionStore {
                 FileUtils.touch(new File(context.getStorePath() + File.separator + COMPLETED));
             else
                 FileUtils.touch(new File(context.getStorePath() + File.separator + FAILED));
-
-            if(!new File(context.getStorePath() + File.separator + IN_PROGRESS).delete()){
-                log.error("Failed to delete {}", context.getStorePath() + File.separator + IN_PROGRESS);
+            Path path= Paths.get(context.getStorePath() + File.separator + IN_PROGRESS);
+            try {
+                Files.delete(path);
+            } catch (IOException e) {
+                log.error("Failed to delete "+ context.getStorePath() + File.separator + IN_PROGRESS);
             }
         } catch (IOException e) {
             log.error("Failed to store the execution end details {}", context.storePath);
@@ -334,7 +339,7 @@ public class OnapCommandExecutionStore {
 
         try {
             List <String> dirs = new ArrayList<>();
-            if (System.getProperty("os.name").toLowerCase().startsWith("windows") || SEARCH_MODE.equals(SearchMode.file)) {
+            if (System.getProperty("os.name").toLowerCase().startsWith("windows") || searchMode.equals(SearchMode.file)) {
                 for (File f: new File(getBasePath()).listFiles()) {
                     if(search.containsKey(EXECUTIONID)) {
                         if (f.getName().startsWith(search.get(EXECUTIONID)))
@@ -347,7 +352,6 @@ public class OnapCommandExecutionStore {
                         if (f.getName().startsWith(search.get(REQUESTID)))
                                 dirs.add(f.getAbsolutePath());
 
-                        continue;
                     }
 
                     else
@@ -449,13 +453,9 @@ public class OnapCommandExecutionStore {
     }
 
     private File getExecutionDir(String executionId) throws OnapCommandExecutionNotFound {
-        File []f =  new File(getBasePath()).listFiles(new FilenameFilter() {
-
-            @Override
-            public boolean accept(File dir, String name) {
-                if (name.startsWith(executionId)) return true;
-                return false;
-            }
+        File []f =  new File(getBasePath()).listFiles((dir, name) -> {
+            if (name.startsWith(executionId)) return true;
+            return false;
         });
 
         if (f.length == 0) {

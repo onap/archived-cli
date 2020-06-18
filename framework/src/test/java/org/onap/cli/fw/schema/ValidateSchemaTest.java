@@ -18,7 +18,10 @@ package org.onap.cli.fw.schema;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.onap.cli.fw.cmd.OnapCommand;
@@ -121,6 +124,40 @@ public class ValidateSchemaTest {
         };
         List<String> errorList5 = OnapCommandSchemaLoader.loadSchema(cmd5, "schema-validate-pass.yaml", true, true);
         assertTrue(errorList5.size() == 0);
+
+    }
+    @Test
+    public void parseSchemaTest() throws OnapCommandException {
+        OnapCommand cmd = new OnapCommand() {
+            @Override
+            protected void run() throws OnapCommandException {}
+        };
+        Map<String, Object> values=new HashMap<>();
+        List<Map<String, Object>> list=new ArrayList<>();
+        Map<String,Object> paraValues=new HashMap<>();
+        paraValues.put("is_secured","yes");
+        paraValues.put("is_default_param","yes");
+        list.add(paraValues);
+        values.put("parameters",list);
+        assertTrue(OnapCommandSchemaLoader.parseSchema(cmd,values,true).size()==2);
+
+    }
+    @Test
+    public void parseSchema2Test() throws OnapCommandException {
+        OnapCommand cmd = new OnapCommand() {
+            @Override
+            protected void run() throws OnapCommandException {}
+        };
+        Map<String, Object> values=new HashMap<>();
+        List<Map<String, Object>> list=new ArrayList<>();
+        Map<String,Object> paraValues=new HashMap<>();
+        Map<String, Object> attributesValues=new HashMap<>();
+        paraValues.put("is_secured","yes");
+        paraValues.put("is_default_attr","yes");
+        list.add(paraValues);
+        attributesValues.put("attributes",list);
+        values.put("results",attributesValues);
+        assertTrue(OnapCommandSchemaLoader.parseSchema(cmd,values,true).size()==2);
 
     }
 }

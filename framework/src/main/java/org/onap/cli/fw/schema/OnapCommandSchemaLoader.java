@@ -105,8 +105,8 @@ public class OnapCommandSchemaLoader {
      * @throws OnapCommandInvalidSchema        invalid schema
      * @throws OnapCommandSchemaNotFound       schema not found
      */
-    public static Map<String, ?> validateSchemaVersion(String schemaName, String version) throws OnapCommandException {
-        Map<String, ?> values = null;
+    public static Map<String, Object> validateSchemaVersion(String schemaName, String version) throws OnapCommandException {
+        Map<String, Object> values = null;
         try {
             InputStream inputStream = OnapCommandUtils.class.getClassLoader().getResourceAsStream(schemaName);
 
@@ -160,8 +160,7 @@ public class OnapCommandSchemaLoader {
                 errors.addAll(parseSchema(cmd, defaultParameterMap, validateSchema));
             }
 
-            Map<String, List<Map<String, String>>> commandYamlMap =
-                    (Map<String, List<Map<String, String>>>)validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+            Map<String, ?> commandYamlMap = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
             errors.addAll(parseSchema(cmd, commandYamlMap, validateSchema));
 
@@ -218,13 +217,13 @@ public class OnapCommandSchemaLoader {
                             HashMap<String, String> validationMap = new HashMap<>();
                             validationMap.put(INFO_TYPE, COMMAND_TYPE_VALUES);
 
-                            for (String secKey : validationMap.keySet()) {
+                            for (Map.Entry<String,String> entry : validationMap.entrySet()) {
+                                String secKey=entry.getKey();
                                 if (infoMap.containsKey(secKey)) {
-                                    Object obj = infoMap.get(secKey);
-                                    if (obj == null) {
+                                    String value = infoMap.get(secKey);
+                                    if (value == null) {
                                         exceptionList.add("Attribute '" + secKey + "' under '" + INFO + "' is empty");
                                     } else {
-                                        String value = String.valueOf(obj);
                                         if (!OnapCommandConfig.getCommaSeparatedList(validationMap.get(secKey)).contains(value)) {
                                             exceptionList.add("Attribute '" + secKey + "' contains invalid value. Valide values are "
                                                     + OnapCommandConfig.getCommaSeparatedList(validationMap.get(key))); //
@@ -267,6 +266,7 @@ public class OnapCommandSchemaLoader {
                                     Object ignore = infoMap.get(key1);
                                     info.setIgnore(ignore.toString().equalsIgnoreCase(OnapCommandConstants.BOOLEAN_TRUE));
                                     break;
+                                default : // Do nothing
                             }
                         }
 
@@ -354,12 +354,10 @@ public class OnapCommandSchemaLoader {
                                         break;
 
                                     case IS_SECURED:
-                                        if (validate) {
-                                            if (!OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
+                                            if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
                                                 exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
                                                         IS_SECURED, String.valueOf(parameter.get(key2))));
                                             }
-                                        }
 
                                         if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
                                             param.setSecured(true);
@@ -382,12 +380,10 @@ public class OnapCommandSchemaLoader {
                                         break;
 
                                     case IS_DEFAULT_PARAM:
-                                        if (validate) {
-                                            if (!OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
+                                            if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(parameter.get(key2)))) {
                                                 exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(parameter.get(NAME),
                                                         IS_DEFAULT_PARAM, String.valueOf(parameter.get(key2))));
                                             }
-                                        }
 
                                         if (BOOLEAN_TRUE.equalsIgnoreCase(String.valueOf(parameter.get(key2)))) {
                                             param.setDefaultParam(true);
@@ -395,6 +391,7 @@ public class OnapCommandSchemaLoader {
                                             param.setDefaultParam(false);
                                         }
                                         break;
+                                    default : // Do nothing
                                 }
                             }
 
@@ -471,12 +468,10 @@ public class OnapCommandSchemaLoader {
                                                     break;
 
                                                 case IS_SECURED:
-                                                    if (validate) {
-                                                        if (!OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
+                                                        if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
                                                             exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(ATTRIBUTES,
                                                                     IS_SECURED, String.valueOf(map.get(key4))));
                                                         }
-                                                    }
                                                     if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
                                                         attr.setSecured(true);
                                                     } else {
@@ -485,28 +480,29 @@ public class OnapCommandSchemaLoader {
                                                     break;
 
                                                 case IS_DEFAULT_ATTR:
-                                                    if (validate) {
-                                                        if (!OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
+                                                        if (validate && !OnapCommandUtils.validateBoolean(String.valueOf(map.get(key4)))) {
                                                             exceptionList.add(OnapCommandUtils.invalidBooleanValueMessage(ATTRIBUTES,
                                                                     IS_DEFAULT_ATTR, String.valueOf(map.get(key4))));
                                                         }
-                                                    }
                                                     if (BOOLEAN_TRUE.equals(String.valueOf(map.get(key4)))) {
                                                         attr.setDefaultAttr(true);
                                                     } else {
                                                         attr.setDefaultAttr(false);
                                                     }
                                                     break;
+                                                default : // Do nothing
                                             }
 
                                         }
                                         cmd.getResult().getRecords().add(attr);
                                     }
                                     break;
+                                default : // Do nothing
                             }
                         }
                     }
                     break;
+                default : // Do nothing
             }
         }
 
@@ -539,7 +535,7 @@ public class OnapCommandSchemaLoader {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadSchema(InputStream stream, String schemaName) throws OnapCommandInvalidSchema  {
+    public static Map<String, Object> loadSchema(InputStream stream, String schemaName) throws OnapCommandInvalidSchema  {
         return OnapCommandDiscoveryUtils.loadYaml(stream);
 
     }
