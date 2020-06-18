@@ -176,7 +176,7 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandDiscoveryFailed
      *             exception
      */
-    public static boolean isAlreadyDiscovered() throws OnapCommandDiscoveryFailed {
+    public static boolean isAlreadyDiscovered() throws OnapCommandDiscoveryFailed { //NOSONAR
         String dataDir = OnapCommandDiscoveryUtils.getDataStorePath();
         return new File(dataDir + File.separator + DISCOVERY_FILE).exists();
     }
@@ -338,14 +338,14 @@ public class OnapCommandDiscoveryUtils {
 
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         if (obj == null) {
-                            OnapCommandUtils.log.info("Invalid Schema yaml " + schema.getSchemaURI());
+                            OnapCommandUtils.log.info("Invalid Schema yaml {}", schema.getSchemaURI());
                             continue;
                         }
 
                         schema.setVersion(obj.toString());
 
                         if (!schema.getVersion().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
-                            OnapCommandUtils.log.info("Unsupported Schema version found " + schema.getSchemaURI());
+                            OnapCommandUtils.log.info("Unsupported Schema version found {}", schema.getSchemaURI());
                             continue;
                         }
 
@@ -431,12 +431,12 @@ public class OnapCommandDiscoveryUtils {
 
         Object sampleVersion = infoMap.get(OPEN_CLI_SAMPLE_VERSION);
         if (sampleVersion == null) {
-            OnapCommandUtils.log.info("Invalid Sample yaml " + sampleResourse.getURI().toString());
+            OnapCommandUtils.log.info("Invalid Sample yaml {}", sampleResourse.getURI());
             return;
         }
 
         if (!sampleVersion.toString().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SAMPLE_VERSION_VALUE_1_0)) {
-            OnapCommandUtils.log.info("Unsupported Sample version found " + sampleResourse.getURI().toString());
+            OnapCommandUtils.log.info("Unsupported Sample version found {}", sampleResourse.getURI());
             return;
         }
 
@@ -485,12 +485,12 @@ public class OnapCommandDiscoveryUtils {
 
     public static List<Map<String, ?>> createTestSuite(String cmd, String version) throws OnapCommandException {
 
-        ArrayList<Map<String, ?>> testSamples = new ArrayList();
+        ArrayList<Map<String, ?>> testSamples = new ArrayList<>();
 
-        List<Resource> resources = new ArrayList();
+        List<Resource> resources = new ArrayList<>();
         OnapCommandSchemaInfo schemaInfo =  getSchemaInfo(cmd, version);
 
-        List<String> sampleFiles = new ArrayList();
+        List<String> sampleFiles = new ArrayList<>();
         if (schemaInfo != null && !schemaInfo.getSampleFiles().isEmpty()) {
             sampleFiles.addAll(schemaInfo.getSampleFiles());
         }
@@ -515,13 +515,13 @@ public class OnapCommandDiscoveryUtils {
 
                 Map<String, String> sample = samples.get(sampleId);
 
-                List<String> inputArgs = new ArrayList();
+                List<String> inputArgs = new ArrayList<>();
                 if (sample.get(OnapCommandConstants.VERIFY_INPUT) != null) {
                     inputArgs.addAll(Arrays.asList(sample.get(OnapCommandConstants.VERIFY_INPUT).trim().split(" ")));
                 }
                 inputArgs.add(OnapCommandConstants.VERIFY_LONG_OPTION);
 
-                HashMap map = new HashMap();
+                HashMap<String, Object> map = new HashMap<>();
                 map.put(OnapCommandConstants.VERIFY_INPUT, inputArgs);
                 map.put(OnapCommandConstants.VERIFY_OUPUT, sample.get(OnapCommandConstants.VERIFY_OUPUT));
                 map.put(OnapCommandConstants.VERIFY_MOCO, sample.get(OnapCommandConstants.VERIFY_MOCO));

@@ -92,7 +92,7 @@ public class OnapCommandSchemaHttpLoader {
      * @throws OnapCommandException
      *             on error
      */
-    public static ArrayList<String> parseHttpSchema(OnapHttpCommand cmd,
+    public static List<String> parseHttpSchema(OnapHttpCommand cmd,
                                                     final Map<String, ?> values,
                                                     boolean validate) throws OnapCommandException {
         ArrayList<String> errorList = new ArrayList<>();

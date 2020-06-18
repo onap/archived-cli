@@ -40,7 +40,7 @@ public class OnapCommandSchemaSnmpLoader {
 
     public static List<String> parseSnmpSchema(OnapSnmpCommand cmd,
                                                      final Map<String, ?> values,
-                                                     boolean validate) throws OnapCommandException {
+                                                     boolean validate) throws OnapCommandException { //NOSONAR
 
         ArrayList<String> errorList = new ArrayList<>();
         Map<String, ?> valMap = (Map<String, ?>) values.get(OnapCommandSnmpConstants.SNMP);

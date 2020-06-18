@@ -60,27 +60,27 @@ public class OnapCommandExceutionShowCommand extends OnapCommand {
     }
 
 
-    public String printExecution(List<OnapCommandExecutionStore.Execution> executions) throws OnapCommandExecutionNotFound {
-        String msg = "<oclip-execution-list>\n";
+    public String printExecution(List<OnapCommandExecutionStore.Execution> executions) throws OnapCommandExecutionNotFound { //NOSONAR
+        StringBuilder msg = new StringBuilder("<oclip-execution-list>\n");
         for (OnapCommandExecutionStore.Execution e: executions) {
-             msg += "<oclip-execution>\n";
+             msg.append("<oclip-execution>\n");
              if ( e.getId() != null)
-                 msg += "<oclip-request-id>\n" + e.getId() + "</oclip-request-id>\n";
-             msg += "<oclip-request-product>\n" + e.getProduct() + "</oclip-request-product>\n";
-             msg += "<oclip-request-service>\n" + e.getService() + "</oclip-request-service>\n";
-             msg += "<oclip-request-command>\n" + e.getCommand() + "</oclip-request-command>\n";
+                 msg.append("<oclip-request-id>\n" + e.getId() + "</oclip-request-id>\n");
+             msg.append("<oclip-request-product>\n" + e.getProduct() + "</oclip-request-product>\n");
+             msg.append("<oclip-request-service>\n" + e.getService() + "</oclip-request-service>\n");
+             msg.append("<oclip-request-command>\n" + e.getCommand() + "</oclip-request-command>\n");
              if ( e.getProfile() != null)
-                 msg += "<oclip-request-profile>\n" + e.getProfile() + "</oclip-request-profile>\n";
-             msg += "<oclip-request-input>\n" + e.getInput() + "</oclip-request-input>\n";
+                 msg.append("<oclip-request-profile>\n" + e.getProfile() + "</oclip-request-profile>\n");
+             msg.append("<oclip-request-input>\n" + e.getInput() + "</oclip-request-input>\n");
              if ( e.getOutput() != null)
-                 msg += "<oclip-request-output>\n" + e.getOutput() + "</oclip-request-output>\n";
-             msg += "<oclip-request-start-time>\n" + e.getStartTime() + "</oclip-request-start-time>\n";
-             msg += "<oclip-request-end-time>\n" + e.getEndTime() + "</oclip-request-end-time>\n";
-             msg += "<oclip-request-status>\n" + e.getStatus() + "</oclip-request-status>\n";
-             msg += "</oclip-execution>";
+                 msg.append("<oclip-request-output>\n" + e.getOutput() + "</oclip-request-output>\n");
+             msg.append("<oclip-request-start-time>\n" + e.getStartTime() + "</oclip-request-start-time>\n");
+             msg.append("<oclip-request-end-time>\n" + e.getEndTime() + "</oclip-request-end-time>\n");
+             msg.append("<oclip-request-status>\n" + e.getStatus() + "</oclip-request-status>\n");
+             msg.append("</oclip-execution>");
         }
-        msg += "</oclip-execution-list>";
+        msg.append("</oclip-execution-list>");
 
-        return msg;
+        return msg.toString();
     }
 }
