@@ -24,6 +24,7 @@ import org.junit.Test;
 import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
+import static org.junit.Assert.assertEquals;
 
 public class ValidateSchemaTest {
 
@@ -120,7 +121,7 @@ public class ValidateSchemaTest {
             protected void run() throws OnapCommandException {}
         };
         List<String> errorList5 = OnapCommandSchemaLoader.loadSchema(cmd5, "schema-validate-pass.yaml", true, true);
-        assertTrue(errorList5.size() == 0);
+        assertEquals(0, errorList5.size());
 
     }
 

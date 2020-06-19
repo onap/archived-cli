@@ -405,7 +405,7 @@ public class OnapCliUtilsTest {
         paramslist.add(param1);
         OnapCliArgsParser.populateParams(paramslist,
                 Arrays.asList("--yaml", "name", "--yaml", "test-schema"));
-        Assert.assertTrue(paramslist.iterator().next().getValue().equals("test-schema"));
+        Assert.assertEquals("test-schema", paramslist.iterator().next().getValue());
     }
     @Test
     public void testReadYamlStringFromUrlForFile() throws OnapCommandException {
@@ -417,6 +417,6 @@ public class OnapCliUtilsTest {
         paramslist.add(param1);
         OnapCliArgsParser.populateParams(paramslist,
                         Arrays.asList("--yaml", "main/src/test/resources/open-cli-schema/sample-test-schema.yaml", "--yaml", "test-schema"));
-        Assert.assertTrue(paramslist.iterator().next().getValue().equals("test-schema"));
+        Assert.assertEquals("test-schema", paramslist.iterator().next().getValue());
     }
 }

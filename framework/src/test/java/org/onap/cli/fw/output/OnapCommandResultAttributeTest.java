@@ -18,6 +18,7 @@ package org.onap.cli.fw.output;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandInvalidResultAttributeScope;
@@ -36,7 +37,7 @@ public class OnapCommandResultAttributeTest {
         try {
             OnapCommandResultAttributeScope.get("name");
         } catch (OnapCommandInvalidResultAttributeScope e) {
-            assertTrue("0x8002::Result atrribute name is invalid".equals(e.getMessage()));
+            assertEquals("0x8002::Result atrribute name is invalid", e.getMessage());
         }
 
     }

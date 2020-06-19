@@ -16,12 +16,12 @@
 
 package org.onap.cli.main.interactive;
 
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class StringCompleterTest {
 
@@ -29,20 +29,20 @@ public class StringCompleterTest {
     public void completeTest() {
         StringCompleter com = new StringCompleter(Arrays.asList(new String[] { "test", "testing1", "testing2" }));
         int result = com.complete("test", 1, new ArrayList<CharSequence>());
-        assertTrue(result == 0);
+        assertEquals(0, result);
         result = com.complete(null, 1, new ArrayList<CharSequence>());
-        assertTrue(result == 0);
+        assertEquals(0, result);
 
         com.add("test", "testing1", "testing2");
         result = com.complete("test", 1, new ArrayList<CharSequence>());
-        assertTrue(result == 0);
+        assertEquals(0, result);
 
         result = com.complete("sfds", 1, new ArrayList<CharSequence>());
-        assertTrue(result == -1);
+        assertEquals(-1, result);
 
 
         result = com.complete("test", 1, new ArrayList<CharSequence>());
-        assertTrue(result == 0);
+        assertEquals(0, result);
     }
 
 }

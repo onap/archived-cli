@@ -23,6 +23,7 @@ import java.util.HashMap;
 import org.junit.Test;
 import org.onap.cli.fw.http.connect.HttpInput;
 import org.onap.cli.fw.http.connect.HttpResult;
+import static org.junit.Assert.assertEquals;
 
 public class HttpInputOutputTest {
 
@@ -45,7 +46,7 @@ public class HttpInputOutputTest {
 
         String msg = "\nURL: uri\nMethod: method\nRequest Queries: {}\nRequest Body: body\nRequest Headers: "
                 + "{}\nRequest Cookies: {}\nbinaryData=false\nContext={}";
-        assertTrue(msg.equals(inp.toString()));
+        assertEquals(inp.toString(), msg);
     }
 
     @Test
@@ -62,8 +63,8 @@ public class HttpInputOutputTest {
         out.setRespCookies(new HashMap<String, String>());
         out.setRespHeaders(new HashMap<String, String>());
         out.setStatus(200);
-        assertTrue("\nHTTP Status: 200\nResponse Body: body\nResponse Headers: {}\nResponse Cookies: {}"
-                .equals(out.toString()));
+        assertEquals("\nHTTP Status: 200\nResponse Body: body\nResponse Headers: {}\nResponse Cookies: {}"
+                , out.toString());
     }
 
 }

@@ -16,10 +16,10 @@
 
 package org.onap.cli.fw.info;
 
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.onap.cli.fw.cmd.OnapCommandType;
+import static org.junit.Assert.assertEquals;
 
 public class OnapCommandInfoTest {
     @Test
@@ -31,8 +31,8 @@ public class OnapCommandInfoTest {
         info.setProduct("open-cli");
         info.setService("test");
 
-        assertTrue(info.getCommandType().equals(OnapCommandType.CMD));
-        assertTrue(info.getState().equals(OnapCommandState.STABLE));
+        assertEquals(OnapCommandType.CMD, info.getCommandType());
+        assertEquals(OnapCommandState.STABLE, info.getState());
     }
 
 }
