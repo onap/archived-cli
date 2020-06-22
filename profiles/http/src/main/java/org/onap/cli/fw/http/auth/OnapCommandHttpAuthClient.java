@@ -16,6 +16,7 @@
 
 package org.onap.cli.fw.http.auth;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -98,7 +99,11 @@ public class OnapCommandHttpAuthClient {
 
         logout.execute();
 
-        this.http.close();
+        try {
+            this.http.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
