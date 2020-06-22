@@ -337,9 +337,9 @@ public class OnapCommandRegistrar {
             //Never occurs
         }
 
-        versionInfo = versionInfo.replaceAll(OnapCommandConstants.VERSION_INFO_PLACE_HOLDER_ENB_PRD_VER, configuredProductVersion);
-        versionInfo = versionInfo.replaceAll(OnapCommandConstants.VERSION_INFO_PLACE_HOLDER_AVL_PRD_VER, this.availableProductVersions.toString());
-        versionInfo = versionInfo.replaceAll(OnapCommandConstants.VERSION_INFO_PLACE_HOLDER_VERSION + "", version + buildTime);
+        versionInfo = versionInfo.replace(OnapCommandConstants.VERSION_INFO_PLACE_HOLDER_ENB_PRD_VER, configuredProductVersion);
+        versionInfo = versionInfo.replace(OnapCommandConstants.VERSION_INFO_PLACE_HOLDER_AVL_PRD_VER, this.availableProductVersions.toString());
+        versionInfo = versionInfo.replace(OnapCommandConstants.VERSION_INFO_PLACE_HOLDER_VERSION + "", version + buildTime);
 
         return versionInfo;
     }
