@@ -111,7 +111,7 @@ public class OnapCommandDiscoveryUtils {
      *             exception
      */
     public static List<OnapCommandSchemaInfo> discoverOrLoadSchemas(boolean forceRefresh) throws OnapCommandException {
-        List<OnapCommandSchemaInfo> schemas = new ArrayList<>();
+        List<OnapCommandSchemaInfo> schemas = null;
         if (forceRefresh || Boolean.parseBoolean(OnapCommandConfig.getPropertyValue(OnapCommandConstants.DISCOVER_ALWAYS))
                 || !OnapCommandDiscoveryUtils.isAlreadyDiscovered()) {
             schemas = OnapCommandDiscoveryUtils.discoverSchemas();

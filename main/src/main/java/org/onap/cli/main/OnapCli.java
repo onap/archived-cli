@@ -515,7 +515,7 @@ public class OnapCli {
                 //refer params from profile
                 if (this.profile != null) {
 
-                    Map<String, String> paramCache = new HashMap<>();
+                    Map<String, String> paramCache = null;
                     if (this.product == null)
                         paramCache = OnapCommandRegistrar.getRegistrar().getParamCache();
                     else

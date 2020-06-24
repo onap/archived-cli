@@ -147,8 +147,7 @@ public class OnapCommandProfileStore {
     }
 
     private void load(String profileName, boolean include) throws OnapCommandException {
-        List<OnapCommandParamEntity> params= new ArrayList<>();
-        params = this.loadParamFromCache(profileName);
+        List<OnapCommandParamEntity> params = this.loadParamFromCache(profileName);
 
         for (OnapCommandParamEntity p : params) {
             if (include) {
