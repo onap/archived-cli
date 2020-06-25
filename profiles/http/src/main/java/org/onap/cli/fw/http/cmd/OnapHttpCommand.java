@@ -47,6 +47,8 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
 import org.onap.cli.http.mock.MockJsonGenerator;
 import org.onap.cli.http.mock.MockRequest;
 import org.onap.cli.http.mock.MockResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Oclip http Command.
@@ -55,6 +57,7 @@ import org.onap.cli.http.mock.MockResponse;
 @OnapCommandSchema(type = OnapCommandHttpConstants.HTTP_SCHEMA_PROFILE)
 public class OnapHttpCommand extends OnapCommand {
 
+    private static Logger log = LoggerFactory.getLogger(OnapHttpCommand.class);
     private HttpInput input = new HttpInput();
 
     private HttpResult output = new HttpResult();
@@ -219,6 +222,7 @@ public class OnapHttpCommand extends OnapCommand {
                 this.authClient.logout();
             }
         } catch (OnapCommandException e) {
+            log.error("Authentication Failure "+e);
             throw e;
         } finally {
             this.getResult().setDebugInfo(this.input.toString() + "\n" + this.output.toString());

@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Vector;
 
 /**
  * Oclip snmp Command.
@@ -122,8 +121,8 @@ public class OnapSnmpCommand extends OnapCommand {
                     ResponseEvent responseEvent = snmp.send(getPDU(PDU.GET, oidStrArr), getTarget(), null);
                     if ( responseEvent != null) {
                         if (responseEvent.getResponse().getErrorStatus() == PDU.noError) {
-                            Vector<? extends VariableBinding> variableBindings = responseEvent.
-                                    getResponse().getVariableBindings();
+                            ArrayList<? extends VariableBinding> variableBindings = new ArrayList<>(responseEvent.
+                                    getResponse().getVariableBindings());
                             variableBindings.stream().forEach(varBinding -> { //NOSONAR
                                 String key = getKeyForValue(varBinding.getOid().toString());
                                 if (key != null) {

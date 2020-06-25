@@ -19,6 +19,8 @@ package org.onap.cli.fw.http.auth;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import mockit.Mock;
+import mockit.MockUp;
 import org.junit.Before;
 import org.junit.Test;
 import org.onap.cli.fw.conf.OnapCommandConfig;
@@ -122,5 +124,17 @@ public class OnapAuthClientCommandBasedTest {
         cmd.initializeSchema(yaml);
 
         return cmd;
+    }
+    @Test(expected = OnapCommandException.class)
+    public void authenticationFailureTest() throws OnapCommandException {
+        new MockUp<OnapCommandHttpAuthClient>(){
+            @Mock
+            public void login() throws OnapCommandException {
+                throw new OnapCommandException("401","Authentication Failure");
+            }
+        };
+        OnapHttpCommand cmd = getCommand("sample-test-schema-yes-auth-no-catalog.yaml");
+        cmd.execute();
+
     }
 }
