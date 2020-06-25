@@ -331,11 +331,11 @@ public class OnapCommandUtils {
                     || OnapCommandParameterType.JSON.equals(param.getParameterType())
                     || OnapCommandParameterType.YAML.equals(param.getParameterType())) {
                 // ignore the front and back double quotes in json body
-                String va_ = params.get(paramName).getValue().toString();
+                String value = params.get(paramName).getValue().toString();
                 if (idxS > 0)
-                    result += line.substring(currentIdx, idxS - 1) + va_;
+                    result += line.substring(currentIdx, idxS - 1) + value;
                 else
-                    result += va_;
+                    result += value;
                 currentIdx = idxE + 2;
             } else if (OnapCommandParameterType.MAP.equals(param.getParameterType())) {
                 try {
