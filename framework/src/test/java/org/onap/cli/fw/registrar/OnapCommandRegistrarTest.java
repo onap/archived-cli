@@ -85,7 +85,7 @@ public class OnapCommandRegistrarTest {
 
     @Test
     public void listTest() {
-        registerar.listCommands();
+        assertTrue(registerar.listCommands().size()>0);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class OnapCommandRegistrarTest {
         OnapCommandRegistrar registrar = OnapCommandRegistrar.getRegistrar();
         OnapCommand cmd = registrar.get("sample-test");
         cmd.printVersion();
-        registrar.listCommands();
+        assertTrue(registrar.listCommands().size()>0);
     }
 }
 

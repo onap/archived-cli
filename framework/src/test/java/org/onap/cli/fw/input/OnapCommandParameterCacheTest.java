@@ -19,11 +19,13 @@ package org.onap.cli.fw.input;
 import org.junit.Test;
 import org.onap.cli.fw.store.OnapCommandProfileStore;
 
+import static org.junit.Assert.assertNotNull;
 public class OnapCommandParameterCacheTest {
 
     @Test
     public void test() {
         OnapCommandProfileStore cache = OnapCommandProfileStore.getInstance();
+        assertNotNull(cache);
     }
 
 

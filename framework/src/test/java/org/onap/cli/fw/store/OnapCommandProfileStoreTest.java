@@ -72,6 +72,7 @@ public class OnapCommandProfileStoreTest {
     @Test
     public void addTest() {
         onapCommandProfileStore.add("abc", "abc", "abc");
+        assertNotNull(onapCommandProfileStore. getParams("abc"));
     }
 
     @Test

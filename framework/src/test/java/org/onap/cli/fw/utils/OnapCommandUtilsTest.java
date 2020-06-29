@@ -406,6 +406,7 @@ public class OnapCommandUtilsTest {
 
         String expectedHelp = FileUtil.loadResource("sample-cmd-test-help.txt");
 
+        assertNotNull(actualResult);
         //mrkanag compare the result
     }
 
@@ -462,7 +463,7 @@ public class OnapCommandUtilsTest {
         OnapCommandSampleInfo cmd = new OnapCommandSampleInfo();
         OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-info.yaml", true, false);
         OnapCommandInfo info = cmd.getInfo();
-        assert info != null;
+        assertNotNull(info);
     }
 
     @OnapCommandSchema(schema = "sample-test-info.yaml")
@@ -487,6 +488,7 @@ public class OnapCommandUtilsTest {
             System.out.println(pr.getOutput());
             System.out.println(pr.getError());
             System.out.println(pr.getExitCode());
+            assertEquals(0,pr.getExitCode());
 
             pr = new ProcessRunner(new String [] {"dir", "c:"}, null);
             pr.run();

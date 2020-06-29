@@ -108,6 +108,7 @@ public class OnapCommandResultTest {
 
         // Will be handled after the json print is implemented
         String result = res.print();
+        assertEquals("[{\"param\":{\"id\":\"0001\",\"value\":\"result\"}}]",result);
         // String expRes = "+--------+\n|param |\n+--------+\n|value
         // |\n+--------+\n";
         // assertEquals(expRes,result);

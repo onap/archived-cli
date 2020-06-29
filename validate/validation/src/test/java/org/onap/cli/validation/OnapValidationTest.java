@@ -53,6 +53,7 @@ import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import static org.junit.Assert.assertTrue;
 public class OnapValidationTest {
 
     public static final String SAMPLE_VERSION = "open_cli_sample_version";
@@ -121,6 +122,7 @@ public class OnapValidationTest {
                 }
             }
         }
+        assertTrue(OnapCommandRegistrar.getRegistrar().getAvailableProductVersions().size()>0);
     }
 
     @Test
@@ -144,6 +146,7 @@ public class OnapValidationTest {
                 }
             }
         }
+        assertTrue(OnapCommandRegistrar.getRegistrar().getAvailableProductVersions().size()>0);
     }
 
     @Test

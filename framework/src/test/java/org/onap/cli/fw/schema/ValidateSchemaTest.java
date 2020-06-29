@@ -17,6 +17,7 @@
 package org.onap.cli.fw.schema;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        cmd.initializeSchema("test-command-to-valdiate-merge.yaml", true);
+        assertTrue(cmd.initializeSchema("test-command-to-valdiate-merge.yaml", true).isEmpty());
     }
 
     @Test(expected = OnapCommandInvalidSchema.class)
@@ -75,6 +76,7 @@ public class ValidateSchemaTest {
             protected void run() throws OnapCommandException {}
         };
         OnapCommandSchemaLoader.loadSchema(cmd, "schema-invalid-file-null.yaml", true, true);
+        fail("OnapCommandInvalidSchema exception occurs");
     }
 
     @Test
@@ -83,7 +85,8 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        OnapCommandSchemaLoader.loadSchema(cmd, "schema-validate-pass.yaml", true, true);
+        List<String> list = OnapCommandSchemaLoader.loadSchema(cmd, "schema-validate-pass.yaml", true, true);
+        assertTrue(list.size()==0);
 
     }
 
