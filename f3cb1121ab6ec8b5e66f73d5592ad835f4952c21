@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fad231ec_dec24dac",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandExecutionStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-06-30T04:16:13Z",
+      "side": 1,
+      "message": "remove it and fix it other places as well",
+      "range": {
+        "startLine": 276,
+        "startChar": 16,
+        "endLine": 276,
+        "endChar": 36
+      },
+      "revId": "f3cb1121ab6ec8b5e66f73d5592ad835f4952c21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
