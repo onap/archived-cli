@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fe3b7040_7904e2bc",
+        "filename": "framework/src/main/java/org/onap/cli/fw/cmd/product/OnapProductsListCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 6539
+      },
+      "writtenOn": "2020-06-30T15:06:15Z",
+      "side": 1,
+      "message": "Since productMap.get() method returning string\nso,unnecessary casting is removed",
+      "parentUuid": "7003395a_c9447f8a",
+      "revId": "cd6f90b7ddf52ae31c32b860fbbfbcbf3136b7a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ea33306_3f6576d6",
         "filename": "framework/src/main/java/org/onap/cli/fw/output/print/TableGenerator.java",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0939d9fb_89890885",
+        "filename": "framework/src/main/java/org/onap/cli/fw/output/print/TableGenerator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 6539
+      },
+      "writtenOn": "2020-06-30T15:06:15Z",
+      "side": 1,
+      "message": "A instanceof operator returns false if cell is null. so null check is removed",
+      "parentUuid": "4ea33306_3f6576d6",
+      "revId": "cd6f90b7ddf52ae31c32b860fbbfbcbf3136b7a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4be27c5e_6c57e856",
         "filename": "profiles/command/src/main/java/org/onap/cli/fw/cmd/cmd/OpenCommandShellCmd.java",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2020-06-30T04:30:53Z",
       "side": 1,
       "message": "can you check this logic to avoid regression.",
+      "revId": "cd6f90b7ddf52ae31c32b860fbbfbcbf3136b7a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae4fda4_787e6cb7",
+        "filename": "profiles/command/src/main/java/org/onap/cli/fw/cmd/cmd/OpenCommandShellCmd.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 6539
+      },
+      "writtenOn": "2020-06-30T15:06:15Z",
+      "side": 1,
+      "message": "checked logic for code changes just added ! operator while setting because if condition is \"true\" setting as \"false\" viceversa.",
+      "parentUuid": "4be27c5e_6c57e856",
       "revId": "cd6f90b7ddf52ae31c32b860fbbfbcbf3136b7a6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true

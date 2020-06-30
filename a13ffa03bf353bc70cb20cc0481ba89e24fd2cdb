@@ -16,6 +16,24 @@
       "revId": "a13ffa03bf353bc70cb20cc0481ba89e24fd2cdb",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad25a8fd_2ecd739d",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 6539
+      },
+      "writtenOn": "2020-06-30T15:06:15Z",
+      "side": 0,
+      "message": "Since YamlException and IoException having same body. so, after combining two exceptions YamlException is already caught by the alternative IOException. so removed YamlException",
+      "parentUuid": "95b0eebe_a03551a9",
+      "revId": "a13ffa03bf353bc70cb20cc0481ba89e24fd2cdb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
