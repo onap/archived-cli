@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7003395a_c9447f8a",
+        "filename": "framework/src/main/java/org/onap/cli/fw/cmd/product/OnapProductsListCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-06-30T04:30:53Z",
+      "side": 1,
+      "message": "why string conversion is removed",
+      "revId": "cd6f90b7ddf52ae31c32b860fbbfbcbf3136b7a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ea33306_3f6576d6",
+        "filename": "framework/src/main/java/org/onap/cli/fw/output/print/TableGenerator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-06-30T04:30:53Z",
+      "side": 1,
+      "message": "if null, will it not create runtime execp?",
+      "revId": "cd6f90b7ddf52ae31c32b860fbbfbcbf3136b7a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be27c5e_6c57e856",
+        "filename": "profiles/command/src/main/java/org/onap/cli/fw/cmd/cmd/OpenCommandShellCmd.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-06-30T04:30:53Z",
+      "side": 1,
+      "message": "can you check this logic to avoid regression.",
+      "revId": "cd6f90b7ddf52ae31c32b860fbbfbcbf3136b7a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}

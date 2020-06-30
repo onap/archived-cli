@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95b0eebe_a03551a9",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-06-30T04:30:53Z",
+      "side": 0,
+      "message": "why is it removed ?",
+      "revId": "a13ffa03bf353bc70cb20cc0481ba89e24fd2cdb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
