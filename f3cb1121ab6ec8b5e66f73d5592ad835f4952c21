@@ -22,6 +22,23 @@
       "revId": "f3cb1121ab6ec8b5e66f73d5592ad835f4952c21",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da864e68_eb279ebd",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-06-30T04:32:58Z",
+      "side": 1,
+      "message": "check with sravan who has removed this YamlException on his commit, not sure if this catch not required.",
+      "revId": "f3cb1121ab6ec8b5e66f73d5592ad835f4952c21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
