@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9166d389_70fc2472",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandHelperUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-07-01T04:26:33Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "1f091827_89032d71",
+      "revId": "188c0265572e780a4f573a2b6989076338e909bc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e02c458_7b921cff",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/ProcessRunner.java",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-06-30T04:23:21Z",
       "side": 1,
       "message": "why .toString() is removed from Arrays.asList part",
+      "revId": "188c0265572e780a4f573a2b6989076338e909bc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd435317_4b3a7272",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/ProcessRunner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-07-01T04:26:33Z",
+      "side": 1,
+      "message": "logging arguments should not require evaluation",
+      "parentUuid": "7e02c458_7b921cff",
       "revId": "188c0265572e780a4f573a2b6989076338e909bc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
