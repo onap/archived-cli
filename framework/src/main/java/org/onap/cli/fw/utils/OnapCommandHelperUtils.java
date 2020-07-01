@@ -42,11 +42,8 @@ public class OnapCommandHelperUtils {
      */
     public static String findLastBuildTime() {
         String impBuildDate = "";
-        JarFile jar = null;
-        try
-        {
-            String path = OnapCommandUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-            jar = new JarFile(path);
+        String path = OnapCommandUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        try(JarFile jar = new JarFile(path)){
             Manifest manifest = jar.getManifest();
 
             Attributes attributes = manifest.getMainAttributes();
@@ -56,14 +53,6 @@ public class OnapCommandHelperUtils {
         catch (IOException e)  // NOSONAR
         {
             //Ignore it as it will never occur
-        } finally {
-            if (jar != null) {
-                try {
-                    jar.close();
-                } catch (IOException e) { // NOSONAR
-                    //Ignore it as it will never occur
-                }
-            }
         }
 
         return impBuildDate;
@@ -80,18 +69,18 @@ public class OnapCommandHelperUtils {
      */
     public static String help(OnapCommand cmd) throws OnapCommandHelpFailed {
 
-        String help = "usage: oclip " + cmd.getName();
+        StringBuilder help = new StringBuilder("usage: oclip " + cmd.getName());
 
         // Add description
-        help += "\n\n" + cmd.getDescription();
+        help.append("\n\n" + cmd.getDescription());
 
         // Add info
-        help += "\n\nProduct: " + cmd.getInfo().getProduct();
-        help += "\nService: " + cmd.getInfo().getService();
-        help += "\nAuthor: " + cmd.getInfo().getAuthor();
+        help.append("\n\nProduct: " + cmd.getInfo().getProduct());
+        help.append("\nService: " + cmd.getInfo().getService());
+        help.append("\nAuthor: " + cmd.getInfo().getAuthor());
 
         // Add whole command
-        String commandOptions = "";
+        StringBuilder commandOptions = new StringBuilder();
 
         // Add parameters
         OnapCommandResult paramTable = new OnapCommandResult();
@@ -122,16 +111,16 @@ public class OnapCommandHelperUtils {
             String optFirstCol;
             if (newLineOptions == 3) {
                 newLineOptions = 0;
-                commandOptions += "\n";
+                commandOptions.append("\n");
             }
 
             if (param.getShortOption() != null || param.getLongOption() != null) {
                 optFirstCol = OnapCommandParameter.printShortOption(param.getShortOption()) + " | "
                         + OnapCommandParameter.printLongOption(param.getLongOption());
-                commandOptions += " [" + optFirstCol + "]";
+                commandOptions.append(" [" + optFirstCol + "]");
             } else {
                 optFirstCol = param.getName();
-                commandOptions += " <" + optFirstCol + ">";
+                commandOptions.append(" <" + optFirstCol + ">");
             }
 
             newLineOptions++;
@@ -169,7 +158,7 @@ public class OnapCommandHelperUtils {
         }
 
         try {
-            help += "\n\nOptions::\n\n" + commandOptions + "\n\nwhere::\n\n" + paramTable.print();
+            help.append("\n\nOptions::\n\n" + commandOptions.toString() + "\n\nwhere::\n\n" + paramTable.print());
         } catch (OnapCommandException e) {
             throw new OnapCommandHelpFailed(e);
         }
@@ -196,15 +185,15 @@ public class OnapCommandHelperUtils {
 
         if (cmd.getResult().getRecords().size() > 0) {
             try {
-                help += "\n\nResults::\n\n" + resultTable.print();
+                help.append("\n\nResults::\n\n" + resultTable.print());
             } catch (OnapCommandException e) {
                 throw new OnapCommandHelpFailed(e);
             }
         }
 
         // Error
-        help += "\n\nError::\n\n On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>\n";
-        return help;
+        help.append("\n\nError::\n\n On error, it prints <STATUS CODE>::<ERROR CODE>::<ERROR MESSAGE>\n");
+        return help.toString();
     }
 
 }

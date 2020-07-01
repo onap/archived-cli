@@ -129,7 +129,7 @@ public class OnapCommandRegistrar {
         }
 
         this.registry.put(name + ":" + version, cmd);
-        log.info("REGISITER : " + name + ":" + version + " = " + cmd.getCanonicalName());
+        log.info("REGISITER : {} : {} = {}", name, version, cmd.getCanonicalName());
         this.availableProductVersions.add(version);
 
     }
@@ -292,7 +292,7 @@ public class OnapCommandRegistrar {
 
         for (OnapCommandSchemaInfo schema : schemas) {
             if (schema.isIgnore()) {
-                log.info("Ignoring schema " + schema.getSchemaURI());
+                log.info("Ignoring schema {}", schema.getSchemaURI());
                 continue;
             }
 

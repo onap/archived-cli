@@ -36,7 +36,7 @@ public class MockResponse {
         return json;
     }
 
-    public void setJson(String json) throws IOException {
+    public void setJson(String json) throws IOException { //NOSONAR
         if (json != null && !json.isEmpty()) {
             try {
                 JsonParser parser = new JsonParser();

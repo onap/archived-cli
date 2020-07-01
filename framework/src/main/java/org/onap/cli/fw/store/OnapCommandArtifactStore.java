@@ -164,7 +164,7 @@ public class OnapCommandArtifactStore {
         return DatatypeConverter.printHexBinary(hash);
     }
 
-    public Artifact createArtifact(Artifact artifact) throws OnapCommandArtifactContentNotExist, OnapCommandArtifactAlreadyExist, OnapCommandArtifactContentChecksumNotMatch {
+    public Artifact createArtifact(Artifact artifact) throws OnapCommandArtifactContentNotExist, OnapCommandArtifactAlreadyExist, OnapCommandArtifactContentChecksumNotMatch { //NOSONAR
         if (!new File(artifact.getPath()).exists()) {
             throw new OnapCommandArtifactContentNotExist(artifact.getPath());
         }
@@ -187,7 +187,7 @@ public class OnapCommandArtifactStore {
             FileUtils.writeStringToFile(new File(storePath), gson.toJson(artifact));
         } catch (Exception e) { // NOSONAR
             //It is expected that this never occurs
-            log.error("Failed to store the artifact at " + storePath);
+            log.error("Failed to store the artifact at {}", storePath);
         }
 
         return artifact;
@@ -204,13 +204,13 @@ public class OnapCommandArtifactStore {
             return gson.fromJson(FileUtils.readFileToString(aFile), Artifact.class);
         } catch (Exception e) { // NOSONAR
             //It is expected that this never occurs
-            log.error("Failed to retrieve the artifact at " + storePath);
+            log.error("Failed to retrieve the artifact at {}", storePath);
         }
         return null;
     }
 
 
-    public List<Artifact> listArtifact(String category, String namePattern) throws OnapCommandArtifactNotFound {
+    public List<Artifact> listArtifact(String category, String namePattern) throws OnapCommandArtifactNotFound { //NOSONAR
         List<Artifact> artifacts = new ArrayList<>();
 
         String searchPattern = "";
@@ -242,7 +242,7 @@ public class OnapCommandArtifactStore {
                 artifacts.add(gson.fromJson(jsonReader, Artifact.class));
             } catch (Exception e) { // NOSONAR
                 //It is expected that this never occurs
-                log.error("While seraching Failed to retrieve the artifact at " + file.getAbsolutePath());
+                log.error("While seraching Failed to retrieve the artifact at {}", file.getAbsolutePath());
             }
         }
 
@@ -256,7 +256,7 @@ public class OnapCommandArtifactStore {
             throw new OnapCommandArtifactNotFound(name, category);
         }
         if(!aFile.delete()){
-            log.error("Failed to delete the artifact " + aFile.getAbsolutePath());
+            log.error("Failed to delete the artifact {}", aFile.getAbsolutePath());
         }
     }
 
@@ -316,7 +316,7 @@ public class OnapCommandArtifactStore {
             }
         } catch (Exception e) { // NOSONAR
             //It is expected that this never occurs
-            log.error("Failed to update the artifact at " + existingStorePath);
+            log.error("Failed to update the artifact at {}", existingStorePath);
         }
         return artifact;
     }

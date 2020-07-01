@@ -132,6 +132,20 @@ public class OnapCommandUtilsTest {
     }
 
     @Test
+    public void replaceLineFromResultsTest() {
+        String replacedLine = OnapCommandUtils.replaceLineFromResults("line", new HashMap<>());
+        assertEquals("line", replacedLine);
+        replacedLine = OnapCommandUtils.replaceLineFromResults("${}", new HashMap<>());
+        assertEquals("${}", replacedLine);
+        replacedLine = OnapCommandUtils.replaceLineFromResults("$r{}", new HashMap<>());
+        assertTrue( replacedLine.isEmpty());
+        HashMap<String, String> values = new HashMap<>();
+        values.put("This is test line","This is test line");
+        replacedLine = OnapCommandUtils.replaceLineFromResults("$r{This is test line}", values);
+        assertEquals("This is test line", replacedLine);
+    }
+
+    @Test
     public void replaceLineForSpecialValues_replacingUuid() {
         String replacedLine = OnapCommandUtils.replaceLineForSpecialValues("$s{uuid}");
 
