@@ -273,7 +273,6 @@ public class OnapCommandPrint {
             try {
                 return new JsonParser().parse(array.toJSONString()).toString();
             } catch (Exception e) { // NOSONAR
-                // TODO Auto-generated catch block
                 return array.toJSONString();
             }
 
