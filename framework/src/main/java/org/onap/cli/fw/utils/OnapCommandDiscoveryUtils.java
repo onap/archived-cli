@@ -292,12 +292,7 @@ public class OnapCommandDiscoveryUtils {
                 Map<String, ?> deafultResourceMap;
 
                 for (Resource resource : deafultRres) {
-                    try {
-                        deafultResourceMap = loadYaml(resource);
-                    } catch (OnapCommandException e) {
-                        OnapCommandUtils.log.error("Ignores invalid schema " + resource.getURI().toString(), e);
-                        continue;
-                    }
+                    deafultResourceMap = loadYaml(resource, true);
 
                     if (deafultResourceMap != null && deafultResourceMap.size() > 0) {
                         //default_input_parameters_http.yaml
@@ -546,6 +541,25 @@ public class OnapCommandDiscoveryUtils {
             values = loadYaml(resource.getInputStream());
         } catch (Exception e) {
             throw new OnapCommandInvalidSchema(resource.getFilename(), e);
+        }
+        return values;
+    }
+/**
+     * Get schema map.
+     *
+     * @param resource
+     *            resource obj
+     *            ignoreInvalidSchema boolean
+     * @return map
+     * @throws OnapCommandInvalidSchema
+     *             exception
+     */
+    public static Map<String, ?> loadYaml(Resource resource, boolean ignoreInvalidSchema) throws OnapCommandInvalidSchema, IOException {
+        Map<String, ?> values = null;
+        try {
+            values = loadYaml(resource.getInputStream());
+        } catch (OnapCommandException | IOException e) {
+            OnapCommandUtils.log.error("Ignores invalid schema " + resource.getURI().toString(), e);
         }
         return values;
     }
