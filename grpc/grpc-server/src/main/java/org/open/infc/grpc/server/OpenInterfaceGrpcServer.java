@@ -242,11 +242,7 @@ public class OpenInterfaceGrpcServer {
                     // use the status from the plugin.
                     reply.setSuccess(cmd.getResult().isPassed());
 
-                    try {
-                        reply.putAttrs(OnapCommandConstants.RESULTS, new JsonParser().parse(printOut).toString());
-                    } catch (Exception e) { // NOSONAR
-                        reply.putAttrs(OnapCommandConstants.RESULTS, printOut);
-                    }
+                    setOutputAttr(reply,printOut);
 
                     output = reply.build();
                     logger.info("{}", output);
@@ -279,6 +275,14 @@ public class OpenInterfaceGrpcServer {
             responseObserver.onCompleted();
         }
 
+        public static void setOutputAttr(Builder reply,String printOut){
+            try {
+                reply.putAttrs(OnapCommandConstants.RESULTS, new JsonParser().parse(printOut).toString());
+            } catch (Exception e) { // NOSONAR
+                reply.putAttrs(OnapCommandConstants.RESULTS, printOut);
+            }
+
+        }
         @Override
         public void remoteCli(Args req, StreamObserver<Result> responseObserver) {
             logger.info("{}", req);

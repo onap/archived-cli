@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
 public class OnapCommandExecutionStore {
     private static Logger log = LoggerFactory.getLogger(OnapCommandExecutionStore.class);
 
-    private static boolean storeReady = false;
+    private static boolean storeReady = false; //NOSONAR
     private static String REQUEST_ID = "requestId";
     private static String EXECUTION_ID = "executionId";
     private static String INPUT = "input";
