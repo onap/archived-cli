@@ -116,25 +116,25 @@ public class OnapCommandSchemaMerger {
             //Name should be existing in the map, otherwise continue as don't know how to compare
             if (nameN != null) {
 
-            boolean existing = false;
-            for (Object e: originalList) {
-                Map<String, Object> oE = (Map) e;
-                String nameE = (String)oE.getOrDefault(OnapCommandConstants.NAME, null);
+                boolean existing = false;
+                for (Object e : originalList) {
+                    Map<String, Object> oE = (Map) e;
+                    String nameE = (String) oE.getOrDefault(OnapCommandConstants.NAME, null);
 
-                //Name should be existing in the map, otherwise continue as don't know how to compare
-                if (nameN.equals(nameE)) {
-                    for (Entry<String, Object> oNe : oN.entrySet()) {
-                           oE.put(oNe.getKey(), oNe.getValue());
+                    //Name should be existing in the map, otherwise continue as don't know how to compare
+                    if (nameN.equals(nameE)) {
+                        for (Entry<String, Object> oNe : oN.entrySet()) {
+                            oE.put(oNe.getKey(), oNe.getValue());
+                        }
+                        existing = true;
+                        break;
                     }
-                    existing = true;
-                    break;
+                }
+
+                if (!existing) {
+                    originalList.add(o);
                 }
             }
-
-            if (!existing) {
-                originalList.add(o);
-            }
-        }
         }
     }
 }

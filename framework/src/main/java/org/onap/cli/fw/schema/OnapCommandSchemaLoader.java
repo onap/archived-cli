@@ -160,7 +160,7 @@ public class OnapCommandSchemaLoader {
                 errors.addAll(parseSchema(cmd, defaultParameterMap, validateSchema));
             }
 
-            Map<String, ?> commandYamlMap = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
+            Map<String, Object> commandYamlMap = validateSchemaVersion(schemaName, cmd.getSchemaVersion());
 
             errors.addAll(parseSchema(cmd, commandYamlMap, validateSchema));
 
