@@ -214,8 +214,9 @@ public class OpenInterfaceGrpcServer {
                 }
 
                     //Start the execution
-                        if (!cmd.isRpc()&&req.getRequestId() != null && !req.getRequestId().isEmpty()&&!(cmd.getInfo().getProduct().equalsIgnoreCase("open-cli") &&
-                                cmd.getName().equalsIgnoreCase("execution-list"))) {
+                        if (!cmd.isRpc() && req.getRequestId() != null && !req.getRequestId().isEmpty() &&
+                                !(cmd.getInfo().getProduct().equalsIgnoreCase("open-cli") &&
+                                        cmd.getName().equalsIgnoreCase("execution-list"))) {
                         String input = cmd.getArgsJson(true);
                         executionStoreContext = OnapCommandExecutionStore.getStore().storeExectutionStart(
                                 req.getRequestId(),
