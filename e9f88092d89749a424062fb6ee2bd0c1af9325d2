@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "232ff435_8c38b1f0",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaLoader.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-07-09T08:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8dee04a_55d8d0c3",
+      "range": {
+        "startLine": 163,
+        "startChar": 23,
+        "endLine": 163,
+        "endChar": 25
+      },
+      "revId": "e9f88092d89749a424062fb6ee2bd0c1af9325d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0c7da8c_4bb43c13",
         "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c852e6e1_31567802",
+        "filename": "framework/src/main/java/org/onap/cli/fw/utils/OnapCommandDiscoveryUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-07-09T08:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c7da8c_4bb43c13",
+      "range": {
+        "startLine": 347,
+        "startChar": 24,
+        "endLine": 347,
+        "endChar": 25
+      },
+      "revId": "e9f88092d89749a424062fb6ee2bd0c1af9325d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d359c5fa_a372e259",
         "filename": "grpc/grpc-server/src/main/java/org/open/infc/grpc/server/OpenInterfaceGrpcServer.java",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "e9f88092d89749a424062fb6ee2bd0c1af9325d2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de7d3ef6_151fed05",
+        "filename": "grpc/grpc-server/src/main/java/org/open/infc/grpc/server/OpenInterfaceGrpcServer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-07-09T08:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d359c5fa_a372e259",
+      "range": {
+        "startLine": 216,
+        "startChar": 40,
+        "endLine": 216,
+        "endChar": 42
+      },
+      "revId": "e9f88092d89749a424062fb6ee2bd0c1af9325d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
