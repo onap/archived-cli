@@ -27,7 +27,7 @@ public class OnapSchemaValidateCommandTest {
 
     @Ignore
     @Test
-    public void validateSchemaCommandTest1() throws OnapCommandException {
+    public void validateSchemaCommandTest1() throws OnapCommandException { //NOSONAR
         OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("schema-validate");
         cmd.getParametersMap().get("schema-location").setValue("schema-validate-pass.yaml");
         cmd.getParametersMap().get("internal-schema").setValue("true");
@@ -36,7 +36,7 @@ public class OnapSchemaValidateCommandTest {
 
     @Ignore
     @Test
-    public void validateSchemaCommandTest2() throws OnapCommandException {
+    public void validateSchemaCommandTest2() throws OnapCommandException { //NOSONAR
         OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("schema-validate");
         cmd.getParametersMap().get("schema-location").setValue(
                 ValidateSchemaTest.class.getClassLoader().getResource("schema-validate-pass.yaml").getFile());

@@ -18,6 +18,7 @@ package org.onap.cli.fw.input;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandInvalidParameterType;
@@ -44,7 +45,7 @@ public class ParameterTypeTest {
         try {
             OnapCommandParameterType.get("name");
         } catch (OnapCommandInvalidParameterType e) {
-            assertTrue("0x7001::Parameter type name is invalid".equals(e.getMessage()));
+        	assertEquals("0x7001::Parameter type name is invalid", e.getMessage());
         }
 
     }

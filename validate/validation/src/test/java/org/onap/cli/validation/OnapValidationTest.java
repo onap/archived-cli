@@ -95,7 +95,7 @@ public class OnapValidationTest {
                 Date end = new Date();
                 System.out.println("[ Total time " + (end.getTime() - start.getTime()) + " ms ]\n");
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(2000); //NOSONAR
                 } catch (InterruptedException e) {
                     System.out.println(new Date());
                 }

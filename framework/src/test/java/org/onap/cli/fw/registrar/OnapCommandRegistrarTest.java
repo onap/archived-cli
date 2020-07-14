@@ -105,7 +105,7 @@ public class OnapCommandRegistrarTest {
 }
 
 @OnapCommandSchema(schema = "sample-test-schema.yaml")
-final class OnapCommandTest extends OnapCommand {
+final class OnapCommandTest extends OnapCommand { //NOSONAR
 
     public OnapCommandTest() {
 

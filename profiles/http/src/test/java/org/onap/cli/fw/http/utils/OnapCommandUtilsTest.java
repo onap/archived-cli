@@ -55,6 +55,7 @@ import org.onap.cli.fw.error.OnapCommandResultEmpty;
 import static org.junit.Assert.assertFalse;
 import org.onap.cli.fw.http.connect.HttpInput;
 import org.onap.cli.fw.http.connect.HttpInput.Part;
+import static org.junit.Assert.assertNotNull;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnapCommandUtilsTest {
@@ -67,7 +68,7 @@ public class OnapCommandUtilsTest {
     @Test
     public void oclipCommandUtilsInputStreamNotNullTest() throws OnapCommandException {
         Map<String, ?> map = OnapCommandSchemaLoader.validateSchemaVersion("sample-test1-schema-http.yaml", "1.0");
-        assertTrue(map != null);
+        assertNotNull(map);
     }
 
     @Test
@@ -76,7 +77,7 @@ public class OnapCommandUtilsTest {
         cmd.setName("sample-create-http");
         try {
             OnapCommandSchemaHttpLoader.loadHttpSchema(cmd, "sample-test-schema-http.yaml", true, true);
-            assertTrue(cmd.getSuccessStatusCodes().size() == 2);
+            assertEquals(2, cmd.getSuccessStatusCodes().size());
         } catch (OnapCommandParameterNameConflict | OnapCommandParameterOptionConflict
                 | OnapCommandInvalidParameterType | OnapCommandInvalidPrintDirection
                 | OnapCommandInvalidResultAttributeScope | OnapCommandSchemaNotFound | OnapCommandInvalidSchema
@@ -97,10 +98,10 @@ public class OnapCommandUtilsTest {
             }
         };
         OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-schema-auth-required.yaml", true, false);
-        assertTrue("sample-test".equals(cmd.getName()));
+        assertEquals("sample-test", cmd.getName());
 
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 9);
+        assertEquals(9, map.size());
     }
 
     @Test(expected = OnapCommandHttpHeaderNotFound.class)
