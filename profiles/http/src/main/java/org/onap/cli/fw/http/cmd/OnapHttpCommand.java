@@ -183,8 +183,8 @@ public class OnapHttpCommand extends OnapCommand {
                 OnapCommandParameter context = contextOpt.get();
                 Map<String, String> map = (Map<String, String>) context.getValue();
 
-                mockingEnabled =  map.containsKey(OnapCommandHttpConstants.VERIFY_DISABLE_MOCKING)
-                        && "true".equals(map.get(OnapCommandHttpConstants.VERIFY_DISABLE_MOCKING)) ? false : true;
+                mockingEnabled =  !(map.containsKey(OnapCommandHttpConstants.VERIFY_DISABLE_MOCKING)
+                        && "true".equals(map.get(OnapCommandHttpConstants.VERIFY_DISABLE_MOCKING)));
 
                 if (mockingEnabled) {
                     String mockedFile = ((Map<String, String>) context.getValue()).get(OnapCommandConstants.VERIFY_MOCO);

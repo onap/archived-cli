@@ -55,7 +55,7 @@ public class SampleYamlGenerator {
         writer.close();
     }
 
-    private static void writeMultilineKeyValue(PrintWriter writer, String key, String value, boolean debug) {
+    private static void writeMultilineKeyValue(PrintWriter writer, String key, String value, boolean debug) { //NOSONAR
         writer.write(printTabs() + key + ":");
         if (value.isEmpty()) {
             return;

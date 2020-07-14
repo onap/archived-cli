@@ -35,7 +35,7 @@ public class OnapCommandResultTest {
 
     @Test
     @Ignore
-    public void commandResultObjTest() throws OnapCommandException {
+    public void commandResultObjTest() throws OnapCommandException { //NOSONAR
         OnapCommandResult res = new OnapCommandResult();
         res.setDebugInfo("debugInfo");
         res.setIncludeSeparator(true);
@@ -58,7 +58,7 @@ public class OnapCommandResultTest {
 
     @Test
     @Ignore
-    public void commandResultPrintLandscapeTableTest() throws OnapCommandException {
+    public void commandResultPrintLandscapeTableTest() throws OnapCommandException { //NOSONAR
         OnapCommandResult res = new OnapCommandResult();
         res.setDebugInfo("debugInfo");
         res.setIncludeSeparator(true);
@@ -86,7 +86,7 @@ public class OnapCommandResultTest {
 
     @Test
     @Ignore
-    public void commandResultPrintLandscapeJsonTest() throws OnapCommandException {
+    public void commandResultPrintLandscapeJsonTest() throws OnapCommandException { //NOSONAR
         OnapCommandResult res = new OnapCommandResult();
         res.setDebugInfo("debugInfo");
         res.setIncludeSeparator(true);
@@ -116,7 +116,7 @@ public class OnapCommandResultTest {
 
     @Test
     @Ignore
-    public void commandResultPrintLandscapeCsvTest() throws OnapCommandException {
+    public void commandResultPrintLandscapeCsvTest() throws OnapCommandException { //NOSONAR
         OnapCommandResult res = new OnapCommandResult();
         res.setDebugInfo("debugInfo");
         res.setIncludeSeparator(true);
@@ -150,7 +150,7 @@ public class OnapCommandResultTest {
 
     @Test
     @Ignore
-    public void commandResultPrintPortraitCsvTest() throws OnapCommandException {
+    public void commandResultPrintPortraitCsvTest() throws OnapCommandException { //NOSONAR
         OnapCommandResult res = new OnapCommandResult();
         res.setDebugInfo("debugInfo");
         res.setIncludeSeparator(true);
@@ -182,7 +182,7 @@ public class OnapCommandResultTest {
 
     @Test
     @Ignore
-    public void commandResultPrintPortraitTableTest() throws OnapCommandException {
+    public void commandResultPrintPortraitTableTest() throws OnapCommandException { //NOSONAR
         OnapCommandResult res = new OnapCommandResult();
         res.setDebugInfo("debugInfo");
         res.setIncludeSeparator(true);

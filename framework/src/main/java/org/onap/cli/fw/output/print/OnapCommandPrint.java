@@ -71,10 +71,7 @@ public class OnapCommandPrint {
      * @return list
      */
     public List<String> getColumn(String header) {
-        if (this.data.get(header) == null) {
-            this.data.put(header, new ArrayList<String>());
-        }
-        return this.data.get(header);
+    	return this.data.computeIfAbsent(header, k -> new ArrayList<String>());
     }
 
     public boolean isPrintTitle() {

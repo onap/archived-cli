@@ -30,7 +30,7 @@ public class OnapCommandPrintTest {
 
     @Test
     @Ignore
-    public void printCsvTest() throws OnapCommandOutputPrintingFailed {
+    public void printCsvTest() throws OnapCommandOutputPrintingFailed { //NOSONAR
         OnapCommandPrint pr = new OnapCommandPrint();
         pr.setDirection(OnapCommandPrintDirection.LANDSCAPE);
         pr.setPrintTitle(true);

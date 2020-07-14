@@ -158,11 +158,11 @@ public class OnapCli {
     }
 
     protected void print(String msg) {
-        System.out.println(msg);
+        System.out.println(msg); //NOSONAR
     }
 
     protected void printerr(String msg) {
-        System.err.println(msg);
+        System.err.println(msg); //NOSONAR
     }
 
     private void print(Throwable throwable) {
@@ -515,7 +515,7 @@ public class OnapCli {
                 //refer params from profile
                 if (this.profile != null) {
 
-                    Map<String, String> paramCache = new HashMap<>();
+                    Map<String, String> paramCache = new HashMap<>(); //NOSONAR
                     if (this.product == null)
                         paramCache = OnapCommandRegistrar.getRegistrar().getParamCache();
                     else

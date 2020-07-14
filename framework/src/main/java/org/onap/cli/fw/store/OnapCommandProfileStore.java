@@ -19,7 +19,6 @@ package org.onap.cli.fw.store;
 import static org.onap.cli.fw.conf.OnapCommandConstants.DATA_PATH_PROFILE_JSON;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -147,8 +146,7 @@ public class OnapCommandProfileStore {
     }
 
     private void load(String profileName, boolean include) throws OnapCommandException {
-        List<OnapCommandParamEntity> params= new ArrayList<>();
-        params = this.loadParamFromCache(profileName);
+        List<OnapCommandParamEntity> params = this.loadParamFromCache(profileName);
 
         for (OnapCommandParamEntity p : params) {
             if (include) {

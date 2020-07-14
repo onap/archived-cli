@@ -263,7 +263,7 @@ public class OnapCommandUtilsTest {
 
     @Test
     @Ignore
-    public void invalidSchemaFileTest() throws OnapCommandException {
+    public void invalidSchemaFileTest() throws OnapCommandException { //NOSONAR
         Map<String, ?> map = null;
         try {
             map = OnapCommandSchemaLoader.validateSchemaVersion("sample-test-schema1.yaml", "1.0");
@@ -371,7 +371,7 @@ public class OnapCommandUtilsTest {
         }
 
         Map<String, OnapCommandParameter> map = OnapCommandUtils.getInputMap(cmd.getParameters());
-        assertTrue(map.size() == 18);
+        assertEquals(18, map.size());
     }
 
     @Test
@@ -554,6 +554,6 @@ public class OnapCommandUtilsTest {
     public void loadYamlTest() throws OnapCommandInvalidSchema {
         File file=new File("src/test/resources/sample-test-info.yaml");
         Map<String, Object> values= OnapCommandDiscoveryUtils.loadYaml(file.getAbsolutePath());
-        assertEquals(values.get("name"),"sample-test-info");
+        assertEquals("sample-test-info",values.get("name"));
     }
 }

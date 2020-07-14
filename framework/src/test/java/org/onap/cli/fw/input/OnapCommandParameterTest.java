@@ -17,6 +17,7 @@
 package org.onap.cli.fw.input;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -48,7 +49,7 @@ public class OnapCommandParameterTest {
                 && param.isOptional() && !param.isSecured()
                 && param.getParameterType().equals(OnapCommandParameterType.JSON));
 
-        assertTrue("value".equals(param.getValue()));
+        assertEquals("value", param.getValue());
 
         param.setParameterType(OnapCommandParameterType.ARRAY);
         List<String> list = Arrays.asList("1", "2", "3");
@@ -84,7 +85,7 @@ public class OnapCommandParameterTest {
 
         String envValue = param.getEnvVarNameFromrRawDefaultValue();
 
-        assertTrue("DAFAULT_VALUE".equals(envValue));
+        assertEquals("DAFAULT_VALUE", envValue);
     }
 
     @Test
@@ -97,7 +98,7 @@ public class OnapCommandParameterTest {
         try {
             param.validate();
         } catch (OnapCommandException e) {
-            assertTrue("0x7003::Parameter null is mandatory".equals(e.getMessage()));
+            assertEquals("0x7003::Parameter null is mandatory", e.getMessage());
         }
     }
 
@@ -107,7 +108,7 @@ public class OnapCommandParameterTest {
         param.setName("name");
         param.setParameterType(OnapCommandParameterType.ARRAY);
         param.setValue("value");
-        assertTrue("[\"1\",\"2\",\"3\"]".equals(param.getValue()));
+        assertEquals("[\"1\",\"2\",\"3\"]", param.getValue());
 
     }
 
@@ -117,7 +118,7 @@ public class OnapCommandParameterTest {
         param.setName("name");
         param.setParameterType(OnapCommandParameterType.MAP);
         param.setValue("value");
-        assertTrue("{\"One\":\"1\",\"Two\":\"2\",\"Three\":\"3\"}".equals(param.getValue()));
+        assertEquals("{\"One\":\"1\",\"Two\":\"2\",\"Three\":\"3\"}", param.getValue());
     }
 
     @Test(expected = OnapCommandInvalidParameterValue.class)

@@ -113,7 +113,7 @@ public class OnapCommandDiscoveryUtils {
      *             exception
      */
     public static List<OnapCommandSchemaInfo> discoverOrLoadSchemas(boolean forceRefresh) throws OnapCommandException {
-        List<OnapCommandSchemaInfo> schemas = new ArrayList<>();
+        List<OnapCommandSchemaInfo> schemas = new ArrayList<>(); //NOSONAR
         if (forceRefresh || Boolean.parseBoolean(OnapCommandConfig.getPropertyValue(OnapCommandConstants.DISCOVER_ALWAYS))
                 || !OnapCommandDiscoveryUtils.isAlreadyDiscovered()) {
             schemas = OnapCommandDiscoveryUtils.discoverSchemas();
@@ -219,13 +219,7 @@ public class OnapCommandDiscoveryUtils {
      *             exception
      */
     public static Map<String, Object> loadSchema(Resource resource) throws OnapCommandInvalidSchema {
-        Map<String, Object> values = null;
-        try {
-            values = loadYaml(resource.getInputStream());
-        } catch (Exception e) {
-            throw new OnapCommandInvalidSchema(resource.getFilename(), e);
-        }
-        return values;
+        return loadYaml(resource);
     }
 
     /**

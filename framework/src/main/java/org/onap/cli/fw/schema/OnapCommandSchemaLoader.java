@@ -511,7 +511,7 @@ public class OnapCommandSchemaLoader {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, Object> loadSchema(InputStream stream, String schemaName) throws OnapCommandInvalidSchema  {
+    public static Map<String, Object> loadSchema(InputStream stream, String schemaName) throws OnapCommandInvalidSchema  { //NOSONAR
         return OnapCommandDiscoveryUtils.loadYaml(stream);
 
     }
