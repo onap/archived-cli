@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d74c930d_41e38d8d",
+        "filename": "framework/src/main/java/org/onap/cli/fw/output/print/OnapCommandPrint.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-17T11:56:37Z",
+      "side": 1,
+      "message": "nice one!",
+      "revId": "9a08d687e48312beef47bce357d374ede2ce0dc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
