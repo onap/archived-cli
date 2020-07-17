@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c7259b0_b32a5352",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaMerger.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-17T12:01:20Z",
+      "side": 1,
+      "message": "remove tabs",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 16
+      },
+      "revId": "856c7489de4b9f6e3343f16ae25d58235ceac24a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
