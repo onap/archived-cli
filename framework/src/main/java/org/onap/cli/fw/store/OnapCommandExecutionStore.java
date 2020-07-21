@@ -453,8 +453,7 @@ public class OnapCommandExecutionStore {
 
     private File getExecutionDir(String executionId) throws OnapCommandExecutionNotFound {
         File []f =  new File(getBasePath()).listFiles((dir, name) -> {
-            if (name.startsWith(executionId)) return true;
-            return false;
+            return name.startsWith(executionId);
         });
 
         if (f.length == 0) {

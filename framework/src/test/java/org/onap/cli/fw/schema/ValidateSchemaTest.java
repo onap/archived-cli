@@ -154,7 +154,7 @@ public class ValidateSchemaTest {
         paraValues.put("is_default_param","yes");
         list.add(paraValues);
         values.put("parameters",list);
-        assertTrue(OnapCommandSchemaLoader.parseSchema(cmd,values,true).size()==2);
+        assertEquals(2, OnapCommandSchemaLoader.parseSchema(cmd,values,true).size());
 
     }
     @Test
@@ -172,7 +172,7 @@ public class ValidateSchemaTest {
         list.add(paraValues);
         attributesValues.put("attributes",list);
         values.put("results",attributesValues);
-        assertTrue(OnapCommandSchemaLoader.parseSchema(cmd,values,true).size()==2);
+        assertEquals(2, OnapCommandSchemaLoader.parseSchema(cmd,values,true).size());
 
     }
 }

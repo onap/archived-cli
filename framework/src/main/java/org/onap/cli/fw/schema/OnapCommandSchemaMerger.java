@@ -33,7 +33,11 @@ import org.slf4j.LoggerFactory;
  */
 public class OnapCommandSchemaMerger {
 
-    static Logger LOG = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
+    static Logger logger = LoggerFactory.getLogger(OnapCommandSchemaMerger.class); // NOSONAR
+
+    private OnapCommandSchemaMerger(){
+        //It is made private in order to resolve: Utility classes should not have public constructors
+    }
 
     public static Map<String, ?> mergeSchemas(OnapCommand cmd) throws OnapCommandException {
         Map<String, Object> mergedResult = new LinkedHashMap<String, Object>();
@@ -50,9 +54,10 @@ public class OnapCommandSchemaMerger {
     public static void mergeYamlMap(Map<String, Object> mergedResult, Map<String, Object> yamlContents) {
         if (yamlContents == null) return;
 
-        for (String key : yamlContents.keySet()) {
+        for (Map.Entry<String,Object> entry : yamlContents.entrySet()) {
 
-            Object yamlValue = yamlContents.get(key);
+            String key = entry.getKey();
+            Object yamlValue = entry.getValue();
             if (yamlValue == null) {
                 mergedResult.put(key, yamlValue);
                 continue;
