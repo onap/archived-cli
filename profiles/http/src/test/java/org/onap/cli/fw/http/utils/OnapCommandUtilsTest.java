@@ -223,7 +223,7 @@ public class OnapCommandUtilsTest {
         HttpInput httpInput = new HttpInput();
         httpInput.setMultiparts(multiparts);
         HttpInput input = OnapCommandHttpUtils.populateParameters(params, httpInput);
-        assertTrue(input != null);
+        assertNotNull(input);
     }
 
 }

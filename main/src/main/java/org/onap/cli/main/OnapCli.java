@@ -393,21 +393,6 @@ public class OnapCli {
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
                         this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
                         this.print(OnapCli.getDirectiveHelp());
-<<<<<<< HEAD
-                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
-                            this.printVersion = true;
-                            handleVersion();
-
-                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
-                            if (args.size() == 1) {
-                                this.print("Please use it in the form of 'profile <profile-name>'\n");
-                                this.print("Available profiles: ");
-                                this.print(OnapCommandRegistrar.getRegistrar().getUserProfiles().toString());
-                            } else {
-                                this.profile = args.get(1);
-                                handleProfile();
-                            }
-=======
 
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
                         this.printVersion = true;
@@ -422,7 +407,6 @@ public class OnapCli {
                             this.profile = args.get(1);
                             handleProfile();
                         }
->>>>>>> Code improvement- Pending sonar issues
 
                         } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_SET)) {
                             if (args.size() > 1) {
