@@ -289,6 +289,6 @@ public class OnapCommandPrint {
             throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
         }
      */
-     return "";
+     return ""; //NOSONAR
     }
 }
