@@ -225,8 +225,8 @@ public class OnapCli {
             if (this.profile != null) {
                 OnapCommandRegistrar.getRegistrar().setProfile(
                         this.profile,
-                        new ArrayList<String>(),
-                        new ArrayList<String>());
+                        new ArrayList<>(),
+                        new ArrayList<>());
             }
         } catch (Exception e) {
             this.print(e);
@@ -378,8 +378,8 @@ public class OnapCli {
                         break;
                     } else if (OnapCliConstants.PARAM_INTERACTIVE_CLEAR.equalsIgnoreCase(line)) {
                         console.clearScreen();
-                        continue;
                     }
+                    else {
                     this.args = new ArrayList<>();
                     this.args.addAll(Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN)));
 
@@ -439,12 +439,13 @@ public class OnapCli {
                     } else {
                         if (args.size() == 1 && args.get(0).trim().isEmpty()) {
                             //Ignore blanks // NOSONAR
-                            continue;
                         }
-
+                        else {
                         this.setArgs(this.args.toArray(new String [] {}));
                         handleCommand();
+                        }
                     }
+                }
                 }
             } catch (IOException e) { // NOSONAR
                 this.print("Failed to read console, " + e.getMessage());

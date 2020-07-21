@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
@@ -38,7 +39,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
 import org.apache.http.client.CookieStore;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
@@ -47,19 +47,19 @@ import org.apache.http.client.methods.HttpPatch;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -79,7 +79,7 @@ public class OnapHttpConnection {
 
     private static Logger log = LoggerFactory.getLogger(OnapHttpConnection.class);
 
-    private HttpClient httpClient = null;
+    private CloseableHttpClient httpClient = null;
 
     Map<String, String> mapCommonHeaders = new HashMap<> ();
 
@@ -108,7 +108,7 @@ public class OnapHttpConnection {
                     SSLContext sslContext = SSLContext.getInstance(OnapCommandHttpConstants.SSLCONTEST_TLS);
                     sslContext.init(null, new TrustManager[] { new TrustAllX509TrustManager() },
                             new java.security.SecureRandom());
-                    X509HostnameVerifier hostnameVerifier = new AllowAllHostnameVerifier();
+                    HostnameVerifier hostnameVerifier = new NoopHostnameVerifier();
                     Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder
                             .<ConnectionSocketFactory>create()
                             .register("https", new SSLConnectionSocketFactory(sslContext, hostnameVerifier)).build();
@@ -320,7 +320,7 @@ public class OnapHttpConnection {
             CookieStore cookieStore = new BasicCookieStore();
             updateInputFromCookies(input, cookieStore);
             HttpContext localContext = new BasicHttpContext();
-            localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+            localContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
 
             this.initHttpClient(input.getUri().startsWith("https"));
 
@@ -337,11 +337,10 @@ public class OnapHttpConnection {
         return result;
     }
 
-    @SuppressWarnings("deprecation")
-    public void close() {
+    public void close() throws IOException {
         this.mapCommonHeaders.clear();
         if (this.httpClient != null) {
-            this.httpClient.getConnectionManager().shutdown();
+            this.httpClient.close();
         }
     }
 

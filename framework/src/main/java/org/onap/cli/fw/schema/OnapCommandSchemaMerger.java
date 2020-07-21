@@ -33,13 +33,13 @@ import org.slf4j.LoggerFactory;
  */
 public class OnapCommandSchemaMerger {
 
-    static Logger LOG = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
+    static Logger logger = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
 
-    public static Map<String, ?> mergeSchemas(OnapCommand cmd) throws OnapCommandException {
-        Map<String, Object> mergedResult = new LinkedHashMap<String, Object>();
+    public static Map<String, Object> mergeSchemas(OnapCommand cmd) throws OnapCommandException {
+        Map<String, Object> mergedResult = new LinkedHashMap<>();
 
         for (String schema: cmd.getSchemas()) {
-            Map<String , Object> schemaMap = (Map<String, Object>) OnapCommandSchemaLoader.validateSchemaVersion(schema, cmd.getSchemaVersion());
+            Map<String , Object> schemaMap = OnapCommandSchemaLoader.validateSchemaVersion(schema, cmd.getSchemaVersion());
             mergeYamlMap(mergedResult, schemaMap);
         }
 
