@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Huawei Technologies Co., Ltd.
+ * Copyright 2017 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,10 @@
 
 package org.onap.cli.fw.error;
 
-/**
- * Profile does not exist.
- *
- */
-public class OnapCommandProfileNotFound extends OnapCommandException {
+public class OnapCommandTimeOutException extends RuntimeException {
 
-    private static final long serialVersionUID = 8580121615330415123L;
-
-    private static final String ERROR_CODE = "0xc002";
-
-    private static final String ERROR_MSG = "Profile does not exist"; //NOSONAR
-    /**
-     * Profile does not exist.
-     */
-    public OnapCommandProfileNotFound(String profile) {
-        super(ERROR_CODE, "Profile " + profile + " does not exist");
+    //TODO: serialVersionUID generation
+    public OnapCommandTimeOutException(String message) {
+        super(message);
     }
 }

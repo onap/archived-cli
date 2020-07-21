@@ -40,7 +40,7 @@ public class OpenRemoteCli {
 
     }
 
-    public Result run (List <String> args) throws Exception {
+    public Result run (List <String> args) throws Exception { //NOSONAR
         OpenInterfaceGrpcClient client = new OpenInterfaceGrpcClient(
                 host, port, timeout);
         try {
@@ -50,7 +50,7 @@ public class OpenRemoteCli {
         }
     }
 
-    public Output invoke (String product, String profile, String action, Map <String, String> params) throws Exception {
+    public Output invoke (String product, String profile, String action, Map <String, String> params) throws Exception { //NOSONAR
         OpenInterfaceGrpcClient client = new OpenInterfaceGrpcClient(
                 host, port, timeout);
         try {
@@ -79,7 +79,7 @@ public class OpenRemoteCli {
      * @return
      * @throws Exception
      */
-    public static Result run (String host, int port, String reqId, List <String> args) throws Exception {
+    public static Result run (String host, int port, String reqId, List <String> args) throws Exception { //NOSONAR
           OpenInterfaceGrpcClient client = new OpenInterfaceGrpcClient(
                   host, port);
 
@@ -101,7 +101,7 @@ public class OpenRemoteCli {
      * @return
      * @throws Exception
      */
-    public static Output invoke (String host, int port, String product, String profile, String action, String reqId, Map <String, String> params) throws Exception {
+    public static Output invoke (String host, int port, String product, String profile, String action, String reqId, Map <String, String> params) throws Exception { //NOSONAR
         OpenInterfaceGrpcClient client = new OpenInterfaceGrpcClient(
                 host, port);
 

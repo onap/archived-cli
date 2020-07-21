@@ -34,6 +34,8 @@ import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 
+import org.onap.cli.fw.output.OnapCommandResult;
+import static org.junit.Assert.assertNotNull;
 public class OnapCommandSampleTest {
     @Test
     public void sampleTestVersion() {
@@ -52,6 +54,8 @@ public class OnapCommandSampleTest {
             OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
             sample.setParameters(parameters);
             sample.execute();
+            OnapCommandResult onapCommandResult = sample.execute();
+            assertEquals("open-cli::test",onapCommandResult.getOutput());
         } catch (OnapCommandException e) {
         }
     }
@@ -70,6 +74,8 @@ public class OnapCommandSampleTest {
             OnapCommandSample sample = new OnapCommandSample();
             sample.setParameters(parameters);
             sample.execute();
+            OnapCommandResult onapCommandResult = sample.execute();
+            assertNotNull(onapCommandResult);
         } catch (OnapCommandException e) {
         }
     }
