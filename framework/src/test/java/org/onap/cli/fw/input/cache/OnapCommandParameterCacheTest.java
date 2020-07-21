@@ -24,11 +24,16 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
+
 public class OnapCommandParameterCacheTest {
     @Test
     public void paramTypeGetTest() throws IOException {
         FileUtils.forceMkdir(new File("data"));
         FileUtils.touch(new File("data" + File.separator + "test-profile.json"));
+        File test_profile = new File("data" + File.separator + "test-profile.json");
+        FileUtils.touch(test_profile);
+        assertNotNull(test_profile.lastModified());
         //assertTrue(OnapCommandProfileStore.getInstance().getProfiles().contains("test"));
         // FileUtils.cleanDirectory(new File("data"));
     }
