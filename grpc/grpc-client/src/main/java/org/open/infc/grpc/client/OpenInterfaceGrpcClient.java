@@ -96,7 +96,7 @@ public class OpenInterfaceGrpcClient {
       }
 
       public Result remoteCli(Args args) throws OpenInterfaceGrpcTimeoutExecption {
-        logger.info(args.toString());
+        logger.info("{}", args);
 
         Result result = Result.newBuilder().setExitCode(1).build();
         try {
