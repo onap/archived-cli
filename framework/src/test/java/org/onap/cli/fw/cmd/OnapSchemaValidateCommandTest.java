@@ -22,6 +22,8 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.schema.ValidateSchemaTest;
 
+import org.onap.cli.fw.output.OnapCommandResult;
+import static org.junit.Assert.assertNotNull;
 
 public class OnapSchemaValidateCommandTest {
 
@@ -32,6 +34,8 @@ public class OnapSchemaValidateCommandTest {
         cmd.getParametersMap().get("schema-location").setValue("schema-validate-pass.yaml");
         cmd.getParametersMap().get("internal-schema").setValue("true");
         cmd.execute();
+        OnapCommandResult onapCommandResult = cmd.execute();
+        assertNotNull(onapCommandResult.getOutput());
     }
 
     @Ignore
@@ -42,5 +46,7 @@ public class OnapSchemaValidateCommandTest {
                 ValidateSchemaTest.class.getClassLoader().getResource("schema-validate-pass.yaml").getFile());
         cmd.getParametersMap().get("internal-schema").setValue("true");
         cmd.execute();
+        OnapCommandResult onapCommandResult = cmd.execute();
+        assertNotNull(onapCommandResult);
     }
 }
