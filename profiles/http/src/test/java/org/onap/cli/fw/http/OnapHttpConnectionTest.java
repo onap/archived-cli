@@ -216,7 +216,7 @@ public class OnapHttpConnectionTest {
     }
 
     @Test()
-    public void httpUnSecuredCloseExceptionTest() throws OnapCommandHttpFailure {
+    public void httpUnSecuredCloseExceptionTest() throws IOException {
         inp.setMethod("other");
         con = new OnapHttpConnection();
         con.close();

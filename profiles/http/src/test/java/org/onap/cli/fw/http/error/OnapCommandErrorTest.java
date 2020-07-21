@@ -52,6 +52,13 @@ public class OnapCommandErrorTest {
     }
 
     @Test
+    public void oclipCommandLoginFailedTest3() {
+        OnapCommandLoginFailed failed = new OnapCommandLoginFailed("Failed");
+
+        assertEquals("0x4001::Login failed, Failed", failed.getMessage());
+    }
+
+    @Test
     public void oclipCommandLoginFailedTest1() {
         OnapCommandLoginFailed failed = new OnapCommandLoginFailed(new Exception("Failed"));
 
