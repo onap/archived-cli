@@ -67,7 +67,7 @@ public class SampleYamlGenerator {
     }
 
     private static String printTabs() {
-        StringBuffer spaces = new StringBuffer();
+        StringBuilder spaces = new StringBuilder();
         for (int i=0; i < nTab; i++) {
             spaces.append("  ");
         }

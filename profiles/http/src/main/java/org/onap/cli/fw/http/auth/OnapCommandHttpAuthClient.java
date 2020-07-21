@@ -32,6 +32,9 @@ import org.onap.cli.fw.http.schema.OnapCommandSchemaHttpLoader;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
 import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 import org.onap.cli.fw.utils.OnapCommandUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.io.IOException;
 
 /**
  * Oclip Auth client helps to do login and logout.
@@ -39,6 +42,7 @@ import org.onap.cli.fw.utils.OnapCommandUtils;
  */
 public class OnapCommandHttpAuthClient {
 
+    private static Logger logger = LoggerFactory.getLogger(OnapCommandHttpAuthClient.class);
     private OnapHttpCommand cmd = null;
 
     private OnapHttpConnection http = null;
@@ -98,7 +102,11 @@ public class OnapCommandHttpAuthClient {
 
         logout.execute();
 
-        this.http.close();
+        try {
+            this.http.close();
+        } catch (IOException e) {
+            logger.error("Exception when closing httpclient {}", e);
+        }
     }
 
     /**
