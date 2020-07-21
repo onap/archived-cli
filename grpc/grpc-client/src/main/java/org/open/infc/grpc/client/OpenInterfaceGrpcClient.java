@@ -43,7 +43,7 @@ public class OpenInterfaceGrpcClient {
       public static class OpenInterfaceGrpcExecption extends Exception {
           private static final long serialVersionUID = -8755636432217894246L;
 
-          private int errorCode = -1;
+          private final int errorCode;
 
           public OpenInterfaceGrpcExecption(int errorCode, String message) {
               super(message);
@@ -52,10 +52,10 @@ public class OpenInterfaceGrpcClient {
       }
 
       public static class OpenInterfaceGrpcTimeoutExecption extends OpenInterfaceGrpcExecption {
-          private static int errorCode = 1;
+          private static final int ERROR_CODE = 1;
 
           public OpenInterfaceGrpcTimeoutExecption(String message) {
-              super(errorCode, message);
+              super(ERROR_CODE, message);
           }
       }
 

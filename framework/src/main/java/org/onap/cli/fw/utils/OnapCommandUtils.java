@@ -190,7 +190,7 @@ public class OnapCommandUtils {
      * @return
      */
     public static String replaceLineForSpecialValues(String lineSpl) {
-        return replaceLineForSpecialValues(lineSpl, new HashMap<String, String>());
+        return replaceLineForSpecialValues(lineSpl, new HashMap<>());
     }
 
     /**
@@ -410,7 +410,7 @@ public class OnapCommandUtils {
     }
 
     public static void copyParamsFrom(OnapCommand from, OnapCommand to) throws OnapCommandInvalidParameterValue {
-        copyParamsFrom(from, to, new HashMap<String, String>());
+        copyParamsFrom(from, to, new HashMap<>());
     }
 
     /**
