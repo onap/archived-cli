@@ -51,7 +51,7 @@ public class OnapServiceListCommand extends OnapCommand {
             }
 
             if (!rslt.containsKey(schema.getProduct())) {
-                rslt.put(schema.getProduct(), new HashSet<String>());
+                rslt.put(schema.getProduct(), new HashSet<>());
             }
             rslt.get(schema.getProduct()).add(schema.getService());
         }
@@ -71,7 +71,7 @@ public class OnapServiceListCommand extends OnapCommand {
             }
         }
 
-        for (String service : rslt.getOrDefault(product, new HashSet<String>())) {
+        for (String service : rslt.getOrDefault(product, new HashSet<>())) {
             this.getResult().getRecordsMap().get("product").getValues().add(product);
             this.getResult().getRecordsMap().get("service").getValues().add(service);
             this.getResult().getRecordsMap().get("description").getValues().add(

@@ -41,20 +41,20 @@ import org.slf4j.LoggerFactory;
 public class OnapCommandExecutionStore {
     private static Logger log = LoggerFactory.getLogger(OnapCommandExecutionStore.class);
 
-    private static boolean storeReady = false;
-    private static String REQUEST_ID = "requestId";
-    private static String EXECUTION_ID = "executionId";
-    private static String INPUT = "input";
-    private static String STDOUT = "stdout";
-    private static String STDERR = "stderr";
-    private static String DEBUG = "debug";
-    private static String IN_PROGRESS = "in-progress";
-    private static String OUTPUT = "output";
-    private static String ERROR = "error";
-    private static String COMPLETED = "completed";
-    private static String FAILED = "failed";
-    private static String EXECUTIONID = "execution-id";
-    private static String REQUESTID = "request-id";
+    private static boolean storeReady = false; // NOSONAR
+    private static final String REQUEST_ID = "requestId";
+    private static final String EXECUTION_ID = "executionId";
+    private static final String INPUT = "input";
+    private static final String STDOUT = "stdout";
+    private static final String STDERR = "stderr";
+    private static final String DEBUG = "debug";
+    private static final String IN_PROGRESS = "in-progress";
+    private static final String OUTPUT = "output";
+    private static final String ERROR = "error";
+    private static final String COMPLETED = "completed";
+    private static final String FAILED = "failed";
+    private static final String EXECUTIONID = "execution-id";
+    private static final String REQUESTID = "request-id";
 
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
