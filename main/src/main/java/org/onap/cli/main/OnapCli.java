@@ -251,29 +251,24 @@ public class OnapCli {
                 // - param-long-option-1: value
                 // - positional-arg1
                 // - positional-arg2
-                try {
-                    Map<String, Object> values = (Map<String, Object>) OnapCommandDiscoveryUtils.loadYaml(this.paramFile);
+                Map<String, Object> values = (Map<String, Object>) OnapCommandDiscoveryUtils.loadYaml(this.paramFile);
 
-                    for (Entry<String, Object> cmdsParam: values.entrySet()) {
-                        for (Object param: (List)cmdsParam.getValue()) {
-                            if (param instanceof Map) { //optional args
-                                Map <String, String> paramMap = (Map<String, String>) param;
-                                String paramName = paramMap.keySet().iterator().next();
-                                Object paramValue = paramMap.get(paramName);
-                                argsParamFile.add(this.getLongOption(paramName));
-                                argsParamFile.add(paramValue.toString());
-                            } else { //positional args
-                                argsParamFile.add(param.toString());
-                            }
+                for (Entry<String, Object> cmdsParam: values.entrySet()) {
+                    for (Object param: (List)cmdsParam.getValue()) {
+                        if (param instanceof Map) { //optional args
+                            Map <String, String> paramMap = (Map<String, String>) param;
+                            String paramName = paramMap.keySet().iterator().next();
+                            Object paramValue = paramMap.get(paramName);
+                            argsParamFile.add(this.getLongOption(paramName));
+                            argsParamFile.add(paramValue.toString());
+                        } else { //positional args
+                            argsParamFile.add(param.toString());
                         }
                     }
-
-                } catch (Exception e) { // NOSONAR
-                    this.print("Failed to read param file " + this.paramFile);
-                    this.print(e);
                 }
             }
         } catch (Exception e) {
+            this.print("Failed to read param file " + this.paramFile);
             this.print(e);
             this.exitFailure();
         }
@@ -388,21 +383,13 @@ public class OnapCli {
                             this.print("Please use it in the form of use <product-version>.\nSupported versions: " +
                                     OnapCommandRegistrar.getRegistrar().getAvailableProductVersions());
                         } else {
-                            try {
-                                OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(args.get(1));
-                                console = createConsoleReader();
-                            } catch (OnapCommandException e) {
-                                this.print(e);
-                            }
+                            OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(args.get(1));
+                            console = createConsoleReader();
                         }
 
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
-                        try {
-                            this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
-                            this.print(OnapCli.getDirectiveHelp());
-                        } catch (OnapCommandException e) {
-                            this.print(e);
-                        }
+                        this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
+                        this.print(OnapCli.getDirectiveHelp());
 
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
                         this.printVersion = true;
