@@ -159,8 +159,8 @@ public class OpenInterfaceGrpcServer {
                         //Set the profile to current one
                         OnapCommandRegistrar.getRegistrar().setProfile(
                                 profile,
-                                new ArrayList<String>(),
-                                new ArrayList<String>());
+                                new ArrayList<>(),
+                                new ArrayList<>());
 
                         //fill from profile
                         Map<String, String> cache= OnapCommandRegistrar.getRegistrar().getParamCache(product);
