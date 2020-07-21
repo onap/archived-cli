@@ -77,7 +77,7 @@ import org.slf4j.LoggerFactory;
  */
 public class OnapHttpConnection {
 
-    private static Logger log = LoggerFactory.getLogger(OnapHttpConnection.class);
+    private static Logger log = LoggerFactory.getLogger(OnapHttpConnection.class); //NOSONAR
 
     private HttpClient httpClient = null;
 

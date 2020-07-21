@@ -113,7 +113,7 @@ public class OnapCommandSchemaHttpLoader {
                             Map<String, ?> map = (Map<String, ?>) valMap.get(key1);
 
                             for (Map.Entry<String, ?> entry2 : map.entrySet()) {
-                                try {
+                                try { // NOSONAR
                                     String key2 = entry2.getKey();
 
                                     switch (key2) {
