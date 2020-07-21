@@ -35,11 +35,15 @@ public class OnapCommandSchemaMerger {
 
     static Logger LOG = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
 
+    private OnapCommandSchemaMerger() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static Map<String, ?> mergeSchemas(OnapCommand cmd) throws OnapCommandException {
         Map<String, Object> mergedResult = new LinkedHashMap<String, Object>();
 
         for (String schema: cmd.getSchemas()) {
-            Map<String , Object> schemaMap = (Map<String, Object>) OnapCommandSchemaLoader.validateSchemaVersion(schema, cmd.getSchemaVersion());
+            Map<String , Object> schemaMap = OnapCommandSchemaLoader.validateSchemaVersion(schema, cmd.getSchemaVersion());
             mergeYamlMap(mergedResult, schemaMap);
         }
 
@@ -50,9 +54,10 @@ public class OnapCommandSchemaMerger {
     public static void mergeYamlMap(Map<String, Object> mergedResult, Map<String, Object> yamlContents) {
         if (yamlContents == null) return;
 
-        for (String key : yamlContents.keySet()) {
+        for (Map.Entry<String,Object> entry : yamlContents.entrySet()) {
 
-            Object yamlValue = yamlContents.get(key);
+            String key = entry.getKey();
+            Object yamlValue = entry.getValue();
             if (yamlValue == null) {
                 mergedResult.put(key, yamlValue);
                 continue;

@@ -546,8 +546,8 @@ public class OnapCommandUtilsTest {
 	   mapExample.put("key1", "paramA");
 	   mapExample.put("key2", "paramB");
 	   OnapCommandUtils.replaceLineFromResults("line $r{paramA} line $r{paramB}", mapExample);
-	   assertTrue(mapExample.get("key1").equals("paramA"));
-	   assertTrue(mapExample.get("key2").equals("paramB"));
+	   assertEquals("paramA", mapExample.get("key1"));
+	   assertEquals("paramB", mapExample.get("key2"));
    }
 
     @Test
