@@ -29,6 +29,8 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import static org.junit.Assert.assertEquals;
 
+import static org.junit.Assert.fail;
+
 public class ValidateSchemaTest {
 
     @Test(expected = OnapCommandInvalidSchema.class)
@@ -49,7 +51,7 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        cmd.initializeSchema("test-command-to-valdiate-merge.yaml", true);
+        assertTrue(cmd.initializeSchema("test-command-to-valdiate-merge.yaml", true).isEmpty());
     }
 
     @Test(expected = OnapCommandInvalidSchema.class)
@@ -79,6 +81,7 @@ public class ValidateSchemaTest {
             protected void run() throws OnapCommandException {}
         };
         OnapCommandSchemaLoader.loadSchema(cmd, "schema-invalid-file-null.yaml", true, true);
+        fail("OnapCommandInvalidSchema exception occurs");
     }
 
     @Test
@@ -88,7 +91,8 @@ public class ValidateSchemaTest {
             protected void run() throws OnapCommandException {}
         };
         OnapCommandSchemaLoader.loadSchema(cmd, "schema-validate-pass.yaml", true, true);
-
+        List<String> list = OnapCommandSchemaLoader.loadSchema(cmd, "schema-validate-pass.yaml", true, true);
+        assertTrue(list.isEmpty());
     }
 
     @Test(expected = OnapCommandInvalidSchema.class)
@@ -154,7 +158,7 @@ public class ValidateSchemaTest {
         paraValues.put("is_default_param","yes");
         list.add(paraValues);
         values.put("parameters",list);
-        assertTrue(OnapCommandSchemaLoader.parseSchema(cmd,values,true).size()==2);
+        assertEquals(2, OnapCommandSchemaLoader.parseSchema(cmd,values,true).size());
 
     }
     @Test
@@ -172,7 +176,7 @@ public class ValidateSchemaTest {
         list.add(paraValues);
         attributesValues.put("attributes",list);
         values.put("results",attributesValues);
-        assertTrue(OnapCommandSchemaLoader.parseSchema(cmd,values,true).size()==2);
+        assertEquals(2, OnapCommandSchemaLoader.parseSchema(cmd,values,true).size());
 
     }
 }

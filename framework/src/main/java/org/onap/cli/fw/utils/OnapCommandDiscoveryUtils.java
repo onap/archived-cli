@@ -290,12 +290,7 @@ public class OnapCommandDiscoveryUtils {
                 Map<String, ?> deafultResourceMap;
 
                 for (Resource resource : deafultRres) {
-                    try {
-                        deafultResourceMap = loadYaml(resource);
-                    } catch (OnapCommandException e) {
-                        OnapCommandUtils.log.error("Ignores invalid schema " + resource.getURI().toString(), e);
-                        continue;
-                    }
+                    deafultResourceMap = loadYaml(resource, true);
 
                     if (deafultResourceMap != null && deafultResourceMap.size() > 0) {
                         //default_input_parameters_http.yaml
@@ -320,10 +315,10 @@ public class OnapCommandDiscoveryUtils {
             if (res != null && res.length > 0) {
                 for (Resource resource : res) {
                     Map<String, ?> resourceMap;
-                    try {
+                    try { //NOSONAR
                         resourceMap = loadYaml(resource);
                     } catch (OnapCommandException e) {
-                        OnapCommandUtils.log.error("Ignores invalid schema " + resource.getURI().toString(), e);
+                        OnapCommandUtils.log.error("Ignores invalid schema {} {}", resource.getURI(), e);
                         continue;
                     }
 
@@ -334,7 +329,7 @@ public class OnapCommandDiscoveryUtils {
 
                         Object obj = resourceMap.get(OPEN_CLI_SCHEMA_VERSION);
                         if (obj == null) {
-                            OnapCommandUtils.log.info("Invalid Schema yaml {}" + schema.getSchemaURI());
+                            OnapCommandUtils.log.info("Invalid Schema yaml {}", schema.getSchemaURI());
                         }
                         else{
                             schema.setVersion(obj.toString());
@@ -343,7 +338,6 @@ public class OnapCommandDiscoveryUtils {
                                 OnapCommandUtils.log.info("Unsupported Schema version found {} " + schema.getSchemaURI());
                             }
                             else{
-
                                 //There are schema like default input parameters and does not have command name
                                 if (resourceMap.get(NAME) != null) {
                                     schema.setSchemaName(resource.getFilename());
@@ -480,7 +474,7 @@ public class OnapCommandDiscoveryUtils {
 
     public static List<Map<String, Object>> createTestSuite(String cmd, String version) throws OnapCommandException {
 
-        ArrayList<Map<String, Object>> testSamples = new ArrayList();
+        ArrayList<Map<String, Object>> testSamples = new ArrayList<>();
 
 
         List<Resource> resources = new ArrayList<>();
@@ -544,6 +538,25 @@ public class OnapCommandDiscoveryUtils {
             values = loadYaml(resource.getInputStream());
         } catch (Exception e) {
             throw new OnapCommandInvalidSchema(resource.getFilename(), e);
+        }
+        return values;
+    }
+/**
+     * Get schema map.
+     *
+     * @param resource
+     *            resource obj
+     *            ignoreInvalidSchema boolean
+     * @return map
+     * @throws OnapCommandInvalidSchema
+     *             exception
+     */
+    public static Map<String, ?> loadYaml(Resource resource, boolean ignoreInvalidSchema) throws OnapCommandInvalidSchema, IOException {
+        Map<String, ?> values = null;
+        try {
+            values = loadYaml(resource.getInputStream());
+        } catch (OnapCommandException | IOException e) {
+            OnapCommandUtils.log.error("Ignores invalid schema {} {}", resource.getURI(), e);
         }
         return values;
     }

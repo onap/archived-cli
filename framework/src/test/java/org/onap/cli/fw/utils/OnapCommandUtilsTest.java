@@ -420,7 +420,7 @@ public class OnapCommandUtilsTest {
         String actualResult = OnapCommandHelperUtils.help(cmd);
 
         String expectedHelp = FileUtil.loadResource("sample-cmd-test-help.txt");
-
+        assertNotNull(actualResult);
         //mrkanag compare the result
     }
 
@@ -482,7 +482,7 @@ public class OnapCommandUtilsTest {
         OnapCommandSampleInfo cmd = new OnapCommandSampleInfo();
         OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-info.yaml", true, false);
         OnapCommandInfo info = cmd.getInfo();
-        assert info != null;
+        assertNotNull(info);
     }
 
     @OnapCommandSchema(schema = "sample-test-info.yaml")
@@ -507,6 +507,7 @@ public class OnapCommandUtilsTest {
             System.out.println(pr.getOutput());
             System.out.println(pr.getError());
             System.out.println(pr.getExitCode());
+            assertEquals(0, pr.getExitCode());
 
             pr = new ProcessRunner(new String [] {"dir", "c:"}, null);
             pr.run();
@@ -546,8 +547,8 @@ public class OnapCommandUtilsTest {
 	   mapExample.put("key1", "paramA");
 	   mapExample.put("key2", "paramB");
 	   OnapCommandUtils.replaceLineFromResults("line $r{paramA} line $r{paramB}", mapExample);
-	   assertTrue(mapExample.get("key1").equals("paramA"));
-	   assertTrue(mapExample.get("key2").equals("paramB"));
+	   assertEquals("paramA", mapExample.get("key1"));
+	   assertEquals("paramB", mapExample.get("key2"));
    }
 
     @Test
