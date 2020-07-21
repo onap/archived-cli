@@ -88,7 +88,7 @@ public class OnapCommandProfileStore {
     public void add(String productVersion, String paramName, String paramValue) {
 
         if (!paramCache.containsKey(productVersion)) {
-            paramCache.put(productVersion, new HashMap<String, String>());
+            paramCache.put(productVersion, new HashMap<>());
         }
 
         paramCache.get(productVersion).put(paramName, paramValue);

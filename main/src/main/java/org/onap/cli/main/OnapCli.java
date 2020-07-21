@@ -225,8 +225,8 @@ public class OnapCli {
             if (this.profile != null) {
                 OnapCommandRegistrar.getRegistrar().setProfile(
                         this.profile,
-                        new ArrayList<String>(),
-                        new ArrayList<String>());
+                        new ArrayList<>(),
+                        new ArrayList<>());
             }
         } catch (Exception e) {
             this.print(e);
@@ -373,10 +373,9 @@ public class OnapCli {
                         break;
                     } else if (OnapCliConstants.PARAM_INTERACTIVE_CLEAR.equalsIgnoreCase(line)) {
                         console.clearScreen();
-                        continue;
-                    }
-                    this.args = new ArrayList<>();
-                    this.args.addAll(Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN)));
+                    } else {
+                        this.args = new ArrayList<>();
+                        this.args.addAll(Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN)));
 
                     if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
                         if (args.size() == 1) {
@@ -390,47 +389,44 @@ public class OnapCli {
                     } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
                         this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
                         this.print(OnapCli.getDirectiveHelp());
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
+                            this.printVersion = true;
+                            handleVersion();
 
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
-                        this.printVersion = true;
-                        handleVersion();
-
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
-                        if (args.size() == 1) {
-                            this.print("Please use it in the form of 'profile <profile-name>'\n");
-                            this.print("Available profiles: ");
-                            this.print(OnapCommandRegistrar.getRegistrar().getUserProfiles().toString());
-                        } else {
-                            this.profile = args.get(1);
-                            handleProfile();
-                        }
-
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_SET)) {
-                        if (args.size() > 1) {
-                            String [] paramEntry = args.get(1).trim().split("=", 2);
-                            if (paramEntry.length == 2) {
-                                OnapCommandRegistrar.getRegistrar().addParamCache(paramEntry[0].trim(), paramEntry[1].trim());
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_PROFILE)) {
+                            if (args.size() == 1) {
+                                this.print("Please use it in the form of 'profile <profile-name>'\n");
+                                this.print("Available profiles: ");
+                                this.print(OnapCommandRegistrar.getRegistrar().getUserProfiles().toString());
                             } else {
-                                this.print("Please use it in the form of 'set <param-name>=<param-value>'");
+                                this.profile = args.get(1);
+                                handleProfile();
+                            }
+
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_SET)) {
+                            if (args.size() > 1) {
+                                String[] paramEntry = args.get(1).trim().split("=", 2);
+                                if (paramEntry.length == 2) {
+                                    OnapCommandRegistrar.getRegistrar().addParamCache(paramEntry[0].trim(), paramEntry[1].trim());
+                                } else {
+                                    this.print("Please use it in the form of 'set <param-name>=<param-value>'");
+                                }
+                            } else {
+                                this.print(OnapCommandRegistrar.getRegistrar().getParamCache().toString());
+                            }
+
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_UNSET)) {
+                            if (args.size() > 1) {
+                                for (int i = 1; i < args.size(); i++) {
+                                    OnapCommandRegistrar.getRegistrar().removeParamCache(args.get(i));
+                                }
                             }
                         } else {
-                            this.print(OnapCommandRegistrar.getRegistrar().getParamCache().toString());
-                        }
-
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_UNSET)) {
-                        if (args.size() > 1) {
-                            for (int i = 1; i <args.size(); i++) {
-                                OnapCommandRegistrar.getRegistrar().removeParamCache(args.get(i));
+                            if (!(args.size() == 1 && args.get(0).trim().isEmpty())) {
+                                this.setArgs(this.args.toArray(new String[]{}));
+                                handleCommand();
                             }
                         }
-                    } else {
-                        if (args.size() == 1 && args.get(0).trim().isEmpty()) {
-                            //Ignore blanks // NOSONAR
-                            continue;
-                        }
-
-                        this.setArgs(this.args.toArray(new String [] {}));
-                        handleCommand();
                     }
                 }
             } catch (IOException e) { // NOSONAR
