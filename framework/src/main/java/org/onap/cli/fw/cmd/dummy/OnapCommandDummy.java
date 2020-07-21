@@ -29,7 +29,7 @@ public class OnapCommandDummy extends OnapCommand {
 
     @Override
     protected void run() throws OnapCommandException {
-
+        // Dummy Method
     }
 
 }

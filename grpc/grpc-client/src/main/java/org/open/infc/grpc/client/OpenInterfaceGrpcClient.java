@@ -43,7 +43,7 @@ public class OpenInterfaceGrpcClient {
       public static class OpenInterfaceGrpcExecption extends Exception {
           private static final long serialVersionUID = -8755636432217894246L;
 
-          private int errorCode = -1;
+          private int errorCode = -1; //NOSONAR
 
           public OpenInterfaceGrpcExecption(int errorCode, String message) {
               super(message);
@@ -97,7 +97,7 @@ public class OpenInterfaceGrpcClient {
       }
 
       public Result remoteCli(Args args) throws OpenInterfaceGrpcTimeoutExecption {
-        logger.info(args.toString());
+        logger.info("{}", args);
 
         Result result = Result.newBuilder().setExitCode(1).build();
         try {
