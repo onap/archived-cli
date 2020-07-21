@@ -251,7 +251,7 @@ public class OnapCli {
                 // - param-long-option-1: value
                 // - positional-arg1
                 // - positional-arg2
-                Map<String, Object> values = (Map<String, Object>) OnapCommandDiscoveryUtils.loadYaml(this.paramFile);
+                Map<String, Object> values = OnapCommandDiscoveryUtils.loadYaml(this.paramFile);
 
                 for (Entry<String, Object> cmdsParam: values.entrySet()) {
                     for (Object param: (List)cmdsParam.getValue()) {
