@@ -474,7 +474,7 @@ public class OnapCommandDiscoveryUtils {
 
     public static List<Map<String, Object>> createTestSuite(String cmd, String version) throws OnapCommandException {
 
-        ArrayList<Map<String, Object>> testSamples = new ArrayList();
+        ArrayList<Map<String, Object>> testSamples = new ArrayList<>();
 
 
         List<Resource> resources = new ArrayList<>();
