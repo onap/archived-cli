@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
 public class OnapCommandExecutionStore {
     private static Logger log = LoggerFactory.getLogger(OnapCommandExecutionStore.class);
 
-    private static boolean storeReady = false;
+    private static boolean storeReady = false; //NOSONAR
     private static String REQUEST_ID = "requestId";
     private static String EXECUTION_ID = "executionId";
     private static String INPUT = "input";
@@ -282,13 +282,17 @@ public class OnapCommandExecutionStore {
             else
                 FileUtils.touch(new File(context.getStorePath() + File.separator + FAILED));
             Path path= Paths.get(context.getStorePath() + File.separator + IN_PROGRESS);
-            try {
-                Files.delete(path);
-            } catch (IOException e) {
-                log.error("Failed to delete "+ context.getStorePath() + File.separator + IN_PROGRESS);
-            }
+            deleteFile(context, path);
         } catch (IOException e) {
             log.error("Failed to store the execution end details {}", context.storePath);
+        }
+    }
+
+    private void deleteFile(ExecutionStoreContext context, Path path){
+        try {
+            Files.delete(path);
+        } catch (IOException e) {
+            log.error("Failed to delete {}", (context.getStorePath() + File.separator + IN_PROGRESS));
         }
     }
 
