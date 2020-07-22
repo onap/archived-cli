@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77a0721a_c48872f2",
+        "filename": "grpc/grpc-client/src/main/java/org/open/infc/grpc/client/OpenInterfaceGrpcClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T06:29:02Z",
+      "side": 1,
+      "message": "Not required",
+      "parentUuid": "7734b1e7_12a23999",
+      "range": {
+        "startLine": 46,
+        "startChar": 28,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed824569_ab66e243",
         "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d12aebff_8516db10",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T06:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed824569_ab66e243",
+      "range": {
+        "startLine": 448,
+        "startChar": 15,
+        "endLine": 449,
+        "endChar": 17
+      },
+      "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eaee9f84_06c187e9",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T06:29:02Z",
+      "side": 1,
+      "message": "it\u0027s proper indentation. thanks",
+      "parentUuid": "56ab9b67_947ca81f",
+      "range": {
+        "startLine": 458,
+        "startChar": 16,
+        "endLine": 459,
+        "endChar": 17
+      },
+      "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b87d87d7_28eceb57",
         "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/auth/OnapCommandHttpAuthClient.java",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e1ef514_31a53d78",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/auth/OnapCommandHttpAuthClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T06:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b87d87d7_28eceb57",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1e3d48c8_c90e5e13",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/auth/OnapCommandHttpAuthClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T06:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ad6aec_46ab83a0",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 65
+      },
+      "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8223507_1dd9a30a",
         "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/connect/OnapHttpConnection.java",
         "patchSetId": 1
@@ -131,6 +251,24 @@
       "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1fd6767_e62d9eff",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/connect/OnapHttpConnection.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T06:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8223507_1dd9a30a",
+      "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "b612d31c_5df53894",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/connect/OnapHttpConnection.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T06:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46f609a8_171de76e",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f353280_b3a0d961",
         "filename": "profiles/http/src/test/java/org/onap/cli/fw/http/OnapHttpConnectionTest.java",
         "patchSetId": 1
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "7035ac5c_1e1a36b3",
+        "filename": "profiles/http/src/test/java/org/onap/cli/fw/http/OnapHttpConnectionTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T06:29:02Z",
+      "side": 1,
+      "message": "Not required. thanks",
+      "parentUuid": "6f353280_b3a0d961",
+      "range": {
+        "startLine": 219,
+        "startChar": 57,
+        "endLine": 219,
+        "endChar": 68
+      },
+      "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a955236_2fb78187",
         "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
         "patchSetId": 1
@@ -200,6 +386,30 @@
       "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8dff088_0a1a6ce9",
+        "filename": "profiles/snmp/src/main/java/org/onap/cli/fw/snmp/cmd/OnapSnmpCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T06:29:02Z",
+      "side": 1,
+      "message": "No, not showing in local Sonarqube.",
+      "parentUuid": "8a955236_2fb78187",
+      "range": {
+        "startLine": 122,
+        "startChar": 33,
+        "endLine": 122,
+        "endChar": 34
+      },
+      "revId": "e8f54aa18d28d32e2e3f06ee1677b2de1adcdf2d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
