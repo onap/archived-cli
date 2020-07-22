@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6297fbf_d8b61722",
+        "filename": "framework/src/main/java/org/onap/cli/fw/error/OnapCommandTimeOutException.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5021
+      },
+      "writtenOn": "2020-07-22T08:14:37Z",
+      "side": 1,
+      "message": "update year with current year",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "19c868a8d96f06d40d3736a9a80d6f03eb87b34e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
