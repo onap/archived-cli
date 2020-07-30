@@ -1,0 +1,38 @@
+open_cli_schema_version: 1.0
+name: PUT NSD Management Subscriptions - Method not implemented
+description: |
+    Test ID: 5.3.1.7.8
+    Test title: PUT NSD Management Subscriptions - Method not implemented
+    Test objective: The objective is to test that PUT method is not allowed to modify NSD Management subscriptions
+    Pre-conditions: At least one NSD Management subscription is available in the NFVO.
+    Reference: clause 5.4.8.3.3 - ETSI GS NFV-SOL 005 [3] v2.4.1
+    Config ID: Config_prod_NFVO
+    Applicability: none
+    Post-Conditions: none
+
+info:
+  product: etsi-mano
+  service: SOL005
+  author: Simran Singhal singhalsimran0@gmail.com
+
+parameters:
+  - name: 
+    description: zip-code
+    type: string
+    short_option: x
+    long_option: zip-code
+    is_optional: true
+  - name: 
+    description: zip-code
+    type: string
+    short_option: x
+    long_option: zip-code
+    is_optional: true
+  - name: 
+    description: zip-code
+    type: string
+    short_option: x
+    long_option: zip-code
+    is_optional: true
+
+cmd:
