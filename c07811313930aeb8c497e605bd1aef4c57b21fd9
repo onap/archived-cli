@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a15be2a_3dd4bfcd",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandArtifactStore.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-31T14:44:44Z",
+      "side": 1,
+      "message": "remove if not use",
+      "range": {
+        "startLine": 233,
+        "startChar": 8,
+        "endLine": 233,
+        "endChar": 22
+      },
+      "revId": "c07811313930aeb8c497e605bd1aef4c57b21fd9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84971a1e_8b0116ef",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-31T14:44:44Z",
+      "side": 1,
+      "message": "check the functioanlity, to avoid regression",
+      "revId": "c07811313930aeb8c497e605bd1aef4c57b21fd9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
