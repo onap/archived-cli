@@ -337,65 +337,65 @@ public class OnapCommandDiscoveryUtils {
                             OnapCommandUtils.log.info("Invalid Schema yaml {}" + schema.getSchemaURI());
                         }
                         else{
-                        schema.setVersion(obj.toString());
+                            schema.setVersion(obj.toString());
 
-                        if (!schema.getVersion().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
-                            OnapCommandUtils.log.info("Unsupported Schema version found {} " + schema.getSchemaURI());
-                        }
-                        else{
-
-                        //There are schema like default input parameters and does not have command name
-                        if (resourceMap.get(NAME) != null) {
-                        schema.setSchemaName(resource.getFilename());
-                        schema.setCmdName((String) resourceMap.get(NAME));
-
-                        schema.setDescription((String) resourceMap.get(DESCRIPTION));
-
-                        Map<String, ?> infoMap = (Map<String, ?>) resourceMap.get(OnapCommandConstants.INFO);
-                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_TYPE) != null) {
-                            schema.setType(infoMap.get(OnapCommandConstants.INFO_TYPE).toString());
-                        }
-
-                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_PRODUCT) != null) {
-                            schema.setProduct(infoMap.get(OnapCommandConstants.INFO_PRODUCT).toString());
-                        }
-
-                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_IGNORE) != null) {
-                            schema.setIgnore(infoMap.get(OnapCommandConstants.INFO_IGNORE).toString());
-                        }
-
-                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_STATE) != null) {
-                            schema.setState(infoMap.get(OnapCommandConstants.INFO_STATE).toString());
-                        }
-
-                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_SERVICE) != null) {
-                            schema.setService(infoMap.get(OnapCommandConstants.INFO_SERVICE).toString());
-                        }
-
-                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_AUTHOR) != null) {
-                            schema.setAuthor(infoMap.get(OnapCommandConstants.INFO_AUTHOR).toString());
-                        }
-
-                        if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_METADATA) != null) {
-                            schema.setMetadata((Map<String, String>)infoMap.get(OnapCommandConstants.INFO_METADATA));
-                        }
-
-                        schema.setSchemaProfile(identitySchemaProfileType(resourceMap));
-
-                        if (resourceMap.containsKey(PARAMETERS)) {
-                            schema.setInputs((List<Object>)resourceMap.get(PARAMETERS));
-                            if (defaultInputs.get(schema.getSchemaProfile()) != null) {
-                                schema.getInputs().addAll(defaultInputs.get(schema.getSchemaProfile()));
+                            if (!schema.getVersion().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
+                                OnapCommandUtils.log.info("Unsupported Schema version found {} " + schema.getSchemaURI());
                             }
-                        }
+                            else{
 
-                        if (resourceMap.containsKey(RESULTS)) {
-                            schema.setOutputs((List<Object>)((Map<String, Object>)resourceMap.get(RESULTS)).get(ATTRIBUTES));
-                        }
+                                //There are schema like default input parameters and does not have command name
+                                if (resourceMap.get(NAME) != null) {
+                                    schema.setSchemaName(resource.getFilename());
+                                    schema.setCmdName((String) resourceMap.get(NAME));
 
-                        extSchemas.add(schema);
-                    }
-                        }
+                                    schema.setDescription((String) resourceMap.get(DESCRIPTION));
+
+                                    Map<String, ?> infoMap = (Map<String, ?>) resourceMap.get(OnapCommandConstants.INFO);
+                                    if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_TYPE) != null) {
+                                        schema.setType(infoMap.get(OnapCommandConstants.INFO_TYPE).toString());
+                                    }
+
+                                    if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_PRODUCT) != null) {
+                                        schema.setProduct(infoMap.get(OnapCommandConstants.INFO_PRODUCT).toString());
+                                    }
+
+                                    if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_IGNORE) != null) {
+                                        schema.setIgnore(infoMap.get(OnapCommandConstants.INFO_IGNORE).toString());
+                                    }
+
+                                    if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_STATE) != null) {
+                                        schema.setState(infoMap.get(OnapCommandConstants.INFO_STATE).toString());
+                                    }
+
+                                    if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_SERVICE) != null) {
+                                        schema.setService(infoMap.get(OnapCommandConstants.INFO_SERVICE).toString());
+                                    }
+
+                                    if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_AUTHOR) != null) {
+                                        schema.setAuthor(infoMap.get(OnapCommandConstants.INFO_AUTHOR).toString());
+                                    }
+
+                                    if (infoMap != null && infoMap.get(OnapCommandConstants.INFO_METADATA) != null) {
+                                        schema.setMetadata((Map<String, String>)infoMap.get(OnapCommandConstants.INFO_METADATA));
+                                    }
+
+                                    schema.setSchemaProfile(identitySchemaProfileType(resourceMap));
+
+                                    if (resourceMap.containsKey(PARAMETERS)) {
+                                       schema.setInputs((List<Object>)resourceMap.get(PARAMETERS));
+                                       if (defaultInputs.get(schema.getSchemaProfile()) != null) {
+                                          schema.getInputs().addAll(defaultInputs.get(schema.getSchemaProfile()));
+                                       }
+                                    }
+
+                                    if (resourceMap.containsKey(RESULTS)) {
+                                        schema.setOutputs((List<Object>)((Map<String, Object>)resourceMap.get(RESULTS)).get(ATTRIBUTES));
+                                     }
+
+                                     extSchemas.add(schema);
+                                }
+                            }
                         }
                     }
                 }
