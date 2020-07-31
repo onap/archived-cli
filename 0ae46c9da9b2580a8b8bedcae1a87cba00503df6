@@ -70,6 +70,30 @@
       "revId": "0ae46c9da9b2580a8b8bedcae1a87cba00503df6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60c467b2_20a5edd2",
+        "filename": "framework/src/test/java/org/onap/cli/fw/schema/ValidateSchemaTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-07-31T12:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67013d15_62e28b74",
+      "range": {
+        "startLine": 95,
+        "startChar": 24,
+        "endLine": 95,
+        "endChar": 28
+      },
+      "revId": "0ae46c9da9b2580a8b8bedcae1a87cba00503df6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
