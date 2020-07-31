@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0033b96b_70e0c7f6",
+        "filename": "grpc/grpc-client/src/main/java/org/open/infc/grpc/client/OpenInterfaceGrpcClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-31T14:26:27Z",
+      "side": 1,
+      "message": "-1",
+      "range": {
+        "startLine": 46,
+        "startChar": 36,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "e2842f6bbb72117047d61849b89d9895daacf9d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05975e96_5d8390e8",
+        "filename": "main/src/main/java/org/onap/cli/main/OnapCli.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-31T14:26:27Z",
+      "side": 1,
+      "message": "improve this logic",
+      "revId": "e2842f6bbb72117047d61849b89d9895daacf9d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b60c56_639ae932",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/auth/OnapCommandHttpAuthClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-31T14:26:27Z",
+      "side": 1,
+      "message": "throw this error. xxxLoginFailed",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 108,
+        "endChar": 68
+      },
+      "revId": "e2842f6bbb72117047d61849b89d9895daacf9d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
