@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f71eb1ca_cb73fc1e",
+        "filename": "framework/src/main/java/org/onap/cli/fw/error/OnapCommandInvalidRegistration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-31T14:36:57Z",
+      "side": 1,
+      "message": "Object?",
+      "range": {
+        "startLine": 29,
+        "startChar": 47,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "32cbe633082e29774e4ca904145a1993ce64ab81",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6143dca_5d5a3bf7",
+        "filename": "framework/src/main/java/org/onap/cli/fw/output/print/OnapCommandPrint.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-31T14:36:57Z",
+      "side": 1,
+      "message": "fix this too",
+      "range": {
+        "startLine": 287,
+        "startChar": 10,
+        "endLine": 291,
+        "endChar": 9
+      },
+      "revId": "32cbe633082e29774e4ca904145a1993ce64ab81",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbbd19c8_82b1c210",
+        "filename": "framework/src/main/java/org/onap/cli/fw/schema/OnapCommandSchemaMerger.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-07-31T14:36:57Z",
+      "side": 1,
+      "message": "Its not allowed",
+      "range": {
+        "startLine": 39,
+        "startChar": 41,
+        "endLine": 39,
+        "endChar": 55
+      },
+      "revId": "32cbe633082e29774e4ca904145a1993ce64ab81",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
