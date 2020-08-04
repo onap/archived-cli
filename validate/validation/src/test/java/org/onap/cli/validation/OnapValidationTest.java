@@ -52,6 +52,7 @@ import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import static org.junit.Assert.assertFalse;
 
 public class OnapValidationTest {
 
@@ -121,6 +122,7 @@ public class OnapValidationTest {
                 }
             }
         }
+        assertFalse(OnapCommandRegistrar.getRegistrar().getAvailableProductVersions().isEmpty());
     }
 
     @Test
@@ -144,6 +146,7 @@ public class OnapValidationTest {
                 }
             }
         }
+        assertFalse(OnapCommandRegistrar.getRegistrar().getAvailableProductVersions().isEmpty());
     }
 
     @Test
