@@ -52,7 +52,7 @@ public class OnapCommandArtifactStore {
     private static Logger log = LoggerFactory.getLogger(OnapCommandArtifactStore.class);
     private static Gson gson = new GsonBuilder().serializeNulls().create();
 
-    private static boolean storeReady = false;
+    private static boolean storeReady = false; //NOSONAR
 
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
@@ -230,7 +230,7 @@ public class OnapCommandArtifactStore {
 
         searchPattern += ".json";
 
-        final String SP = searchPattern;
+        final String SP = searchPattern; //NOSONAR
 
         for (File file: new File(getBasePath()).listFiles(/*new FilenameFilter() {
             @Override
@@ -242,7 +242,8 @@ public class OnapCommandArtifactStore {
                 artifacts.add(gson.fromJson(jsonReader, Artifact.class));
             } catch (Exception e) { // NOSONAR
                 //It is expected that this never occurs
-                log.error("While seraching Failed to retrieve the artifact at {}", file.getAbsolutePath());
+                String fileAbsPath = file.getAbsolutePath();
+                log.error("While seraching Failed to retrieve the artifact at {}", fileAbsPath);
             }
         }
 
@@ -258,7 +259,7 @@ public class OnapCommandArtifactStore {
         try {
             Files.delete(Paths.get(storePath));
         } catch (IOException e) {
-            log.error("Failed to delete the artifact " + aFile.getAbsolutePath());
+            log.error("Failed to delete the artifact {}",  aFile.getAbsolutePath());
         }
     }
 
