@@ -238,7 +238,7 @@ public class OnapCli {
      * Handles batch command. --param-file
      */
     public void handleBatchCommand() {
-        try {
+        try { //NOSONAR
             if (this.paramFile != null) {
                 //Read YAML and loop thru it
                 // one
@@ -382,22 +382,18 @@ public class OnapCli {
                         this.args = new ArrayList<>();
                         this.args.addAll(Arrays.asList(line.split(OnapCliConstants.PARAM_INTERACTIVE_ARG_SPLIT_PATTERN)));
 
-                    if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
-                        if (args.size() == 1) {
-                            this.print("Please use it in the form of use <product-version>.\nSupported versions: " +
-                                    OnapCommandRegistrar.getRegistrar().getAvailableProductVersions());
-                        } else {
-                            try {
+                        if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_USE)) {
+                            if (args.size() == 1) {
+                                this.print("Please use it in the form of use <product-version>.\nSupported versions: " +
+                                        OnapCommandRegistrar.getRegistrar().getAvailableProductVersions());
+                            } else {
                                 OnapCommandRegistrar.getRegistrar().setEnabledProductVersion(args.get(1));
                                 console = createConsoleReader();
-                            } catch (OnapCommandException e) {
-                                this.print(e);
                             }
-                        }
 
-                    } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
-                        this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
-                        this.print(OnapCli.getDirectiveHelp());
+                        } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_HELP)) {
+                            this.print(OnapCommandRegistrar.getRegistrar().getHelpForEnabledProductVersion());
+                            this.print(OnapCli.getDirectiveHelp());
                         } else if (!args.isEmpty() && this.args.get(0).equals(OnapCliConstants.PARAM_INTERACTIVE_VERSION)) {
                             this.printVersion = true;
                             handleVersion();
