@@ -35,6 +35,10 @@ public class OnapCommandSchemaMerger {
 
     static Logger logger = LoggerFactory.getLogger(OnapCommandSchemaMerger.class);
 
+    private OnapCommandSchemaMerger(){
+        //It is made private in order to resolve: Utility classes should not have public constructors
+    }
+
     public static Map<String, Object> mergeSchemas(OnapCommand cmd) throws OnapCommandException {
         Map<String, Object> mergedResult = new LinkedHashMap<>();
 
