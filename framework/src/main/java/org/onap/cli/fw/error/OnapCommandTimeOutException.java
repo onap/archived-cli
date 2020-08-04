@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Huawei Technologies Co., Ltd.
+ * Copyright 2020 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,23 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.onap.cli.fw.error;
 
-package org.onap.cli.fw.cmd.dummy;
+public class OnapCommandTimeOutException extends RuntimeException {
+    private static final long serialVersionUID = -4280521008892487435L;
 
-import org.onap.cli.fw.cmd.OnapCommand;
-import org.onap.cli.fw.error.OnapCommandException;
-import org.onap.cli.fw.schema.OnapCommandSchema;
-
-/**
- * List available schemas.
- *
- */
-@OnapCommandSchema(type = "dummy")
-public class OnapCommandDummy extends OnapCommand {
-
-    @Override
-    protected void run() throws OnapCommandException {
-        // Dummy Method
+    public OnapCommandTimeOutException(String message) {
+        super(message);
     }
-
 }
