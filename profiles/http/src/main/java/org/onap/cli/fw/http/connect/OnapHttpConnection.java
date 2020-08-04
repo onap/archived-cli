@@ -76,7 +76,7 @@ import javax.net.ssl.HostnameVerifier;
  */
 public class OnapHttpConnection {
 
-    private static Logger log = LoggerFactory.getLogger(OnapHttpConnection.class);
+    private static Logger log = LoggerFactory.getLogger(OnapHttpConnection.class); //NOSONAR
 
     private CloseableHttpClient httpClient = null;
 

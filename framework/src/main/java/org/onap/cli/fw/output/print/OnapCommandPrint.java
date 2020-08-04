@@ -270,7 +270,6 @@ public class OnapCommandPrint {
             try {
                 return new JsonParser().parse(array.toJSONString()).toString();
             } catch (Exception e) { // NOSONAR
-                // TODO Auto-generated catch block
                 return array.toJSONString();
             }
 
@@ -290,6 +289,6 @@ public class OnapCommandPrint {
             throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
         }
      */
-     return "";
+     return ""; //NOSONAR
     }
 }

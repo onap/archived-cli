@@ -32,6 +32,7 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.nio.charset.StandardCharsets;
+import org.onap.cli.fw.error.OnapCommandTimeOutException;
 
 public class ProcessRunner {
     private static Logger log = LoggerFactory.getLogger(ProcessRunner.class);
@@ -163,7 +164,7 @@ public class ProcessRunner {
                 Arrays.asList(this.cmd), this.cwd, ((this.env == null) ? this.env : Arrays.asList(this.env)), this.output, this.error, this.exitCode);
 
         if (!completed) {
-            throw new RuntimeException("TIMEOUT:: cmd:" + Arrays.asList(this.cmd).toString());
+            throw new OnapCommandTimeOutException("TIMEOUT:: cmd:" + Arrays.asList(this.cmd).toString());
         }
     }
 

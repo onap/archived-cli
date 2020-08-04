@@ -52,7 +52,7 @@ public class OnapCommandArtifactStore {
     private static Logger log = LoggerFactory.getLogger(OnapCommandArtifactStore.class);
     private static Gson gson = new GsonBuilder().serializeNulls().create();
 
-    private static boolean storeReady = false;
+    private static boolean storeReady = false; //NOSONAR
 
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
 
@@ -213,25 +213,6 @@ public class OnapCommandArtifactStore {
     public List<Artifact> listArtifact(String category, String namePattern) throws OnapCommandArtifactNotFound { //NOSONAR
         List<Artifact> artifacts = new ArrayList<>();
 
-        String searchPattern = "";
-        if (namePattern != null && !namePattern.isEmpty()) {
-            searchPattern += namePattern;
-        } else {
-            searchPattern += "*";
-        }
-
-        searchPattern += SEPARATOR;
-
-        if (category != null && !category.isEmpty()) {
-            searchPattern += category;
-        } else {
-            searchPattern += "*";
-        }
-
-        searchPattern += ".json";
-
-        final String SP = searchPattern;
-
         for (File file: new File(getBasePath()).listFiles(/*new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
@@ -258,7 +239,7 @@ public class OnapCommandArtifactStore {
         try {
             Files.delete(Paths.get(storePath));
         } catch (IOException e) {
-            log.error("Failed to delete the artifact " + aFile.getAbsolutePath());
+            log.error("Failed to delete the artifact {}",  aFile.getAbsolutePath());
         }
     }
 

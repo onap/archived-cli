@@ -19,6 +19,7 @@ package org.onap.cli.fw.registrar;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -62,8 +63,8 @@ public class OnapCommandRegistrarTest {
 
     @Test
     public void oclipCommandNotFoundTest() throws OnapCommandException {
+        registerar = OnapCommandRegistrar.getRegistrar();
         try {
-            registerar = OnapCommandRegistrar.getRegistrar();
             registerar.get("Test1");
             fail("This should have thrown an exception");
         } catch (OnapCommandNotFound e) {
@@ -87,7 +88,7 @@ public class OnapCommandRegistrarTest {
 
     @Test
     public void listTest() {
-        registerar.listCommands();
+        assertFalse(registerar.listCommands().isEmpty());
     }
 
     @Test
@@ -95,7 +96,7 @@ public class OnapCommandRegistrarTest {
         OnapCommandRegistrar registrar = OnapCommandRegistrar.getRegistrar();
         OnapCommand cmd = registrar.get("sample-test");
         cmd.printVersion();
-        registrar.listCommands();
+        assertFalse(registerar.listCommands().isEmpty());
     }
     @Test
     public void getTestSuiteTest() throws OnapCommandException {
