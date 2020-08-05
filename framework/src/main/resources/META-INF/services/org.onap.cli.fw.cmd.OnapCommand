@@ -26,3 +26,9 @@ org.onap.cli.fw.cmd.execution.OnapCommandExceutionShowCommand
 org.onap.cli.fw.cmd.execution.OnapCommandExceutionShowDebugCommand
 org.onap.cli.fw.cmd.execution.OnapCommandExceutionShowOutCommand
 org.onap.cli.fw.cmd.execution.OnapCommandExceutionShowErrCommand
+
+org.onap.cli.fw.cmd.profile.OnapProfileListCommand
+org.onap.cli.fw.cmd.profile.OnapProfileShowCommand
+org.onap.cli.fw.cmd.profile.OnapProfileSetCommand
+org.onap.cli.fw.cmd.profile.OnapProfileUnsetCommand
+org.onap.cli.fw.cmd.profile.OnapProfileDeleteCommand
