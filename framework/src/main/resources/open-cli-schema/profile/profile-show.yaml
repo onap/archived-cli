@@ -1,0 +1,55 @@
+# Copyright 2018 Huawei Technologies Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+open_cli_schema_version: 1.0
+name: profile-show
+description: Show the given profile parameters values
+
+info:
+  product: open-cli
+  service: profile
+  type: cmd
+  author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
+
+parameters:
+  - name: profile
+    type: string
+    description: For a given profile
+    short_option: n
+    long_option: profile
+    is_optional: false
+
+results:
+  direction: landscape
+  attributes:
+    - name: product
+      description: Profile parameter is applicable across this product
+      scope: short
+      type: string
+    - name: service
+      description: Profile parameter is applicable across this service
+      scope: short
+      type: string
+    - name: command
+      description: Profile parameter is applicable to this command
+      scope: short
+      type: string
+    - name: parameter
+      description: Profile parameter name
+      scope: short
+      type: string
+    - name: value
+      description: Profile parameter value
+      scope: short
+      type: string
