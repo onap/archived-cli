@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7602fe1c_36d36e89",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandArtifactStore.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-08-05T04:26:33Z",
+      "side": 0,
+      "message": "why is it removed ?",
+      "revId": "6941680edbc46f1525ef739305f11781d1ddd70a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
