@@ -282,13 +282,18 @@ public class OnapCommandExecutionStore {
             else
                 FileUtils.touch(new File(context.getStorePath() + File.separator + FAILED));
             Path path= Paths.get(context.getStorePath() + File.separator + IN_PROGRESS);
-            try {
-                Files.delete(path);
-            } catch (IOException e) {
-                log.error("Failed to delete "+ context.getStorePath() + File.separator + IN_PROGRESS);
-            }
+            deleteFile(context, path);
         } catch (IOException e) {
             log.error("Failed to store the execution end details {}", context.storePath);
+        }
+    }
+
+    private void deleteFile(ExecutionStoreContext context, Path path){
+        try {
+            Files.delete(path);
+        } catch (IOException e) {
+            String contextPath = context.getStorePath() + File.separator + IN_PROGRESS;
+            log.error("Failed to delete {}", contextPath);
         }
     }
 
