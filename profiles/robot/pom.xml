@@ -57,6 +57,11 @@
             <version>1.19</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-profiles-command</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
   </dependencies>
    <build>
         <plugins>

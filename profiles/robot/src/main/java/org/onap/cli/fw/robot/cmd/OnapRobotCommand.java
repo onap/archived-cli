@@ -16,19 +16,14 @@
 
 package org.onap.cli.fw.robot.cmd;
 
-import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.cmd.cmd.OpenCommandShellCmd;
 import org.onap.cli.fw.robot.conf.OnapCommandRobotConstants;
-import org.onap.cli.fw.error.OnapCommandException;
 
 /**
  * Oclip robot Command.
  *
  */
 @OnapCommandSchema(type = OnapCommandRobotConstants.ROBOT_SCHEMA_PROFILE)
-public class OnapRobotCommand extends OnapCommand {
-
-    @Override
-    protected void run() throws OnapCommandException {
-    }
+public class OnapRobotCommand extends OpenCommandShellCmd {
 }
