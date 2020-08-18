@@ -16,6 +16,40 @@
       "revId": "79aa828c93a6c2dc74cde69b380107cf40a4154a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "333dfe56_121d5703",
+        "filename": "products/etsi-mano/src/main/resources/open-cli-schema/SOL005/NSDManagement-API/Subscriptions/put-nsd-management-subscriptions-method-not-implemented.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-08-18T09:09:44Z",
+      "side": 1,
+      "message": "add sample yaml for this one. thanks",
+      "revId": "79aa828c93a6c2dc74cde69b380107cf40a4154a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c70898_5a18bd69",
+        "filename": "products/etsi-mano/src/main/resources/script/run-robot-testcase.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-08-18T09:09:44Z",
+      "side": 1,
+      "message": "can you move this to profile module. thanks",
+      "revId": "79aa828c93a6c2dc74cde69b380107cf40a4154a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
