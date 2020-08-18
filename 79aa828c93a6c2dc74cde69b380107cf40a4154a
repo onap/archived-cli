@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a84ccd53_ed7cf2e7",
+        "filename": "products/etsi-mano/src/main/resources/conf/api-tests",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-08-18T09:07:32Z",
+      "side": 1,
+      "message": "what is this file",
+      "revId": "79aa828c93a6c2dc74cde69b380107cf40a4154a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
