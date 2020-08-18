@@ -117,7 +117,7 @@ Excluded commons-codec vulnerable version and added invulnerable version
           <artifactId>netty-codec-http</artifactId>
           <version>4.1.48.Final</version>
       </dependency>
-          <dependency>
+         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
@@ -126,7 +126,7 @@ Excluded commons-codec vulnerable version and added invulnerable version
         <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
-            <version>1.19</version>
+            <version>1.43</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -142,6 +142,7 @@ Excluded commons-codec vulnerable version and added invulnerable version
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
