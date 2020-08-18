@@ -50,13 +50,13 @@
         <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
-            <version>1.19</version>
+            <version>1.43</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit-coverage</artifactId>
-            <version>1.19</version>
+            <version>1.23</version>
             <scope>test</scope>
         </dependency>
         <dependency>
