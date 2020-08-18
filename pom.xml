@@ -34,6 +34,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <package.name>cli</package.name>
         <maven.build.timestamp.format>yyyyMMdd'T'HHmmss'Z'</maven.build.timestamp.format>
+        <jmockit.version>1.43</jmockit.version>
     </properties>
 
   <modules>
@@ -63,6 +64,10 @@
                  <systemPropertyVariables>
                     <ONAP_CLI_HOME>.</ONAP_CLI_HOME>
                  </systemPropertyVariables>
+                   <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                   <argLine>
+                       -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+                   </argLine>
                </configuration>
             </plugin>
             <plugin>
@@ -87,10 +92,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>11</release>
                 </configuration>
             </plugin>
             <plugin>
