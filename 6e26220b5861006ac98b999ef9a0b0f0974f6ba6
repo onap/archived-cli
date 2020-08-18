@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5bd0b51_f2a22ef5",
+        "filename": "framework/pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-08-18T08:54:21Z",
+      "side": 1,
+      "message": "why do we need this, is it core library?",
+      "revId": "6e26220b5861006ac98b999ef9a0b0f0974f6ba6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299e2d6d_22a327af",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandArtifactStore.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-08-18T08:54:21Z",
+      "side": 1,
+      "message": "don\u0027t change to 3rd party from jave core lib?",
+      "revId": "6e26220b5861006ac98b999ef9a0b0f0974f6ba6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
