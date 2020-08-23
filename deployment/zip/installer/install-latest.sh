@@ -32,13 +32,13 @@ mkdir -p $CLI_INSTALL_DIR
 cd $CLI_INSTALL_DIR
 
 #Download and unzip CLI
-apt-get install -y wget unzip
+apt-get install -y -qq --no-install-recommends wget unzip
 
 #check for java
 java -version
 if [ $? == 127 ]
 then
-    apt-get install -y openjdk-8-jre
+    apt-get install -y -qq --no-install-recommends openjdk-8-jre
 fi
 
 wget -O $CLI_ZIP $CLI_LATEST_BINARY

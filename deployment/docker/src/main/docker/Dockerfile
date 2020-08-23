@@ -14,7 +14,7 @@
 
 FROM openjdk:11.0.5-jre-slim
 
-RUN apt-get update && apt-get install -y sudo
+RUN apt-get update && apt-get install -y -qq --no-install-recommends sudo
 
 RUN groupadd -r ocomp && useradd -m --no-log-init -r -g ocomp ocomp && \
     usermod -aG sudo ocomp && echo "ocomp ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
@@ -32,7 +32,7 @@ ENV OPEN_CLI_HOME=/opt/oclip \
 ADD ./STAGE $OPEN_CLI_HOME
 WORKDIR $OPEN_CLI_HOME
 
-RUN sudo apt-get install -y lighttpd git curl pandoc vim && \
+RUN sudo apt-get install -y -qq --no-install-recommends lighttpd git curl pandoc vim && \
     cd /tmp && curl -O https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz && \
     tar -xvf go1.9.linux-amd64.tar.gz && mkdir -p /tmp/gotty && \
     GOPATH=/tmp/gotty /tmp/go/bin/go get github.com/yudai/gotty && \
