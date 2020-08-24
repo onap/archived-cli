@@ -32,6 +32,10 @@ import org.onap.cli.fw.error.OnapCommandException;
 @OnapCommandSchema(type = OnapCommandRobotConstants.ROBOT_SCHEMA_PROFILE)
 public class OnapRobotCommand extends OpenCommandShellCmd {
 
+  public OnapRobotCommand() {
+    super.addDefaultSchemas(OnapCommandRobotConstants.DEFAULT_PARAMETER_ROBOT_FILE_NAME);
+  }
+
   @Override
   protected List<String> initializeProfileSchema(Map<String, ?> schemaMap, boolean validate) throws OnapCommandException {
       return OnapCommandSchemaRobotLoader.parseRobotSchema(this, schemaMap, validate);

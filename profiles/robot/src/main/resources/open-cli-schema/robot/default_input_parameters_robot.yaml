@@ -13,3 +13,19 @@
 # limitations under the License.
 
 open_cli_schema_version: 1.0
+
+parameters:
+  - name: variables-file-path
+    description: Variables file path
+    type: string
+    short_option: x
+    long_option: variables
+    is_optional: true
+    default_value: ''
+  - name: format
+    type: string
+    description: Output formats, supported formats such as table, csv, json, yaml
+    short_option: f
+    long_option: format
+    default_value: text
+    is_default_param: true

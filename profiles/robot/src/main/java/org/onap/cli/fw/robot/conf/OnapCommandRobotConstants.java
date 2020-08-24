@@ -24,6 +24,8 @@ public class OnapCommandRobotConstants {
     public static final String ROBOT_SCHEMA_PROFILE = "robot";
     public static final String ROBOT = "robot";
 
+    public static final String DEFAULT_PARAMETER_ROBOT_FILE_NAME = "default_input_parameters_robot.yaml";
+
     private OnapCommandRobotConstants() {
         //as per coding standard !
     }

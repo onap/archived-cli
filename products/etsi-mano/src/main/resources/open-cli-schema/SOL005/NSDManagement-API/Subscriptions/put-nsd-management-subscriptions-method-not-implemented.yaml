@@ -31,22 +31,6 @@ info:
   service: SOL005
   author: Simran Singhal singhalsimran0@gmail.com
 
-parameters:
-  - name: variables-file-path
-    description: Variables file path
-    type: string
-    short_option: x
-    long_option: variables
-    is_optional: true
-    default_value: ''
-  - name: format
-    type: string
-    description: Output formats, supported formats such as table, csv, json, yaml
-    short_option: f
-    long_option: format
-    default_value: text
-    is_default_param: true
-
 robot:
   command:
     -  python3 $s{env:OPEN_CLI_HOME}/script/run-robot-testcase.py --variables-file-path ${variables-file-path} --test-suite $s{env:OPEN_CLI_HOME}/conf/api-tests/SOL005/NSDManagement-API/Subscriptions.robot --testcase PUT NSD Management Subscriptions - Method not implemented
