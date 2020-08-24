@@ -120,6 +120,9 @@
                                 fileset(dir:
                                 "${project.build.directory}/../../../products/target/script/",
                                 erroronmissingdir: false)
+                                fileset(dir:
+                                "${project.build.directory}/../../../profiles/target/script/",
+                                erroronmissingdir: false)
                                 }
 
                                 ant.copy(todir:
