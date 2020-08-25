@@ -35,6 +35,7 @@
         <module>http</module>
         <module>snmp</module>
         <module>command</module>
+        <module>robot</module>
 
     </modules>
     <dependencies>
