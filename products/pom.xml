@@ -42,6 +42,11 @@
             <artifactId>cli-profiles-snmp</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.onap.cli</groupId>
+            <artifactId>cli-profiles-robot</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
     <profiles>
        <profile>
@@ -60,6 +65,15 @@
           </activation>
           <modules>
             <module>onap-dublin</module>
+          </modules>
+       </profile>
+       <profile>
+          <id>etsi-mano</id>
+          <activation>
+            <activeByDefault>true</activeByDefault>
+          </activation>
+          <modules>
+            <module>etsi-mano</module>
           </modules>
        </profile>
        <profile>
