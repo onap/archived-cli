@@ -69,6 +69,9 @@ def main():
     else:
       raise Exception('Given variable file path does not exist\n')
 
+  if not os.path.exists(test_suite):
+    raise Exception('Given api-tests folder location does not exist\n')
+
   execute_robot_run(test_suite, testcase, variables_file_path)
 
 if __name__ == '__main__':
