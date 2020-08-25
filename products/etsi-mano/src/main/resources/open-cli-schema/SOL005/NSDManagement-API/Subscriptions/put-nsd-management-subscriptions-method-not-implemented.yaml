@@ -33,7 +33,7 @@ info:
 
 robot:
   command:
-    -  python3 $s{env:OPEN_CLI_HOME}/script/run-robot-testcase.py --variables-file-path ${variables-file-path} --test-suite $s{env:OPEN_CLI_HOME}/conf/api-tests/SOL005/NSDManagement-API/Subscriptions.robot --testcase PUT NSD Management Subscriptions - Method not implemented
+    -  python3 $s{env:OPEN_CLI_HOME}/script/run-robot-testcase.py --variables-file-path ${variables-file-path} --test-suite ${api-tests-folder-path}/api-tests/SOL005/NSDManagement-API/Subscriptions.robot --testcase PUT NSD Management Subscriptions - Method not implemented
   success_codes:
     - 0
   working_directory: .

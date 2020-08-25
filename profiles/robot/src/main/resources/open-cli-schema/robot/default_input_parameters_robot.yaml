@@ -19,9 +19,15 @@ parameters:
     description: Variables file path
     type: string
     short_option: x
-    long_option: variables
+    long_option: variables-path
     is_optional: true
     default_value: ''
+  - name: api-tests-folder-path
+    type: string
+    description: Location to api-tests folder
+    short_option: l
+    long_option: api-tests-path
+    is_optional: false
   - name: format
     type: string
     description: Output formats, supported formats such as table, csv, json, yaml

@@ -18,7 +18,7 @@ version: etsi-mano
 samples:
   sample1:
     name: put-nsd-management-subscriptions-method-not-implemented
-    input:
+    input: --api-tests-path ./conf
     moco: put-nsd-management-subscriptions-method-not-implemented-moco.json
     output: |
       ==============================================================================
