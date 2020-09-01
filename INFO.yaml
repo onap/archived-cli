@@ -31,20 +31,5 @@ repositories:
     - 'cli'
 committers:
     - <<: *onap_releng_ptl
-    - name: 'Subhash Kumar'
-      email: 'subhash.kumar.singh@huawei.com'
-      company: 'Huawei'
-      id: 'subhash_singh'
-      timezone: 'India/Bangalore'
-    - name: 'Manoop Talasila'
-      email: 'talasila@research.att.com'
-      company: 'ATT'
-      id: 'talasila'
-      timezone: 'America/New York'
-    - name: 'Itohan Ukponmwan'
-      email: 'itohan.ukponmwan@intel.com'
-      company: 'Intel'
-      id: 'itohan'
-      timezone: 'America/Pacific'
 tsc:
     approval: 'https://lists.onap.org/pipermail/onap-tsc'
