@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ab879aa_5682a1bb",
+        "filename": "deployment/docker/src/main/docker/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-09-01T04:15:22Z",
+      "side": 1,
+      "message": "thanks for fixing it, like to get clarified one doubt.... will it cause any regression on execution of project as it will skip those recommended packages?",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "9511851e1587e6c3b331cbebdda2489fa4d75983",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
