@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a45b2c01_fa97f77c",
+        "filename": "profiles/robot/src/main/resources/open-cli-schema/robot/default_input_parameters_robot.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-09-01T04:08:41Z",
+      "side": 1,
+      "message": "can you match with long_option for all parameters. thanks",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "9fe32a085ba2e6ac3fe23a6f5f4f984c4f6702ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
