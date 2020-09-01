@@ -31,7 +31,7 @@
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <grpc.version>1.8.0</grpc.version>
+    <grpc.version>1.29.0</grpc.version>
   </properties>
   <dependencies>
 <!-- netty-codec-http2 excluded due to Security Issues:- CVE-2019-9512,CVE-2019-9514,CVE-2019-9515,CVE-2019-9518,CVE-2019-16869
@@ -40,40 +40,7 @@
       <groupId>io.grpc</groupId>
       <artifactId>grpc-netty</artifactId>
       <version>${grpc.version}</version>
-       <exclusions>
-        <exclusion>
-           <groupId>io.netty</groupId>
-            <artifactId>netty-codec-http2</artifactId>
-            </exclusion>
-      </exclusions>
     </dependency>
-
-    <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-codec-http2</artifactId>
-        <version>4.1.46.Final</version>
-        <exclusions>
-            <exclusion>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-codec-http</artifactId>
-            </exclusion>
-            <exclusion>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-handler</artifactId>
-            </exclusion>
-        </exclusions>
-    </dependency>
-      <dependency>
-          <groupId>io.netty</groupId>
-          <artifactId>netty-codec-http</artifactId>
-          <version>4.1.48.Final</version>
-      </dependency>
-      <dependency>
-          <groupId>io.netty</groupId>
-          <artifactId>netty-handler</artifactId>
-          <version>4.1.19.Final</version>
-      </dependency>
-
       <dependency>
       <groupId>io.grpc</groupId>
       <artifactId>grpc-protobuf</artifactId>
