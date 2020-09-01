@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64c4bb10_9c7e0ab8",
+        "filename": "products/etsi-mano/src/main/resources/open-cli-sample/SOL005/NSDManagement-API/Subscriptions/put-nsd-management-subscriptions-method-not-implemented-sample.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2020-09-01T04:13:25Z",
+      "side": 1,
+      "message": "can you update the robot execution script in robot profile, to output the results under OPEN_CLI_HOME/data/executions/\u003crequest-id\u003e/logs/output.xml\n\nHere OPEN_CLI_HOME/data/executions/\u003crequest-id\u003e is used to capture the footprint of each test case or command excution. while running the command you can pass the request id as below:\noclip --request-id \u003c\u003e --product \u003c\u003e [command] [args]",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "68753b927d0bd22055a9d8271627caf0a1f4a740",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
