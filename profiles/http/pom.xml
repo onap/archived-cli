@@ -106,10 +106,10 @@ Excluded commons-codec vulnerable version and added invulnerable version
                 <artifactId>netty-codec-http</artifactId>
             </exclusion>
               <!--JIRA: CLI-253-->
-            <exclusion>
-              <groupId>com.fasterxml.jackson.core</groupId>
-              <artifactId>jackson-databind</artifactId>
-           </exclusion>
+<!--            <exclusion>-->
+<!--              <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--              <artifactId>jackson-databind</artifactId>-->
+<!--           </exclusion>-->
           </exclusions>
           </dependency>
       <dependency>
@@ -135,6 +135,11 @@ Excluded commons-codec vulnerable version and added invulnerable version
             <version>1.23</version>
             <scope>test</scope>
         </dependency>
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>2.10.0</version>
+      </dependency>
    </dependencies>
    <build>
         <plugins>
