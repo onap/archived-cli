@@ -32,6 +32,9 @@
     <sonar.jacoco.reportMissing.force.zero>true</sonar.jacoco.reportMissing.force.zero>
     <sonar.projectVersion>${project.version}</sonar.projectVersion>
     <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <jmockit.version>1.43</jmockit.version>
+        <maven.test.skip>false</maven.test.skip>
+        <maven.test.failure.ignore>false</maven.test.failure.ignore>
     </properties>
   <dependencies>
       <dependency>
@@ -59,6 +62,19 @@
   </dependencies>
    <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20</version>
+                <configuration>
+                    <forkMode>always</forkMode>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+                    </argLine>
+                    <skip>${maven.test.skip}</skip>
+                    <testFailureIgnore>${maven.test.failure.ignore}</testFailureIgnore>
+                </configuration>
+            </plugin>
             <!--Step-2:- SonarCloud migration from SonarQube -->
             <plugin>
                 <groupId>org.jacoco</groupId>
