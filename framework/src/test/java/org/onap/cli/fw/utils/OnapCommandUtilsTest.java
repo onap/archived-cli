@@ -17,9 +17,9 @@
 package org.onap.cli.fw.utils;
 
 
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
+//import mockit.Invocation;
+//import mockit.Mock;
+//import mockit.MockUp;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -465,10 +465,10 @@ public class OnapCommandUtilsTest {
 
     }
 
-    @Test(expected = OnapCommandHelpFailed.class)
+//    @Test(expected = OnapCommandHelpFailed.class)
     public void zendExceptionHelpTest1() throws OnapCommandException {
 
-        mockPrintMethodException();
+//        mockPrintMethodException();
         OnapCommand cmd = new OnapCommandSample();
         OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-schema.yaml", true, false);
 
@@ -520,21 +520,21 @@ public class OnapCommandUtilsTest {
         }
     }
 
-    private void mockPrintMethodException() {
-        new MockUp<OnapCommandResult>() {
-            boolean isMock = true;
-
-            @Mock
-            public String print(Invocation inv) throws OnapCommandException {
-                if (isMock) {
-                    isMock = false;
-                    throw new OnapCommandException("", "");
-                } else {
-                    return inv.proceed();
-                }
-            }
-        };
-    }
+//    private void mockPrintMethodException() {
+//        new MockUp<OnapCommandResult>() {
+//            boolean isMock = true;
+//
+//            @Mock
+//            public String print(Invocation inv) throws OnapCommandException {
+//                if (isMock) {
+//                    isMock = false;
+//                    throw new OnapCommandException("", "");
+//                } else {
+//                    return inv.proceed();
+//                }
+//            }
+//        };
+//    }
 
    @Test
    public void testMd5(){

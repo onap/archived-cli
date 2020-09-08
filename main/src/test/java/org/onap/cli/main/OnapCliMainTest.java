@@ -22,9 +22,9 @@ import java.io.IOException;
 
 
 import jline.console.ConsoleReader;
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
+//import mockit.Invocation;
+//import mockit.Mock;
+//import mockit.MockUp;
 import org.junit.Test;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandHelpFailed;
@@ -98,120 +98,120 @@ public class OnapCliMainTest {
         this.handle(new String[] { "sample-test", "--string-param"});
     }
 
-    @Test
-    public void interactiveTest() {
-        cli = new OnapCli(new String[] {});
+//    @Test
+//    public void interactiveTest() {
+//        cli = new OnapCli(new String[] {});
+//
+//        mockConsole("exit");
+//        cli.handleInteractive();
+//
+//        mockConsole("clear");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("sample-test -h");
+//
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("use open-cli");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("set a=b");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("set");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("set a=");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("unset a");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("profile test");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("profile");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("version");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsole("help");
+//        try {
+//            cli.handleInteractive();
+//        } catch (Exception e) {
+//        }
+//
+//        cli = new OnapCli(new String[] {});
+//        mockConsoleReader();
+//        cli.handleInteractive();
+//
+//    }
 
-        mockConsole("exit");
-        cli.handleInteractive();
+//    private static void mockConsoleReader() {
+//        new MockUp<OnapCli>() {
+//            @Mock
+//            public ConsoleReader createConsoleReader() throws IOException {
+//                throw new IOException("Exception mock");
+//            }
+//        };
+//    }
 
-        mockConsole("clear");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("sample-test -h");
-
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("use open-cli");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("set a=b");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("set");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("set a=");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("unset a");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("profile test");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("profile");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("version");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsole("help");
-        try {
-            cli.handleInteractive();
-        } catch (Exception e) {
-        }
-
-        cli = new OnapCli(new String[] {});
-        mockConsoleReader();
-        cli.handleInteractive();
-
-    }
-
-    private static void mockConsoleReader() {
-        new MockUp<OnapCli>() {
-            @Mock
-            public ConsoleReader createConsoleReader() throws IOException {
-                throw new IOException("Exception mock");
-            }
-        };
-    }
-
-    private static void mockConsole(String input) {
-        new MockUp<ConsoleReader>() {
-            boolean isMock = true;
-
-            @Mock
-            public String readLine(Invocation inv) throws IOException {
-                if (isMock) {
-                    isMock = false;
-                    return input;
-                } else {
-                    return inv.proceed(input);
-                }
-            }
-        };
-    }
+//    private static void mockConsole(String input) {
+//        new MockUp<ConsoleReader>() {
+//            boolean isMock = true;
+//
+//            @Mock
+//            public String readLine(Invocation inv) throws IOException {
+//                if (isMock) {
+//                    isMock = false;
+//                    return input;
+//                } else {
+//                    return inv.proceed(input);
+//                }
+//            }
+//        };
+//    }
 
     @Test
     public void testDirectiveHelp() {
@@ -226,23 +226,23 @@ public class OnapCliMainTest {
         Map<String,?> map = OnapCommandDiscoveryUtils.loadYaml("src/test/resources/open-cli-schema/sample-test-schema.yaml");
         assertFalse(map.isEmpty());
     }
-    @Test
-    public void testverifyCommand() throws OnapCommandException {
-        cli = new OnapCli(new String[] {"schema-validate","--verify" });
-      new MockUp<OnapCommandRegistrar>(){
-            @Mock
-            public List<Map<String, Object>> getTestSuite(String cmd, String product) throws OnapCommandException {
-                List<Map<String, Object>> list=new ArrayList<>();
-                Map<String,Object>map=new HashMap<>();
-                map.put("output","output");
-                map.put("input", Arrays.asList(new String[]{"--verify"}));
-                map.put("sampleid","sample1");
-                map.put("samplefileid","schema-validate-sample.yaml");
-                map.put("moco","schema-validate-moco.json");
-                list.add(map);
-                return list;
-            }
-        };
-        cli.handleCommand();
-    }
+//    @Test
+//    public void testverifyCommand() throws OnapCommandException {
+//        cli = new OnapCli(new String[] {"schema-validate","--verify" });
+//      new MockUp<OnapCommandRegistrar>(){
+//            @Mock
+//            public List<Map<String, Object>> getTestSuite(String cmd, String product) throws OnapCommandException {
+//                List<Map<String, Object>> list=new ArrayList<>();
+//                Map<String,Object>map=new HashMap<>();
+//                map.put("output","output");
+//                map.put("input", Arrays.asList(new String[]{"--verify"}));
+//                map.put("sampleid","sample1");
+//                map.put("samplefileid","schema-validate-sample.yaml");
+//                map.put("moco","schema-validate-moco.json");
+//                list.add(map);
+//                return list;
+//            }
+//        };
+//        cli.handleCommand();
+//    }
 }
