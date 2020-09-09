@@ -39,6 +39,7 @@
         <sonar.jacoco.reportMissing.force.zero>true</sonar.jacoco.reportMissing.force.zero>
         <sonar.projectVersion>${project.version}</sonar.projectVersion>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <jmockit.version>1.43</jmockit.version>
     </properties>
     <dependencies>
         <dependency>
@@ -65,7 +66,7 @@
         <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
-            <version>1.19</version>
+            <version>${jmockit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
