@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "a7527b7a_17a7a372",
+        "filename": "deployment/zip/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-09-11T04:30:40Z",
+      "side": 1,
+      "message": "why to duplicate code?",
+      "range": {
+        "startLine": 123,
+        "startChar": 32,
+        "endLine": 125,
+        "endChar": 57
+      },
+      "revId": "9fe32a085ba2e6ac3fe23a6f5f4f984c4f6702ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d9bba4_e54daba6",
+        "filename": "profiles/robot/src/main/java/org/onap/cli/fw/robot/conf/OnapCommandRobotConstants.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-09-11T04:30:40Z",
+      "side": 1,
+      "message": "why to initialize two constants with same value?",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 62
+      },
+      "revId": "9fe32a085ba2e6ac3fe23a6f5f4f984c4f6702ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "915c5dfd_d4d6afa8",
+        "filename": "profiles/robot/src/main/resources/META-INF/services/org.onap.cli.fw.cmd.OnapCommand",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-09-11T04:30:40Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be \"Huawei Technologies Co., Ltd.\"?",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 32
+      },
+      "revId": "9fe32a085ba2e6ac3fe23a6f5f4f984c4f6702ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a45b2c01_fa97f77c",
         "filename": "profiles/robot/src/main/resources/open-cli-schema/robot/default_input_parameters_robot.yaml",
         "patchSetId": 1
