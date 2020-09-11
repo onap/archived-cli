@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c87ebe2f_50314fca",
+        "filename": "products/etsi-mano/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-09-11T04:36:58Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be \"Huawei Technologies Co., Ltd.\"? kindly change in other files as well if it\u0027s company name. thanks.",
+      "range": {
+        "startLine": 3,
+        "startChar": 18,
+        "endLine": 3,
+        "endChar": 33
+      },
+      "revId": "68753b927d0bd22055a9d8271627caf0a1f4a740",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64c4bb10_9c7e0ab8",
         "filename": "products/etsi-mano/src/main/resources/open-cli-sample/SOL005/NSDManagement-API/Subscriptions/put-nsd-management-subscriptions-method-not-implemented-sample.yaml",
         "patchSetId": 1
