@@ -395,28 +395,5 @@ public class OnapCliUtilsTest {
         Assert.assertTrue(((List<String>) arrParam.getValue())
                 .containsAll(Arrays.asList("test1", "test2")));
     }
-    @Test
-    public void testReadYamlStringFromUrl() throws OnapCommandException {
-        OnapCommandParameter param1 = new OnapCommandParameter();
-        param1.setLongOption("yaml");
-        param1.setName("name");
-        param1.setParameterType(OnapCommandParameterType.YAML);
-        Set<OnapCommandParameter> paramslist = new HashSet<>();
-        paramslist.add(param1);
-        OnapCliArgsParser.populateParams(paramslist,
-                Arrays.asList("--yaml", "name", "--yaml", "test-schema"));
-        Assert.assertEquals("test-schema", paramslist.iterator().next().getValue());
-    }
-    @Test
-    public void testReadYamlStringFromUrlForFile() throws OnapCommandException {
-        OnapCommandParameter param1 = new OnapCommandParameter();
-        param1.setLongOption("yaml");
-        param1.setName("name");
-        param1.setParameterType(OnapCommandParameterType.YAML);
-        Set<OnapCommandParameter> paramslist = new HashSet<>();
-        paramslist.add(param1);
-        OnapCliArgsParser.populateParams(paramslist,
-                        Arrays.asList("--yaml", "main/src/test/resources/open-cli-schema/sample-test-schema.yaml", "--yaml", "test-schema"));
-        Assert.assertEquals("test-schema", paramslist.iterator().next().getValue());
-    }
+
 }

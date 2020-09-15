@@ -33,8 +33,8 @@ import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.main.error.OnapCliArgumentValueMissing;
 import org.onap.cli.main.error.OnapCliInvalidArgument;
-import com.esotericsoftware.yamlbeans.YamlReader;
 
+import org.yaml.snakeyaml.Yaml;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -242,8 +242,7 @@ public class OnapCliArgsParser {
             File file = new File(input);
             if (file.isFile()) {
                 String value = FileUtils.readFileToString(file);
-                YamlReader reader = new YamlReader(value);
-                value = (String) reader.read();
+                new Yaml().load(value);
                 return value;
             } else {
                 return input;

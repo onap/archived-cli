@@ -30,7 +30,7 @@ import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.http.conf.OnapCommandHttpConstants;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import org.springframework.core.io.Resource;
-import com.esotericsoftware.yamlbeans.YamlReader;
+import org.yaml.snakeyaml.Yaml;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,7 +38,6 @@ import com.github.dreamhead.moco.HttpServer;
 import com.github.dreamhead.moco.Moco;
 import com.github.dreamhead.moco.ResponseHandler;
 import com.github.dreamhead.moco.Runner;
-import java.io.InputStreamReader;
 
 public class MocoServer {
 
@@ -57,8 +56,8 @@ public class MocoServer {
         }
 
         List<Map<String, ?>> stringMap = null;
-        try(InputStreamReader inputStreamReader = new InputStreamReader(resource.getInputStream());) {
-            stringMap = (List<Map<String, ?>>) new YamlReader(inputStreamReader).read();
+        try {
+            stringMap = (List<Map<String, ?>>) new Yaml().load(resource.getInputStream());
         } catch (IOException e) {
             throw new OnapCommandException("Invalid mocking file" + mockFile, e);
         }
@@ -90,7 +89,7 @@ public class MocoServer {
         if (mocoServerConfigs.containsKey(OnapCommandHttpConstants.VERIFY_RESPONSE_JSON)) {
             responseHandlers.add(Moco.with(mocoServerConfigs.get(OnapCommandHttpConstants.VERIFY_RESPONSE_JSON).toString()));
         }
-        responseHandlers.add(Moco.status(Integer.parseInt(String.valueOf(mocoServerConfigs.get(OnapCommandHttpConstants.VERIFY_RESPONSE_STATUS)))));
+        responseHandlers.add(Moco.status((Integer) mocoServerConfigs.get(OnapCommandHttpConstants.VERIFY_RESPONSE_STATUS)));
 
         server.request(Moco.by(Moco.uri((String) mocoServerConfigs.get(OnapCommandHttpConstants.VERIFY_REQUEST_URI))))
                 .response(Moco.header(OnapCommandHttpConstants.VERIFY_CONTENT_TYPE, OnapCommandHttpConstants.VERIFY_CONTENT_TYPE_VALUE),

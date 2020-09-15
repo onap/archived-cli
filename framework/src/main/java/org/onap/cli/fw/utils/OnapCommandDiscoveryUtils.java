@@ -56,7 +56,7 @@ import org.onap.cli.fw.schema.OnapCommandSchemaInfo;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
-import com.esotericsoftware.yamlbeans.YamlReader;
+import org.yaml.snakeyaml.Yaml;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -539,7 +539,7 @@ public class OnapCommandDiscoveryUtils {
     public static Map<String, Object> loadYaml(Resource resource) throws OnapCommandInvalidSchema {
         Map<String, Object> values = null;
         try {
-            values = loadYaml(resource.getInputStream());
+            values = (Map<String, Object>) new Yaml().load(resource.getInputStream());
         } catch (Exception e) {
             throw new OnapCommandInvalidSchema(resource.getFilename(), e);
         }
@@ -559,8 +559,8 @@ public class OnapCommandDiscoveryUtils {
     public static Map<String, ?> loadYaml(Resource resource, boolean ignoreInvalidSchema) throws OnapCommandInvalidSchema, IOException {
         Map<String, ?> values = null;
         try {
-            values = loadYaml(resource.getInputStream());
-        } catch (OnapCommandException | IOException e) {
+            values = loadYaml(resource);
+        } catch (OnapCommandException e) {
             OnapCommandUtils.log.error("Ignores invalid schema {} {}", resource.getURI(), e);
         }
         return values;
@@ -577,7 +577,7 @@ public class OnapCommandDiscoveryUtils {
     public static Map<String, Object> loadYaml(String filePath) throws OnapCommandInvalidSchema {
         Map<String, Object> values = null;
         try {
-            values = loadYaml(new FileInputStream(new File(filePath)));
+            values = (Map<String, Object>) new Yaml().load(FileUtils.readFileToString(new File(filePath)));
         } catch (Exception e) {
             throw new OnapCommandInvalidSchema(filePath, e);
         }
@@ -593,13 +593,12 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, Object> loadYaml(InputStream inputStream) throws OnapCommandInvalidSchema {
+    public static Map<String, Object> loadYaml(InputStream stream) throws OnapCommandInvalidSchema {
         Map<String, Object> values = null;
-        try(InputStreamReader inputStreamReader = new InputStreamReader(inputStream);){
-            YamlReader reader = new YamlReader(inputStreamReader);
-            values = (Map<String, Object>) reader.read();
-            } catch (IOException e) {
-                throw new OnapCommandInvalidSchema(inputStream.getClass().getName(),e.getMessage());
+        try{
+            values = (Map<String, Object>) new Yaml().load(stream);
+            } catch (Exception e) {
+                throw new OnapCommandInvalidSchema(stream.getClass().getName(),e.getMessage());
             }
         return values;
     }

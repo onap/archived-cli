@@ -91,8 +91,7 @@ public class OnapCommandSchemaCmdLoader {
                         break;
 
                     case OnapCommandCmdConstants.SUCCESS_EXIT_CODE:
-                        List<String> list = (ArrayList) valMap.get(key1);
-                        cmd.setSuccessStatusCodes(list.stream().map(Integer::parseInt).collect(Collectors.toList()));
+                        cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
                         break;
 
                     case OnapCommandCmdConstants.PASS_CODE:

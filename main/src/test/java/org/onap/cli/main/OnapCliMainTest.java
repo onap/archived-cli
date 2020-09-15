@@ -35,9 +35,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Arrays;
-import org.onap.cli.fw.error.OnapCommandInvalidSchema;
-import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
-import static org.junit.Assert.assertFalse;
 
 
 public class OnapCliMainTest {
@@ -220,11 +217,6 @@ public class OnapCliMainTest {
         } catch (OnapCommandHelpFailed e) {
             fail("Directive help failed to run");
         }
-    }
-    @Test
-    public void testLoadYamlForYamlReader() throws OnapCommandInvalidSchema {
-        Map<String,?> map = OnapCommandDiscoveryUtils.loadYaml("src/test/resources/open-cli-schema/sample-test-schema.yaml");
-        assertFalse(map.isEmpty());
     }
     @Test
     public void testverifyCommand() throws OnapCommandException {

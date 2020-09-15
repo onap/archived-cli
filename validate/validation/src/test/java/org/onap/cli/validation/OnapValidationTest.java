@@ -47,6 +47,7 @@ import org.onap.cli.main.conf.OnapCliConstants;
 import org.onap.cli.moco.OnapCommandSample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yaml.snakeyaml.Yaml;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 
@@ -227,7 +228,7 @@ public class OnapValidationTest {
         try {
             values = OnapCommandDiscoveryUtils.loadYaml(inputStream);
         } catch (OnapCommandInvalidSchema e) { //NOSONAR
-            LOG.error("Failed to load schema file", e.getMessage());
+            LOG.error("Failed to load schema file {} {}", fileName, e.getMessage());
         }
 
         OnapCommandSample sample = new OnapCommandSample();

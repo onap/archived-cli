@@ -163,7 +163,7 @@ public class OnapCommandSchemaHttpLoader {
 
                                             for (String key: context.keySet()) {
                                                 if (OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES.equals(key)) {
-                                                        Boolean flag = Boolean.valueOf(context.get(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES).toString());
+                                                        Boolean flag = (Boolean) context.get(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES);
                                                         cmd.getInput().getContext().put(OnapCommandHttpConstants.CONTEXT_REMOVE_EMPTY_JSON_NODES, flag.toString());
                                                 }
                                             }
@@ -245,8 +245,7 @@ public class OnapCommandSchemaHttpLoader {
                             if (validate) {
                                 validateHttpSccessCodes(errorList, (List<Object>) valMap.get(key1));
                             }
-                            List<String> list = (ArrayList) valMap.get(key1);
-                            cmd.setSuccessStatusCodes(list.stream().map(Integer::parseInt).collect(Collectors.toList()));
+                            cmd.setSuccessStatusCodes((ArrayList) valMap.get(key1));
                             break;
 
                         case OnapCommandHttpConstants.RESULT_MAP:
@@ -352,7 +351,7 @@ public class OnapCommandSchemaHttpLoader {
         }
 
         for (Object successCode : requestSuccessCodes) {
-            Integer code = Integer.valueOf(String.valueOf(successCode));
+            Integer code = (Integer) successCode;
             if ((code < 200 || code >= 300) && code != 404) {
                     errorList.add(OnapCommandHttpConstants.HTTP_SUCCESS_CODE_INVALID);
             }
