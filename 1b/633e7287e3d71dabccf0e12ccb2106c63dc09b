@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Eric Debeau <eric.debeau@orange.com>
+Code-Review+2: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Code-Review+2: Manoop Talasila <talasila@research.att.com>
+Submitted-by: Manoop Talasila <talasila@research.att.com>
+Submitted-at: Wed, 16 Sep 2020 17:21:30 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/cli/+/111963
+Project: cli
+Branch: refs/heads/master
