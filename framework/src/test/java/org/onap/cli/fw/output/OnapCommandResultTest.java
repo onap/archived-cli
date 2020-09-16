@@ -235,4 +235,41 @@ public class OnapCommandResultTest {
         assertEquals(expRes,result);
 
     }
+
+    @Test
+    public void printYamlTest() throws OnapCommandException {
+        OnapCommandResult res = new OnapCommandResult();
+        res.setDebugInfo("debugInfo");
+        res.setIncludeSeparator(true);
+        res.setIncludeTitle(true);
+        res.setOutput("Output");
+        res.setPrintDirection(OnapCommandPrintDirection.LANDSCAPE);
+
+        OnapCommandResultAttribute att = new OnapCommandResultAttribute();
+        att.setName("param");
+        att.setDescription("description");
+        att.setType(OnapCommandParameterType.YAML);
+        att.setValues(
+                new ArrayList<String>(Arrays.asList(new String[] {  "{\"id\": \"0001\",\"value\": \"result\"}"  })));
+        List<OnapCommandResultAttribute> list = new ArrayList<OnapCommandResultAttribute>();
+        list.add(att);
+        res.setRecords(list);
+        res.setScope(OnapCommandResultAttributeScope.LONG);
+        res.setType(OnapCommandResultType.YAML);
+        String result = res.print();
+        String expRes="---\n- param:\n    id: \"0001\"\n    value: \"result\"\n";
+        assertEquals(expRes,result);
+
+        att.setValues(
+                new ArrayList<String>(Arrays.asList(new String[] {  "{\"id\": \"0001\": \"value\": }"  })));
+        list = new ArrayList<OnapCommandResultAttribute>();
+        list.add(att);
+        res.setRecords(list);
+        res.setScope(OnapCommandResultAttributeScope.LONG);
+        res.setType(OnapCommandResultType.YAML);
+        result = res.print();
+        expRes="---\n- param: null\n";
+        assertEquals(expRes,result);
+
+    }
 }
