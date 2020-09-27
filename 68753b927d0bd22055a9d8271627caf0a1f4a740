@@ -69,6 +69,30 @@
       "revId": "68753b927d0bd22055a9d8271627caf0a1f4a740",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a9e2a7_be85aabc",
+        "filename": "products/etsi-mano/src/main/resources/open-cli-sample/SOL005/NSDManagement-API/Subscriptions/put-nsd-management-subscriptions-method-not-implemented-sample.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 6731
+      },
+      "writtenOn": "2020-09-27T19:09:46Z",
+      "side": 1,
+      "message": "I am working on the suggested change. I am currently looking at how can I do this.",
+      "parentUuid": "64c4bb10_9c7e0ab8",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "68753b927d0bd22055a9d8271627caf0a1f4a740",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
