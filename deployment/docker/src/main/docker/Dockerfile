@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM openjdk:11.0.5-jre-slim
+FROM openjdk:11.0.6-jre-slim
 
 RUN apt-get update && apt-get install -y sudo
 
