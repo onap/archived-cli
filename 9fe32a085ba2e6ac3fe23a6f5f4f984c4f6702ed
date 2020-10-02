@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c361eda_872a287e",
+        "filename": "deployment/zip/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 6731
+      },
+      "writtenOn": "2020-10-02T05:45:25Z",
+      "side": 1,
+      "message": "To be consistent with \"${deployUnzip}/conf\" (line 107 to 117) I did similarly here. I am not sure about any other way of doing the same.",
+      "parentUuid": "a7527b7a_17a7a372",
+      "range": {
+        "startLine": 123,
+        "startChar": 32,
+        "endLine": 125,
+        "endChar": 57
+      },
+      "revId": "9fe32a085ba2e6ac3fe23a6f5f4f984c4f6702ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60d9bba4_e54daba6",
         "filename": "profiles/robot/src/main/java/org/onap/cli/fw/robot/conf/OnapCommandRobotConstants.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-11T04:30:40Z",
       "side": 1,
       "message": "why to initialize two constants with same value?",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 62
+      },
+      "revId": "9fe32a085ba2e6ac3fe23a6f5f4f984c4f6702ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff271cf9_9b9ae225",
+        "filename": "profiles/robot/src/main/java/org/onap/cli/fw/robot/conf/OnapCommandRobotConstants.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 6731
+      },
+      "writtenOn": "2020-10-02T05:45:25Z",
+      "side": 1,
+      "message": "To be consistent with OnapCommandHttpConstants.java (constants file of http profile) and OnapCommandSnmpConstants.java (constants file of snmp profile).",
+      "parentUuid": "60d9bba4_e54daba6",
       "range": {
         "startLine": 24,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0b3b3a5f_38f09f7f",
+        "filename": "profiles/robot/src/main/resources/META-INF/services/org.onap.cli.fw.cmd.OnapCommand",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6731
+      },
+      "writtenOn": "2020-10-02T05:45:25Z",
+      "side": 1,
+      "message": "Not sure but as I am not part of \"Huawei Technologies\" it shouldn\u0027t be. Please do let me know if I am wrong I\u0027ll change it to \"Huawei Technologies Co., Ltd.\".",
+      "parentUuid": "915c5dfd_d4d6afa8",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 32
+      },
+      "revId": "9fe32a085ba2e6ac3fe23a6f5f4f984c4f6702ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a45b2c01_fa97f77c",
         "filename": "profiles/robot/src/main/resources/open-cli-schema/robot/default_input_parameters_robot.yaml",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-09-01T04:08:41Z",
       "side": 1,
       "message": "can you match with long_option for all parameters. thanks",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "9fe32a085ba2e6ac3fe23a6f5f4f984c4f6702ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9e97e5_3bc507f9",
+        "filename": "profiles/robot/src/main/resources/open-cli-schema/robot/default_input_parameters_robot.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 6731
+      },
+      "writtenOn": "2020-10-02T05:45:25Z",
+      "side": 1,
+      "message": "Not sure if I am understanding this correct. But, to match with the long option are you recommending me to replace the name with \"variables-path\"? Also, for other parameters like \"api-tests-folder-path\".",
+      "parentUuid": "a45b2c01_fa97f77c",
       "range": {
         "startLine": 18,
         "startChar": 10,
