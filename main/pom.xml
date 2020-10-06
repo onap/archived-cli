@@ -141,6 +141,7 @@
                 <configuration>
                     <argLine>
                         -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+                        ${surefireArgLine}
                     </argLine>
                 </configuration>
             </plugin>
