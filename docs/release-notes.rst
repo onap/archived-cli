@@ -5,6 +5,26 @@
 CLI Release Notes
 =================
 
+Version: 6.0.0
+--------------
+
+:Release Date: 2020-11-04
+
+*New Features*
+
+1. Enabled auto discover and registration of products functionalities as commands in Profile
+
+2. Profile managment commands are added
+
+*Security Notes*
+
+Fixed Security Issues
+
+Known Security Issues
+
+Known Vulnerabilities in Used Modules
+
+
 Version: 5.0.4
 --------------
 
