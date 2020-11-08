@@ -22,6 +22,39 @@ from yaml.representer import SafeRepresenter
 from yaml import Dumper
 from collections import OrderedDict
 import re
+import subprocess
+import sys
+
+class OcompException(Exception):
+    def __init__(self, code, message):
+        super(OcompException, self).__init__()
+        self.code = code;
+        self.message = message;
+
+class OCOMP:
+    def run(self, command, params={}):
+        CMD_NAME = 'oclip'
+        CMD = [CMD_NAME]
+
+        CMD.append(command)
+
+        for name, value in params.items():
+            CMD.append('--{}'.format(name))
+            CMD.append(value)
+
+        cmd_string = ' '.join(CMD)
+
+        try:
+            res = subprocess.Popen(CMD, stdout=subprocess.PIPE)
+            res.wait()
+            return res
+
+        except OSError as e:
+            sys.stderr.write(str(e))
+            msg = 'failed to executed the command {}'.format(cmd_string)
+            print (msg)
+            raise OcompException(9999, msg)
+
 
 class LiteralString(str):
     pass
@@ -73,6 +106,17 @@ def create_testcase_yaml(testcase_name, description, testsuite_name, test_suite_
   with open(yaml_path + '/' + name + '.yaml', 'w') as file:
     yaml.dump(data, file, Dumper=LineBreakDumper, default_flow_style=False)
 
+  ocomp = OCOMP()
+  res = ocomp.run(command='schema-validate', params={'schema-location': yaml_path + '/' + name + '.yaml'})
+  result = res.stdout.read().strip()
+
+  if res.returncode != 0:
+      if os.path.exists(yaml_path + '/' + name + '.yaml'):
+        os.remove(yaml_path + '/' + name + '.yaml')
+      print (yaml_path + '/' + name + '.yaml')
+      print(result)
+      print()
+
 def discover_testcases(api_tests_folder_path):
 
   for root, dirs, files in os.walk(api_tests_folder_path):
@@ -89,6 +133,12 @@ def discover_testcases(api_tests_folder_path):
 
         except Exception as e:
           pass
+
+  ocomp = OCOMP()
+  res = ocomp.run(command='schema-refresh')
+  result = res.stdout.read().strip()
+  if res.returncode != 0:
+      raise OcompException(9999, result)
 
 def main():
   text = 'This command helps to discover all robot testcases\n' \
