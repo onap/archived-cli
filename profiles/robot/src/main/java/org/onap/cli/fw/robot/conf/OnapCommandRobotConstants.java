@@ -21,10 +21,15 @@ package org.onap.cli.fw.robot.conf;
  *
  */
 public class OnapCommandRobotConstants {
+    public static final String CONF = "open-cli-robot.properties";
     public static final String ROBOT_SCHEMA_PROFILE = "robot";
     public static final String ROBOT = "robot";
 
     public static final String DEFAULT_PARAMETER_ROBOT_FILE_NAME = "default_input_parameters_robot.yaml";
+
+    // discover robot testcases
+    public static final String ROBOT_DISCOVER_TESTCASES = "cli.robot.discover";
+    public static final String ROBOT_API_TESTS_FOLDER_PATH = "cli.robot.api_tests_folder_path";
 
     private OnapCommandRobotConstants() {
         //as per coding standard !
