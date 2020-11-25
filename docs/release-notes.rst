@@ -12,7 +12,7 @@ Version: 6.0.0
 
 *New Features*
 
-1. Enabled auto discover and registration of products functionalities as commands in Profile
+1. Enabled auto discover and registration of products functionalities as commands
 
 2. Profile managment commands are added
 
