@@ -19,11 +19,14 @@ package org.onap.cli.fw.robot.cmd;
 import java.util.List;
 import java.util.Map;
 
+import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.schema.OnapCommandSchema;
+import org.onap.cli.fw.cmd.OnapCommand;
 import org.onap.cli.fw.cmd.cmd.OpenCommandShellCmd;
 import org.onap.cli.fw.robot.conf.OnapCommandRobotConstants;
 import org.onap.cli.fw.robot.schema.OnapCommandSchemaRobotLoader;
 import org.onap.cli.fw.error.OnapCommandException;
+import org.onap.cli.fw.registrar.OnapCommandRegistrar;
 
 /**
  * Oclip robot Command.
@@ -32,8 +35,16 @@ import org.onap.cli.fw.error.OnapCommandException;
 @OnapCommandSchema(type = OnapCommandRobotConstants.ROBOT_SCHEMA_PROFILE)
 public class OnapRobotCommand extends OpenCommandShellCmd {
 
-  public OnapRobotCommand() {
+  public OnapRobotCommand() throws OnapCommandException {
     super.addDefaultSchemas(OnapCommandRobotConstants.DEFAULT_PARAMETER_ROBOT_FILE_NAME);
+    if(Boolean.parseBoolean(OnapCommandConfig.getPropertyValue(OnapCommandRobotConstants.ROBOT_DISCOVER_TESTCASES)))
+      this.discover();
+  }
+
+  public void discover() throws OnapCommandException {
+    OnapCommand cmd = OnapCommandRegistrar.getRegistrar().get("auto-discover-robot-testcases");
+    cmd.getParametersMap().get("api-tests-folder-path").setValue(OnapCommandRobotConstants.ROBOT_API_TESTS_FOLDER_PATH);
+    cmd.execute();
   }
 
   @Override
