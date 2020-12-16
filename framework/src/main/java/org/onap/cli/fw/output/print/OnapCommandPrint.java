@@ -32,6 +32,8 @@ import org.onap.cli.fw.error.OnapCommandOutputPrintingFailed;
 import org.onap.cli.fw.output.OnapCommandPrintDirection;
 
 import com.google.gson.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
@@ -275,20 +277,13 @@ public class OnapCommandPrint {
 
         }
     }
-
-    /*
-        required vulnerable fix
-        jackson-dataformat-yaml:YAMLMapper is a sub component of jackson-databind
-        jackson-databind is replaced with gson
-        JIRA: CLI-251
-     */
+    
     public String printYaml() throws OnapCommandOutputPrintingFailed {
-     /*   try {
+        try {
             return new YAMLMapper().writeValueAsString(new ObjectMapper().readTree(this.printJson()));
         } catch (IOException  e) {
             throw new OnapCommandOutputPrintingFailed(e);  // NOSONAR
         }
-     */
-     return ""; //NOSONAR
+
     }
 }
