@@ -1,5 +1,6 @@
 /*
  * Copyright 2017 Huawei Technologies Co., Ltd.
+ * Copyright 2020 Nokia
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +27,7 @@ import static org.onap.cli.fw.conf.OnapCommandConstants.DIRECTION;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_AUTHOR;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_IGNORE;
+import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_METADATA;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_PARAMS_LIST;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_PARAMS_MANDATORY_LIST;
 import static org.onap.cli.fw.conf.OnapCommandConstants.INFO_PRODUCT;
@@ -260,6 +262,11 @@ public class OnapCommandSchemaLoader {
                                 case INFO_AUTHOR:
                                     Object mode = infoMap.get(key1);
                                     info.setAuthor(mode.toString());
+                                    break;
+
+                                case INFO_METADATA:
+                                    Object metadata = infoMap.get(key1);
+                                    info.setMetadata((Map<String,String>)metadata);
                                     break;
 
                                 case INFO_IGNORE:

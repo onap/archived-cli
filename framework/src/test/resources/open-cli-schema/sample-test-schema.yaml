@@ -1,4 +1,5 @@
 # Copyright 2018 Huawei Technologies Co., Ltd.
+# Copyright 2020 Nokia
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,6 +22,8 @@ info:
   type: cmd
   author: Kanagaraj Manickam kanagaraj.manickam@huawei.com
   state: experimental
+  metadata:
+    release: honolulu
 parameters:
   - name: bool-param
     type: bool
@@ -37,14 +40,14 @@ parameters:
     long_option: secure
     is_secured: true
     is_optional: true
-    default_Value: pass123#
+    default_value: pass123#
   - name: string-param
     type: string
     description: Oclip string param
     long_option: string-param
     short_option: c
     is_optional: true
-    default_Value: test
+    default_value: test
   - name: yaml-param
     type: json
     description: Oclip yaml file location param

@@ -1,5 +1,6 @@
 /*
  * Copyright 2017 Huawei Technologies Co., Ltd.
+ * Copyright 2020 Nokia
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -125,7 +126,7 @@ public abstract class OnapCommand {
     }
 
     public void setParameters(Set<OnapCommandParameter> parameters) {
-        this.cmdParameters = parameters;
+        this.cmdParameters.addAll(parameters);
     }
 
     public Set<OnapCommandParameter> getParameters() {
@@ -200,6 +201,7 @@ public abstract class OnapCommand {
     }
 
     public List<String> initializeSchema(OnapCommandSchemaInfo schema) throws OnapCommandException {
+        this.getInfo().setMetadata(schema.getMetadata());
         return this.initializeSchema(schema.getSchemaName(), false);
     }
 

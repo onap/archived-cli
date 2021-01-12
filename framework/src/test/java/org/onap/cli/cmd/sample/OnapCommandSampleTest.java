@@ -1,5 +1,6 @@
 /*
  * Copyright 2017 Huawei Technologies Co., Ltd.
+ * Copyright 2020 Nokia
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,18 +18,26 @@
 package org.onap.cli.cmd.sample;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.conf.OnapCommandConstants;
 import org.onap.cli.fw.error.OnapCommandException;
 import org.onap.cli.fw.error.OnapCommandExecutionFailed;
+import org.onap.cli.fw.error.OnapCommandInvalidParameterValue;
 import org.onap.cli.fw.error.OnapCommandNotInitialized;
+import org.onap.cli.fw.info.OnapCommandInfo;
+import org.onap.cli.fw.info.OnapCommandState;
 import org.onap.cli.fw.input.OnapCommandParameter;
 import org.onap.cli.fw.input.OnapCommandParameterType;
 import org.onap.cli.fw.output.OnapCommandResultAttribute;
@@ -38,11 +47,16 @@ import org.onap.cli.fw.output.OnapCommandResult;
 import static org.junit.Assert.assertNotNull;
 
 public class OnapCommandSampleTest {
+
+    private static final String SAMPLE_TEST_COMMAND_NAME = "sample-test";
+    private static final int EXPECTED_NUMBER_OF_COMMAND_PARAMETERS = 18;
+    private static final int EXPECTED_SIZE_OF_METADATA = 1;
+
     @Test
     public void sampleTestVersion() {
 
         try {
-            Set<OnapCommandParameter> parameters = new HashSet();
+            Set<OnapCommandParameter> parameters = new HashSet<>();
             OnapCommandParameter version = new OnapCommandParameter();
             version.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
             version.setValue(true);
@@ -52,12 +66,13 @@ public class OnapCommandSampleTest {
             hlp.setValue(false);
             parameters.add(hlp);
 
-            OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
+            OnapCommand sample = givenOnapCommand("sample-test");
             sample.setParameters(parameters);
             sample.execute();
             OnapCommandResult onapCommandResult = sample.execute();
             assertEquals("open-cli::test",onapCommandResult.getOutput());
         } catch (OnapCommandException e) {
+            fail();
         }
     }
 
@@ -69,7 +84,7 @@ public class OnapCommandSampleTest {
             ver.setValue(true);
             ver.setParameterType(OnapCommandParameterType.BOOL);
 
-            Set<OnapCommandParameter> parameters = new HashSet();
+            Set<OnapCommandParameter> parameters = new HashSet<>();
             parameters.add(ver);
 
             OnapCommandSample sample = new OnapCommandSample();
@@ -78,14 +93,67 @@ public class OnapCommandSampleTest {
             OnapCommandResult onapCommandResult = sample.execute();
             assertNotNull(onapCommandResult);
         } catch (OnapCommandException e) {
+            fail();
         }
+    }
+
+    @Test
+    public void shouldContainValidParametersAfterChangingDefaultValueOfSelectedParameter() throws OnapCommandException {
+        // given
+        Set<OnapCommandParameter> parameters = new HashSet<>();
+        OnapCommandParameter booleanParameter = givenBooleanParameter(true);
+        parameters.add(booleanParameter);
+
+        // when
+        OnapCommand onapCommand = givenOnapCommand(SAMPLE_TEST_COMMAND_NAME);
+        onapCommand.setParameters(parameters);
+
+        // then
+        final Set<OnapCommandParameter> params = onapCommand.getParameters();
+        assertEquals(EXPECTED_NUMBER_OF_COMMAND_PARAMETERS, params.size());
+        assertTrue(params.contains(booleanParameter));
+        final List<OnapCommandParameter> stringParams = findParameter(params, "string-param");
+        verifyThatParameterHasValue(stringParams, "test");
+    }
+
+    @Test
+    public void shouldContainParametersWithDefaultValuesWhenUserDoesNotChangeAnyParameter() throws OnapCommandException {
+        // given
+        OnapCommand onapCommand = givenOnapCommand(SAMPLE_TEST_COMMAND_NAME);
+
+        // when
+        final Set<OnapCommandParameter> params = onapCommand.getParameters();
+
+        // then
+        assertEquals(EXPECTED_NUMBER_OF_COMMAND_PARAMETERS, params.size());
+        final List<OnapCommandParameter> stringParams = findParameter(params, "string-param");
+        verifyThatParameterHasValue(stringParams, "test");
+    }
+
+    @Test
+    public void shouldContainValidInfoState() throws OnapCommandException {
+        // given
+        OnapCommand onapCommand = givenOnapCommand(SAMPLE_TEST_COMMAND_NAME);
+
+        // when
+        final OnapCommandInfo info = onapCommand.getInfo();
+
+        // then
+        assertEquals("open-cli", info.getProduct());
+        assertEquals("test", info.getService());
+        assertEquals(OnapCommandType.CMD, info.getCommandType());
+        assertEquals("Kanagaraj Manickam kanagaraj.manickam@huawei.com", info.getAuthor());
+        assertEquals(OnapCommandState.EXPERIMENTAL, info.getState());
+        final Map<String, String> metadata = info.getMetadata();
+        assertEquals(EXPECTED_SIZE_OF_METADATA, metadata.size());
+        assertEquals("honolulu", metadata.get("release"));
     }
 
     @Test
     public void sampleTest() {
 
         try {
-            Set<OnapCommandParameter> parameters = new HashSet();
+            Set<OnapCommandParameter> parameters = new HashSet<>();
             OnapCommandParameter ver = new OnapCommandParameter();
             ver.setName(OnapCommandConstants.DEFAULT_PARAMETER_VERSION);
             ver.setValue(false);
@@ -106,12 +174,12 @@ public class OnapCommandSampleTest {
             title.setName(OnapCommandConstants.DEFAULT_PARAMETER_OUTPUT_NO_TITLE);
             title.setValue(true);
             parameters.add(title);
-            OnapCommandParameter denug = new OnapCommandParameter();
-            denug.setName(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG);
-            denug.setValue(true);
-            parameters.add(denug);
+            OnapCommandParameter debug = new OnapCommandParameter();
+            debug.setName(OnapCommandConstants.DEFAULT_PARAMETER_DEBUG);
+            debug.setValue(true);
+            parameters.add(debug);
 
-            OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
+            OnapCommand sample = givenOnapCommand("sample-test");
             sample.setParameters(parameters);
             sample.execute();
 
@@ -121,10 +189,11 @@ public class OnapCommandSampleTest {
             UUID.fromString(attrValue.substring(4));
             attr = sample.getResult().getRecordsMap().get("output-2");
             attrValue = attr.getValues().get(0);
-            assertEquals("test", attrValue);
+            assertEquals("Hello test !", attrValue);
         } catch (IllegalArgumentException e) {
             fail("Failed to replace the output default value on output-1");
         } catch (OnapCommandException e) {
+            fail();
         }
     }
 
@@ -166,5 +235,27 @@ public class OnapCommandSampleTest {
     public void sampleTestIsInitialized() throws OnapCommandException {
         OnapCommandSample sample = new OnapCommandSample(false);
         sample.execute();
+    }
+
+    private OnapCommand givenOnapCommand(String cmdName) throws OnapCommandException {
+        return OnapCommandRegistrar.getRegistrar().get(cmdName);
+    }
+
+    private OnapCommandParameter givenBooleanParameter(boolean value) throws OnapCommandInvalidParameterValue {
+        OnapCommandParameter booleanParameter = new OnapCommandParameter();
+        booleanParameter.setName("bool-param");
+        booleanParameter.setLongOption("bool");
+        booleanParameter.setShortOption("b");
+        booleanParameter.setValue(value);
+        return booleanParameter;
+    }
+
+    private List<OnapCommandParameter> findParameter(Set<OnapCommandParameter> params, String parameterName) {
+        return params.stream().filter(it -> it.getName().equals(parameterName)).collect(Collectors.toList());
+    }
+
+    private void verifyThatParameterHasValue(List<OnapCommandParameter> stringParams, String expectedValue) {
+        assertEquals(1, stringParams.size());
+        assertEquals(expectedValue, stringParams.get(0).getValue());
     }
 }
