@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.onap.cli</groupId>
         <artifactId>cli-products-onap-amsterdam-features</artifactId>
-        <version>6.0.1-SNAPSHOT</version>
+        <version>6.0.1</version>
     </parent>
 
     <artifactId>cli-products-onap-amsterdam-features-sdc</artifactId>

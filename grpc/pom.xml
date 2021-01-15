@@ -18,9 +18,9 @@
     <parent>
         <groupId>org.onap.cli</groupId>
         <artifactId>cli</artifactId>
-        <version>6.0.1-SNAPSHOT</version>
+        <version>6.0.1</version>
     </parent>
-  <version>6.0.1-SNAPSHOT</version>
+  <version>6.0.1</version>
   <artifactId>oclip-grpc</artifactId>
   <packaging>pom</packaging>
   <name>oclip/grpc</name>
