@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6d8fdf6_727078b2",
+        "filename": "deployment/docker/src/main/docker/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1215
+      },
+      "writtenOn": "2021-02-19T17:53:13Z",
+      "side": 1,
+      "message": "could we try the 8.0.0?",
+      "revId": "0d2b6a1b2f1d93178fa856877d42a20a6f9413a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
