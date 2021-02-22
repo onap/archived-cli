@@ -16,6 +16,24 @@
       "revId": "0d2b6a1b2f1d93178fa856877d42a20a6f9413a5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f26f8a6_47bc83a4",
+        "filename": "deployment/docker/src/main/docker/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7352
+      },
+      "writtenOn": "2021-02-22T08:20:16Z",
+      "side": 1,
+      "message": "Would need a bit more changes as 7.0.0 was debian based, since 7.2.0 integration-java11 is alpine based. This dockerfile relies on integration-java11 being debian based image.\nSome changes are trivial, but pandoc would need to be installed from source as it is not avaliable in alpine apk",
+      "parentUuid": "d6d8fdf6_727078b2",
+      "revId": "0d2b6a1b2f1d93178fa856877d42a20a6f9413a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
