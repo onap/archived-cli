@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0e70730e_1fae2e1d",
+        "filename": "deployment/docker/src/main/docker/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3433
+      },
+      "writtenOn": "2021-03-01T09:16:18Z",
+      "side": 1,
+      "message": "for me is ok.",
+      "parentUuid": "0f26f8a6_47bc83a4",
+      "revId": "0d2b6a1b2f1d93178fa856877d42a20a6f9413a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7409c63_a281825b",
         "filename": "deployment/docker/src/main/docker/Dockerfile",
         "patchSetId": 2
