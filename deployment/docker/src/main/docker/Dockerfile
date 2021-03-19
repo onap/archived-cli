@@ -32,11 +32,10 @@ ENV OPEN_CLI_HOME=/opt/oclip \
 ADD ./STAGE $OPEN_CLI_HOME
 WORKDIR $OPEN_CLI_HOME
 
-RUN sudo apt-get install -y lighttpd git curl pandoc vim && \
-    cd /tmp && curl -O https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz && \
-    tar -xvf go1.9.linux-amd64.tar.gz && mkdir -p /tmp/gotty && \
-    GOPATH=/tmp/gotty /tmp/go/bin/go get github.com/yudai/gotty && \
-    mv /tmp/gotty/bin/gotty /usr/local/bin/ && \
+RUN sudo apt-get install -y lighttpd git wget pandoc vim && \
+    cd /tmp && wget https://github.com/yudai/gotty/releases/download/v1.0.0/gotty_linux_amd64.tar.gz && \
+    tar -xvf gotty_linux_amd64.tar.gz && chmod +x ./gotty && \
+    mv ./gotty /usr/local/bin/ && \
     sudo chown -R ocomp:ocomp $OPEN_CLI_HOME && pandoc -t plain $OPEN_CLI_HOME/docs/README.md > $OPEN_CLI_HOME/docs/oclip-readme.txt && \
     sudo apt-get purge -y pandoc && sudo apt-get autoremove -y && sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/* /tmp/go /tmp/gotty /tmp/* /var/tmp/* && \
     chmod +x  $OPEN_CLI_HOME/bin/oclip.sh  && \
