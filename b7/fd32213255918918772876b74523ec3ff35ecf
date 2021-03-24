@@ -1,0 +1,9 @@
+Code-Review+1: Bogumil Zebek <bogumil.zebek@nokia.com>
+Code-Review+1: Edyta Krukowska <edyta.krukowska@nokia.com>
+Code-Review+2: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Submitted-by: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Submitted-at: Wed, 24 Mar 2021 03:12:57 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/cli/+/119535
+Project: cli
+Branch: refs/heads/master
