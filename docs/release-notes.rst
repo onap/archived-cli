@@ -5,6 +5,25 @@
 CLI Release Notes
 =================
 
+Version: 6.0.1
+--------------
+
+:Release Date: 2021-04-01
+
+*New Features*
+
+1. Metadata support is added in OCS YAML 
+
+
+*Security Notes*
+
+Fixed Security Issues
+
+Known Security Issues
+
+Known Vulnerabilities in Used Modules
+
+
 Version: 6.0.0
 --------------
 
