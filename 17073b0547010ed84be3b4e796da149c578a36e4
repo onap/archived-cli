@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90ffc5b7_ce341a1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2021-03-29T05:04:14Z",
+      "side": 1,
+      "message": "create an issue in CLI project and close this ID",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "17073b0547010ed84be3b4e796da149c578a36e4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4b8d85_5588ea59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2021-03-29T05:04:14Z",
+      "side": 1,
+      "message": "Move this to line 10 and leave a blank line",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "17073b0547010ed84be3b4e796da149c578a36e4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3eeaf8d_dbd74e54",
+        "filename": "profiles/robot/src/main/resources/script/discover-robot-testcases.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2021-03-29T05:04:14Z",
+      "side": 1,
+      "message": "check of existing ocomp or oclip and set to CMD_NAME",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "17073b0547010ed84be3b4e796da149c578a36e4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1a88e1_3579ec14",
+        "filename": "profiles/robot/src/main/resources/script/discover-robot-testcases.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2021-03-29T05:04:14Z",
+      "side": 1,
+      "message": "make it arg to this script and refer the arg",
+      "range": {
+        "startLine": 101,
+        "startChar": 12,
+        "endLine": 101,
+        "endChar": 23
+      },
+      "revId": "17073b0547010ed84be3b4e796da149c578a36e4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54d83687_ee96406c",
+        "filename": "profiles/robot/src/main/resources/script/run-robot-testcase.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2021-03-29T05:04:14Z",
+      "side": 1,
+      "message": "Add Huawei cr",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 32
+      },
+      "revId": "17073b0547010ed84be3b4e796da149c578a36e4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
