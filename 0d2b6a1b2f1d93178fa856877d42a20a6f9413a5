@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "06460469_eb99125c",
+        "filename": "deployment/docker/src/main/docker/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2021-05-27T03:27:46Z",
+      "side": 1,
+      "message": "nope. it can be set to open-cli",
+      "parentUuid": "e7409c63_a281825b",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "0d2b6a1b2f1d93178fa856877d42a20a6f9413a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eead6d76_0919b721",
         "filename": "deployment/docker/src/main/docker/Dockerfile",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "writtenOn": "2021-02-22T14:37:23Z",
       "side": 1,
       "message": "why do we need pandoc in the first place?",
+      "range": {
+        "startLine": 35,
+        "startChar": 46,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "0d2b6a1b2f1d93178fa856877d42a20a6f9413a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37fa7927_2e2962e7",
+        "filename": "deployment/docker/src/main/docker/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2021-05-27T03:27:46Z",
+      "side": 1,
+      "message": "pandoc helps to translate md to html",
+      "parentUuid": "eead6d76_0919b721",
       "range": {
         "startLine": 35,
         "startChar": 46,
