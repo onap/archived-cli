@@ -1,0 +1,11 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Morgan Richomme <morgan.richomme@orange.com>
+Code-Review+1: Bogumil Zebek <bogumil.zebek@nokia.com>
+Code-Review+1: Krzysztof Opasiak <k.opasiak@samsung.com>
+Code-Review+1: David McBride <dmcbride@linuxfoundation.org>
+Code-Review+2: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Submitted-by: Kanagaraj Manickam <kanagaraj.manickam@huawei.com>
+Submitted-at: Thu, 17 Jun 2021 06:38:11 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/cli/+/118045
+Project: cli
+Branch: refs/heads/master
