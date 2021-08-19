@@ -52,7 +52,7 @@ Excluded commons-codec vulnerable version and added invulnerable version
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.7</version>
+            <version>4.5.13</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-codec</groupId>
@@ -110,7 +110,7 @@ Excluded commons-codec vulnerable version and added invulnerable version
       <dependency>
           <groupId>io.netty</groupId>
           <artifactId>netty-codec-http</artifactId>
-          <version>4.1.48.Final</version>
+          <version>4.1.63.Final</version>
       </dependency>
           <dependency>
             <groupId>junit</groupId>
@@ -133,7 +133,7 @@ Excluded commons-codec vulnerable version and added invulnerable version
       <dependency>
           <groupId>com.fasterxml.jackson.core</groupId>
           <artifactId>jackson-databind</artifactId>
-          <version>2.10.0</version>
+          <version>2.12.1</version>
       </dependency>
    </dependencies>
    <build>
