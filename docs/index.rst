@@ -13,7 +13,7 @@ ONAP CLI
 :blue:`One Command to command whole ONAP !`
 
 Introduction
--------------
+------------
 
 Both Information and Communication Technology customers prefer Command Line
 Interface (CLI) over Graphical user interface (GUI) in many situations
@@ -32,7 +32,7 @@ the commands for following ONAP functionalities:
 * VNF/PNF management
 
 Table of contents
-------------------
+-----------------
 
 Following guidelines provides detailed information about CLI.
 
