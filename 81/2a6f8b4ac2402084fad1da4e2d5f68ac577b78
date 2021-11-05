@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Bengt Thuree <bthuree@linuxfoundation.org>
+Code-Review+2: Jessica Wagantall <jwagantall@linuxfoundation.org>
+Code-Review+1: Kevin Sandi <ksandi@contractor.linuxfoundation.org>
+Submitted-by: Morgan Richomme <morgan.richomme@orange.com>
+Submitted-at: Fri, 05 Nov 2021 10:20:44 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/cli/+/125256
+Project: cli
+Branch: refs/heads/istanbul
