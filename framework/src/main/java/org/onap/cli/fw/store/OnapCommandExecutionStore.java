@@ -415,7 +415,7 @@ public class OnapCommandExecutionStore {
             for (String dir: dirs) {
                 list.add(this.makeExecution(dir));
             }
-        } catch (Exception e) {
+        } catch (Exception e) {// NOSONAR
             throw new OnapCommandExecutionFailed(e, "Failed to search the executions");
         }
 
