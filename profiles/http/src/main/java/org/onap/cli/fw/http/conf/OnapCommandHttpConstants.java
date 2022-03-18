@@ -30,7 +30,7 @@ public class OnapCommandHttpConstants {
     public static final String HTTP_REQUEST_MANDATORY_PARAMS = "cli.schema.http.request.sections.mandatory";
     public static final String HTTP_METHODS = "cli.schema.http.request.method.values";
     //http connection
-    public static final String SSLCONTEST_TLS = "TLSV1.2";
+    public static final String SSLCONTEST_TLS = "TLSv1.2";
     public static final String APPLICATION_JSON = "application/json";
     public static final String DEFAULT_PARAMETER_HTTP_FILE_NAME = "default_input_parameters_http.yaml";
     public static final String DEAFULT_PARAMETER_USERNAME = "host-username";
