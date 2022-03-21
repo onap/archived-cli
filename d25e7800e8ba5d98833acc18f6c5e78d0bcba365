@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "494dcee7_56d098f6",
+        "filename": "profiles/http/src/main/java/org/onap/cli/fw/http/conf/OnapCommandHttpConstants.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2022-03-21T04:11:03Z",
+      "side": 1,
+      "message": "can you update the http url to https in https://github.com/onap/cli/blob/master/products/sample/src/main/resources/open-cli-schema/hello-world-http.yaml and test this same command",
+      "revId": "d25e7800e8ba5d98833acc18f6c5e78d0bcba365",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
