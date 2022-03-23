@@ -270,7 +270,7 @@ public class OnapCommandPrint {
                 array.add(rowO);
             }
             try {
-                return new JsonParser().parse(array.toJSONString()).toString();
+                return JsonParser.parseString(array.toJSONString()).toString();
             } catch (Exception e) { // NOSONAR
                 return array.toJSONString();
             }

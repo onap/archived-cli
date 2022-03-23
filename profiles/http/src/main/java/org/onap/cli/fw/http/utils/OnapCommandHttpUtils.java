@@ -304,10 +304,9 @@ public class OnapCommandHttpUtils {
     }
 
     public static String normalizeJson(String json) throws OnapCommandHttpInvalidRequestBody {
-        JsonParser jsonParser = new JsonParser();
         JsonElement node;
         try {
-            node = jsonParser.parse(json);
+            node = JsonParser.parseString(json);
             normalizeJson(node);
             return gson.toJson(node);
         } catch (Exception e) {  //NOSONAR
