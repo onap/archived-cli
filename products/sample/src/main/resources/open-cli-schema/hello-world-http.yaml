@@ -8,6 +8,7 @@ description: |
     Try to add new commands to display different weather details by exploring this site.
 
     Sample usage:
+
     oclip --product tutorial weather-report --host-url https://api.openweathermap.org --zip-code 637301 --country-code in
 
 info:

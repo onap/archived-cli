@@ -277,7 +277,7 @@ public class OpenInterfaceGrpcServer {
 
         public static void setOutputAttr(Builder reply, String printOut){
             try {
-                reply.putAttrs(OnapCommandConstants.RESULTS, new JsonParser().parse(printOut).toString());
+                reply.putAttrs(OnapCommandConstants.RESULTS, JsonParser.parseString(printOut).toString());
             } catch (Exception e) { // NOSONAR
                 reply.putAttrs(OnapCommandConstants.RESULTS, printOut);
             }
