@@ -235,7 +235,7 @@ public class OnapCommandDiscoveryUtils {
         Resource[] resources = OnapCommandDiscoveryUtils.findResources(pattern);
         if (resources != null && resources.length > 0) { //NOSONAR
             for (Resource res : resources) {
-                if ((res.getFilename() != null) && (res.getFilename().equals(fileName))) {
+                if ((res.getFilename() != null) && (res.getFilename().equals(fileName))) { //NOSONAR
                     return res;
                 }
             }

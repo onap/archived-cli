@@ -29,6 +29,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class OnapCommandProfileStoreTest {
     OnapCommandProfileStore onapCommandProfileStore;
@@ -82,8 +83,8 @@ public class OnapCommandProfileStoreTest {
 
     @Test
     public void removeTest() {
-        onapCommandProfileStore.add("abc", "abc", "abc");
-        onapCommandProfileStore.remove("abc","abc");
+        assertDoesNotThrow(() -> onapCommandProfileStore.add("abc", "abc", "abc"));
+        assertDoesNotThrow(() -> onapCommandProfileStore.remove("abc","abc"));
     }
 
     @AfterClass

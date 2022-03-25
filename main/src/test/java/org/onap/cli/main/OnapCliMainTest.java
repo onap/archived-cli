@@ -38,6 +38,7 @@ import java.util.Arrays;
 import org.onap.cli.fw.error.OnapCommandInvalidSchema;
 import org.onap.cli.fw.utils.OnapCommandDiscoveryUtils;
 import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 
 public class OnapCliMainTest {
@@ -51,37 +52,37 @@ public class OnapCliMainTest {
 
     @Test
     public void testHelp() {
-        this.handle(new String[] { "--help" });
+        assertDoesNotThrow(() -> this.handle(new String[] { "--help" }));
     }
 
     @Test
     public void testHelpShort() {
-        this.handle(new String[] { "-h" });
+        assertDoesNotThrow(() -> this.handle(new String[] { "-h" }));
     }
 
     @Test
     public void testVersion() {
-        this.handle(new String[] { "--version" });
+        assertDoesNotThrow(() -> this.handle(new String[] { "--version" }));
     }
 
     @Test
     public void testVersionShort() {
-        this.handle(new String[] { "-v" });
+        assertDoesNotThrow(() -> this.handle(new String[] { "-v" }));
     }
 
     @Test
     public void testHelpSampleCommand() {
-        this.handle(new String[] { "sample-test", "--help" });
+        assertDoesNotThrow(() -> this.handle(new String[] { "sample-test", "--help" }));
     }
 
     @Test
     public void testHelpSampleCommandShort() {
-        this.handle(new String[] { "sample-test", "-h" });
+        assertDoesNotThrow(() -> this.handle(new String[] { "sample-test", "-h" }));
     }
 
     @Test
     public void testVersionSampleCommandShort() {
-        this.handle(new String[] { "sample-test", "-v" });
+        assertDoesNotThrow(() -> this.handle(new String[] { "sample-test", "-v" }));
     }
 
     @Test
@@ -90,12 +91,12 @@ public class OnapCliMainTest {
         OnapCommandRegistrar.getRegistrar().addParamCache("host-username", "paramValue");
         OnapCommandRegistrar.getRegistrar().addParamCache("host-password", "paramValue");
         OnapCommandRegistrar.getRegistrar().addParamCache("host-url", "paramValue");
-        this.handle(new String[] { "sample-test", "--string-param", "test"});
+        assertDoesNotThrow(() -> this.handle(new String[] { "sample-test", "--string-param", "test"}));
     }
 
     @Test
     public void testHandleSampleCommandFailure() throws OnapCommandException {
-        this.handle(new String[] { "sample-test", "--string-param"});
+        assertDoesNotThrow(() -> this.handle(new String[] { "sample-test", "--string-param"}));
     }
 
     @Test
@@ -184,7 +185,7 @@ public class OnapCliMainTest {
 
         cli = new OnapCli(new String[] {});
         mockConsoleReader();
-        cli.handleInteractive();
+        assertDoesNotThrow(() -> cli.handleInteractive());
 
     }
 
@@ -239,7 +240,7 @@ public class OnapCliMainTest {
                 map.put("sampleid","sample1");
                 map.put("samplefileid","schema-validate-sample.yaml");
                 map.put("moco","schema-validate-moco.json");
-                list.add(map);
+                assertDoesNotThrow(() -> list.add(map));
                 return list;
             }
         };

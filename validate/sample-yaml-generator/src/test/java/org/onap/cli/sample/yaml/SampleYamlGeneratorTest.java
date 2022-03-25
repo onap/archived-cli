@@ -20,19 +20,20 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class SampleYamlGeneratorTest {
 
     @Test
     public void testGenerateSampleYaml() throws IOException {
-        SampleYamlGenerator.generateSampleYaml("testcmd", Arrays.asList("-a", "argument"),
-                "+--------+\n+val     +\n+argument+", "test-version-1.0", "target/test.yaml", false, "sample1");
+        assertDoesNotThrow(() -> SampleYamlGenerator.generateSampleYaml("testcmd", Arrays.asList("-a", "argument"),
+                "+--------+\n+val     +\n+argument+", "test-version-1.0", "target/test.yaml", false, "sample1"));
     }
     @Test
     public void testGenerateSampleYamlForWriteMultilineKeyValue() throws IOException {
-        SampleYamlGenerator.generateSampleYaml("testcmd-multiline", Arrays.asList("-a", "argument"),
+        assertDoesNotThrow(() -> SampleYamlGenerator.generateSampleYaml("testcmd-multiline", Arrays.asList("-a", "argument"),
                 "+--------+\n+testval1 +\n+argument1+\n+testval2 +\n+argument2+", "test-version-1.0",
-                "target/test-multiline.yaml", true, "sample1");
+                "target/test-multiline.yaml", true, "sample1"));
     }
 
 }
