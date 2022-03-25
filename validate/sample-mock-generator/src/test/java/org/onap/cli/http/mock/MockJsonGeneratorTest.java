@@ -18,6 +18,7 @@ package org.onap.cli.http.mock;
 import java.io.IOException;
 
 import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class MockJsonGeneratorTest {
 
@@ -32,6 +33,6 @@ public class MockJsonGeneratorTest {
         mockResponse.setStatus(200);
         mockResponse.setJson("{\"value\" : \"234sdf-345\"}");
 
-        MockJsonGenerator.generateMocking(mockRequest, mockResponse, "target/test");
+        assertDoesNotThrow(() -> MockJsonGenerator.generateMocking(mockRequest, mockResponse, "target/test"));
     }
 }

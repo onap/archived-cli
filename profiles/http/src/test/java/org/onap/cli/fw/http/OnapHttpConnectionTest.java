@@ -37,6 +37,7 @@ import org.onap.cli.fw.http.connect.HttpInput;
 import org.onap.cli.fw.http.connect.HttpResult;
 import org.onap.cli.fw.http.connect.OnapHttpConnection;
 import org.onap.cli.fw.http.error.OnapCommandHttpFailure;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 
 public class OnapHttpConnectionTest {
@@ -219,7 +220,7 @@ public class OnapHttpConnectionTest {
     public void httpUnSecuredCloseExceptionTest() throws IOException {
         inp.setMethod("other");
         con = new OnapHttpConnection();
-        con.close();
+        assertDoesNotThrow(() -> con.close());
     }
 
     @Test
