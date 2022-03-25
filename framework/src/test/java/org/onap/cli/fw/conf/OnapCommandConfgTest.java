@@ -17,13 +17,13 @@
 package org.onap.cli.fw.conf;
 
 import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class OnapCommandConfgTest {
 
 	@Test
 	public void addPropertiesTest() {
-
-	    OnapCommandConfig.getPropertyValue("cli.schema.profile.confs");
+	    assertDoesNotThrow(() -> OnapCommandConfig.getPropertyValue("cli.schema.profile.confs"));
 	}
 
 }

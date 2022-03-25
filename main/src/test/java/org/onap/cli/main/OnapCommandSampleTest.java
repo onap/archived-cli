@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.junit.Test;
 import org.onap.cli.fw.conf.OnapCommandConstants;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 /**
  * This command helps to test the Command functionalities.
@@ -53,7 +54,7 @@ public class OnapCommandSampleTest extends OnapCommand {
 
         OnapCommand sample = OnapCommandRegistrar.getRegistrar().get("sample-test");
         sample.setParameters(parameters);
-        sample.execute();
+        assertDoesNotThrow(() -> sample.execute());
     }
 
 }
