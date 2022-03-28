@@ -51,6 +51,29 @@ public class OnapCommandSchemaMerger {
 
     }
 
+    public static void mergeWithExistingValue(Object yamlValue, Object existingValue, String key, Map<String, Object> mergedResult){
+        if (yamlValue instanceof Map) {
+            if (existingValue instanceof Map) {
+                mergeYamlMap((Map<String, Object>) existingValue, (Map<String, Object>)  yamlValue);
+            } else if (existingValue instanceof String) {
+                throw new IllegalArgumentException("Cannot merge complex element into a simple element: "+key);
+            } else {
+                throw unknownValueType(key, yamlValue);
+            }
+        } else if (yamlValue instanceof List) {
+            mergeYamlLists(mergedResult, key, yamlValue);
+
+        } else if (yamlValue instanceof String
+                || yamlValue instanceof Boolean
+                || yamlValue instanceof Double
+                || yamlValue instanceof Integer) {
+            mergedResult.put(key, yamlValue);
+
+        } else {
+            throw unknownValueType(key, yamlValue);
+        }
+    }
+
     public static void mergeYamlMap(Map<String, Object> mergedResult, Map<String, Object> yamlContents) {
         if (yamlContents == null) return;
 
@@ -64,27 +87,7 @@ public class OnapCommandSchemaMerger {
 
             Object existingValue = mergedResult.get(key);
             if (existingValue != null) {
-                if (yamlValue instanceof Map) {
-                    if (existingValue instanceof Map) {
-                        mergeYamlMap((Map<String, Object>) existingValue, (Map<String, Object>)  yamlValue);
-                    } else if (existingValue instanceof String) {
-                        throw new IllegalArgumentException("Cannot merge complex element into a simple element: "+key);
-                    } else {
-                        throw unknownValueType(key, yamlValue);
-                    }
-                } else if (yamlValue instanceof List) {
-                    mergeYamlLists(mergedResult, key, yamlValue);
-
-                } else if (yamlValue instanceof String
-                        || yamlValue instanceof Boolean
-                        || yamlValue instanceof Double
-                        || yamlValue instanceof Integer) {
-                    mergedResult.put(key, yamlValue);
-
-                } else {
-                    throw unknownValueType(key, yamlValue);
-                }
-
+                mergeWithExistingValue(yamlValue, existingValue, key, mergedResult);
             } else {
                 if (yamlValue instanceof Map
                         || yamlValue instanceof List
@@ -105,6 +108,30 @@ public class OnapCommandSchemaMerger {
         return new IllegalArgumentException(msg);
     }
 
+    private static void newfun(String nameN, List<Object> originalList, Map<String, Object> oN, Object o){
+        if (nameN != null) {
+
+            boolean existing = false;
+            for (Object e: originalList) {
+                Map<String, Object> oE = (Map) e;
+                String nameE = (String)oE.getOrDefault(OnapCommandConstants.NAME, null);
+
+                //Name should be existing in the map, otherwise continue as don't know how to compare
+                if (nameN.equals(nameE)) {
+                    for (Entry<String, Object> oNe : oN.entrySet()) {
+                        oE.put(oNe.getKey(), oNe.getValue());
+                    }
+                    existing = true;
+                    break;
+                }
+            }
+
+            if (!existing) {
+                originalList.add(o);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     private static void mergeYamlLists(Map<String, Object> mergedResult, String key, Object yamlValue) {
         if (! (yamlValue instanceof List && mergedResult.get(key) instanceof List)) {
@@ -118,27 +145,7 @@ public class OnapCommandSchemaMerger {
             String nameN = (String)oN.getOrDefault(OnapCommandConstants.NAME, null);
 
             //Name should be existing in the map, otherwise continue as don't know how to compare
-            if (nameN != null) {
-
-                boolean existing = false;
-                for (Object e: originalList) {
-                    Map<String, Object> oE = (Map) e;
-                    String nameE = (String)oE.getOrDefault(OnapCommandConstants.NAME, null);
-
-                    //Name should be existing in the map, otherwise continue as don't know how to compare
-                    if (nameN.equals(nameE)) {
-                        for (Entry<String, Object> oNe : oN.entrySet()) {
-                               oE.put(oNe.getKey(), oNe.getValue());
-                        }
-                        existing = true;
-                        break;
-                    }
-                }
-
-                if (!existing) {
-                    originalList.add(o);
-                }
-            }
+            newfun(nameN, originalList, oN, o);
         }
     }
 }
