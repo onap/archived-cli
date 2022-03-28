@@ -186,20 +186,8 @@ public class OnapCommandResult {
 
         return noOfRecords;
     }
-    /**
-     * Helps to print the result based on the type.
-     *
-     * @return string
-     * @throws OnapCommandOutputFormatNotsupported
-     *             excpetion
-     * @throws OnapCommandOutputPrintingFailed
-     *             exception
-     */
-    public String print() throws OnapCommandException {
-        if (this.getType().equals(OnapCommandResultType.TEXT)) {
-             return this.getOutput().toString();
-        }
 
+    public OnapCommandPrint createAndLoadPrint() {
         OnapCommandPrint print = new OnapCommandPrint();
         print.setPrintTitle(this.isIncludeTitle());
         print.setDirection(this.printDirection);
@@ -232,6 +220,24 @@ public class OnapCommandResult {
                 print.addColumn(val.getName(), val.getValues());
             }
         }
+        return print;
+    }
+
+    /**
+     * Helps to print the result based on the type.
+     *
+     * @return string
+     * @throws OnapCommandOutputFormatNotsupported
+     *             excpetion
+     * @throws OnapCommandOutputPrintingFailed
+     *             exception
+     */
+    public String print() throws OnapCommandException {
+        if (this.getType().equals(OnapCommandResultType.TEXT)) {
+             return this.getOutput().toString();
+        }
+
+        OnapCommandPrint print = createAndLoadPrint();
 
         if (this.getType().equals(OnapCommandResultType.JSON)) {
             return print.printJson();

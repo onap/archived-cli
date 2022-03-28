@@ -98,6 +98,21 @@ public class OnapCommandPrint {
         return max;
     }
 
+    public List<List<Object>>  addTitle(List<List<Object>> rows, boolean isNormalize){
+        if (this.isPrintTitle()) {
+            List<Object> list = new ArrayList<>();
+            for (String key : this.data.keySet()) {
+                if (isNormalize && key != null && key.length() > MAX_COLUMN_LENGTH) {
+                    list.add(splitIntoList(key, MAX_COLUMN_LENGTH));
+                } else {
+                    list.add(key);
+                }
+            }
+            rows.add(list);
+        }
+        return  rows;
+    }
+
     /**
      * Helps to form the rows from columns.
      *
@@ -112,17 +127,7 @@ public class OnapCommandPrint {
         List<List<Object>> rows = new ArrayList<>();
 
         // add title
-        if (this.isPrintTitle()) {
-            List<Object> list = new ArrayList<>();
-            for (String key : this.data.keySet()) {
-                if (isNormalize && key != null && key.length() > MAX_COLUMN_LENGTH) {
-                    list.add(splitIntoList(key, MAX_COLUMN_LENGTH));
-                } else {
-                    list.add(key);
-                }
-            }
-            rows.add(list);
-        }
+        rows = addTitle(rows, isNormalize);
 
         // form row
         for (int i = 0; i < this.findMaxRows(); i++) {
@@ -166,7 +171,7 @@ public class OnapCommandPrint {
         }
         // new line is converted to space char
         if (inp.contains("\n")) {
-            inp = inp.replaceAll("\n", "");
+            inp = inp.replace("\n", "");
         }
 
         StringTokenizer tok = new StringTokenizer(inp, " ");
@@ -243,15 +248,20 @@ public class OnapCommandPrint {
         }
     }
 
+    public JSONObject printPortrait(List<List<Object>> rows){
+        JSONObject result = new JSONObject();
+        for (int i=1; i<rows.size(); i++) {
+            if (rows.get(i).get(1) != null)
+                result.put(rows.get(i).get(0).toString(), this.getJsonNodeOrString(rows.get(i).get(1).toString()));
+        }
+        return result;
+    }
+
     public String printJson() {
         List<List<Object>> rows = this.formRows(false);
 
         if (this.direction.equals(OnapCommandPrintDirection.PORTRAIT)) {
-            JSONObject result = new JSONObject();
-            for (int i=1; i<rows.size(); i++) {
-                if (rows.get(i).get(1) != null)
-                    result.put(rows.get(i).get(0).toString(), this.getJsonNodeOrString(rows.get(i).get(1).toString()));
-            }
+            JSONObject result = printPortrait(rows);
             return result.toJSONString();
         } else {
             JSONArray array = new JSONArray();
