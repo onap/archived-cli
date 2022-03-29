@@ -263,6 +263,37 @@ public class OnapCommandArtifactStore {
         }
     }
 
+    public Artifact setArtifact(Artifact artifact, Artifact existing) throws OnapCommandArtifactNotFound, OnapCommandArtifactContentNotExist, OnapCommandArtifactAlreadyExist, IOException, NoSuchAlgorithmException {
+        if (artifact.getName() == null) {
+            artifact.setName(existing.getName());
+        }
+
+        if (artifact.getDescription() == null) {
+            artifact.setDescription(existing.getDescription());
+        }
+
+        if (artifact.getCategoty() == null) {
+            artifact.setCategoty(existing.getCategoty());
+        }
+
+        if (artifact.getPath()!= null) {
+            if (!new File(artifact.getPath()).exists()) {
+                throw new OnapCommandArtifactContentNotExist(artifact.getPath());
+            }
+            String actual = this.getChecksum(artifact.getPath());
+            if (!existing.getChecksum().equals(actual)) {
+                artifact.setChecksum(actual);
+                artifact.setSize(new File(artifact.getPath()).length() / 1024);
+            }
+        } else {
+            artifact.setPath(existing.getPath());
+        }
+
+        artifact.setCreateAt(existing.getCreateAt());
+        artifact.setLastUpdatedAt(dateFormatter.format(new Date()));
+        return artifact;
+    }
+
     public Artifact updateArtifact(String name, String category, Artifact artifact) throws OnapCommandArtifactNotFound, OnapCommandArtifactContentNotExist, OnapCommandArtifactAlreadyExist {
         Artifact existing = this.getArtifact(name, category);
         String existingStorePath = getArtifactPath(name, category);
@@ -273,33 +304,7 @@ public class OnapCommandArtifactStore {
         }
 
         try {
-            if (artifact.getName() == null) {
-                artifact.setName(existing.getName());
-            }
-
-            if (artifact.getDescription() == null) {
-                artifact.setDescription(existing.getDescription());
-            }
-
-            if (artifact.getCategoty() == null) {
-                artifact.setCategoty(existing.getCategoty());
-            }
-
-            if (artifact.getPath()!= null) {
-                if (!new File(artifact.getPath()).exists()) {
-                    throw new OnapCommandArtifactContentNotExist(artifact.getPath());
-                }
-                String actual = this.getChecksum(artifact.getPath());
-                if (!existing.getChecksum().equals(actual)) {
-                    artifact.setChecksum(actual);
-                    artifact.setSize(new File(artifact.getPath()).length() / 1024);
-                }
-            } else {
-                artifact.setPath(existing.getPath());
-            }
-
-            artifact.setCreateAt(existing.getCreateAt());
-            artifact.setLastUpdatedAt(dateFormatter.format(new Date()));
+            artifact = setArtifact(artifact, existing);
             if (artifact.getMetadata().size() > 0) {
                 //update to existing one
                 for (Map.Entry<String, String> entry: artifact.getMetadata().entrySet()) {
