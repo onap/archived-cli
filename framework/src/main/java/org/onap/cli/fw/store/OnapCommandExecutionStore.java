@@ -338,78 +338,89 @@ public class OnapCommandExecutionStore {
             log.error("Failed to store the execution output details {}", context.storePath);
         }
     }
+
+    public List <String> listExecutionsWindows(Map<String, String> search, List <String> dirs){
+        for (File f: new File(getBasePath()).listFiles()) {
+            if(search.containsKey(EXECUTIONID)) {
+                if (f.getName().startsWith(search.get(EXECUTIONID)))
+                    dirs.add(f.getAbsolutePath());
+
+                continue;
+            }
+
+            if(search.containsKey(REQUESTID)) {
+                if (f.getName().startsWith(search.get(REQUESTID)))
+                    dirs.add(f.getAbsolutePath());
+
+            }
+
+            else
+                dirs.add(f.getAbsolutePath());
+        }
+        return dirs;
+    }
+
+    public List <String> searchAndListExecutions(Map<String, String> search, List <String> dirs) throws OnapCommandExecutionFailed, IOException, InterruptedException {
+        StringBuilder searchString = new StringBuilder("find " + new File(getBasePath()).getAbsolutePath() + " -type d ");
+
+        String startTime = search.get("startTime");
+        if (startTime != null) {
+            searchString.append(" -newermt " + startTime);
+        }
+
+        String endTime = search.get("endTime");
+        if (endTime != null) {
+            searchString.append(" ! -newermt " + endTime);
+        }
+
+        searchString.append(" -name \"");
+
+        if(search.containsKey(EXECUTIONID)) {
+            searchString.append(search.get(EXECUTIONID));
+        } else if(search.containsKey(REQUESTID)) {
+            searchString.append(search.get(REQUESTID) + "*");
+        } else {
+            searchString.append("*");
+        }
+
+        for (String term: Arrays.asList("product", "service", "command", "profile")) {
+            searchString.append("__");
+            if (search.get(term) != null && !search.get(term).isEmpty()) {
+                searchString.append(search.get(term));
+            } else {
+                searchString.append("*");
+            }
+        }
+        if (!searchString.toString().endsWith("*"))
+            searchString.append("*");
+
+        searchString.append("\"");
+
+        ProcessRunner pr = new ProcessRunner(new String [] {searchString.toString()}, null, ".");
+        pr.setTimeout(10000);
+        pr.overrideToUnix();
+        pr.run();
+        if (pr.getExitCode() != 0) {
+            throw new OnapCommandExecutionFailed("System failed to search the executions with error " + pr.getError());
+        }
+
+        if (!pr.getOutput().trim().isEmpty())
+            dirs = Arrays.asList(pr.getOutput().split("\\r?\\n"));
+
+        return dirs;
+    }
+
     public List<OnapCommandExecutionStore.Execution> listExecutions(Map<String, String> search) throws OnapCommandExecutionFailed {
         List <OnapCommandExecutionStore.Execution> list = new ArrayList<>();
 
         try {
             List <String> dirs = new ArrayList<>();
             if (System.getProperty("os.name").toLowerCase().startsWith("windows") || searchMode.equals(SearchMode.FILE)) {
-                for (File f: new File(getBasePath()).listFiles()) {
-                    if(search.containsKey(EXECUTIONID)) {
-                        if (f.getName().startsWith(search.get(EXECUTIONID)))
-                                dirs.add(f.getAbsolutePath());
-
-                        continue;
-                    }
-
-                    if(search.containsKey(REQUESTID)) {
-                        if (f.getName().startsWith(search.get(REQUESTID)))
-                                dirs.add(f.getAbsolutePath());
-
-                    }
-
-                    else
-                        dirs.add(f.getAbsolutePath());
-                }
+                dirs = listExecutionsWindows(search, dirs);
             } else {
                 //find results -type d -newermt '2019-02-11 10:00:00' ! -newermt '2019-02-11 15:10:00' -name "*__*__profile-list*"
                 //find 'results' -type d -newermt '2019-02-11T10:00:00.000' ! -newermt '2019-02-11T15:10:00.000' -name "*__*__profile*"
-
-                StringBuilder searchString = new StringBuilder("find " + new File(getBasePath()).getAbsolutePath() + " -type d ");
-
-                String startTime = search.get("startTime");
-                if (startTime != null) {
-                    searchString.append(" -newermt " + startTime);
-                }
-
-                String endTime = search.get("endTime");
-                if (endTime != null) {
-                    searchString.append(" ! -newermt " + endTime);
-                }
-
-                searchString.append(" -name \"");
-
-                if(search.containsKey(EXECUTIONID)) {
-                    searchString.append(search.get(EXECUTIONID));
-                } else if(search.containsKey(REQUESTID)) {
-                    searchString.append(search.get(REQUESTID) + "*");
-                } else {
-                    searchString.append("*");
-                }
-
-                for (String term: Arrays.asList("product", "service", "command", "profile")) {
-                    searchString.append("__");
-                    if (search.get(term) != null && !search.get(term).isEmpty()) {
-                        searchString.append(search.get(term));
-                    } else {
-                        searchString.append("*");
-                    }
-                }
-                if (!searchString.toString().endsWith("*"))
-                    searchString.append("*");
-
-                searchString.append("\"");
-
-                ProcessRunner pr = new ProcessRunner(new String [] {searchString.toString()}, null, ".");
-                pr.setTimeout(10000);
-                pr.overrideToUnix();
-                pr.run();
-                if (pr.getExitCode() != 0) {
-                    throw new OnapCommandExecutionFailed("System failed to search the executions with error " + pr.getError());
-                }
-
-                if (!pr.getOutput().trim().isEmpty())
-                    dirs = Arrays.asList(pr.getOutput().split("\\r?\\n"));
+                dirs = searchAndListExecutions(search, dirs);
             }
 
             for (String dir: dirs) {
@@ -470,7 +481,7 @@ public class OnapCommandExecutionStore {
 
     public String showExecutionOut(String executionId) throws OnapCommandExecutionNotFound {
         try {
-            return FileUtils.readFileToString(new File (this.getExecutionDir(executionId).getAbsolutePath() + File.separator + "stdout"));
+            return FileUtils.readFileToString(new File (this.getExecutionDir(executionId).getAbsolutePath() + File.separator + STDOUT));
         } catch (IOException e) {
             return "";
         }
@@ -478,7 +489,7 @@ public class OnapCommandExecutionStore {
 
     public String showExecutionErr(String executionId) throws OnapCommandExecutionNotFound {
         try {
-            return FileUtils.readFileToString(new File (this.getExecutionDir(executionId).getAbsolutePath() + File.separator + "stderr"));
+            return FileUtils.readFileToString(new File (this.getExecutionDir(executionId).getAbsolutePath() + File.separator + STDERR));
         } catch (IOException e) {
             return "";
         }
