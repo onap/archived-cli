@@ -17,6 +17,7 @@
 package org.onap.cli.fw.registrar;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -332,7 +333,7 @@ public class OnapCommandRegistrar {
 
         String versionInfo = "";
         try {
-            versionInfo = IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream(OnapCommandConstants.VERSION_INFO));
+            versionInfo = IOUtils.toString((this.getClass().getClassLoader().getResourceAsStream(OnapCommandConstants.VERSION_INFO)), (Charset) null);
         } catch (IOException e) { // NOSONAR
             //Never occurs
         }
