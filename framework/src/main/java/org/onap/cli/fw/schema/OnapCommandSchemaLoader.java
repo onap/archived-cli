@@ -183,7 +183,7 @@ public class OnapCommandSchemaLoader {
         List<String> longOptions = new ArrayList<>();
 
         if (validate) {
-            OnapCommandUtils.validateTags(exceptionList, (Map<String, Object>) values, OnapCommandConfig.getCommaSeparatedList(TOP_LEVEL_PARAMS_LIST),
+            OnapCommandUtils.validateTags(exceptionList, values, OnapCommandConfig.getCommaSeparatedList(TOP_LEVEL_PARAMS_LIST),
                     OnapCommandConfig.getCommaSeparatedList(TOP_LEVEL_MANDATORY_LIST), "root level");
         }
 
