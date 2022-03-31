@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -328,7 +329,7 @@ public class OpenCommandShellCmd extends OnapCommand {
                 try {
                     FileUtils.touch(new File(tmpFilePath));
                     FileUtils.writeStringToFile(new File(tmpFilePath),
-                            this.getParametersMap().get(paramName).getValue().toString());
+                            this.getParametersMap().get(paramName).getValue().toString(), (Charset) null);
                 } catch (IOException e) {
                     // NO SONAR
                 }
