@@ -18,6 +18,7 @@ package org.onap.cli.fw.store;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
@@ -184,7 +185,7 @@ public class OnapCommandArtifactStore {
             artifact.setCreateAt(dateFormatter.format(new Date()));
             artifact.setLastUpdatedAt(artifact.getCreateAt());
 
-            FileUtils.writeStringToFile(new File(storePath), gson.toJson(artifact));
+            FileUtils.writeStringToFile(new File(storePath), gson.toJson(artifact), (Charset) null);
         } catch (Exception e) { // NOSONAR
             //It is expected that this never occurs
             log.error("Failed to store the artifact at {}", storePath);
@@ -201,7 +202,7 @@ public class OnapCommandArtifactStore {
         }
 
         try {
-            return gson.fromJson(FileUtils.readFileToString(aFile), Artifact.class);
+            return gson.fromJson(FileUtils.readFileToString(aFile, (Charset) null), Artifact.class);
         } catch (Exception e) { // NOSONAR
             //It is expected that this never occurs
             log.error("Failed to retrieve the artifact at {}", storePath);
@@ -317,7 +318,7 @@ public class OnapCommandArtifactStore {
                 artifact.setMetadata(existing.getMetadata());
             }
 
-            FileUtils.writeStringToFile(new File(newStorePath), gson.toJson(artifact));
+            FileUtils.writeStringToFile(new File(newStorePath), gson.toJson(artifact), (Charset) null);
 
             if (!newStorePath.equalsIgnoreCase(existingStorePath)) {
                 this.deleteArtifact(name, category);
