@@ -17,6 +17,7 @@
 package org.onap.cli.main;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -189,7 +190,7 @@ public class OnapCli {
     public void handleHelp() {
         try {
             if (this.printHelp) {
-                this.print(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("oclip-readme.txt")));
+                this.print(IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("oclip-readme.txt") , (Charset) null));
                 String help = OnapCommandRegistrar.getRegistrar().getHelp();
                 this.print(help);
                 this.exitSuccessfully();
