@@ -22,6 +22,7 @@ import static org.onap.cli.fw.conf.OnapCommandConstants.IS_INCLUDE;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -270,7 +271,7 @@ public class OnapCommandUtils {
                         //start to read after file:filepath
                         String fileName = splEntry.substring(5);
                         try {
-                            value = FileUtils.readFileToString(new File(fileName));
+                            value = FileUtils.readFileToString((new File(fileName)), (Charset) null);
                         } catch (IOException e) {
                             //when file is not found, assign the same file:FILE_PATH
                             //so that it will given hit to user that FILE_PATH to be
