@@ -140,7 +140,7 @@ public class OnapCommandSchemaHttpLoader {
                                                     Map<String, String> partMap = (Map<String, String>) part;
                                                     partO.setName(partMap.get("name"));
                                                     partO.setContent(partMap.get("content"));
-                                                    if (partMap.get("type") != null && ((String)partMap.get("type")).equalsIgnoreCase("file")) {
+                                                    if (partMap.get("type") != null && (partMap.get("type")).equalsIgnoreCase("file")) {
                                                         partO.setBinary(true);
                                                     }
 
