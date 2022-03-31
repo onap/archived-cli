@@ -19,6 +19,7 @@ package org.onap.cli.main.utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -224,7 +225,7 @@ public class OnapCliArgsParser {
         try {
             File file = new File(input);
             if (file.isFile()) {
-                return FileUtils.readFileToString(file);
+                return FileUtils.readFileToString(file, (Charset) null);
             } else {
                 return input;
             }
@@ -238,7 +239,7 @@ public class OnapCliArgsParser {
         try {
             File file = new File(input);
             if (file.isFile()) {
-                String value = FileUtils.readFileToString(file);
+                String value = FileUtils.readFileToString(file, (Charset) null);
                 YamlReader reader = new YamlReader(value);
                 value = (String) reader.read();
                 return value;
