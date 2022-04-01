@@ -169,7 +169,6 @@ public class OnapCliArgsParser {
                     }
 
                     //Make sure to read values from file, in case file path is given.
-                    //map.put(argArr[0], readTextStringFromUrl(argArr[1], paramMap.get(paramName).getName()));
                     map.put(argArr[0], argArr[1]);
                     paramMap.get(paramName).setValue(map);
                     i++;
