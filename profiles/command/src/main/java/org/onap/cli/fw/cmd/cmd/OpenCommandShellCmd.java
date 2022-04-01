@@ -256,7 +256,7 @@ public class OpenCommandShellCmd extends OnapCommand {
                 outputValue = pr.getError();
 
         } else {
-            //remove ${tmp: and closing }
+            //remove $(tmp: and closing )
             String tmpName = this.output.substring(7, this.output.length()-1);
             String tmpFile = tmpFiles.get("tmp:" + tmpName);
             if (tmpFile != null) {
