@@ -412,11 +412,6 @@ public class OnapCommandRegistrar {
                     attr.getValues().add(cmdName);
                 }
 
-                //don't expose system commands for user usage
-                //if (cmd.getInfo().getCommandType().name().equalsIgnoreCase(OnapCommandType.SYSTEM.name())) {
-                //    continue;
-                //}
-
                 attrSrv.getValues().add(cmd.getInfo().getService());
                 attrDesc.getValues().add(cmd.getDescription());
                 attrState.getValues().add(cmd.getInfo().getState().name());
