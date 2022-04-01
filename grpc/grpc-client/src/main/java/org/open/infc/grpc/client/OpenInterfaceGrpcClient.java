@@ -88,7 +88,6 @@ public class OpenInterfaceGrpcClient {
             result = blockingStub.withDeadlineAfter(timeout, TimeUnit.MILLISECONDS).invoke(input);
         } catch (StatusRuntimeException e) {
           logger.warn("RPC failed: {}", e.getStatus());
-          //Status{code=DEADLINE_EXCEEDED}
           throw new OpenInterfaceGrpcTimeoutExecption(e.getMessage());
         }
         logger.info("Output: {}", result);
@@ -103,7 +102,6 @@ public class OpenInterfaceGrpcClient {
             result = blockingStub.withDeadlineAfter(timeout, TimeUnit.MILLISECONDS).remoteCli(args);
         } catch (StatusRuntimeException e) {
           logger.warn("RPC failed: {}", e.getStatus());
-          //Status{code=DEADLINE_EXCEEDED}
           throw new OpenInterfaceGrpcTimeoutExecption(e.getMessage());
         }
 
