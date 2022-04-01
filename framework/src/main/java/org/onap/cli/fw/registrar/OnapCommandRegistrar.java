@@ -26,6 +26,7 @@ import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.onap.cli.fw.cmd.OnapCommand;
+import org.onap.cli.fw.cmd.OnapCommandType;
 import org.onap.cli.fw.cmd.dummy.OnapCommandDummy;
 import org.onap.cli.fw.conf.OnapCommandConfig;
 import org.onap.cli.fw.conf.OnapCommandConstants;
@@ -413,9 +414,9 @@ public class OnapCommandRegistrar {
                 }
 
                 //don't expose system commands for user usage
-                //if (cmd.getInfo().getCommandType().name().equalsIgnoreCase(OnapCommandType.SYSTEM.name())) {
-                //    continue;
-                //}
+                if (cmd.getInfo().getCommandType().name().equalsIgnoreCase(OnapCommandType.SYSTEM.name())) {
+                    continue;
+                }
 
                 attrSrv.getValues().add(cmd.getInfo().getService());
                 attrDesc.getValues().add(cmd.getDescription());
