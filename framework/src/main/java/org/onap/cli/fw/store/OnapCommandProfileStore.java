@@ -73,7 +73,6 @@ public class OnapCommandProfileStore {
             single = new OnapCommandProfileStore();
         }
 
-        //single.load();
         return single;
     }
 
@@ -190,8 +189,6 @@ public class OnapCommandProfileStore {
                 OnapCommandParamEntity[] list = gson.fromJson(jsonReader,
                         OnapCommandParamEntity[].class);
                 params.addAll(Arrays.asList(list));
-//            } else {
-//                throw new OnapCommandProfileNotFound(profileName);
             } catch (Exception e) { // NOSONAR
                 throw new OnapCommandProfileLoadFailed(e);
             }
