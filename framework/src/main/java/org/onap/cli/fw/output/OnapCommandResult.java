@@ -120,8 +120,8 @@ public class OnapCommandResult {
     public Map<String, OnapCommandResultAttribute> getRecordsMap() {
         Map<String, OnapCommandResultAttribute> recordMap = new HashMap<>();
 
-        for (OnapCommandResultAttribute record : this.getRecords()) {
-            recordMap.put(record.getName(), record);
+        for (OnapCommandResultAttribute data : this.getRecords()) {
+            recordMap.put(data.getName(), data);
         }
 
         return recordMap;
@@ -194,8 +194,8 @@ public class OnapCommandResult {
 
         if (!this.getRecords().isEmpty()) {
             if (this.getPrintDirection().equals(OnapCommandPrintDirection.LANDSCAPE)) {
-                for (OnapCommandResultAttribute record : this.getScopedRecords()) {
-                    print.addColumn(record.getName(), record.getValues());
+                for (OnapCommandResultAttribute data : this.getScopedRecords()) {
+                    print.addColumn(data.getName(), data.getValues());
                 }
             } else {
                 // Add property column
@@ -207,12 +207,12 @@ public class OnapCommandResult {
                 val.setName(OnapCommandConstants.PORTRAINT_COLUMN_NAME_VALUE);
                 val.setScope(OnapCommandResultAttributeScope.SHORT);
 
-                for (OnapCommandResultAttribute record : this.getScopedRecords()) {
-                    prp.getValues().add(record.getName());
-                    if (record.getValues().size() == 1) {
-                        val.getValues().add(record.getValues().get(0));
+                for (OnapCommandResultAttribute data : this.getScopedRecords()) {
+                    prp.getValues().add(data.getName());
+                    if (data.getValues().size() == 1) {
+                        val.getValues().add(data.getValues().get(0));
                     } else {
-                        val.getValues().add(record.getValues().toString());
+                        val.getValues().add(data.getValues().toString());
                     }
                 }
 
@@ -254,11 +254,11 @@ public class OnapCommandResult {
 
     private List<OnapCommandResultAttribute> getScopedRecords() {
         List<OnapCommandResultAttribute> recordList = new ArrayList<>();
-        for (OnapCommandResultAttribute record : this.getRecords()) {
-            if (record.getScope().ordinal() > this.getScope().ordinal()) {
+        for (OnapCommandResultAttribute data : this.getRecords()) {
+            if (data.getScope().ordinal() > this.getScope().ordinal()) {
                 continue;
             }
-            recordList.add(record);
+            recordList.add(data);
         }
 
         return recordList;
