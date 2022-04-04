@@ -24,15 +24,15 @@ public abstract class OnapCommandWarning extends OnapCommandException {
 
     private static final long serialVersionUID = -1833571383961748520L;
 
-    public OnapCommandWarning(String errorCode, String errorMessage, long httpStatusCode) {
+    protected OnapCommandWarning(String errorCode, String errorMessage, long httpStatusCode) {
         super(errorCode, errorMessage, httpStatusCode);
     }
 
-    public OnapCommandWarning(String errorCode, String errorMessage) {
+    protected OnapCommandWarning(String errorCode, String errorMessage) {
         super(errorCode, errorMessage);
     }
 
-    public OnapCommandWarning(String errorCode, String errorMessage, Throwable err) {
+    protected OnapCommandWarning(String errorCode, String errorMessage, Throwable err) {
         super(errorCode, errorMessage, err);
     }
 }
