@@ -57,7 +57,7 @@ public class OnapProfileSetCommand extends OnapCommand {
          Map<String, OnapCommandParamEntity> map = new HashMap<>();
 
          try {
-             for (OnapCommandParamEntity paramsExisting : cache.getInstance().loadParamFromCache(profile)) {
+             for (OnapCommandParamEntity paramsExisting : OnapCommandProfileStore.getInstance().loadParamFromCache(profile)) {
                  map.put(paramsExisting.getProduct() + ":" + paramsExisting.getName(), paramsExisting);
              }
          } catch (OnapCommandProfileNotFound e) {
