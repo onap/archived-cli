@@ -26,7 +26,6 @@ public class OnapCommandProfileNotFound extends OnapCommandException {
 
     private static final String ERROR_CODE = "0xc002";
 
-    private static final String ERROR_MSG = "Profile does not exist";
     /**
      * Profile does not exist.
      */
