@@ -338,7 +338,7 @@ public class OnapCommandDiscoveryUtils {
 
                             if (!schema.getVersion().equalsIgnoreCase(OnapCommandConstants.OPEN_CLI_SCHEMA_VERSION_VALUE_1_0)) {
                                 String schemaURI = schema.getSchemaURI();
-                                OnapCommandUtils.log.info("Unsupported Schema version found {} " + schemaURI);
+                                OnapCommandUtils.log.info("Unsupported Schema version found {} ", schemaURI);
                             }
                             else{
 
@@ -556,7 +556,7 @@ public class OnapCommandDiscoveryUtils {
      * @throws OnapCommandInvalidSchema
      *             exception
      */
-    public static Map<String, ?> loadYaml(Resource resource, boolean ignoreInvalidSchema) throws OnapCommandInvalidSchema, IOException {
+    public static Map<String, ?> loadYaml(Resource resource, boolean ignoreInvalidSchema) throws OnapCommandInvalidSchema, IOException {//NOSONAR
         Map<String, ?> values = null;
         try {
             values = loadYaml(resource.getInputStream());
