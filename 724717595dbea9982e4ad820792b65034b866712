@@ -45,6 +45,54 @@
       "revId": "724717595dbea9982e4ad820792b65034b866712",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4415a9f7_b298ac14",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandExecutionStore.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 6213
+      },
+      "writtenOn": "2022-04-04T06:10:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef99a503_98b2a960",
+      "range": {
+        "startLine": 418,
+        "startChar": 71,
+        "endLine": 418,
+        "endChar": 80
+      },
+      "revId": "724717595dbea9982e4ad820792b65034b866712",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3628db9a_33da181e",
+        "filename": "framework/src/main/java/org/onap/cli/fw/store/OnapCommandExecutionStore.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 6213
+      },
+      "writtenOn": "2022-04-04T06:10:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea115155_de19571a",
+      "range": {
+        "startLine": 418,
+        "startChar": 35,
+        "endLine": 418,
+        "endChar": 44
+      },
+      "revId": "724717595dbea9982e4ad820792b65034b866712",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
