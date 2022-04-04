@@ -16,6 +16,24 @@
       "revId": "37e08a4d965751c570b125eda565abd3d6dfafbc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752d4b08_42db2161",
+        "filename": "main/src/main/java/org/onap/cli/main/utils/OnapCliArgsParser.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 6213
+      },
+      "writtenOn": "2022-04-04T06:42:13Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "7dab643b_4bf00556",
+      "revId": "37e08a4d965751c570b125eda565abd3d6dfafbc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
