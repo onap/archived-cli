@@ -233,12 +233,7 @@ public class OnapCommandArtifactStore {
 
         final String SP = searchPattern; //NOSONAR
 
-        for (File file: new File(getBasePath()).listFiles(/*new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.matches(SP);
-            }
-        }*/)) {
+        for (File file: new File(getBasePath()).listFiles()) {
             try (JsonReader jsonReader = new JsonReader(new FileReader(file))){
                 artifacts.add(gson.fromJson(jsonReader, Artifact.class));
             } catch (Exception e) { // NOSONAR
