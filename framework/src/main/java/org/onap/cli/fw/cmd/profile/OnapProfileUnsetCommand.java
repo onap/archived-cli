@@ -56,7 +56,7 @@ public class OnapProfileUnsetCommand extends OnapCommand {
 
          Map<String, OnapCommandParamEntity> map = new HashMap<>();
 
-         for (OnapCommandParamEntity paramsExisting : cache.getInstance().loadParamFromCache(profile)) {
+         for (OnapCommandParamEntity paramsExisting : OnapCommandProfileStore.getInstance().loadParamFromCache(profile)) {
              map.put(paramsExisting.getProduct() + ":" + paramsExisting.getName(), paramsExisting);
          }
 
