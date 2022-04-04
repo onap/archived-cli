@@ -23,6 +23,7 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 
 public class OnapCommandParameterCacheTest {
     @Test
@@ -31,7 +32,7 @@ public class OnapCommandParameterCacheTest {
         FileUtils.touch(new File("data" + File.separator + "test-profile.json"));
         File test_profile = new File("data" + File.separator + "test-profile.json");
         FileUtils.touch(test_profile);
-        assertFalse(0 == test_profile.lastModified());
+        assertNotEquals(0, test_profile.lastModified());
         //assertTrue(OnapCommandProfileStore.getInstance().getProfiles().contains("test"));
         // FileUtils.cleanDirectory(new File("data"));
     }
