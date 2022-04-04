@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df945080_05a96180",
+        "filename": "framework/src/main/java/org/onap/cli/fw/registrar/OnapCommandRegistrar.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2022-04-04T03:51:09Z",
+      "side": 0,
+      "message": "uncomment instead",
+      "revId": "37e08a4d965751c570b125eda565abd3d6dfafbc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
