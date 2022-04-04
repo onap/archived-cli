@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b082205_7da78a79",
+        "filename": "profiles/command/src/main/java/org/onap/cli/fw/cmd/cmd/OpenCommandShellCmd.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2022-04-04T03:45:48Z",
+      "side": 0,
+      "message": "repharse the comment as this is an useful hint",
+      "revId": "37e08a4d965751c570b125eda565abd3d6dfafbc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
