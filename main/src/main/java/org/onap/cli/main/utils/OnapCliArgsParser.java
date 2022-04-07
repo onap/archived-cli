@@ -100,7 +100,8 @@ public class OnapCliArgsParser {
         }
 
         int positionalIdx = 0;
-        for (int i = 0; i < args.size(); i++) {
+        int i = 0;
+        do{
             String paramName = null;
             if (shortOptionMap.containsKey(args.get(i))) {
                 paramName = shortOptionMap.get(args.get(i));
@@ -190,7 +191,7 @@ public class OnapCliArgsParser {
 
             paramMap.get(positionArgs.get(positionalIdx)).setValue(args.get(i));
             positionalIdx++;
-        }
+        }while ( ++i < args.size());
 
         params.clear();
         params.addAll(paramMap.values());
