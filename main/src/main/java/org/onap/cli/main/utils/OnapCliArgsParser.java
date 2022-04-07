@@ -100,7 +100,8 @@ public class OnapCliArgsParser {
         }
 
         int positionalIdx = 0;
-        for (int i = 0; i < args.size(); i++) {
+        int i = 0;
+        while(i < args.size()) {
             String paramName = null;
             if (shortOptionMap.containsKey(args.get(i))) {
                 paramName = shortOptionMap.get(args.get(i));
@@ -113,6 +114,7 @@ public class OnapCliArgsParser {
                 if ((i + 1) == args.size() || args.get(i + 1).startsWith("-")) {
                     if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.BOOL)) {
                         paramMap.get(paramName).setValue(true);
+                        i++;
                         continue;
                     }
                     throw new OnapCliArgumentValueMissing(args.get(i));
@@ -121,26 +123,26 @@ public class OnapCliArgsParser {
                 if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.JSON)) {
                     paramMap.get(paramName).setValue(readJsonStringFromUrl(args.get(i + 1),
                             paramMap.get(paramName).getName()));
-                    i++;
+                    i += 2;
                     continue;
 
                 } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.TEXT)) {
                     paramMap.get(paramName).setValue(readTextStringFromUrl(args.get(i + 1),
                             paramMap.get(paramName).getName()));
-                    i++;
+                    i += 2;
                     continue;
 
                 } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.YAML)) {
                     String value = readYamlStringFromUrl(args.get(i + 1),
                             paramMap.get(paramName).getName());
                     paramMap.get(paramName).setValue(value);
-                    i++;
+                    i += 2;
                     continue;
 
                 } else if (paramMap.get(paramName).getParameterType().equals(OnapCommandParameterType.BYTE)) {
                     paramMap.get(paramName).setValue(readBytesFromUrl(args.get(i + 1),
                             paramMap.get(paramName).getName()));
-                    i++;
+                    i += 2;
                     continue;
 
                 } else if (paramMap.get(paramName).getParameterType()
@@ -150,7 +152,7 @@ public class OnapCliArgsParser {
 
                     list.add(readTextStringFromUrl(args.get(i + 1), paramMap.get(paramName).getName()));
                     paramMap.get(paramName).setValue(list);
-                    i++;
+                    i += 2;
                     continue;
 
                 } else if (paramMap.get(paramName).getParameterType()
@@ -170,13 +172,13 @@ public class OnapCliArgsParser {
 
                     map.put(argArr[0], argArr[1]);
                     paramMap.get(paramName).setValue(map);
-                    i++;
+                    i += 2;
                     continue;
                 }
 
                 paramMap.get(paramName).setValue(args.get(i + 1));
 
-                i++;
+                i += 2;
                 continue;
             }
 
@@ -190,6 +192,7 @@ public class OnapCliArgsParser {
 
             paramMap.get(positionArgs.get(positionalIdx)).setValue(args.get(i));
             positionalIdx++;
+            i++;
         }
 
         params.clear();
