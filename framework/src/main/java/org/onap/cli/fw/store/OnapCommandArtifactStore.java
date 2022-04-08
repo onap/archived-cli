@@ -259,7 +259,7 @@ public class OnapCommandArtifactStore {
         }
     }
 
-    public Artifact setArtifact(Artifact artifact, Artifact existing) throws OnapCommandArtifactNotFound, OnapCommandArtifactContentNotExist, OnapCommandArtifactAlreadyExist, IOException, NoSuchAlgorithmException {
+    public Artifact setArtifact(Artifact artifact, Artifact existing) throws OnapCommandArtifactContentNotExist, IOException, NoSuchAlgorithmException {
         if (artifact.getName() == null) {
             artifact.setName(existing.getName());
         }
