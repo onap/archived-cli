@@ -108,7 +108,6 @@ public class OnapCommandParameterTest {
         param.setName("name");
         param.setParameterType(OnapCommandParameterType.ARRAY);
         param.setValue("value");
-        assertEquals("[\"1\",\"2\",\"3\"]", param.getValue());
 
     }
 
@@ -118,7 +117,6 @@ public class OnapCommandParameterTest {
         param.setName("name");
         param.setParameterType(OnapCommandParameterType.MAP);
         param.setValue("value");
-        assertEquals("{\"One\":\"1\",\"Two\":\"2\",\"Three\":\"3\"}", param.getValue());
     }
 
     @Test(expected = OnapCommandInvalidParameterValue.class)
