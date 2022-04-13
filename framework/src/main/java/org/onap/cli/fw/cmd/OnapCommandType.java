@@ -27,7 +27,8 @@ public enum OnapCommandType {
 
     AUTH,
     CATALOG,
-    CMD;
+    CMD,
+    SYSTEM;
 
     /**
      * Get parameter type.
