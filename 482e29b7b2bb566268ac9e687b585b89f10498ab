@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2cf4e60_f58158a7",
+        "filename": "grpc/grpc-server/src/test/resources/log4j2.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2022-04-13T09:05:17Z",
+      "side": 1,
+      "message": "pls have a look",
+      "revId": "482e29b7b2bb566268ac9e687b585b89f10498ab",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ac2f1d_879610ad",
+        "filename": "grpc/grpc-server/src/test/resources/oclip-grpc-server.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2022-04-13T09:05:17Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "482e29b7b2bb566268ac9e687b585b89f10498ab",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
