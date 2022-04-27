@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca9e4ad4_ad1b3b20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 741
+      },
+      "writtenOn": "2022-04-27T04:21:43Z",
+      "side": 1,
+      "message": "can you add the title for the fix being made as part of the commit. instead of menting code smell. thanks",
+      "revId": "23e927f05d5c478e1b39b9154e4eaa30d0cd3199",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
