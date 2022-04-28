@@ -92,7 +92,7 @@ public class OnapCommandSchemaRobotLoader {
 
                     case OnapCommandCmdConstants.SUCCESS_EXIT_CODE:
                         List<String> list = (ArrayList) valMap.get(key1);
-                        robot.setSuccessStatusCodes(list.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
+                        robot.setSuccessStatusCodes(list.stream().map(Integer::parseInt).collect(Collectors.toList()));
                         break;
 
                     case OnapCommandCmdConstants.PASS_CODE:
