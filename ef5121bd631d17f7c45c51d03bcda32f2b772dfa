@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f5aca4a_ed2c8fe0",
+        "filename": "profiles/http/src/test/java/org/onap/cli/fw/http/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 6213
+      },
+      "writtenOn": "2022-05-04T15:42:25Z",
+      "side": 1,
+      "message": "will this import statement still be required ?",
+      "revId": "ef5121bd631d17f7c45c51d03bcda32f2b772dfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
