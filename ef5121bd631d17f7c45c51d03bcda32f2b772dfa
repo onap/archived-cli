@@ -16,6 +16,40 @@
       "revId": "ef5121bd631d17f7c45c51d03bcda32f2b772dfa",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0a5dc6c_3153face",
+        "filename": "profiles/http/src/test/java/org/onap/cli/fw/http/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 6213
+      },
+      "writtenOn": "2022-05-09T10:24:45Z",
+      "side": 1,
+      "message": "remove this line",
+      "revId": "ef5121bd631d17f7c45c51d03bcda32f2b772dfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17932a40_9bf1e3e3",
+        "filename": "profiles/http/src/test/java/org/onap/cli/fw/http/utils/OnapCommandUtilsTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 6213
+      },
+      "writtenOn": "2022-05-09T10:24:45Z",
+      "side": 1,
+      "message": "no need to replace \"assertEquals\" with \"Assert.assertEquals\"",
+      "revId": "ef5121bd631d17f7c45c51d03bcda32f2b772dfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
