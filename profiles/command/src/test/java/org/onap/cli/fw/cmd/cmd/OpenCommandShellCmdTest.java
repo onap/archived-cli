@@ -35,7 +35,7 @@ public class OpenCommandShellCmdTest {
     }
 
     @Test
-    public void setCmdEnvVariable() {
+    public void setCmdEnvVariableTest() {
         OpenCommandShellCmd cmdShell = new OpenCommandShellCmd();
         envVariable.put("variableOne","test");
         cmdShell.setEnvs(envVariable);
@@ -43,9 +43,35 @@ public class OpenCommandShellCmdTest {
     }
 
     @Test
-    public void setCmdError() {
+    public void setCmdErrorTest() {
         OpenCommandShellCmd cmdShell = new OpenCommandShellCmd();
         cmdShell.setError("Timeout");
         Assert.assertEquals("Timeout", cmdShell.getError());
     }
+
+    @Test
+    public void setResultMapTest() {
+        OpenCommandShellCmd cmdShell = new OpenCommandShellCmd();
+        Map<String, String> resultMap = new HashMap<>();
+        resultMap.put("var1","text1");
+        cmdShell.setResultMap(resultMap);
+        Assert.assertEquals("text1", cmdShell.getResultMap().get("var1"));
+    }
+
+    @Test
+    public void setCmdOutputTest() {
+        OpenCommandShellCmd cmdShell = new OpenCommandShellCmd();
+        cmdShell.setOutput("Timeout");
+        Assert.assertEquals("Timeout", cmdShell.getOutput());
+    }
+
+    @Test
+    public void setPassCodesTest() {
+        OpenCommandShellCmd cmdShell = new OpenCommandShellCmd();
+        List<Integer> resultMap = new ArrayList<Integer>();
+        resultMap.add(200);
+        cmdShell.setPassCodes(resultMap);
+        Assert.assertEquals(Optional.ofNullable(200), Optional.ofNullable(cmdShell.getPassCodes().get(0)));
+    }
 }
+

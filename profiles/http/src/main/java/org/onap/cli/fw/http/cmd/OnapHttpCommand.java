@@ -218,7 +218,7 @@ public class OnapHttpCommand extends OnapCommand {
             if (isAuthRequired) {
                 this.authClient.logout();
             }
-        } catch (OnapCommandException e) {
+        } catch (OnapCommandException e) { //NOSONAR
             throw e;
         } finally {
             this.getResult().setDebugInfo(this.input.toString() + "\n" + this.output.toString());
@@ -262,7 +262,7 @@ public class OnapHttpCommand extends OnapCommand {
         try{
             generateJsonMock(this.getInput(), output, this.getSchemaName());
         } catch (OnapCommandFailedMocoGenerate e) {
-            //NO SONAR ignore it
+            //NOSONAR ignore it
         }
     }
 
