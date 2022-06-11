@@ -21,9 +21,15 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 public class TableGeneratorTest {
     private TableGenerator table;
@@ -53,47 +59,6 @@ public class TableGeneratorTest {
         String result = table.generateTable(rows, true);
         System.out.println(result);
         String expected = "+----------+----------+\n|column1   |column2   |\n+----------+----------+\n";
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void printTableNullCellTest() {
-
-        System.out.println("printTableNullCellTest...");
-        List<List<Object>> rows = new ArrayList<List<Object>>();
-        rows.add(Arrays.asList(new Object[] { "column1", "column2" }));
-        rows.add(Arrays.asList(new Object[] { "value1", null }));
-        String result = table.generateTable(rows, true);
-        System.out.println(result);
-        String expected = "+----------+----------+\n" + "|column1   |column2   |\n" + "+----------+----------+\n"
-                + "|value1    |          |\n" + "+----------+----------+\n";
-        assertEquals(expected, result);
-
-    }
-
-    @Test
-    public void printTableEmptyCellTest() {
-        System.out.println("printTableEmptyCellTest...");
-        List<List<Object>> rows = new ArrayList<List<Object>>();
-        rows.add(Arrays.asList(new Object[] { "column1", "column2" }));
-        rows.add(Arrays.asList(new Object[] { "value1", "" }));
-        String result = table.generateTable(rows, true);
-        System.out.println(result);
-        String expected = "+----------+----------+\n" + "|column1   |column2   |\n" + "+----------+----------+\n"
-                + "|value1    |          |\n" + "+----------+----------+\n";
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void printTableNoCellBreakTest() {
-        System.out.println("printTableNoCellBreakTest...");
-        List<List<Object>> rows = new ArrayList<List<Object>>();
-        rows.add(Arrays.asList(new Object[] { "column1", "column2" }));
-        rows.add(Arrays.asList(new Object[] { "value1", "value2" }));
-        String result = table.generateTable(rows, true);
-        System.out.println(result);
-        String expected = "+----------+----------+\n" + "|column1   |column2   |\n" + "+----------+----------+\n"
-                + "|value1    |value2    |\n" + "+----------+----------+\n";
         assertEquals(expected, result);
     }
 
