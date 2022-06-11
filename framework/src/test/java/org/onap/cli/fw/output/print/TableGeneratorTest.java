@@ -57,47 +57,6 @@ public class TableGeneratorTest {
     }
 
     @Test
-    public void printTableNullCellTest() {
-
-        System.out.println("printTableNullCellTest...");
-        List<List<Object>> rows = new ArrayList<List<Object>>();
-        rows.add(Arrays.asList(new Object[] { "column1", "column2" }));
-        rows.add(Arrays.asList(new Object[] { "value1", null }));
-        String result = table.generateTable(rows, true);
-        System.out.println(result);
-        String expected = "+----------+----------+\n" + "|column1   |column2   |\n" + "+----------+----------+\n"
-                + "|value1    |          |\n" + "+----------+----------+\n";
-        assertEquals(expected, result);
-
-    }
-
-    @Test
-    public void printTableEmptyCellTest() {
-        System.out.println("printTableEmptyCellTest...");
-        List<List<Object>> rows = new ArrayList<List<Object>>();
-        rows.add(Arrays.asList(new Object[] { "column1", "column2" }));
-        rows.add(Arrays.asList(new Object[] { "value1", "" }));
-        String result = table.generateTable(rows, true);
-        System.out.println(result);
-        String expected = "+----------+----------+\n" + "|column1   |column2   |\n" + "+----------+----------+\n"
-                + "|value1    |          |\n" + "+----------+----------+\n";
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void printTableNoCellBreakTest() {
-        System.out.println("printTableNoCellBreakTest...");
-        List<List<Object>> rows = new ArrayList<List<Object>>();
-        rows.add(Arrays.asList(new Object[] { "column1", "column2" }));
-        rows.add(Arrays.asList(new Object[] { "value1", "value2" }));
-        String result = table.generateTable(rows, true);
-        System.out.println(result);
-        String expected = "+----------+----------+\n" + "|column1   |column2   |\n" + "+----------+----------+\n"
-                + "|value1    |value2    |\n" + "+----------+----------+\n";
-        assertEquals(expected, result);
-    }
-
-    @Test
     public void printTableCellBreakTest() {
         System.out.println("printTableCellBreakTest...");
         List<List<Object>> rows = new ArrayList<List<Object>>();
