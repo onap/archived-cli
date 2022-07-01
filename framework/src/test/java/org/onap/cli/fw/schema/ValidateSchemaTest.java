@@ -35,14 +35,17 @@ public class ValidateSchemaTest {
 
     @Test(expected = OnapCommandInvalidSchema.class)
     public void invalidateTest1() throws OnapCommandException {
-
         OnapCommand cmd = new OnapCommand() {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        OnapCommandSchemaLoader.loadSchema(cmd, "fdsfds.yaml", true, true);
+        try {
+            OnapCommandSchemaLoader.loadSchema(cmd, "fdsfds", true, true);
+        } catch(Exception e) {
+            assertEquals(e.getClass(), OnapCommandInvalidSchema.class);
+        }
+        OnapCommandSchemaLoader.loadSchema(cmd, "schema-invalid-file.yaml", true, true);
     }
-
 
     @Test
     public void validateTestMerge() throws OnapCommandException {
@@ -60,22 +63,13 @@ public class ValidateSchemaTest {
             @Override
             protected void run() throws OnapCommandException {}
         };
-        OnapCommandSchemaLoader.loadSchema(cmd, "fdsfds", true, true);
-    }
-
-    @Test(expected = OnapCommandInvalidSchema.class)
-    public void invalidateTest4() throws OnapCommandException {
-        OnapCommand cmd = new OnapCommand() {
-            @Override
-            protected void run() throws OnapCommandException {}
-        };
         OnapCommandSchemaLoader.loadSchema(cmd,
                 ValidateSchemaTest.class.getClassLoader().getResource("open-cli.properties").getFile(),
                 true, true);
     }
 
     @Test(expected = OnapCommandInvalidSchema.class)
-    public void invalidateTest5() throws OnapCommandException {
+    public void invalidateTest3() throws OnapCommandException {
         OnapCommand cmd = new OnapCommand() {
             @Override
             protected void run() throws OnapCommandException {}
@@ -93,15 +87,6 @@ public class ValidateSchemaTest {
         OnapCommandSchemaLoader.loadSchema(cmd, "schema-validate-pass.yaml", true, true);
         List<String> list = OnapCommandSchemaLoader.loadSchema(cmd, "schema-validate-pass.yaml", true, true);
         assertTrue(list.isEmpty());
-    }
-
-    @Test(expected = OnapCommandInvalidSchema.class)
-    public void invalidateTest3() throws OnapCommandException {
-        OnapCommand cmd = new OnapCommand() {
-            @Override
-            protected void run() throws OnapCommandException {}
-        };
-        OnapCommandSchemaLoader.loadSchema(cmd, "schema-invalid-file.yaml", true, true);
     }
 
     @Test
