@@ -1,5 +1,6 @@
 /*
  * Copyright 2017 Huawei Technologies Co., Ltd.
+ * Copyright (C) 2022 Samsung Electronics
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -311,22 +312,21 @@ public class OnapCommandUtilsTest {
         assertTrue("sample-test".equals(cmd.getName()) && cmd.getParameters().size() == 10);
     }
 
-    @Test(expected = OnapCommandParameterNameConflict.class)
+    @Test(expected = OnapCommandParameterOptionConflict.class)
     public void loadOnapCommandSchemaWithDuplicateNameTest() throws OnapCommandException {
         OnapCommand cmd = new OnapCommandSample();
-        OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-invalid-schema-duplicate-name.yaml", false, false);
-    }
-
-    @Test(expected = OnapCommandParameterOptionConflict.class)
-    public void loadOnapCommandSchemaWithDuplicateShortOptionTest() throws OnapCommandException {
-        OnapCommand cmd = new OnapCommandSample();
+        try {
+            OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-invalid-schema-duplicate-name.yaml", false, false);
+        }catch (Exception e) {
+            assertEquals(e.getClass(), OnapCommandParameterNameConflict.class);
+        }
+        cmd = new OnapCommandSample();
+        try {
+            OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-invalid-schema-duplicate-longoption.yaml", false, false);
+        }catch (Exception e) {
+            assertEquals(e.getClass(), OnapCommandParameterOptionConflict.class);
+        }
         OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-invalid-schema-duplicate-shortoption.yaml", false, false);
-    }
-
-    @Test(expected = OnapCommandParameterOptionConflict.class)
-    public void loadOnapCommandSchemaWithDuplicateLongOptionTest() throws OnapCommandException {
-        OnapCommand cmd = new OnapCommandSample();
-        OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-invalid-schema-duplicate-longoption.yaml", false, false);
     }
 
     @Test
@@ -558,3 +558,4 @@ public class OnapCommandUtilsTest {
         assertEquals("sample-test-info",values.get("name"));
     }
 }
+
