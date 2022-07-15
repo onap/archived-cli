@@ -268,9 +268,7 @@ public class OnapCommandUtilsTest {
         Map<String, ?> map = null;
         try {
             map = OnapCommandSchemaLoader.validateSchemaVersion("sample-test-schema1.yaml", "1.0");
-        } catch (OnapCommandInvalidSchemaVersion e) {
-            fail("Test should not have thrown this exception : " + e.getMessage());
-        } catch (OnapCommandInvalidSchema e) {
+        } catch (OnapCommandInvalidSchemaVersion | OnapCommandInvalidSchema e) {
             fail("Test should not have thrown this exception : " + e.getMessage());
         } catch (OnapCommandSchemaNotFound e) {
             assertEquals("0xb002::Command schema sample-test-schema1.yaml is not found", e.getMessage());
@@ -282,12 +280,10 @@ public class OnapCommandUtilsTest {
         Map<String, ?> map = null;
         try {
             map = OnapCommandSchemaLoader.validateSchemaVersion("sample-test-invalid-schema.yaml", "1.0");
-        } catch (OnapCommandInvalidSchemaVersion e) {
+        } catch (OnapCommandInvalidSchemaVersion | OnapCommandSchemaNotFound e) {
             fail("Test should not have thrown this exception : " + e.getMessage());
         } catch (OnapCommandInvalidSchema e) {
             assertTrue(e.getMessage().contains("0xb001::Command schema sample-test-invalid-schema.yaml is invalid"));
-        } catch (OnapCommandSchemaNotFound e) {
-            fail("Test should not have thrown this exception : " + e.getMessage());
         }
     }
 
@@ -298,9 +294,7 @@ public class OnapCommandUtilsTest {
             map = OnapCommandSchemaLoader.validateSchemaVersion("sample-test-schema.yaml", "1.1");
         } catch (OnapCommandInvalidSchemaVersion e) {
             assertEquals("0xb003::Command schema open_cli_schema_version 1.0 is invalid or missing", e.getMessage());
-        } catch (OnapCommandInvalidSchema e) {
-            fail("Test should not have thrown this exception : " + e.getMessage());
-        } catch (OnapCommandSchemaNotFound e) {
+        } catch (OnapCommandInvalidSchema | OnapCommandSchemaNotFound e) {
             fail("Test should not have thrown this exception : " + e.getMessage());
         }
     }
@@ -317,15 +311,11 @@ public class OnapCommandUtilsTest {
         OnapCommand cmd = new OnapCommandSample();
         try {
             OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-invalid-schema-duplicate-name.yaml", false, false);
-        }catch (Exception e) {
-            assertEquals(e.getClass(), OnapCommandParameterNameConflict.class);
-        }
+        }catch (OnapCommandParameterNameConflict ignored) {  }
         cmd = new OnapCommandSample();
         try {
             OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-invalid-schema-duplicate-longoption.yaml", false, false);
-        }catch (Exception e) {
-            assertEquals(e.getClass(), OnapCommandParameterOptionConflict.class);
-        }
+        }catch (OnapCommandParameterOptionConflict ignored) { }
         OnapCommandSchemaLoader.loadSchema(cmd, "sample-test-invalid-schema-duplicate-shortoption.yaml", false, false);
     }
 
@@ -558,4 +548,3 @@ public class OnapCommandUtilsTest {
         assertEquals("sample-test-info",values.get("name"));
     }
 }
-

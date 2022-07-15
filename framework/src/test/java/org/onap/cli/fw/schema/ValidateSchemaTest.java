@@ -41,9 +41,7 @@ public class ValidateSchemaTest {
         };
         try {
             OnapCommandSchemaLoader.loadSchema(cmd, "fdsfds", true, true);
-        } catch(Exception e) {
-            assertEquals(e.getClass(), OnapCommandInvalidSchema.class);
-        }
+        } catch(OnapCommandInvalidSchema ignored) {  }
         OnapCommandSchemaLoader.loadSchema(cmd, "schema-invalid-file.yaml", true, true);
     }
 
