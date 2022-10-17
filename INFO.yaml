@@ -3,13 +3,13 @@ project: 'cli'
 project_creation_date: '2017-06-22'
 lifecycle_state: 'Incubation'
 project_category: ''
-project_lead: &onap_releng_ptl
-    name: 'Kanagaraj Manickam'
-    email: 'kanagaraj.manickam@huawei.com'
-    id: 'mkr1481'
+project_lead: &onap_cli_ptl
+    name: 'Dan Xu'
+    email: 'xudan16@huawei.com'
+    id: 'xudan'
     company: 'Huawei'
-    timezone: 'India/Bangalore'
-primary_contact: *onap_releng_ptl
+    timezone: 'Asia/Shanghai'
+primary_contact: *onap_cli_ptl
 issue_tracking:
     type: 'jira'
     url: 'https://jira.onap.org/projects/CLI'
@@ -30,6 +30,16 @@ meetings:
 repositories:
     - 'cli'
 committers:
-    - <<: *onap_releng_ptl
+    - <<: *onap_cli_ptl
+    - name: 'Kanagaraj Manickam'
+      email: 'kanagaraj.manickam@huawei.com'
+      id: 'mkr1481'
+      company: 'Huawei'
+      timezone: 'India/Bangalore'
 tsc:
     approval: 'https://lists.onap.org/pipermail/onap-tsc'
+    changes:
+        - type: 'Addition'
+          name: 'Dan Xu'
+          # new PTL
+          link: 'https://wiki.onap.org/display/Meetings/TSC+2022-09-01'
