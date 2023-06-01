@@ -2,6 +2,7 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright 2018 Huawei Technologies Co., Ltd.
 
+:orphan:
 
 .. toctree::
    :maxdepth: 2
@@ -1241,9 +1242,8 @@ Error::
 
 
 
- license-group-show
------------------------------------------------
-
+license-group-show
+------------------
 
 usage: oclip license-group-show
 

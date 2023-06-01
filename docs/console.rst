@@ -14,7 +14,7 @@ After installation, CLI can be used in following form:
 Linux Command Shell
 -------------------
 It is available when user has access to the server where CLI is installed using zip or docker container.
-In this mode, user can use CLI in scripting mode or interactive mode as mentioned in :ref:`user_guide`
+In this mode, user can use CLI in scripting mode or interactive mode as mentioned in :ref:`cli_user_guide`
 
 .. image:: images/portal-cli-shell.png
 

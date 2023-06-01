@@ -2,7 +2,7 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright 2018 Huawei Technologies Co., Ltd.
 
-.. _cli_cmd_sample:
+.. _cli_cmd_sample_amsterdam:
 
 
 onap-amsterdam

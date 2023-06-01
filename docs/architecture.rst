@@ -13,10 +13,10 @@ Following diagram shows the high-level architecture of OCLIP.
 .. image:: images/portal-cli-arch.png
 
 * **Command Registrar** :  Registrar keeps track of the commands registered in OCLIP and when user invokes the command,
-it identifies the corresponding command and helps to invoke the corresponding command plug-in.
+  it identifies the corresponding command and helps to invoke the corresponding command plug-in.
 
 * **Command Discoverer** : Discoverer discovers the commands both in plug-in format and YAML and automatically register
-them into Registrar.
+  them into Registrar.
 
 * **Command Plug-in** : Implement the command as plug-in. More details :ref:`cli_developer_guide`
 
@@ -31,3 +31,4 @@ them into Registrar.
 * **Cache** : Provides persistent storage for discoverer to store the meta-data about the discovered Commands.
 
 * **open cli schemas** : Set of command YAML provides the CLI definitions.
+
