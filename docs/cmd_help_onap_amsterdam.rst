@@ -2,6 +2,7 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright 2018 Huawei Technologies Co., Ltd.
 
+:orphan:
 
 .. toctree::
    :maxdepth: 2
