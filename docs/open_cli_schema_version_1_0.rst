@@ -2,6 +2,8 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright 2017 Huawei Technologies Co., Ltd.
 
+:orphan:
+
 .. _open_cli_schema_version_1_0:
 
 Open Command Line Interface (CLI) Schema Version (OCS) 1.0
@@ -67,9 +69,10 @@ a line or a paragraph as given example here.
         use the command *service-list*
 
 info
--------
+----
+
 product
-~~~~~~~~
+~~~~~~~
 *product* entry allows to tag the command template with the software product
 name and version, for which command is implemented and is recommended to use
 the following format:
@@ -89,7 +92,7 @@ the following format:
 
 
 parameters
----------
+----------
 Every command has set of arguments to provide the input values and *parameters*
 section allows to add the required arguments details such as name, description,
 etc as list of entries.
@@ -702,6 +705,7 @@ value. So the none auth is defined by:
 section default_parameters
 
 --------------------
+
 request
 ~~~~~~~
 *request* section captures all HTTP request information as:

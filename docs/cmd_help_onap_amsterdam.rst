@@ -2,10 +2,11 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright 2018 Huawei Technologies Co., Ltd.
 
+:orphan:
+
 
 .. toctree::
    :maxdepth: 2
-
 
 .. _cli_cmd_help_onap_amsterdam:
 

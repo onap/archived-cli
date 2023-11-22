@@ -148,7 +148,6 @@ Following document provides the samples for every commands supported.
    :maxdepth: 1
 
    cmd_sample.rst
-   cmd_sample_onap_amsterdam.rst
 
 End to end service creation tutorial
 ------------------------------------
