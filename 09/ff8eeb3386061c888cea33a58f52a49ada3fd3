@@ -1,0 +1,9 @@
+Code-Review+2: Jessica Wagantall <jwagantall@linuxfoundation.org>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: Jessica Wagantall <jwagantall@linuxfoundation.org>
+Code-Review+2: Dan Xu <xudan16@huawei.com>
+Submitted-by: Dan Xu <xudan16@huawei.com>
+Submitted-at: Thu, 22 Feb 2024 02:06:28 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/cli/+/137295
+Project: cli
+Branch: refs/heads/master
