@@ -1,0 +1,8 @@
+Code-Review+2: Dan Xu <xudan16@huawei.com>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: Dan Xu <xudan16@huawei.com>
+Submitted-by: Dan Xu <xudan16@huawei.com>
+Submitted-at: Tue, 26 Mar 2024 01:17:30 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/cli/+/137397
+Project: cli
+Branch: refs/heads/master
